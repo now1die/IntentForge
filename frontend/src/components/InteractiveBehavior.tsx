@@ -109,12 +109,17 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
     request.current = controller;
     setBusy(true);
     try {
-      const result = await verifyBehavior({
+      const payload = {
         source: code, entry_point: entry, vectors: input, trace, compare_candidates: compare,
         ...(phase5 ? { engine_version: 5 } : {}),
         limits: { steps: Number(steps), call_depth: Number(depth), memory_cells: Number(cells) },
         ...(compare && expression.trim() ? { return_expression: expression.trim() } : {}),
-      }, controller.signal);
+      };
+      let result = await verifyBehavior(payload, controller.signal);
+      if (result.availability.status === "capacity_reached" && !controller.signal.aborted) {
+        await new Promise((resolve) => setTimeout(resolve, 650));
+        if (!controller.signal.aborted) result = await verifyBehavior(payload, controller.signal);
+      }
       if (!controller.signal.aborted) setReply({ snapshot, result });
     } catch (failure) {
       if (!controller.signal.aborted) setError(failure instanceof Error ? failure.message : "Could not verify behavior.");
