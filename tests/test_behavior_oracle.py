@@ -3,6 +3,7 @@
 import pytest
 
 from benchmarks.behavior import BehaviorSpec, BehaviorStatus, verify_behavior
+from compiler.semantic_analyzer import analyze_source_semantics
 
 
 SPEC = BehaviorSpec.from_dict({
@@ -24,8 +25,11 @@ def check(source, spec=SPEC, **kwargs):
 
 
 def test_correct_and_wrong_compilable_sources_get_different_observations():
-    match = check(CORRECT, oracle=FixtureOracle())
-    mismatch = check(WRONG, oracle=FixtureOracle())
+    matching_program = analyze_source_semantics(CORRECT)
+    changed_program = analyze_source_semantics(WRONG)
+    assert matching_program.success and changed_program.success
+    match = check(CORRECT, oracle=FixtureOracle(), compiler_valid=matching_program.success)
+    mismatch = check(WRONG, oracle=FixtureOracle(), compiler_valid=changed_program.success)
     assert (match.status, match.passed, match.observed) == (BehaviorStatus.VERIFIED, 2, 2)
     assert (mismatch.status, mismatch.passed, mismatch.observed) == (BehaviorStatus.MISMATCH, 0, 2)
 

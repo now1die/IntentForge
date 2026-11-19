@@ -57,6 +57,7 @@ test("capture Phase 1 evidence from the running workbench", async ({ page, brows
   expect(review.history[0].safety.requires_review).toBe(true);
   await expect(page.locator(".history")).toContainText("Review required");
   await expect(page.getByRole("button", { name: "Apply Corrected Code" })).toBeDisabled();
+  await page.locator(".history article").first().scrollIntoViewIfNeeded();
   await capture("03-review-required.png", operator);
 
   const ambiguous = "int main(){ int wet=2,dry=3; return wet dry; }";
@@ -65,6 +66,7 @@ test("capture Phase 1 evidence from the running workbench", async ({ page, brows
   expect(uncertain.stop_reason).toBe("ambiguous_valid_candidates");
   expect(uncertain.corrected_code).toBe(ambiguous);
   await expect(page.locator(".suggestion-card")).toHaveCount(2);
+  await page.locator(".suggestion-list").scrollIntoViewIfNeeded();
   await capture("04-ambiguous-intent.png", ambiguous);
 
   await enter(page, operator);
