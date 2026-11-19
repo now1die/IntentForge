@@ -67,3 +67,41 @@ dataset hash, and dependency versions.
 
 - [Generated Markdown report](reports/phase1-v1.md)
 - [Generated JSON report](reports/phase1-v1.json)
+
+## Phase 1.5 extended corpus
+
+`python -m benchmarks.run --no-ollama` now evaluates the complete 111-case
+corpus and writes `phase1-v2.json` and `phase1-v2.md`. The 32 historical
+cases and the original v1 reports are retained. The 79 cases in
+`phase_1_5_holdout` were AI-assisted and reviewed for this evaluation. They
+were frozen before scoring and never used to tune the classifier. Metrics
+are reported both overall and by split.
+
+```sh
+python -m benchmarks.review_corpus
+python -m benchmarks.run --no-ollama --check
+python -m benchmarks.run --no-ollama --corpus holdout --out /tmp/intentforge-holdout
+python -m benchmarks.run --no-ollama --corpus historical --out /tmp/intentforge-historical
+```
+
+Corpus review checks identifiers, split membership, source validity and
+references, expected input/return vectors, exact archived-template overlap,
+and normalized token four-gram near duplicates. Similarity exceptions require
+a documented review. The report records a dataset digest and the bundled
+artifact digest. The consistency command checks decision stability and report
+serialization while disregarding wall-clock samples.
+
+Version 2 also measures policy decisions and actual offline workbench
+options. The workbench measure covers hybrid only and counts a known-intent
+case when an accepted reference is offered in its existing review or
+apply workflow. A safety holdout is a case flagged for review with no
+automatic change. Provider rejections are counted separately. The
+legacy repair ranking metrics continue to use proposals for the first
+diagnostic. Complete applied outputs are measured separately so a partial
+edit to a multi-error program cannot count as a recovered intention.
+
+An optional `behavior` object declares an entry function and input/return
+vectors. It can be evaluated through an injected `BehaviorOracle` in tests
+or by a future isolated engine. Current benchmark runs never execute Mini-C
+and report observation status separately from token matches. See the
+[extended evaluation](../docs/phase1_extended_benchmark.md).

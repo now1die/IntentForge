@@ -85,3 +85,16 @@ Vercel configuration serves the Vite build and mounts the FastAPI app under
 Ollama connectivity. Set `CORS_ALLOWED_ORIGINS` in the API process environment
 for a separately hosted frontend. See the [deployment audit](docs/phase1_architecture_audit.md)
 and [API documentation](docs/api.md).
+
+## Phase 1.5 verification
+
+The [final review](docs/PHASE_1_FINAL_REVIEW.md) records the 111-case corpus,
+safety decisions, hosted CI, and live Ollama status. The
+[workbench evidence](audit/phase1-final/README.md) contains fresh screenshots and
+reproduction commands. To validate corpus references and reproduce decisions:
+
+```sh
+python -m benchmarks.review_corpus
+python -m benchmarks.run --no-ollama --check
+python -m test_suite.run_keyboard_and_array_regression --verify
+```
