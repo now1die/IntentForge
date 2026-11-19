@@ -283,7 +283,17 @@ class MiniCLexer:
 
     def t_INTEGER_LITERAL(self, token):
         r"\d+"
-        token.value = int(token.value)
+        try:
+            token.value = int(token.value)
+        except ValueError:
+            self._error(
+                "NUMERIC_LITERAL_OUT_OF_RANGE",
+                "Integer literal exceeds the compiler's numeric input limit",
+                token.value[:64],
+                token.lexpos,
+                token.lexpos + len(token.value),
+            )
+            return None
         return token
 
     def t_STRING_LITERAL(self, token):
