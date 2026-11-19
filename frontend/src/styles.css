@@ -1084,3 +1084,16 @@ summary code {
 
 .shared-evidence { padding: 1rem; }
 .shared-evidence li { margin-block: .3rem; overflow-wrap: anywhere; }
+
+.behavior-panel > summary { cursor: pointer; padding: .8rem 1rem; }
+.behavior-panel .inspector-body { min-height: 0; }
+.behavior-controls, .behavior-evidence { display: flex; flex-wrap: wrap; gap: 1rem; margin-block: .75rem; }
+.behavior-controls { align-items: center; }
+.behavior-controls select { margin-inline-start: .5rem; background: #232829; color: inherit; padding: .3rem; }
+.behavior-evidence > * { flex: 1 1 20rem; min-width: 0; }
+.behavior-run { padding: .6rem; border: 1px solid #42504a; border-radius: .3rem; }
+.behavior-run h3 { margin-top: 0; }
+.behavior-table { max-width: 100%; overflow-x: auto; }
+.behavior-table caption { text-align: left; }
+.behavior-table th, .behavior-table td { padding: .35rem; text-align: left; }
+.behavior-panel pre { white-space: pre-wrap; overflow-wrap: anywhere; }

@@ -56,7 +56,7 @@ class Candidate:
             "proposed_code": self.proposed_code, "compiler_valid": self.compiler_valid,
             "remaining_diagnostics": self.remaining_diagnostics,
             "behavioral_status": self.behavior.status.value if self.behavior else "ORACLE_UNAVAILABLE",
-            **({"behavioral_evidence": self.behavior.model_dump(mode="json")} if self.behavior else {}),
+            **({"behavioral_evidence": self.behavior.model_dump(mode="json", exclude={"execution"} if self.behavior.execution is None else None)} if self.behavior else {}),
             **(classify(self, ambiguous=ambiguous) if evidence_policy else {}),
             "relative_score": round(self.relative_score, 6) if self.relative_score is not None else None,
             "safety": safety.to_dict(),
@@ -91,6 +91,10 @@ class IntentionResult:
         if not requirement or result.entry_point != requirement.function or not requirement.examples:
             raise ValueError("Behavior requires the selected entry point and supplied examples.")
         vectors = tuple(Vector(arguments=item.args, expected=item.expected_return) for item in requirement.examples)
+        if result.execution and tuple(row.model_dump_json() for row in result.execution.vectors) != tuple(
+            row.model_dump_json() for row in vectors
+        ):
+            raise ValueError("Execution must correspond to the exact supplied vectors.")
         checked = tuple(row.vector for row in result.observations)
         if (tuple(row.model_dump_json() for row in checked)
                 != tuple(row.model_dump_json() for row in vectors[:len(checked)])
@@ -114,7 +118,7 @@ class IntentionResult:
             "compiler_valid": self.context.compiler_valid,
             "behavioral_status": self.behavior.status.value if self.behavior else
             "EXECUTION_UNSUPPORTED" if self.finding == "UNSUPPORTED_LANGUAGE" else "ORACLE_UNAVAILABLE",
-            **({"behavioral_evidence": self.behavior.model_dump(mode="json")} if self.behavior else {}),
+            **({"behavioral_evidence": self.behavior.model_dump(mode="json", exclude={"execution"} if self.behavior.execution is None else None)} if self.behavior else {}),
             **({"recommendation": candidates[0]["recommendation"] if candidates else "ABSTAIN"} if self.evidence_policy else {}),
             "diagnostics": [item.to_dict() for item in self.context.diagnostics],
             "evidence": [fact.to_dict() for fact in self.evidence],
