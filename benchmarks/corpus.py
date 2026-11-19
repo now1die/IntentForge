@@ -20,7 +20,7 @@ def load_cases(directory: Path = DATA, *, corpus: str = "historical") -> list[di
         raise ValueError(f"Unknown corpus selection: {corpus}")
     files = []
     if corpus != "holdout":
-        files.extend(sorted(directory.glob("*-v1.json")))
+        files.extend(directory / name for name in ("handwritten-v1.json", "synthetic-v1.json"))
     if corpus != "historical":
         files.append(directory / "extended-v2.json")
     for path in files:

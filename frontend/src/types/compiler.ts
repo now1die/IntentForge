@@ -280,3 +280,46 @@ export interface Health {
   groq_configured: boolean;
   ollama_configured: boolean;
 }
+
+export interface IntentionRequirement {
+  function?: string;
+  description?: string;
+  return_expression?: string;
+  condition?: string;
+  return_ordinal?: number;
+  condition_ordinal?: number;
+  examples?: { args: (number | boolean)[]; expected_return: number | boolean }[];
+}
+
+export interface IntentionEvidence {
+  kind: string;
+  detail: string;
+  span: Diagnostic["span"] | null;
+}
+
+export interface IntentionCandidate {
+  id: string;
+  category: string;
+  proposed_code: string;
+  compiler_valid: boolean;
+  remaining_diagnostics: number;
+  behavioral_status: string;
+  relative_score: number | null;
+  safety: { category: string; reason: string; requires_review: boolean };
+  hypothesis: string;
+  evidence: IntentionEvidence[];
+  edits: { span: Diagnostic["span"]; original: string; proposed: string }[];
+}
+
+export interface IntentionResponse {
+  finding: string;
+  decision: string;
+  ranking: string;
+  compiler_valid: boolean;
+  behavioral_status: string;
+  diagnostics: Diagnostic[];
+  evidence: IntentionEvidence[];
+  notes: string[];
+  attempts: number;
+  candidates: IntentionCandidate[];
+}

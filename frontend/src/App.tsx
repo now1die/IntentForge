@@ -1,3 +1,4 @@
+import { IntentionPanel } from "./components/IntentionPanel";
 import { useEffect, useRef, useState } from "react";
 import { FileCode, X, ArrowRight } from "@phosphor-icons/react";
 import { Toolbar } from "./components/Toolbar";
@@ -183,6 +184,13 @@ export default function App() {
     void run("analyze", value);
   }
 
+  function applyIntention(original: string, proposed: string) {
+    if (current.current !== original) return;
+    changeSource(proposed);
+    setNotice("Reviewed intention repair applied. Validating source…");
+    void run("analyze", proposed);
+  }
+
   async function validateCustomCode(value: string) {
     const response = await validateCorrection(current.current, value);
     return { valid: response.valid, message: response.message };
@@ -291,6 +299,8 @@ export default function App() {
             <ASTView ast={analysis?.ast ?? null} />
           ) : active === "Symbol Table" ? (
             <SymbolTableView symbols={analysis?.symbols ?? null} />
+          ) : active === "Intention" ? (
+            <IntentionPanel code={code} onApply={applyIntention} />
           ) : active === "Corrections" ? (
             <CorrectionPanel result={correction} options={correctionOptions} onApplyCode={applyCode} onValidateCustom={validateCustomCode} />
           ) : (

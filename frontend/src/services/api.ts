@@ -4,6 +4,8 @@ import type {
   CorrectionOptionsResponse,
   CorrectionResponse,
   Health,
+  IntentionRequirement,
+  IntentionResponse,
   SymbolsResponse,
   TokensResponse,
   ValidateCorrectionResponse,
@@ -33,7 +35,9 @@ async function request<T>(path: string, payload?: unknown, signal?: AbortSignal)
     });
     if (!response.ok) {
       const message =
-        response.status === 503
+        path === "/v1/intention-analysis" && [413, 422].includes(response.status)
+          ? await intentionInputError(response)
+          : response.status === 503
           ? "The correction model is unavailable. Train the backend model, then try again."
           : response.status === 422
             ? "The backend could not accept this source. Use at most 100,000 characters."
@@ -46,6 +50,15 @@ async function request<T>(path: string, payload?: unknown, signal?: AbortSignal)
     throw new ApiError("Could not reach the compiler. Check that the backend is running, then retry.");
   }
 }
+
+async function intentionInputError(response: Response): Promise<string> {
+  const payload: { detail?: string | { msg: string }[] } = await response.json();
+  if (typeof payload.detail === "string") return payload.detail;
+  return payload.detail?.[0]?.msg ?? "Check the requirement fields and source length.";
+}
+
+export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, signal: AbortSignal) =>
+  request<IntentionResponse>("/v1/intention-analysis", { code, requirement }, signal);
 
 export const checkHealth = (signal?: AbortSignal) => request<Health>("/health", undefined, signal);
 export const analyzeCode = (code: string, signal?: AbortSignal) => request<AnalysisResponse>("/analyze", { code }, signal);

@@ -20,3 +20,5 @@ tests/.artifacts/
 !**/.env.example
 .vercel/
 .DS_Store
+
+!models/intention_ranker_v1.joblib

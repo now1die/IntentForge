@@ -1022,3 +1022,47 @@ summary code {
   .custom-actions,
   .original-edit-section { align-items: flex-start; flex-direction: column; }
 }
+
+.intention-panel {
+  padding: 14px 20px;
+  max-width: 1000px;
+}
+.intention-panel p {
+  margin: 8px 0;
+}
+.intention-panel form,
+.intention-preview {
+  margin-bottom: 18px;
+}
+.intention-panel summary {
+  cursor: pointer;
+  margin: 10px 0;
+}
+.intention-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 205px), 1fr));
+  gap: 10px;
+}
+.intention-fields label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.intention-fields input,
+.intention-fields textarea {
+  background: var(--panel);
+  color: inherit;
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+.intention-panel button {
+  padding: 6px 10px;
+}
+.intention-candidates li {
+  margin: 6px 0;
+}
+.intention-preview {
+  margin-top: 16px;
+}

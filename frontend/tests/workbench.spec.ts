@@ -617,3 +617,36 @@ test("a behavior-changing operator stays in review until the user selects and ap
   await expect(page.locator(".source-editor .view-lines")).toContainText("a>b");
   await expect(page.getByRole("status")).toContainText("All checks passed");
 });
+
+test("specification-supported intention repair is previewed and applied only on approval", async ({ page }) => {
+  await page.goto("/");
+  await page.locator(".source-editor .view-lines").click();
+  await page.keyboard.press("Control+A");
+  await page.keyboard.insertText("int square(int n){return n+n;}");
+  await page.getByRole("tab", { name: "Intention", exact: true }).click();
+  await page.getByLabel("Requirement description").fill("Return the square of n");
+  await page.getByRole("button", { name: "Analyze Intention", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Possible mismatch with the supplied requirement" })).toBeVisible();
+  await expect(page.getByText("Behavioral verification unavailable.", { exact: true })).toBeVisible();
+  await expect(page.locator(".source-editor .view-lines")).toContainText("n+n");
+  await expect(page.getByRole("button", { name: "Apply Reviewed Intention Repair" })).toHaveCount(0);
+  await page.getByRole("button", { name: /Review 1/ }).click();
+  await expect(page.getByRole("region", { name: "Selected intention repair" })).toContainText("n * n");
+  await expect(page.locator(".source-editor .view-lines")).toContainText("n+n");
+  await page.getByRole("button", { name: "Apply Reviewed Intention Repair" }).click();
+  await expect(page.locator(".source-editor .view-lines")).toContainText("n * n");
+  await expect(page.getByRole("status")).toContainText("All checks passed");
+});
+
+test("a changed requirement invalidates an intention preview", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("tab", { name: "Intention", exact: true }).click();
+  await page.getByLabel("Return expression").fill("2");
+  await page.getByText("Expression locations and input/output examples", { exact: true }).click();
+  await page.getByLabel("Return location").fill("1");
+  await page.getByRole("button", { name: "Analyze Intention", exact: true }).click();
+  await page.getByRole("button", { name: /Review 1/ }).click();
+  await expect(page.getByRole("button", { name: "Apply Reviewed Intention Repair" })).toBeEnabled();
+  await page.getByLabel("Return expression").fill("3");
+  await expect(page.getByRole("button", { name: "Apply Reviewed Intention Repair" })).toHaveCount(0);
+});

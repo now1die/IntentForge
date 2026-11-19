@@ -5,6 +5,7 @@ import {
   Table,
   Wrench,
   WarningCircle,
+  MagnifyingGlass,
 } from "@phosphor-icons/react";
 
 export const tabs = [
@@ -13,9 +14,10 @@ export const tabs = [
   "Symbol Table",
   "Corrections",
   "Diagnostics",
+  "Intention",
 ] as const;
 export type Tab = (typeof tabs)[number];
-const icons = [ListBullets, TreeStructure, Table, Wrench, WarningCircle];
+const icons = [ListBullets, TreeStructure, Table, Wrench, WarningCircle, MagnifyingGlass];
 
 export function InspectorTabs({
   active,

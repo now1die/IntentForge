@@ -1,0 +1,264 @@
+"""Read-only Phase 2 intention analysis and reviewable repairs."""
+
+from __future__ import annotations
+
+from collections import defaultdict
+from dataclasses import dataclass
+from difflib import SequenceMatcher
+from hashlib import sha256
+from itertools import islice
+from math import isfinite
+from time import monotonic
+from typing import Any
+
+from compiler.ast_nodes import BinaryExpression, Identifier, ReturnStatement, VariableDeclaration
+from compiler.semantic_analyzer import analyze_source_semantics
+from compiler.symbol_table import SymbolKind
+
+from .correction_safety import RepairSafety, repair_key
+from .intention_candidates import MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream
+from .intention_context import ContextLimit, IntentionContext, Requirement, build_context
+from .intention_ranker import Ranker
+from .intention_requirements import resolve_targets
+
+
+DEFAULT_BUDGET_SECONDS = 1.5
+
+
+@dataclass(slots=True)
+class Candidate:
+    id: str
+    proposed_code: str
+    proposal: Proposal
+    compiler_valid: bool
+    remaining_diagnostics: int
+    features: dict[str, Any]
+    relative_score: float | None = None
+
+    def to_dict(self, source: str, ambiguous: bool):
+        safety = RepairSafety(
+            "UNVERIFIED" if not self.compiler_valid else
+            "AMBIGUOUS" if ambiguous else "POTENTIALLY_BEHAVIOR_CHANGING",
+            "Compiler diagnostics remain. Continue editing before applying." if not self.compiler_valid else
+            "Intention alternatives require explicit approval because the edit may change behavior.",
+        )
+        return {
+            "id": self.id, "category": self.proposal.category,
+            "proposed_code": self.proposed_code, "compiler_valid": self.compiler_valid,
+            "remaining_diagnostics": self.remaining_diagnostics,
+            "behavioral_status": "ORACLE_UNAVAILABLE",
+            "relative_score": round(self.relative_score, 6) if self.relative_score is not None else None,
+            "safety": safety.to_dict(),
+            "hypothesis": self.proposal.assumption,
+            "evidence": [fact.to_dict() for fact in self.proposal.evidence],
+            "edits": [{
+                "span": edit.span.to_dict(), "original": source[edit.span.start.offset:edit.span.end.offset],
+                "proposed": edit.replacement,
+            } for edit in self.proposal.edits],
+        }
+
+
+@dataclass(slots=True)
+class IntentionResult:
+    context: IntentionContext
+    finding: str
+    decision: str
+    ranking: str
+    candidates: list[Candidate]
+    notes: list[str]
+    evidence: tuple[Evidence, ...] = ()
+    attempts: int = 0
+
+    def to_dict(self, *, include_context=False):
+        ambiguous = self.decision == "AMBIGUOUS"
+        return {
+            "finding": self.finding, "decision": self.decision, "ranking": self.ranking,
+            "compiler_valid": self.context.compiler_valid,
+            "behavioral_status": "EXECUTION_UNSUPPORTED" if self.finding == "UNSUPPORTED_LANGUAGE" else "ORACLE_UNAVAILABLE",
+            "diagnostics": [item.to_dict() for item in self.context.diagnostics],
+            "evidence": [fact.to_dict() for fact in self.evidence],
+            "notes": self.notes, "attempts": self.attempts,
+            "candidates": [item.to_dict(self.context.source, ambiguous) for item in self.candidates],
+            "context": self.context.to_dict() if include_context else None,
+        }
+
+
+def candidate_features(context, proposal, remaining):
+    pairs = [(context.text(edit.span), edit.replacement.strip()) for edit in proposal.edits]
+    return {
+        "node_shape": proposal.node_kind, "ast_edge": proposal.role,
+        "binding_kind": proposal.symbol_kind,
+        "type_agrees": int(proposal.type_match),
+        "declaration_distance": min(proposal.symbol_distance, 512) / 512,
+        "prior_binding_uses": min(proposal.references_before, 10),
+        "identifier_similarity": max(SequenceMatcher(None, old, new, autojunk=False).ratio() for old, new in pairs),
+        "edit_size": min(sum(abs(len(old) - len(new)) for old, new in pairs), 100) / 100,
+        "edit_count": len(proposal.edits),
+        "has_requirement_support": int(proposal.specification_matches > 0),
+        "diagnostics_removed": min(len(context.diagnostics) - remaining, MAX_CANDIDATES),
+        "diagnostics_remaining": min(remaining, MAX_CANDIDATES),
+    }
+
+
+def order_candidates(candidates: list[Candidate], ranker: Ranker | None):
+    """Keep validated and directly specified candidates ahead of other hypotheses."""
+    groups = defaultdict(list)
+    for candidate in candidates:
+        candidate.relative_score = None
+        groups[(not candidate.compiler_valid, -candidate.proposal.specification_matches,
+                candidate.remaining_diagnostics)].append(candidate)
+
+    result = []
+    for key in sorted(groups):
+        group = groups[key]
+        # Deployment evidence covers competing visible bindings in return-value positions.
+        compatible = all(item.proposal.node_kind == "Identifier" and item.proposal.role == "value"
+                         and item.proposal.symbol_kind in {"variable", "parameter"} for item in group)
+        if ranker and compatible and len(group) > 1:
+            for candidate, score in zip(group, ranker.score([item.features for item in group]), strict=True):
+                if not isfinite(score):
+                    raise ValueError("Ranker returned a non-finite score")
+                candidate.relative_score = score
+        result.extend(sorted(group, key=lambda item: (
+            -(item.relative_score if item.relative_score is not None else item.features["identifier_similarity"]),
+            not item.proposal.type_match, item.proposal.symbol_distance, item.id,
+        )))
+    return result
+
+
+def _unsupported(context: IntentionContext) -> bool:
+    if context.parsed.valid:
+        return False
+    tokens = [token.lexeme for token in context.parsed.tokens]
+    if any(err.lexeme in {"#", "?"} for err in context.parsed.lexical_errors):
+        return True
+    for first, second, third in zip(tokens, tokens[1:], tokens[2:]):
+        if ((first, second) in {("switch", "("), ("do", "{")}
+                or (first in {"struct", "union", "enum"} and third == "{")
+                or (first in {"int", "char", "float", "void", "bool"} and second == "*")
+                or (first == "]" and second == "[")):
+            return True
+    return False
+
+
+def _heuristic(context: IntentionContext) -> tuple[Evidence, ...]:
+    if context.requirement:
+        return ()
+    for record in context.nodes:
+        node = record.node
+        function = record.function
+        if not isinstance(node, ReturnStatement) or not isinstance(node.value, Identifier) or not function:
+            continue
+        if len(function.body.statements) != 2 or function.body.statements[-1] is not node:
+            continue
+        declaration = function.body.statements[0]
+        binding = context.visible_at(node.value.span.start.offset).get(node.value.name)
+        if not binding or binding.kind != SymbolKind.PARAMETER:
+            continue
+        if (isinstance(declaration, VariableDeclaration) and isinstance(declaration.initializer, BinaryExpression)
+                and declaration.type_name == function.return_type):
+            return (
+                Evidence("OBSERVED_AST", f"{declaration.name} is computed in the immediately preceding declaration.", declaration.span),
+                Evidence("SYMBOL", f"The function returns parameter {binding.name} instead of referencing that declaration.", node.value.span),
+            )
+    return ()
+
+
+def _validate_candidate(context, proposal):
+    try:
+        fixed = apply_edits(context.source, proposal.edits)
+    except ValueError:
+        return None
+    if fixed == context.source or len(fixed) > len(context.source) + 320:
+        return None
+    checked = analyze_source_semantics(fixed)
+    remaining = len(checked.parse_result.lexical_errors) + len(checked.parse_result.syntax_errors)
+    if checked.semantic_result:
+        remaining += len(checked.semantic_result.diagnostics)
+    if not checked.success and (not checked.parse_result.valid or remaining >= len(context.diagnostics)):
+        return None
+    if proposal.specification_matches:
+        # A replacement must really match the specified AST after parsing the patched program.
+        new_targets, _ = resolve_targets(build_context(fixed, context.requirement))
+        old_targets, _ = resolve_targets(context)
+        if sum(target.matches for target in new_targets) < sum(target.matches for target in old_targets) + proposal.specification_matches:
+            return None
+    features = candidate_features(context, proposal, remaining)
+    return Candidate("IR-" + sha256(fixed.encode()).hexdigest()[:12], fixed, proposal, checked.success, remaining, features)
+
+
+def analyze_intention(
+    source: str, requirement: Requirement | None = None, *, ranker: Ranker | None = None,
+    ranking_status: str = "DETERMINISTIC", budget_seconds: float = DEFAULT_BUDGET_SECONDS,
+    candidate_budget: int = MAX_CANDIDATES,
+) -> IntentionResult:
+    deadline = monotonic() + budget_seconds
+    context = build_context(source, requirement)
+    if _unsupported(context):
+        return IntentionResult(context, "UNSUPPORTED_LANGUAGE", "NO_SUPPORTED_CORRECTION", ranking_status, [],
+                               ["The source contains syntax outside the supported Mini-C subset."])
+    targets, notes = resolve_targets(context)
+    mismatches = [target for target in targets if not target.matches]
+    heuristic = _heuristic(context) if context.compiler_valid and not mismatches else ()
+    finding = ("COMPILER_ERROR" if not context.compiler_valid else "SPECIFICATION_SUPPORTED_SUSPICION" if mismatches
+               else "HEURISTIC_SUSPICION" if heuristic else "NO_SUPPORTED_MISMATCH")
+    evidence = heuristic or tuple(Evidence(
+        "USER_REQUIREMENT",
+        f"The selected {target.field} differs structurally from the supplied expression {target.expected_source!r}.",
+        target.observed.span if target.observed is not None else target.record.node.span,
+    ) for target in mismatches)
+    if heuristic:
+        notes.append("The computed value could be intentional or unused. Provide a requirement before proposing a logic edit.")
+    proposals = islice(candidate_stream(context, targets), max(0, min(candidate_budget, MAX_CANDIDATES)))
+    unique = set()
+    attempted_edits = set()
+    candidates = []
+    attempts = 0
+    timed_out = monotonic() >= deadline
+    if not timed_out:
+        for proposal in proposals:
+            if monotonic() >= deadline:
+                timed_out = True
+                break
+            signature = tuple((edit.span.start.offset, edit.span.end.offset, edit.replacement) for edit in proposal.edits)
+            if signature in attempted_edits:
+                continue
+            attempted_edits.add(signature)
+            attempts += 1
+            try:
+                candidate = _validate_candidate(context, proposal)
+            except (ContextLimit, RecursionError):
+                continue
+            if monotonic() >= deadline:
+                timed_out = True
+                break
+            if candidate:
+                key = repair_key(candidate.proposed_code)
+                if key not in unique:
+                    unique.add(key)
+                    candidates.append(candidate)
+    try:
+        candidates = order_candidates(candidates, ranker)
+    except (ValueError, TypeError, AttributeError, KeyError):
+        for candidate in candidates:
+            candidate.relative_score = None
+        ranking_status = "ARTIFACT_INCOMPATIBLE"
+        candidates = order_candidates(candidates, None)
+    if ranking_status == "LEARNED" and not any(candidate.relative_score is not None for candidate in candidates):
+        ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
+    if timed_out:
+        notes.append("The analysis budget expired. Only completed checks are shown.")
+        decision = "BUDGET_EXHAUSTED"
+    elif candidates and candidates[0].compiler_valid and candidates[0].proposal.specification_matches             and candidates[0].proposal.specification_matches == len(mismatches) and not any("no unique location" in note for note in notes):
+        decision = "STRONG_SPECIFICATION_EVIDENCE"
+    elif len(candidates) > 1:
+        decision = "AMBIGUOUS"
+    elif candidates:
+        decision = "REVIEW_UNCERTAIN"
+    elif notes or heuristic or mismatches:
+        decision = "INSUFFICIENT_CONTEXT"
+    elif context.compiler_valid and targets and all(target.matches for target in targets):
+        decision = "REQUIREMENT_SHAPE_MATCHES"
+    else:
+        decision = "NO_SUPPORTED_CORRECTION"
+    return IntentionResult(context, finding, decision, ranking_status, candidates, notes, evidence, attempts)

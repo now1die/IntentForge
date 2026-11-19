@@ -12,6 +12,7 @@ from fastapi.responses import JSONResponse
 from .dependencies import ModelUnavailableError, get_ollama_fallback, get_predictor
 from .routes.analysis import router as analysis_router
 from .routes.correction import router as correction_router
+from .routes.intention import router as intention_router
 from .routes.options import router as options_router
 from .schemas import HealthResponse
 
@@ -61,6 +62,7 @@ app.add_middleware(
 app.include_router(analysis_router)
 app.include_router(correction_router)
 app.include_router(options_router)
+app.include_router(intention_router)
 
 
 @app.exception_handler(ModelUnavailableError)
