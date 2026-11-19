@@ -1,0 +1,617 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "ribbon_area",
+      "family": "ribbon_area",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int cut(int width,int tall,int waste){ if(width<=waste){return 0;} int floor=width-waste; return flor*tall; }",
+      "accepted": [
+        "int cut(int width,int tall,int waste){ if(width<=waste){return 0;} int floor=width-waste; return floor*tall; }"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "reverse_emit",
+      "family": "reverse_emit",
+      "category": "ARRAY_INDEX",
+      "kind": "compiler",
+      "source": "int tiles[12]; int emit(int n){int sum=0; while(n>0){int back=n-1; sum+=tiles[bak];n--;} return sum;}",
+      "accepted": [
+        "int tiles[12]; int emit(int n){int sum=0; while(n>0){int back=n-1; sum+=tiles[back];n--;} return sum;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "stamp_credit",
+      "family": "stamp_credit",
+      "category": "DECLARATION_TYPE",
+      "kind": "compiler",
+      "source": "bool claim(int coins,int cap){bool allowed=coins>=cap; {int coins=cap-1;if(coins<0){return false;}} bool paid=cap;return paid;}",
+      "accepted": [
+        "bool claim(int coins,int cap){bool allowed=coins>=cap; {int coins=cap-1;if(coins<0){return false;}} bool paid=allowed;return paid;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "panel_transform",
+      "family": "panel_transform",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "float shade(float lux,bool matte,int levels){ if(matte){return lux/levels;}return lux;} float paint(int tick,float lux,bool matte){return shade(matte,tick,lux);}",
+      "accepted": [
+        "float shade(float lux,bool matte,int levels){ if(matte){return lux/levels;}return lux;} float paint(int tick,float lux,bool matte){return shade(lux,matte,tick);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "checksum_cycle",
+      "family": "checksum_cycle",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int checksum(int n,int seed){int hash=seed; for(int i=0;i<n;i++){hash=(hash+i)%7;} return;}",
+      "accepted": [
+        "int checksum(int n,int seed){int hash=seed; for(int i=0;i<n;i++){hash=(hash+i)%7;} return hash;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "slice_width",
+      "family": "slice_width",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int yband=3; int height(int row,int baseline){if(row<baseline){return 0;} int dist=row-yband; if(dist<0){return 0;} return dst;}",
+      "accepted": [
+        "int yband=3; int height(int row,int baseline){if(row<baseline){return 0;} int dist=row-yband; if(dist<0){return 0;} return dist;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "stage_lookup",
+      "family": "stage_lookup",
+      "category": "ARRAY_INDEX",
+      "kind": "compiler",
+      "source": "int stage[7]; int seek(int after){for(int slot=after;slot<7;slot++){if(stage[slt]==0){return slot;}}return -1;}",
+      "accepted": [
+        "int stage[7]; int seek(int after){for(int slot=after;slot<7;slot++){if(stage[slot]==0){return slot;}}return -1;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "route_metric",
+      "family": "route_metric",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "int weight(int meters,bool icy){if(icy){return meters*2;}return meters;} int walk(int blocks,bool frost,int detour){int meters=blocks+detour;return weight(meters,frst);}",
+      "accepted": [
+        "int weight(int meters,bool icy){if(icy){return meters*2;}return meters;} int walk(int blocks,bool frost,int detour){int meters=blocks+detour;return weight(meters,frost);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "gate_clear",
+      "family": "gate_clear",
+      "category": "DECLARATION_TYPE",
+      "kind": "compiler",
+      "source": "bool flag(int state,bool manual){bool not_busy=state!=1; if(manual){return true;}bool permitted=state;return permitted && state>0;}",
+      "accepted": [
+        "bool flag(int state,bool manual){bool not_busy=state!=1; if(manual){return true;}bool permitted=not_busy;return permitted && state>0;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "grid_sum",
+      "family": "grid_sum",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int grid[9]; int sumgrid(){int total=0;for(int row=0;row<3;row++){for(int col=0;col<3;col++){total+=grid[row*3+col];}}return;}",
+      "accepted": [
+        "int grid[9]; int sumgrid(){int total=0;for(int row=0;row<3;row++){for(int col=0;col<3;col++){total+=grid[row*3+col];}}return total;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "peak_balance",
+      "family": "peak_balance",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "float adjust(float step,int height){float local=step+height; float level=step-height; if(level>local){return local;} return lvel;}",
+      "accepted": [
+        "float adjust(float step,int height){float local=step+height; float level=step-height; if(level>local){return local;} return level;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "read_window",
+      "family": "read_window",
+      "category": "ARRAY_INDEX",
+      "kind": "compiler",
+      "source": "int buf[8]; int mid(int high,int low){int middle=(high+low)/2; if(middle>7){return 0;} return buf[midle];}",
+      "accepted": [
+        "int buf[8]; int mid(int high,int low){int middle=(high+low)/2; if(middle>7){return 0;} return buf[middle];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "claim_bucket",
+      "family": "claim_bucket",
+      "category": "MULTIPLE_LOCALIZED",
+      "kind": "compiler",
+      "source": "int slots[5]; int book(int row){int next=row+1;slots[next]=row;return slots[nxt]+rw;}",
+      "accepted": [
+        "int slots[5]; int book(int row){int next=row+1;slots[next]=row;return slots[next]+row;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "message_tag",
+      "family": "message_tag",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "int style(bool loud,int rank,char prefix){if(loud){return rank+1;}return rank;} int title(int level,char tag,bool noise){return style(tag,noise,level);}",
+      "accepted": [
+        "int style(bool loud,int rank,char prefix){if(loud){return rank+1;}return rank;} int title(int level,char tag,bool noise){return style(noise,level,tag);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "remainder_weight",
+      "family": "remainder_weight",
+      "category": "RETURN_EXPRESSION",
+      "kind": "logic",
+      "source": "int last(int a,int b,bool first){int rem=a%b; if(first){return rem;} return a;}",
+      "accepted": [
+        "int last(int a,int b,bool first){int rem=a%b; if(first){return rem;} return rem;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "sensor_floor",
+      "family": "sensor_floor",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "int measures[6]; int mark(){for(int key=0;key<=6;key++){measures[key]=key;}return 0;}",
+      "accepted": [
+        "int measures[6]; int mark(){for(int key=0;key<6;key++){measures[key]=key;}return 0;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "cost_layers",
+      "family": "cost_layers",
+      "category": "ARITHMETIC_OPERATOR",
+      "kind": "logic",
+      "source": "int layers(int s,int t,int u,int base){int w=s*base;int x=t*base;int y=u+base;return w+x+y;}",
+      "accepted": [
+        "int layers(int s,int t,int u,int base){int w=s*base;int x=t*base;int y=u*base;return w+x+y;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "label_width",
+      "family": "label_width",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int box(int text,int pad,bool snug){int outer=text+pad; if(snug){outer-=pad;} else {outer+=1;} return outr;}",
+      "accepted": [
+        "int box(int text,int pad,bool snug){int outer=text+pad; if(snug){outer-=pad;} else {outer+=1;} return outer;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "track_diff",
+      "family": "track_diff",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int last=0; int tick(int next){int delta=next-last;last=next;if(delta<0){delta=-delta;}return dlt;}",
+      "accepted": [
+        "int last=0; int tick(int next){int delta=next-last;last=next;if(delta<0){delta=-delta;}return delta;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "inventory_line",
+      "family": "inventory_line",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "int unit_cost(int amount,int rebate,bool active){if(active){return amount-rebate;}return amount;} int due(int price,int token,bool active){int discounted=token/2;return unit_cost(price,disconted,active);}",
+      "accepted": [
+        "int unit_cost(int amount,int rebate,bool active){if(active){return amount-rebate;}return amount;} int due(int price,int token,bool active){int discounted=token/2;return unit_cost(price,discounted,active);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "fold_order",
+      "family": "fold_order",
+      "category": "ARRAY_INDEX",
+      "kind": "compiler",
+      "source": "int input[8]; int read(int half,bool original){int high=7-half;if(original){return input[half];}return input[hg];}",
+      "accepted": [
+        "int input[8]; int read(int half,bool original){int high=7-half;if(original){return input[half];}return input[high];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "even_relays",
+      "family": "even_relays",
+      "category": "DECLARATION_TYPE",
+      "kind": "compiler",
+      "source": "bool relay(int incoming,int step){bool even=incoming%2==0;while(step>0){step--;} {bool flip=even; if(!flip){return false;}}bool send=step;return send;}",
+      "accepted": [
+        "bool relay(int incoming,int step){bool even=incoming%2==0;while(step>0){step--;} {bool flip=even; if(!flip){return false;}}bool send=even;return send;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "block_budget",
+      "family": "block_budget",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int tax(int goal,int spare){int debt=goal; if(goal>spare){debt-=spare;} else {debt+=spare;} return;}",
+      "accepted": [
+        "int tax(int goal,int spare){int debt=goal; if(goal>spare){debt-=spare;} else {debt+=spare;} return debt;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "cross_widths",
+      "family": "cross_widths",
+      "category": "MULTIPLE_LOCALIZED",
+      "kind": "compiler",
+      "source": "int pack(int first,int last,bool vertical){int low=first-1;int high=last+1; if(vertical){return high;} return hig-lo;}",
+      "accepted": [
+        "int pack(int first,int last,bool vertical){int low=first-1;int high=last+1; if(vertical){return high;} return high-low;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "pitch_guess",
+      "family": "pitch_guess",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "float pitch(bool boost,float hz,int base){if(boost){return hz+base;}return hz;}float tone(float hz,bool sharp,int offset){return pitch(offset,sharp,hz);}",
+      "accepted": [
+        "float pitch(bool boost,float hz,int base){if(boost){return hz+base;}return hz;}float tone(float hz,bool sharp,int offset){return pitch(sharp,hz,offset);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "train"
+    },
+    {
+      "id": "control_preparation",
+      "family": "control_preparation",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int allocate(int rooms,int width){if(width<0){return -1;} int possible=rooms*width; rooms++;return rooms;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "train"
+    },
+    {
+      "id": "control_index_guard",
+      "family": "control_index_guard",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int cards[3]; int deck(){for(int i=0;i<=3;i++){if(i==3){break;} cards[i]=i;}return cards[2];}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "train"
+    },
+    {
+      "id": "signal_ring",
+      "family": "signal_ring",
+      "category": "ARRAY_INDEX",
+      "kind": "compiler",
+      "source": "int queue[9]; int signal(int pos){if(pos<0){return 0;} int mod=pos%9; return queue[md];}",
+      "accepted": [
+        "int queue[9]; int signal(int pos){if(pos<0){return 0;} int mod=pos%9; return queue[mod];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "temperature_trip",
+      "family": "temperature_trip",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "float trip(int retry,float heat){float threshold=heat+1;while(retry>0){heat+=2;retry--;}return threshld-heat;}",
+      "accepted": [
+        "float trip(int retry,float heat){float threshold=heat+1;while(retry>0){heat+=2;retry--;}return threshold-heat;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "count_flags",
+      "family": "count_flags",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int chosen(bool keep,int passes){int rounds=0;while(keep && passes>0){rounds+=1;passes--;} return;}",
+      "accepted": [
+        "int chosen(bool keep,int passes){int rounds=0;while(keep && passes>0){rounds+=1;passes--;} return rounds;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "safety_override",
+      "family": "safety_override",
+      "category": "DECLARATION_TYPE",
+      "kind": "compiler",
+      "source": "bool allow(bool override,int density){bool crowded=density>5; bool safe=density; if(crowded){return safe;} return !crowded;}",
+      "accepted": [
+        "bool allow(bool override,int density){bool crowded=density>5; bool safe=override; if(crowded){return safe;} return !crowded;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "route_tag",
+      "family": "route_tag",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "int locate(bool ready,char name,float rate){if(ready){return 1;}return 0;} int location(char label,float drift,bool tracking){return locate(drift,tracking,label);}",
+      "accepted": [
+        "int locate(bool ready,char name,float rate){if(ready){return 1;}return 0;} int location(char label,float drift,bool tracking){return locate(tracking,label,drift);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "net_turn",
+      "family": "net_turn",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int score(int goal,int debt){int net=goal-debt;{int goal=net;if(goal<0){return -1;}}return nt;}",
+      "accepted": [
+        "int score(int goal,int debt){int net=goal-debt;{int goal=net;if(goal<0){return -1;}}return net;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "seat_mask",
+      "family": "seat_mask",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "bool active(int seat,bool on){return on && seat>=0;} bool check(int n,bool local){int center=n/2;return active(cener,local);}",
+      "accepted": [
+        "bool active(int seat,bool on){return on && seat>=0;} bool check(int n,bool local){int center=n/2;return active(center,local);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "streak_longest",
+      "family": "streak_longest",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int best(int run,int peak){while(run>peak){peak++;} if(peak>0){peak*=2;}return;}",
+      "accepted": [
+        "int best(int run,int peak){while(run>peak){peak++;} if(peak>0){peak*=2;}return peak;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "landing_table",
+      "family": "landing_table",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "int pads[5];int landing(){for(int j=0;j<=5;j++){pads[j]=j*2;}return pads[4];}",
+      "accepted": [
+        "int pads[5];int landing(){for(int j=0;j<5;j++){pads[j]=j*2;}return pads[4];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "selection"
+    },
+    {
+      "id": "control_optional_mirror",
+      "family": "control_optional_mirror",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int sample(int input,int offset,bool check){int draft=input+offset;if(check){return draft;}return input;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "selection"
+    },
+    {
+      "id": "capped_density",
+      "family": "capped_density",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "float measure(float units,float time){float ratio=units/time; if(ratio>9){return 9;} return rat;}",
+      "accepted": [
+        "float measure(float units,float time){float ratio=units/time; if(ratio>9){return 9;} return ratio;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "weekday_palette",
+      "family": "weekday_palette",
+      "category": "ARRAY_INDEX",
+      "kind": "compiler",
+      "source": "int paint[7]; int hue(int packet){int cycle=packet%7; if(cycle<0){return -1;}return paint[cycl];}",
+      "accepted": [
+        "int paint[7]; int hue(int packet){int cycle=packet%7; if(cycle<0){return -1;}return paint[cycle];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "queue_promote",
+      "family": "queue_promote",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int promote(int late,int start){int head=start;for(int k=late;k>0;k--){if(head>10){break;}head++;}return;}",
+      "accepted": [
+        "int promote(int late,int start){int head=start;for(int k=late;k>0;k--){if(head>10){break;}head++;}return head;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "seal_notification",
+      "family": "seal_notification",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "bool can_send(char mark,bool live,int channel){return live && channel>0;} bool alert(int lane,char seal,bool armed){return can_send(lane,seal,armed);}",
+      "accepted": [
+        "bool can_send(char mark,bool live,int channel){return live && channel>0;} bool alert(int lane,char seal,bool armed){return can_send(seal,armed,lane);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "reset_latch",
+      "family": "reset_latch",
+      "category": "DECLARATION_TYPE",
+      "kind": "compiler",
+      "source": "bool latch(int amount,bool state){bool dropped=amount<0; bool saved=amount;if(dropped){return false;}return saved;}",
+      "accepted": [
+        "bool latch(int amount,bool state){bool dropped=amount<0; bool saved=state;if(dropped){return false;}return saved;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "stairs_choice",
+      "family": "stairs_choice",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int stairs(int one,int three,int bonus){int chosen=three+bonus; if(one>chosen){return one;} return chsen;}",
+      "accepted": [
+        "int stairs(int one,int three,int bonus){int chosen=three+bonus; if(one>chosen){return one;} return chosen;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "safety_pad",
+      "family": "safety_pad",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "int route[10];int collect(){int x=0;for(int k=0;k<=10;k++){x=route[k];}return x;}",
+      "accepted": [
+        "int route[10];int collect(){int x=0;for(int k=0;k<10;k++){x=route[k];}return x;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "calibration"
+    },
+    {
+      "id": "control_asymmetric_prices",
+      "family": "control_asymmetric_prices",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int cost(int peak,int valley,int tax){int a=peak*tax;int b=valley*tax;if(b<0){return 0;}int c=peak+tax;return a+b+c;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "calibration"
+    },
+    {
+      "id": "sampling_tail",
+      "family": "sampling_tail",
+      "category": "ARRAY_INDEX",
+      "kind": "logic",
+      "source": "int visits[4];int gather(int seed){if(seed<0){return 0;}for(int slot=0;slot<4;slot++){int current=visits[slot+1];seed+=current;}return seed;}",
+      "accepted": [
+        "int visits[4];int gather(int seed){if(seed<0){return 0;}for(int slot=0;slot<4;slot++){int current=visits[slot];seed+=current;}return seed;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "development"
+    },
+    {
+      "id": "scale_format",
+      "family": "scale_format",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "float scale(char token,float power,bool show){if(show){return power;}return 0;}float formatted(bool draw,char point,float n){return scale(n,draw,point);}",
+      "accepted": [
+        "float scale(char token,float power,bool show){if(show){return power;}return 0;}float formatted(bool draw,char point,float n){return scale(point,n,draw);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "development"
+    },
+    {
+      "id": "batch_stamps",
+      "family": "batch_stamps",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int stamps(int count,int multiplier){int collected=count*multiplier;while(count>1){count--;}return colleced;}",
+      "accepted": [
+        "int stamps(int count,int multiplier){int collected=count*multiplier;while(count>1){count--;}return collected;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "development"
+    },
+    {
+      "id": "packing_array",
+      "family": "packing_array",
+      "category": "ARRAY_INDEX",
+      "kind": "logic",
+      "source": "int rack[4]; int get(int at){return rack[0];}",
+      "accepted": [
+        "int rack[4]; int get(int at){return rack[at];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "description": "return the element of rack at index at"
+      },
+      "explicit": {
+        "return_expression": "rack[at]"
+      },
+      "split": "development"
+    },
+    {
+      "id": "control_intentional_audit",
+      "family": "control_intentional_audit",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int settle(int subtotal,int tax){int gross=subtotal+tax; if(gross>100){return 0;} return subtotal;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "development"
+    },
+    {
+      "id": "ambiguous_panel",
+      "family": "ambiguous_panel",
+      "category": "AMBIGUOUS",
+      "kind": "control",
+      "source": "int choose(int active,int alternate){if(active>alternate){return selected;}return active;}",
+      "accepted": [],
+      "ambiguous": true,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "development"
+    }
+  ]
+}

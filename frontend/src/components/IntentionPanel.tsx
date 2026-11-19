@@ -49,6 +49,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
+  const [engineVersion, setEngineVersion] = useState<2 | 3>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -85,7 +86,7 @@ export function IntentionPanel({ code, onApply }: {
         setError(failure instanceof SyntaxError ? "Examples must be valid JSON." : String(failure));
         return;
       }
-      const result = await analyzeIntention(code, input.requirement, input.mode, controller.signal);
+      const result = await analyzeIntention(code, input.requirement, input.mode, controller.signal, engineVersion);
       if (!controller.signal.aborted) setAnalysis({ code, result });
     } catch (failure) {
       if (!controller.signal.aborted) setError(failure instanceof Error ? failure.message : "Intention analysis failed.");
@@ -101,6 +102,12 @@ export function IntentionPanel({ code, onApply }: {
     <section className="intention-panel" aria-label="Intention analysis">
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
+          <label>Intention engine
+            <select value={engineVersion} onChange={(event) => setEngineVersion(event.target.value === "3" ? 3 : 2)}>
+              <option value="2">Phase 2.5</option>
+              <option value="3">Generalization v3</option>
+            </select>
+          </label>
           <label>Analysis mode
             <select name="mode" value={mode} onChange={(event) => setMode(event.target.value as IntentionMode | "auto")}>
               <option value="auto">Use entered fields</option>
@@ -138,7 +145,7 @@ export function IntentionPanel({ code, onApply }: {
           <p>{result.behavioral_status === "EXECUTION_UNSUPPORTED"
             ? "Behavioral checks are unsupported for this source." : "Behavioral verification unavailable."}</p>
           {result.candidates.length > 0 && <p>{result.ranking === "LEARNED"
-            || result.ranking === "EXPANDED_LEARNED"
+            || result.ranking === "EXPANDED_LEARNED" || result.ranking === "V3_LEARNED"
             ? "The model ranked comparable alternatives. Relative scores indicate order."
             : "Compiler evidence and contextual rules ordered these alternatives."}</p>}
           {result.diagnostics.map((diagnostic, index) => (

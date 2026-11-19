@@ -25,3 +25,5 @@ jobs:
       - run: python -m benchmarks.phase2_evaluate --check
       - run: python -m benchmarks.phase25_audit
       - run: python -m benchmarks.phase25_evaluate --check
+      - run: python -m benchmarks.ml_v3_audit
+      - run: python -m benchmarks.ml_v3_evaluate --check

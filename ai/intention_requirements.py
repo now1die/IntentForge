@@ -111,7 +111,7 @@ def _domain_description(description: str, function: FunctionDefinition) -> dict[
     return {}
 
 
-def resolve_targets(context: IntentionContext, *, enhanced: bool = False) -> tuple[list[ExpressionTarget], list[str]]:
+def resolve_targets(context: IntentionContext, *, enhanced: bool = False, generalized: bool = False) -> tuple[list[ExpressionTarget], list[str]]:
     requirement = context.requirement
     if not requirement:
         return [], []
@@ -137,7 +137,7 @@ def resolve_targets(context: IntentionContext, *, enhanced: bool = False) -> tup
         named_expression = _description_expression(requirement.description)
         if named_expression:
             derived["return"] = named_expression
-        normalized = normalize_description(requirement.description, context, requirement.function) if enhanced else None
+        normalized = normalize_description(requirement.description, context, requirement.function, generalized=generalized) if enhanced else None
         if normalized:
             derived[normalized.subject] = normalized.expression
         for name, text in derived.items():

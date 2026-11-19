@@ -69,8 +69,17 @@ def _minmax(context, function, operation, left, right):
                                  f"{guard.left.name} {operator} {guard.right.name}", 1)
 
 
-def normalize_description(description: str, context: IntentionContext, function: str | None):
+def normalize_description(description: str, context: IntentionContext, function: str | None, *, generalized=False):
     text = " ".join(description.strip().rstrip(".").split())
+    if generalized:
+        cell = re.fullmatch(fr"return (?:the )?element of ([A-Za-z_][A-Za-z_0-9]*) at index ({ATOM})", text, re.I)
+        if cell:
+            return NormalizedRequirement("return", "array element", (cell[1], cell[2]), f"{cell[1]}[{cell[2]}]")
+        accumulator = re.fullmatch(fr"return (?:the )?accumulator ([A-Za-z_][A-Za-z_0-9]*) (plus|minus) ({ATOM})", text, re.I)
+        if accumulator:
+            operator = "+" if accumulator[2].lower() == "plus" else "-"
+            return NormalizedRequirement("return", "accumulator result", (accumulator[1], accumulator[3]),
+                                         f"{accumulator[1]} {operator} ({accumulator[3]})")
     arithmetic = re.fullmatch(fr"return (?:the )?({'|'.join(OPERATIONS)}) (?:of|between) ({ATOM}) and ({ATOM})", text, re.I)
     if arithmetic:
         name, left, right = arithmetic.groups()
@@ -96,6 +105,16 @@ def normalize_description(description: str, context: IntentionContext, function:
     subject = "return" if prefixed[1].lower() == "return whether" else "condition"
     body = prefixed[2]
     bounds = re.fullmatch(fr"({ATOM}) is between ({ATOM}) and ({ATOM}) inclusive", body, re.I)
+    if generalized and not bounds:
+        exclusive = re.fullmatch(fr"({ATOM}) is between ({ATOM}) and ({ATOM}) exclusive", body, re.I)
+        if exclusive:
+            value, lower, upper = exclusive.groups()
+            return NormalizedRequirement(subject, "exclusive range", (value, lower, upper),
+                                         f"{value} > {lower} && {value} < {upper}")
+        negate = re.fullmatch(r"not \((.+)\)", body, re.I)
+        pred = _predicate(negate[1]) if negate else None
+        if pred:
+            return NormalizedRequirement(subject, "negation", pred[1], f"!({pred[2]})")
     if bounds:
         value, lower, upper = bounds.groups()
         return NormalizedRequirement(subject, "inclusive range", (value, lower, upper),
