@@ -195,12 +195,14 @@ def _contextual_scenario_alternatives(source: str) -> list[dict[str, Any]]:
     return out
 
 
-def _ollama_review_and_fallback(source: str, context: ErrorContext, prediction: Any, options: list[dict[str, Any]], limit: int) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def _ollama_review_and_fallback(source: str, context: ErrorContext, prediction: Any, options: list[dict[str, Any]], limit: int, *, use_ollama: bool = True) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Verify compiler-valid options with local Ollama; generate fresh options only
     when the ML/compiler pipeline has none. Ollama never bypasses compiler validation."""
-    service = OllamaFallbackService()
     meta = {"mode": "not_used", "approved_ids": []}
     _annotate_safety(options)
+    if not use_ollama:
+        return options[:limit], meta
+    service = OllamaFallbackService()
     if options:
         review = service.review_candidates(source, context, [{"id": x["id"], "corrected_code": x["corrected_code"], "reason": x["reason"], "fully_valid": x["fully_valid"]} for x in options])
         meta.update(review.to_dict()); meta["mode"] = "verification"
@@ -247,7 +249,7 @@ def _annotate_safety(options: list[dict[str, Any]]) -> None:
         item["safety"] = safety.to_dict()
 
 
-def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, limit: int = 8) -> dict[str, Any]:
+def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, limit: int = 8, *, use_ollama: bool = True) -> dict[str, Any]:
     baseline = parse(source)
     if baseline.valid:
         semantic = analyze_source_semantics(source).semantic_result
@@ -273,7 +275,7 @@ def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, li
                 item["confidence"] = semantic_prediction.confidence if semantic_prediction else item["confidence"]
                 item["score"] = item["confidence"]
                 item["predicted_class"] = semantic_prediction.label if semantic_prediction else "ARRAY_CALL_ERROR"
-            review, ollama_meta = _ollama_review_and_fallback(source, context, semantic_prediction or predictor.predict_error_type(context), semantic_options[:limit], limit)
+            review, ollama_meta = _ollama_review_and_fallback(source, context, semantic_prediction or predictor.predict_error_type(context), semantic_options[:limit], limit, use_ollama=use_ollama)
             return {
                 "success": True,
                 "original_code": source,
@@ -307,7 +309,7 @@ def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, li
                     "origin": "contextual_alternative",
                 })
             pred_obj = semantic_prediction or predictor.predict_error_type(context)
-            reviewed, ollama_meta = _ollama_review_and_fallback(source, context, pred_obj, options, limit)
+            reviewed, ollama_meta = _ollama_review_and_fallback(source, context, pred_obj, options, limit, use_ollama=use_ollama)
             return {
                 "success": True,
                 "original_code": source,
@@ -428,7 +430,7 @@ def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, li
         unique_options.setdefault(repair_key(item["corrected_code"]), item)
     options = list(unique_options.values())
     options.sort(key=lambda item: (not item["fully_valid"], -float(item["score"]), item["semantic_errors"] if item["semantic_errors"] is not None else 9999))
-    options, ollama_meta = _ollama_review_and_fallback(source, context, prediction, options, limit)
+    options, ollama_meta = _ollama_review_and_fallback(source, context, prediction, options, limit, use_ollama=use_ollama)
     for index, item in enumerate(options, start=1):
         item["label"] = f"Option {index}"
     return {

@@ -1,0 +1,310 @@
+{
+  "dataset_sha256": "b88c6e90911e4aca9184a908fab767bff1c72f93c04b6f448a02f78c921b1d80",
+  "model_sha256": "2ba2d50afb8a5049ebffa489d8d3dbd1f747178e3b2ae45f1420ba72494fe03a",
+  "baseline_policy_revision": "fae9fa43a5805f1c6e4125621ef9f7a46e4e1f92",
+  "hardened_policy_revision": "878b3e09e41f0657492fd17d8dc549b51653b8ea",
+  "comparison_method": "Run the same v2 evaluator and offline options adapter with each revision\u2019s repair policy; clock samples excluded.",
+  "modes": {
+    "rule_based": {
+      "before": {
+        "automatic_repair_rate": {
+          "numerator": 20,
+          "denominator": 95,
+          "value": 0.21052631578947367
+        },
+        "automatic_edit_count": {
+          "count": 20,
+          "denominator": 104
+        },
+        "approval_required_rate": {
+          "numerator": 18,
+          "denominator": 95,
+          "value": 0.18947368421052632
+        },
+        "unapplied_safety_review_rate": {
+          "numerator": 18,
+          "denominator": 95,
+          "value": 0.18947368421052632
+        },
+        "ambiguous_case_abstention_rate": {
+          "numerator": 6,
+          "denominator": 7,
+          "value": 0.8571428571428571
+        },
+        "workbench_correct_proposals": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "unsafe_provider_rejection_rate": {
+          "numerator": 0,
+          "denominator": 95,
+          "value": 0.0
+        },
+        "top_1_repair_accuracy": {
+          "numerator": 24,
+          "denominator": 88,
+          "value": 0.2727272727272727
+        },
+        "top_3_repair_accuracy": {
+          "numerator": 24,
+          "denominator": 88,
+          "value": 0.2727272727272727
+        }
+      },
+      "after": {
+        "automatic_repair_rate": {
+          "numerator": 19,
+          "denominator": 95,
+          "value": 0.2
+        },
+        "automatic_edit_count": {
+          "count": 19,
+          "denominator": 104
+        },
+        "approval_required_rate": {
+          "numerator": 23,
+          "denominator": 95,
+          "value": 0.24210526315789474
+        },
+        "unapplied_safety_review_rate": {
+          "numerator": 23,
+          "denominator": 95,
+          "value": 0.24210526315789474
+        },
+        "ambiguous_case_abstention_rate": {
+          "numerator": 7,
+          "denominator": 7,
+          "value": 1.0
+        },
+        "workbench_correct_proposals": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "unsafe_provider_rejection_rate": {
+          "numerator": 0,
+          "denominator": 95,
+          "value": 0.0
+        },
+        "top_1_repair_accuracy": {
+          "numerator": 24,
+          "denominator": 88,
+          "value": 0.2727272727272727
+        },
+        "top_3_repair_accuracy": {
+          "numerator": 24,
+          "denominator": 88,
+          "value": 0.2727272727272727
+        }
+      },
+      "automatic_output_changes": [
+        {
+          "id": "v2-ambiguous-loop-return",
+          "before_decision": "source_is_syntactically_valid",
+          "after_decision": "correction_requires_review",
+          "before_source": "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; return 1; }}",
+          "after_source": "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; return 1; }"
+        }
+      ]
+    },
+    "existing_ml": {
+      "before": {
+        "automatic_repair_rate": {
+          "numerator": 5,
+          "denominator": 95,
+          "value": 0.05263157894736842
+        },
+        "automatic_edit_count": {
+          "count": 5,
+          "denominator": 104
+        },
+        "approval_required_rate": {
+          "numerator": 12,
+          "denominator": 95,
+          "value": 0.12631578947368421
+        },
+        "unapplied_safety_review_rate": {
+          "numerator": 12,
+          "denominator": 95,
+          "value": 0.12631578947368421
+        },
+        "ambiguous_case_abstention_rate": {
+          "numerator": 7,
+          "denominator": 7,
+          "value": 1.0
+        },
+        "workbench_correct_proposals": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "unsafe_provider_rejection_rate": {
+          "numerator": 0,
+          "denominator": 95,
+          "value": 0.0
+        },
+        "top_1_repair_accuracy": {
+          "numerator": 18,
+          "denominator": 88,
+          "value": 0.20454545454545456
+        },
+        "top_3_repair_accuracy": {
+          "numerator": 18,
+          "denominator": 88,
+          "value": 0.20454545454545456
+        }
+      },
+      "after": {
+        "automatic_repair_rate": {
+          "numerator": 5,
+          "denominator": 95,
+          "value": 0.05263157894736842
+        },
+        "automatic_edit_count": {
+          "count": 5,
+          "denominator": 104
+        },
+        "approval_required_rate": {
+          "numerator": 12,
+          "denominator": 95,
+          "value": 0.12631578947368421
+        },
+        "unapplied_safety_review_rate": {
+          "numerator": 12,
+          "denominator": 95,
+          "value": 0.12631578947368421
+        },
+        "ambiguous_case_abstention_rate": {
+          "numerator": 7,
+          "denominator": 7,
+          "value": 1.0
+        },
+        "workbench_correct_proposals": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        },
+        "unsafe_provider_rejection_rate": {
+          "numerator": 0,
+          "denominator": 95,
+          "value": 0.0
+        },
+        "top_1_repair_accuracy": {
+          "numerator": 18,
+          "denominator": 88,
+          "value": 0.20454545454545456
+        },
+        "top_3_repair_accuracy": {
+          "numerator": 18,
+          "denominator": 88,
+          "value": 0.20454545454545456
+        }
+      },
+      "automatic_output_changes": []
+    },
+    "hybrid": {
+      "before": {
+        "automatic_repair_rate": {
+          "numerator": 12,
+          "denominator": 95,
+          "value": 0.12631578947368421
+        },
+        "automatic_edit_count": {
+          "count": 12,
+          "denominator": 104
+        },
+        "approval_required_rate": {
+          "numerator": 24,
+          "denominator": 95,
+          "value": 0.25263157894736843
+        },
+        "unapplied_safety_review_rate": {
+          "numerator": 24,
+          "denominator": 95,
+          "value": 0.25263157894736843
+        },
+        "ambiguous_case_abstention_rate": {
+          "numerator": 6,
+          "denominator": 7,
+          "value": 0.8571428571428571
+        },
+        "workbench_correct_proposals": {
+          "numerator": 28,
+          "denominator": 88,
+          "value": 0.3181818181818182
+        },
+        "unsafe_provider_rejection_rate": {
+          "numerator": 0,
+          "denominator": 95,
+          "value": 0.0
+        },
+        "top_1_repair_accuracy": {
+          "numerator": 25,
+          "denominator": 88,
+          "value": 0.2840909090909091
+        },
+        "top_3_repair_accuracy": {
+          "numerator": 25,
+          "denominator": 88,
+          "value": 0.2840909090909091
+        }
+      },
+      "after": {
+        "automatic_repair_rate": {
+          "numerator": 11,
+          "denominator": 95,
+          "value": 0.11578947368421053
+        },
+        "automatic_edit_count": {
+          "count": 11,
+          "denominator": 104
+        },
+        "approval_required_rate": {
+          "numerator": 26,
+          "denominator": 95,
+          "value": 0.2736842105263158
+        },
+        "unapplied_safety_review_rate": {
+          "numerator": 26,
+          "denominator": 95,
+          "value": 0.2736842105263158
+        },
+        "ambiguous_case_abstention_rate": {
+          "numerator": 7,
+          "denominator": 7,
+          "value": 1.0
+        },
+        "workbench_correct_proposals": {
+          "numerator": 28,
+          "denominator": 88,
+          "value": 0.3181818181818182
+        },
+        "unsafe_provider_rejection_rate": {
+          "numerator": 0,
+          "denominator": 95,
+          "value": 0.0
+        },
+        "top_1_repair_accuracy": {
+          "numerator": 25,
+          "denominator": 88,
+          "value": 0.2840909090909091
+        },
+        "top_3_repair_accuracy": {
+          "numerator": 25,
+          "denominator": 88,
+          "value": 0.2840909090909091
+        }
+      },
+      "automatic_output_changes": [
+        {
+          "id": "v2-ambiguous-loop-return",
+          "before_decision": "source_is_syntactically_valid",
+          "after_decision": "correction_requires_review",
+          "before_source": "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; return 1; }}",
+          "after_source": "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; return 1; }"
+        }
+      ]
+    }
+  }
+}

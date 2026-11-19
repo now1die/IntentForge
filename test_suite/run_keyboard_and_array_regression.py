@@ -1,8 +1,11 @@
 from __future__ import annotations
+import argparse
 import csv, json
 from pathlib import Path
 from ai.error_predictor import MLCorrectionPredictor
+from ai.correction_options import suggest_correction_options
 from ai.correction_orchestrator import CorrectionOrchestrator
+from ai.correction_safety import repair_key
 
 ROOT=Path(__file__).resolve().parents[1]
 MODEL=ROOT/'models'/'syntax_error_classifier.joblib'
@@ -37,24 +40,53 @@ for i in range(5):
     add('array','index_wrong_open_'+str(i),f'int main(){{ int arr[5]; arr({i}] = 10; return 0; }}',f'int main(){{ int arr[5]; arr[{i}] = 10; return 0; }}')
     add('array','index_wrong_close_'+str(i),f'int main(){{ int arr[5]; arr[{i}) = 10; return 0; }}',f'int main(){{ int arr[5]; arr[{i}] = 10; return 0; }}')
 
-predictor=MLCorrectionPredictor.load(MODEL)
-rows=[]
-for group,name,source,expected in cases:
-    try:
-        result=CorrectionOrchestrator(predictor).correct(source, auto_apply=True)
-        actual=result.corrected_source
-        rows.append({'group':group,'name':name,'source':source,'expected':expected,'actual':actual,'success':result.success,'exact':actual==expected,'stop_reason':result.stop_reason})
-    except Exception as exc:
-        rows.append({'group':group,'name':name,'source':source,'expected':expected,'actual':'','success':False,'exact':False,'stop_reason':f'CRASH:{type(exc).__name__}:{exc}'})
+def main():
+    parser = argparse.ArgumentParser(description="Check automatic and review-required keyboard repairs.")
+    parser.add_argument("--verify", action="store_true", help="fail on crashes or a lost expected correction")
+    parser.add_argument("--out", type=Path, default=OUT)
+    args = parser.parse_args()
+    predictor = MLCorrectionPredictor.load(MODEL)
+    orchestrator = CorrectionOrchestrator(predictor)
+    rows = []
+    for group, name, source, expected in cases:
+        row = {"group": group, "name": name, "source": source, "expected": expected}
+        try:
+            result = orchestrator.correct(source)
+            actual = result.corrected_source
+            outcome = "AUTOMATIC_EXACT" if actual == expected else "UNEXPECTED"
+            if result.stop_reason in {"correction_requires_review", "ambiguous_valid_candidates"} and actual != expected:
+                options = suggest_correction_options(source, predictor, use_ollama=False)["options"]
+                reviewed_sources = [option["corrected_code"] for option in options]
+                for entry in result.history:
+                    if entry.validation and entry.validation.valid:
+                        reviewed_sources.append(entry.validation.corrected_source)
+                expected_key = repair_key(expected)
+                if any(repair_key(value) == expected_key for value in reviewed_sources):
+                    outcome = "EXPECTED_WITHHELD_REFERENCE_VISIBLE"
+                elif repair_key(orchestrator.correct(source, preview=True).corrected_source) == expected_key:
+                    outcome = "EXPECTED_ONLY_IN_SIMULATION"
+            row.update(actual=actual, success=result.success, exact=actual == expected, stop_reason=result.stop_reason, outcome=outcome)
+        except Exception as exc:
+            row.update(actual="", success=False, exact=False, stop_reason=f"CRASH:{type(exc).__name__}:{exc}", outcome="CRASH")
+        rows.append(row)
+    with args.out.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+    summary = {
+        "total": len(rows),
+        "exact": sum(row["exact"] for row in rows),
+        "successful_but_not_exact": sum(row["success"] and not row["exact"] for row in rows),
+        "failed": sum(not row["success"] for row in rows),
+        "crashes": sum(row["outcome"] == "CRASH" for row in rows),
+        "expected_withheld_reference_visible": sum(row["outcome"] == "EXPECTED_WITHHELD_REFERENCE_VISIBLE" for row in rows),
+        "expected_only_in_simulation": sum(row["outcome"] == "EXPECTED_ONLY_IN_SIMULATION" for row in rows),
+        "unexpected": sum(row["outcome"] == "UNEXPECTED" for row in rows),
+    }
+    args.out.with_suffix(".json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(summary, indent=2))
+    return int(args.verify and any(summary[key] for key in ("crashes", "expected_only_in_simulation", "unexpected")))
 
-with OUT.open('w',newline='',encoding='utf-8') as f:
-    w=csv.DictWriter(f,fieldnames=rows[0].keys()); w.writeheader(); w.writerows(rows)
-summary={
-    'total':len(rows),
-    'exact':sum(r['exact'] for r in rows),
-    'successful_but_not_exact':sum(bool(r['success']) and not bool(r['exact']) for r in rows),
-    'failed':sum(not bool(r['success']) for r in rows),
-    'crashes':sum(str(r['stop_reason']).startswith('CRASH:') for r in rows),
-}
-(OUT.with_suffix('.json')).write_text(json.dumps(summary,indent=2),encoding='utf-8')
-print(json.dumps(summary,indent=2))
+
+if __name__ == "__main__":
+    raise SystemExit(main())

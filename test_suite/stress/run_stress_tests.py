@@ -347,3 +347,6 @@ print(f'Finished {len(results)} cases in {time.time()-start:.1f}s')
 print('Actual outcomes:', dict(actual_counts))
 print('Status counts:', dict(status_counts))
 print('Outputs:', csv_path, json_path, HERE/'AI_Compiler_Stress_Report.md', HERE/'AI_Compiler_Rejected_Cases.csv')
+
+if __name__ == "__main__":
+    raise SystemExit(bool(failed or crashes))

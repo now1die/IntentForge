@@ -1,0 +1,91 @@
+{
+  "revision": "a62fa2c28a403fb613cc63075660b03445757dd3",
+  "browser": "156.0.8078.79",
+  "backend": "Local FastAPI, real responses",
+  "frontend": "Local Vite and Monaco",
+  "fixtures": "Repository-owned source inputs. No request mocking.",
+  "ollamaConfigured": false,
+  "records": [
+    {
+      "file": "01-main-workbench.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main() {\n    int x = 10;\n\n    if (x > 5) {\n        return x;\n    }\n\n    return 0;\n}",
+      "status": "Ready to analyze"
+    },
+    {
+      "file": "02-safe-structural.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main() {\n    int x = 10;\n\n    if (x > 5 {\n        return x;\n    }\n\n    return 0;\n}",
+      "status": "Correction ready for review. Source has not changed."
+    },
+    {
+      "file": "03-review-required.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main(){ int a,b; if(a.b){return 0;} }",
+      "status": "Correction ready for review. Source has not changed."
+    },
+    {
+      "file": "04-ambiguous-intent.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main(){ int wet=2,dry=3; return wet dry; }",
+      "status": "Correction ready for review. Source has not changed."
+    },
+    {
+      "file": "05-before-after.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main(){ int a,b; if(a.b){return 0;} }",
+      "status": "Correction ready for review. Source has not changed."
+    },
+    {
+      "file": "06a-syntax-diagnostics.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main() {\n    int x = 10;\n\n    if (x > 5 {\n        return x;\n    }\n\n    return 0;\n}",
+      "status": "Analysis complete. Diagnostics available."
+    },
+    {
+      "file": "06b-semantic-diagnostics.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main(){ int count = 4; return missing + count; }",
+      "status": "Analysis complete. Diagnostics available."
+    },
+    {
+      "file": "07-mobile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "source": "int main() {\n    int x = 10;\n\n    if (x > 5) {\n        return x;\n    }\n\n    return 0;\n}",
+      "status": "Analysis complete. All checks passed."
+    },
+    {
+      "file": "08-desktop.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "source": "int main() {\n    int x = 10;\n\n    if (x > 5) {\n        return x;\n    }\n\n    return 0;\n}",
+      "status": "Analysis complete. All checks passed."
+    }
+  ]
+}

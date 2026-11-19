@@ -1,6 +1,7 @@
 """Evaluate the shipped compiler and repair pipeline on the frozen Phase 1 corpus."""
 
 import argparse
+from collections import Counter
 import hashlib
 import json
 import math
@@ -10,13 +11,15 @@ from importlib.metadata import version
 from pathlib import Path
 from time import perf_counter_ns
 
-from ai.correction_orchestrator import CorrectionOrchestrator
+from ai.correction_options import suggest_correction_options
+from ai.correction_orchestrator import CorrectionOrchestrator, CorrectionStatus
 from ai.correction_safety import repair_key
 from ai.error_predictor import ErrorPrediction, MLCorrectionPredictor
 from ai.llm_fallback import OllamaFallbackService
 from compiler.compound_recovery import generate_compound_candidates
 from compiler.semantic_analyzer import analyze_source_semantics
 
+from .behavior import BehaviorSpec, BehaviorStatus, verify_behavior
 from .corpus import ROOT, load_cases, overlapping_cases
 
 MODEL = ROOT / "models" / "syntax_error_classifier.joblib"
@@ -85,10 +88,13 @@ def intention_outcome(case, proposal, valid):
     return "UNKNOWN_INTENT"
 
 
-def evaluate_case(case, orchestrator, repeats):
+def evaluate_case(case, orchestrator, repeats, *, oracle=None, workbench=False):
     source = case["source"]
+    spec = BehaviorSpec.from_dict(case["behavior"]) if case.get("behavior") else None
     if not case["minic_supported"]:
-        return {**case, "status": "UNSUPPORTED_MINIC"}
+        return {**case, "status": "UNSUPPORTED_MINIC", "behavior_result": verify_behavior(
+            None, spec, compiler_valid=False, supported=False,
+        ).to_dict()}
     baseline = audit_source(source)
     timings = []
     for _ in range(repeats):
@@ -102,7 +108,32 @@ def evaluate_case(case, orchestrator, repeats):
     matches = [repair_key(item["source"]) in expected for item in ranked]
     top = proposals[0] if proposals else None
     top_valid = bool(ranked and ranked[0]["compiler"]["valid"])
+    behavior = verify_behavior(top, spec, compiler_valid=top_valid, supported=True, oracle=oracle)
     outcome = intention_outcome(case, top, top_valid)
+    if case["unambiguous"]:
+        if behavior.status == BehaviorStatus.VERIFIED:
+            outcome = "CORRECT_INTENT_RECOVERY"
+        elif behavior.status == BehaviorStatus.MISMATCH:
+            outcome = "INCORRECT_INTENT_RECOVERY"
+    reviewable = any(
+        entry.safety and entry.safety.requires_review
+        and (entry.status is CorrectionStatus.SUGGESTED or entry.safety.category == "AMBIGUOUS")
+        for entry in result.history
+    )
+    unsafe_rejected = any(
+        entry.llm_fallback and entry.llm_fallback.error and entry.llm_fallback.error.startswith("Unsafe LLM suggestion")
+        for entry in result.history
+    )
+    shown = None
+    if workbench:
+        options = suggest_correction_options(source, orchestrator.predictor, use_ollama=False)["options"]
+        shown = [option["corrected_code"] for option in options]
+        if result.corrections_applied and result.fully_syntactically_valid:
+            shown.append(result.corrected_source)
+        last = result.history[-1] if result.history else None
+        if not options and last and last.status is CorrectionStatus.SUGGESTED and last.validation and last.validation.valid:
+            shown.append(last.validation.corrected_source)
+        shown = list(dict.fromkeys(shown))
     prediction = result.predictions[0].label if result.predictions else None
     if prediction == "UNCLASSIFIED":
         prediction = None
@@ -118,7 +149,12 @@ def evaluate_case(case, orchestrator, repeats):
         "exact_match": top in case["acceptable_sources"],
         "top1_valid": top_valid,
         "intention_outcome": outcome,
-        "behavioral_equivalence": "UNVERIFIED",
+        "behavior_result": behavior.to_dict(),
+        "review_required": reviewable,
+        "unsafe_rejected": unsafe_rejected,
+        "workbench_options": shown,
+        "workbench_shows_reference": any(repair_key(item) in expected and audit_source(item)["valid"] for item in shown) if shown is not None else None,
+        "automatic_edits": result.corrections_applied,
         "automatically_changed": result.corrected_source != source,
         "automatically_corrected": result.corrected_source != source and repair_key(result.corrected_source) in expected,
         "automatic_output": result.corrected_source,
@@ -153,6 +189,8 @@ def metrics(rows, classification):
     controls = [row for row in rows if not row["has_error"]]
     latency = sorted(sample for row in faults for sample in row["latency_ms"])
     compiler_faults = [row for row in faults if row["detection_scope"] == "compiler"]
+    behaviors = [row["behavior_result"] for row in rows]
+    ui_known = [row for row in known if row["workbench_shows_reference"] is not None]
     return {
         "detection_precision": ratio(positives, len(predicted)),
         "detection_recall": ratio(positives, len(faults)),
@@ -164,7 +202,15 @@ def metrics(rows, classification):
         "compiler_valid_repair_rate": ratio(sum(row["top1_valid"] for row in proposed), len(proposed)),
         "intention_recovery_accuracy": ratio(sum(row["intention_outcome"] == "CORRECT_INTENT_RECOVERY" for row in known), len(known)),
         "incorrect_repair_rate": ratio(sum(row["intention_outcome"] == "INCORRECT_INTENT_RECOVERY" for row in assessable), len(assessable)),
-        "behavioral_equivalence_verified": ratio(0, len(proposed)),
+        "unknown_intent_rate": ratio(sum(row["intention_outcome"] == "UNKNOWN_INTENT" for row in known), len(known)),
+        "behavioral_test_success": ratio(sum(item["passed"] for item in behaviors), sum(item["observed"] for item in behaviors)),
+        "automatic_repair_rate": ratio(sum(row["automatically_changed"] for row in faults), len(faults)),
+        "automatic_edit_count": {"count": sum(row["automatic_edits"] for row in rows), "denominator": len(rows)},
+        "automatic_abstention_rate": ratio(sum(not row["automatically_changed"] for row in faults), len(faults)),
+        "approval_required_rate": ratio(sum(row["review_required"] for row in faults), len(faults)),
+        "workbench_correct_proposals": ratio(sum(row["workbench_shows_reference"] for row in ui_known), len(ui_known)),
+        "unsafe_provider_rejection_rate": ratio(sum(row["unsafe_rejected"] for row in faults), len(faults)),
+        "unapplied_safety_review_rate": ratio(sum(row["review_required"] and not row["automatically_changed"] for row in faults), len(faults)),
         "ambiguous_case_abstention_rate": ratio(sum(not row["automatically_changed"] for row in ambiguous), len(ambiguous)),
         "automatic_intended_repair_rate": ratio(sum(row["automatically_corrected"] for row in known), len(known)),
         "regression_count": {"count": sum(row["automatically_changed"] or row["detected"] for row in controls), "denominator": len(controls)},
@@ -173,7 +219,7 @@ def metrics(rows, classification):
     }
 
 
-def run(cases, model_path=MODEL, repeats=3, *, ollama=True):
+def run(cases, model_path=MODEL, repeats=3, *, ollama=True, oracle=None):
     if repeats < 1:
         raise ValueError("At least one timing sample per case is required")
     overlap = overlapping_cases(cases)
@@ -199,9 +245,9 @@ def run(cases, model_path=MODEL, repeats=3, *, ollama=True):
         ),
     }
     result = {
-        "schema_version": 1,
+        "schema_version": 2,
         "seed": SEED,
-        "dataset_version": 1,
+        "dataset_version": 2 if any(case["split"] == "phase_1_5_holdout" for case in cases) else 1,
         "dataset_sha256": hashlib.sha256(json.dumps(cases, sort_keys=True).encode()).hexdigest(),
         "case_count": len(cases),
         "repeats": repeats,
@@ -219,11 +265,19 @@ def run(cases, model_path=MODEL, repeats=3, *, ollama=True):
         if orchestrator is None:
             result["modes"][name] = {"available": False, "reason": error}
             continue
-        rows = [evaluate_case(case, orchestrator, repeats) for case in cases]
+        rows = [evaluate_case(case, orchestrator, repeats, oracle=oracle, workbench=name == "hybrid") for case in cases]
         classification = name != "rule_based"
         result["modes"][name] = {
             "available": True,
             "metrics": metrics(rows, classification),
+            "by_split": {
+                split: metrics([row for row in rows if row["split"] == split], classification)
+                for split in sorted({row["split"] for row in rows})
+            },
+            "intent_outcomes": dict(Counter(
+                row["intention_outcome"] for row in rows if row.get("has_error") and row.get("intention_outcome")
+            )),
+            "behavior_states": dict(Counter(row["behavior_result"]["status"] for row in rows)),
             "per_category": {category: metrics([row for row in rows if row["category"] == category], classification) for category in categories},
             "cases": rows,
             "ollama_attempts": sum(row.get("ollama_attempts", 0) for row in rows),
@@ -244,7 +298,7 @@ def compare(modes):
         f"- Rule-based top-1 matches missed by ML-only correction: {improvement(rules, model)}.\n"
         f"- Hybrid top-1 matches missed by ML-only correction: {improvement(hybrid, model)}.\n"
         f"- {logic} valid Mini-C cases contained specification-level logic errors. General intent detection is unsupported.\n"
-        "- Behavioral equivalence was not executed. A compiler-valid proposal can still change behavior."
+        "- Behavioral observations are reported separately from compiler validation and token matches."
     )
 
 
@@ -259,7 +313,8 @@ def display(metric):
 
 def write_reports(report, out):
     out.mkdir(parents=True, exist_ok=True)
-    (out / "phase1-v1.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    stem = f"phase1-v{report['dataset_version']}"
+    (out / f"{stem}.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     lines = [
         "# Phase 1 benchmark", "",
         f"{report['case_count']} frozen cases, corpus v{report['dataset_version']}, seed {report['seed']}.",
@@ -272,26 +327,62 @@ def write_reports(report, out):
             continue
         lines.extend(["| Metric | Result |", "|---|---:|"])
         lines.extend(f"| {key.replace('_', ' ')} | {display(value)} |" for key, value in mode["metrics"].items())
+        lines.extend(["", "| Split | Detection recall | Top 1 | Top 3 | Approval required |", "|---|---:|---:|---:|---:|"])
+        for split, values in mode["by_split"].items():
+            cells = [display(values[key]) for key in ("detection_recall", "top_1_repair_accuracy", "top_3_repair_accuracy", "approval_required_rate")]
+            lines.append("| " + " | ".join([split, *cells]) + " |")
         lines.extend(["", "| Category | Detection recall | Top 1 | Top 3 | Compiler valid |", "|---|---:|---:|---:|---:|"])
         for category, values in mode["per_category"].items():
             cells = [display(values[key]) for key in ("detection_recall", "top_1_repair_accuracy", "top_3_repair_accuracy", "compiler_valid_repair_rate")]
             lines.append("| " + " | ".join([category.replace("_", " "), *cells]) + " |")
         lines.append("")
-    (out / "phase1-v1.md").write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    (out / f"{stem}.md").write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+def stable_evidence(value):
+    if isinstance(value, dict):
+        return {
+            key: stable_evidence(item) for key, item in value.items()
+            if key not in {"latency_ms", "average_correction_latency_ms", "p95_correction_latency_ms"}
+        }
+    if isinstance(value, list):
+        return [stable_evidence(item) for item in value]
+    return value
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", type=Path, default=ROOT / "benchmarks" / "reports")
+    parser.add_argument("--out", type=Path)
     parser.add_argument("--model", type=Path, default=MODEL)
     parser.add_argument("--repeat", type=int, default=3)
     parser.add_argument("--no-ollama", action="store_true")
+    parser.add_argument("--corpus", choices=("all", "holdout", "historical"), default="all")
+    parser.add_argument("--check", action="store_true", help="compare two offline runs excluding clock measurements")
     args = parser.parse_args()
     if args.repeat < 1:
         parser.error("--repeat must be positive")
-    report = run(load_cases(), args.model, args.repeat, ollama=not args.no_ollama)
-    write_reports(report, args.out)
-    print(f"Wrote benchmark reports to {args.out}")
+    cases = load_cases(corpus=args.corpus)
+    if args.check:
+        import tempfile
+        first = run(cases, args.model, 1, ollama=False)
+        second = run(cases, args.model, 1, ollama=False)
+        if stable_evidence(first) != stable_evidence(second):
+            raise SystemExit("Benchmark decisions differ across identical inputs")
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            write_reports(first, out)
+            stem = f"phase1-v{first['dataset_version']}"
+            loaded = json.loads((out / f"{stem}.json").read_text())
+            if loaded != first or not (out / f"{stem}.md").read_text().strip():
+                raise SystemExit("Benchmark reports failed round-trip validation")
+        print(f"Checked deterministic decisions and report generation across {len(cases)} cases")
+        return
+    report = run(cases, args.model, args.repeat, ollama=not args.no_ollama)
+    if args.corpus != "all" and args.out is None:
+        parser.error("--out is required when selecting a subset")
+    out = args.out or ROOT / "benchmarks" / "reports"
+    write_reports(report, out)
+    print(f"Wrote benchmark reports to {out}")
 
 
 if __name__ == "__main__":
