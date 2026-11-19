@@ -1,0 +1,766 @@
+{
+  "rows": 594,
+  "positive_rows": 102,
+  "pair_rows": 576,
+  "fit_ms": {
+    "pointwise": 15.816113000255427,
+    "pairwise": 7.2216770004160935,
+    "boosted": 30.96590199857019
+  },
+  "seed": 2517,
+  "selected": {
+    "VARIABLE_REFERENCE": "pointwise",
+    "MISSING_EXPRESSION": "pointwise",
+    "ARRAY_INDEX": "pointwise",
+    "FUNCTION_ARGUMENT": "pointwise",
+    "DECLARATION_TYPE": "pointwise",
+    "MULTIPLE_LOCALIZED": "boosted"
+  },
+  "validation": {
+    "deterministic": {
+      "VARIABLE_REFERENCE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0.16666666666666666
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 12,
+        "families": 2,
+        "top1": 0,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0
+      },
+      "ARRAY_INDEX": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0.16666666666666666
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0.16666666666666666
+      },
+      "DECLARATION_TYPE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 0,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 8,
+        "recall": 8,
+        "macro_top1": 0.16666666666666666
+      }
+    },
+    "phase2": {
+      "VARIABLE_REFERENCE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 6,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0.5
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 12,
+        "families": 2,
+        "top1": 0,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0
+      },
+      "ARRAY_INDEX": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0.16666666666666666
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0.16666666666666666
+      },
+      "DECLARATION_TYPE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 0,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 0
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 12,
+        "families": 2,
+        "top1": 2,
+        "top3": 8,
+        "recall": 8,
+        "macro_top1": 0.16666666666666666
+      }
+    },
+    "pointwise": {
+      "VARIABLE_REFERENCE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 12,
+        "families": 2,
+        "top1": 4,
+        "top3": 8,
+        "recall": 8,
+        "macro_top1": 0.3333333333333333
+      }
+    },
+    "pairwise": {
+      "VARIABLE_REFERENCE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 12,
+        "families": 2,
+        "top1": 6,
+        "top3": 8,
+        "recall": 8,
+        "macro_top1": 0.5
+      }
+    },
+    "boosted": {
+      "VARIABLE_REFERENCE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 12,
+        "families": 2,
+        "top1": 12,
+        "top3": 12,
+        "recall": 12,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 12,
+        "families": 2,
+        "top1": 8,
+        "top3": 8,
+        "recall": 8,
+        "macro_top1": 0.6666666666666666
+      }
+    }
+  },
+  "calibration": {
+    "method_under_assessment": "selected",
+    "pooled_exploratory": {
+      "fit_cases": 72,
+      "heldout_cases": 72,
+      "exposed_probabilities": false,
+      "heldout_families": 12,
+      "brier": {
+        "prevalence": 0.05246913580246913,
+        "sigmoid": 0.01925092913691503,
+        "isotonic": 0.0
+      },
+      "risk_coverage": [
+        {
+          "covered": 18,
+          "total": 72,
+          "incorrect": 0,
+          "minimum_margin": 7.0479957082479565
+        },
+        {
+          "covered": 36,
+          "total": 72,
+          "incorrect": 0,
+          "minimum_margin": 7.038114240334545
+        },
+        {
+          "covered": 54,
+          "total": 72,
+          "incorrect": 0,
+          "minimum_margin": 1.2626656192108014
+        },
+        {
+          "covered": 72,
+          "total": 72,
+          "incorrect": 4,
+          "minimum_margin": 0.0
+        }
+      ],
+      "reason": "Sparse synthetic family support and unverified runtime behavior."
+    },
+    "by_category": {
+      "VARIABLE_REFERENCE": {
+        "fit_cases": 12,
+        "heldout_cases": 12,
+        "exposed_probabilities": false,
+        "reason": "Insufficient margin and outcome diversity"
+      },
+      "MISSING_EXPRESSION": {
+        "fit_cases": 12,
+        "heldout_cases": 12,
+        "exposed_probabilities": false,
+        "reason": "Insufficient margin and outcome diversity"
+      },
+      "ARRAY_INDEX": {
+        "fit_cases": 12,
+        "heldout_cases": 12,
+        "exposed_probabilities": false,
+        "reason": "Insufficient margin and outcome diversity"
+      },
+      "FUNCTION_ARGUMENT": {
+        "fit_cases": 12,
+        "heldout_cases": 12,
+        "exposed_probabilities": false,
+        "reason": "Insufficient margin and outcome diversity"
+      },
+      "DECLARATION_TYPE": {
+        "fit_cases": 12,
+        "heldout_cases": 12,
+        "exposed_probabilities": false,
+        "reason": "Insufficient margin and outcome diversity"
+      },
+      "MULTIPLE_LOCALIZED": {
+        "fit_cases": 12,
+        "heldout_cases": 12,
+        "exposed_probabilities": false,
+        "heldout_families": 2,
+        "brier": {
+          "prevalence": 0.22222222222222224,
+          "sigmoid": 0.11135986984367542,
+          "isotonic": 0.0
+        },
+        "risk_coverage": [
+          {
+            "covered": 3,
+            "total": 12,
+            "incorrect": 0,
+            "minimum_margin": 1.2626656192108014
+          },
+          {
+            "covered": 6,
+            "total": 12,
+            "incorrect": 0,
+            "minimum_margin": 1.2626656192108014
+          },
+          {
+            "covered": 9,
+            "total": 12,
+            "incorrect": 1,
+            "minimum_margin": 0.0
+          },
+          {
+            "covered": 12,
+            "total": 12,
+            "incorrect": 4,
+            "minimum_margin": 0.0
+          }
+        ],
+        "reason": "Sparse synthetic family support and unverified runtime behavior."
+      }
+    }
+  },
+  "development": {
+    "deterministic": {
+      "VARIABLE_REFERENCE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 1,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0.16666666666666666
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 6,
+        "families": 1,
+        "top1": 0,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0
+      },
+      "ARRAY_INDEX": {
+        "cases": 6,
+        "families": 1,
+        "top1": 1,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0.16666666666666666
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 6,
+        "families": 1,
+        "top1": 1,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0.16666666666666666
+      },
+      "DECLARATION_TYPE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 0,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 6,
+        "families": 1,
+        "top1": 2,
+        "top3": 4,
+        "recall": 4,
+        "macro_top1": 0.3333333333333333
+      }
+    },
+    "phase2": {
+      "VARIABLE_REFERENCE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 0,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 6,
+        "families": 1,
+        "top1": 0,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0
+      },
+      "ARRAY_INDEX": {
+        "cases": 6,
+        "families": 1,
+        "top1": 1,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0.16666666666666666
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 6,
+        "families": 1,
+        "top1": 1,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0.16666666666666666
+      },
+      "DECLARATION_TYPE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 0,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 0
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 6,
+        "families": 1,
+        "top1": 2,
+        "top3": 4,
+        "recall": 4,
+        "macro_top1": 0.3333333333333333
+      }
+    },
+    "pointwise": {
+      "VARIABLE_REFERENCE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 6,
+        "families": 1,
+        "top1": 2,
+        "top3": 4,
+        "recall": 4,
+        "macro_top1": 0.3333333333333333
+      }
+    },
+    "pairwise": {
+      "VARIABLE_REFERENCE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 6,
+        "families": 1,
+        "top1": 3,
+        "top3": 4,
+        "recall": 4,
+        "macro_top1": 0.5
+      }
+    },
+    "boosted": {
+      "VARIABLE_REFERENCE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 6,
+        "families": 1,
+        "top1": 4,
+        "top3": 4,
+        "recall": 4,
+        "macro_top1": 0.6666666666666666
+      }
+    },
+    "selected": {
+      "VARIABLE_REFERENCE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MISSING_EXPRESSION": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "ARRAY_INDEX": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "FUNCTION_ARGUMENT": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "DECLARATION_TYPE": {
+        "cases": 6,
+        "families": 1,
+        "top1": 6,
+        "top3": 6,
+        "recall": 6,
+        "macro_top1": 1
+      },
+      "MULTIPLE_LOCALIZED": {
+        "cases": 6,
+        "families": 1,
+        "top1": 4,
+        "top3": 4,
+        "recall": 4,
+        "macro_top1": 0.6666666666666666
+      }
+    }
+  },
+  "groups": {
+    "train": {
+      "cases": 109,
+      "families": 19
+    },
+    "validation": {
+      "cases": 73,
+      "families": 13
+    },
+    "calibration": {
+      "cases": 73,
+      "families": 13
+    },
+    "development": {
+      "cases": 37,
+      "families": 7
+    }
+  },
+  "environment": {
+    "scikit-learn": "1.8.0",
+    "numpy": "2.5.5",
+    "joblib": "1.5.2"
+  },
+  "hyperparameters": {
+    "pointwise": {
+      "C": 1,
+      "class_weight": "balanced",
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 100,
+      "n_jobs": null,
+      "penalty": "deprecated",
+      "random_state": 2517,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "pairwise": {
+      "C": 1,
+      "class_weight": null,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 100,
+      "n_jobs": null,
+      "penalty": "deprecated",
+      "random_state": 2517,
+      "solver": "lbfgs",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "boosted": {
+      "ccp_alpha": 0.0,
+      "criterion": "friedman_mse",
+      "init": null,
+      "learning_rate": 0.1,
+      "loss": "log_loss",
+      "max_depth": 2,
+      "max_features": null,
+      "max_leaf_nodes": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "n_estimators": 40,
+      "n_iter_no_change": null,
+      "random_state": 2517,
+      "subsample": 1.0,
+      "tol": 0.0001,
+      "validation_fraction": 0.1,
+      "verbose": 0,
+      "warm_start": false
+    }
+  },
+  "development_sha256": "3aacaba168fc5a12166ab4f28f75a75c15ec99be24fd8203df5e401e59b5b5ec",
+  "artifact_sha256": "952c1589454ce5b4403f164ed15ab95cb9b8077f19a338b4f8f2b610362f84f4",
+  "artifact_bytes": 12935
+}

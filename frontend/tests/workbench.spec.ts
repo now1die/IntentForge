@@ -650,3 +650,43 @@ test("a changed requirement invalidates an intention preview", async ({ page }) 
   await page.getByLabel("Return expression").fill("3");
   await expect(page.getByRole("button", { name: "Apply Reviewed Intention Repair" })).toHaveCount(0);
 });
+
+test("code-only suspicion stays review-only and a source edit invalidates the preview", async ({ page }) => {
+  await page.goto("/");
+  const editor = page.locator(".source-editor .view-lines");
+  await editor.click();
+  await page.keyboard.press("Control+A");
+  await page.keyboard.insertText("int cost(int a,int b){int bill=a*b;return a;}");
+  await page.getByRole("tab", { name: "Intention", exact: true }).click();
+  await page.getByLabel("Analysis mode").selectOption("code_only");
+  await expect(page.getByLabel("Requirement description")).toHaveCount(0);
+  await page.getByRole("button", { name: "Analyze Intention", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Unverified intention hypothesis" })).toBeVisible();
+  await page.getByRole("button", { name: /Review 1/ }).click();
+  await expect(page.getByText("Code-only hypothesis", { exact: false })).toBeVisible();
+  await expect(editor).toContainText("return a;");
+  await editor.click();
+  await page.keyboard.press("Control+A");
+  await page.keyboard.insertText("int cost(int a,int b){return 17;}");
+  await expect(page.getByRole("button", { name: "Apply Reviewed Intention Repair" })).toHaveCount(0);
+  await expect(editor).toContainText("return 17;");
+});
+
+test("natural-language mode exposes unrecognized wording and accepts a supported comparison", async ({ page }) => {
+  await page.goto("/");
+  const editor = page.locator(".source-editor .view-lines");
+  await editor.click();
+  await page.keyboard.press("Control+A");
+  await page.keyboard.insertText("bool ready(int amount){return amount<5;}");
+  await page.getByRole("tab", { name: "Intention", exact: true }).click();
+  await page.getByLabel("Analysis mode").selectOption("natural_language");
+  await expect(page.getByLabel("Return expression")).toHaveCount(0);
+  await page.getByLabel("Requirement description").fill("Check this carefully");
+  await page.getByRole("button", { name: "Analyze Intention", exact: true }).click();
+  await expect(page.getByText("Unsupported requirement wording.", { exact: false })).toBeVisible();
+  await page.getByLabel("Requirement description").fill("Return whether amount is at least 5");
+  await page.getByRole("button", { name: "Analyze Intention", exact: true }).click();
+  await page.getByRole("button", { name: /Review 1/ }).click();
+  await expect(page.getByRole("region", { name: "Selected intention repair" })).toContainText("amount >= 5");
+  await expect(editor).toContainText("amount<5");
+});

@@ -1,0 +1,56 @@
+{
+  "revision": "f1ff2ee4ae6594a83b8832ff38e7670df7d37812",
+  "browser": "156.0.8078.79",
+  "backend": "Local FastAPI with repository model artifacts",
+  "mocks": false,
+  "captures": [
+    {
+      "file": "01-code-only-review.png",
+      "mode": "code_only",
+      "source": "int cost(int price,int quantity){int bill=price*quantity;return price;}",
+      "input": "",
+      "heading": "Unverified intention hypothesis",
+      "preview": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "02-language-review.png",
+      "mode": "natural_language",
+      "source": "int choose(int left,int right){if(left<right){return left;}return right;}",
+      "input": "Return the maximum of left and right",
+      "heading": "Possible mismatch with the supplied requirement",
+      "preview": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "03-unsupported-requirement.png",
+      "mode": "natural_language",
+      "source": "bool ready(int count){return count==2;}",
+      "input": "Make this fit our process",
+      "heading": "No supported mismatch found",
+      "preview": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "04-explicit-mobile.png",
+      "mode": "explicit",
+      "source": "int increment(int input){return input-3;}",
+      "input": "input+3",
+      "heading": "Possible mismatch with the supplied requirement",
+      "preview": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ]
+}
