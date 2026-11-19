@@ -298,6 +298,7 @@ export interface IntentionEvidence {
 }
 
 export interface IntentionCandidate {
+  tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
   proposed_code: string;
@@ -314,6 +315,7 @@ export interface IntentionCandidate {
 export type IntentionMode = "code_only" | "natural_language" | "explicit";
 
 export interface IntentionResponse {
+  recommendation?: "ABSTAIN" | "REVIEW_WITH_EVIDENCE" | null;
   requirement_status?: string | null;
   finding: string;
   decision: string;

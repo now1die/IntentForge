@@ -1,0 +1,8 @@
+{
+  "model": "llama3.2:3b",
+  "available": false,
+  "discovery_ms": 14.72,
+  "live_ollama_status": "NOT_VERIFIED",
+  "cases": [],
+  "reason": "Ollama is unavailable at http://127.0.0.1:11434 or model 'llama3.2:3b' is not installed"
+}

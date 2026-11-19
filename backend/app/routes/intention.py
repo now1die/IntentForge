@@ -88,7 +88,7 @@ class IntentionResponse(BaseModel):
     recommendation: str | None = None
 
 
-@router.post("/v1/intention-analysis", response_model=IntentionResponse)
+@router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
     if request.engine_version >= 3:
@@ -108,4 +108,6 @@ def intention_analysis(request: IntentionRequest) -> dict:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
-    return result.to_dict(include_context=request.include_context)
+    response = result.to_dict(include_context=request.include_context)
+    response.setdefault("requirement_status", None)
+    return response

@@ -59,10 +59,10 @@ jobs:
           print(result.stdout)
           assert json.loads(result.stdout)["status"] == "available"
           PYCODE
-      - run: python -m pytest -q tests/test_clang_backend.py
+      - run: python -m pytest -q tests/test_clang_backend.py tests/test_phase35_workstreams.py
       - run: python -m benchmarks.clang_analysis --check
       - working-directory: frontend
         run: |
           npm ci
           npx playwright install chromium
-          npm test -- clang.spec.ts
+          npm test -- clang.spec.ts phase35.spec.ts

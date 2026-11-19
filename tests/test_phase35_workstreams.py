@@ -152,3 +152,12 @@ def test_f_trusted_behavior_is_bound_to_candidate_and_supplied_vectors():
                        observations=(Observation(vector=vector, actual=True),))
     injected = api.post("/v1/intention-analysis", json={"code": source, "behavioral_evidence": trusted.model_dump(mode="json")})
     assert injected.status_code == 422
+
+
+def test_c_dedicated_service_exposes_only_clang_routes(monkeypatch):
+    from backend.app.clang_service import app as isolated_app
+    monkeypatch.delenv("INTENTFORGE_CLANG_MODE", raising=False)
+    isolated = TestClient(isolated_app)
+    assert isolated.get("/v1/c-analysis/capability").json()["status"] == "unavailable"
+    assert isolated.post("/analyze", json={"code": "int f(){return 1;}"}).status_code == 404
+    assert isolated.get("/health").status_code == 404
