@@ -48,6 +48,11 @@ def sandbox():
         lib.seccomp_release(rules)
 
 
+def supported_version(description):
+    version = re.search(r"clang version (19\.\d+\.\d+)\b", description)
+    return version[1] if version else None
+
+
 def configure(library):
     if cx is None:
         return None
@@ -60,8 +65,7 @@ def configure(library):
         getter = getattr(api, name)
         getter.argtypes = [cx.SourceLocation, ct.POINTER(cx.c_object_p), *([ct.POINTER(ct.c_uint)] * 3)]
         getter.restype = None
-    version = re.search(r"clang version (\d+\.\d+\.\d+)", api.clang_getClangVersion())
-    return version[1] if version and version[1].split(".")[0] == "19" else None
+    return supported_version(api.clang_getClangVersion())
 
 
 class Sources:
@@ -175,10 +179,12 @@ def collect(request):
 
 def main():
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    resource.setrlimit(resource.RLIMIT_CPU, (5, 5))
     resource.setrlimit(resource.RLIMIT_AS, (640 * 1024 * 1024,) * 2)
     request = json.loads(Path("request.json").read_bytes()) if sys.argv[2] == "analyze" else None
-    version = configure(sys.argv[1])
+    try:
+        version = configure(sys.argv[1])
+    except (OSError, AttributeError, cx.LibclangError if cx is not None else ImportError):
+        version = None
     if not version:
         result = {"status": "unavailable", "detail": "Clang requires libclang 19 and its Python bindings."}
     else:
@@ -186,6 +192,7 @@ def main():
         # process thread and let the parent handle worker exits and deadlines.
         cx.conf.lib.clang_toggleCrashRecovery(0)
         os.environ["LIBCLANG_NOTHREADS"] = "1"
+        resource.setrlimit(resource.RLIMIT_CPU, (5, 6))
         # Load the UTF-16 codec before restricting filesystem access.
         "".encode("utf-16-le")
         try:

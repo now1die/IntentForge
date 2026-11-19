@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 
 from backend.app.main import app
 from clang_backend import adapter
+from clang_backend.worker import supported_version
 
 
 @pytest.fixture
@@ -41,6 +42,16 @@ def test_missing_and_unsupported_library(monkeypatch):
     if version17.exists():
         monkeypatch.setenv("INTENTFORGE_LIBCLANG", str(version17))
         assert adapter.capability().status == "unavailable"
+
+
+@pytest.mark.parametrize(("version", "accepted"), [
+    ("Debian clang version 19.1.7", "19.1.7"),
+    ("Ubuntu clang version 19.1.1 (release)", "19.1.1"),
+    ("clang version 18.1.8", None),
+    ("clang version 20.1.0", None),
+])
+def test_supported_version(version, accepted):
+    assert supported_version(version) == accepted
 
 
 def test_limits_at_transport(client):

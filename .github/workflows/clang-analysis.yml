@@ -25,14 +25,19 @@ jobs:
       - name: Extract the pinned libclang into the runner workspace
         working-directory: ${{ runner.temp }}
         run: |
-          apt-get download 'libclang1-19=1:19.1.1-1ubuntu1~24.04.2'
-          dpkg-deb --info libclang1-19_*.deb
-          dpkg-deb --extract libclang1-19_*.deb "$RUNNER_TEMP/intentforge-clang"
+          curl --fail --silent --show-error --location --retry 2 --connect-timeout 10 --max-time 60 \
+            'https://azure.archive.ubuntu.com/ubuntu/pool/universe/l/llvm-toolchain-19/libclang1-19_19.1.1-1ubuntu1~24.04.2_amd64.deb' \
+            --output intentforge-libclang.deb
+          echo 'ca0340e157ab40939d40b88eb17bb14532854df631bd6fa7c6fe538401d2080e  intentforge-libclang.deb' | sha256sum --check
+          dpkg-deb --extract intentforge-libclang.deb "$RUNNER_TEMP/intentforge-clang"
           libclang=$(find "$RUNNER_TEMP/intentforge-clang" -type f -name 'libclang-19.so.*' -print -quit)
           test -f "$libclang"
           ldd "$libclang"
           echo "INTENTFORGE_LIBCLANG=$libclang" >> "$GITHUB_ENV"
       - run: python -m pip install -r requirements.txt -r requirements-clang.txt
+      - name: Verify isolated worker startup
+        run: |
+          python -c 'import json, os, subprocess, sys, tempfile; from pathlib import Path; scratch = tempfile.TemporaryDirectory(); worker = Path("clang_backend/worker.py").resolve(); result = subprocess.run([sys.executable, "-I", str(worker), os.environ["INTENTFORGE_LIBCLANG"], "probe"], cwd=scratch.name, env={"PATH": os.defpath, "LC_ALL":"C", "TMPDIR":scratch.name}, timeout=15, check=True, stdout=subprocess.PIPE, text=True); print(result.stdout); assert json.loads(result.stdout)["status"] == "available"'
       - run: python -m pytest -q tests/test_clang_backend.py
       - run: python -m benchmarks.clang_analysis --check
       - working-directory: frontend

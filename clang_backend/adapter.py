@@ -21,6 +21,7 @@ MAX_BYTES = 96_000
 MAX_OUTPUT = 3_000_000
 MAX_UNITS = 4
 TIMEOUT = 8
+PROBE_TIMEOUT = 12
 WORKER = Path(__file__).with_name("worker.py")
 SEGMENT = re.compile(r"[A-Za-z0-9_][A-Za-z0-9_.-]{0,63}")
 SLOTS = BoundedSemaphore(2)
@@ -52,7 +53,10 @@ def _run(args, directory, timeout=TIMEOUT, limit=MAX_OUTPUT):
                 output.extend(block)
                 if len(output) > limit:
                     raise WorkerError("request_limit", "Clang evidence exceeded the output limit.")
-            if process.wait(timeout=max(.001, deadline - monotonic())) != 0:
+            status = process.wait(timeout=max(.001, deadline - monotonic()))
+            if status == -signal.SIGXCPU:
+                raise WorkerError("timeout", "The Clang worker exceeded its CPU limit.")
+            if status != 0:
                 raise WorkerError("unavailable", "The Clang worker stopped before completing analysis.")
             return json.loads(output)
         except subprocess.TimeoutExpired:
@@ -75,8 +79,10 @@ def _discover(enabled, library):
         return Capability(status="unavailable", detail="Configure an absolute libclang 19 library path.")
     try:
         with TemporaryDirectory(prefix="intentforge-c-") as name:
-            result = _run([str(Path(library).resolve()), "probe"], Path(name), timeout=4)
-    except (WorkerError, OSError):
+            result = _run([str(Path(library).resolve()), "probe"], Path(name), timeout=PROBE_TIMEOUT)
+    except WorkerError as exc:
+        return Capability(status="unavailable", detail=exc.detail)
+    except OSError:
         return Capability(status="unavailable", detail="The Clang installation could not be loaded.")
     return Capability(**result)
 

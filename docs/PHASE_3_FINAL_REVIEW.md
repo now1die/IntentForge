@@ -16,7 +16,7 @@ and intelligent C repair are outside this release. Public hosting needs
 a separately provisioned and hardened worker service. Vercel remains
 Mini-C capable and reports Clang unavailable by default.
 
-The local suite passed 536 Python tests, 220 original compiler cases,
+The local suite passed 540 Python tests, 220 original compiler cases,
 the existing benchmark audits and Phase 2.5 replay, keyboard/array
 verification, and 3,758 stress inputs. All 20 local browser tests passed. The focused browser tests
 verified switching between modes and real Clang diagnostics,
