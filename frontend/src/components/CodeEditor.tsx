@@ -7,6 +7,7 @@ import "monaco-editor/languages/definitions/cpp/register";
 // not register a language service or infer diagnostics in the browser.
 import "monaco-editor/editor/contrib/hover/browser/hoverContribution";
 import EditorWorker from "monaco-editor/editor/editor.worker?worker";
+import type { ClangDiagnostic } from "../types/clang";
 import type { Diagnostic } from "../types/compiler";
 
 self.MonacoEnvironment = { getWorker: () => new EditorWorker() };
@@ -39,12 +40,16 @@ export function CodeEditor({
   diagnostics,
   onReady,
   readOnly = false,
+  fullC = false,
+  clangDiagnostics,
 }: {
   code: string;
   onChange?: (value: string) => void;
   diagnostics?: Diagnostic[];
   onReady?: (editor: EditorHandle) => void;
   readOnly?: boolean;
+  fullC?: boolean;
+  clangDiagnostics?: ClangDiagnostic[];
 }) {
   const editorRef = useRef<EditorHandle | null>(null);
   const safeDiagnostics = diagnostics ?? [];
@@ -54,7 +59,17 @@ export function CodeEditor({
     monaco.editor.setModelMarkers(
       model,
       "backend",
-      safeDiagnostics.map((d) => ({
+      fullC ? (clangDiagnostics ?? []).flatMap((d) => {
+        if (!d.span || d.span.file !== "main.c") return [];
+        const { start, end } = d.span;
+        return [{
+          severity: d.severity === "warning" ? monaco.MarkerSeverity.Warning : d.severity === "note"
+            ? monaco.MarkerSeverity.Info : monaco.MarkerSeverity.Error,
+          message: d.message, source: "Clang", code: d.code ?? undefined,
+          startLineNumber: start.line, startColumn: start.column,
+          endLineNumber: end.line, endColumn: end.line === start.line ? Math.max(end.column, start.column + 1) : end.column,
+        }];
+      }) : safeDiagnostics.map((d) => ({
         severity:
           d.severity === "warning"
             ? monaco.MarkerSeverity.Warning
@@ -74,7 +89,7 @@ export function CodeEditor({
   };
   useEffect(() => {
     if (editorRef.current) markers(editorRef.current);
-  }, [diagnostics]);
+  }, [diagnostics, fullC, clangDiagnostics]);
   const onMount: OnMount = (editor) => {
     editorRef.current = editor;
     markers(editor);
@@ -92,7 +107,7 @@ export function CodeEditor({
         readOnly,
         ariaLabel: readOnly
           ? "Corrected source preview"
-          : "Mini-C source editor",
+          : fullC ? "C source editor" : "Mini-C source editor",
         automaticLayout: true,
         fontFamily: "Geist Mono, Consolas, monospace",
         fontSize: 14,

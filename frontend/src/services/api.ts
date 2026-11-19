@@ -70,3 +70,8 @@ export const validateCorrection = (originalCode: string, correctedCode: string, 
 export const getTokens = (code: string, signal?: AbortSignal) => request<TokensResponse>("/tokens", { code }, signal);
 export const getAst = (code: string, signal?: AbortSignal) => request<AstResponse>("/ast", { code }, signal);
 export const getSymbols = (code: string, signal?: AbortSignal) => request<SymbolsResponse>("/symbols", { code }, signal);
+
+export const clangCapability = (signal: AbortSignal) =>
+  request<import("../types/clang").ClangCapability>("/v1/c-analysis/capability", undefined, signal);
+export const analyzeC = (code: string, standard: string, signal: AbortSignal) =>
+  request<import("../types/clang").ClangAnalysis>("/v1/c-analysis", { code, standard }, signal);

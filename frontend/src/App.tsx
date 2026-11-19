@@ -1,3 +1,5 @@
+import { ClangEvidence } from "./components/ClangEvidence";
+import type { ClangAnalysis, ClangCapability, ClangSpan } from "./types/clang";
 import { IntentionPanel } from "./components/IntentionPanel";
 import { useEffect, useRef, useState } from "react";
 import { FileCode, X, ArrowRight } from "@phosphor-icons/react";
@@ -15,6 +17,8 @@ import {
 import { DEFAULT_CODE } from "./constants/examples";
 import {
   analyzeCode,
+  analyzeC,
+  clangCapability,
   checkHealth,
   correctCode,
   getCorrectionOptions,
@@ -31,6 +35,11 @@ import type {
 } from "./types/compiler";
 
 export default function App() {
+  const [language, setLanguage] = useState<"mini" | "clang">("mini");
+  const [standard, setStandard] = useState("c17");
+  const [clang, setClang] = useState<ClangCapability | null>(null);
+  const [cResult, setCResult] = useState<ClangAnalysis | null>(null);
+  const fullC = language === "clang";
   const [code, setCode] = useState(DEFAULT_CODE);
   const [health, setHealth] = useState<Health | null>(null);
   const [checking, setChecking] = useState(true);
@@ -78,6 +87,19 @@ export default function App() {
       healthTask.current?.abort();
     };
   }, []);
+  useEffect(() => {
+    if (!fullC) return;
+    const controller = new AbortController();
+    setClang(null);
+    clangCapability(controller.signal).then((result) => {
+      if (!controller.signal.aborted) setClang(result);
+    }).catch(() => {
+      if (!controller.signal.aborted) setClang({ status: "unavailable", version: null, standards: [],
+        features: [], unsupported: [], detail: "Clang capability discovery could not reach the backend." });
+    });
+    return () => controller.abort();
+  }, [fullC]);
+
   function changeSource(value: string) {
     task.current?.abort();
     tokenTask.current?.abort();
@@ -86,6 +108,7 @@ export default function App() {
     current.current = value;
     setCode(value);
     setAnalysis(null);
+    setCResult(null);
     setCorrection(null);
     setCorrectionOptions(null);
     setTokens(null);
@@ -121,8 +144,15 @@ export default function App() {
     setAnalysis(null);
     setSelected(null);
     setCorrection(null);
+    setCResult(null);
     try {
-      if (mode === "analyze") {
+      if (fullC) {
+        if (mode !== "analyze") return;
+        const result = await analyzeC(source, standard, controller.signal);
+        if (controller.signal.aborted) return;
+        setCResult(result);
+        setNotice(result.status === "ok" ? "Clang analysis complete." : result.detail ?? "Clang reported diagnostics.");
+      } else if (mode === "analyze") {
         const result = await analyzeCode(source, controller.signal);
         if (controller.signal.aborted) return;
         setAnalysis(result);
@@ -171,6 +201,12 @@ export default function App() {
       if (!controller.signal.aborted) setBusy(null);
     }
   }
+  function focusClang(span: ClangSpan) {
+    editor.current?.revealLineInCenter(span.start.line);
+    editor.current?.setPosition({ lineNumber: span.start.line, column: span.start.column });
+    editor.current?.focus();
+  }
+
   function focusDiagnostic(d: Diagnostic) {
     setSelected(d);
     editor.current?.revealLineInCenter(d.line);
@@ -203,10 +239,12 @@ export default function App() {
         analysis={analysis}
         checking={checking}
         busy={busy}
+        fullC={fullC}
+        analyzeUnavailable={fullC && clang?.status !== "available"}
         onAnalyze={() => void run("analyze")}
         onCorrect={() => void run("correct")}
         onReset={() => {
-          changeSource(DEFAULT_CODE);
+          changeSource(fullC ? "int main(void) { return 0; }\n" : DEFAULT_CODE);
           setAnalysis(null);
           setCorrection(null);
           setCorrectionOptions(null);
@@ -219,7 +257,14 @@ export default function App() {
       <div className="workspace-heading">
         <div>
           <span className="section-label">WORKSPACE</span>
-          <span className="workspace-name">Syntax, explained.</span>
+          <label className="language-picker">Language <select value={language} onChange={(event) => {
+            changeSource(current.current);
+            setLanguage(event.target.value === "clang" ? "clang" : "mini");
+            setActive("Diagnostics");
+            setNotice("Language changed. Analyze to refresh results.");
+          }}>
+            <option value="mini">Mini-C</option><option value="clang">C / Clang</option>
+          </select></label>
         </div>
       </div>
       {error && (
@@ -235,10 +280,10 @@ export default function App() {
           <div className="editor-heading">
             <span className="file-tab">
               <FileCode size={17} />
-              main.mc
+              {fullC ? "main.c" : "main.mc"}
             </span>
             <span>
-              Mini-C <ArrowRight size={12} /> backend analysis
+              {fullC ? "C / Clang" : "Mini-C"} <ArrowRight size={12} /> backend analysis
             </span>
           </div>
           <div
@@ -249,6 +294,8 @@ export default function App() {
               code={code}
               onChange={changeSource}
               diagnostics={diagnostics}
+              fullC={fullC}
+              clangDiagnostics={cResult?.units[0]?.diagnostics}
               onReady={(instance) => {
                 editor.current = instance;
               }}
@@ -261,13 +308,25 @@ export default function App() {
             <span className="editor-mode">Editing only</span>
           </div>
         </section>
-        <AnalysisPanel
+        {fullC ? <section className="editor-panel clang-overview" aria-label="Clang capability">
+          <h2>C / Clang</h2>
+          <p>{clang?.detail ?? "Checking Clang availability…"}</p>
+          {clang?.version && <p>Clang {clang.version} · Syntax and type analysis</p>}
+          <label className="language-picker">C standard <select value={standard} onChange={(event) => {
+            changeSource(current.current);
+            setStandard(event.target.value);
+          }}>
+            {["c99", "c11", "c17", "c23"].map((name) => <option key={name}>{name}</option>)}
+          </select></label>
+          <p>Includes resolve only to files supplied to the API. This editor analyzes one file.</p>
+          <p>Intelligent repair, linking and execution are unavailable in C mode.</p>
+        </section> : <AnalysisPanel
           analysis={analysis}
           correction={correction}
           selected={selected}
-        />
+        />}
       </div>
-      <section className="inspector">
+      {fullC ? <ClangEvidence analysis={cResult} focus={focusClang} /> : <section className="inspector">
         <InspectorTabs
           active={active}
           onChange={selectTab}
@@ -311,12 +370,12 @@ export default function App() {
             />
           )}
         </div>
-      </section>
+      </section>}
       <footer className="statusbar">
         <span role="status" aria-live="polite">
           {notice}
         </span>
-        <span>Mini-C language / Compiler Workbench</span>
+        <span>{fullC ? "C / Clang" : "Mini-C language"} / Compiler Workbench</span>
       </footer>
     </main>
   );

@@ -1067,3 +1067,17 @@ summary code {
 .intention-preview {
   margin-top: 16px;
 }
+
+.language-picker { display: inline-flex; align-items: center; gap: .6rem; }
+.language-picker select, .clang-inspector button {
+  color: inherit;
+  background: #232829;
+  border: 1px solid #42504a;
+  border-radius: 4px;
+  padding: .3rem .5rem;
+}
+.clang-overview { padding: 1.25rem; }
+.clang-tabs { display: flex; flex-wrap: wrap; gap: .5rem; padding: .75rem; }
+.clang-tabs [aria-pressed="true"] { border-color: #97d4b5; }
+.clang-inspector li { margin-block: .45rem; overflow-wrap: anywhere; }
+.clang-inspector li button { margin-inline: .4rem; }

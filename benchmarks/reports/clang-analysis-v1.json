@@ -1,0 +1,167 @@
+{
+  "available": true,
+  "version": "19.1.7",
+  "latency_ms": {
+    "n": 12,
+    "mean": 76.04925583336808,
+    "p95": 119.46552500012331
+  },
+  "cases": [
+    {
+      "case": "pointers",
+      "http": 200,
+      "expected_status": "ok",
+      "status": "ok",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": null,
+      "span": null
+    },
+    {
+      "case": "struct_and_cast",
+      "http": 200,
+      "expected_status": "ok",
+      "status": "ok",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": null,
+      "span": null
+    },
+    {
+      "case": "c23_bool",
+      "http": 200,
+      "expected_status": "ok",
+      "status": "ok",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": null,
+      "span": null
+    },
+    {
+      "case": "array_layout",
+      "http": 200,
+      "expected_status": "ok",
+      "status": "ok",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": null,
+      "span": null
+    },
+    {
+      "case": "syntax",
+      "http": 200,
+      "expected_status": "syntax_errors",
+      "status": "syntax_errors",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": [
+        1,
+        9
+      ],
+      "span": [
+        1,
+        9
+      ]
+    },
+    {
+      "case": "unknown_binding",
+      "http": 200,
+      "expected_status": "semantic_errors",
+      "status": "semantic_errors",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": [
+        1,
+        16
+      ],
+      "span": [
+        1,
+        16
+      ]
+    },
+    {
+      "case": "bad_pointer",
+      "http": 200,
+      "expected_status": "semantic_errors",
+      "status": "semantic_errors",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": [
+        1,
+        21
+      ],
+      "span": [
+        1,
+        21
+      ]
+    },
+    {
+      "case": "missing_field",
+      "http": 200,
+      "expected_status": "semantic_errors",
+      "status": "semantic_errors",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": [
+        1,
+        46
+      ],
+      "span": [
+        1,
+        46
+      ]
+    },
+    {
+      "case": "signature",
+      "http": 200,
+      "expected_status": "semantic_errors",
+      "status": "semantic_errors",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": [
+        1,
+        37
+      ],
+      "span": [
+        1,
+        37
+      ]
+    },
+    {
+      "case": "missing_header",
+      "http": 200,
+      "expected_status": "compiler_errors",
+      "status": "compiler_errors",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": [
+        1,
+        10
+      ],
+      "span": [
+        1,
+        10
+      ]
+    },
+    {
+      "case": "nested_header",
+      "http": 200,
+      "expected_status": "ok",
+      "status": "ok",
+      "ast_units_with_evidence": 1,
+      "ast_units": 1,
+      "expected_span": null,
+      "span": null
+    },
+    {
+      "case": "multiple_units",
+      "http": 200,
+      "expected_status": "ok",
+      "status": "ok",
+      "ast_units_with_evidence": 2,
+      "ast_units": 2,
+      "expected_span": null,
+      "span": null
+    }
+  ]
+}

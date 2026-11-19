@@ -1,0 +1,2 @@
+# Optional Python binding for a separately provisioned libclang 19.
+clang==19.1.7
