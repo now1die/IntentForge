@@ -1,0 +1,789 @@
+{
+  "version": 1,
+  "engine_freeze": "f1ff2ee4ae6594a83b8832ff38e7670df7d37812",
+  "cases": [
+    {
+      "id": "p25-final-invoice",
+      "family": "invoice-early-exit",
+      "split": "final",
+      "kind": "logic",
+      "category": "RETURN_EXPRESSION",
+      "source": "int invoice(int price,int quantity){ if(quantity<=0){return 0;}int charge=price*quantity;return price; }",
+      "accepted": [
+        "int invoice(int price,int quantity){ if(quantity<=0){return 0;}int charge=price*quantity;return charge; }"
+      ],
+      "natural": {
+        "description": "Return the total cost",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "charge",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-combine-four",
+      "family": "aggregate-peer-operations",
+      "split": "final",
+      "kind": "logic",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int count_round(int a,int b,int c,int d,int e,int f){int left=a+b;int middle=c+d;int right=e-f;return left+middle+right;}",
+      "accepted": [
+        "int count_round(int a,int b,int c,int d,int e,int f){int left=a+b;int middle=c+d;int right=e+f;return left+middle+right;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-sensor-repetitions",
+      "family": "repeated-sensor-threshold",
+      "split": "final",
+      "kind": "logic",
+      "category": "COMPARISON_OPERATOR",
+      "source": "int sensors(int red,int green,int blue,int baseline){int observed=baseline;if(red>=12){observed++;}if(green>=12){observed++;}if(blue>12){observed++;}return observed;}",
+      "accepted": [
+        "int sensors(int red,int green,int blue,int baseline){int observed=baseline;if(red>=12){observed++;}if(green>=12){observed++;}if(blue>=12){observed++;}return observed;}"
+      ],
+      "natural": {
+        "description": "Test whether blue is at least 12",
+        "condition_ordinal": 3
+      },
+      "explicit": {
+        "condition": "blue>=12",
+        "condition_ordinal": 3
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-call-repeat",
+      "family": "repeated-offset-pair",
+      "split": "final",
+      "kind": "logic",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "int blend(int base,int bias){return base*2-bias;}int samples(int reading,int offset){int first=blend(reading,offset);int second=blend(reading,offset);return blend(offset,reading)+first+second;}",
+      "accepted": [
+        "int blend(int base,int bias){return base*2-bias;}int samples(int reading,int offset){int first=blend(reading,offset);int second=blend(reading,offset);return blend(reading,offset)+first+second;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-array-extent",
+      "family": "buffer-index-reuse",
+      "split": "final",
+      "kind": "logic",
+      "category": "ARRAY_INDEX",
+      "source": "float storage[12];float fold_value(int flag){float baseline=storage[11];if(flag<3){return baseline;}return baseline+storage[12];}",
+      "accepted": [
+        "float storage[12];float fold_value(int flag){float baseline=storage[11];if(flag<3){return baseline;}return baseline+storage[11];}"
+      ],
+      "natural": {
+        "description": "Return the buffer reading already selected",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "baseline+storage[11]",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-role-selection",
+      "family": "price-before-transform",
+      "split": "final",
+      "kind": "logic",
+      "category": "RETURN_EXPRESSION",
+      "source": "int apply_units(int units,int rate){if(rate<0){return 0;}int result=units*rate;return units+rate;}",
+      "accepted": [
+        "int apply_units(int units,int rate){if(rate<0){return 0;}int result=units*rate;return result;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-vector-min",
+      "family": "float-min-selection",
+      "split": "final",
+      "kind": "logic",
+      "category": "CONDITION",
+      "source": "float choose_minimum(float left,float right){if(left>=right){return left;}return right;}",
+      "accepted": [
+        "float choose_minimum(float left,float right){if(left<=right){return left;}return right;}"
+      ],
+      "natural": {
+        "description": "Return the minimum of left and right"
+      },
+      "explicit": {
+        "condition": "left<=right"
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-integer-range",
+      "family": "integer-range-fallback",
+      "split": "final",
+      "kind": "logic",
+      "category": "CONDITION",
+      "source": "bool in_window(int mark,int low,int high){if(low>high){return false;}return mark>low||mark<=high;}",
+      "accepted": [
+        "bool in_window(int mark,int low,int high){if(low>high){return false;}return mark>=low&&mark<=high;}"
+      ],
+      "natural": {
+        "description": "Return whether mark is between low and high inclusive",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "mark>=low && mark<=high",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-conjunction",
+      "family": "permission-pair",
+      "split": "final",
+      "kind": "logic",
+      "category": "CONDITION",
+      "source": "bool guard_permission(bool granted,int balance){int cap=3;return granted||(balance>=cap);}",
+      "accepted": [
+        "bool guard_permission(bool granted,int balance){int cap=3;return granted&&(balance>=cap);}"
+      ],
+      "natural": {
+        "description": "Return whether both granted and balance is at least cap"
+      },
+      "explicit": {
+        "return_expression": "granted && (balance >= cap)"
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-direction",
+      "family": "decrement-with-clamp",
+      "split": "final",
+      "kind": "logic",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int leftover(int amount,int debit){if(debit>amount){return 0;}return amount+debit;}",
+      "accepted": [
+        "int leftover(int amount,int debit){if(debit>amount){return 0;}return amount-debit;}"
+      ],
+      "natural": {
+        "description": "Return amount decremented by debit",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "amount-debit",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-signed-args",
+      "family": "mode-selects-helper",
+      "split": "final",
+      "kind": "logic",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "int scale_left(int value,int offset){return (value*3)-offset;}int scale_entry(int left,int right,bool enabled){if(!enabled){return right;}return scale_left(right,left);}",
+      "accepted": [
+        "int scale_left(int value,int offset){return (value*3)-offset;}int scale_entry(int left,int right,bool enabled){if(!enabled){return right;}return scale_left(left,right);}"
+      ],
+      "natural": {
+        "description": "Return the result of calling scale_left with left and right",
+        "return_ordinal": 2,
+        "function": "scale_entry"
+      },
+      "explicit": {
+        "return_expression": "scale_left(left,right)",
+        "return_ordinal": 2,
+        "function": "scale_entry"
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-prime-unknown",
+      "family": "weekday-modulo",
+      "split": "final",
+      "kind": "logic",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int slot_offset(int week,int extra){extra+=week;return ((week+extra)/7)+1;}",
+      "accepted": [
+        "int slot_offset(int week,int extra){extra+=week;return ((week+extra)%7)+1;}"
+      ],
+      "natural": {
+        "description": "Wrap around the week as usual"
+      },
+      "explicit": {
+        "return_expression": "((week+extra)%7)+1"
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-equality",
+      "family": "output-detent",
+      "split": "final",
+      "kind": "logic",
+      "category": "COMPARISON_OPERATOR",
+      "source": "bool same_floor(int requested,int delivered){requested+=1;if(requested<0){return false;}return requested!=delivered;}",
+      "accepted": [
+        "bool same_floor(int requested,int delivered){requested+=1;if(requested<0){return false;}return requested==delivered;}"
+      ],
+      "natural": {
+        "description": "Return whether requested is equal to delivered",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "requested==delivered",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-signed-init",
+      "family": "updated-prefix-init",
+      "split": "final",
+      "kind": "compiler",
+      "category": "DECLARATION_TYPE",
+      "source": "bool choose_flag(int votes,bool permit,bool override){if(votes>0){permit=true;}bool output=votes;return output!=override;}",
+      "accepted": [
+        "bool choose_flag(int votes,bool permit,bool override){if(votes>0){permit=true;}bool output=permit;return output!=override;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-callee-gap",
+      "family": "boolean-first-gap",
+      "split": "final",
+      "kind": "compiler",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "int pack(bool enabled,int limit,int spare){if(!enabled){return spare;}return limit+spare;}int entry(bool ready,int slots){slots+=1;return pack(slots,2);}",
+      "accepted": [
+        "int pack(bool enabled,int limit,int spare){if(!enabled){return spare;}return limit+spare;}int entry(bool ready,int slots){slots+=1;return pack(ready,slots,2);}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-swap-types",
+      "family": "typed-pair-swap",
+      "split": "final",
+      "kind": "compiler",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "char encode_digit(char digit,bool enabled){if(enabled){return digit;}return 'n';}char present(char input,bool active){if(!active){return 'x';}return encode_digit(active,input);}",
+      "accepted": [
+        "char encode_digit(char digit,bool enabled){if(enabled){return digit;}return 'n';}char present(char input,bool active){if(!active){return 'x';}return encode_digit(input,active);}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-binding-loop",
+      "family": "shadow-bound-window",
+      "split": "final",
+      "kind": "compiler",
+      "category": "VARIABLE_REFERENCE",
+      "source": "int energy(int start,int end){int output=start*3;{int upper=end+1;int older=start;while(output<upper){output+=2;}return outpt+upper;}}",
+      "accepted": [
+        "int energy(int start,int end){int output=start*3;{int upper=end+1;int older=start;while(output<upper){output+=2;}return output+upper;}}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-array-update",
+      "family": "array-assignment-position",
+      "split": "final",
+      "kind": "compiler",
+      "category": "ARRAY_INDEX",
+      "source": "int field[20];void record_point(int offset,int value){int cursor=offset+1;int curser=2;while(cursor<offset){cursor++;}field[cursr]=value*4;}",
+      "accepted": [
+        "int field[20];void record_point(int offset,int value){int cursor=offset+1;int curser=2;while(cursor<offset){cursor++;}field[cursor]=value*4;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-argument-ref",
+      "family": "call-site-variable",
+      "split": "final",
+      "kind": "compiler",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "int divisor(int x,int scale){if(scale==0){return x;}return (x/scale)+1;}int group_value(int samples,int count){int adjustment=count+1;int adjuster=2;adjustment++;return divisor(samples,adjustmant);}",
+      "accepted": [
+        "int divisor(int x,int scale){if(scale==0){return x;}return (x/scale)+1;}int group_value(int samples,int count){int adjustment=count+1;int adjuster=2;adjustment++;return divisor(samples,adjustment);}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-aggregate-return-missing",
+      "family": "gap-after-update",
+      "split": "final",
+      "kind": "compiler",
+      "category": "MISSING_EXPRESSION",
+      "source": "int tally_offset(int original,bool accumulate){int merged=original;int hold=4;if(accumulate){merged*=2;merged+=3;}return;}",
+      "accepted": [
+        "int tally_offset(int original,bool accumulate){int merged=original;int hold=4;if(accumulate){merged*=2;merged+=3;}return merged;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-double-diagnostic",
+      "family": "double-distinct-uses",
+      "split": "final",
+      "kind": "compiler",
+      "category": "MULTIPLE_LOCALIZED",
+      "source": "int endpoints(int raw,int scale,bool double_it){int first=raw;int second=scale;if(double_it){first*=2;second*=2;} return frst+secon+raw;}",
+      "accepted": [
+        "int endpoints(int raw,int scale,bool double_it){int first=raw;int second=scale;if(double_it){first*=2;second*=2;} return first+second+raw;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-char-array-typed",
+      "family": "declaration-and-index-type",
+      "split": "final",
+      "kind": "compiler",
+      "category": "ARRAY_INDEX",
+      "source": "char tape[17];char look(int position,char marker){int index=position+1;if(marker=='q'){index++;}return tape[marker];}",
+      "accepted": [
+        "char tape[17];char look(int position,char marker){int index=position+1;if(marker=='q'){index++;}return tape[index];}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-expected-delimiter",
+      "family": "multi-prefix-while",
+      "split": "final",
+      "kind": "compiler",
+      "category": "SYNTAX",
+      "source": "int shift_window(int length,bool skip){int count=0;while(length>0{if(skip){length-=2;}else{length--;}count++;}return count;}",
+      "accepted": [
+        "int shift_window(int length,bool skip){int count=0;while(length>0){if(skip){length-=2;}else{length--;}count++;}return count;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-literal-condition-mismatch",
+      "family": "integer-conditioned-assignment",
+      "split": "final",
+      "kind": "compiler",
+      "category": "DECLARATION_TYPE",
+      "source": "int process_flag(bool active,bool skip,int index){if(!skip){index+=2;}if(index){index*=2;}return index;}",
+      "accepted": [
+        "int process_flag(bool active,bool skip,int index){if(!skip){index+=2;}if(active){index*=2;}return index;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-override-result",
+      "family": "total-flag-kind",
+      "split": "final",
+      "kind": "compiler",
+      "category": "VARIABLE_REFERENCE",
+      "source": "bool flags[4];bool status_flag(int n){bool live=flags[n];bool mask=false;if(n<=2){live=!live;}return liv&&flags[2];}",
+      "accepted": [
+        "bool flags[4];bool status_flag(int n){bool live=flags[n];bool mask=false;if(n<=2){live=!live;}return live&&flags[2];}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-unused-valid",
+      "family": "intentional-return-input",
+      "split": "final",
+      "kind": "control",
+      "category": "RETURN_EXPRESSION",
+      "source": "float policy_value(float price,int count){if(count==0){return 0.0;}float review=price*count; return price; /* exposes the base price intentionally */}",
+      "accepted": [],
+      "natural": {
+        "description": "Return the value of price",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "price",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED",
+      "natural_answer_token_supplied": true
+    },
+    {
+      "id": "p25-final-peer-valid",
+      "family": "aggregate-peer-operations",
+      "split": "final",
+      "kind": "control",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int budget(int base,int fee,int tax,int discount,int refund,int carry){int posted=base+fee;int assessed=tax+carry;int returned=refund-discount;return posted+assessed+returned;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-guard-valid",
+      "family": "intentional-thresholds",
+      "split": "final",
+      "kind": "control",
+      "category": "CONDITION",
+      "source": "int count_limit(int left,int right,int middle){int count=0;if(left<2){count++;}if(right<4){count++;}if(middle<=8){count++;}return count;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-good-explicit",
+      "family": "checked-backlog",
+      "split": "final",
+      "kind": "control",
+      "category": "CONDITION",
+      "source": "bool backlog(int active,int days){int maxdays=9;if(days<0){return false;}return active>0&&days<=maxdays;}",
+      "accepted": [],
+      "natural": {
+        "description": "Return whether both active is greater than 0 and days is at most maxdays",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "active>0 && days<=maxdays",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-reordered-legit",
+      "family": "call-order-intentional",
+      "split": "final",
+      "kind": "control",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "int region(int x,int y){return x+2*y;} int cells(int from,int to){int a=region(from,to); int b=region(to,from);return a-b;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-known-valid-index",
+      "family": "inclusive-array-end-control",
+      "split": "final",
+      "kind": "control",
+      "category": "ARRAY_INDEX",
+      "source": "int path_data[23];int path_value(int limit){int base=path_data[0];if(limit>=23){return base;}return base+path_data[22];}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-named-square-legit",
+      "family": "names-are-not-spec",
+      "split": "final",
+      "kind": "control",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int square(int input,bool negate){int value=input+input;if(negate){return -value;}return value+1;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-matching-increment",
+      "family": "current-increment",
+      "split": "final",
+      "kind": "control",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int next_level(int level){int minimum=3;if(level<minimum){return minimum;}return level+4;}",
+      "accepted": [],
+      "natural": {
+        "description": "Return level incremented by 4",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "level+4",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-conflicting-identities",
+      "family": "ambiguous-similar-bindings",
+      "split": "final",
+      "kind": "compiler",
+      "category": "VARIABLE_REFERENCE",
+      "source": "int shift_counts(int start,int stop,int rate){start*=rate;stop*=rate;int range=stap; if(rate<0){return start;}return range+stop;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": true,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-unknown-construction",
+      "family": "ambiguous-expression",
+      "split": "final",
+      "kind": "ambiguous",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int earnings(int billed,int fees,int days){ if(days==0){return 0;}return (billed-fees)*days;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": true,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-anonymous-call-slot",
+      "family": "ambiguous-missing-arg",
+      "split": "final",
+      "kind": "compiler",
+      "category": "FUNCTION_ARGUMENT",
+      "source": "int choose_axis(int x,int y){return x*x-y;}int axis(int left,int right){int start=left*2;return choose_axis(start)+right;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": true,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-array-without-context",
+      "family": "ambiguous-constant-index",
+      "split": "final",
+      "kind": "ambiguous",
+      "category": "ARRAY_INDEX",
+      "source": "int lookup_data[13];int lookup_last(int increment){if(increment<0){return 0;}return lookup_data[13]+increment;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": true,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-pointer-form",
+      "family": "outside-minic-pointer-storage",
+      "split": "final",
+      "kind": "unsupported",
+      "category": "UNSUPPORTED",
+      "source": "int boxed(int *value,int flag){ if(flag>0){return *value;}return flag+1;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-switch-form",
+      "family": "outside-minic-switch-body",
+      "split": "final",
+      "kind": "unsupported",
+      "category": "UNSUPPORTED",
+      "source": "int pick_mode(int flag){int state=4;switch(flag){case 3: state++;break; default:state-=3;}return state;}",
+      "accepted": [],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "PROJECT_AUTHORED_AI_ASSISTED"
+    },
+    {
+      "id": "p25-final-leap-century",
+      "family": "exercism-leap-century",
+      "split": "final",
+      "kind": "logic",
+      "category": "CONDITION",
+      "source": "bool leap_year(int year){if(year%400==0){return true;}if(year%100!=0){return false;}return year%4==0&&year>0;}",
+      "accepted": [
+        "bool leap_year(int year){if(year%400==0){return true;}if(year%100==0){return false;}return year%4==0&&year>0;}"
+      ],
+      "natural": {
+        "description": "Apply the Gregorian leap-year exceptions",
+        "condition_ordinal": 2
+      },
+      "explicit": {
+        "condition": "year%100==0",
+        "condition_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "EXERCISM_TASK_ADAPTED_PROJECT_AUTHORED_SOURCE",
+      "external_task": "https://github.com/exercism/c/blob/1675b02c310198e9752e516ee1a2294b76a37f84/exercises/practice/leap/.docs/instructions.md",
+      "adaptation": "Original Mini-C implementation of Gregorian divisibility, evaluated on positive years."
+    },
+    {
+      "id": "p25-final-grain-step",
+      "family": "exercism-grains-square",
+      "split": "final",
+      "kind": "logic",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int grains_limited(int square){if(square<1||square>24){return 0;}int weight=1;for(int k=1;k<square;k++){weight+=2;}return weight;}",
+      "accepted": [
+        "int grains_limited(int square){if(square<1||square>24){return 0;}int weight=1;for(int k=1;k<square;k++){weight*=2;}return weight;}"
+      ],
+      "natural": null,
+      "explicit": null,
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "EXERCISM_TASK_ADAPTED_PROJECT_AUTHORED_SOURCE",
+      "external_task": "https://github.com/exercism/c/blob/1675b02c310198e9752e516ee1a2294b76a37f84/exercises/practice/grains/.docs/instructions.md",
+      "adaptation": "Original Mini-C doubling loop capped at square 24 to fit signed integers. Only the single-square task is used."
+    },
+    {
+      "id": "p25-final-difference",
+      "family": "exercism-difference-two-sums",
+      "split": "final",
+      "kind": "logic",
+      "category": "ARITHMETIC_OPERATOR",
+      "source": "int square_gap(int limit){int sum=0;int squares=0;for(int k=1;k<=limit;k++){sum+=k;squares+=k*k;}return sum*sum+squares;}",
+      "accepted": [
+        "int square_gap(int limit){int sum=0;int squares=0;for(int k=1;k<=limit;k++){sum+=k;squares+=k*k;}return sum*sum-squares;}"
+      ],
+      "natural": {
+        "description": "Subtract the sum of the squares from the square of the sum"
+      },
+      "explicit": {
+        "return_expression": "sum*sum-squares"
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "EXERCISM_TASK_ADAPTED_PROJECT_AUTHORED_SOURCE",
+      "external_task": "https://github.com/exercism/c/blob/1675b02c310198e9752e516ee1a2294b76a37f84/exercises/practice/difference-of-squares/.docs/instructions.md",
+      "adaptation": "Original bounded Mini-C loop, with two integer sums and a final difference."
+    },
+    {
+      "id": "p25-final-triangle-side",
+      "family": "exercism-triangle-inequality",
+      "split": "final",
+      "kind": "logic",
+      "category": "CONDITION",
+      "source": "bool triangle_possible(int a,int b,int c){if(a<=0||b<=0||c<=0){return false;}return a+b>=c&&b+c>=a&&a+c>b;}",
+      "accepted": [
+        "bool triangle_possible(int a,int b,int c){if(a<=0||b<=0||c<=0){return false;}return a+b>=c&&b+c>=a&&a+c>=b;}"
+      ],
+      "natural": {
+        "description": "Require positive side lengths and allow a side to equal the sum of the other two",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "a+b>=c && b+c>=a && a+c>=b",
+        "return_ordinal": 2
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "EXERCISM_TASK_ADAPTED_PROJECT_AUTHORED_SOURCE",
+      "external_task": "https://github.com/exercism/c/blob/1675b02c310198e9752e516ee1a2294b76a37f84/exercises/practice/triangle/.docs/instructions.md",
+      "adaptation": "Original Mini-C validity predicate only, with integer sides and the task's inclusive boundary. Triangle type classification is outside this fixture."
+    },
+    {
+      "id": "p25-final-darts-boundary",
+      "family": "exercism-darts-integer-coordinates",
+      "split": "final",
+      "kind": "logic",
+      "category": "COMPARISON_OPERATOR",
+      "source": "int dart_points(int x,int y){int r2=x*x+y*y;if(r2<=1){return 10;}if(r2<=25){return 5;}if(r2<100){return 1;}return 0;}",
+      "accepted": [
+        "int dart_points(int x,int y){int r2=x*x+y*y;if(r2<=1){return 10;}if(r2<=25){return 5;}if(r2<=100){return 1;}return 0;}"
+      ],
+      "natural": {
+        "description": "Test whether r2 is at most 100",
+        "condition_ordinal": 3
+      },
+      "explicit": {
+        "condition": "r2<=100",
+        "condition_ordinal": 3
+      },
+      "ambiguous": false,
+      "rejected": [],
+      "provenance": "EXERCISM_TASK_ADAPTED_PROJECT_AUTHORED_SOURCE",
+      "external_task": "https://github.com/exercism/c/blob/1675b02c310198e9752e516ee1a2294b76a37f84/exercises/practice/darts/.docs/instructions.md",
+      "adaptation": "Original Mini-C solution using integer coordinates and squared radii, with boundary scores included."
+    }
+  ]
+}
