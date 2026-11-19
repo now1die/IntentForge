@@ -31,9 +31,13 @@ function location(span: Span | null) {
   return span ? `line ${span.start.line}, column ${span.start.column}` : "Location unavailable";
 }
 
-export function Evidence({ label, result, onNavigate }: {
-  label: string; result: BehaviorEvidence; onNavigate?: (span: Span) => void;
+export function Evidence({ label, result, onNavigate, observationOnly = false }: {
+  label: string; result: BehaviorEvidence; onNavigate?: (span: Span) => void; observationOnly?: boolean;
 }) {
+  if (observationOnly && result.status === "ORACLE_UNAVAILABLE") return <section className="behavior-run" aria-label={label}>
+    <h3>{label}</h3>
+    <p>No expected values supplied.</p>
+  </section>;
   const issue = result.execution?.issue;
   return <section className="behavior-run" aria-label={label}>
     <h3>{label}</h3>

@@ -99,7 +99,7 @@ export function IntentionPanel({ code, onApply }: {
   const choice = result?.candidates.find((candidate) => candidate.id === selected);
 
   return (
-    <section className="intention-panel" aria-label="Intention analysis">
+    <section className="intention-panel" aria-label="Intention analysis" data-engine={engineVersion}>
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
           <label>Intention engine

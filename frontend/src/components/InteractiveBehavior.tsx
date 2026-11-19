@@ -180,14 +180,14 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
         {phase5 && result.original.status === "ORACLE_UNAVAILABLE" && <p>Observational comparison. Candidates retain static order until you supply expected outputs.</p>}
         {result.comparison_status === "MULTIPLE_MATCHES" && <p>Multiple candidates match. More test cases may distinguish them.</p>}
         <div className="behavior-evidence">
-          <Evidence label="Live original" result={result.original} onNavigate={onNavigate} />
+          <Evidence label="Live original" result={result.original} onNavigate={onNavigate} observationOnly={phase5} />
           {result.review_order.map((id, index) => {
             const item = result.candidates.find((row) => row.id === id);
             return item && <article key={id}>
               <p>Compiler valid · Static rank {item.static_rank} · {item.static_evidence.toLowerCase().replaceAll("_", " ")}</p>
               {phase5 && <p>Review position {index + 1} · {item.id}</p>}
               <p>{item.hypothesis}</p>
-              <Evidence label={`Live candidate ${item.static_rank}`} result={item.behavior} />
+              <Evidence label={`Live candidate ${item.static_rank}`} result={item.behavior} observationOnly={phase5} />
               <button type="button" onClick={() => setSelected(id)}>Review candidate {item.static_rank}</button>
             </article>;
           })}
@@ -198,8 +198,8 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           <ul>{result.probes.map((probe) => <li key={JSON.stringify(probe.arguments)}>
             <code>{JSON.stringify(probe.arguments)}</code> · {probe.relation} · {probe.candidates.map((row) =>
               `${row.candidate_id}: ${row.actual !== null ? String(row.actual) : row.issue ?? row.status}`).join(" · ")}
-            {probe.assessment && <small> · {probe.assessment.replaceAll("_", " ")} · {probe.separated_pairs} pairs
-              ({probe.new_pairs} new) · {probe.steps} steps · {probe.input_basis?.replaceAll("_", " ")}</small>}
+            {probe.assessment && <small> · {probe.assessment.replaceAll("_", " ")} · {probe.separated_pairs} {probe.separated_pairs === 1 ? "pair" : "pairs"}
+              {" "}({probe.new_pairs} new) · {probe.steps} steps · {probe.input_basis?.replaceAll("_", " ")}</small>}
             <button type="button" onClick={() => addProbe(probe.arguments)}>Use probe input</button>
           </li>)}</ul>
         </section>}

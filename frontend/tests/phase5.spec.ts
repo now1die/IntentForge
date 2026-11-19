@@ -45,7 +45,7 @@ test("Phase 5 isolated probes require an explicit expectation before resolving a
   await expect(panel.getByText(/Observational comparison/)).toBeVisible();
   const probes = panel.getByRole("region", { name: "Candidate disagreement" });
   const distinct = probes.getByRole("listitem").filter({ hasText: "different values" }).first();
-  await expect(distinct).toContainText("1 pairs (1 new)");
+  await expect(distinct).toContainText("1 pair (1 new)");
   if (capture) {
     await mkdir(capture, { recursive: true });
     await panel.screenshot({ path: `${capture}/isolated-probes.png` });
