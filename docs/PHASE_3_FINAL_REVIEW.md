@@ -18,7 +18,7 @@ Mini-C capable and reports Clang unavailable by default.
 
 The local suite passed 536 Python tests, 220 original compiler cases,
 the existing benchmark audits and Phase 2.5 replay, keyboard/array
-verification, and 3,758 stress inputs. The focused browser tests
+verification, and 3,758 stress inputs. All 20 local browser tests passed. The focused browser tests
 verified switching between modes and real Clang diagnostics,
 declarations, AST navigation and editor snapshot invalidation. The
 separate C benchmark checked 12 requests and 13 translation units.

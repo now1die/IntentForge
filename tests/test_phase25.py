@@ -114,6 +114,21 @@ def test_artifact_compatibility_and_category_local_scores(tmp_path):
     assert len(active) >= 2 and active <= ranker.selected.keys()
 
 
+def assert_calibration_reproduced(actual, expected):
+    """Keep decisions exact while tolerating solver roundoff across BLAS CPUs."""
+    if isinstance(expected, dict):
+        assert actual.keys() == expected.keys()
+        for key, value in expected.items():
+            assert_calibration_reproduced(actual[key], value)
+    elif isinstance(expected, list):
+        for observed, reference in zip(actual, expected, strict=True):
+            assert_calibration_reproduced(observed, reference)
+    elif isinstance(expected, float):
+        assert actual == pytest.approx(expected, abs=1e-10, rel=1e-12)
+    else:
+        assert actual == expected
+
+
 def test_training_reproduction_and_calibrated_scores_are_offline_only():
     data = json.loads(DEVELOPMENT.read_text())
     assert data == generate()
@@ -121,7 +136,7 @@ def test_training_reproduction_and_calibrated_scores_are_offline_only():
     archived = json.loads((DEVELOPMENT.parent.parent / "reports" / "phase25-training-v1.json").read_text())
     assert trained["selected"] == archived["selected"]
     assert trained["validation"] == archived["validation"]
-    assert trained["calibration"] == archived["calibration"]
+    assert_calibration_reproduced(trained["calibration"], archived["calibration"])
     assert not trained["calibration"]["pooled_exploratory"]["exposed_probabilities"]
 
 

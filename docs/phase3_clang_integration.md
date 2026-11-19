@@ -1,7 +1,7 @@
 # Clang integration
 
 The optional binding is `clang==19.1.7` with the libclang 19 C API.
-Verification used Debian libclang 19.1.7. The worker probes the actual
+Local verification used Debian libclang 19.1.7. The dedicated CI job pins Ubuntu libclang 19.1.1 and extracts it into the runner workspace. The worker probes the actual
 library and parses a C23 fixture before enabling capability. C99, C11,
 C17 and C23 are selectable, with C17 the default.
 
