@@ -51,14 +51,14 @@ class IntentionRequest(BaseModel):
     code: str = Field(max_length=MAX_SOURCE)
     requirement: RequirementRequest | None = None
     include_context: bool = False
-    engine_version: Literal[2, 3, 4] = 2
+    engine_version: Literal[2, 3, 4, 5] = 2
     mode: Literal["code_only", "natural_language", "explicit"] | None = None
 
     @model_validator(mode="after")
     def enforce_mode(self):
         requirement = self.requirement
         if self.engine_version >= 3 and self.mode is None:
-            raise ValueError("Choose an analysis mode when requesting engine version 3 or 4.")
+            raise ValueError("Choose an analysis mode for engine version 3 or later.")
         if self.mode == "code_only" and requirement is not None:
             raise ValueError("Code-only analysis accepts source alone.")
         if self.mode == "natural_language" and (
@@ -86,12 +86,15 @@ class IntentionResponse(BaseModel):
     context: dict[str, Any] | None
     requirement_status: str | None = None
     recommendation: str | None = None
+    structural_scan: dict[str, Any] | None = None
 
 
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.engine_version >= 3:
+    if request.engine_version == 5:
+        ranker, status = None, "V5_DETERMINISTIC"
+    elif request.engine_version >= 3:
         ranker = None
         expanded, status = load_generalized_ranker(request.engine_version)
     elif request.mode is None:
@@ -103,7 +106,8 @@ def intention_analysis(request: IntentionRequest) -> dict:
     try:
         result = analyze_intention(request.code, requirement, ranker=ranker, ranking_status=status,
                                    enhanced=request.mode is not None, expanded_ranker=expanded,
-                                   generalized=request.engine_version >= 3, phase35=request.engine_version == 4)
+                                   generalized=request.engine_version >= 3, phase35=request.engine_version == 4,
+                                   phase5=request.engine_version == 5)
     except InvalidRequirement as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
