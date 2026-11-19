@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { analyzeIntention } from "../services/api";
-import type { IntentionRequirement, IntentionResponse } from "../types/compiler";
+import type { IntentionMode, IntentionRequirement, IntentionResponse } from "../types/compiler";
 
 const findings: Record<string, string> = {
   COMPILER_ERROR: "Compiler-detected error",
@@ -20,22 +20,27 @@ const decisions: Record<string, string> = {
   BUDGET_EXHAUSTED: "The analysis budget expired. Only completed checks are shown.",
 };
 
-function readRequirement(form: HTMLFormElement): IntentionRequirement | null {
+function readRequirement(form: HTMLFormElement): { mode: IntentionMode; requirement: IntentionRequirement | null } {
   const data = new FormData(form);
   const value = (key: string) => String(data.get(key) ?? "").trim() || undefined;
+  const selected = value("mode");
+  const mode = selected === "auto"
+    ? (value("return_expression") || value("condition") ? "explicit" : value("description") ? "natural_language" : "code_only")
+    : selected as IntentionMode;
+  if (mode === "code_only") return { mode, requirement: null };
   const vectors = value("examples");
   const examples = vectors ? JSON.parse(vectors) : undefined;
   if (examples !== undefined && !Array.isArray(examples)) throw new Error("Examples must be a JSON array.");
   const requirement = {
     function: value("function"),
-    description: value("description"),
-    return_expression: value("return_expression"),
-    condition: value("condition"),
+    description: mode === "natural_language" ? value("description") : undefined,
+    return_expression: mode === "explicit" ? value("return_expression") : undefined,
+    condition: mode === "explicit" ? value("condition") : undefined,
     return_ordinal: value("return_ordinal") ? Number(value("return_ordinal")) : undefined,
     condition_ordinal: value("condition_ordinal") ? Number(value("condition_ordinal")) : undefined,
     examples,
   };
-  return Object.values(requirement).some((item) => item !== undefined) ? requirement : null;
+  return { mode, requirement };
 }
 
 export function IntentionPanel({ code, onApply }: {
@@ -44,6 +49,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -72,14 +78,14 @@ export function IntentionPanel({ code, onApply }: {
     pending.current = controller;
     setBusy(true);
     try {
-      let requirement: IntentionRequirement | null;
+      let input: ReturnType<typeof readRequirement>;
       try {
-        requirement = readRequirement(form);
+        input = readRequirement(form);
       } catch (failure) {
         setError(failure instanceof SyntaxError ? "Examples must be valid JSON." : String(failure));
         return;
       }
-      const result = await analyzeIntention(code, requirement, controller.signal);
+      const result = await analyzeIntention(code, input.requirement, input.mode, controller.signal);
       if (!controller.signal.aborted) setAnalysis({ code, result });
     } catch (failure) {
       if (!controller.signal.aborted) setError(failure instanceof Error ? failure.message : "Intention analysis failed.");
@@ -94,14 +100,24 @@ export function IntentionPanel({ code, onApply }: {
   return (
     <section className="intention-panel" aria-label="Intention analysis">
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
-        <p>Analyze the source with an optional requirement. Changes need your approval.</p>
         <div className="intention-fields">
-          <label>Function<input name="function" placeholder="Optional for a single function" maxLength={80} /></label>
-          <label>Return expression<input name="return_expression" placeholder="x * x" maxLength={160} /></label>
-          <label>Condition<input name="condition" placeholder="age >= 18" maxLength={160} /></label>
-          <label>Requirement description<input name="description" placeholder="Return the square of x" maxLength={400} /></label>
+          <label>Analysis mode
+            <select name="mode" value={mode} onChange={(event) => setMode(event.target.value as IntentionMode | "auto")}>
+              <option value="auto">Use entered fields</option>
+              <option value="code_only">Code only</option>
+              <option value="natural_language">Natural-language requirement</option>
+              <option value="explicit">Explicit specification</option>
+            </select>
+          </label>
+          {mode !== "code_only" && <label>Function<input name="function" placeholder="Optional for a single function" maxLength={80} /></label>}
+          {(mode === "auto" || mode === "explicit") && <>
+            <label>Return expression<input name="return_expression" placeholder="x * x" maxLength={160} /></label>
+            <label>Condition<input name="condition" placeholder="age >= 18" maxLength={160} /></label>
+          </>}
+          {(mode === "auto" || mode === "natural_language") &&
+            <label>Requirement description<input name="description" placeholder="Return the maximum of left and right" maxLength={400} /></label>}
         </div>
-        <details>
+        {mode !== "code_only" && <details>
           <summary>Expression locations and input/output examples</summary>
           <div className="intention-fields">
             <label>Return location<input name="return_ordinal" type="number" min={1} max={3000} /></label>
@@ -109,18 +125,21 @@ export function IntentionPanel({ code, onApply }: {
             <label>Input/output examples<textarea name="examples" maxLength={4000} placeholder='[{"args":[3],"expected_return":9}]' /></label>
           </div>
           <p>Locations start at 1 in source order. Examples are recorded for review.</p>
-        </details>
+        </details>}
         <button type="submit" className="primary" disabled={busy}>{busy ? "Analyzing intention…" : "Analyze Intention"}</button>
       </form>
       {error && <p role="alert">{error}</p>}
       {result && (
         <section aria-label="Intention results">
           <h3>{findings[result.finding] ?? result.finding}</h3>
+          {result.requirement_status === "UNSUPPORTED_DESCRIPTION" &&
+            <p><strong>Unsupported requirement wording.</strong> Use a named operation, a comparison, or an explicit expression.</p>}
           <p>{decisions[result.decision] ?? result.decision}</p>
           <p>{result.behavioral_status === "EXECUTION_UNSUPPORTED"
             ? "Behavioral checks are unsupported for this source." : "Behavioral verification unavailable."}</p>
           {result.candidates.length > 0 && <p>{result.ranking === "LEARNED"
-            ? "The model ranked comparable alternatives. Relative scores are not probabilities."
+            || result.ranking === "EXPANDED_LEARNED"
+            ? "The model ranked comparable alternatives. Relative scores indicate order."
             : "Compiler evidence and contextual rules ordered these alternatives."}</p>}
           {result.diagnostics.map((diagnostic, index) => (
             <p key={index}>{diagnostic.message}</p>
@@ -143,8 +162,15 @@ export function IntentionPanel({ code, onApply }: {
           {choice && analysis && (
             <section className="intention-preview" aria-label="Selected intention repair">
               <h4>Proposed edit</h4>
-              <p>{choice.hypothesis}</p>
-              <ul>{choice.evidence.map((fact, index) => <li key={index}>{fact.detail}</li>)}</ul>
+              <p><strong>Assumption</strong> {choice.hypothesis}</p>
+              <p><strong>Evidence strength</strong> {
+                choice.evidence.some((fact) => fact.kind === "USER_REQUIREMENT")
+                  ? "Supported by the supplied requirement"
+                  : result.finding === "COMPILER_ERROR" ? "Compiler-supported repair hypothesis" : "Code-only hypothesis"
+              }</p>
+              <ul>{choice.evidence.map((fact, index) => <li key={index}>
+                {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
+              </li>)}</ul>
               {choice.edits.map((edit, index) => (
                 <div className="inline-diff" key={index}>
                   <div className="diff-pair">

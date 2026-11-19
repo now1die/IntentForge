@@ -22,3 +22,4 @@ tests/.artifacts/
 .DS_Store
 
 !models/intention_ranker_v1.joblib
+!models/intention_ranker_v2.joblib

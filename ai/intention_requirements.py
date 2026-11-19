@@ -12,6 +12,7 @@ from compiler.ast_nodes import (
 from compiler.parser import parse
 
 from .intention_context import IntentionContext, NodeContext, ast_children
+from .requirement_language import normalize_description
 
 
 ALLOWED_EXPRESSION_NODES = (ArrayAccess, BinaryExpression, FunctionCall, Identifier, Literal, UnaryExpression)
@@ -110,7 +111,7 @@ def _domain_description(description: str, function: FunctionDefinition) -> dict[
     return {}
 
 
-def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], list[str]]:
+def resolve_targets(context: IntentionContext, *, enhanced: bool = False) -> tuple[list[ExpressionTarget], list[str]]:
     requirement = context.requirement
     if not requirement:
         return [], []
@@ -126,6 +127,7 @@ def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], 
     if len(functions) != 1 and subject_required:
         return [], ["Select one existing function before matching the requirement."]
     notes = []
+    normalized = None
     if requirement.examples:
         if any(len(example.args) != len(functions[0].parameters) for example in requirement.examples):
             raise InvalidRequirement("Example arguments must match the selected function's arity.")
@@ -135,6 +137,9 @@ def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], 
         named_expression = _description_expression(requirement.description)
         if named_expression:
             derived["return"] = named_expression
+        normalized = normalize_description(requirement.description, context, requirement.function) if enhanced else None
+        if normalized:
+            derived[normalized.subject] = normalized.expression
         for name, text in derived.items():
             if name not in expected:
                 expected[name] = (text, parse_expression(text), True)
@@ -151,6 +156,9 @@ def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], 
             and isinstance(record.node, ReturnStatement if is_return else CONDITIONALS)
         ]
         ordinal = requirement.return_ordinal if is_return else requirement.condition_ordinal
+        if (ordinal is None and requirement.description and not is_return and enhanced and name not in explicit
+                and normalized and normalized.subject == "condition"):
+            ordinal = normalized.condition_ordinal
         if ordinal is None and len(candidates) == 1:
             ordinal = 1
         if ordinal is None or not 1 <= ordinal <= len(candidates):

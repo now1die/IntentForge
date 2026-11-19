@@ -23,3 +23,5 @@ jobs:
       - run: python -m benchmarks.run --no-ollama --check
       - run: python -m benchmarks.phase2_audit
       - run: python -m benchmarks.phase2_evaluate --check
+      - run: python -m benchmarks.phase25_audit
+      - run: python -m benchmarks.phase25_evaluate --check

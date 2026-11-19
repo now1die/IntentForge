@@ -311,7 +311,10 @@ export interface IntentionCandidate {
   edits: { span: Diagnostic["span"]; original: string; proposed: string }[];
 }
 
+export type IntentionMode = "code_only" | "natural_language" | "explicit";
+
 export interface IntentionResponse {
+  requirement_status?: string | null;
   finding: string;
   decision: string;
   ranking: string;

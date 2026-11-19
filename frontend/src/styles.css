@@ -1049,6 +1049,7 @@ summary code {
   min-width: 0;
 }
 .intention-fields input,
+.intention-fields select,
 .intention-fields textarea {
   background: var(--panel);
   color: inherit;

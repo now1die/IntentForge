@@ -4,6 +4,7 @@ import type {
   CorrectionOptionsResponse,
   CorrectionResponse,
   Health,
+  IntentionMode,
   IntentionRequirement,
   IntentionResponse,
   SymbolsResponse,
@@ -57,8 +58,8 @@ async function intentionInputError(response: Response): Promise<string> {
   return payload.detail?.[0]?.msg ?? "Check the requirement fields and source length.";
 }
 
-export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, signal: AbortSignal) =>
-  request<IntentionResponse>("/v1/intention-analysis", { code, requirement }, signal);
+export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal) =>
+  request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode }, signal);
 
 export const checkHealth = (signal?: AbortSignal) => request<Health>("/health", undefined, signal);
 export const analyzeCode = (code: string, signal?: AbortSignal) => request<AnalysisResponse>("/analyze", { code }, signal);

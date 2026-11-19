@@ -16,7 +16,10 @@ from compiler.semantic_analyzer import analyze_source_semantics
 from compiler.symbol_table import SymbolKind
 
 from .correction_safety import RepairSafety, repair_key
-from .intention_candidates import MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream
+from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
+                                   compiler_proposals, requirement_proposals)
+from .intention_learning import ExpandedRanker, contextual_features
+from .intention_recovery import expanded_proposals
 from .intention_context import ContextLimit, IntentionContext, Requirement, build_context
 from .intention_ranker import Ranker
 from .intention_requirements import resolve_targets
@@ -68,6 +71,8 @@ class IntentionResult:
     notes: list[str]
     evidence: tuple[Evidence, ...] = ()
     attempts: int = 0
+    requirement_status: str | None = None
+    candidate_ms: float = 0.0
 
     def to_dict(self, *, include_context=False):
         ambiguous = self.decision == "AMBIGUOUS"
@@ -78,6 +83,7 @@ class IntentionResult:
             "diagnostics": [item.to_dict() for item in self.context.diagnostics],
             "evidence": [fact.to_dict() for fact in self.evidence],
             "notes": self.notes, "attempts": self.attempts,
+            **({"requirement_status": self.requirement_status} if self.requirement_status else {}),
             "candidates": [item.to_dict(self.context.source, ambiguous) for item in self.candidates],
             "context": self.context.to_dict() if include_context else None,
         }
@@ -100,7 +106,7 @@ def candidate_features(context, proposal, remaining):
     }
 
 
-def order_candidates(candidates: list[Candidate], ranker: Ranker | None):
+def order_candidates(candidates: list[Candidate], ranker: Ranker | None, *, expanded=None, experimental=None, deadline=None):
     """Keep validated and directly specified candidates ahead of other hypotheses."""
     groups = defaultdict(list)
     for candidate in candidates:
@@ -119,10 +125,15 @@ def order_candidates(candidates: list[Candidate], ranker: Ranker | None):
                 if not isfinite(score):
                     raise ValueError("Ranker returned a non-finite score")
                 candidate.relative_score = score
-        result.extend(sorted(group, key=lambda item: (
+        ordered = sorted(group, key=lambda item: (
             -(item.relative_score if item.relative_score is not None else item.features["identifier_similarity"]),
             not item.proposal.type_match, item.proposal.symbol_distance, item.id,
-        )))
+        ))
+        if expanded:
+            if deadline is not None and monotonic() >= deadline:
+                raise TimeoutError("Ranker budget expired")
+            ordered = expanded.order(ordered, experimental=experimental, deadline=deadline)
+        result.extend(ordered)
     return result
 
 
@@ -164,7 +175,7 @@ def _heuristic(context: IntentionContext) -> tuple[Evidence, ...]:
     return ()
 
 
-def _validate_candidate(context, proposal):
+def _validate_candidate(context, proposal, *, enhanced=False):
     try:
         fixed = apply_edits(context.source, proposal.edits)
     except ValueError:
@@ -179,27 +190,30 @@ def _validate_candidate(context, proposal):
         return None
     if proposal.specification_matches:
         # A replacement must really match the specified AST after parsing the patched program.
-        new_targets, _ = resolve_targets(build_context(fixed, context.requirement))
-        old_targets, _ = resolve_targets(context)
+        new_targets, _ = resolve_targets(build_context(fixed, context.requirement), enhanced=enhanced)
+        old_targets, _ = resolve_targets(context, enhanced=enhanced)
         if sum(target.matches for target in new_targets) < sum(target.matches for target in old_targets) + proposal.specification_matches:
             return None
     features = candidate_features(context, proposal, remaining)
+    if enhanced:
+        features.update(contextual_features(context, proposal))
     return Candidate("IR-" + sha256(fixed.encode()).hexdigest()[:12], fixed, proposal, checked.success, remaining, features)
 
 
 def analyze_intention(
     source: str, requirement: Requirement | None = None, *, ranker: Ranker | None = None,
     ranking_status: str = "DETERMINISTIC", budget_seconds: float = DEFAULT_BUDGET_SECONDS,
-    candidate_budget: int = MAX_CANDIDATES,
+    candidate_budget: int = MAX_CANDIDATES, enhanced: bool = False,
+    expanded_ranker: ExpandedRanker | None = None, experimental: str | None = None,
 ) -> IntentionResult:
     deadline = monotonic() + budget_seconds
     context = build_context(source, requirement)
     if _unsupported(context):
         return IntentionResult(context, "UNSUPPORTED_LANGUAGE", "NO_SUPPORTED_CORRECTION", ranking_status, [],
                                ["The source contains syntax outside the supported Mini-C subset."])
-    targets, notes = resolve_targets(context)
+    targets, notes = resolve_targets(context, enhanced=enhanced)
     mismatches = [target for target in targets if not target.matches]
-    heuristic = _heuristic(context) if context.compiler_valid and not mismatches else ()
+    heuristic = _heuristic(context) if not enhanced and context.compiler_valid and not mismatches else ()
     finding = ("COMPILER_ERROR" if not context.compiler_valid else "SPECIFICATION_SUPPORTED_SUSPICION" if mismatches
                else "HEURISTIC_SUSPICION" if heuristic else "NO_SUPPORTED_MISMATCH")
     evidence = heuristic or tuple(Evidence(
@@ -210,8 +224,16 @@ def analyze_intention(
     ) for target in mismatches)
     if heuristic:
         notes.append("The computed value could be intentional or unused. Provide a requirement before proposing a logic edit.")
-    proposals = islice(candidate_stream(context, targets), max(0, min(candidate_budget, MAX_CANDIDATES)))
-    unique = set()
+    started_generation = monotonic()
+    if enhanced:
+        def stream():
+            yield from requirement_proposals(context, targets)
+            yield from expanded_proposals(context, compiler_proposals(context), allow_heuristics=requirement is None)
+        source_proposals = stream()
+    else:
+        source_proposals = candidate_stream(context, targets)
+    proposals = islice(source_proposals, max(0, min(candidate_budget, MAX_CANDIDATES)))
+    unique = {}
     attempted_edits = set()
     candidates = []
     attempts = 0
@@ -227,7 +249,7 @@ def analyze_intention(
             attempted_edits.add(signature)
             attempts += 1
             try:
-                candidate = _validate_candidate(context, proposal)
+                candidate = _validate_candidate(context, proposal, enhanced=enhanced)
             except (ContextLimit, RecursionError):
                 continue
             if monotonic() >= deadline:
@@ -236,21 +258,38 @@ def analyze_intention(
             if candidate:
                 key = repair_key(candidate.proposed_code)
                 if key not in unique:
-                    unique.add(key)
+                    unique[key] = len(candidates)
                     candidates.append(candidate)
+                elif enhanced:
+                    index = unique[key]
+                    previous = candidates[index].proposal
+                    if ((candidate.proposal.specification_matches, -len(candidate.proposal.edits))
+                            > (previous.specification_matches, -len(previous.edits))):
+                        candidates[index] = candidate
+    candidate_ms = (monotonic() - started_generation) * 1000
+    if enhanced and context.compiler_valid and not mismatches and candidates:
+        finding = "HEURISTIC_SUSPICION"
+        evidence = candidates[0].proposal.evidence
+        notes.append("Context supports review of these alternatives. Programmer intent remains uncertain.")
     try:
-        candidates = order_candidates(candidates, ranker)
-    except (ValueError, TypeError, AttributeError, KeyError):
+        candidates = order_candidates(candidates, ranker, expanded=expanded_ranker, experimental=experimental,
+                                      deadline=deadline if expanded_ranker else None)
+    except (ValueError, TypeError, AttributeError, RuntimeError, KeyError, TimeoutError) as exc:
         for candidate in candidates:
             candidate.relative_score = None
-        ranking_status = "ARTIFACT_INCOMPATIBLE"
+        timed_out = timed_out or isinstance(exc, TimeoutError)
+        ranking_status = "RANKING_BUDGET_EXHAUSTED" if timed_out else "ARTIFACT_INCOMPATIBLE"
         candidates = order_candidates(candidates, None)
     if ranking_status == "LEARNED" and not any(candidate.relative_score is not None for candidate in candidates):
+        ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
+    if ranking_status == "EXPANDED_LEARNED" and not any(candidate.relative_score is not None for candidate in candidates):
         ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
     if timed_out:
         notes.append("The analysis budget expired. Only completed checks are shown.")
         decision = "BUDGET_EXHAUSTED"
-    elif candidates and candidates[0].compiler_valid and candidates[0].proposal.specification_matches             and candidates[0].proposal.specification_matches == len(mismatches) and not any("no unique location" in note for note in notes):
+    elif (candidates and candidates[0].compiler_valid and candidates[0].proposal.specification_matches
+          and candidates[0].proposal.specification_matches == len(mismatches)
+          and not any("no unique location" in note for note in notes)):
         decision = "STRONG_SPECIFICATION_EVIDENCE"
     elif len(candidates) > 1:
         decision = "AMBIGUOUS"
@@ -262,4 +301,17 @@ def analyze_intention(
         decision = "REQUIREMENT_SHAPE_MATCHES"
     else:
         decision = "NO_SUPPORTED_CORRECTION"
-    return IntentionResult(context, finding, decision, ranking_status, candidates, notes, evidence, attempts)
+    requirement_status = None
+    if enhanced:
+        if not requirement:
+            requirement_status = "CODE_ONLY"
+        elif targets:
+            requirement_status = "SUPPORTED"
+        elif any("description is recorded" in note for note in notes):
+            requirement_status = "UNSUPPORTED_DESCRIPTION"
+        else:
+            requirement_status = "UNRESOLVED"
+        if requirement_status == "UNSUPPORTED_DESCRIPTION":
+            decision = "INSUFFICIENT_CONTEXT"
+    return IntentionResult(context, finding, decision, ranking_status, candidates, notes, evidence, attempts,
+                           requirement_status, candidate_ms)
