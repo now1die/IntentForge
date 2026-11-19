@@ -8,7 +8,9 @@ class FakeResponse:
     def __init__(self, payload): self.payload = json.dumps(payload).encode()
     def __enter__(self): return self
     def __exit__(self, *args): return False
-    def read(self): return self.payload
+    def read(self, size):
+        chunk, self.payload = self.payload[:size], self.payload[size:]
+        return chunk
 
 class FakeOpener:
     def __init__(self): self.calls=[]

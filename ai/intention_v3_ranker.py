@@ -5,14 +5,16 @@ from math import isfinite
 from pathlib import Path
 from time import monotonic
 
-import joblib
 from sklearn.pipeline import Pipeline
+
+from .artifact_trust import load_packaged_artifact
 
 from .intention_generalization import evidence_strength
 from .intention_learning import difference
 
 
 MODEL = Path(__file__).resolve().parents[1] / "models" / "intention_ranker_v3.joblib"
+V4_MODEL = MODEL.with_name("intention_ranker_v4.joblib")
 SCHEMA = 1
 # These textual similarities and rule hints are useful audit fields, but
 # are deliberately excluded from the learned scores.
@@ -66,17 +68,19 @@ class GeneralizedRanker:
         return result
 
 
-@lru_cache(maxsize=1)
-def load_generalized_ranker():
+@lru_cache(maxsize=2)
+def load_generalized_ranker(version=3):
+    path = V4_MODEL if version == 4 else MODEL
+    label = f"V{version}"
     try:
-        if MODEL.stat().st_size > 2_000_000:
+        if path.stat().st_size > 2_000_000:
             raise ValueError("Ranker exceeds artifact budget")
-        artifact = joblib.load(MODEL)
+        artifact = load_packaged_artifact(path)
         models, selected = artifact["models"], artifact["selected"]
         if (artifact["schema"] != SCHEMA or not isinstance(selected, dict)
                 or not all(isinstance(model, Pipeline) for model in models.values())
                 or not all(method in models for method in selected.values())):
             raise ValueError("Incompatible ranker artifact")
     except Exception:
-        return None, "V3_ARTIFACT_UNAVAILABLE"
-    return GeneralizedRanker(models, selected), "V3_LEARNED" if selected else "V3_DETERMINISTIC"
+        return None, f"{label}_ARTIFACT_UNAVAILABLE"
+    return GeneralizedRanker(models, selected), f"{label}_LEARNED" if selected else f"{label}_DETERMINISTIC"

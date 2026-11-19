@@ -26,7 +26,7 @@ def get_predictor() -> MLCorrectionPredictor:
     if not MODEL_PATH.is_file():
         raise ModelUnavailableError("Correction model is unavailable; train it first")
     try:
-        return MLCorrectionPredictor.load(MODEL_PATH)
+        return MLCorrectionPredictor.load(MODEL_PATH, verify_packaged=True)
     except Exception as exc:
         raise ModelUnavailableError("Correction model could not be loaded") from exc
 

@@ -5,6 +5,7 @@ from starlette.concurrency import run_in_threadpool
 
 from clang_backend.adapter import MAX_BYTES, MAX_FILES, MAX_UNITS, analyze, capability
 from clang_backend.contract import Analysis, Capability
+from .request_body import bounded_body
 
 router = APIRouter(tags=["Clang analysis"])
 MAX_BODY = 640_000  # includes JSON escapes for the bounded UTF-8 payload
@@ -35,11 +36,7 @@ def c_capability():
     "required": True, "content": {"application/json": {"schema": AnalysisRequest.model_json_schema()}}
 }})
 async def c_analysis(request: Request):
-    body = bytearray()
-    async for chunk in request.stream():
-        if len(body) + len(chunk) > MAX_BODY:
-            raise HTTPException(status_code=413, detail="The Clang request body exceeds 640 KB.")
-        body.extend(chunk)
+    body = await bounded_body(request, MAX_BODY)
     try:
         payload = AnalysisRequest.model_validate_json(body)
     except ValidationError as exc:

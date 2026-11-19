@@ -49,7 +49,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -103,9 +103,10 @@ export function IntentionPanel({ code, onApply }: {
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
           <label>Intention engine
-            <select value={engineVersion} onChange={(event) => setEngineVersion(event.target.value === "3" ? 3 : 2)}>
+            <select value={engineVersion} onChange={(event) => setEngineVersion(event.target.value === "4" ? 4 : event.target.value === "3" ? 3 : 2)}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
+              <option value="4">Phase 3.5 evidence</option>
             </select>
           </label>
           <label>Analysis mode
@@ -142,10 +143,12 @@ export function IntentionPanel({ code, onApply }: {
           {result.requirement_status === "UNSUPPORTED_DESCRIPTION" &&
             <p><strong>Unsupported requirement wording.</strong> Use a named operation, a comparison, or an explicit expression.</p>}
           <p>{decisions[result.decision] ?? result.decision}</p>
+          {result.recommendation === "ABSTAIN" && <p>No repair recommendation. Review the available evidence.</p>}
+          {result.recommendation === "REVIEW_WITH_EVIDENCE" && <p>Evidence supports reviewing the first alternative.</p>}
           <p>{result.behavioral_status === "EXECUTION_UNSUPPORTED"
             ? "Behavioral checks are unsupported for this source." : "Behavioral verification unavailable."}</p>
           {result.candidates.length > 0 && <p>{result.ranking === "LEARNED"
-            || result.ranking === "EXPANDED_LEARNED" || result.ranking === "V3_LEARNED"
+            || result.ranking === "EXPANDED_LEARNED" || result.ranking === "V3_LEARNED" || result.ranking === "V4_LEARNED"
             ? "The model ranked comparable alternatives. Relative scores indicate order."
             : "Compiler evidence and contextual rules ordered these alternatives."}</p>}
           {result.diagnostics.map((diagnostic, index) => (
@@ -161,7 +164,7 @@ export function IntentionPanel({ code, onApply }: {
                     Review {index + 1} · {candidate.category.toLowerCase().replaceAll("_", " ")}
                   </button>
                   {" "}{candidate.compiler_valid ? "Compiler valid" : "Diagnostics remain"}
-                  {candidate.relative_score !== null && <small> · Relative rank score {candidate.relative_score.toFixed(2)}</small>}
+                  {engineVersion !== 4 && candidate.relative_score !== null && <small> · Relative rank score {candidate.relative_score.toFixed(2)}</small>}
                 </li>
               ))}
             </ul>
@@ -171,7 +174,9 @@ export function IntentionPanel({ code, onApply }: {
               <h4>Proposed edit</h4>
               <p><strong>Assumption</strong> {choice.hypothesis}</p>
               <p><strong>Evidence strength</strong> {
-                choice.evidence.some((fact) => fact.kind === "USER_REQUIREMENT")
+                choice.tier === "STRONG_CONTEXT" ? "Strong contextual hypothesis"
+                  : choice.tier === "WEAK_CONTEXT" ? "Weak contextual hypothesis"
+                  : choice.evidence.some((fact) => fact.kind === "USER_REQUIREMENT")
                   ? "Supported by the supplied requirement"
                   : result.finding === "COMPILER_ERROR" ? "Compiler-supported repair hypothesis" : "Code-only hypothesis"
               }</p>

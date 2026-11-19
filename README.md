@@ -123,3 +123,18 @@ and [mode usage](docs/phase2_5_intention_analysis.md).
 python -m benchmarks.phase25_audit
 python -m benchmarks.phase25_evaluate --check
 ```
+
+## Phase 3.5 evidence and verification
+
+Choose **Intention engine → Phase 3.5 evidence** in Mini-C to try the
+new bounded candidate recovery and review guidance. **Inspect compiler
+evidence** uses the shared versioned endpoint in Mini-C and C / Clang.
+Clang remains opt-in on a supported isolated Linux deployment.
+
+The v4 ranking artifact includes experimental models. The held-out
+selection gate kept deterministic ordering active. Live Ollama and
+public Clang deployment are unverified. The behavioral oracle is a
+tested interface for a future Mini-C interpreter.
+
+[Phase 3.5 final review](docs/PHASE_3_5_FINAL_REVIEW.md) ·
+[Phase 4 readiness](docs/PHASE_4_READINESS.md)

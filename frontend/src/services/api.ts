@@ -58,7 +58,7 @@ async function intentionInputError(response: Response): Promise<string> {
   return payload.detail?.[0]?.msg ?? "Check the requirement fields and source length.";
 }
 
-export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 = 2) =>
+export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 = 2) =>
   request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode, engine_version: engineVersion }, signal);
 
 export const checkHealth = (signal?: AbortSignal) => request<Health>("/health", undefined, signal);
@@ -75,3 +75,7 @@ export const clangCapability = (signal: AbortSignal) =>
   request<import("../types/clang").ClangCapability>("/v1/c-analysis/capability", undefined, signal);
 export const analyzeC = (code: string, standard: string, signal: AbortSignal) =>
   request<import("../types/clang").ClangAnalysis>("/v1/c-analysis", { code, standard }, signal);
+
+export const inspectCompilerEvidence = (code: string, language: "mini-c" | "c", standard: string, signal: AbortSignal) =>
+  request<import("../types/evidence").SharedEvidenceReport>("/v1/compiler-evidence",
+    language === "c" ? { code, language, standard } : { code, language }, signal);

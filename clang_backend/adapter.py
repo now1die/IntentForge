@@ -10,8 +10,10 @@ import signal
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
-from threading import BoundedSemaphore
+from threading import BoundedSemaphore, Lock
 from time import monotonic
+
+from pydantic import ValidationError
 
 from .contract import Analysis, Capability
 
@@ -25,6 +27,7 @@ PROBE_TIMEOUT = 12
 WORKER = Path(__file__).with_name("worker.py")
 SEGMENT = re.compile(r"[A-Za-z0-9_][A-Za-z0-9_.-]{0,63}")
 SLOTS = BoundedSemaphore(2)
+PROBE_LOCK = Lock()
 
 
 @dataclass
@@ -37,6 +40,7 @@ def _run(args, directory, timeout=TIMEOUT, limit=MAX_OUTPUT):
     deadline = monotonic() + timeout
     environment = {"PATH": os.defpath, "LC_ALL": "C", "TMPDIR": str(directory)}
     # Use the same Python installation, without copying application secrets into the worker.
+    completed = False
     with subprocess.Popen([sys.executable, "-I", str(WORKER), *args], cwd=directory, env=environment,
                           stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
                           start_new_session=True) as process, selectors.DefaultSelector() as selector:
@@ -58,13 +62,17 @@ def _run(args, directory, timeout=TIMEOUT, limit=MAX_OUTPUT):
                 raise WorkerError("timeout", "The Clang worker exceeded its CPU limit.")
             if status != 0:
                 raise WorkerError("unavailable", "The Clang worker stopped before completing analysis.")
-            return json.loads(output)
+            result = json.loads(output)
+            if not isinstance(result, dict):
+                raise ValueError("Expected object")
+            completed = True
+            return result
         except subprocess.TimeoutExpired:
             raise WorkerError("timeout", "The Clang worker exceeded its time limit.") from None
         except (ValueError, OSError):
             raise WorkerError("unavailable", "The Clang worker returned invalid evidence.") from None
         finally:
-            if process.poll() is None:
+            if not completed:
                 try:
                     os.killpg(process.pid, signal.SIGKILL)
                 except ProcessLookupError:
@@ -75,20 +83,28 @@ def _run(args, directory, timeout=TIMEOUT, limit=MAX_OUTPUT):
 def _discover(enabled, library):
     if enabled != "isolated":
         return Capability(status="unavailable", detail="Clang analysis is disabled on this deployment.")
+    if sys.platform != "linux":
+        return Capability(status="unavailable", detail="Clang isolation requires Linux.")
     if not library or not Path(library).is_absolute() or not Path(library).is_file():
         return Capability(status="unavailable", detail="Configure an absolute libclang 19 library path.")
+    # functools caching alone can run the same cold native probe concurrently.
+    if not PROBE_LOCK.acquire(blocking=False):
+        raise WorkerError("unavailable", "Clang capability discovery is in progress. Retry shortly.")
     try:
         with TemporaryDirectory(prefix="intentforge-c-") as name:
             result = _run([str(Path(library).resolve()), "probe"], Path(name), timeout=PROBE_TIMEOUT)
-    except WorkerError as exc:
-        return Capability(status="unavailable", detail=exc.detail)
-    except OSError:
+            return Capability.model_validate(result)
+    except (OSError, ValidationError):
         return Capability(status="unavailable", detail="The Clang installation could not be loaded.")
-    return Capability(**result)
+    finally:
+        PROBE_LOCK.release()
 
 
 def capability():
-    return _discover(os.getenv("INTENTFORGE_CLANG_MODE"), os.getenv("INTENTFORGE_LIBCLANG"))
+    try:
+        return _discover(os.getenv("INTENTFORGE_CLANG_MODE"), os.getenv("INTENTFORGE_LIBCLANG"))
+    except WorkerError as exc:
+        return Capability(status="unavailable", detail=exc.detail)
 
 
 def _validate(files, entries):
@@ -124,7 +140,12 @@ def analyze(files, entries, standard):
             (home / "request.json").write_text(json.dumps({"files": files, "entries": entries, "standard": standard}),
                                                encoding="utf-8")
             result = _run([str(library), "analyze"], home)
-            return Analysis(version=ready.version, standard=standard, files=list(files), **result)
+            try:
+                payload = {"status": result.get("status"), "detail": result.get("detail"),
+                           "units": result.get("units", [])}
+                return Analysis(version=ready.version, standard=standard, files=list(files), **payload)
+            except ValidationError as exc:
+                raise WorkerError("unavailable", "Clang analysis evidence could not be validated.") from exc
     except WorkerError as exc:
         return Analysis(status=exc.status, detail=exc.detail, standard=standard, version=ready.version)
     except (OSError, UnicodeError):

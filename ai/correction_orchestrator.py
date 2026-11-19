@@ -26,6 +26,7 @@ from .llm_fallback import (
     LLMFallbackResult,
     LLMFallbackService,
     LLMSuggestion,
+    OllamaFallbackService,
     free_form_suggestion_rejection,
     suggestion_to_candidate,
 )
@@ -815,8 +816,8 @@ class CorrectionOrchestrator:
             policy=self.policy,
         )
 
-    @staticmethod
     def _record_review(
+        self,
         history: list[CorrectionHistoryEntry],
         entry: CorrectionHistoryEntry,
         auto_apply: bool,
@@ -825,7 +826,13 @@ class CorrectionOrchestrator:
         ambiguous: bool = False,
     ) -> bool:
         safety = assess_repair(entry.selected_candidate, entry.validation, ambiguous=ambiguous)
-        requires_review = not auto_apply or (not preview and safety.requires_review)
+        ollama_advice = isinstance(self.llm_fallback, OllamaFallbackService) and (
+            entry.llm_fallback is not None or entry.ambiguity_selection is not None
+        )
+        if ollama_advice:
+            safety = RepairSafety("AMBIGUOUS" if ambiguous else "UNVERIFIED",
+                                  "Ollama-assisted alternatives require explicit approval.")
+        requires_review = ollama_advice or not auto_apply or (not preview and safety.requires_review)
         if requires_review:
             entry = replace(entry, status=CorrectionStatus.SUGGESTED, reason="correction_requires_review")
         history.append(replace(entry, safety=safety))

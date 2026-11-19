@@ -1,0 +1,16 @@
+**
+!analysis_evidence/
+!analysis_evidence/__init__.py
+!analysis_evidence/contract.py
+!clang_backend/
+!clang_backend/*.py
+!backend/
+!backend/app/
+!backend/app/__init__.py
+!backend/app/clang_service.py
+!backend/app/routes/
+!backend/app/routes/__init__.py
+!backend/app/routes/clang_analysis.py
+!backend/app/routes/request_body.py
+!deployment/
+!deployment/clang.Dockerfile

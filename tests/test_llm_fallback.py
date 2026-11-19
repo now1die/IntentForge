@@ -656,13 +656,14 @@ def test_single_deterministic_candidate_never_calls_ambiguity_selector() -> None
 
 class FakeUrlResponse:
     def __init__(self, payload: dict):
-        self.payload = payload
+        self.payload = json.dumps(payload).encode("utf-8")
     def __enter__(self):
         return self
     def __exit__(self, *args):
         return False
-    def read(self):
-        return json.dumps(self.payload).encode("utf-8")
+    def read(self, size):
+        chunk, self.payload = self.payload[:size], self.payload[size:]
+        return chunk
 
 
 def fake_ollama_opener_factory(payloads):
@@ -737,3 +738,18 @@ def test_ollama_selection_only_returns_supplied_candidate_id():
     assert result.attempted and result.selection is not None
     assert result.selection.selected_candidate_id == "candidate-1"
     assert calls[-1][0].endswith("/api/chat")
+
+
+def test_ollama_fallback_is_review_only_even_when_previewing() -> None:
+    source = "int main(){if(true {return 0;}}"
+    suggestion = insert_rparen_suggestion(source)
+    opener, calls = fake_ollama_opener_factory({
+        "tags": {"models": [{"name": "test:latest"}]},
+        "chat": {"message": {"content": json.dumps(suggestion.to_dict())}},
+    })
+    service = OllamaFallbackService(model="test", opener=opener)
+    result = CorrectionOrchestrator(FixedPredictor(0.40), llm_fallback=service).correct(source, preview=True)
+    entry = result.history[0]
+    assert calls and entry.llm_fallback.accepted
+    assert entry.validation.relevant_valid and entry.safety.requires_review
+    assert entry.status is CorrectionStatus.SUGGESTED and result.corrected_source == source

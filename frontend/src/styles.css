@@ -1081,3 +1081,6 @@ summary code {
 .clang-tabs [aria-pressed="true"] { border-color: #97d4b5; }
 .clang-inspector li { margin-block: .45rem; overflow-wrap: anywhere; }
 .clang-inspector li button { margin-inline: .4rem; }
+
+.shared-evidence { padding: 1rem; }
+.shared-evidence li { margin-block: .3rem; overflow-wrap: anywhere; }

@@ -13,6 +13,8 @@ import re
 import joblib
 from sklearn.pipeline import Pipeline
 
+from .artifact_trust import load_packaged_artifact
+
 from compiler.ast_nodes import ArrayAccess, Assignment, FunctionCall, Identifier, UpdateExpression
 from compiler.symbol_table import ScopeKind
 
@@ -80,7 +82,7 @@ def load_expanded_ranker(path=MODEL_PATH):
     try:
         if Path(path).stat().st_size > 2_000_000:
             return None, "EXPANDED_ARTIFACT_INCOMPATIBLE"
-        artifact = joblib.load(path)
+        artifact = load_packaged_artifact(path) if Path(path) == MODEL_PATH else joblib.load(path)
         if artifact["feature_version"] != FEATURE_VERSION:
             return None, "EXPANDED_ARTIFACT_INCOMPATIBLE"
         models = artifact["models"]

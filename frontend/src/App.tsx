@@ -1,5 +1,6 @@
 import { ClangEvidence } from "./components/ClangEvidence";
 import type { ClangAnalysis, ClangCapability, ClangSpan } from "./types/clang";
+import { SharedEvidence } from "./components/SharedEvidence";
 import { IntentionPanel } from "./components/IntentionPanel";
 import { useEffect, useRef, useState } from "react";
 import { FileCode, X, ArrowRight } from "@phosphor-icons/react";
@@ -371,6 +372,8 @@ export default function App() {
           )}
         </div>
       </section>}
+      <SharedEvidence key={JSON.stringify([language, standard, code])} code={code}
+        language={fullC ? "c" : "mini-c"} standard={standard} discovering={fullC && clang === null} focus={focusClang} />
       <footer className="statusbar">
         <span role="status" aria-live="polite">
           {notice}

@@ -9,6 +9,8 @@ from pathlib import Path
 import joblib
 from sklearn.pipeline import Pipeline
 
+from .artifact_trust import load_packaged_artifact
+
 
 FEATURE_VERSION = 1
 MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "intention_ranker_v1.joblib"
@@ -27,7 +29,7 @@ class Ranker:
 def load_ranker(path: Path = MODEL_PATH) -> tuple[Ranker | None, str]:
     """Load a repository-owned artifact. Requests cannot specify artifact paths."""
     try:
-        artifact = joblib.load(path)
+        artifact = load_packaged_artifact(path) if Path(path) == MODEL_PATH else joblib.load(path)
         if artifact["feature_version"] != FEATURE_VERSION or not isinstance(artifact["model"], Pipeline):
             return None, "ARTIFACT_INCOMPATIBLE"
         if not artifact["enabled"]:

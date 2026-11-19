@@ -1,0 +1,285 @@
+{
+  "artifact_sha256": "1efbf1db01891ca8ba007c7119d16d69a4067504aa8d64b26d8f018073d1b588",
+  "calibration": {
+    "boosted": {
+      "evidence_strata": {
+        "other": {
+          "count": 4,
+          "errors": 0
+        },
+        "strong": {
+          "count": 1,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        4,
+        5
+      ],
+      "selection_risk": [
+        {
+          "errors": 0,
+          "retained": 1
+        },
+        {
+          "errors": 0,
+          "retained": 2
+        },
+        {
+          "errors": 0,
+          "retained": 4
+        }
+      ]
+    },
+    "pairwise": {
+      "evidence_strata": {
+        "other": {
+          "count": 4,
+          "errors": 1
+        },
+        "strong": {
+          "count": 1,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        4,
+        5
+      ],
+      "selection_risk": [
+        {
+          "errors": 0,
+          "retained": 1
+        },
+        {
+          "errors": 0,
+          "retained": 2
+        },
+        {
+          "errors": 1,
+          "retained": 4
+        }
+      ]
+    },
+    "pointwise": {
+      "evidence_strata": {
+        "other": {
+          "count": 4,
+          "errors": 0
+        },
+        "strong": {
+          "count": 1,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        4,
+        5
+      ],
+      "selection_risk": [
+        {
+          "errors": 0,
+          "retained": 1
+        },
+        {
+          "errors": 0,
+          "retained": 2
+        },
+        {
+          "errors": 0,
+          "retained": 4
+        }
+      ]
+    }
+  },
+  "calibration_note": "Too few separated families and margin pairs for probabilities or category calibration.",
+  "partitions": {
+    "calibration": 7,
+    "development": 2,
+    "selection": 5,
+    "train": 13
+  },
+  "selected": {},
+  "selection": {
+    "ARRAY_INDEX": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 1,
+        "pairwise": 1,
+        "pointwise": 1,
+        "v2_on_v3_pool": 1
+      }
+    },
+    "COMPARISON_OPERATOR": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 1,
+        "pairwise": 1,
+        "pointwise": 1,
+        "v2_on_v3_pool": 1
+      }
+    },
+    "DECLARATION_TYPE": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 1,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 1,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 0,
+        "pairwise": 0,
+        "pointwise": 0,
+        "v2_on_v3_pool": 1
+      }
+    },
+    "FUNCTION_ARGUMENT": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 1,
+        "pairwise": 1,
+        "pointwise": 1,
+        "v2_on_v3_pool": 1
+      }
+    },
+    "VARIABLE_REFERENCE": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 1,
+        "pairwise": 1,
+        "pointwise": 1,
+        "v2_on_v3_pool": 1
+      }
+    }
+  },
+  "selection_top1": {
+    "boosted": [
+      5,
+      5
+    ],
+    "deterministic": [
+      4,
+      5
+    ],
+    "pairwise": [
+      4,
+      5
+    ],
+    "pointwise": [
+      4,
+      5
+    ],
+    "v2": [
+      5,
+      5
+    ],
+    "v3": [
+      4,
+      5
+    ]
+  },
+  "training": {
+    "pair_rows": 38,
+    "point_positives": 10,
+    "point_rows": 29
+  },
+  "uncertainty_policy": {
+    "cases": 7,
+    "cases_with_candidates": 6,
+    "errors": {
+      "COMPILER_CONFIRMED_ISSUE": 2,
+      "STRONG_CONTEXT": 0,
+      "recommended": 0
+    },
+    "levels": {
+      "COMPILER_CONFIRMED_ISSUE": 5,
+      "STRONG_CONTEXT": 1,
+      "recommended": 1
+    }
+  }
+}
