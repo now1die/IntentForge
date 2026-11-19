@@ -98,3 +98,16 @@ python -m benchmarks.review_corpus
 python -m benchmarks.run --no-ollama --check
 python -m test_suite.run_keyboard_and_array_regression --verify
 ```
+
+## Phase 2 intention analysis
+
+Use the **Intention** tab or `POST /v1/intention-analysis` to inspect scoped,
+compiler-validated alternatives and supply a return or condition requirement.
+Apply any proposed change explicitly. See the [usage guide](docs/phase2_intention_detection.md),
+[model card](docs/phase2_model_card.md), [evaluation](docs/phase2_evaluation.md),
+and [final review](docs/PHASE_2_FINAL_REVIEW.md).
+
+```sh
+python -m benchmarks.phase2_audit
+python -m benchmarks.phase2_evaluate --check
+```

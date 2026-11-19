@@ -1,0 +1,1206 @@
+{
+  "version": 1,
+  "seed": 2081,
+  "cases": [
+    {
+      "id": "accumulate_then_report_0",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_0(int value){int subtotal=value+17; int address=1; subtotal+=2; return addres;}",
+      "accepted": "int accumulate_then_report_0(int value){int subtotal=value+17; int address=1; subtotal+=2; return subtotal;}"
+    },
+    {
+      "id": "accumulate_then_report_1",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_1(int value){int running=value+8; int moment=1; running+=2; return momnt;}",
+      "accepted": "int accumulate_then_report_1(int value){int running=value+8; int moment=1; running+=2; return running;}"
+    },
+    {
+      "id": "accumulate_then_report_2",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_2(int value){int reading=value+3; int capacity=1; reading+=2; return capacit;}",
+      "accepted": "int accumulate_then_report_2(int value){int reading=value+3; int capacity=1; reading+=2; return reading;}"
+    },
+    {
+      "id": "accumulate_then_report_3",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_3(int value){int combined=value+16; int position=1; combined+=2; return postion;}",
+      "accepted": "int accumulate_then_report_3(int value){int combined=value+16; int position=1; combined+=2; return combined;}"
+    },
+    {
+      "id": "accumulate_then_report_4",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_4(int value){int estimate=value+4; int padding=1; estimate+=2; return paddng;}",
+      "accepted": "int accumulate_then_report_4(int value){int estimate=value+4; int padding=1; estimate+=2; return estimate;}"
+    },
+    {
+      "id": "accumulate_then_report_5",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_5(int value){int measured=value+15; int threshold=1; measured+=2; return thresold;}",
+      "accepted": "int accumulate_then_report_5(int value){int measured=value+15; int threshold=1; measured+=2; return measured;}"
+    },
+    {
+      "id": "accumulate_then_report_6",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_6(int value){int result=value+7; int interval=1; result+=2; return intervl;}",
+      "accepted": "int accumulate_then_report_6(int value){int result=value+7; int interval=1; result+=2; return result;}"
+    },
+    {
+      "id": "accumulate_then_report_7",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_7(int value){int quantity=value+15; int marker=1; quantity+=2; return markr;}",
+      "accepted": "int accumulate_then_report_7(int value){int quantity=value+15; int marker=1; quantity+=2; return quantity;}"
+    },
+    {
+      "id": "accumulate_then_report_8",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_8(int value){int balance=value+8; int shadow=1; balance+=2; return shado;}",
+      "accepted": "int accumulate_then_report_8(int value){int balance=value+8; int shadow=1; balance+=2; return balance;}"
+    },
+    {
+      "id": "accumulate_then_report_9",
+      "family": "accumulate_then_report",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int accumulate_then_report_9(int value){int progress=value+8; int previous=1; progress+=2; return progres;}",
+      "accepted": "int accumulate_then_report_9(int value){int progress=value+8; int previous=1; progress+=2; return progress;}"
+    },
+    {
+      "id": "branch_then_update_0",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_0(int value, bool enabled){int subtotal=value; int address=8; if(enabled){subtotal+=3;} subtotal*=2; return addres;}",
+      "accepted": "int branch_then_update_0(int value, bool enabled){int subtotal=value; int address=8; if(enabled){subtotal+=3;} subtotal*=2; return subtotal;}"
+    },
+    {
+      "id": "branch_then_update_1",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_1(int value, bool enabled){int running=value; int moment=8; if(enabled){running+=3;} running*=2; return momnt;}",
+      "accepted": "int branch_then_update_1(int value, bool enabled){int running=value; int moment=8; if(enabled){running+=3;} running*=2; return running;}"
+    },
+    {
+      "id": "branch_then_update_2",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_2(int value, bool enabled){int reading=value; int capacity=8; if(enabled){reading+=3;} reading*=2; return capacit;}",
+      "accepted": "int branch_then_update_2(int value, bool enabled){int reading=value; int capacity=8; if(enabled){reading+=3;} reading*=2; return reading;}"
+    },
+    {
+      "id": "branch_then_update_3",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_3(int value, bool enabled){int combined=value; int position=8; if(enabled){combined+=3;} combined*=2; return postion;}",
+      "accepted": "int branch_then_update_3(int value, bool enabled){int combined=value; int position=8; if(enabled){combined+=3;} combined*=2; return combined;}"
+    },
+    {
+      "id": "branch_then_update_4",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_4(int value, bool enabled){int estimate=value; int padding=8; if(enabled){estimate+=3;} estimate*=2; return paddng;}",
+      "accepted": "int branch_then_update_4(int value, bool enabled){int estimate=value; int padding=8; if(enabled){estimate+=3;} estimate*=2; return estimate;}"
+    },
+    {
+      "id": "branch_then_update_5",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_5(int value, bool enabled){int measured=value; int threshold=8; if(enabled){measured+=3;} measured*=2; return thresold;}",
+      "accepted": "int branch_then_update_5(int value, bool enabled){int measured=value; int threshold=8; if(enabled){measured+=3;} measured*=2; return measured;}"
+    },
+    {
+      "id": "branch_then_update_6",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_6(int value, bool enabled){int result=value; int interval=8; if(enabled){result+=3;} result*=2; return intervl;}",
+      "accepted": "int branch_then_update_6(int value, bool enabled){int result=value; int interval=8; if(enabled){result+=3;} result*=2; return result;}"
+    },
+    {
+      "id": "branch_then_update_7",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_7(int value, bool enabled){int quantity=value; int marker=8; if(enabled){quantity+=3;} quantity*=2; return markr;}",
+      "accepted": "int branch_then_update_7(int value, bool enabled){int quantity=value; int marker=8; if(enabled){quantity+=3;} quantity*=2; return quantity;}"
+    },
+    {
+      "id": "branch_then_update_8",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_8(int value, bool enabled){int balance=value; int shadow=8; if(enabled){balance+=3;} balance*=2; return shado;}",
+      "accepted": "int branch_then_update_8(int value, bool enabled){int balance=value; int shadow=8; if(enabled){balance+=3;} balance*=2; return balance;}"
+    },
+    {
+      "id": "branch_then_update_9",
+      "family": "branch_then_update",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_then_update_9(int value, bool enabled){int progress=value; int previous=8; if(enabled){progress+=3;} progress*=2; return progres;}",
+      "accepted": "int branch_then_update_9(int value, bool enabled){int progress=value; int previous=8; if(enabled){progress+=3;} progress*=2; return progress;}"
+    },
+    {
+      "id": "bounded_while_0",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_0(int value){int subtotal=value; int address=9; while(subtotal<11){subtotal++;} return addres;}",
+      "accepted": "int bounded_while_0(int value){int subtotal=value; int address=9; while(subtotal<11){subtotal++;} return subtotal;}"
+    },
+    {
+      "id": "bounded_while_1",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_1(int value){int running=value; int moment=9; while(running<6){running++;} return momnt;}",
+      "accepted": "int bounded_while_1(int value){int running=value; int moment=9; while(running<6){running++;} return running;}"
+    },
+    {
+      "id": "bounded_while_2",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_2(int value){int reading=value; int capacity=9; while(reading<15){reading++;} return capacit;}",
+      "accepted": "int bounded_while_2(int value){int reading=value; int capacity=9; while(reading<15){reading++;} return reading;}"
+    },
+    {
+      "id": "bounded_while_3",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_3(int value){int combined=value; int position=9; while(combined<16){combined++;} return postion;}",
+      "accepted": "int bounded_while_3(int value){int combined=value; int position=9; while(combined<16){combined++;} return combined;}"
+    },
+    {
+      "id": "bounded_while_4",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_4(int value){int estimate=value; int padding=9; while(estimate<17){estimate++;} return paddng;}",
+      "accepted": "int bounded_while_4(int value){int estimate=value; int padding=9; while(estimate<17){estimate++;} return estimate;}"
+    },
+    {
+      "id": "bounded_while_5",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_5(int value){int measured=value; int threshold=9; while(measured<5){measured++;} return thresold;}",
+      "accepted": "int bounded_while_5(int value){int measured=value; int threshold=9; while(measured<5){measured++;} return measured;}"
+    },
+    {
+      "id": "bounded_while_6",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_6(int value){int result=value; int interval=9; while(result<2){result++;} return intervl;}",
+      "accepted": "int bounded_while_6(int value){int result=value; int interval=9; while(result<2){result++;} return result;}"
+    },
+    {
+      "id": "bounded_while_7",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_7(int value){int quantity=value; int marker=9; while(quantity<14){quantity++;} return markr;}",
+      "accepted": "int bounded_while_7(int value){int quantity=value; int marker=9; while(quantity<14){quantity++;} return quantity;}"
+    },
+    {
+      "id": "bounded_while_8",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_8(int value){int balance=value; int shadow=9; while(balance<9){balance++;} return shado;}",
+      "accepted": "int bounded_while_8(int value){int balance=value; int shadow=9; while(balance<9){balance++;} return balance;}"
+    },
+    {
+      "id": "bounded_while_9",
+      "family": "bounded_while",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bounded_while_9(int value){int progress=value; int previous=9; while(progress<14){progress++;} return progres;}",
+      "accepted": "int bounded_while_9(int value){int progress=value; int previous=9; while(progress<14){progress++;} return progress;}"
+    },
+    {
+      "id": "computed_global_array_lookup_0",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_0[8]; int computed_global_array_lookup_0(int value){int subtotal=data_computed_global_array_lookup_0[value]; int address=2; subtotal+=data_computed_global_array_lookup_0[0]; return addres;}",
+      "accepted": "int data_computed_global_array_lookup_0[8]; int computed_global_array_lookup_0(int value){int subtotal=data_computed_global_array_lookup_0[value]; int address=2; subtotal+=data_computed_global_array_lookup_0[0]; return subtotal;}"
+    },
+    {
+      "id": "computed_global_array_lookup_1",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_1[8]; int computed_global_array_lookup_1(int value){int running=data_computed_global_array_lookup_1[value]; int moment=2; running+=data_computed_global_array_lookup_1[0]; return momnt;}",
+      "accepted": "int data_computed_global_array_lookup_1[8]; int computed_global_array_lookup_1(int value){int running=data_computed_global_array_lookup_1[value]; int moment=2; running+=data_computed_global_array_lookup_1[0]; return running;}"
+    },
+    {
+      "id": "computed_global_array_lookup_2",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_2[8]; int computed_global_array_lookup_2(int value){int reading=data_computed_global_array_lookup_2[value]; int capacity=2; reading+=data_computed_global_array_lookup_2[0]; return capacit;}",
+      "accepted": "int data_computed_global_array_lookup_2[8]; int computed_global_array_lookup_2(int value){int reading=data_computed_global_array_lookup_2[value]; int capacity=2; reading+=data_computed_global_array_lookup_2[0]; return reading;}"
+    },
+    {
+      "id": "computed_global_array_lookup_3",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_3[8]; int computed_global_array_lookup_3(int value){int combined=data_computed_global_array_lookup_3[value]; int position=2; combined+=data_computed_global_array_lookup_3[0]; return postion;}",
+      "accepted": "int data_computed_global_array_lookup_3[8]; int computed_global_array_lookup_3(int value){int combined=data_computed_global_array_lookup_3[value]; int position=2; combined+=data_computed_global_array_lookup_3[0]; return combined;}"
+    },
+    {
+      "id": "computed_global_array_lookup_4",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_4[8]; int computed_global_array_lookup_4(int value){int estimate=data_computed_global_array_lookup_4[value]; int padding=2; estimate+=data_computed_global_array_lookup_4[0]; return paddng;}",
+      "accepted": "int data_computed_global_array_lookup_4[8]; int computed_global_array_lookup_4(int value){int estimate=data_computed_global_array_lookup_4[value]; int padding=2; estimate+=data_computed_global_array_lookup_4[0]; return estimate;}"
+    },
+    {
+      "id": "computed_global_array_lookup_5",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_5[8]; int computed_global_array_lookup_5(int value){int measured=data_computed_global_array_lookup_5[value]; int threshold=2; measured+=data_computed_global_array_lookup_5[0]; return thresold;}",
+      "accepted": "int data_computed_global_array_lookup_5[8]; int computed_global_array_lookup_5(int value){int measured=data_computed_global_array_lookup_5[value]; int threshold=2; measured+=data_computed_global_array_lookup_5[0]; return measured;}"
+    },
+    {
+      "id": "computed_global_array_lookup_6",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_6[8]; int computed_global_array_lookup_6(int value){int result=data_computed_global_array_lookup_6[value]; int interval=2; result+=data_computed_global_array_lookup_6[0]; return intervl;}",
+      "accepted": "int data_computed_global_array_lookup_6[8]; int computed_global_array_lookup_6(int value){int result=data_computed_global_array_lookup_6[value]; int interval=2; result+=data_computed_global_array_lookup_6[0]; return result;}"
+    },
+    {
+      "id": "computed_global_array_lookup_7",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_7[8]; int computed_global_array_lookup_7(int value){int quantity=data_computed_global_array_lookup_7[value]; int marker=2; quantity+=data_computed_global_array_lookup_7[0]; return markr;}",
+      "accepted": "int data_computed_global_array_lookup_7[8]; int computed_global_array_lookup_7(int value){int quantity=data_computed_global_array_lookup_7[value]; int marker=2; quantity+=data_computed_global_array_lookup_7[0]; return quantity;}"
+    },
+    {
+      "id": "computed_global_array_lookup_8",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_8[8]; int computed_global_array_lookup_8(int value){int balance=data_computed_global_array_lookup_8[value]; int shadow=2; balance+=data_computed_global_array_lookup_8[0]; return shado;}",
+      "accepted": "int data_computed_global_array_lookup_8[8]; int computed_global_array_lookup_8(int value){int balance=data_computed_global_array_lookup_8[value]; int shadow=2; balance+=data_computed_global_array_lookup_8[0]; return balance;}"
+    },
+    {
+      "id": "computed_global_array_lookup_9",
+      "family": "computed_global_array_lookup",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int data_computed_global_array_lookup_9[8]; int computed_global_array_lookup_9(int value){int progress=data_computed_global_array_lookup_9[value]; int previous=2; progress+=data_computed_global_array_lookup_9[0]; return progres;}",
+      "accepted": "int data_computed_global_array_lookup_9[8]; int computed_global_array_lookup_9(int value){int progress=data_computed_global_array_lookup_9[value]; int previous=2; progress+=data_computed_global_array_lookup_9[0]; return progress;}"
+    },
+    {
+      "id": "condition_then_for_0",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_0(int value){int subtotal=value; int address=1; for(int k=0;k<12;k++){if(k>1){subtotal+=k;}} return addres;}",
+      "accepted": "int condition_then_for_0(int value){int subtotal=value; int address=1; for(int k=0;k<12;k++){if(k>1){subtotal+=k;}} return subtotal;}"
+    },
+    {
+      "id": "condition_then_for_1",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_1(int value){int running=value; int moment=1; for(int k=0;k<4;k++){if(k>1){running+=k;}} return momnt;}",
+      "accepted": "int condition_then_for_1(int value){int running=value; int moment=1; for(int k=0;k<4;k++){if(k>1){running+=k;}} return running;}"
+    },
+    {
+      "id": "condition_then_for_2",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_2(int value){int reading=value; int capacity=1; for(int k=0;k<7;k++){if(k>1){reading+=k;}} return capacit;}",
+      "accepted": "int condition_then_for_2(int value){int reading=value; int capacity=1; for(int k=0;k<7;k++){if(k>1){reading+=k;}} return reading;}"
+    },
+    {
+      "id": "condition_then_for_3",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_3(int value){int combined=value; int position=1; for(int k=0;k<3;k++){if(k>1){combined+=k;}} return postion;}",
+      "accepted": "int condition_then_for_3(int value){int combined=value; int position=1; for(int k=0;k<3;k++){if(k>1){combined+=k;}} return combined;}"
+    },
+    {
+      "id": "condition_then_for_4",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_4(int value){int estimate=value; int padding=1; for(int k=0;k<7;k++){if(k>1){estimate+=k;}} return paddng;}",
+      "accepted": "int condition_then_for_4(int value){int estimate=value; int padding=1; for(int k=0;k<7;k++){if(k>1){estimate+=k;}} return estimate;}"
+    },
+    {
+      "id": "condition_then_for_5",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_5(int value){int measured=value; int threshold=1; for(int k=0;k<12;k++){if(k>1){measured+=k;}} return thresold;}",
+      "accepted": "int condition_then_for_5(int value){int measured=value; int threshold=1; for(int k=0;k<12;k++){if(k>1){measured+=k;}} return measured;}"
+    },
+    {
+      "id": "condition_then_for_6",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_6(int value){int result=value; int interval=1; for(int k=0;k<11;k++){if(k>1){result+=k;}} return intervl;}",
+      "accepted": "int condition_then_for_6(int value){int result=value; int interval=1; for(int k=0;k<11;k++){if(k>1){result+=k;}} return result;}"
+    },
+    {
+      "id": "condition_then_for_7",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_7(int value){int quantity=value; int marker=1; for(int k=0;k<13;k++){if(k>1){quantity+=k;}} return markr;}",
+      "accepted": "int condition_then_for_7(int value){int quantity=value; int marker=1; for(int k=0;k<13;k++){if(k>1){quantity+=k;}} return quantity;}"
+    },
+    {
+      "id": "condition_then_for_8",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_8(int value){int balance=value; int shadow=1; for(int k=0;k<8;k++){if(k>1){balance+=k;}} return shado;}",
+      "accepted": "int condition_then_for_8(int value){int balance=value; int shadow=1; for(int k=0;k<8;k++){if(k>1){balance+=k;}} return balance;}"
+    },
+    {
+      "id": "condition_then_for_9",
+      "family": "condition_then_for",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int condition_then_for_9(int value){int progress=value; int previous=1; for(int k=0;k<14;k++){if(k>1){progress+=k;}} return progres;}",
+      "accepted": "int condition_then_for_9(int value){int progress=value; int previous=1; for(int k=0;k<14;k++){if(k>1){progress+=k;}} return progress;}"
+    },
+    {
+      "id": "branch_with_char_decoy_0",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_0(int value){int subtotal=value*2; char address='a'; if(subtotal>9){subtotal--;} return addres;}",
+      "accepted": "int branch_with_char_decoy_0(int value){int subtotal=value*2; char address='a'; if(subtotal>9){subtotal--;} return subtotal;}"
+    },
+    {
+      "id": "branch_with_char_decoy_1",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_1(int value){int running=value*2; char moment='a'; if(running>9){running--;} return momnt;}",
+      "accepted": "int branch_with_char_decoy_1(int value){int running=value*2; char moment='a'; if(running>9){running--;} return running;}"
+    },
+    {
+      "id": "branch_with_char_decoy_2",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_2(int value){int reading=value*2; char capacity='a'; if(reading>9){reading--;} return capacit;}",
+      "accepted": "int branch_with_char_decoy_2(int value){int reading=value*2; char capacity='a'; if(reading>9){reading--;} return reading;}"
+    },
+    {
+      "id": "branch_with_char_decoy_3",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_3(int value){int combined=value*2; char position='a'; if(combined>9){combined--;} return postion;}",
+      "accepted": "int branch_with_char_decoy_3(int value){int combined=value*2; char position='a'; if(combined>9){combined--;} return combined;}"
+    },
+    {
+      "id": "branch_with_char_decoy_4",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_4(int value){int estimate=value*2; char padding='a'; if(estimate>9){estimate--;} return paddng;}",
+      "accepted": "int branch_with_char_decoy_4(int value){int estimate=value*2; char padding='a'; if(estimate>9){estimate--;} return estimate;}"
+    },
+    {
+      "id": "branch_with_char_decoy_5",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_5(int value){int measured=value*2; char threshold='a'; if(measured>9){measured--;} return thresold;}",
+      "accepted": "int branch_with_char_decoy_5(int value){int measured=value*2; char threshold='a'; if(measured>9){measured--;} return measured;}"
+    },
+    {
+      "id": "branch_with_char_decoy_6",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_6(int value){int result=value*2; char interval='a'; if(result>9){result--;} return intervl;}",
+      "accepted": "int branch_with_char_decoy_6(int value){int result=value*2; char interval='a'; if(result>9){result--;} return result;}"
+    },
+    {
+      "id": "branch_with_char_decoy_7",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_7(int value){int quantity=value*2; char marker='a'; if(quantity>9){quantity--;} return markr;}",
+      "accepted": "int branch_with_char_decoy_7(int value){int quantity=value*2; char marker='a'; if(quantity>9){quantity--;} return quantity;}"
+    },
+    {
+      "id": "branch_with_char_decoy_8",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_8(int value){int balance=value*2; char shadow='a'; if(balance>9){balance--;} return shado;}",
+      "accepted": "int branch_with_char_decoy_8(int value){int balance=value*2; char shadow='a'; if(balance>9){balance--;} return balance;}"
+    },
+    {
+      "id": "branch_with_char_decoy_9",
+      "family": "branch_with_char_decoy",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int branch_with_char_decoy_9(int value){int progress=value*2; char previous='a'; if(progress>9){progress--;} return progres;}",
+      "accepted": "int branch_with_char_decoy_9(int value){int progress=value*2; char previous='a'; if(progress>9){progress--;} return progress;}"
+    },
+    {
+      "id": "call_and_adjust_0",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_0(int x){return x*2;} int call_and_adjust_0(int value){int subtotal=twice_call_and_adjust_0(value);int address=4; subtotal-=12;return addres;}",
+      "accepted": "int twice_call_and_adjust_0(int x){return x*2;} int call_and_adjust_0(int value){int subtotal=twice_call_and_adjust_0(value);int address=4; subtotal-=12;return subtotal;}"
+    },
+    {
+      "id": "call_and_adjust_1",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_1(int x){return x*2;} int call_and_adjust_1(int value){int running=twice_call_and_adjust_1(value);int moment=4; running-=8;return momnt;}",
+      "accepted": "int twice_call_and_adjust_1(int x){return x*2;} int call_and_adjust_1(int value){int running=twice_call_and_adjust_1(value);int moment=4; running-=8;return running;}"
+    },
+    {
+      "id": "call_and_adjust_2",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_2(int x){return x*2;} int call_and_adjust_2(int value){int reading=twice_call_and_adjust_2(value);int capacity=4; reading-=12;return capacit;}",
+      "accepted": "int twice_call_and_adjust_2(int x){return x*2;} int call_and_adjust_2(int value){int reading=twice_call_and_adjust_2(value);int capacity=4; reading-=12;return reading;}"
+    },
+    {
+      "id": "call_and_adjust_3",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_3(int x){return x*2;} int call_and_adjust_3(int value){int combined=twice_call_and_adjust_3(value);int position=4; combined-=6;return postion;}",
+      "accepted": "int twice_call_and_adjust_3(int x){return x*2;} int call_and_adjust_3(int value){int combined=twice_call_and_adjust_3(value);int position=4; combined-=6;return combined;}"
+    },
+    {
+      "id": "call_and_adjust_4",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_4(int x){return x*2;} int call_and_adjust_4(int value){int estimate=twice_call_and_adjust_4(value);int padding=4; estimate-=10;return paddng;}",
+      "accepted": "int twice_call_and_adjust_4(int x){return x*2;} int call_and_adjust_4(int value){int estimate=twice_call_and_adjust_4(value);int padding=4; estimate-=10;return estimate;}"
+    },
+    {
+      "id": "call_and_adjust_5",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_5(int x){return x*2;} int call_and_adjust_5(int value){int measured=twice_call_and_adjust_5(value);int threshold=4; measured-=8;return thresold;}",
+      "accepted": "int twice_call_and_adjust_5(int x){return x*2;} int call_and_adjust_5(int value){int measured=twice_call_and_adjust_5(value);int threshold=4; measured-=8;return measured;}"
+    },
+    {
+      "id": "call_and_adjust_6",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_6(int x){return x*2;} int call_and_adjust_6(int value){int result=twice_call_and_adjust_6(value);int interval=4; result-=14;return intervl;}",
+      "accepted": "int twice_call_and_adjust_6(int x){return x*2;} int call_and_adjust_6(int value){int result=twice_call_and_adjust_6(value);int interval=4; result-=14;return result;}"
+    },
+    {
+      "id": "call_and_adjust_7",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_7(int x){return x*2;} int call_and_adjust_7(int value){int quantity=twice_call_and_adjust_7(value);int marker=4; quantity-=4;return markr;}",
+      "accepted": "int twice_call_and_adjust_7(int x){return x*2;} int call_and_adjust_7(int value){int quantity=twice_call_and_adjust_7(value);int marker=4; quantity-=4;return quantity;}"
+    },
+    {
+      "id": "call_and_adjust_8",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_8(int x){return x*2;} int call_and_adjust_8(int value){int balance=twice_call_and_adjust_8(value);int shadow=4; balance-=5;return shado;}",
+      "accepted": "int twice_call_and_adjust_8(int x){return x*2;} int call_and_adjust_8(int value){int balance=twice_call_and_adjust_8(value);int shadow=4; balance-=5;return balance;}"
+    },
+    {
+      "id": "call_and_adjust_9",
+      "family": "call_and_adjust",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int twice_call_and_adjust_9(int x){return x*2;} int call_and_adjust_9(int value){int progress=twice_call_and_adjust_9(value);int previous=4; progress-=10;return progres;}",
+      "accepted": "int twice_call_and_adjust_9(int x){return x*2;} int call_and_adjust_9(int value){int progress=twice_call_and_adjust_9(value);int previous=4; progress-=10;return progress;}"
+    },
+    {
+      "id": "reused_argument_0",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_0(int subtotal,int value){int address=value+8;if(subtotal>1){subtotal+=4;}subtotal-=2;return addres;}",
+      "accepted": "int reused_argument_0(int subtotal,int value){int address=value+8;if(subtotal>1){subtotal+=4;}subtotal-=2;return subtotal;}"
+    },
+    {
+      "id": "reused_argument_1",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_1(int running,int value){int moment=value+13;if(running>1){running+=4;}running-=2;return momnt;}",
+      "accepted": "int reused_argument_1(int running,int value){int moment=value+13;if(running>1){running+=4;}running-=2;return running;}"
+    },
+    {
+      "id": "reused_argument_2",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_2(int reading,int value){int capacity=value+14;if(reading>1){reading+=4;}reading-=2;return capacit;}",
+      "accepted": "int reused_argument_2(int reading,int value){int capacity=value+14;if(reading>1){reading+=4;}reading-=2;return reading;}"
+    },
+    {
+      "id": "reused_argument_3",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_3(int combined,int value){int position=value+15;if(combined>1){combined+=4;}combined-=2;return postion;}",
+      "accepted": "int reused_argument_3(int combined,int value){int position=value+15;if(combined>1){combined+=4;}combined-=2;return combined;}"
+    },
+    {
+      "id": "reused_argument_4",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_4(int estimate,int value){int padding=value+11;if(estimate>1){estimate+=4;}estimate-=2;return paddng;}",
+      "accepted": "int reused_argument_4(int estimate,int value){int padding=value+11;if(estimate>1){estimate+=4;}estimate-=2;return estimate;}"
+    },
+    {
+      "id": "reused_argument_5",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_5(int measured,int value){int threshold=value+3;if(measured>1){measured+=4;}measured-=2;return thresold;}",
+      "accepted": "int reused_argument_5(int measured,int value){int threshold=value+3;if(measured>1){measured+=4;}measured-=2;return measured;}"
+    },
+    {
+      "id": "reused_argument_6",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_6(int result,int value){int interval=value+13;if(result>1){result+=4;}result-=2;return intervl;}",
+      "accepted": "int reused_argument_6(int result,int value){int interval=value+13;if(result>1){result+=4;}result-=2;return result;}"
+    },
+    {
+      "id": "reused_argument_7",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_7(int quantity,int value){int marker=value+13;if(quantity>1){quantity+=4;}quantity-=2;return markr;}",
+      "accepted": "int reused_argument_7(int quantity,int value){int marker=value+13;if(quantity>1){quantity+=4;}quantity-=2;return quantity;}"
+    },
+    {
+      "id": "reused_argument_8",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_8(int balance,int value){int shadow=value+10;if(balance>1){balance+=4;}balance-=2;return shado;}",
+      "accepted": "int reused_argument_8(int balance,int value){int shadow=value+10;if(balance>1){balance+=4;}balance-=2;return balance;}"
+    },
+    {
+      "id": "reused_argument_9",
+      "family": "reused_argument",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reused_argument_9(int progress,int value){int previous=value+16;if(progress>1){progress+=4;}progress-=2;return progres;}",
+      "accepted": "int reused_argument_9(int progress,int value){int previous=value+16;if(progress>1){progress+=4;}progress-=2;return progress;}"
+    },
+    {
+      "id": "temporary_scope_0",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_0(int value){int subtotal=value;int address=2;{int local=15;subtotal+=local;}return addres;}",
+      "accepted": "int temporary_scope_0(int value){int subtotal=value;int address=2;{int local=15;subtotal+=local;}return subtotal;}"
+    },
+    {
+      "id": "temporary_scope_1",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_1(int value){int running=value;int moment=2;{int local=13;running+=local;}return momnt;}",
+      "accepted": "int temporary_scope_1(int value){int running=value;int moment=2;{int local=13;running+=local;}return running;}"
+    },
+    {
+      "id": "temporary_scope_2",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_2(int value){int reading=value;int capacity=2;{int local=11;reading+=local;}return capacit;}",
+      "accepted": "int temporary_scope_2(int value){int reading=value;int capacity=2;{int local=11;reading+=local;}return reading;}"
+    },
+    {
+      "id": "temporary_scope_3",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_3(int value){int combined=value;int position=2;{int local=16;combined+=local;}return postion;}",
+      "accepted": "int temporary_scope_3(int value){int combined=value;int position=2;{int local=16;combined+=local;}return combined;}"
+    },
+    {
+      "id": "temporary_scope_4",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_4(int value){int estimate=value;int padding=2;{int local=3;estimate+=local;}return paddng;}",
+      "accepted": "int temporary_scope_4(int value){int estimate=value;int padding=2;{int local=3;estimate+=local;}return estimate;}"
+    },
+    {
+      "id": "temporary_scope_5",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_5(int value){int measured=value;int threshold=2;{int local=15;measured+=local;}return thresold;}",
+      "accepted": "int temporary_scope_5(int value){int measured=value;int threshold=2;{int local=15;measured+=local;}return measured;}"
+    },
+    {
+      "id": "temporary_scope_6",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_6(int value){int result=value;int interval=2;{int local=3;result+=local;}return intervl;}",
+      "accepted": "int temporary_scope_6(int value){int result=value;int interval=2;{int local=3;result+=local;}return result;}"
+    },
+    {
+      "id": "temporary_scope_7",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_7(int value){int quantity=value;int marker=2;{int local=3;quantity+=local;}return markr;}",
+      "accepted": "int temporary_scope_7(int value){int quantity=value;int marker=2;{int local=3;quantity+=local;}return quantity;}"
+    },
+    {
+      "id": "temporary_scope_8",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_8(int value){int balance=value;int shadow=2;{int local=3;balance+=local;}return shado;}",
+      "accepted": "int temporary_scope_8(int value){int balance=value;int shadow=2;{int local=3;balance+=local;}return balance;}"
+    },
+    {
+      "id": "temporary_scope_9",
+      "family": "temporary_scope",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int temporary_scope_9(int value){int progress=value;int previous=2;{int local=15;progress+=local;}return progres;}",
+      "accepted": "int temporary_scope_9(int value){int progress=value;int previous=2;{int local=15;progress+=local;}return progress;}"
+    },
+    {
+      "id": "conditional_decoy_used_0",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_0(int value){int subtotal=value;int address=8; if(address==0){return 0;} subtotal*=3;subtotal+=1;return addres;}",
+      "accepted": "int conditional_decoy_used_0(int value){int subtotal=value;int address=8; if(address==0){return 0;} subtotal*=3;subtotal+=1;return subtotal;}"
+    },
+    {
+      "id": "conditional_decoy_used_1",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_1(int value){int running=value;int moment=14; if(moment==0){return 0;} running*=3;running+=1;return momnt;}",
+      "accepted": "int conditional_decoy_used_1(int value){int running=value;int moment=14; if(moment==0){return 0;} running*=3;running+=1;return running;}"
+    },
+    {
+      "id": "conditional_decoy_used_2",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_2(int value){int reading=value;int capacity=6; if(capacity==0){return 0;} reading*=3;reading+=1;return capacit;}",
+      "accepted": "int conditional_decoy_used_2(int value){int reading=value;int capacity=6; if(capacity==0){return 0;} reading*=3;reading+=1;return reading;}"
+    },
+    {
+      "id": "conditional_decoy_used_3",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_3(int value){int combined=value;int position=9; if(position==0){return 0;} combined*=3;combined+=1;return postion;}",
+      "accepted": "int conditional_decoy_used_3(int value){int combined=value;int position=9; if(position==0){return 0;} combined*=3;combined+=1;return combined;}"
+    },
+    {
+      "id": "conditional_decoy_used_4",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_4(int value){int estimate=value;int padding=16; if(padding==0){return 0;} estimate*=3;estimate+=1;return paddng;}",
+      "accepted": "int conditional_decoy_used_4(int value){int estimate=value;int padding=16; if(padding==0){return 0;} estimate*=3;estimate+=1;return estimate;}"
+    },
+    {
+      "id": "conditional_decoy_used_5",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_5(int value){int measured=value;int threshold=3; if(threshold==0){return 0;} measured*=3;measured+=1;return thresold;}",
+      "accepted": "int conditional_decoy_used_5(int value){int measured=value;int threshold=3; if(threshold==0){return 0;} measured*=3;measured+=1;return measured;}"
+    },
+    {
+      "id": "conditional_decoy_used_6",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_6(int value){int result=value;int interval=4; if(interval==0){return 0;} result*=3;result+=1;return intervl;}",
+      "accepted": "int conditional_decoy_used_6(int value){int result=value;int interval=4; if(interval==0){return 0;} result*=3;result+=1;return result;}"
+    },
+    {
+      "id": "conditional_decoy_used_7",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_7(int value){int quantity=value;int marker=6; if(marker==0){return 0;} quantity*=3;quantity+=1;return markr;}",
+      "accepted": "int conditional_decoy_used_7(int value){int quantity=value;int marker=6; if(marker==0){return 0;} quantity*=3;quantity+=1;return quantity;}"
+    },
+    {
+      "id": "conditional_decoy_used_8",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_8(int value){int balance=value;int shadow=3; if(shadow==0){return 0;} balance*=3;balance+=1;return shado;}",
+      "accepted": "int conditional_decoy_used_8(int value){int balance=value;int shadow=3; if(shadow==0){return 0;} balance*=3;balance+=1;return balance;}"
+    },
+    {
+      "id": "conditional_decoy_used_9",
+      "family": "conditional_decoy_used",
+      "split": "train",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int conditional_decoy_used_9(int value){int progress=value;int previous=9; if(previous==0){return 0;} progress*=3;progress+=1;return progres;}",
+      "accepted": "int conditional_decoy_used_9(int value){int progress=value;int previous=9; if(previous==0){return 0;} progress*=3;progress+=1;return progress;}"
+    },
+    {
+      "id": "loop_with_break_and_update_0",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_0(int value){int subtotal=0;int address=3;while(value>0){if(subtotal>8){break;}subtotal+=value;value--;}return addres;}",
+      "accepted": "int loop_with_break_and_update_0(int value){int subtotal=0;int address=3;while(value>0){if(subtotal>8){break;}subtotal+=value;value--;}return subtotal;}"
+    },
+    {
+      "id": "loop_with_break_and_update_1",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_1(int value){int running=0;int moment=3;while(value>0){if(running>8){break;}running+=value;value--;}return momnt;}",
+      "accepted": "int loop_with_break_and_update_1(int value){int running=0;int moment=3;while(value>0){if(running>8){break;}running+=value;value--;}return running;}"
+    },
+    {
+      "id": "loop_with_break_and_update_2",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_2(int value){int reading=0;int capacity=3;while(value>0){if(reading>8){break;}reading+=value;value--;}return capacit;}",
+      "accepted": "int loop_with_break_and_update_2(int value){int reading=0;int capacity=3;while(value>0){if(reading>8){break;}reading+=value;value--;}return reading;}"
+    },
+    {
+      "id": "loop_with_break_and_update_3",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_3(int value){int combined=0;int position=3;while(value>0){if(combined>8){break;}combined+=value;value--;}return postion;}",
+      "accepted": "int loop_with_break_and_update_3(int value){int combined=0;int position=3;while(value>0){if(combined>8){break;}combined+=value;value--;}return combined;}"
+    },
+    {
+      "id": "loop_with_break_and_update_4",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_4(int value){int estimate=0;int padding=3;while(value>0){if(estimate>8){break;}estimate+=value;value--;}return paddng;}",
+      "accepted": "int loop_with_break_and_update_4(int value){int estimate=0;int padding=3;while(value>0){if(estimate>8){break;}estimate+=value;value--;}return estimate;}"
+    },
+    {
+      "id": "loop_with_break_and_update_5",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_5(int value){int measured=0;int threshold=3;while(value>0){if(measured>8){break;}measured+=value;value--;}return thresold;}",
+      "accepted": "int loop_with_break_and_update_5(int value){int measured=0;int threshold=3;while(value>0){if(measured>8){break;}measured+=value;value--;}return measured;}"
+    },
+    {
+      "id": "loop_with_break_and_update_6",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_6(int value){int result=0;int interval=3;while(value>0){if(result>8){break;}result+=value;value--;}return intervl;}",
+      "accepted": "int loop_with_break_and_update_6(int value){int result=0;int interval=3;while(value>0){if(result>8){break;}result+=value;value--;}return result;}"
+    },
+    {
+      "id": "loop_with_break_and_update_7",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_7(int value){int quantity=0;int marker=3;while(value>0){if(quantity>8){break;}quantity+=value;value--;}return markr;}",
+      "accepted": "int loop_with_break_and_update_7(int value){int quantity=0;int marker=3;while(value>0){if(quantity>8){break;}quantity+=value;value--;}return quantity;}"
+    },
+    {
+      "id": "loop_with_break_and_update_8",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_8(int value){int balance=0;int shadow=3;while(value>0){if(balance>8){break;}balance+=value;value--;}return shado;}",
+      "accepted": "int loop_with_break_and_update_8(int value){int balance=0;int shadow=3;while(value>0){if(balance>8){break;}balance+=value;value--;}return balance;}"
+    },
+    {
+      "id": "loop_with_break_and_update_9",
+      "family": "loop_with_break_and_update",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int loop_with_break_and_update_9(int value){int progress=0;int previous=3;while(value>0){if(progress>8){break;}progress+=value;value--;}return progres;}",
+      "accepted": "int loop_with_break_and_update_9(int value){int progress=0;int previous=3;while(value>0){if(progress>8){break;}progress+=value;value--;}return progress;}"
+    },
+    {
+      "id": "array_aggregate_early_return_0",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_0[5]; int array_aggregate_early_return_0(int value){int subtotal=cells_array_aggregate_early_return_0[value];int address=1;if(subtotal<9){return 0;}subtotal+=cells_array_aggregate_early_return_0[1];return addres;}",
+      "accepted": "int cells_array_aggregate_early_return_0[5]; int array_aggregate_early_return_0(int value){int subtotal=cells_array_aggregate_early_return_0[value];int address=1;if(subtotal<9){return 0;}subtotal+=cells_array_aggregate_early_return_0[1];return subtotal;}"
+    },
+    {
+      "id": "array_aggregate_early_return_1",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_1[5]; int array_aggregate_early_return_1(int value){int running=cells_array_aggregate_early_return_1[value];int moment=1;if(running<14){return 0;}running+=cells_array_aggregate_early_return_1[1];return momnt;}",
+      "accepted": "int cells_array_aggregate_early_return_1[5]; int array_aggregate_early_return_1(int value){int running=cells_array_aggregate_early_return_1[value];int moment=1;if(running<14){return 0;}running+=cells_array_aggregate_early_return_1[1];return running;}"
+    },
+    {
+      "id": "array_aggregate_early_return_2",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_2[5]; int array_aggregate_early_return_2(int value){int reading=cells_array_aggregate_early_return_2[value];int capacity=1;if(reading<15){return 0;}reading+=cells_array_aggregate_early_return_2[1];return capacit;}",
+      "accepted": "int cells_array_aggregate_early_return_2[5]; int array_aggregate_early_return_2(int value){int reading=cells_array_aggregate_early_return_2[value];int capacity=1;if(reading<15){return 0;}reading+=cells_array_aggregate_early_return_2[1];return reading;}"
+    },
+    {
+      "id": "array_aggregate_early_return_3",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_3[5]; int array_aggregate_early_return_3(int value){int combined=cells_array_aggregate_early_return_3[value];int position=1;if(combined<12){return 0;}combined+=cells_array_aggregate_early_return_3[1];return postion;}",
+      "accepted": "int cells_array_aggregate_early_return_3[5]; int array_aggregate_early_return_3(int value){int combined=cells_array_aggregate_early_return_3[value];int position=1;if(combined<12){return 0;}combined+=cells_array_aggregate_early_return_3[1];return combined;}"
+    },
+    {
+      "id": "array_aggregate_early_return_4",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_4[5]; int array_aggregate_early_return_4(int value){int estimate=cells_array_aggregate_early_return_4[value];int padding=1;if(estimate<8){return 0;}estimate+=cells_array_aggregate_early_return_4[1];return paddng;}",
+      "accepted": "int cells_array_aggregate_early_return_4[5]; int array_aggregate_early_return_4(int value){int estimate=cells_array_aggregate_early_return_4[value];int padding=1;if(estimate<8){return 0;}estimate+=cells_array_aggregate_early_return_4[1];return estimate;}"
+    },
+    {
+      "id": "array_aggregate_early_return_5",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_5[5]; int array_aggregate_early_return_5(int value){int measured=cells_array_aggregate_early_return_5[value];int threshold=1;if(measured<14){return 0;}measured+=cells_array_aggregate_early_return_5[1];return thresold;}",
+      "accepted": "int cells_array_aggregate_early_return_5[5]; int array_aggregate_early_return_5(int value){int measured=cells_array_aggregate_early_return_5[value];int threshold=1;if(measured<14){return 0;}measured+=cells_array_aggregate_early_return_5[1];return measured;}"
+    },
+    {
+      "id": "array_aggregate_early_return_6",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_6[5]; int array_aggregate_early_return_6(int value){int result=cells_array_aggregate_early_return_6[value];int interval=1;if(result<6){return 0;}result+=cells_array_aggregate_early_return_6[1];return intervl;}",
+      "accepted": "int cells_array_aggregate_early_return_6[5]; int array_aggregate_early_return_6(int value){int result=cells_array_aggregate_early_return_6[value];int interval=1;if(result<6){return 0;}result+=cells_array_aggregate_early_return_6[1];return result;}"
+    },
+    {
+      "id": "array_aggregate_early_return_7",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_7[5]; int array_aggregate_early_return_7(int value){int quantity=cells_array_aggregate_early_return_7[value];int marker=1;if(quantity<3){return 0;}quantity+=cells_array_aggregate_early_return_7[1];return markr;}",
+      "accepted": "int cells_array_aggregate_early_return_7[5]; int array_aggregate_early_return_7(int value){int quantity=cells_array_aggregate_early_return_7[value];int marker=1;if(quantity<3){return 0;}quantity+=cells_array_aggregate_early_return_7[1];return quantity;}"
+    },
+    {
+      "id": "array_aggregate_early_return_8",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_8[5]; int array_aggregate_early_return_8(int value){int balance=cells_array_aggregate_early_return_8[value];int shadow=1;if(balance<13){return 0;}balance+=cells_array_aggregate_early_return_8[1];return shado;}",
+      "accepted": "int cells_array_aggregate_early_return_8[5]; int array_aggregate_early_return_8(int value){int balance=cells_array_aggregate_early_return_8[value];int shadow=1;if(balance<13){return 0;}balance+=cells_array_aggregate_early_return_8[1];return balance;}"
+    },
+    {
+      "id": "array_aggregate_early_return_9",
+      "family": "array_aggregate_early_return",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int cells_array_aggregate_early_return_9[5]; int array_aggregate_early_return_9(int value){int progress=cells_array_aggregate_early_return_9[value];int previous=1;if(progress<9){return 0;}progress+=cells_array_aggregate_early_return_9[1];return progres;}",
+      "accepted": "int cells_array_aggregate_early_return_9[5]; int array_aggregate_early_return_9(int value){int progress=cells_array_aggregate_early_return_9[value];int previous=1;if(progress<9){return 0;}progress+=cells_array_aggregate_early_return_9[1];return progress;}"
+    },
+    {
+      "id": "separate_helper_and_branch_0",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_0(int x,int y){return x+y;} int separate_helper_and_branch_0(int value,bool ok){int subtotal=bump_separate_helper_and_branch_0(value,4);int address=7;if(ok){subtotal*=2;}else{subtotal-=1;}return addres;}",
+      "accepted": "int bump_separate_helper_and_branch_0(int x,int y){return x+y;} int separate_helper_and_branch_0(int value,bool ok){int subtotal=bump_separate_helper_and_branch_0(value,4);int address=7;if(ok){subtotal*=2;}else{subtotal-=1;}return subtotal;}"
+    },
+    {
+      "id": "separate_helper_and_branch_1",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_1(int x,int y){return x+y;} int separate_helper_and_branch_1(int value,bool ok){int running=bump_separate_helper_and_branch_1(value,13);int moment=7;if(ok){running*=2;}else{running-=1;}return momnt;}",
+      "accepted": "int bump_separate_helper_and_branch_1(int x,int y){return x+y;} int separate_helper_and_branch_1(int value,bool ok){int running=bump_separate_helper_and_branch_1(value,13);int moment=7;if(ok){running*=2;}else{running-=1;}return running;}"
+    },
+    {
+      "id": "separate_helper_and_branch_2",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_2(int x,int y){return x+y;} int separate_helper_and_branch_2(int value,bool ok){int reading=bump_separate_helper_and_branch_2(value,4);int capacity=7;if(ok){reading*=2;}else{reading-=1;}return capacit;}",
+      "accepted": "int bump_separate_helper_and_branch_2(int x,int y){return x+y;} int separate_helper_and_branch_2(int value,bool ok){int reading=bump_separate_helper_and_branch_2(value,4);int capacity=7;if(ok){reading*=2;}else{reading-=1;}return reading;}"
+    },
+    {
+      "id": "separate_helper_and_branch_3",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_3(int x,int y){return x+y;} int separate_helper_and_branch_3(int value,bool ok){int combined=bump_separate_helper_and_branch_3(value,5);int position=7;if(ok){combined*=2;}else{combined-=1;}return postion;}",
+      "accepted": "int bump_separate_helper_and_branch_3(int x,int y){return x+y;} int separate_helper_and_branch_3(int value,bool ok){int combined=bump_separate_helper_and_branch_3(value,5);int position=7;if(ok){combined*=2;}else{combined-=1;}return combined;}"
+    },
+    {
+      "id": "separate_helper_and_branch_4",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_4(int x,int y){return x+y;} int separate_helper_and_branch_4(int value,bool ok){int estimate=bump_separate_helper_and_branch_4(value,2);int padding=7;if(ok){estimate*=2;}else{estimate-=1;}return paddng;}",
+      "accepted": "int bump_separate_helper_and_branch_4(int x,int y){return x+y;} int separate_helper_and_branch_4(int value,bool ok){int estimate=bump_separate_helper_and_branch_4(value,2);int padding=7;if(ok){estimate*=2;}else{estimate-=1;}return estimate;}"
+    },
+    {
+      "id": "separate_helper_and_branch_5",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_5(int x,int y){return x+y;} int separate_helper_and_branch_5(int value,bool ok){int measured=bump_separate_helper_and_branch_5(value,7);int threshold=7;if(ok){measured*=2;}else{measured-=1;}return thresold;}",
+      "accepted": "int bump_separate_helper_and_branch_5(int x,int y){return x+y;} int separate_helper_and_branch_5(int value,bool ok){int measured=bump_separate_helper_and_branch_5(value,7);int threshold=7;if(ok){measured*=2;}else{measured-=1;}return measured;}"
+    },
+    {
+      "id": "separate_helper_and_branch_6",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_6(int x,int y){return x+y;} int separate_helper_and_branch_6(int value,bool ok){int result=bump_separate_helper_and_branch_6(value,8);int interval=7;if(ok){result*=2;}else{result-=1;}return intervl;}",
+      "accepted": "int bump_separate_helper_and_branch_6(int x,int y){return x+y;} int separate_helper_and_branch_6(int value,bool ok){int result=bump_separate_helper_and_branch_6(value,8);int interval=7;if(ok){result*=2;}else{result-=1;}return result;}"
+    },
+    {
+      "id": "separate_helper_and_branch_7",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_7(int x,int y){return x+y;} int separate_helper_and_branch_7(int value,bool ok){int quantity=bump_separate_helper_and_branch_7(value,16);int marker=7;if(ok){quantity*=2;}else{quantity-=1;}return markr;}",
+      "accepted": "int bump_separate_helper_and_branch_7(int x,int y){return x+y;} int separate_helper_and_branch_7(int value,bool ok){int quantity=bump_separate_helper_and_branch_7(value,16);int marker=7;if(ok){quantity*=2;}else{quantity-=1;}return quantity;}"
+    },
+    {
+      "id": "separate_helper_and_branch_8",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_8(int x,int y){return x+y;} int separate_helper_and_branch_8(int value,bool ok){int balance=bump_separate_helper_and_branch_8(value,14);int shadow=7;if(ok){balance*=2;}else{balance-=1;}return shado;}",
+      "accepted": "int bump_separate_helper_and_branch_8(int x,int y){return x+y;} int separate_helper_and_branch_8(int value,bool ok){int balance=bump_separate_helper_and_branch_8(value,14);int shadow=7;if(ok){balance*=2;}else{balance-=1;}return balance;}"
+    },
+    {
+      "id": "separate_helper_and_branch_9",
+      "family": "separate_helper_and_branch",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int bump_separate_helper_and_branch_9(int x,int y){return x+y;} int separate_helper_and_branch_9(int value,bool ok){int progress=bump_separate_helper_and_branch_9(value,9);int previous=7;if(ok){progress*=2;}else{progress-=1;}return progres;}",
+      "accepted": "int bump_separate_helper_and_branch_9(int x,int y){return x+y;} int separate_helper_and_branch_9(int value,bool ok){int progress=bump_separate_helper_and_branch_9(value,9);int previous=7;if(ok){progress*=2;}else{progress-=1;}return progress;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_0",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_0(int value){int subtotal=value;int address=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){subtotal+=a*b;}}return addres;}",
+      "accepted": "int reuse_inside_nested_loop_0(int value){int subtotal=value;int address=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){subtotal+=a*b;}}return subtotal;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_1",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_1(int value){int running=value;int moment=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){running+=a*b;}}return momnt;}",
+      "accepted": "int reuse_inside_nested_loop_1(int value){int running=value;int moment=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){running+=a*b;}}return running;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_2",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_2(int value){int reading=value;int capacity=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){reading+=a*b;}}return capacit;}",
+      "accepted": "int reuse_inside_nested_loop_2(int value){int reading=value;int capacity=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){reading+=a*b;}}return reading;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_3",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_3(int value){int combined=value;int position=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){combined+=a*b;}}return postion;}",
+      "accepted": "int reuse_inside_nested_loop_3(int value){int combined=value;int position=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){combined+=a*b;}}return combined;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_4",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_4(int value){int estimate=value;int padding=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){estimate+=a*b;}}return paddng;}",
+      "accepted": "int reuse_inside_nested_loop_4(int value){int estimate=value;int padding=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){estimate+=a*b;}}return estimate;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_5",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_5(int value){int measured=value;int threshold=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){measured+=a*b;}}return thresold;}",
+      "accepted": "int reuse_inside_nested_loop_5(int value){int measured=value;int threshold=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){measured+=a*b;}}return measured;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_6",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_6(int value){int result=value;int interval=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){result+=a*b;}}return intervl;}",
+      "accepted": "int reuse_inside_nested_loop_6(int value){int result=value;int interval=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){result+=a*b;}}return result;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_7",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_7(int value){int quantity=value;int marker=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){quantity+=a*b;}}return markr;}",
+      "accepted": "int reuse_inside_nested_loop_7(int value){int quantity=value;int marker=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){quantity+=a*b;}}return quantity;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_8",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_8(int value){int balance=value;int shadow=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){balance+=a*b;}}return shado;}",
+      "accepted": "int reuse_inside_nested_loop_8(int value){int balance=value;int shadow=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){balance+=a*b;}}return balance;}"
+    },
+    {
+      "id": "reuse_inside_nested_loop_9",
+      "family": "reuse_inside_nested_loop",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int reuse_inside_nested_loop_9(int value){int progress=value;int previous=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){progress+=a*b;}}return progres;}",
+      "accepted": "int reuse_inside_nested_loop_9(int value){int progress=value;int previous=2;for(int a=0;a<3;a++){for(int b=0;b<2;b++){progress+=a*b;}}return progress;}"
+    },
+    {
+      "id": "parameters_and_early_exit_0",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_0(int subtotal, int value, bool stop){int address=value;if(stop){return value;}subtotal+=16;subtotal*=2;return addres;}",
+      "accepted": "int parameters_and_early_exit_0(int subtotal, int value, bool stop){int address=value;if(stop){return value;}subtotal+=16;subtotal*=2;return subtotal;}"
+    },
+    {
+      "id": "parameters_and_early_exit_1",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_1(int running, int value, bool stop){int moment=value;if(stop){return value;}running+=11;running*=2;return momnt;}",
+      "accepted": "int parameters_and_early_exit_1(int running, int value, bool stop){int moment=value;if(stop){return value;}running+=11;running*=2;return running;}"
+    },
+    {
+      "id": "parameters_and_early_exit_2",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_2(int reading, int value, bool stop){int capacity=value;if(stop){return value;}reading+=12;reading*=2;return capacit;}",
+      "accepted": "int parameters_and_early_exit_2(int reading, int value, bool stop){int capacity=value;if(stop){return value;}reading+=12;reading*=2;return reading;}"
+    },
+    {
+      "id": "parameters_and_early_exit_3",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_3(int combined, int value, bool stop){int position=value;if(stop){return value;}combined+=8;combined*=2;return postion;}",
+      "accepted": "int parameters_and_early_exit_3(int combined, int value, bool stop){int position=value;if(stop){return value;}combined+=8;combined*=2;return combined;}"
+    },
+    {
+      "id": "parameters_and_early_exit_4",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_4(int estimate, int value, bool stop){int padding=value;if(stop){return value;}estimate+=14;estimate*=2;return paddng;}",
+      "accepted": "int parameters_and_early_exit_4(int estimate, int value, bool stop){int padding=value;if(stop){return value;}estimate+=14;estimate*=2;return estimate;}"
+    },
+    {
+      "id": "parameters_and_early_exit_5",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_5(int measured, int value, bool stop){int threshold=value;if(stop){return value;}measured+=11;measured*=2;return thresold;}",
+      "accepted": "int parameters_and_early_exit_5(int measured, int value, bool stop){int threshold=value;if(stop){return value;}measured+=11;measured*=2;return measured;}"
+    },
+    {
+      "id": "parameters_and_early_exit_6",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_6(int result, int value, bool stop){int interval=value;if(stop){return value;}result+=17;result*=2;return intervl;}",
+      "accepted": "int parameters_and_early_exit_6(int result, int value, bool stop){int interval=value;if(stop){return value;}result+=17;result*=2;return result;}"
+    },
+    {
+      "id": "parameters_and_early_exit_7",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_7(int quantity, int value, bool stop){int marker=value;if(stop){return value;}quantity+=16;quantity*=2;return markr;}",
+      "accepted": "int parameters_and_early_exit_7(int quantity, int value, bool stop){int marker=value;if(stop){return value;}quantity+=16;quantity*=2;return quantity;}"
+    },
+    {
+      "id": "parameters_and_early_exit_8",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_8(int balance, int value, bool stop){int shadow=value;if(stop){return value;}balance+=8;balance*=2;return shado;}",
+      "accepted": "int parameters_and_early_exit_8(int balance, int value, bool stop){int shadow=value;if(stop){return value;}balance+=8;balance*=2;return balance;}"
+    },
+    {
+      "id": "parameters_and_early_exit_9",
+      "family": "parameters_and_early_exit",
+      "split": "validation",
+      "provenance": "P2_AI_ASSISTED_REFERENCE_MUTATION",
+      "source": "int parameters_and_early_exit_9(int progress, int value, bool stop){int previous=value;if(stop){return value;}progress+=4;progress*=2;return progres;}",
+      "accepted": "int parameters_and_early_exit_9(int progress, int value, bool stop){int previous=value;if(stop){return value;}progress+=4;progress*=2;return progress;}"
+    }
+  ]
+}

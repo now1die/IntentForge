@@ -1,0 +1,471 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "tariff-final-variable",
+      "family": "tariff-final-variable",
+      "category": "return",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "float tariff(float amount,int units){ float charge=amount*units; return amount; }",
+      "accepted": [
+        "float tariff(float amount,int units){ float charge=amount*units; return charge; }"
+      ],
+      "requirement": {
+        "return_expression": "charge"
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "square-negative",
+      "family": "square-negative",
+      "category": "arithmetic",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int quadratic(int delta){ if(delta==0){return 0;} return delta+delta; }",
+      "accepted": [
+        "int quadratic(int delta){ if(delta==0){return 0;} return delta*delta; }"
+      ],
+      "requirement": {
+        "description": "Return the square of delta.",
+        "return_ordinal": 2
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "dispatch-limit",
+      "family": "dispatch-limit",
+      "category": "comparison",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "bool dispatch(int requests,bool active){ return active && (requests>12); }",
+      "accepted": [
+        "bool dispatch(int requests,bool active){ return active && (requests>=12); }"
+      ],
+      "requirement": {
+        "return_expression": "active && (requests >= 12)"
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "retry-guard",
+      "family": "retry-guard",
+      "category": "condition",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int retry(int attempts){ while(attempts<=5){attempts++;} return attempts; }",
+      "accepted": [
+        "int retry(int attempts){ while(attempts<5){attempts++;} return attempts; }"
+      ],
+      "requirement": {
+        "condition": "attempts < 5"
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "margin-arguments",
+      "family": "margin-arguments",
+      "category": "argument",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int gap(int first,int second){return first-second;} int margin(int cost,int quote){ if(quote<0){return 0;} return gap(cost,quote); }",
+      "accepted": [
+        "int gap(int first,int second){return first-second;} int margin(int cost,int quote){ if(quote<0){return 0;} return gap(quote,cost); }"
+      ],
+      "requirement": {
+        "function": "margin",
+        "return_expression": "gap(quote,cost)",
+        "return_ordinal": 2
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "array-direction",
+      "family": "array-direction",
+      "category": "array",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int buffer[12]; int latest(int start){ int other=start-1; if(other<0){return 0;} return buffer[start+1]; }",
+      "accepted": [
+        "int buffer[12]; int latest(int start){ int other=start-1; if(other<0){return 0;} return buffer[start-1]; }"
+      ],
+      "requirement": {
+        "return_expression": "buffer[start-1]",
+        "return_ordinal": 2
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "two-local-obligations",
+      "family": "two-local-obligations",
+      "category": "multiple",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int keep(int bill,int paid){ if(bill<paid){return bill+paid;} return 0; }",
+      "accepted": [
+        "int keep(int bill,int paid){ if(bill>paid){return bill-paid;} return 0; }"
+      ],
+      "requirement": {
+        "condition": "bill>paid",
+        "return_expression": "bill-paid",
+        "return_ordinal": 1
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "binary-join",
+      "family": "binary-join",
+      "category": "arithmetic",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int combine(int left,int right){left+=1; right-=1; return left-right;}",
+      "accepted": [
+        "int combine(int left,int right){left+=1; right-=1; return left+right;}"
+      ],
+      "requirement": {
+        "description": "Return the sum of left and right"
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "boolean-two-routes",
+      "family": "boolean-two-routes",
+      "category": "condition",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int routes(bool alarm,bool suppressed){ if(alarm||!suppressed){return 9;}return 1;}",
+      "accepted": [
+        "int routes(bool alarm,bool suppressed){ if(alarm&&!suppressed){return 9;}return 1;}"
+      ],
+      "requirement": {
+        "condition": "alarm && !suppressed"
+      },
+      "kind": "logic",
+      "ambiguous": false
+    },
+    {
+      "id": "return-slot",
+      "family": "return-slot",
+      "category": "missing",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "char signify(bool clean,char mark){ if(clean){return mark;} return; }",
+      "accepted": [
+        "char signify(bool clean,char mark){ if(clean){return mark;} return 'x'; }"
+      ],
+      "requirement": {
+        "return_expression": "'x'",
+        "return_ordinal": 2
+      },
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "hidden-binding-candidate",
+      "family": "hidden-binding-candidate",
+      "category": "reference",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "float increment(float multiplier,int step){float offset=multiplier+step;float overshoot=1.5;if(offset>3.0){offset*=multiplier;}return overshot;}",
+      "accepted": [
+        "float increment(float multiplier,int step){float offset=multiplier+step;float overshoot=1.5;if(offset>3.0){offset*=multiplier;}return offset;}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "inner-scope-use",
+      "family": "inner-scope-use",
+      "category": "reference",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int govern(int x){int measure=x; int mean=7; {int measure=2; while(x>1){measure+=x;x--;} return mene;} }",
+      "accepted": [
+        "int govern(int x){int measure=x; int mean=7; {int measure=2; while(x>1){measure+=x;x--;} return measure;} }"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "input-in-argument",
+      "family": "input-in-argument",
+      "category": "reference",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "float multiply(float x,float y){return x*y;} float extend(float factor,float offset){factor*=2.0;return multiply(factr, offset+2.0);}",
+      "accepted": [
+        "float multiply(float x,float y){return x*y;} float extend(float factor,float offset){factor*=2.0;return multiply(factor, offset+2.0);}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "index-identifier",
+      "family": "index-identifier",
+      "category": "reference",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "float nums[6]; float sample(int position){int posetion=5; if(position==0){return 1.5;}return nums[positon+1];}",
+      "accepted": [
+        "float nums[6]; float sample(int position){int posetion=5; if(position==0){return 1.5;}return nums[position+1];}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "argument-needed",
+      "family": "argument-needed",
+      "category": "argument",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "bool smaller(int x,int y){return x<y;} bool check_limit(int count,int cap){count++;return smaller(count);}",
+      "accepted": [
+        "bool smaller(int x,int y){return x<y;} bool check_limit(int count,int cap){count++;return smaller(count, cap);}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": true
+    },
+    {
+      "id": "argument-extra",
+      "family": "argument-extra",
+      "category": "argument",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int convert(float reading){ if(reading>4.5){return 1;}return 0;} int entry(float input,int spare){return convert(input,spare);}",
+      "accepted": [
+        "int convert(float reading){ if(reading>4.5){return 1;}return 0;} int entry(float input,int spare){return convert(input);}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "decl-initializer-binding",
+      "family": "decl-initializer-binding",
+      "category": "type",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "char first; char fix_types(int wrong,char mark){char chosen=wrong; if(wrong>0){first=chosen;} return chosen;}",
+      "accepted": [
+        "char first; char fix_types(int wrong,char mark){char chosen=mark; if(wrong>0){first=chosen;} return chosen;}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "declared-array-call",
+      "family": "declared-array-call",
+      "category": "array",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "bool available_flags[8]; bool access(int index,bool allowed){if(!allowed){return false;}return available_flags(index);}",
+      "accepted": [
+        "bool available_flags[8]; bool access(int index,bool allowed){if(!allowed){return false;}return available_flags[index];}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "compiler-semicolon-after-reset",
+      "family": "compiler-semicolon-after-reset",
+      "category": "syntax",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int pending[3]; void reset_one(int index){ if(index>=0){pending[index]=1 } }",
+      "accepted": [
+        "int pending[3]; void reset_one(int index){ if(index>=0){pending[index]=1; } }"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "compiler-float-guard-closer",
+      "family": "compiler-float-guard-closer",
+      "category": "syntax",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "float debt(float due){if(due>0.1 {due-=0.1;}return due;}",
+      "accepted": [
+        "float debt(float due){if(due>0.1) {due-=0.1;}return due;}"
+      ],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "conditional-target-unknown",
+      "family": "conditional-target-unknown",
+      "category": "condition",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int weight(int x){if(x>2){return 8;} if(x>9){return 3;} return x;}",
+      "accepted": [],
+      "requirement": {
+        "condition": "x >= 2"
+      },
+      "kind": "unknown",
+      "ambiguous": true
+    },
+    {
+      "id": "undefined-two-nearby",
+      "family": "undefined-two-nearby",
+      "category": "reference",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int path(int room,int roof){ if(room>roof){return room+roof;} return rool; }",
+      "accepted": [],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": true
+    },
+    {
+      "id": "function-called-square-but-valid",
+      "family": "function-called-square-but-valid",
+      "category": "arithmetic",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int square(int egg){return egg+egg;}",
+      "accepted": [],
+      "requirement": null,
+      "kind": "control",
+      "ambiguous": false
+    },
+    {
+      "id": "function-called-sum-but-valid",
+      "family": "function-called-sum-but-valid",
+      "category": "arithmetic",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int sum(int width,int height){return (width-height)*2;}",
+      "accepted": [],
+      "requirement": null,
+      "kind": "control",
+      "ambiguous": false
+    },
+    {
+      "id": "matching-structure",
+      "family": "matching-structure",
+      "category": "return",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int matched(int p,int q){ return (p + (q)); }",
+      "accepted": [],
+      "requirement": {
+        "return_expression": "p + q"
+      },
+      "kind": "control",
+      "ambiguous": false
+    },
+    {
+      "id": "control-review-similar-pattern",
+      "family": "control-review-similar-pattern",
+      "category": "return",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int current_amount(int rate,int count){int projected=rate*count;return rate;}",
+      "accepted": [],
+      "requirement": null,
+      "kind": "control",
+      "ambiguous": false
+    },
+    {
+      "id": "input-output-only",
+      "family": "input-output-only",
+      "category": "return",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int computed(int h){return h-2;}",
+      "accepted": [],
+      "requirement": {
+        "examples": [
+          {
+            "args": [
+              4
+            ],
+            "expected_return": 6
+          }
+        ]
+      },
+      "kind": "unknown",
+      "ambiguous": false
+    },
+    {
+      "id": "syntax-no-evidence",
+      "family": "syntax-no-evidence",
+      "category": "missing",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int minimum(){return +;}",
+      "accepted": [],
+      "requirement": null,
+      "kind": "compiler",
+      "ambiguous": false
+    },
+    {
+      "id": "feature-pointer",
+      "family": "feature-pointer",
+      "category": "unsupported",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "float value_at(float *z){ return *z; }",
+      "accepted": [],
+      "requirement": null,
+      "kind": "unsupported",
+      "ambiguous": false
+    },
+    {
+      "id": "control-typed-loop",
+      "family": "control-typed-loop",
+      "category": "condition",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "int iteration(int from,bool run){int acc=0;for(int k=1;k<=from;k++){if(run){acc+=k*k;}}return acc;}",
+      "accepted": [],
+      "requirement": null,
+      "kind": "control",
+      "ambiguous": false
+    },
+    {
+      "id": "control-branch-return",
+      "family": "control-branch-return",
+      "category": "return",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "bool keeps(bool enabled,int start){while(start>2){if(enabled){return false;}start-=3;}return true;}",
+      "accepted": [],
+      "requirement": null,
+      "kind": "control",
+      "ambiguous": false
+    },
+    {
+      "id": "control-condition-match",
+      "family": "control-condition-match",
+      "category": "condition",
+      "split": "final",
+      "provenance": "P2_AI_ASSISTED_STATIC_REVIEW",
+      "source": "bool permits(bool restricted,int years){ if(!restricted && years>=25){return true;}return false; }",
+      "accepted": [],
+      "requirement": {
+        "condition": "!restricted && years >= 25"
+      },
+      "kind": "control",
+      "ambiguous": false
+    }
+  ]
+}
