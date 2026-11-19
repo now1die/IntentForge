@@ -1,0 +1,289 @@
+{
+  "calibration": {
+    "boosted": {
+      "evidence_strata": {
+        "other": {
+          "count": 5,
+          "errors": 1
+        },
+        "strong": {
+          "count": 2,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        5,
+        7
+      ],
+      "selection_risk": [
+        {
+          "errors": 0,
+          "retained": 1
+        },
+        {
+          "errors": 0,
+          "retained": 3
+        },
+        {
+          "errors": 1,
+          "retained": 5
+        }
+      ]
+    },
+    "deterministic": {
+      "evidence_strata": {
+        "other": {
+          "count": 5,
+          "errors": 0
+        },
+        "strong": {
+          "count": 2,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        0,
+        7
+      ],
+      "selection_risk": []
+    },
+    "pairwise": {
+      "evidence_strata": {
+        "other": {
+          "count": 5,
+          "errors": 1
+        },
+        "strong": {
+          "count": 2,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        5,
+        7
+      ],
+      "selection_risk": [
+        {
+          "errors": 0,
+          "retained": 1
+        },
+        {
+          "errors": 0,
+          "retained": 3
+        },
+        {
+          "errors": 1,
+          "retained": 5
+        }
+      ]
+    },
+    "pointwise": {
+      "evidence_strata": {
+        "other": {
+          "count": 5,
+          "errors": 1
+        },
+        "strong": {
+          "count": 2,
+          "errors": 0
+        }
+      },
+      "ranked_margin_coverage": [
+        5,
+        7
+      ],
+      "selection_risk": [
+        {
+          "errors": 0,
+          "retained": 1
+        },
+        {
+          "errors": 0,
+          "retained": 3
+        },
+        {
+          "errors": 1,
+          "retained": 5
+        }
+      ]
+    }
+  },
+  "partition_counts": {
+    "calibration": 8,
+    "development": 6,
+    "selection": 10,
+    "train": 27
+  },
+  "probability_calibration": "Unavailable. Margin-scored labels and independent families are insufficient.",
+  "seed": 7019,
+  "selected": {},
+  "selection": {
+    "ARRAY_INDEX": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 1,
+        "pairwise": 1,
+        "pointwise": 1,
+        "v2_on_v3_pool": 1
+      }
+    },
+    "COMPARISON_OPERATOR": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 1,
+        "deterministic": 1,
+        "pairwise": 1,
+        "pointwise": 1,
+        "v2_on_v3_pool": 1
+      }
+    },
+    "DECLARATION_TYPE": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 1,
+      "top1": {
+        "boosted": 0,
+        "deterministic": 0,
+        "pairwise": 0,
+        "pointwise": 0,
+        "v2_on_v3_pool": 0
+      }
+    },
+    "FUNCTION_ARGUMENT": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 2,
+      "top1": {
+        "boosted": 2,
+        "deterministic": 2,
+        "pairwise": 2,
+        "pointwise": 2,
+        "v2_on_v3_pool": 2
+      }
+    },
+    "MISSING_EXPRESSION": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 1,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 2,
+      "top1": {
+        "boosted": 2,
+        "deterministic": 2,
+        "pairwise": 1,
+        "pointwise": 2,
+        "v2_on_v3_pool": 2
+      }
+    },
+    "VARIABLE_REFERENCE": {
+      "evidence": {
+        "boosted": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pairwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        },
+        "pointwise": {
+          "losses": 0,
+          "sign_test_p": 1.0,
+          "wins_over_either_baseline": 0
+        }
+      },
+      "families": 2,
+      "top1": {
+        "boosted": 2,
+        "deterministic": 2,
+        "pairwise": 2,
+        "pointwise": 2,
+        "v2_on_v3_pool": 2
+      }
+    }
+  },
+  "training": {
+    "pair_rows": 70,
+    "point_positives": 17,
+    "point_rows": 52
+  }
+}

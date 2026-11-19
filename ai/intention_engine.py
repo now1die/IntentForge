@@ -18,11 +18,12 @@ from compiler.symbol_table import SymbolKind
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
                                    compiler_proposals, requirement_proposals)
+from .intention_generalization import duplicate_guards, evidence_strength, generalized_features, hypotheses
 from .intention_learning import ExpandedRanker, contextual_features
 from .intention_recovery import expanded_proposals
 from .intention_context import ContextLimit, IntentionContext, Requirement, build_context
 from .intention_ranker import Ranker
-from .intention_requirements import resolve_targets
+from .intention_requirements import expression_key, resolve_targets
 
 
 DEFAULT_BUDGET_SECONDS = 1.5
@@ -37,6 +38,7 @@ class Candidate:
     remaining_diagnostics: int
     features: dict[str, Any]
     relative_score: float | None = None
+    ast_key: str | None = None
 
     def to_dict(self, source: str, ambiguous: bool):
         safety = RepairSafety(
@@ -106,7 +108,7 @@ def candidate_features(context, proposal, remaining):
     }
 
 
-def order_candidates(candidates: list[Candidate], ranker: Ranker | None, *, expanded=None, experimental=None, deadline=None):
+def order_candidates(candidates: list[Candidate], ranker: Ranker | None, *, expanded=None, experimental=None, deadline=None, generalized=False):
     """Keep validated and directly specified candidates ahead of other hypotheses."""
     groups = defaultdict(list)
     for candidate in candidates:
@@ -126,6 +128,7 @@ def order_candidates(candidates: list[Candidate], ranker: Ranker | None, *, expa
                     raise ValueError("Ranker returned a non-finite score")
                 candidate.relative_score = score
         ordered = sorted(group, key=lambda item: (
+            -int(generalized and evidence_strength(item.proposal)),
             -(item.relative_score if item.relative_score is not None else item.features["identifier_similarity"]),
             not item.proposal.type_match, item.proposal.symbol_distance, item.id,
         ))
@@ -175,7 +178,7 @@ def _heuristic(context: IntentionContext) -> tuple[Evidence, ...]:
     return ()
 
 
-def _validate_candidate(context, proposal, *, enhanced=False):
+def _validate_candidate(context, proposal, *, enhanced=False, generalized=False):
     try:
         fixed = apply_edits(context.source, proposal.edits)
     except ValueError:
@@ -190,14 +193,20 @@ def _validate_candidate(context, proposal, *, enhanced=False):
         return None
     if proposal.specification_matches:
         # A replacement must really match the specified AST after parsing the patched program.
-        new_targets, _ = resolve_targets(build_context(fixed, context.requirement), enhanced=enhanced)
-        old_targets, _ = resolve_targets(context, enhanced=enhanced)
+        new_targets, _ = resolve_targets(build_context(fixed, context.requirement), enhanced=enhanced, generalized=generalized)
+        old_targets, _ = resolve_targets(context, enhanced=enhanced, generalized=generalized)
         if sum(target.matches for target in new_targets) < sum(target.matches for target in old_targets) + proposal.specification_matches:
             return None
     features = candidate_features(context, proposal, remaining)
     if enhanced:
         features.update(contextual_features(context, proposal))
-    return Candidate("IR-" + sha256(fixed.encode()).hexdigest()[:12], fixed, proposal, checked.success, remaining, features)
+    ast_key = None
+    if generalized:
+        features.update(generalized_features(context, proposal))
+        if checked.parse_result.ast is not None:
+            ast_key = repr(expression_key(checked.parse_result.ast))
+    return Candidate("IR-" + sha256(fixed.encode()).hexdigest()[:12], fixed, proposal, checked.success,
+                     remaining, features, ast_key=ast_key)
 
 
 def analyze_intention(
@@ -205,15 +214,19 @@ def analyze_intention(
     ranking_status: str = "DETERMINISTIC", budget_seconds: float = DEFAULT_BUDGET_SECONDS,
     candidate_budget: int = MAX_CANDIDATES, enhanced: bool = False,
     expanded_ranker: ExpandedRanker | None = None, experimental: str | None = None,
+    generalized: bool = False, generation_v3: bool = True,
 ) -> IntentionResult:
+    enhanced = enhanced or generalized
     deadline = monotonic() + budget_seconds
     context = build_context(source, requirement)
     if _unsupported(context):
         return IntentionResult(context, "UNSUPPORTED_LANGUAGE", "NO_SUPPORTED_CORRECTION", ranking_status, [],
                                ["The source contains syntax outside the supported Mini-C subset."])
-    targets, notes = resolve_targets(context, enhanced=enhanced)
+    targets, notes = resolve_targets(context, enhanced=enhanced, generalized=generalized)
     mismatches = [target for target in targets if not target.matches]
     heuristic = _heuristic(context) if not enhanced and context.compiler_valid and not mismatches else ()
+    if generalized and generation_v3 and context.compiler_valid and requirement is None:
+        heuristic = duplicate_guards(context)
     finding = ("COMPILER_ERROR" if not context.compiler_valid else "SPECIFICATION_SUPPORTED_SUSPICION" if mismatches
                else "HEURISTIC_SUSPICION" if heuristic else "NO_SUPPORTED_MISMATCH")
     evidence = heuristic or tuple(Evidence(
@@ -222,13 +235,18 @@ def analyze_intention(
         f"{'the interpreted requirement' if target.derived_from_description else 'the supplied expression'} {target.expected_source!r}.",
         target.observed.span if target.observed is not None else target.record.node.span,
     ) for target in mismatches)
-    if heuristic:
+    if heuristic and generalized:
+        notes.append("Duplicate guards can be deliberate redundancy. The intended alternative is unspecified.")
+    elif heuristic:
         notes.append("The computed value could be intentional or unused. Provide a requirement before proposing a logic edit.")
     started_generation = monotonic()
     if enhanced:
         def stream():
             yield from requirement_proposals(context, targets)
-            yield from expanded_proposals(context, compiler_proposals(context), allow_heuristics=requirement is None)
+            if generalized and generation_v3:
+                yield from islice(hypotheses(context, allow_logic=requirement is None), 8)
+            yield from expanded_proposals(context, compiler_proposals(context),
+                                          allow_heuristics=requirement is None and not (generalized and generation_v3))
         source_proposals = stream()
     else:
         source_proposals = candidate_stream(context, targets)
@@ -249,41 +267,49 @@ def analyze_intention(
             attempted_edits.add(signature)
             attempts += 1
             try:
-                candidate = _validate_candidate(context, proposal, enhanced=enhanced)
+                candidate = _validate_candidate(context, proposal, enhanced=enhanced, generalized=generalized)
             except (ContextLimit, RecursionError):
                 continue
             if monotonic() >= deadline:
                 timed_out = True
                 break
             if candidate:
-                key = repair_key(candidate.proposed_code)
+                key = candidate.ast_key or repair_key(candidate.proposed_code)
                 if key not in unique:
                     unique[key] = len(candidates)
                     candidates.append(candidate)
                 elif enhanced:
                     index = unique[key]
                     previous = candidates[index].proposal
-                    if ((candidate.proposal.specification_matches, -len(candidate.proposal.edits))
-                            > (previous.specification_matches, -len(previous.edits))):
+                    if ((candidate.proposal.specification_matches,
+                         generalized and evidence_strength(candidate.proposal), -len(candidate.proposal.edits))
+                            > (previous.specification_matches,
+                               generalized and evidence_strength(previous), -len(previous.edits))):
                         candidates[index] = candidate
     candidate_ms = (monotonic() - started_generation) * 1000
     if enhanced and context.compiler_valid and not mismatches and candidates:
         finding = "HEURISTIC_SUSPICION"
         evidence = candidates[0].proposal.evidence
-        notes.append("Context supports review of these alternatives. Programmer intent remains uncertain.")
+        if generalized:
+            notes.append("A boundary or peer pattern suggests an alternative. Deliberate asymmetry is possible.")
+            notes.append("No behavior specification was supplied. Compilation verifies syntax and types only.")
+        else:
+            notes.append("Context supports review of these alternatives. Programmer intent remains uncertain.")
     try:
         candidates = order_candidates(candidates, ranker, expanded=expanded_ranker, experimental=experimental,
-                                      deadline=deadline if expanded_ranker else None)
+                                      deadline=deadline if expanded_ranker else None, generalized=generalized)
     except (ValueError, TypeError, AttributeError, RuntimeError, KeyError, TimeoutError) as exc:
         for candidate in candidates:
             candidate.relative_score = None
         timed_out = timed_out or isinstance(exc, TimeoutError)
         ranking_status = "RANKING_BUDGET_EXHAUSTED" if timed_out else "ARTIFACT_INCOMPATIBLE"
-        candidates = order_candidates(candidates, None)
+        candidates = order_candidates(candidates, None, generalized=generalized)
     if ranking_status == "LEARNED" and not any(candidate.relative_score is not None for candidate in candidates):
         ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
-    if ranking_status == "EXPANDED_LEARNED" and not any(candidate.relative_score is not None for candidate in candidates):
+    if ranking_status in {"EXPANDED_LEARNED", "V3_LEARNED"} and not any(candidate.relative_score is not None for candidate in candidates):
         ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
+    if generalized and candidates and finding == "HEURISTIC_SUSPICION":
+        evidence = candidates[0].proposal.evidence
     if timed_out:
         notes.append("The analysis budget expired. Only completed checks are shown.")
         decision = "BUDGET_EXHAUSTED"

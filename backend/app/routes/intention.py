@@ -9,6 +9,7 @@ from ai.intention_context import ContextLimit, Example, MAX_SOURCE, Requirement
 from ai.intention_engine import analyze_intention
 from ai.intention_learning import load_expanded_ranker
 from ai.intention_ranker import load_ranker
+from ai.intention_v3_ranker import load_generalized_ranker
 from ai.intention_requirements import InvalidRequirement
 
 
@@ -50,11 +51,14 @@ class IntentionRequest(BaseModel):
     code: str = Field(max_length=MAX_SOURCE)
     requirement: RequirementRequest | None = None
     include_context: bool = False
+    engine_version: Literal[2, 3] = 2
     mode: Literal["code_only", "natural_language", "explicit"] | None = None
 
     @model_validator(mode="after")
     def enforce_mode(self):
         requirement = self.requirement
+        if self.engine_version == 3 and self.mode is None:
+            raise ValueError("Choose an analysis mode when requesting engine version 3.")
         if self.mode == "code_only" and requirement is not None:
             raise ValueError("Code-only analysis accepts source alone.")
         if self.mode == "natural_language" and (
@@ -86,7 +90,10 @@ class IntentionResponse(BaseModel):
 @router.post("/v1/intention-analysis", response_model=IntentionResponse)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.mode is None:
+    if request.engine_version == 3:
+        ranker = None
+        expanded, status = load_generalized_ranker()
+    elif request.mode is None:
         ranker, status = load_ranker()
     else:
         ranker = None
@@ -94,7 +101,8 @@ def intention_analysis(request: IntentionRequest) -> dict:
     requirement = request.requirement.to_domain() if request.requirement else None
     try:
         result = analyze_intention(request.code, requirement, ranker=ranker, ranking_status=status,
-                                   enhanced=request.mode is not None, expanded_ranker=expanded)
+                                   enhanced=request.mode is not None, expanded_ranker=expanded,
+                                   generalized=request.engine_version == 3)
     except InvalidRequirement as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
