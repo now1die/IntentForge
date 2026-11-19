@@ -11,6 +11,8 @@ export function Toolbar({
   analysis,
   checking,
   busy,
+  fullC,
+  analyzeUnavailable,
   onAnalyze,
   onCorrect,
   onReset,
@@ -20,6 +22,8 @@ export function Toolbar({
   analysis: AnalysisResponse | null;
   checking: boolean;
   busy: string | null;
+  fullC: boolean;
+  analyzeUnavailable: boolean;
   onAnalyze: () => void;
   onCorrect: () => void;
   onReset: () => void;
@@ -44,9 +48,9 @@ export function Toolbar({
         <BracketsCurly size={27} weight="bold" />
         <div>
           <h1>
-            Mini-C<span> / Compiler Workbench</span>
+            {fullC ? "C / Clang" : "Mini-C"}<span> / Compiler Workbench</span>
           </h1>
-          <p>AI-assisted syntax detection & correction</p>
+          <p>{fullC ? "Static C analysis" : "AI-assisted syntax detection & correction"}</p>
         </div>
       </div>
       <div className="connections">
@@ -68,13 +72,13 @@ export function Toolbar({
         </button>
         <button
           className={!analysis ? "primary" : ""}
-          disabled={!!busy}
+          disabled={!!busy || analyzeUnavailable}
           onClick={onAnalyze}
         >
           <Play weight="fill" />
           {busy === "analyze" ? "Analyzing…" : "Analyze"}
         </button>
-        <button
+        {!fullC && <button
           className={hasSyntaxErrors ? "primary" : ""}
           disabled={correctDisabled}
           title={correctTitle}
@@ -82,7 +86,7 @@ export function Toolbar({
         >
           <Wrench />
           {busy === "correct" ? "Correcting…" : "Correct"}
-        </button>
+        </button>}
       </nav>
     </header>
   );
