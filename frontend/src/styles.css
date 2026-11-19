@@ -1097,3 +1097,10 @@ summary code {
 .behavior-table caption { text-align: left; }
 .behavior-table th, .behavior-table td { padding: .35rem; text-align: left; }
 .behavior-panel pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.live-behavior form { display: grid; gap: .65rem; }
+.live-behavior label:has(textarea), .live-behavior form > label { display: grid; gap: .35rem; }
+.live-behavior textarea { width: min(100%, 44rem); resize: vertical; font-family: "Geist Mono", monospace; }
+.live-behavior .primary { justify-self: start; }
+.live-behavior li { margin-block: .35rem; overflow-wrap: anywhere; }
+.live-behavior li button { margin-inline-start: .55rem; }

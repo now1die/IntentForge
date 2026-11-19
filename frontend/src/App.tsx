@@ -1,3 +1,4 @@
+import { InteractiveBehavior } from "./components/InteractiveBehavior";
 import { BehaviorDemo } from "./components/BehaviorDemo";
 import { ClangEvidence } from "./components/ClangEvidence";
 import type { ClangAnalysis, ClangCapability, ClangSpan } from "./types/clang";
@@ -375,7 +376,16 @@ export default function App() {
       </section>}
       <SharedEvidence key={JSON.stringify([language, standard, code])} code={code}
         language={fullC ? "c" : "mini-c"} standard={standard} discovering={fullC && clang === null} focus={focusClang} />
-      {!fullC && <BehaviorDemo code={code} onLoad={changeSource} />}
+      {!fullC && <>
+        <InteractiveBehavior code={code} functions={Array.isArray(analysis?.ast?.functions)
+          ? analysis.ast.functions.filter((fn) => fn.return_type === "int" || fn.return_type === "bool").map((fn) => fn.name)
+          : []} onNavigate={(span) => {
+          editor.current?.revealLineInCenter(span.start.line);
+          editor.current?.setPosition({ lineNumber: span.start.line, column: span.start.column });
+          editor.current?.focus();
+        }} onApply={applyIntention} />
+        <BehaviorDemo code={code} onLoad={changeSource} />
+      </>}
       <footer className="statusbar">
         <span role="status" aria-live="polite">
           {notice}

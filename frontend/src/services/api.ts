@@ -36,7 +36,7 @@ async function request<T>(path: string, payload?: unknown, signal?: AbortSignal)
     });
     if (!response.ok) {
       const message =
-        path === "/v1/intention-analysis" && [413, 422].includes(response.status)
+        (path === "/v1/intention-analysis" || path === "/v1/behavioral-verification") && [413, 422].includes(response.status)
           ? await intentionInputError(response)
           : response.status === 503
           ? "The correction model is unavailable. Train the backend model, then try again."
@@ -79,3 +79,8 @@ export const analyzeC = (code: string, standard: string, signal: AbortSignal) =>
 export const inspectCompilerEvidence = (code: string, language: "mini-c" | "c", standard: string, signal: AbortSignal) =>
   request<import("../types/evidence").SharedEvidenceReport>("/v1/compiler-evidence",
     language === "c" ? { code, language, standard } : { code, language }, signal);
+
+export const getExecutionCapability = (signal: AbortSignal) =>
+  request<import("../components/InteractiveBehavior").ExecutionCapability>("/v1/behavioral-verification/capability", undefined, signal);
+export const verifyBehavior = (payload: unknown, signal: AbortSignal) =>
+  request<import("../components/InteractiveBehavior").VerificationResponse>("/v1/behavioral-verification", payload, signal);
