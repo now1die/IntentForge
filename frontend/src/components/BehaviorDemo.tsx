@@ -3,8 +3,8 @@ import recorded from "../data/phase4-demonstrations.json";
 
 type Scalar = number | boolean;
 type Vector = { arguments: Scalar[]; expected: Scalar };
-type Span = { start: { line: number; column: number } };
-type Result = {
+export type Span = { start: { line: number; column: number } };
+export type BehaviorEvidence = {
   status: string;
   entry_point: string;
   observations: { vector: Vector; actual: Scalar }[];
@@ -14,6 +14,7 @@ type Result = {
     issue: { code: string; message: string; vector: number | null; span: Span | null } | null;
     trace: { kind: string; vector: number; step: number; span: Span | null }[];
     trace_truncated: boolean;
+    samples?: { steps: number; peak_cells: number; call_depth: number }[];
   } | null;
 };
 
@@ -30,12 +31,16 @@ function location(span: Span | null) {
   return span ? `line ${span.start.line}, column ${span.start.column}` : "Location unavailable";
 }
 
-function Evidence({ label, result }: { label: string; result: Result }) {
+export function Evidence({ label, result, onNavigate }: {
+  label: string; result: BehaviorEvidence; onNavigate?: (span: Span) => void;
+}) {
   const issue = result.execution?.issue;
   return <section className="behavior-run" aria-label={label}>
     <h3>{label}</h3>
     <p>{statusLabels[result.status] ?? result.status}</p>
-    {issue && <p><strong>{issue.code}</strong> · {issue.message} · {location(issue.span)}</p>}
+    {issue && <p><strong>{issue.code}</strong> · {issue.message} · {issue.span && onNavigate
+      ? <button type="button" onClick={() => onNavigate(issue.span!)}>{location(issue.span)}</button>
+      : location(issue.span)}</p>}
     {!issue && result.diagnostics.map((message) => <p key={message}>{message}</p>)}
     <div className="behavior-table">
       <table>
@@ -53,6 +58,11 @@ function Evidence({ label, result }: { label: string; result: Result }) {
         })}</tbody>
       </table>
     </div>
+    {onNavigate && !!result.execution?.samples?.length && <ol aria-label="Execution usage">
+      {result.execution.samples.map((sample, i) => <li key={i}>
+        Test {i + 1} · {sample.steps} steps · {sample.peak_cells} peak cells · depth {sample.call_depth}
+      </li>)}
+    </ol>}
     {!!result.execution?.trace.length && <details>
       <summary>Execution trace</summary>
       {result.execution.trace_truncated && <p>Trace truncated at the recording limit.</p>}

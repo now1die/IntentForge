@@ -133,20 +133,27 @@ Clang remains opt-in on a supported isolated Linux deployment.
 
 The v4 ranking artifact includes experimental models. The held-out
 selection gate kept deterministic ordering active. Live Ollama and
-public Clang deployment are unverified. The behavioral oracle is a
-tested interface for a future Mini-C interpreter.
+public Clang deployment are unverified. The behavioral oracle is shared by
+the Mini-C interpreter and the repair review.
 
 [Phase 3.5 final review](docs/PHASE_3_5_FINAL_REVIEW.md) ·
 [Phase 4 readiness](docs/PHASE_4_READINESS.md)
 
-## Phase 4 behavioral verification
+## Mini-C behavioral verification
 
-The Mini-C VM interprets compiler-validated integer and Boolean programs
-for trusted callers, with bounded steps, frames, memory cells and traces.
-The Mini-C workbench's **Behavioral verification** section shows recorded
-observations from trusted examples. Editor submissions have no execution
-route. Passing examples supports review of a correction and still
-requires explicit approval.
+The bounded Mini-C VM interprets compiler-validated integer and Boolean
+programs. The workbench includes recorded evidence and, in a verified local
+Linux deployment, an interactive mode for running the current source against
+typed tests. It shows per-vector observations, runtime diagnostics and
+optional traces. Repairs can be compared with the original, and generated
+probe inputs can help distinguish candidates. Expected outputs come from
+the reviewer, and every edit requires explicit approval.
 
-[Phase 4 final review](docs/PHASE_4_FINAL_REVIEW.md) ·
-[Supported language](docs/phase4_supported_language.md)
+The default hosted profile disables interactive execution. C/Clang mode
+provides analysis only. Public execution awaits an independent assessment
+of the target deployment.
+
+[Local setup](docs/phase4_5_execution_isolation.md) ·
+[API reference](docs/phase4_5_interactive_api.md) ·
+[Phase 4.5 final review](docs/PHASE_4_5_FINAL_REVIEW.md) ·
+[Supported Mini-C](docs/phase4_supported_language.md)

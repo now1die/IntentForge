@@ -11,6 +11,7 @@ from fastapi.responses import JSONResponse
 
 from .dependencies import ModelUnavailableError, get_ollama_fallback, get_predictor
 from .routes.analysis import router as analysis_router
+from .routes.behavioral import router as behavioral_router
 from .routes.clang_analysis import router as clang_router
 from .routes.correction import router as correction_router
 from .routes.evidence import router as evidence_router
@@ -67,6 +68,7 @@ app.include_router(options_router)
 app.include_router(intention_router)
 app.include_router(clang_router)
 app.include_router(evidence_router)
+app.include_router(behavioral_router)
 
 
 @app.exception_handler(ModelUnavailableError)

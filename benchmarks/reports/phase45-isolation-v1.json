@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "provenance": "Real private Mini-C worker through the loopback gateway",
+  "repair_families": [
+    {
+      "family": "triple-adjust",
+      "labeled_reference": true,
+      "reference_static_rank": 1,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "compiler_valid_candidates": 1,
+      "executable_candidates": 1,
+      "passing": 1,
+      "runtime_failure": 0,
+      "multiple_matches": false,
+      "disagreements": 0,
+      "requires_approval": true
+    },
+    {
+      "family": "descending-buffer",
+      "labeled_reference": true,
+      "reference_static_rank": 1,
+      "original_status": "BEHAVIOR_UNKNOWN",
+      "compiler_valid_candidates": 1,
+      "executable_candidates": 1,
+      "passing": 1,
+      "runtime_failure": 0,
+      "multiple_matches": false,
+      "disagreements": 0,
+      "requires_approval": true
+    },
+    {
+      "family": "coincident-endpoints",
+      "labeled_reference": true,
+      "reference_static_rank": 1,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "compiler_valid_candidates": 2,
+      "executable_candidates": 2,
+      "passing": 2,
+      "runtime_failure": 0,
+      "multiple_matches": true,
+      "disagreements": 7,
+      "requires_approval": true
+    },
+    {
+      "family": "runtime-rejection",
+      "labeled_reference": false,
+      "reference_static_rank": null,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "compiler_valid_candidates": 1,
+      "executable_candidates": 1,
+      "passing": 0,
+      "runtime_failure": 1,
+      "multiple_matches": false,
+      "disagreements": 0,
+      "requires_approval": true
+    },
+    {
+      "family": "valid-latch",
+      "labeled_reference": false,
+      "reference_static_rank": null,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "compiler_valid_candidates": 0,
+      "executable_candidates": 0,
+      "passing": 0,
+      "runtime_failure": 0,
+      "multiple_matches": false,
+      "disagreements": 0,
+      "requires_approval": true
+    },
+    {
+      "family": "unavailable-float",
+      "labeled_reference": false,
+      "reference_static_rank": null,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "compiler_valid_candidates": 0,
+      "executable_candidates": 0,
+      "passing": 0,
+      "runtime_failure": 0,
+      "multiple_matches": false,
+      "disagreements": 0,
+      "requires_approval": true
+    }
+  ],
+  "comparison_ms": {
+    "mean": 284.57592333385645,
+    "median": 266.65170949854655,
+    "p95": 382.35189100305433
+  },
+  "eight_concurrent_requests": {
+    "available": 2,
+    "capacity_reached": 6
+  }
+}

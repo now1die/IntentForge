@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "provenance": "Project-authored fixtures and independent mathematical formulas",
+  "families": 14,
+  "supplied_vectors": 28,
+  "generated_seed": 451971,
+  "generated_reference_vectors": 216,
+  "programs": [
+    {
+      "family": "signed-reconstruction",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        14,
+        14
+      ],
+      "peak_cells": 2,
+      "call_depth": 1,
+      "trace_entries": 4,
+      "trace_truncated": false
+    },
+    {
+      "family": "bool-branch",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        10,
+        10
+      ],
+      "peak_cells": 2,
+      "call_depth": 1,
+      "trace_entries": 6,
+      "trace_truncated": false
+    },
+    {
+      "family": "continue-break",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        181,
+        181
+      ],
+      "peak_cells": 3,
+      "call_depth": 1,
+      "trace_entries": 43,
+      "trace_truncated": true
+    },
+    {
+      "family": "spectral-grid",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        168,
+        168
+      ],
+      "peak_cells": 3,
+      "call_depth": 1,
+      "trace_entries": 44,
+      "trace_truncated": true
+    },
+    {
+      "family": "recursive-squared",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        96,
+        96
+      ],
+      "peak_cells": 7,
+      "call_depth": 7,
+      "trace_entries": 40,
+      "trace_truncated": false
+    },
+    {
+      "family": "local-and-global",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        22,
+        22
+      ],
+      "peak_cells": 3,
+      "call_depth": 2,
+      "trace_entries": 16,
+      "trace_truncated": false
+    },
+    {
+      "family": "array-index-side-effects",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        29,
+        29
+      ],
+      "peak_cells": 5,
+      "call_depth": 1,
+      "trace_entries": 16,
+      "trace_truncated": false
+    },
+    {
+      "family": "compound-read-first",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        10,
+        10
+      ],
+      "peak_cells": 1,
+      "call_depth": 1,
+      "trace_entries": 10,
+      "trace_truncated": false
+    },
+    {
+      "family": "global-init-call",
+      "observations": 2,
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "steps": [
+        11,
+        11
+      ],
+      "peak_cells": 1,
+      "call_depth": 1,
+      "trace_entries": 12,
+      "trace_truncated": false
+    },
+    {
+      "family": "runtime-overflow",
+      "observations": 0,
+      "status": "BEHAVIOR_UNKNOWN",
+      "issue": "INTEGER_OVERFLOW",
+      "steps": [
+        7
+      ],
+      "peak_cells": 0,
+      "call_depth": 1,
+      "trace_entries": 2,
+      "trace_truncated": false
+    },
+    {
+      "family": "runtime-index",
+      "observations": 0,
+      "status": "BEHAVIOR_UNKNOWN",
+      "issue": "ARRAY_BOUNDS",
+      "steps": [
+        15
+      ],
+      "peak_cells": 6,
+      "call_depth": 1,
+      "trace_entries": 3,
+      "trace_truncated": false
+    },
+    {
+      "family": "loop-limit",
+      "observations": 0,
+      "status": "EXECUTION_LIMITED",
+      "issue": "STEP_LIMIT",
+      "steps": [
+        600
+      ],
+      "peak_cells": 1,
+      "call_depth": 1,
+      "trace_entries": 44,
+      "trace_truncated": true
+    },
+    {
+      "family": "allocation-limit",
+      "observations": 0,
+      "status": "EXECUTION_LIMITED",
+      "issue": "MEMORY_CELLS",
+      "steps": [
+        4
+      ],
+      "peak_cells": 1,
+      "call_depth": 1,
+      "trace_entries": 2,
+      "trace_truncated": false
+    },
+    {
+      "family": "unsupported-argument-type",
+      "observations": 0,
+      "status": "EXECUTION_UNSUPPORTED",
+      "issue": "UNSUPPORTED_CONSTRUCT",
+      "steps": [],
+      "peak_cells": 0,
+      "call_depth": 0,
+      "trace_entries": 0,
+      "trace_truncated": false
+    }
+  ],
+  "timings_ms": {
+    "prepare": {
+      "mean": 1.4480604444947351,
+      "median": 1.4672680008516181,
+      "p95": 2.1976780008117203
+    },
+    "execution_one_vector": {
+      "mean": 0.08128877784151377,
+      "median": 0.04072400042787194,
+      "p95": 0.23055199926602654
+    },
+    "verification": {
+      "mean": 1.7208514286072127,
+      "median": 1.4982685006543761,
+      "p95": 4.240385002049152
+    },
+    "verification_with_trace": {
+      "mean": 4.552884857080893,
+      "median": 1.5218084990920033,
+      "p95": 42.15828300220892
+    },
+    "failure_handling": {
+      "mean": 1.1201811998034827,
+      "median": 1.0402510015410371,
+      "p95": 1.4948670032026712
+    }
+  }
+}
