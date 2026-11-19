@@ -91,6 +91,22 @@ def test_semantic_candidates_use_symbols_types_and_local_edits(source, accepted)
     assert all(item["safety"]["requires_review"] for item in result.to_dict()["candidates"])
 
 
+def test_description_interpretation_requires_corresponding_ast_evidence():
+    source = "int total(int price,int quantity){int result=price*quantity;return price;}"
+    result = analyze_intention(source, Requirement(description="Return the total cost."))
+    assert result.candidates[0].proposed_code.endswith("return result;}")
+    assert "supported reading" in result.candidates[0].proposal.evidence[1].detail
+    no_product = analyze_intention("int total(int price,int quantity){return price;}",
+                                   Requirement(description="Return the total cost."))
+    assert no_product.decision == "INSUFFICIENT_CONTEXT" and not no_product.candidates
+    eligible = analyze_intention("int eligible(int age){if(age<18)return 1;return 0;}",
+                                 Requirement(description="Eligibility begins at 18."))
+    assert eligible.candidates and "age >= 18" in eligible.candidates[0].proposed_code
+    no_positive_branch = analyze_intention("int eligible(int age){if(age<18)return 0;return 1;}",
+                                         Requirement(description="Eligibility begins at 18."))
+    assert not no_positive_branch.candidates
+
+
 def test_names_do_not_create_intent_and_weak_heuristic_abstains():
     assert not analyze_intention("int square(int x){return x+x;}").candidates
     result = analyze_intention("int billed(int price,int unit){int cost=price*unit;return price;}")
@@ -129,6 +145,10 @@ def test_ranking_reproduces_and_learned_model_is_bounded_to_supported_role(tmp_p
     second = analyze_intention(source, ranker=ranker, ranking_status=status)
     assert first.to_dict() == second.to_dict()
     assert first.ranking == "LEARNED" and first.candidates[0].relative_score is not None
+    assignment = "int f(int raw){int fallback=1;int result=raw;result+=3;result=fallbac;return result;}"
+    outside_scope = analyze_intention(assignment, ranker=ranker, ranking_status=status)
+    assert len(outside_scope.candidates) > 1 and outside_scope.ranking == "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
+    assert all(item.relative_score is None for item in outside_scope.candidates)
     absent, fallback = load_ranker(tmp_path / "missing.joblib")
     assert absent is None and fallback == "ARTIFACT_UNAVAILABLE"
     result = analyze_intention(source, ranker=absent, ranking_status=fallback)

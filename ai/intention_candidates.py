@@ -51,6 +51,7 @@ class Proposal:
     symbol_distance: int = 0
     symbol_kind: str = ""
     specification_matches: int = 0
+    in_return_position: bool = False
 
 
 def point(location: SourceLocation) -> SourceSpan:
@@ -108,11 +109,15 @@ def requirement_proposals(context: IntentionContext, targets: list[ExpressionTar
         proposed = target.expected_source.strip()
         replacement = f" {proposed}" if span.start == span.end else proposed
         expected_node = parse_expression(proposed)
+        basis = (
+            f"The supported reading of the description is {proposed!r}."
+            if target.derived_from_description else f"The supplied {target.field} expression is {proposed!r}."
+        )
         proposals.append(Proposal(
             (Edit(span, replacement),),
             _requirement_category(target, expected_node),
             (Evidence("OBSERVED_AST", f"Selected {target.field} belongs to function {target.record.function.name}.", node.span),
-             Evidence("USER_REQUIREMENT", f"The supplied {target.field} expression is {proposed!r}.", span)),
+             Evidence("USER_REQUIREMENT", basis, span)),
             "The selected expression is the intended location for this requirement.",
             type(node).__name__, target.field, specification_matches=1,
         ))
@@ -153,6 +158,7 @@ def symbol_alternatives(context, record, span, expected, category, diagnostic, *
         -SequenceMatcher(None, existing, symbol.name, autojunk=False).ratio() if existing else 0,
         symbol.type.display() != expected, -symbol.declaration_span.start.offset, symbol.id,
     ))
+    in_return_position = record.parent_id is not None and isinstance(context.nodes[record.parent_id].node, ReturnStatement)
     for symbol in pool[:LOCAL_SYMBOL_LIMIT]:
         whitespace = " " if span.start == span.end else ""
         yield Proposal(
@@ -162,7 +168,7 @@ def symbol_alternatives(context, record, span, expected, category, diagnostic, *
             f"The intended value may be the visible binding {symbol.name!r}.",
             type(record.node).__name__, record.relation or "", expected == symbol.type.display(),
             _before_counts(context, offset, symbol), max(0, offset - symbol.declaration_span.end.offset),
-            symbol.kind.value,
+            symbol.kind.value, in_return_position=in_return_position,
         )
 
 

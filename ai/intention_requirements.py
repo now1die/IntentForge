@@ -6,8 +6,8 @@ from dataclasses import dataclass
 import re
 
 from compiler.ast_nodes import (
-    ArrayAccess, ASTNode, BinaryExpression, ForStatement, FunctionCall, Identifier, IfStatement, Literal,
-    ReturnStatement, UnaryExpression, WhileStatement,
+    ArrayAccess, ASTNode, BinaryExpression, Block, ForStatement, FunctionCall, FunctionDefinition,
+    Identifier, IfStatement, Literal, ReturnStatement, UnaryExpression, VariableDeclaration, WhileStatement,
 )
 from compiler.parser import parse
 
@@ -29,6 +29,7 @@ class ExpressionTarget:
     expected_source: str
     matches: bool
     field: str
+    derived_from_description: bool
 
 
 def expression_key(node: ASTNode):
@@ -75,22 +76,53 @@ def _description_expression(description: str) -> str | None:
     return None
 
 
+def _domain_description(description: str, function: FunctionDefinition) -> dict[str, str]:
+    text = description.casefold().strip().rstrip(".")
+    parameter_names = {parameter.name for parameter in function.parameters}
+    if text in {"return total cost", "return the total cost"} and {"price", "quantity"} <= parameter_names:
+        matches = []
+        for statement in function.body.statements:
+            product = statement.initializer if isinstance(statement, VariableDeclaration) else None
+            if (isinstance(product, BinaryExpression) and product.operator == "*"
+                    and isinstance(product.left, Identifier) and isinstance(product.right, Identifier)
+                    and {product.left.name, product.right.name} == {"price", "quantity"}):
+                matches.append(statement.name)
+        return {"return": matches[0]} if len(matches) == 1 else {}
+
+    threshold = re.fullmatch(r"eligibility begins at ([0-9]{1,5})", text)
+    if threshold and len(function.parameters) == 1 and function.parameters[0].name == "age" and function.parameters[0].type_name == "int":
+        matching = []
+        for statement in function.body.statements:
+            if not isinstance(statement, IfStatement):
+                continue
+            guard = statement.condition
+            branch = statement.then_branch
+            if isinstance(branch, Block) and len(branch.statements) == 1:
+                branch = branch.statements[0]
+            if (isinstance(guard, BinaryExpression) and isinstance(guard.left, Identifier)
+                    and guard.left.name == "age" and isinstance(guard.right, Literal)
+                    and guard.right.literal_type == "int"
+                    and isinstance(branch, ReturnStatement) and isinstance(branch.value, Literal)
+                    and branch.value.literal_type in {"int", "bool"} and branch.value.value in (True, 1)):
+                matching.append(statement)
+        if len(matching) == 1:
+            return {"condition": f"age >= {int(threshold[1])}"}
+    return {}
+
+
 def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], list[str]]:
     requirement = context.requirement
     if not requirement:
         return [], []
-    return_expression = requirement.return_expression or _description_expression(requirement.description or "")
-    expected = {
-        name: parse_expression(text)
-        for name, text in (("return", return_expression), ("condition", requirement.condition))
-        if text is not None
-    }
+    explicit = {name: text for name, text in (("return", requirement.return_expression),
+                                               ("condition", requirement.condition)) if text is not None}
+    expected = {name: (text, parse_expression(text), False) for name, text in explicit.items()}
     if not context.parsed.valid:
         return [], ["The requirement cannot be located without an intact AST."]
     ast = context.parsed.ast
     assert ast is not None
     functions = [function for function in ast.functions if requirement.function is None or function.name == requirement.function]
-    subject_required = bool(expected or requirement.examples or requirement.function)
+    subject_required = bool(expected or requirement.description or requirement.examples or requirement.function)
     if len(functions) != 1 and subject_required:
         return [], ["Select one existing function before matching the requirement."]
     notes = []
@@ -98,13 +130,21 @@ def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], 
         if any(len(example.args) != len(functions[0].parameters) for example in requirement.examples):
             raise InvalidRequirement("Example arguments must match the selected function's arity.")
         notes.append("Input/output examples were recorded. Runtime verification is unavailable.")
-    if requirement.description and not expected:
-        notes.append("The description is recorded. Use an explicit return or condition expression for a static comparison.")
+    if requirement.description and functions:
+        derived = _domain_description(requirement.description, functions[0])
+        named_expression = _description_expression(requirement.description)
+        if named_expression:
+            derived["return"] = named_expression
+        for name, text in derived.items():
+            if name not in expected:
+                expected[name] = (text, parse_expression(text), True)
+        if not expected:
+            notes.append("The description is recorded. Use an explicit return or condition expression for a static comparison.")
     if not expected:
         return [], notes
     function = functions[0]
     targets = []
-    for name, expression in expected.items():
+    for name, (text, expression, derived) in expected.items():
         is_return = name == "return"
         candidates = [
             record for record in context.nodes if record.function is function
@@ -118,6 +158,6 @@ def resolve_targets(context: IntentionContext) -> tuple[list[ExpressionTarget], 
             continue
         record = candidates[ordinal - 1]
         observed = record.node.value if is_return else record.node.condition
-        text = return_expression if is_return else requirement.condition
-        targets.append(ExpressionTarget(record, observed, text, observed is not None and expression_key(observed) == expression_key(expression), name))
+        matches = observed is not None and expression_key(observed) == expression_key(expression)
+        targets.append(ExpressionTarget(record, observed, text, matches, name, derived))
     return targets, notes

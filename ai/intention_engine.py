@@ -112,7 +112,7 @@ def order_candidates(candidates: list[Candidate], ranker: Ranker | None):
     for key in sorted(groups):
         group = groups[key]
         # Deployment evidence covers competing visible bindings in return-value positions.
-        compatible = all(item.proposal.node_kind == "Identifier" and item.proposal.role == "value"
+        compatible = all(item.proposal.node_kind == "Identifier" and item.proposal.in_return_position
                          and item.proposal.symbol_kind in {"variable", "parameter"} for item in group)
         if ranker and compatible and len(group) > 1:
             for candidate, score in zip(group, ranker.score([item.features for item in group]), strict=True):
@@ -204,7 +204,8 @@ def analyze_intention(
                else "HEURISTIC_SUSPICION" if heuristic else "NO_SUPPORTED_MISMATCH")
     evidence = heuristic or tuple(Evidence(
         "USER_REQUIREMENT",
-        f"The selected {target.field} differs structurally from the supplied expression {target.expected_source!r}.",
+        f"The selected {target.field} differs structurally from "
+        f"{'the interpreted requirement' if target.derived_from_description else 'the supplied expression'} {target.expected_source!r}.",
         target.observed.span if target.observed is not None else target.record.node.span,
     ) for target in mismatches)
     if heuristic:

@@ -35,7 +35,7 @@ class RequirementRequest(BaseModel):
     def selectors_require_expressions(self):
         if self.return_ordinal is not None and self.return_expression is None and not self.description:
             raise ValueError("A return ordinal needs a return requirement.")
-        if self.condition_ordinal is not None and self.condition is None:
+        if self.condition_ordinal is not None and self.condition is None and not self.description:
             raise ValueError("A condition ordinal needs a condition requirement.")
         return self
 
