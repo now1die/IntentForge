@@ -656,13 +656,14 @@ def test_single_deterministic_candidate_never_calls_ambiguity_selector() -> None
 
 class FakeUrlResponse:
     def __init__(self, payload: dict):
-        self.payload = payload
+        self.payload = json.dumps(payload).encode("utf-8")
     def __enter__(self):
         return self
     def __exit__(self, *args):
         return False
-    def read(self):
-        return json.dumps(self.payload).encode("utf-8")
+    def read(self, size):
+        chunk, self.payload = self.payload[:size], self.payload[size:]
+        return chunk
 
 
 def fake_ollama_opener_factory(payloads):

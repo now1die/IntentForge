@@ -9,7 +9,8 @@ import os
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
+from time import monotonic
 from typing import Any, Protocol, Sequence
 
 from dotenv import dotenv_values, find_dotenv, load_dotenv
@@ -26,6 +27,7 @@ DEFAULT_GROQ_MODEL = "qwen/qwen3.8-27b"
 DEFAULT_OLLAMA_MODEL = "llama3.2:3b"
 DEFAULT_OLLAMA_HOST = "http://127.0.0.1:11434"
 DEFAULT_OLLAMA_TIMEOUT = 12.0
+MAX_OLLAMA_BODY = 256_000
 DEFAULT_TEMPERATURE = 0.1
 DEFAULT_MAX_TOKENS = 500
 DEFAULT_SELECTION_MAX_TOKENS = 500
@@ -322,6 +324,11 @@ class GroqFallbackService:
 
 
 
+class RejectOllamaRedirect(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 class OllamaFallbackService:
     """Local Ollama adapter. No cloud API key is required."""
 
@@ -353,8 +360,8 @@ class OllamaFallbackService:
                 raise ValueError("OLLAMA_MODEL must be a nonempty model name")
             if enabled not in {"true", "false"}:
                 raise ValueError("OLLAMA_ENABLED must be true or false")
-            if timeout <= 0:
-                raise ValueError("Ollama timeout must be positive")
+            if not math.isfinite(timeout) or not 0 < timeout <= 30:
+                raise ValueError("Ollama timeout must be in (0, 30] seconds")
         except ValueError as exc:
             self.configuration_error = str(exc)
         self.enabled = enabled == "true"
@@ -500,7 +507,7 @@ class OllamaFallbackService:
                 ],
                 "stream": False,
                 "format": "json",
-                "options": {"temperature": DEFAULT_TEMPERATURE},
+                "options": {"temperature": DEFAULT_TEMPERATURE, "num_predict": 1024},
             },
             timeout=self.timeout,
         )
@@ -520,10 +527,21 @@ class OllamaFallbackService:
             method=method,
             headers={"Content-Type": "application/json"} if body is not None else {},
         )
-        opener = self._opener or urlopen
+        opener = self._opener or build_opener(RejectOllamaRedirect()).open
+        deadline = monotonic() + timeout
+        raw = bytearray()
         with opener(request, timeout=timeout) as response:
-            raw = response.read().decode("utf-8")
-        payload = json.loads(raw)
+            read = getattr(response, "read1", response.read)
+            while monotonic() < deadline:
+                chunk = read(min(8192, MAX_OLLAMA_BODY + 1 - len(raw)))
+                if not chunk:
+                    break
+                raw.extend(chunk)
+                if len(raw) > MAX_OLLAMA_BODY:
+                    raise ValueError("Ollama response exceeds its byte limit")
+            if monotonic() >= deadline:
+                raise TimeoutError("Ollama response exceeded the request budget")
+        payload = json.loads(raw.decode("utf-8"))
         if not isinstance(payload, dict):
             raise ValueError("Ollama response must be a JSON object")
         return payload

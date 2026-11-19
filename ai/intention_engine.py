@@ -15,6 +15,9 @@ from compiler.ast_nodes import BinaryExpression, Identifier, ReturnStatement, Va
 from compiler.semantic_analyzer import analyze_source_semantics
 from compiler.symbol_table import SymbolKind
 
+from .behavior_oracle import BehaviorResult, Status, Vector, program_identity
+from .intention_phase35 import phase35_features, phase35_hypotheses
+from .intention_uncertainty import classify
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
                                    compiler_proposals, requirement_proposals)
@@ -39,8 +42,9 @@ class Candidate:
     features: dict[str, Any]
     relative_score: float | None = None
     ast_key: str | None = None
+    behavior: BehaviorResult | None = None
 
-    def to_dict(self, source: str, ambiguous: bool):
+    def to_dict(self, source: str, ambiguous: bool, evidence_policy: bool = False):
         safety = RepairSafety(
             "UNVERIFIED" if not self.compiler_valid else
             "AMBIGUOUS" if ambiguous else "POTENTIALLY_BEHAVIOR_CHANGING",
@@ -51,7 +55,9 @@ class Candidate:
             "id": self.id, "category": self.proposal.category,
             "proposed_code": self.proposed_code, "compiler_valid": self.compiler_valid,
             "remaining_diagnostics": self.remaining_diagnostics,
-            "behavioral_status": "ORACLE_UNAVAILABLE",
+            "behavioral_status": self.behavior.status.value if self.behavior else "ORACLE_UNAVAILABLE",
+            **({"behavioral_evidence": self.behavior.model_dump(mode="json")} if self.behavior else {}),
+            **(classify(self, ambiguous=ambiguous) if evidence_policy else {}),
             "relative_score": round(self.relative_score, 6) if self.relative_score is not None else None,
             "safety": safety.to_dict(),
             "hypothesis": self.proposal.assumption,
@@ -75,18 +81,46 @@ class IntentionResult:
     attempts: int = 0
     requirement_status: str | None = None
     candidate_ms: float = 0.0
+    evidence_policy: bool = False
+    behavior: BehaviorResult | None = None
+
+    def record_behavior(self, result: BehaviorResult) -> None:
+        """Accept evidence only from a caller that owns a trusted executor."""
+        result = BehaviorResult.model_validate(result.model_dump())
+        requirement = self.context.requirement
+        if not requirement or result.entry_point != requirement.function or not requirement.examples:
+            raise ValueError("Behavior requires the selected entry point and supplied examples.")
+        vectors = tuple(Vector(arguments=item.args, expected=item.expected_return) for item in requirement.examples)
+        checked = tuple(row.vector for row in result.observations)
+        if (tuple(row.model_dump_json() for row in checked)
+                != tuple(row.model_dump_json() for row in vectors[:len(checked)])
+                or result.status == Status.MATCHES_SUPPLIED_TESTS and len(checked) != len(vectors)):
+            raise ValueError("Behavior observations must correspond to the supplied examples.")
+        if result.candidate_id is None:
+            if result.program != program_identity(self.context.source) or not self.context.compiler_valid:
+                raise ValueError("Behavior mismatches the original program snapshot.")
+            self.behavior = result
+        else:
+            choice = next((item for item in self.candidates if item.id == result.candidate_id), None)
+            if not choice or not choice.compiler_valid or result.program != program_identity(choice.proposed_code):
+                raise ValueError("Behavior mismatches the candidate snapshot.")
+            choice.behavior = result
 
     def to_dict(self, *, include_context=False):
         ambiguous = self.decision == "AMBIGUOUS"
+        candidates = [item.to_dict(self.context.source, ambiguous, self.evidence_policy) for item in self.candidates]
         return {
             "finding": self.finding, "decision": self.decision, "ranking": self.ranking,
             "compiler_valid": self.context.compiler_valid,
-            "behavioral_status": "EXECUTION_UNSUPPORTED" if self.finding == "UNSUPPORTED_LANGUAGE" else "ORACLE_UNAVAILABLE",
+            "behavioral_status": self.behavior.status.value if self.behavior else
+            "EXECUTION_UNSUPPORTED" if self.finding == "UNSUPPORTED_LANGUAGE" else "ORACLE_UNAVAILABLE",
+            **({"behavioral_evidence": self.behavior.model_dump(mode="json")} if self.behavior else {}),
+            **({"recommendation": candidates[0]["recommendation"] if candidates else "ABSTAIN"} if self.evidence_policy else {}),
             "diagnostics": [item.to_dict() for item in self.context.diagnostics],
             "evidence": [fact.to_dict() for fact in self.evidence],
             "notes": self.notes, "attempts": self.attempts,
             **({"requirement_status": self.requirement_status} if self.requirement_status else {}),
-            "candidates": [item.to_dict(self.context.source, ambiguous) for item in self.candidates],
+            "candidates": candidates,
             "context": self.context.to_dict() if include_context else None,
         }
 
@@ -178,7 +212,7 @@ def _heuristic(context: IntentionContext) -> tuple[Evidence, ...]:
     return ()
 
 
-def _validate_candidate(context, proposal, *, enhanced=False, generalized=False):
+def _validate_candidate(context, proposal, *, enhanced=False, generalized=False, phase35=False):
     try:
         fixed = apply_edits(context.source, proposal.edits)
     except ValueError:
@@ -203,6 +237,8 @@ def _validate_candidate(context, proposal, *, enhanced=False, generalized=False)
     ast_key = None
     if generalized:
         features.update(generalized_features(context, proposal))
+        if phase35:
+            features.update(phase35_features(context, proposal))
         if checked.parse_result.ast is not None:
             ast_key = repr(expression_key(checked.parse_result.ast))
     return Candidate("IR-" + sha256(fixed.encode()).hexdigest()[:12], fixed, proposal, checked.success,
@@ -214,8 +250,9 @@ def analyze_intention(
     ranking_status: str = "DETERMINISTIC", budget_seconds: float = DEFAULT_BUDGET_SECONDS,
     candidate_budget: int = MAX_CANDIDATES, enhanced: bool = False,
     expanded_ranker: ExpandedRanker | None = None, experimental: str | None = None,
-    generalized: bool = False, generation_v3: bool = True,
+    generalized: bool = False, generation_v3: bool = True, phase35: bool = False,
 ) -> IntentionResult:
+    generalized = generalized or phase35
     enhanced = enhanced or generalized
     deadline = monotonic() + budget_seconds
     context = build_context(source, requirement)
@@ -243,6 +280,8 @@ def analyze_intention(
     if enhanced:
         def stream():
             yield from requirement_proposals(context, targets)
+            if phase35 and requirement is None:
+                yield from phase35_hypotheses(context)
             if generalized and generation_v3:
                 yield from islice(hypotheses(context, allow_logic=requirement is None), 8)
             yield from expanded_proposals(context, compiler_proposals(context),
@@ -267,7 +306,7 @@ def analyze_intention(
             attempted_edits.add(signature)
             attempts += 1
             try:
-                candidate = _validate_candidate(context, proposal, enhanced=enhanced, generalized=generalized)
+                candidate = _validate_candidate(context, proposal, enhanced=enhanced, generalized=generalized, phase35=phase35)
             except (ContextLimit, RecursionError):
                 continue
             if monotonic() >= deadline:
@@ -306,7 +345,7 @@ def analyze_intention(
         candidates = order_candidates(candidates, None, generalized=generalized)
     if ranking_status == "LEARNED" and not any(candidate.relative_score is not None for candidate in candidates):
         ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
-    if ranking_status in {"EXPANDED_LEARNED", "V3_LEARNED"} and not any(candidate.relative_score is not None for candidate in candidates):
+    if ranking_status in {"EXPANDED_LEARNED", "V3_LEARNED", "V4_LEARNED"} and not any(candidate.relative_score is not None for candidate in candidates):
         ranking_status = "DETERMINISTIC_OUTSIDE_MODEL_SCOPE"
     if generalized and candidates and finding == "HEURISTIC_SUSPICION":
         evidence = candidates[0].proposal.evidence
@@ -340,4 +379,4 @@ def analyze_intention(
         if requirement_status == "UNSUPPORTED_DESCRIPTION":
             decision = "INSUFFICIENT_CONTEXT"
     return IntentionResult(context, finding, decision, ranking_status, candidates, notes, evidence, attempts,
-                           requirement_status, candidate_ms)
+                           requirement_status, candidate_ms, evidence_policy=phase35)

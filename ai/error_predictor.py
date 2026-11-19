@@ -7,6 +7,8 @@ from pathlib import Path
 from typing import Any, Protocol, Sequence
 
 import joblib
+
+from .artifact_trust import load_packaged_artifact
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
@@ -84,8 +86,8 @@ class MLCorrectionPredictor:
         return destination
 
     @classmethod
-    def load(cls, path: str | Path) -> MLCorrectionPredictor:
-        pipeline = joblib.load(Path(path))
+    def load(cls, path: str | Path, *, verify_packaged: bool = False) -> MLCorrectionPredictor:
+        pipeline = load_packaged_artifact(Path(path)) if verify_packaged else joblib.load(Path(path))
         if not isinstance(pipeline, Pipeline):
             raise TypeError("Saved artifact is not a Scikit-learn Pipeline")
         return cls(pipeline)
