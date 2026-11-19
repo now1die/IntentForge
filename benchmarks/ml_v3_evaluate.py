@@ -43,6 +43,11 @@ def with_intervals(configuration):
                      "valid_control_alerts", "top_reference_miss_when_proposed"):
             part = view[name]
             view[name + "_wilson_95"] = _wilson(part["numerator"], part["denominator"])
+        valid_controls = [row for row in rows if row["kind"] == "control" and not row["ambiguous"] and not row["compile_fault"]]
+        false_alerts = sum(row["logic_alert"] for row in valid_controls)
+        view["confirmed_valid_control_alerts"] = {
+            "count": false_alerts, "total": len(valid_controls), "wilson_95": _wilson(false_alerts, len(valid_controls)),
+        }
         view["no_candidate_abstention"] = [
             sum(row["proposal_count"] == 0 for row in rows), len(rows),
         ]
