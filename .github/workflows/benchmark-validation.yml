@@ -30,3 +30,4 @@ jobs:
       - run: python -m benchmarks.phase35_audit
       - run: python -m benchmarks.phase35_evaluate --check
       - run: python -m benchmarks.phase4_vm --check
+      - run: python -m benchmarks.phase45_vm --check

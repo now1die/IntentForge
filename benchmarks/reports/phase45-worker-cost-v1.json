@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "container_scope": "Local disposable probe children",
+  "samples": [
+    {
+      "cold_probe_ms": 253.581,
+      "child_cpu_ms": 252.837,
+      "peak_child_rss_kib_so_far": 38592
+    },
+    {
+      "cold_probe_ms": 257.889,
+      "child_cpu_ms": 256.552,
+      "peak_child_rss_kib_so_far": 38592
+    },
+    {
+      "cold_probe_ms": 266.608,
+      "child_cpu_ms": 266.061,
+      "peak_child_rss_kib_so_far": 38592
+    },
+    {
+      "cold_probe_ms": 263.938,
+      "child_cpu_ms": 261.654,
+      "peak_child_rss_kib_so_far": 38592
+    },
+    {
+      "cold_probe_ms": 266.251,
+      "child_cpu_ms": 264.571,
+      "peak_child_rss_kib_so_far": 38592
+    }
+  ]
+}
