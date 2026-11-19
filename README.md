@@ -157,3 +157,17 @@ of the target deployment.
 [API reference](docs/phase4_5_interactive_api.md) ·
 [Phase 4.5 final review](docs/PHASE_4_5_FINAL_REVIEW.md) ·
 [Supported Mini-C](docs/phase4_supported_language.md)
+
+## Phase 5 intention recovery
+
+The Mini-C Intention tab now offers opt-in structural evidence for loop
+progress, fixed array boundaries, argument permutations and accumulator
+consistency. The review shows the evidence, assumptions and validated edit
+spans. In the verified local profile, Phase 5 also supports observational
+probes without expected values and an independent behavior-guided review
+order once you supply tests. Default engine versions and hosted execution
+settings retain their existing behavior.
+
+[Phase 5 review](docs/PHASE_5_FINAL_REVIEW.md) ·
+[Frozen evaluation](docs/phase5_generalization_evaluation.md) ·
+[Workbench screenshots](docs/phase5_workbench.md)

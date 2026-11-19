@@ -5,6 +5,7 @@ from typing import Annotated, Any, Literal
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, model_validator
 
+from ai.behavior_oracle import program_identity
 from ai.intention_context import ContextLimit, Example, MAX_SOURCE, Requirement
 from ai.intention_engine import analyze_intention
 from ai.intention_learning import load_expanded_ranker
@@ -87,6 +88,7 @@ class IntentionResponse(BaseModel):
     requirement_status: str | None = None
     recommendation: str | None = None
     structural_scan: dict[str, Any] | None = None
+    source_fingerprint: str | None = None
 
 
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
@@ -113,5 +115,7 @@ def intention_analysis(request: IntentionRequest) -> dict:
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
     response = result.to_dict(include_context=request.include_context)
+    if request.engine_version == 5:
+        response["source_fingerprint"] = program_identity(request.code)
     response.setdefault("requirement_status", None)
     return response
