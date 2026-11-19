@@ -111,3 +111,15 @@ and [final review](docs/PHASE_2_FINAL_REVIEW.md).
 python -m benchmarks.phase2_audit
 python -m benchmarks.phase2_evaluate --check
 ```
+
+## Phase 2.5 evaluation and intention modes
+
+The Intention tab exposes code-only, natural-language and explicit
+specification analysis. Reports compare these evidence inputs separately.
+See the [final review](docs/PHASE_2_5_FINAL_REVIEW.md), [training and data](docs/phase2_5_training.md),
+and [mode usage](docs/phase2_5_intention_analysis.md).
+
+```sh
+python -m benchmarks.phase25_audit
+python -m benchmarks.phase25_evaluate --check
+```
