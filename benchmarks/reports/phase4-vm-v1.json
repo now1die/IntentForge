@@ -1,0 +1,409 @@
+{
+  "provenance": "Project-authored trusted Mini-C examples executed by the Phase 4 interpreter",
+  "semantic": [
+    {
+      "family": "integer-arithmetic",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 2,
+      "vectors": 2,
+      "attempted_vectors": 2,
+      "ms": 1.892462998512201,
+      "trace_ms": 2.3628519993508235,
+      "steps": [
+        11,
+        11
+      ],
+      "peak_cells": 1,
+      "max_call_depth": 1,
+      "trace_entries": 4,
+      "trace_truncated": false,
+      "trace_bytes": 741
+    },
+    {
+      "family": "comparison-short-circuit",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 2,
+      "vectors": 2,
+      "attempted_vectors": 2,
+      "ms": 1.9075240015808959,
+      "trace_ms": 2.2181940003065392,
+      "steps": [
+        8,
+        13
+      ],
+      "peak_cells": 1,
+      "max_call_depth": 1,
+      "trace_entries": 4,
+      "trace_truncated": false,
+      "trace_bytes": 740
+    },
+    {
+      "family": "nested-loop",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 9,
+      "vectors": 9,
+      "attempted_vectors": 9,
+      "ms": 5.785556997579988,
+      "trace_ms": 6.010135999531485,
+      "steps": [
+        13,
+        26,
+        49,
+        82,
+        125,
+        178,
+        241,
+        314,
+        397
+      ],
+      "peak_cells": 4,
+      "max_call_depth": 1,
+      "trace_entries": 44,
+      "trace_truncated": true,
+      "trace_bytes": 8141
+    },
+    {
+      "family": "early-return",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 2,
+      "vectors": 2,
+      "attempted_vectors": 2,
+      "ms": 2.652877999935299,
+      "trace_ms": 2.87728200055426,
+      "steps": [
+        64,
+        34
+      ],
+      "peak_cells": 1,
+      "max_call_depth": 1,
+      "trace_entries": 32,
+      "trace_truncated": false,
+      "trace_bytes": 5944
+    },
+    {
+      "family": "recursion",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 2,
+      "vectors": 2,
+      "attempted_vectors": 2,
+      "ms": 9.770726999704493,
+      "trace_ms": 12.843180000345455,
+      "steps": [
+        901,
+        334
+      ],
+      "peak_cells": 8,
+      "max_call_depth": 8,
+      "trace_entries": 43,
+      "trace_truncated": true,
+      "trace_bytes": 8031
+    },
+    {
+      "family": "array-update",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 1,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 4.163228000834351,
+      "trace_ms": 5.8684640025603585,
+      "steps": [
+        38
+      ],
+      "peak_cells": 4,
+      "max_call_depth": 1,
+      "trace_entries": 8,
+      "trace_truncated": false,
+      "trace_bytes": 1482
+    },
+    {
+      "family": "global-reset",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 3,
+      "vectors": 3,
+      "attempted_vectors": 3,
+      "ms": 2.688380001927726,
+      "trace_ms": 2.5619199986977037,
+      "steps": [
+        17,
+        17,
+        17
+      ],
+      "peak_cells": 5,
+      "max_call_depth": 1,
+      "trace_entries": 12,
+      "trace_truncated": false,
+      "trace_bytes": 2224
+    },
+    {
+      "family": "lexical-shadowing",
+      "status": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "observations": 1,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 2.697687999898335,
+      "trace_ms": 2.8509040021162946,
+      "steps": [
+        20
+      ],
+      "peak_cells": 3,
+      "max_call_depth": 2,
+      "trace_entries": 8,
+      "trace_truncated": false,
+      "trace_bytes": 1472
+    },
+    {
+      "family": "divide-by-zero",
+      "status": "BEHAVIOR_UNKNOWN",
+      "issue": "DIVISION_BY_ZERO",
+      "observations": 0,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 2.285655002197018,
+      "trace_ms": 2.203336000093259,
+      "steps": [
+        7
+      ],
+      "peak_cells": 1,
+      "max_call_depth": 1,
+      "trace_entries": 2,
+      "trace_truncated": false,
+      "trace_bytes": 370
+    },
+    {
+      "family": "array-outside-extent",
+      "status": "BEHAVIOR_UNKNOWN",
+      "issue": "ARRAY_BOUNDS",
+      "observations": 0,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 2.1544000010180753,
+      "trace_ms": 2.216482000221731,
+      "steps": [
+        10
+      ],
+      "peak_cells": 3,
+      "max_call_depth": 1,
+      "trace_entries": 3,
+      "trace_truncated": false,
+      "trace_bytes": 553
+    },
+    {
+      "family": "bounded-loop",
+      "status": "EXECUTION_LIMITED",
+      "issue": "STEP_LIMIT",
+      "observations": 0,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 2.6752979974844493,
+      "trace_ms": 2.6942260010400787,
+      "steps": [
+        40
+      ],
+      "peak_cells": 1,
+      "max_call_depth": 1,
+      "trace_entries": 17,
+      "trace_truncated": false,
+      "trace_bytes": 3129
+    },
+    {
+      "family": "bounded-storage",
+      "status": "EXECUTION_LIMITED",
+      "issue": "MEMORY_CELLS",
+      "observations": 0,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 1.837137999245897,
+      "trace_ms": 2.101555000990629,
+      "steps": [
+        4
+      ],
+      "peak_cells": 1,
+      "max_call_depth": 1,
+      "trace_entries": 2,
+      "trace_truncated": false,
+      "trace_bytes": 370
+    },
+    {
+      "family": "bounded-recursion",
+      "status": "EXECUTION_LIMITED",
+      "issue": "CALL_DEPTH",
+      "observations": 0,
+      "vectors": 1,
+      "attempted_vectors": 1,
+      "ms": 1.8295340014446992,
+      "trace_ms": 1.8856259994208813,
+      "steps": [
+        17
+      ],
+      "peak_cells": 0,
+      "max_call_depth": 4,
+      "trace_entries": 5,
+      "trace_truncated": false,
+      "trace_bytes": 926
+    },
+    {
+      "family": "unsupported-type",
+      "status": "EXECUTION_UNSUPPORTED",
+      "issue": "UNSUPPORTED_CONSTRUCT",
+      "observations": 0,
+      "vectors": 1,
+      "attempted_vectors": 0,
+      "ms": 1.8347110017202795,
+      "trace_ms": 2.09167900175089,
+      "steps": [],
+      "peak_cells": 0,
+      "max_call_depth": 0,
+      "trace_entries": 0,
+      "trace_truncated": false,
+      "trace_bytes": 2
+    }
+  ],
+  "repairs": [
+    {
+      "family": "doubling-requirement",
+      "references": 1,
+      "first_match_rank": 1,
+      "candidate_count": 1,
+      "compiler_valid": 1,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "executed_candidates": 1,
+      "passing": 1,
+      "runtime_errors": 0,
+      "different_test_passing_reference": 0,
+      "passing_accepted_reference": true,
+      "multiple_matches": false,
+      "steps": 28,
+      "requires_approval": true,
+      "ms": 13.647405001393054
+    },
+    {
+      "family": "descending-array-bound",
+      "references": 1,
+      "first_match_rank": 1,
+      "candidate_count": 1,
+      "compiler_valid": 1,
+      "original_status": "BEHAVIOR_UNKNOWN",
+      "executed_candidates": 1,
+      "passing": 1,
+      "runtime_errors": 0,
+      "different_test_passing_reference": 0,
+      "passing_accepted_reference": true,
+      "multiple_matches": false,
+      "steps": 212,
+      "requires_approval": true,
+      "ms": 14.385906000825344
+    },
+    {
+      "family": "zero-divisor",
+      "references": 1,
+      "first_match_rank": 1,
+      "candidate_count": 1,
+      "compiler_valid": 1,
+      "original_status": "BEHAVIOR_UNKNOWN",
+      "executed_candidates": 1,
+      "passing": 1,
+      "runtime_errors": 0,
+      "different_test_passing_reference": 0,
+      "passing_accepted_reference": true,
+      "multiple_matches": false,
+      "steps": 23,
+      "requires_approval": true,
+      "ms": 12.587046003318392
+    },
+    {
+      "family": "coincident-arguments",
+      "references": 1,
+      "first_match_rank": 2,
+      "candidate_count": 2,
+      "compiler_valid": 2,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "executed_candidates": 2,
+      "passing": 2,
+      "runtime_errors": 0,
+      "different_test_passing_reference": 1,
+      "passing_accepted_reference": true,
+      "multiple_matches": true,
+      "steps": 24,
+      "requires_approval": true,
+      "ms": 9.799232997465879
+    },
+    {
+      "family": "contradictory-specifications",
+      "references": 0,
+      "first_match_rank": null,
+      "candidate_count": 1,
+      "compiler_valid": 1,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "executed_candidates": 1,
+      "passing": 0,
+      "runtime_errors": 1,
+      "different_test_passing_reference": 0,
+      "passing_accepted_reference": false,
+      "multiple_matches": false,
+      "steps": 23,
+      "requires_approval": true,
+      "ms": 43.13417599769309
+    },
+    {
+      "family": "valid-global-control",
+      "references": 0,
+      "first_match_rank": null,
+      "candidate_count": 0,
+      "compiler_valid": 0,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "executed_candidates": 0,
+      "passing": 0,
+      "runtime_errors": 0,
+      "different_test_passing_reference": 0,
+      "passing_accepted_reference": false,
+      "multiple_matches": false,
+      "steps": 22,
+      "requires_approval": true,
+      "ms": 4.8799920004967134
+    },
+    {
+      "family": "unavailable-float",
+      "references": 0,
+      "first_match_rank": null,
+      "candidate_count": 0,
+      "compiler_valid": 0,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "executed_candidates": 0,
+      "passing": 0,
+      "runtime_errors": 0,
+      "different_test_passing_reference": 0,
+      "passing_accepted_reference": false,
+      "multiple_matches": false,
+      "steps": 0,
+      "requires_approval": true,
+      "ms": 3.7415939987113234
+    }
+  ],
+  "python_reference_vectors": 144,
+  "latency": {
+    "plain_ms": {
+      "mean": 3.155370071648836,
+      "p95": 9.770726999704493
+    },
+    "trace_ms": {
+      "mean": 3.6275597147843137,
+      "p95": 12.843180000345455
+    },
+    "per_attempted_vector_ms": {
+      "mean": 2.099515641207407,
+      "p95": 4.885363499852247
+    },
+    "repair_comparison_ms": {
+      "mean": 14.596478857129114,
+      "p95": 43.13417599769309
+    }
+  }
+}

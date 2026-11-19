@@ -138,3 +138,15 @@ tested interface for a future Mini-C interpreter.
 
 [Phase 3.5 final review](docs/PHASE_3_5_FINAL_REVIEW.md) ·
 [Phase 4 readiness](docs/PHASE_4_READINESS.md)
+
+## Phase 4 behavioral verification
+
+The Mini-C VM interprets compiler-validated integer and Boolean programs
+for trusted callers, with bounded steps, frames, memory cells and traces.
+The Mini-C workbench's **Behavioral verification** section shows recorded
+observations from trusted examples. Editor submissions have no execution
+route. Passing examples supports review of a correction and still
+requires explicit approval.
+
+[Phase 4 final review](docs/PHASE_4_FINAL_REVIEW.md) ·
+[Supported language](docs/phase4_supported_language.md)

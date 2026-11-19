@@ -1,0 +1,1116 @@
+[
+  {
+    "id": "doubling-requirement",
+    "label": "Repair comparison",
+    "source": "int twice(int x){return x+2;}",
+    "original": {
+      "schema_version": 1,
+      "program": "3416c8eb1be35f1acc4f102bc7e92d61f8b009bc40c25d92f56cf16b72347bb3",
+      "entry_point": "twice",
+      "candidate_id": null,
+      "status": "MISMATCHES_SUPPLIED_TESTS",
+      "observations": [
+        {
+          "vector": {
+            "arguments": [
+              4
+            ],
+            "expected": 8
+          },
+          "actual": 6
+        },
+        {
+          "vector": {
+            "arguments": [
+              -3
+            ],
+            "expected": -6
+          },
+          "actual": -1
+        }
+      ],
+      "diagnostics": [],
+      "unsupported": [],
+      "execution": {
+        "provider": "mini-c-vm",
+        "vectors": [
+          {
+            "arguments": [
+              4
+            ],
+            "expected": 8
+          },
+          {
+            "arguments": [
+              -3
+            ],
+            "expected": -6
+          }
+        ],
+        "samples": [
+          {
+            "steps": 7,
+            "peak_cells": 1,
+            "call_depth": 1
+          },
+          {
+            "steps": 7,
+            "peak_cells": 1,
+            "call_depth": 1
+          }
+        ],
+        "issue": null,
+        "trace": [
+          {
+            "kind": "FUNCTION_ENTER",
+            "vector": 0,
+            "step": 2,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 1,
+                "byte_offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "FUNCTION_RETURN",
+            "vector": 0,
+            "step": 7,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 1,
+                "byte_offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "FUNCTION_ENTER",
+            "vector": 1,
+            "step": 2,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 1,
+                "byte_offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "FUNCTION_RETURN",
+            "vector": 1,
+            "step": 7,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 1,
+                "byte_offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "origin": "physical"
+            }
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    "candidates": [
+      {
+        "id": "IR-1063e797a37a",
+        "static_rank": 1,
+        "proposed_code": "int twice(int x){return x * 2;}",
+        "behavior": {
+          "schema_version": 1,
+          "program": "1063e797a37aac3c2528d38a15947a0f79fc0856664516c5a7793daa1e189424",
+          "entry_point": "twice",
+          "candidate_id": "IR-1063e797a37a",
+          "status": "MATCHES_SUPPLIED_TESTS",
+          "observations": [
+            {
+              "vector": {
+                "arguments": [
+                  4
+                ],
+                "expected": 8
+              },
+              "actual": 8
+            },
+            {
+              "vector": {
+                "arguments": [
+                  -3
+                ],
+                "expected": -6
+              },
+              "actual": -6
+            }
+          ],
+          "diagnostics": [],
+          "unsupported": [],
+          "execution": {
+            "provider": "mini-c-vm",
+            "vectors": [
+              {
+                "arguments": [
+                  4
+                ],
+                "expected": 8
+              },
+              {
+                "arguments": [
+                  -3
+                ],
+                "expected": -6
+              }
+            ],
+            "samples": [
+              {
+                "steps": 7,
+                "peak_cells": 1,
+                "call_depth": 1
+              },
+              {
+                "steps": 7,
+                "peak_cells": 1,
+                "call_depth": 1
+              }
+            ],
+            "issue": null,
+            "trace": [
+              {
+                "kind": "FUNCTION_ENTER",
+                "vector": 0,
+                "step": 2,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 32,
+                    "byte_offset": 31
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_RETURN",
+                "vector": 0,
+                "step": 7,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 32,
+                    "byte_offset": 31
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_ENTER",
+                "vector": 1,
+                "step": 2,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 32,
+                    "byte_offset": 31
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_RETURN",
+                "vector": 1,
+                "step": 7,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 32,
+                    "byte_offset": 31
+                  },
+                  "origin": "physical"
+                }
+              }
+            ],
+            "trace_truncated": false
+          }
+        }
+      }
+    ],
+    "comparison_status": "ONE_MATCH",
+    "skipped_candidates": 0
+  },
+  {
+    "id": "coincident-arguments",
+    "label": "Ambiguous alternatives",
+    "source": "int choose(int opening,int closing){return missing;}",
+    "original": {
+      "schema_version": 1,
+      "program": "d02fade5a8783a15fabd2407b090dc7fcbfbde9103af0fcff1fd60d74e346abc",
+      "entry_point": "choose",
+      "candidate_id": null,
+      "status": "EXECUTION_UNSUPPORTED",
+      "observations": [],
+      "diagnostics": [
+        "Execution requires compiler-valid Mini-C."
+      ],
+      "unsupported": [
+        "COMPILER_INVALID"
+      ],
+      "execution": {
+        "provider": "mini-c-vm",
+        "vectors": [
+          {
+            "arguments": [
+              9,
+              9
+            ],
+            "expected": 9
+          },
+          {
+            "arguments": [
+              1,
+              1
+            ],
+            "expected": 1
+          }
+        ],
+        "samples": [],
+        "issue": {
+          "code": "COMPILER_INVALID",
+          "message": "Execution requires compiler-valid Mini-C.",
+          "vector": null,
+          "span": null
+        },
+        "trace": [],
+        "trace_truncated": false
+      }
+    },
+    "candidates": [
+      {
+        "id": "IR-106ddc4a99bd",
+        "static_rank": 1,
+        "proposed_code": "int choose(int opening,int closing){return closing;}",
+        "behavior": {
+          "schema_version": 1,
+          "program": "106ddc4a99bdb5f97a78e65e9b6e48e1e971264063ab065207c0b7a57e987ad6",
+          "entry_point": "choose",
+          "candidate_id": "IR-106ddc4a99bd",
+          "status": "MATCHES_SUPPLIED_TESTS",
+          "observations": [
+            {
+              "vector": {
+                "arguments": [
+                  9,
+                  9
+                ],
+                "expected": 9
+              },
+              "actual": 9
+            },
+            {
+              "vector": {
+                "arguments": [
+                  1,
+                  1
+                ],
+                "expected": 1
+              },
+              "actual": 1
+            }
+          ],
+          "diagnostics": [],
+          "unsupported": [],
+          "execution": {
+            "provider": "mini-c-vm",
+            "vectors": [
+              {
+                "arguments": [
+                  9,
+                  9
+                ],
+                "expected": 9
+              },
+              {
+                "arguments": [
+                  1,
+                  1
+                ],
+                "expected": 1
+              }
+            ],
+            "samples": [
+              {
+                "steps": 6,
+                "peak_cells": 2,
+                "call_depth": 1
+              },
+              {
+                "steps": 6,
+                "peak_cells": 2,
+                "call_depth": 1
+              }
+            ],
+            "issue": null,
+            "trace": [
+              {
+                "kind": "FUNCTION_ENTER",
+                "vector": 0,
+                "step": 3,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_RETURN",
+                "vector": 0,
+                "step": 6,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_ENTER",
+                "vector": 1,
+                "step": 3,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_RETURN",
+                "vector": 1,
+                "step": 6,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              }
+            ],
+            "trace_truncated": false
+          }
+        }
+      },
+      {
+        "id": "IR-b324cdbafc72",
+        "static_rank": 2,
+        "proposed_code": "int choose(int opening,int closing){return opening;}",
+        "behavior": {
+          "schema_version": 1,
+          "program": "b324cdbafc7299c275529b9bc8ed498bc724431bf16ca0462bc2228d0b1af9ab",
+          "entry_point": "choose",
+          "candidate_id": "IR-b324cdbafc72",
+          "status": "MATCHES_SUPPLIED_TESTS",
+          "observations": [
+            {
+              "vector": {
+                "arguments": [
+                  9,
+                  9
+                ],
+                "expected": 9
+              },
+              "actual": 9
+            },
+            {
+              "vector": {
+                "arguments": [
+                  1,
+                  1
+                ],
+                "expected": 1
+              },
+              "actual": 1
+            }
+          ],
+          "diagnostics": [],
+          "unsupported": [],
+          "execution": {
+            "provider": "mini-c-vm",
+            "vectors": [
+              {
+                "arguments": [
+                  9,
+                  9
+                ],
+                "expected": 9
+              },
+              {
+                "arguments": [
+                  1,
+                  1
+                ],
+                "expected": 1
+              }
+            ],
+            "samples": [
+              {
+                "steps": 6,
+                "peak_cells": 2,
+                "call_depth": 1
+              },
+              {
+                "steps": 6,
+                "peak_cells": 2,
+                "call_depth": 1
+              }
+            ],
+            "issue": null,
+            "trace": [
+              {
+                "kind": "FUNCTION_ENTER",
+                "vector": 0,
+                "step": 3,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_RETURN",
+                "vector": 0,
+                "step": 6,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_ENTER",
+                "vector": 1,
+                "step": 3,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              },
+              {
+                "kind": "FUNCTION_RETURN",
+                "vector": 1,
+                "step": 6,
+                "span": {
+                  "file": "main.mc",
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "byte_offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "byte_offset": 52
+                  },
+                  "origin": "physical"
+                }
+              }
+            ],
+            "trace_truncated": false
+          }
+        }
+      }
+    ],
+    "comparison_status": "MULTIPLE_MATCHES",
+    "skipped_candidates": 0
+  },
+  {
+    "id": "divide-by-zero",
+    "label": "Division by zero",
+    "source": "int f(int n){return 5%n;}",
+    "original": {
+      "schema_version": 1,
+      "program": "73aa8197c4f4ad055b4d615e84d700948f113954753e36be6af516ffc9909324",
+      "entry_point": "f",
+      "candidate_id": null,
+      "status": "BEHAVIOR_UNKNOWN",
+      "observations": [],
+      "diagnostics": [
+        "Division or remainder by zero."
+      ],
+      "unsupported": [],
+      "execution": {
+        "provider": "mini-c-vm",
+        "vectors": [
+          {
+            "arguments": [
+              0
+            ],
+            "expected": 0
+          }
+        ],
+        "samples": [
+          {
+            "steps": 7,
+            "peak_cells": 1,
+            "call_depth": 1
+          }
+        ],
+        "issue": {
+          "code": "DIVISION_BY_ZERO",
+          "message": "Division or remainder by zero.",
+          "vector": 0,
+          "span": {
+            "file": "main.mc",
+            "start": {
+              "line": 1,
+              "column": 21,
+              "byte_offset": 20
+            },
+            "end": {
+              "line": 1,
+              "column": 24,
+              "byte_offset": 23
+            },
+            "origin": "physical"
+          }
+        },
+        "trace": [
+          {
+            "kind": "FUNCTION_ENTER",
+            "vector": 0,
+            "step": 2,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 1,
+                "byte_offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 26,
+                "byte_offset": 25
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "RUNTIME_ERROR",
+            "vector": 0,
+            "step": 7,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 21,
+                "byte_offset": 20
+              },
+              "end": {
+                "line": 1,
+                "column": 24,
+                "byte_offset": 23
+              },
+              "origin": "physical"
+            }
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    "candidates": [],
+    "comparison_status": "NO_OBSERVED_MATCH",
+    "skipped_candidates": 0
+  },
+  {
+    "id": "bounded-loop",
+    "label": "Step limit",
+    "source": "int f(){int cursor=0;for(;;){cursor++;}}",
+    "original": {
+      "schema_version": 1,
+      "program": "d644e44856ed434ea1c75fc2c39adbb2ab7492d99d91a068295655c269a9b592",
+      "entry_point": "f",
+      "candidate_id": null,
+      "status": "EXECUTION_LIMITED",
+      "observations": [],
+      "diagnostics": [
+        "Per-vector execution step limit reached."
+      ],
+      "unsupported": [],
+      "execution": {
+        "provider": "mini-c-vm",
+        "vectors": [
+          {
+            "arguments": [],
+            "expected": 0
+          }
+        ],
+        "samples": [
+          {
+            "steps": 40,
+            "peak_cells": 1,
+            "call_depth": 1
+          }
+        ],
+        "issue": {
+          "code": "STEP_LIMIT",
+          "message": "Per-vector execution step limit reached.",
+          "vector": 0,
+          "span": {
+            "file": "main.mc",
+            "start": {
+              "line": 1,
+              "column": 22,
+              "byte_offset": 21
+            },
+            "end": {
+              "line": 1,
+              "column": 40,
+              "byte_offset": 39
+            },
+            "origin": "physical"
+          }
+        },
+        "trace": [
+          {
+            "kind": "FUNCTION_ENTER",
+            "vector": 0,
+            "step": 1,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 1,
+                "byte_offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 41,
+                "byte_offset": 40
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "DECLARATION",
+            "vector": 0,
+            "step": 4,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 9,
+                "byte_offset": 8
+              },
+              "end": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 6,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 10,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 11,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 15,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 16,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 20,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 21,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 25,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 26,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 30,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 31,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 35,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "LOOP_ITERATION",
+            "vector": 0,
+            "step": 36,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "ASSIGNED",
+            "vector": 0,
+            "step": 40,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 30,
+                "byte_offset": 29
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "byte_offset": 37
+              },
+              "origin": "physical"
+            }
+          },
+          {
+            "kind": "EXECUTION_LIMIT",
+            "vector": 0,
+            "step": 40,
+            "span": {
+              "file": "main.mc",
+              "start": {
+                "line": 1,
+                "column": 22,
+                "byte_offset": 21
+              },
+              "end": {
+                "line": 1,
+                "column": 40,
+                "byte_offset": 39
+              },
+              "origin": "physical"
+            }
+          }
+        ],
+        "trace_truncated": false
+      }
+    },
+    "candidates": [],
+    "comparison_status": "NO_OBSERVED_MATCH",
+    "skipped_candidates": 0
+  }
+]

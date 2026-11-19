@@ -1,9 +1,11 @@
-"""Phase 4 boundary. This module only describes and checks trusted evidence."""
+"""Versioned contract for trusted Mini-C execution evidence."""
 from enum import StrEnum
 from hashlib import sha256
 from typing import Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, model_validator
+
+from analysis_evidence.contract import Span
 
 Scalar = StrictInt | StrictBool
 
@@ -43,6 +45,40 @@ class Observation(BaseModel):
         return type(self.actual) is type(self.vector.expected) and self.actual == self.vector.expected
 
 
+class TraceEvent(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    kind: Literal["FUNCTION_ENTER", "FUNCTION_RETURN", "DECLARATION", "ASSIGNED", "ARRAY_UPDATED",
+                  "CONDITION_TRUE", "CONDITION_FALSE", "LOOP_ITERATION", "RUNTIME_ERROR", "EXECUTION_LIMIT"]
+    vector: int = Field(ge=0, lt=12)
+    step: int = Field(ge=0)
+    span: Span | None = None
+
+
+class RuntimeIssue(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    code: str = Field(max_length=40)
+    message: str = Field(max_length=240)
+    vector: int | None = Field(default=None, ge=0, lt=12)
+    span: Span | None = None
+
+
+class ExecutionSample(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    steps: int = Field(ge=0)
+    peak_cells: int = Field(ge=0)
+    call_depth: int = Field(ge=0)
+
+
+class ExecutionDetails(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+    provider: Literal["mini-c-vm"] = "mini-c-vm"
+    vectors: tuple[Vector, ...] = Field(max_length=12)
+    samples: tuple[ExecutionSample, ...] = Field(max_length=12)
+    issue: RuntimeIssue | None = None
+    trace: tuple[TraceEvent, ...] = Field(default=(), max_length=64)
+    trace_truncated: bool = False
+
+
 class BehaviorResult(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
     schema_version: Literal[1] = 1
@@ -53,6 +89,7 @@ class BehaviorResult(BaseModel):
     observations: tuple[Observation, ...] = Field(default=(), max_length=12)
     diagnostics: tuple[str, ...] = Field(default=(), max_length=12)
     unsupported: tuple[str, ...] = Field(default=(), max_length=12)
+    execution: ExecutionDetails | None = None
 
     @model_validator(mode="after")
     def check_results(self):
@@ -64,6 +101,15 @@ class BehaviorResult(BaseModel):
             not self.observations or all(row.matches() for row in self.observations)
         ):
             raise ValueError("A mismatch needs an observed counterexample.")
+        if self.execution is not None:
+            expected = tuple(row.model_dump_json() for row in self.execution.vectors)
+            observed = tuple(row.vector.model_dump_json() for row in self.observations)
+            if observed != expected[:len(observed)] or len(self.execution.samples) < len(observed):
+                raise ValueError("VM observations must map to executed supplied vectors.")
+            if self.status in {Status.MATCHES_SUPPLIED_TESTS, Status.MISMATCHES_SUPPLIED_TESTS}:
+                if (self.execution.issue is not None or observed != expected
+                        or len(self.execution.samples) != len(expected)):
+                    raise ValueError("A completed verification needs results for every supplied vector.")
         return self
 
 
