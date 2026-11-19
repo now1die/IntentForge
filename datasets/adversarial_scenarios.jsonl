@@ -1,0 +1,640 @@
+{"label": "DECLARATION_DOT_ERROR", "source": "int a0.b0;", "expected_fix": "int a0, b0;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a1.b1;", "expected_fix": "float a1, b1;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a2.b2;", "expected_fix": "char a2, b2;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a3.b3;", "expected_fix": "bool a3, b3;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a4.b4;", "expected_fix": "int a4, b4;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a5.b5;", "expected_fix": "float a5, b5;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a6.b6;", "expected_fix": "char a6, b6;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a7.b7;", "expected_fix": "bool a7, b7;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a8.b8;", "expected_fix": "int a8, b8;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a9.b9;", "expected_fix": "float a9, b9;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a10.b10;", "expected_fix": "char a10, b10;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a11.b11;", "expected_fix": "bool a11, b11;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a12.b12;", "expected_fix": "int a12, b12;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a13.b13;", "expected_fix": "float a13, b13;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a14.b14;", "expected_fix": "char a14, b14;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a15.b15;", "expected_fix": "bool a15, b15;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a16.b16;", "expected_fix": "int a16, b16;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a17.b17;", "expected_fix": "float a17, b17;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a18.b18;", "expected_fix": "char a18, b18;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a19.b19;", "expected_fix": "bool a19, b19;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a20.b20;", "expected_fix": "int a20, b20;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a21.b21;", "expected_fix": "float a21, b21;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a22.b22;", "expected_fix": "char a22, b22;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a23.b23;", "expected_fix": "bool a23, b23;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a24.b24;", "expected_fix": "int a24, b24;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a25.b25;", "expected_fix": "float a25, b25;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a26.b26;", "expected_fix": "char a26, b26;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a27.b27;", "expected_fix": "bool a27, b27;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a28.b28;", "expected_fix": "int a28, b28;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a29.b29;", "expected_fix": "float a29, b29;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a30.b30;", "expected_fix": "char a30, b30;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a31.b31;", "expected_fix": "bool a31, b31;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a32.b32;", "expected_fix": "int a32, b32;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a33.b33;", "expected_fix": "float a33, b33;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a34.b34;", "expected_fix": "char a34, b34;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a35.b35;", "expected_fix": "bool a35, b35;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a36.b36;", "expected_fix": "int a36, b36;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a37.b37;", "expected_fix": "float a37, b37;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a38.b38;", "expected_fix": "char a38, b38;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a39.b39;", "expected_fix": "bool a39, b39;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a40.b40;", "expected_fix": "int a40, b40;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a41.b41;", "expected_fix": "float a41, b41;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a42.b42;", "expected_fix": "char a42, b42;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a43.b43;", "expected_fix": "bool a43, b43;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a44.b44;", "expected_fix": "int a44, b44;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a45.b45;", "expected_fix": "float a45, b45;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a46.b46;", "expected_fix": "char a46, b46;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a47.b47;", "expected_fix": "bool a47, b47;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a48.b48;", "expected_fix": "int a48, b48;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a49.b49;", "expected_fix": "float a49, b49;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a50.b50;", "expected_fix": "char a50, b50;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a51.b51;", "expected_fix": "bool a51, b51;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a52.b52;", "expected_fix": "int a52, b52;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a53.b53;", "expected_fix": "float a53, b53;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a54.b54;", "expected_fix": "char a54, b54;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a55.b55;", "expected_fix": "bool a55, b55;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a56.b56;", "expected_fix": "int a56, b56;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a57.b57;", "expected_fix": "float a57, b57;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a58.b58;", "expected_fix": "char a58, b58;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a59.b59;", "expected_fix": "bool a59, b59;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a60.b60;", "expected_fix": "int a60, b60;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a61.b61;", "expected_fix": "float a61, b61;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a62.b62;", "expected_fix": "char a62, b62;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a63.b63;", "expected_fix": "bool a63, b63;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a64.b64;", "expected_fix": "int a64, b64;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a65.b65;", "expected_fix": "float a65, b65;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a66.b66;", "expected_fix": "char a66, b66;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a67.b67;", "expected_fix": "bool a67, b67;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a68.b68;", "expected_fix": "int a68, b68;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a69.b69;", "expected_fix": "float a69, b69;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a70.b70;", "expected_fix": "char a70, b70;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a71.b71;", "expected_fix": "bool a71, b71;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a72.b72;", "expected_fix": "int a72, b72;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a73.b73;", "expected_fix": "float a73, b73;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a74.b74;", "expected_fix": "char a74, b74;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a75.b75;", "expected_fix": "bool a75, b75;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a76.b76;", "expected_fix": "int a76, b76;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a77.b77;", "expected_fix": "float a77, b77;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a78.b78;", "expected_fix": "char a78, b78;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a79.b79;", "expected_fix": "bool a79, b79;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a80.b80;", "expected_fix": "int a80, b80;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a81.b81;", "expected_fix": "float a81, b81;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a82.b82;", "expected_fix": "char a82, b82;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a83.b83;", "expected_fix": "bool a83, b83;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a84.b84;", "expected_fix": "int a84, b84;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a85.b85;", "expected_fix": "float a85, b85;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a86.b86;", "expected_fix": "char a86, b86;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a87.b87;", "expected_fix": "bool a87, b87;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a88.b88;", "expected_fix": "int a88, b88;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a89.b89;", "expected_fix": "float a89, b89;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a90.b90;", "expected_fix": "char a90, b90;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a91.b91;", "expected_fix": "bool a91, b91;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a92.b92;", "expected_fix": "int a92, b92;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a93.b93;", "expected_fix": "float a93, b93;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a94.b94;", "expected_fix": "char a94, b94;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a95.b95;", "expected_fix": "bool a95, b95;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a96.b96;", "expected_fix": "int a96, b96;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a97.b97;", "expected_fix": "float a97, b97;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a98.b98;", "expected_fix": "char a98, b98;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a99.b99;", "expected_fix": "bool a99, b99;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a100.b100;", "expected_fix": "int a100, b100;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a101.b101;", "expected_fix": "float a101, b101;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a102.b102;", "expected_fix": "char a102, b102;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a103.b103;", "expected_fix": "bool a103, b103;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a104.b104;", "expected_fix": "int a104, b104;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a105.b105;", "expected_fix": "float a105, b105;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a106.b106;", "expected_fix": "char a106, b106;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a107.b107;", "expected_fix": "bool a107, b107;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a108.b108;", "expected_fix": "int a108, b108;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a109.b109;", "expected_fix": "float a109, b109;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a110.b110;", "expected_fix": "char a110, b110;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a111.b111;", "expected_fix": "bool a111, b111;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a112.b112;", "expected_fix": "int a112, b112;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a113.b113;", "expected_fix": "float a113, b113;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a114.b114;", "expected_fix": "char a114, b114;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a115.b115;", "expected_fix": "bool a115, b115;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a116.b116;", "expected_fix": "int a116, b116;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a117.b117;", "expected_fix": "float a117, b117;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a118.b118;", "expected_fix": "char a118, b118;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a119.b119;", "expected_fix": "bool a119, b119;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a120.b120;", "expected_fix": "int a120, b120;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a121.b121;", "expected_fix": "float a121, b121;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a122.b122;", "expected_fix": "char a122, b122;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a123.b123;", "expected_fix": "bool a123, b123;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a124.b124;", "expected_fix": "int a124, b124;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a125.b125;", "expected_fix": "float a125, b125;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a126.b126;", "expected_fix": "char a126, b126;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a127.b127;", "expected_fix": "bool a127, b127;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a128.b128;", "expected_fix": "int a128, b128;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a129.b129;", "expected_fix": "float a129, b129;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a130.b130;", "expected_fix": "char a130, b130;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a131.b131;", "expected_fix": "bool a131, b131;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a132.b132;", "expected_fix": "int a132, b132;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a133.b133;", "expected_fix": "float a133, b133;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a134.b134;", "expected_fix": "char a134, b134;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a135.b135;", "expected_fix": "bool a135, b135;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a136.b136;", "expected_fix": "int a136, b136;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a137.b137;", "expected_fix": "float a137, b137;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a138.b138;", "expected_fix": "char a138, b138;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a139.b139;", "expected_fix": "bool a139, b139;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a140.b140;", "expected_fix": "int a140, b140;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a141.b141;", "expected_fix": "float a141, b141;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a142.b142;", "expected_fix": "char a142, b142;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a143.b143;", "expected_fix": "bool a143, b143;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a144.b144;", "expected_fix": "int a144, b144;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a145.b145;", "expected_fix": "float a145, b145;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a146.b146;", "expected_fix": "char a146, b146;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a147.b147;", "expected_fix": "bool a147, b147;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a148.b148;", "expected_fix": "int a148, b148;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a149.b149;", "expected_fix": "float a149, b149;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a150.b150;", "expected_fix": "char a150, b150;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a151.b151;", "expected_fix": "bool a151, b151;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a152.b152;", "expected_fix": "int a152, b152;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a153.b153;", "expected_fix": "float a153, b153;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a154.b154;", "expected_fix": "char a154, b154;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a155.b155;", "expected_fix": "bool a155, b155;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "int a156.b156;", "expected_fix": "int a156, b156;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "float a157.b157;", "expected_fix": "float a157, b157;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "char a158.b158;", "expected_fix": "char a158, b158;"}
+{"label": "DECLARATION_DOT_ERROR", "source": "bool a159.b159;", "expected_fix": "bool a159, b159;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a0:b0;", "expected_fix": "int a0, b0;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a1:b1;", "expected_fix": "float a1, b1;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a2:b2;", "expected_fix": "char a2, b2;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a3:b3;", "expected_fix": "bool a3, b3;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a4:b4;", "expected_fix": "int a4, b4;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a5:b5;", "expected_fix": "float a5, b5;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a6:b6;", "expected_fix": "char a6, b6;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a7:b7;", "expected_fix": "bool a7, b7;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a8:b8;", "expected_fix": "int a8, b8;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a9:b9;", "expected_fix": "float a9, b9;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a10:b10;", "expected_fix": "char a10, b10;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a11:b11;", "expected_fix": "bool a11, b11;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a12:b12;", "expected_fix": "int a12, b12;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a13:b13;", "expected_fix": "float a13, b13;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a14:b14;", "expected_fix": "char a14, b14;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a15:b15;", "expected_fix": "bool a15, b15;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a16:b16;", "expected_fix": "int a16, b16;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a17:b17;", "expected_fix": "float a17, b17;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a18:b18;", "expected_fix": "char a18, b18;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a19:b19;", "expected_fix": "bool a19, b19;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a20:b20;", "expected_fix": "int a20, b20;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a21:b21;", "expected_fix": "float a21, b21;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a22:b22;", "expected_fix": "char a22, b22;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a23:b23;", "expected_fix": "bool a23, b23;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a24:b24;", "expected_fix": "int a24, b24;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a25:b25;", "expected_fix": "float a25, b25;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a26:b26;", "expected_fix": "char a26, b26;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a27:b27;", "expected_fix": "bool a27, b27;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a28:b28;", "expected_fix": "int a28, b28;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a29:b29;", "expected_fix": "float a29, b29;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a30:b30;", "expected_fix": "char a30, b30;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a31:b31;", "expected_fix": "bool a31, b31;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a32:b32;", "expected_fix": "int a32, b32;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a33:b33;", "expected_fix": "float a33, b33;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a34:b34;", "expected_fix": "char a34, b34;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a35:b35;", "expected_fix": "bool a35, b35;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a36:b36;", "expected_fix": "int a36, b36;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a37:b37;", "expected_fix": "float a37, b37;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a38:b38;", "expected_fix": "char a38, b38;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a39:b39;", "expected_fix": "bool a39, b39;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a40:b40;", "expected_fix": "int a40, b40;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a41:b41;", "expected_fix": "float a41, b41;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a42:b42;", "expected_fix": "char a42, b42;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a43:b43;", "expected_fix": "bool a43, b43;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a44:b44;", "expected_fix": "int a44, b44;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a45:b45;", "expected_fix": "float a45, b45;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a46:b46;", "expected_fix": "char a46, b46;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a47:b47;", "expected_fix": "bool a47, b47;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a48:b48;", "expected_fix": "int a48, b48;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a49:b49;", "expected_fix": "float a49, b49;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a50:b50;", "expected_fix": "char a50, b50;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a51:b51;", "expected_fix": "bool a51, b51;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a52:b52;", "expected_fix": "int a52, b52;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a53:b53;", "expected_fix": "float a53, b53;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a54:b54;", "expected_fix": "char a54, b54;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a55:b55;", "expected_fix": "bool a55, b55;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a56:b56;", "expected_fix": "int a56, b56;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a57:b57;", "expected_fix": "float a57, b57;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a58:b58;", "expected_fix": "char a58, b58;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a59:b59;", "expected_fix": "bool a59, b59;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a60:b60;", "expected_fix": "int a60, b60;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a61:b61;", "expected_fix": "float a61, b61;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a62:b62;", "expected_fix": "char a62, b62;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a63:b63;", "expected_fix": "bool a63, b63;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a64:b64;", "expected_fix": "int a64, b64;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a65:b65;", "expected_fix": "float a65, b65;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a66:b66;", "expected_fix": "char a66, b66;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a67:b67;", "expected_fix": "bool a67, b67;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a68:b68;", "expected_fix": "int a68, b68;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a69:b69;", "expected_fix": "float a69, b69;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a70:b70;", "expected_fix": "char a70, b70;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a71:b71;", "expected_fix": "bool a71, b71;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a72:b72;", "expected_fix": "int a72, b72;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a73:b73;", "expected_fix": "float a73, b73;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a74:b74;", "expected_fix": "char a74, b74;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a75:b75;", "expected_fix": "bool a75, b75;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a76:b76;", "expected_fix": "int a76, b76;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a77:b77;", "expected_fix": "float a77, b77;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a78:b78;", "expected_fix": "char a78, b78;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a79:b79;", "expected_fix": "bool a79, b79;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a80:b80;", "expected_fix": "int a80, b80;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a81:b81;", "expected_fix": "float a81, b81;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a82:b82;", "expected_fix": "char a82, b82;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a83:b83;", "expected_fix": "bool a83, b83;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a84:b84;", "expected_fix": "int a84, b84;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a85:b85;", "expected_fix": "float a85, b85;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a86:b86;", "expected_fix": "char a86, b86;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a87:b87;", "expected_fix": "bool a87, b87;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a88:b88;", "expected_fix": "int a88, b88;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a89:b89;", "expected_fix": "float a89, b89;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a90:b90;", "expected_fix": "char a90, b90;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a91:b91;", "expected_fix": "bool a91, b91;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a92:b92;", "expected_fix": "int a92, b92;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a93:b93;", "expected_fix": "float a93, b93;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a94:b94;", "expected_fix": "char a94, b94;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a95:b95;", "expected_fix": "bool a95, b95;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a96:b96;", "expected_fix": "int a96, b96;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a97:b97;", "expected_fix": "float a97, b97;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a98:b98;", "expected_fix": "char a98, b98;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a99:b99;", "expected_fix": "bool a99, b99;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a100:b100;", "expected_fix": "int a100, b100;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a101:b101;", "expected_fix": "float a101, b101;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a102:b102;", "expected_fix": "char a102, b102;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a103:b103;", "expected_fix": "bool a103, b103;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a104:b104;", "expected_fix": "int a104, b104;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a105:b105;", "expected_fix": "float a105, b105;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a106:b106;", "expected_fix": "char a106, b106;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a107:b107;", "expected_fix": "bool a107, b107;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a108:b108;", "expected_fix": "int a108, b108;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a109:b109;", "expected_fix": "float a109, b109;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a110:b110;", "expected_fix": "char a110, b110;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a111:b111;", "expected_fix": "bool a111, b111;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a112:b112;", "expected_fix": "int a112, b112;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a113:b113;", "expected_fix": "float a113, b113;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a114:b114;", "expected_fix": "char a114, b114;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a115:b115;", "expected_fix": "bool a115, b115;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a116:b116;", "expected_fix": "int a116, b116;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a117:b117;", "expected_fix": "float a117, b117;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a118:b118;", "expected_fix": "char a118, b118;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a119:b119;", "expected_fix": "bool a119, b119;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a120:b120;", "expected_fix": "int a120, b120;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a121:b121;", "expected_fix": "float a121, b121;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a122:b122;", "expected_fix": "char a122, b122;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a123:b123;", "expected_fix": "bool a123, b123;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a124:b124;", "expected_fix": "int a124, b124;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a125:b125;", "expected_fix": "float a125, b125;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a126:b126;", "expected_fix": "char a126, b126;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a127:b127;", "expected_fix": "bool a127, b127;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a128:b128;", "expected_fix": "int a128, b128;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a129:b129;", "expected_fix": "float a129, b129;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a130:b130;", "expected_fix": "char a130, b130;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a131:b131;", "expected_fix": "bool a131, b131;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a132:b132;", "expected_fix": "int a132, b132;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a133:b133;", "expected_fix": "float a133, b133;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a134:b134;", "expected_fix": "char a134, b134;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a135:b135;", "expected_fix": "bool a135, b135;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a136:b136;", "expected_fix": "int a136, b136;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a137:b137;", "expected_fix": "float a137, b137;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a138:b138;", "expected_fix": "char a138, b138;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a139:b139;", "expected_fix": "bool a139, b139;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a140:b140;", "expected_fix": "int a140, b140;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a141:b141;", "expected_fix": "float a141, b141;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a142:b142;", "expected_fix": "char a142, b142;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a143:b143;", "expected_fix": "bool a143, b143;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a144:b144;", "expected_fix": "int a144, b144;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a145:b145;", "expected_fix": "float a145, b145;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a146:b146;", "expected_fix": "char a146, b146;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a147:b147;", "expected_fix": "bool a147, b147;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a148:b148;", "expected_fix": "int a148, b148;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a149:b149;", "expected_fix": "float a149, b149;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a150:b150;", "expected_fix": "char a150, b150;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a151:b151;", "expected_fix": "bool a151, b151;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a152:b152;", "expected_fix": "int a152, b152;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a153:b153;", "expected_fix": "float a153, b153;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a154:b154;", "expected_fix": "char a154, b154;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a155:b155;", "expected_fix": "bool a155, b155;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "int a156:b156;", "expected_fix": "int a156, b156;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "float a157:b157;", "expected_fix": "float a157, b157;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "char a158:b158;", "expected_fix": "char a158, b158;"}
+{"label": "DECLARATION_COLON_ERROR", "source": "bool a159:b159;", "expected_fix": "bool a159, b159;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr0;\narr0[1] = 1;", "expected_fix": "int arr0[2];\narr0[1] = 1;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr1;\narr1[2] = 2;", "expected_fix": "float arr1[3];\narr1[2] = 2;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr2;\narr2[3] = 3;", "expected_fix": "char arr2[4];\narr2[3] = 3;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr3;\narr3[4] = 4;", "expected_fix": "bool arr3[5];\narr3[4] = 4;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr4;\narr4[5] = 5;", "expected_fix": "int arr4[6];\narr4[5] = 5;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr5;\narr5[6] = 6;", "expected_fix": "float arr5[7];\narr5[6] = 6;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr6;\narr6[7] = 7;", "expected_fix": "char arr6[8];\narr6[7] = 7;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr7;\narr7[8] = 8;", "expected_fix": "bool arr7[9];\narr7[8] = 8;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr8;\narr8[9] = 9;", "expected_fix": "int arr8[10];\narr8[9] = 9;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr9;\narr9[10] = 10;", "expected_fix": "float arr9[11];\narr9[10] = 10;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr10;\narr10[11] = 11;", "expected_fix": "char arr10[12];\narr10[11] = 11;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr11;\narr11[12] = 12;", "expected_fix": "bool arr11[13];\narr11[12] = 12;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr12;\narr12[13] = 13;", "expected_fix": "int arr12[14];\narr12[13] = 13;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr13;\narr13[14] = 14;", "expected_fix": "float arr13[15];\narr13[14] = 14;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr14;\narr14[15] = 15;", "expected_fix": "char arr14[16];\narr14[15] = 15;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr15;\narr15[16] = 16;", "expected_fix": "bool arr15[17];\narr15[16] = 16;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr16;\narr16[17] = 17;", "expected_fix": "int arr16[18];\narr16[17] = 17;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr17;\narr17[18] = 18;", "expected_fix": "float arr17[19];\narr17[18] = 18;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr18;\narr18[19] = 19;", "expected_fix": "char arr18[20];\narr18[19] = 19;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr19;\narr19[20] = 20;", "expected_fix": "bool arr19[21];\narr19[20] = 20;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr20;\narr20[1] = 21;", "expected_fix": "int arr20[2];\narr20[1] = 21;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr21;\narr21[2] = 22;", "expected_fix": "float arr21[3];\narr21[2] = 22;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr22;\narr22[3] = 23;", "expected_fix": "char arr22[4];\narr22[3] = 23;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr23;\narr23[4] = 24;", "expected_fix": "bool arr23[5];\narr23[4] = 24;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr24;\narr24[5] = 25;", "expected_fix": "int arr24[6];\narr24[5] = 25;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr25;\narr25[6] = 26;", "expected_fix": "float arr25[7];\narr25[6] = 26;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr26;\narr26[7] = 27;", "expected_fix": "char arr26[8];\narr26[7] = 27;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr27;\narr27[8] = 28;", "expected_fix": "bool arr27[9];\narr27[8] = 28;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr28;\narr28[9] = 29;", "expected_fix": "int arr28[10];\narr28[9] = 29;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr29;\narr29[10] = 30;", "expected_fix": "float arr29[11];\narr29[10] = 30;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr30;\narr30[11] = 31;", "expected_fix": "char arr30[12];\narr30[11] = 31;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr31;\narr31[12] = 32;", "expected_fix": "bool arr31[13];\narr31[12] = 32;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr32;\narr32[13] = 33;", "expected_fix": "int arr32[14];\narr32[13] = 33;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr33;\narr33[14] = 34;", "expected_fix": "float arr33[15];\narr33[14] = 34;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr34;\narr34[15] = 35;", "expected_fix": "char arr34[16];\narr34[15] = 35;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr35;\narr35[16] = 36;", "expected_fix": "bool arr35[17];\narr35[16] = 36;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr36;\narr36[17] = 37;", "expected_fix": "int arr36[18];\narr36[17] = 37;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr37;\narr37[18] = 38;", "expected_fix": "float arr37[19];\narr37[18] = 38;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr38;\narr38[19] = 39;", "expected_fix": "char arr38[20];\narr38[19] = 39;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr39;\narr39[20] = 40;", "expected_fix": "bool arr39[21];\narr39[20] = 40;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr40;\narr40[1] = 41;", "expected_fix": "int arr40[2];\narr40[1] = 41;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr41;\narr41[2] = 42;", "expected_fix": "float arr41[3];\narr41[2] = 42;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr42;\narr42[3] = 43;", "expected_fix": "char arr42[4];\narr42[3] = 43;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr43;\narr43[4] = 44;", "expected_fix": "bool arr43[5];\narr43[4] = 44;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr44;\narr44[5] = 45;", "expected_fix": "int arr44[6];\narr44[5] = 45;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr45;\narr45[6] = 46;", "expected_fix": "float arr45[7];\narr45[6] = 46;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr46;\narr46[7] = 47;", "expected_fix": "char arr46[8];\narr46[7] = 47;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr47;\narr47[8] = 48;", "expected_fix": "bool arr47[9];\narr47[8] = 48;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr48;\narr48[9] = 49;", "expected_fix": "int arr48[10];\narr48[9] = 49;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr49;\narr49[10] = 50;", "expected_fix": "float arr49[11];\narr49[10] = 50;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr50;\narr50[11] = 51;", "expected_fix": "char arr50[12];\narr50[11] = 51;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr51;\narr51[12] = 52;", "expected_fix": "bool arr51[13];\narr51[12] = 52;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr52;\narr52[13] = 53;", "expected_fix": "int arr52[14];\narr52[13] = 53;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr53;\narr53[14] = 54;", "expected_fix": "float arr53[15];\narr53[14] = 54;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr54;\narr54[15] = 55;", "expected_fix": "char arr54[16];\narr54[15] = 55;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr55;\narr55[16] = 56;", "expected_fix": "bool arr55[17];\narr55[16] = 56;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr56;\narr56[17] = 57;", "expected_fix": "int arr56[18];\narr56[17] = 57;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr57;\narr57[18] = 58;", "expected_fix": "float arr57[19];\narr57[18] = 58;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr58;\narr58[19] = 59;", "expected_fix": "char arr58[20];\narr58[19] = 59;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr59;\narr59[20] = 60;", "expected_fix": "bool arr59[21];\narr59[20] = 60;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr60;\narr60[1] = 61;", "expected_fix": "int arr60[2];\narr60[1] = 61;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr61;\narr61[2] = 62;", "expected_fix": "float arr61[3];\narr61[2] = 62;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr62;\narr62[3] = 63;", "expected_fix": "char arr62[4];\narr62[3] = 63;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr63;\narr63[4] = 64;", "expected_fix": "bool arr63[5];\narr63[4] = 64;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr64;\narr64[5] = 65;", "expected_fix": "int arr64[6];\narr64[5] = 65;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr65;\narr65[6] = 66;", "expected_fix": "float arr65[7];\narr65[6] = 66;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr66;\narr66[7] = 67;", "expected_fix": "char arr66[8];\narr66[7] = 67;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr67;\narr67[8] = 68;", "expected_fix": "bool arr67[9];\narr67[8] = 68;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr68;\narr68[9] = 69;", "expected_fix": "int arr68[10];\narr68[9] = 69;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr69;\narr69[10] = 70;", "expected_fix": "float arr69[11];\narr69[10] = 70;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr70;\narr70[11] = 71;", "expected_fix": "char arr70[12];\narr70[11] = 71;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr71;\narr71[12] = 72;", "expected_fix": "bool arr71[13];\narr71[12] = 72;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr72;\narr72[13] = 73;", "expected_fix": "int arr72[14];\narr72[13] = 73;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr73;\narr73[14] = 74;", "expected_fix": "float arr73[15];\narr73[14] = 74;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr74;\narr74[15] = 75;", "expected_fix": "char arr74[16];\narr74[15] = 75;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr75;\narr75[16] = 76;", "expected_fix": "bool arr75[17];\narr75[16] = 76;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr76;\narr76[17] = 77;", "expected_fix": "int arr76[18];\narr76[17] = 77;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr77;\narr77[18] = 78;", "expected_fix": "float arr77[19];\narr77[18] = 78;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr78;\narr78[19] = 79;", "expected_fix": "char arr78[20];\narr78[19] = 79;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr79;\narr79[20] = 80;", "expected_fix": "bool arr79[21];\narr79[20] = 80;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr80;\narr80[1] = 81;", "expected_fix": "int arr80[2];\narr80[1] = 81;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr81;\narr81[2] = 82;", "expected_fix": "float arr81[3];\narr81[2] = 82;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr82;\narr82[3] = 83;", "expected_fix": "char arr82[4];\narr82[3] = 83;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr83;\narr83[4] = 84;", "expected_fix": "bool arr83[5];\narr83[4] = 84;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr84;\narr84[5] = 85;", "expected_fix": "int arr84[6];\narr84[5] = 85;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr85;\narr85[6] = 86;", "expected_fix": "float arr85[7];\narr85[6] = 86;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr86;\narr86[7] = 87;", "expected_fix": "char arr86[8];\narr86[7] = 87;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr87;\narr87[8] = 88;", "expected_fix": "bool arr87[9];\narr87[8] = 88;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr88;\narr88[9] = 89;", "expected_fix": "int arr88[10];\narr88[9] = 89;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr89;\narr89[10] = 90;", "expected_fix": "float arr89[11];\narr89[10] = 90;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr90;\narr90[11] = 91;", "expected_fix": "char arr90[12];\narr90[11] = 91;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr91;\narr91[12] = 92;", "expected_fix": "bool arr91[13];\narr91[12] = 92;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr92;\narr92[13] = 93;", "expected_fix": "int arr92[14];\narr92[13] = 93;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr93;\narr93[14] = 94;", "expected_fix": "float arr93[15];\narr93[14] = 94;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr94;\narr94[15] = 95;", "expected_fix": "char arr94[16];\narr94[15] = 95;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr95;\narr95[16] = 96;", "expected_fix": "bool arr95[17];\narr95[16] = 96;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr96;\narr96[17] = 97;", "expected_fix": "int arr96[18];\narr96[17] = 97;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr97;\narr97[18] = 98;", "expected_fix": "float arr97[19];\narr97[18] = 98;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr98;\narr98[19] = 99;", "expected_fix": "char arr98[20];\narr98[19] = 99;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr99;\narr99[20] = 100;", "expected_fix": "bool arr99[21];\narr99[20] = 100;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr100;\narr100[1] = 101;", "expected_fix": "int arr100[2];\narr100[1] = 101;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr101;\narr101[2] = 102;", "expected_fix": "float arr101[3];\narr101[2] = 102;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr102;\narr102[3] = 103;", "expected_fix": "char arr102[4];\narr102[3] = 103;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr103;\narr103[4] = 104;", "expected_fix": "bool arr103[5];\narr103[4] = 104;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr104;\narr104[5] = 105;", "expected_fix": "int arr104[6];\narr104[5] = 105;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr105;\narr105[6] = 106;", "expected_fix": "float arr105[7];\narr105[6] = 106;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr106;\narr106[7] = 107;", "expected_fix": "char arr106[8];\narr106[7] = 107;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr107;\narr107[8] = 108;", "expected_fix": "bool arr107[9];\narr107[8] = 108;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr108;\narr108[9] = 109;", "expected_fix": "int arr108[10];\narr108[9] = 109;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr109;\narr109[10] = 110;", "expected_fix": "float arr109[11];\narr109[10] = 110;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr110;\narr110[11] = 111;", "expected_fix": "char arr110[12];\narr110[11] = 111;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr111;\narr111[12] = 112;", "expected_fix": "bool arr111[13];\narr111[12] = 112;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr112;\narr112[13] = 113;", "expected_fix": "int arr112[14];\narr112[13] = 113;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr113;\narr113[14] = 114;", "expected_fix": "float arr113[15];\narr113[14] = 114;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr114;\narr114[15] = 115;", "expected_fix": "char arr114[16];\narr114[15] = 115;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr115;\narr115[16] = 116;", "expected_fix": "bool arr115[17];\narr115[16] = 116;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr116;\narr116[17] = 117;", "expected_fix": "int arr116[18];\narr116[17] = 117;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr117;\narr117[18] = 118;", "expected_fix": "float arr117[19];\narr117[18] = 118;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr118;\narr118[19] = 119;", "expected_fix": "char arr118[20];\narr118[19] = 119;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr119;\narr119[20] = 120;", "expected_fix": "bool arr119[21];\narr119[20] = 120;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr120;\narr120[1] = 121;", "expected_fix": "int arr120[2];\narr120[1] = 121;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr121;\narr121[2] = 122;", "expected_fix": "float arr121[3];\narr121[2] = 122;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr122;\narr122[3] = 123;", "expected_fix": "char arr122[4];\narr122[3] = 123;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr123;\narr123[4] = 124;", "expected_fix": "bool arr123[5];\narr123[4] = 124;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr124;\narr124[5] = 125;", "expected_fix": "int arr124[6];\narr124[5] = 125;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr125;\narr125[6] = 126;", "expected_fix": "float arr125[7];\narr125[6] = 126;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr126;\narr126[7] = 127;", "expected_fix": "char arr126[8];\narr126[7] = 127;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr127;\narr127[8] = 128;", "expected_fix": "bool arr127[9];\narr127[8] = 128;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr128;\narr128[9] = 129;", "expected_fix": "int arr128[10];\narr128[9] = 129;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr129;\narr129[10] = 130;", "expected_fix": "float arr129[11];\narr129[10] = 130;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr130;\narr130[11] = 131;", "expected_fix": "char arr130[12];\narr130[11] = 131;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr131;\narr131[12] = 132;", "expected_fix": "bool arr131[13];\narr131[12] = 132;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr132;\narr132[13] = 133;", "expected_fix": "int arr132[14];\narr132[13] = 133;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr133;\narr133[14] = 134;", "expected_fix": "float arr133[15];\narr133[14] = 134;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr134;\narr134[15] = 135;", "expected_fix": "char arr134[16];\narr134[15] = 135;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr135;\narr135[16] = 136;", "expected_fix": "bool arr135[17];\narr135[16] = 136;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr136;\narr136[17] = 137;", "expected_fix": "int arr136[18];\narr136[17] = 137;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr137;\narr137[18] = 138;", "expected_fix": "float arr137[19];\narr137[18] = 138;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr138;\narr138[19] = 139;", "expected_fix": "char arr138[20];\narr138[19] = 139;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr139;\narr139[20] = 140;", "expected_fix": "bool arr139[21];\narr139[20] = 140;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr140;\narr140[1] = 141;", "expected_fix": "int arr140[2];\narr140[1] = 141;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr141;\narr141[2] = 142;", "expected_fix": "float arr141[3];\narr141[2] = 142;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr142;\narr142[3] = 143;", "expected_fix": "char arr142[4];\narr142[3] = 143;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr143;\narr143[4] = 144;", "expected_fix": "bool arr143[5];\narr143[4] = 144;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr144;\narr144[5] = 145;", "expected_fix": "int arr144[6];\narr144[5] = 145;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr145;\narr145[6] = 146;", "expected_fix": "float arr145[7];\narr145[6] = 146;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr146;\narr146[7] = 147;", "expected_fix": "char arr146[8];\narr146[7] = 147;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr147;\narr147[8] = 148;", "expected_fix": "bool arr147[9];\narr147[8] = 148;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr148;\narr148[9] = 149;", "expected_fix": "int arr148[10];\narr148[9] = 149;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr149;\narr149[10] = 150;", "expected_fix": "float arr149[11];\narr149[10] = 150;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr150;\narr150[11] = 151;", "expected_fix": "char arr150[12];\narr150[11] = 151;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr151;\narr151[12] = 152;", "expected_fix": "bool arr151[13];\narr151[12] = 152;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr152;\narr152[13] = 153;", "expected_fix": "int arr152[14];\narr152[13] = 153;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr153;\narr153[14] = 154;", "expected_fix": "float arr153[15];\narr153[14] = 154;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr154;\narr154[15] = 155;", "expected_fix": "char arr154[16];\narr154[15] = 155;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr155;\narr155[16] = 156;", "expected_fix": "bool arr155[17];\narr155[16] = 156;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "int arr156;\narr156[17] = 157;", "expected_fix": "int arr156[18];\narr156[17] = 157;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "float arr157;\narr157[18] = 158;", "expected_fix": "float arr157[19];\narr157[18] = 158;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "char arr158;\narr158[19] = 159;", "expected_fix": "char arr158[20];\narr158[19] = 159;"}
+{"label": "SCALAR_ARRAY_USE_ERROR", "source": "bool arr159;\narr159[20] = 160;", "expected_fix": "bool arr159[21];\narr159[20] = 160;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr0[2];\narr0{1] = 1;", "expected_fix": "int arr0[2];\narr0[1] = 1;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr1[3];\narr1{2] = 2;", "expected_fix": "float arr1[3];\narr1[2] = 2;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr2[4];\narr2{3] = 3;", "expected_fix": "char arr2[4];\narr2[3] = 3;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr3[5];\narr3{4] = 4;", "expected_fix": "bool arr3[5];\narr3[4] = 4;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr4[6];\narr4{5] = 5;", "expected_fix": "int arr4[6];\narr4[5] = 5;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr5[7];\narr5{6] = 6;", "expected_fix": "float arr5[7];\narr5[6] = 6;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr6[8];\narr6{7] = 7;", "expected_fix": "char arr6[8];\narr6[7] = 7;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr7[9];\narr7{8] = 8;", "expected_fix": "bool arr7[9];\narr7[8] = 8;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr8[10];\narr8{9] = 9;", "expected_fix": "int arr8[10];\narr8[9] = 9;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr9[11];\narr9{10] = 10;", "expected_fix": "float arr9[11];\narr9[10] = 10;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr10[12];\narr10{11] = 11;", "expected_fix": "char arr10[12];\narr10[11] = 11;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr11[13];\narr11{12] = 12;", "expected_fix": "bool arr11[13];\narr11[12] = 12;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr12[14];\narr12{13] = 13;", "expected_fix": "int arr12[14];\narr12[13] = 13;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr13[15];\narr13{14] = 14;", "expected_fix": "float arr13[15];\narr13[14] = 14;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr14[16];\narr14{15] = 15;", "expected_fix": "char arr14[16];\narr14[15] = 15;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr15[17];\narr15{16] = 16;", "expected_fix": "bool arr15[17];\narr15[16] = 16;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr16[18];\narr16{17] = 17;", "expected_fix": "int arr16[18];\narr16[17] = 17;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr17[19];\narr17{18] = 18;", "expected_fix": "float arr17[19];\narr17[18] = 18;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr18[20];\narr18{19] = 19;", "expected_fix": "char arr18[20];\narr18[19] = 19;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr19[21];\narr19{20] = 20;", "expected_fix": "bool arr19[21];\narr19[20] = 20;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr20[2];\narr20{1] = 21;", "expected_fix": "int arr20[2];\narr20[1] = 21;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr21[3];\narr21{2] = 22;", "expected_fix": "float arr21[3];\narr21[2] = 22;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr22[4];\narr22{3] = 23;", "expected_fix": "char arr22[4];\narr22[3] = 23;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr23[5];\narr23{4] = 24;", "expected_fix": "bool arr23[5];\narr23[4] = 24;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr24[6];\narr24{5] = 25;", "expected_fix": "int arr24[6];\narr24[5] = 25;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr25[7];\narr25{6] = 26;", "expected_fix": "float arr25[7];\narr25[6] = 26;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr26[8];\narr26{7] = 27;", "expected_fix": "char arr26[8];\narr26[7] = 27;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr27[9];\narr27{8] = 28;", "expected_fix": "bool arr27[9];\narr27[8] = 28;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr28[10];\narr28{9] = 29;", "expected_fix": "int arr28[10];\narr28[9] = 29;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr29[11];\narr29{10] = 30;", "expected_fix": "float arr29[11];\narr29[10] = 30;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr30[12];\narr30{11] = 31;", "expected_fix": "char arr30[12];\narr30[11] = 31;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr31[13];\narr31{12] = 32;", "expected_fix": "bool arr31[13];\narr31[12] = 32;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr32[14];\narr32{13] = 33;", "expected_fix": "int arr32[14];\narr32[13] = 33;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr33[15];\narr33{14] = 34;", "expected_fix": "float arr33[15];\narr33[14] = 34;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr34[16];\narr34{15] = 35;", "expected_fix": "char arr34[16];\narr34[15] = 35;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr35[17];\narr35{16] = 36;", "expected_fix": "bool arr35[17];\narr35[16] = 36;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr36[18];\narr36{17] = 37;", "expected_fix": "int arr36[18];\narr36[17] = 37;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr37[19];\narr37{18] = 38;", "expected_fix": "float arr37[19];\narr37[18] = 38;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr38[20];\narr38{19] = 39;", "expected_fix": "char arr38[20];\narr38[19] = 39;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr39[21];\narr39{20] = 40;", "expected_fix": "bool arr39[21];\narr39[20] = 40;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr40[2];\narr40{1] = 41;", "expected_fix": "int arr40[2];\narr40[1] = 41;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr41[3];\narr41{2] = 42;", "expected_fix": "float arr41[3];\narr41[2] = 42;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr42[4];\narr42{3] = 43;", "expected_fix": "char arr42[4];\narr42[3] = 43;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr43[5];\narr43{4] = 44;", "expected_fix": "bool arr43[5];\narr43[4] = 44;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr44[6];\narr44{5] = 45;", "expected_fix": "int arr44[6];\narr44[5] = 45;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr45[7];\narr45{6] = 46;", "expected_fix": "float arr45[7];\narr45[6] = 46;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr46[8];\narr46{7] = 47;", "expected_fix": "char arr46[8];\narr46[7] = 47;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr47[9];\narr47{8] = 48;", "expected_fix": "bool arr47[9];\narr47[8] = 48;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr48[10];\narr48{9] = 49;", "expected_fix": "int arr48[10];\narr48[9] = 49;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr49[11];\narr49{10] = 50;", "expected_fix": "float arr49[11];\narr49[10] = 50;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr50[12];\narr50{11] = 51;", "expected_fix": "char arr50[12];\narr50[11] = 51;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr51[13];\narr51{12] = 52;", "expected_fix": "bool arr51[13];\narr51[12] = 52;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr52[14];\narr52{13] = 53;", "expected_fix": "int arr52[14];\narr52[13] = 53;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr53[15];\narr53{14] = 54;", "expected_fix": "float arr53[15];\narr53[14] = 54;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr54[16];\narr54{15] = 55;", "expected_fix": "char arr54[16];\narr54[15] = 55;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr55[17];\narr55{16] = 56;", "expected_fix": "bool arr55[17];\narr55[16] = 56;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr56[18];\narr56{17] = 57;", "expected_fix": "int arr56[18];\narr56[17] = 57;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr57[19];\narr57{18] = 58;", "expected_fix": "float arr57[19];\narr57[18] = 58;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr58[20];\narr58{19] = 59;", "expected_fix": "char arr58[20];\narr58[19] = 59;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr59[21];\narr59{20] = 60;", "expected_fix": "bool arr59[21];\narr59[20] = 60;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr60[2];\narr60{1] = 61;", "expected_fix": "int arr60[2];\narr60[1] = 61;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr61[3];\narr61{2] = 62;", "expected_fix": "float arr61[3];\narr61[2] = 62;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr62[4];\narr62{3] = 63;", "expected_fix": "char arr62[4];\narr62[3] = 63;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr63[5];\narr63{4] = 64;", "expected_fix": "bool arr63[5];\narr63[4] = 64;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr64[6];\narr64{5] = 65;", "expected_fix": "int arr64[6];\narr64[5] = 65;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr65[7];\narr65{6] = 66;", "expected_fix": "float arr65[7];\narr65[6] = 66;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr66[8];\narr66{7] = 67;", "expected_fix": "char arr66[8];\narr66[7] = 67;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr67[9];\narr67{8] = 68;", "expected_fix": "bool arr67[9];\narr67[8] = 68;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr68[10];\narr68{9] = 69;", "expected_fix": "int arr68[10];\narr68[9] = 69;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr69[11];\narr69{10] = 70;", "expected_fix": "float arr69[11];\narr69[10] = 70;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr70[12];\narr70{11] = 71;", "expected_fix": "char arr70[12];\narr70[11] = 71;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr71[13];\narr71{12] = 72;", "expected_fix": "bool arr71[13];\narr71[12] = 72;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr72[14];\narr72{13] = 73;", "expected_fix": "int arr72[14];\narr72[13] = 73;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr73[15];\narr73{14] = 74;", "expected_fix": "float arr73[15];\narr73[14] = 74;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr74[16];\narr74{15] = 75;", "expected_fix": "char arr74[16];\narr74[15] = 75;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr75[17];\narr75{16] = 76;", "expected_fix": "bool arr75[17];\narr75[16] = 76;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr76[18];\narr76{17] = 77;", "expected_fix": "int arr76[18];\narr76[17] = 77;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr77[19];\narr77{18] = 78;", "expected_fix": "float arr77[19];\narr77[18] = 78;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr78[20];\narr78{19] = 79;", "expected_fix": "char arr78[20];\narr78[19] = 79;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr79[21];\narr79{20] = 80;", "expected_fix": "bool arr79[21];\narr79[20] = 80;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr80[2];\narr80{1] = 81;", "expected_fix": "int arr80[2];\narr80[1] = 81;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr81[3];\narr81{2] = 82;", "expected_fix": "float arr81[3];\narr81[2] = 82;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr82[4];\narr82{3] = 83;", "expected_fix": "char arr82[4];\narr82[3] = 83;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr83[5];\narr83{4] = 84;", "expected_fix": "bool arr83[5];\narr83[4] = 84;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr84[6];\narr84{5] = 85;", "expected_fix": "int arr84[6];\narr84[5] = 85;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr85[7];\narr85{6] = 86;", "expected_fix": "float arr85[7];\narr85[6] = 86;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr86[8];\narr86{7] = 87;", "expected_fix": "char arr86[8];\narr86[7] = 87;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr87[9];\narr87{8] = 88;", "expected_fix": "bool arr87[9];\narr87[8] = 88;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr88[10];\narr88{9] = 89;", "expected_fix": "int arr88[10];\narr88[9] = 89;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr89[11];\narr89{10] = 90;", "expected_fix": "float arr89[11];\narr89[10] = 90;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr90[12];\narr90{11] = 91;", "expected_fix": "char arr90[12];\narr90[11] = 91;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr91[13];\narr91{12] = 92;", "expected_fix": "bool arr91[13];\narr91[12] = 92;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr92[14];\narr92{13] = 93;", "expected_fix": "int arr92[14];\narr92[13] = 93;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr93[15];\narr93{14] = 94;", "expected_fix": "float arr93[15];\narr93[14] = 94;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr94[16];\narr94{15] = 95;", "expected_fix": "char arr94[16];\narr94[15] = 95;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr95[17];\narr95{16] = 96;", "expected_fix": "bool arr95[17];\narr95[16] = 96;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr96[18];\narr96{17] = 97;", "expected_fix": "int arr96[18];\narr96[17] = 97;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr97[19];\narr97{18] = 98;", "expected_fix": "float arr97[19];\narr97[18] = 98;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr98[20];\narr98{19] = 99;", "expected_fix": "char arr98[20];\narr98[19] = 99;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr99[21];\narr99{20] = 100;", "expected_fix": "bool arr99[21];\narr99[20] = 100;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr100[2];\narr100{1] = 101;", "expected_fix": "int arr100[2];\narr100[1] = 101;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr101[3];\narr101{2] = 102;", "expected_fix": "float arr101[3];\narr101[2] = 102;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr102[4];\narr102{3] = 103;", "expected_fix": "char arr102[4];\narr102[3] = 103;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr103[5];\narr103{4] = 104;", "expected_fix": "bool arr103[5];\narr103[4] = 104;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr104[6];\narr104{5] = 105;", "expected_fix": "int arr104[6];\narr104[5] = 105;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr105[7];\narr105{6] = 106;", "expected_fix": "float arr105[7];\narr105[6] = 106;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr106[8];\narr106{7] = 107;", "expected_fix": "char arr106[8];\narr106[7] = 107;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr107[9];\narr107{8] = 108;", "expected_fix": "bool arr107[9];\narr107[8] = 108;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr108[10];\narr108{9] = 109;", "expected_fix": "int arr108[10];\narr108[9] = 109;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr109[11];\narr109{10] = 110;", "expected_fix": "float arr109[11];\narr109[10] = 110;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr110[12];\narr110{11] = 111;", "expected_fix": "char arr110[12];\narr110[11] = 111;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr111[13];\narr111{12] = 112;", "expected_fix": "bool arr111[13];\narr111[12] = 112;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr112[14];\narr112{13] = 113;", "expected_fix": "int arr112[14];\narr112[13] = 113;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr113[15];\narr113{14] = 114;", "expected_fix": "float arr113[15];\narr113[14] = 114;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr114[16];\narr114{15] = 115;", "expected_fix": "char arr114[16];\narr114[15] = 115;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr115[17];\narr115{16] = 116;", "expected_fix": "bool arr115[17];\narr115[16] = 116;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr116[18];\narr116{17] = 117;", "expected_fix": "int arr116[18];\narr116[17] = 117;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr117[19];\narr117{18] = 118;", "expected_fix": "float arr117[19];\narr117[18] = 118;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr118[20];\narr118{19] = 119;", "expected_fix": "char arr118[20];\narr118[19] = 119;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr119[21];\narr119{20] = 120;", "expected_fix": "bool arr119[21];\narr119[20] = 120;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr120[2];\narr120{1] = 121;", "expected_fix": "int arr120[2];\narr120[1] = 121;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr121[3];\narr121{2] = 122;", "expected_fix": "float arr121[3];\narr121[2] = 122;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr122[4];\narr122{3] = 123;", "expected_fix": "char arr122[4];\narr122[3] = 123;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr123[5];\narr123{4] = 124;", "expected_fix": "bool arr123[5];\narr123[4] = 124;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr124[6];\narr124{5] = 125;", "expected_fix": "int arr124[6];\narr124[5] = 125;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr125[7];\narr125{6] = 126;", "expected_fix": "float arr125[7];\narr125[6] = 126;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr126[8];\narr126{7] = 127;", "expected_fix": "char arr126[8];\narr126[7] = 127;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr127[9];\narr127{8] = 128;", "expected_fix": "bool arr127[9];\narr127[8] = 128;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr128[10];\narr128{9] = 129;", "expected_fix": "int arr128[10];\narr128[9] = 129;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr129[11];\narr129{10] = 130;", "expected_fix": "float arr129[11];\narr129[10] = 130;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr130[12];\narr130{11] = 131;", "expected_fix": "char arr130[12];\narr130[11] = 131;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr131[13];\narr131{12] = 132;", "expected_fix": "bool arr131[13];\narr131[12] = 132;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr132[14];\narr132{13] = 133;", "expected_fix": "int arr132[14];\narr132[13] = 133;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr133[15];\narr133{14] = 134;", "expected_fix": "float arr133[15];\narr133[14] = 134;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr134[16];\narr134{15] = 135;", "expected_fix": "char arr134[16];\narr134[15] = 135;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr135[17];\narr135{16] = 136;", "expected_fix": "bool arr135[17];\narr135[16] = 136;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr136[18];\narr136{17] = 137;", "expected_fix": "int arr136[18];\narr136[17] = 137;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr137[19];\narr137{18] = 138;", "expected_fix": "float arr137[19];\narr137[18] = 138;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr138[20];\narr138{19] = 139;", "expected_fix": "char arr138[20];\narr138[19] = 139;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr139[21];\narr139{20] = 140;", "expected_fix": "bool arr139[21];\narr139[20] = 140;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr140[2];\narr140{1] = 141;", "expected_fix": "int arr140[2];\narr140[1] = 141;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr141[3];\narr141{2] = 142;", "expected_fix": "float arr141[3];\narr141[2] = 142;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr142[4];\narr142{3] = 143;", "expected_fix": "char arr142[4];\narr142[3] = 143;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr143[5];\narr143{4] = 144;", "expected_fix": "bool arr143[5];\narr143[4] = 144;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr144[6];\narr144{5] = 145;", "expected_fix": "int arr144[6];\narr144[5] = 145;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr145[7];\narr145{6] = 146;", "expected_fix": "float arr145[7];\narr145[6] = 146;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr146[8];\narr146{7] = 147;", "expected_fix": "char arr146[8];\narr146[7] = 147;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr147[9];\narr147{8] = 148;", "expected_fix": "bool arr147[9];\narr147[8] = 148;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr148[10];\narr148{9] = 149;", "expected_fix": "int arr148[10];\narr148[9] = 149;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr149[11];\narr149{10] = 150;", "expected_fix": "float arr149[11];\narr149[10] = 150;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr150[12];\narr150{11] = 151;", "expected_fix": "char arr150[12];\narr150[11] = 151;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr151[13];\narr151{12] = 152;", "expected_fix": "bool arr151[13];\narr151[12] = 152;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr152[14];\narr152{13] = 153;", "expected_fix": "int arr152[14];\narr152[13] = 153;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr153[15];\narr153{14] = 154;", "expected_fix": "float arr153[15];\narr153[14] = 154;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr154[16];\narr154{15] = 155;", "expected_fix": "char arr154[16];\narr154[15] = 155;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr155[17];\narr155{16] = 156;", "expected_fix": "bool arr155[17];\narr155[16] = 156;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "int arr156[18];\narr156{17] = 157;", "expected_fix": "int arr156[18];\narr156[17] = 157;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "float arr157[19];\narr157{18] = 158;", "expected_fix": "float arr157[19];\narr157[18] = 158;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "char arr158[20];\narr158{19] = 159;", "expected_fix": "char arr158[20];\narr158[19] = 159;"}
+{"label": "ARRAY_BRACE_INDEX_ERROR", "source": "bool arr159[21];\narr159{20] = 160;", "expected_fix": "bool arr159[21];\narr159[20] = 160;"}

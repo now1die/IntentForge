@@ -1,0 +1,4563 @@
+﻿id,group,label,scope,mutation,initial_parse_valid,initial_lexical_errors,initial_syntax_errors,initial_diagnostics,corrections_applied,correction_statuses,model_predictions,confidence_values,stop_reason,needs_llm_fallback,final_parse_valid,final_lexical_errors,final_syntax_errors,final_diagnostics,semantic_diagnostics,outcome,exact_expected_repair,source,expected_source,corrected_source
+ARR-0005,single_bracket_character,array_declaration,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    return 0;
+}","int main() {
+    int arr[5];
+    return 0;
+}","int main() {
+    int arr;5;
+    return 0;
+}"
+ARR-0009,single_bracket_character,array_declaration,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    return 0;
+}","int main() {
+    int arr[5];
+    return 0;
+}","int main() {
+    int arri5;
+    return 0;
+}"
+ARR-0010,single_bracket_character,array_declaration,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    return 0;
+}","int main() {
+    int arr[5];
+    return 0;
+}","int main() {
+    int arrarr5;
+    return 0;
+}"
+ARR-0011,single_bracket_character,array_declaration,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    return 0;
+}","int main() {
+    int arr[5];
+    return 0;
+}","int main() {
+    int arr5;
+    return 0;
+}"
+ARR-0027,single_bracket_character,array_declaration,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    return 0;
+}","int main() {
+    int arr[5];
+    return 0;
+}","int main() {
+    int arr[5];;
+    return 0;
+}"
+ARR-0056,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6196,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr;5;
+    arr[0] = 10;
+    return 0;
+}"
+ARR-0060,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4095,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arri5;
+    arr[0] = 10;
+    return 0;
+}"
+ARR-0061,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4544,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arrarr5;
+    arr[0] = 10;
+    return 0;
+}"
+ARR-0062,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3478,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr5;
+    arr[0] = 10;
+    return 0;
+}"
+ARR-0078,single_bracket_character,single_index_assignment,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9514,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];;
+    arr[0] = 10;
+    return 0;
+}"
+ARR-0100,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 36 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.5249,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arr;0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr;0 = 10;
+    return 0;
+}"
+ARR-0102,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 36 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4402,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arr=0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr=0 = 10;
+    return 0;
+}"
+ARR-0104,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 36 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2686,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arri0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arri0 = 10;
+    return 0;
+}"
+ARR-0105,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 36 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3144,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arrarr0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arrarr0 = 10;
+    return 0;
+}"
+ARR-0106,single_bracket_character,single_index_assignment,syntax_correction,replace '[' at offset 36 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4500,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arr0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr0 = 10;
+    return 0;
+}"
+ARR-0124,single_bracket_character,single_index_assignment,syntax_correction,replace ']' at offset 38 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, REPLACE_BRACKET","0.9261, 0.9966",source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arr[0= = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0=  10];
+    return 0;
+}"
+ARR-0128,single_bracket_character,single_index_assignment,syntax_correction,replace ']' at offset 38 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9966,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    arr[0 = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0] = 10;
+    return 0;
+}","int main() {
+    int arr[5];
+    arr[0 = 10];
+    return 0;
+}"
+ARR-0155,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr;5;
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}"
+ARR-0159,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arri5;
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}"
+ARR-0160,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arrarr5;
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}"
+ARR-0161,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr5;
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}"
+ARR-0177,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];;
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}"
+ARR-0243,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 64 with ';',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.8727,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr;i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr;i * 2;
+    return 0;
+}"
+ARR-0245,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 64 with '=',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.8373,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr=i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr=i * 2;
+    return 0;
+}"
+ARR-0246,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 64 with '+',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.8397,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr+i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr+i * 2;
+    return 0;
+}"
+ARR-0247,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 64 with 'i',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,DELETE_EXTRA_TOKEN,0.2888,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arrii] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arrii * 2;
+    return 0;
+}"
+ARR-0248,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 64 with 'arr',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,DELETE_EXTRA_TOKEN,0.3257,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arrarri] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arrarri * 2;
+    return 0;
+}"
+ARR-0249,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace '[' at offset 64 with '',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: SEMICOLON | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token TIMES ('*'); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.3793,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arri] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arri * 2;
+    return 0;
+}"
+ARR-0269,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace ']' at offset 66 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8813,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[ii * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[ii * 2];
+    return 0;
+}"
+ARR-0270,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace ']' at offset 66 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9614,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[iarr * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[iarr * 2];
+    return 0;
+}"
+ARR-0271,single_bracket_character,read_and_arithmetic_index,syntax_correction,replace ']' at offset 66 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8813,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i] * 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i * 2];
+    return 0;
+}"
+ARR-0302,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr;5;
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}"
+ARR-0306,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arri5;
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}"
+ARR-0307,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arrarr5;
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}"
+ARR-0308,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr5;
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}"
+ARR-0324,single_bracket_character,for_loop_fill,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];;
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}"
+ARR-0346,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 74 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8844,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr;i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr;i = i;
+    }
+    return 0;
+}"
+ARR-0348,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 74 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8478,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr=i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr=i = i;
+    }
+    return 0;
+}"
+ARR-0350,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 74 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2855,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arrii] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arrii = i;
+    }
+    return 0;
+}"
+ARR-0351,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 74 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3240,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arrarri] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arrarri = i;
+    }
+    return 0;
+}"
+ARR-0352,single_bracket_character,for_loop_fill,syntax_correction,replace '[' at offset 74 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4012,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arri] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arri = i;
+    }
+    return 0;
+}"
+ARR-0370,single_bracket_character,for_loop_fill,syntax_correction,replace ']' at offset 76 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, INSERT_RBRACKET","0.8976, 0.6026",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i= = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i=  i];
+    }
+    return 0;
+}"
+ARR-0372,single_bracket_character,for_loop_fill,syntax_correction,replace ']' at offset 76 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6026,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[ii = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[ii = i];
+    }
+    return 0;
+}"
+ARR-0373,single_bracket_character,for_loop_fill,syntax_correction,replace ']' at offset 76 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6026,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[iarr = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[iarr = i];
+    }
+    return 0;
+}"
+ARR-0374,single_bracket_character,for_loop_fill,syntax_correction,replace ']' at offset 76 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6026,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i = i];
+    }
+    return 0;
+}"
+ARR-0401,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr;5;
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0405,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arri5;
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0406,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arrarr5;
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0407,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr5;
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0423,single_bracket_character,while_loop_fill,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];;
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0445,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 75 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8844,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr;i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr;i = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0447,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 75 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8478,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr=i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr=i = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0449,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 75 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2855,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arrii] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arrii = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0450,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 75 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3240,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arrarri] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arrarri = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0451,single_bracket_character,while_loop_fill,syntax_correction,replace '[' at offset 75 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4012,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arri] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arri = i + 1;
+        i++;
+    }
+    return 0;
+}"
+ARR-0469,single_bracket_character,while_loop_fill,syntax_correction,replace ']' at offset 77 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, INSERT_RBRACKET","0.8481, 0.8349",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i= = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i=  i + 1];
+        i++;
+    }
+    return 0;
+}"
+ARR-0471,single_bracket_character,while_loop_fill,syntax_correction,replace ']' at offset 77 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8349,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[ii = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[ii = i + 1];
+        i++;
+    }
+    return 0;
+}"
+ARR-0472,single_bracket_character,while_loop_fill,syntax_correction,replace ']' at offset 77 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8349,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[iarr = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[iarr = i + 1];
+        i++;
+    }
+    return 0;
+}"
+ARR-0473,single_bracket_character,while_loop_fill,syntax_correction,replace ']' at offset 77 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8349,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i] = i + 1;
+        i++;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    while (i < 5) {
+        arr[i = i + 1];
+        i++;
+    }
+    return 0;
+}"
+ARR-0500,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr;5;
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0504,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arri5;
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0505,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arrarr5;
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0506,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr5;
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0522,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];;
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0588,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 78 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8844,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr;i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr;i = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0590,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 78 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8478,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr=i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr=i = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0592,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 78 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2855,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arrii] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arrii = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0593,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 78 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3240,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arrarri] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arrarri = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0594,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 78 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4012,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arri] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arri = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0612,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 80 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, INSERT_RBRACKET","0.8481, 0.4883",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i= = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i=  arr[i] + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0614,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 80 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.4883,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[ii = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[ii = arr[i] + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0615,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 80 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.4883,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[iarr = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[iarr = arr[i] + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0616,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 80 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.4883,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i = arr[i] + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0632,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 87 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8789,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr;i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr;i + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0634,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 87 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8446,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr=i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr=i + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0635,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 87 with '+',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8470,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr+i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr+i + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0636,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 87 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7951,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arrii] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arrii + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0637,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 87 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7951,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arrarri] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arrarri + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0638,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 87 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7951,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arri] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arri + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0654,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 89 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6806,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i; + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i]; + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0656,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 89 with '=',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.7972,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i= + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i= + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0657,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 89 with '+',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.7972,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i+ + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i+ + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0658,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 89 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8424,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[ii + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[ii + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0659,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 89 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9523,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[iarr + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[iarr + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0660,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 89 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8424,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0663,delimiter_inserted_after_bracket,if_else_array_access,syntax_correction,insert '[' after ']' at offset 89,False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9969,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i][ + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i][ + 1];
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}"
+ARR-0676,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 120 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8789,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr;i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr;i = 0;
+    }
+    return 0;
+}"
+ARR-0678,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 120 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8446,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr=i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr=i = 0;
+    }
+    return 0;
+}"
+ARR-0680,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 120 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2965,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arrii] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arrii = 0;
+    }
+    return 0;
+}"
+ARR-0681,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 120 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3375,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arrarri] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arrarri = 0;
+    }
+    return 0;
+}"
+ARR-0682,single_bracket_character,if_else_array_access,syntax_correction,replace '[' at offset 120 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.3972,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arri] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arri = 0;
+    }
+    return 0;
+}"
+ARR-0700,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 122 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, INSERT_RBRACKET","0.9267, 0.8328",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i= = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i=  0];
+    }
+    return 0;
+}"
+ARR-0702,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 122 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8328,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[ii = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[ii = 0];
+    }
+    return 0;
+}"
+ARR-0703,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 122 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9438,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[iarr = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[iarr = 0];
+    }
+    return 0;
+}"
+ARR-0704,single_bracket_character,if_else_array_access,syntax_correction,replace ']' at offset 122 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8328,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i] = 0;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    if (arr[i] < 10) {
+        arr[i] = arr[i] + 1;
+    } else {
+        arr[i = 0];
+    }
+    return 0;
+}"
+ARR-0743,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr;5;
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0747,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arri5;
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0748,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arrarr5;
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0749,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr5;
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0765,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];;
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0798,delimiter_inserted_after_bracket,array_in_for_condition,syntax_correction,insert '(' after '[' at offset 63,False,0,2,Unexpected token RBRACKET (']'); expected one of: RPAREN | Unexpected token SEMICOLON (';'); expected one of: RBRACKET,2,"APPLIED, APPLIED","CORRECT_KEYWORD, INSERT_RBRACKET","0.8158, 0.6336",source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-INDEX | SEM-TYPE-MISMATCH,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[(i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[(i) < 10]; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0813,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 65 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6979,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-TYPE-MISMATCH,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[ii < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[ii < 10]; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0814,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 65 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8753,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-TYPE-MISMATCH,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[iarr < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[iarr < 10]; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0815,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 65 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6979,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-INDEX | SEM-TYPE-MISMATCH,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i < 10]; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}"
+ARR-0831,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 91 with ';',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.8789,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr;i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr;i += 1;
+    }
+    return 0;
+}"
+ARR-0833,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 91 with '=',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.8446,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr=i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr=i += 1;
+    }
+    return 0;
+}"
+ARR-0835,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 91 with 'i',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,DELETE_EXTRA_TOKEN,0.2965,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arrii] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arrii += 1;
+    }
+    return 0;
+}"
+ARR-0836,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 91 with 'arr',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,DELETE_EXTRA_TOKEN,0.3375,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arrarri] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arrarri += 1;
+    }
+    return 0;
+}"
+ARR-0837,single_bracket_character,array_in_for_condition,syntax_correction,replace '[' at offset 91 with '',False,0,4,"Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: SEMICOLON | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE | Unexpected token PLUS_ASSIGN ('+='); expected one of: BOOL, BREAK, CHAR, CHAR_LITERAL, CONTINUE, DECREMENT, ELSE, FALSE, FLOAT, FLOAT_LITERAL, FOR, IDENTIFIER, IF, INCREMENT, INT, INTEGER_LITERAL, LBRACE, LPAREN, MINUS, NOT, PLUS, RBRACE, RETURN, SEMICOLON, STRING_LITERAL, TRUE, VOID, WHILE",1,APPLIED,CORRECT_KEYWORD,0.3972,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arri] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arri += 1;
+    }
+    return 0;
+}"
+ARR-0855,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 93 with '=',False,0,2,"Unexpected token PLUS_ASSIGN ('+='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, INSERT_RBRACKET","0.6384, 0.8350",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i= += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i=  1];
+    }
+    return 0;
+}"
+ARR-0857,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 93 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8424,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[ii += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[ii += 1];
+    }
+    return 0;
+}"
+ARR-0858,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 93 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9523,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[iarr += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[iarr += 1];
+    }
+    return 0;
+}"
+ARR-0859,single_bracket_character,array_in_for_condition,syntax_correction,replace ']' at offset 93 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8424,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i] += 1;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 0;
+    for (i = 0; arr[i] < 10; i++) {
+        arr[i += 1];
+    }
+    return 0;
+}"
+ARR-0890,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr;5;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0894,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arri5;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0895,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arrarr5;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0896,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr5;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0912,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0934,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 116 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8902,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr;i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr;i = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0936,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 116 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8549,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr=i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr=i = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0938,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 116 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2811,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arrii] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arrii = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0939,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 116 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3211,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arrarri] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arrarri = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0940,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 116 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4148,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arri] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arri = arr[i] + j;
+        }
+    }
+    return 0;
+}"
+ARR-0958,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 118 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, CORRECT_KEYWORD","0.8425, 0.6952",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i= = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i=  arr[i] + j];
+        }
+    }
+    return 0;
+}"
+ARR-0960,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 118 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,CORRECT_KEYWORD,0.6952,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[ii = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[ii = arr[i] + j];
+        }
+    }
+    return 0;
+}"
+ARR-0961,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 118 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,CORRECT_KEYWORD,0.6952,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[iarr = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[iarr = arr[i] + j];
+        }
+    }
+    return 0;
+}"
+ARR-0962,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 118 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,CORRECT_KEYWORD,0.6952,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i = arr[i] + j];
+        }
+    }
+    return 0;
+}"
+ARR-0978,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 125 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8902,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr;i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr;i + j;
+        }
+    }
+    return 0;
+}"
+ARR-0980,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 125 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8549,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr=i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr=i + j;
+        }
+    }
+    return 0;
+}"
+ARR-0981,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 125 with '+',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8572,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr+i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr+i + j;
+        }
+    }
+    return 0;
+}"
+ARR-0982,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 125 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8082,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arrii] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arrii + j;
+        }
+    }
+    return 0;
+}"
+ARR-0983,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 125 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8082,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arrarri] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arrarri + j;
+        }
+    }
+    return 0;
+}"
+ARR-0984,single_bracket_character,nested_loops_array_access,syntax_correction,replace '[' at offset 125 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8082,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arri] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arri + j;
+        }
+    }
+    return 0;
+}"
+ARR-1000,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 127 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.7536,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i; + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i]; + j;
+        }
+    }
+    return 0;
+}"
+ARR-1002,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 127 with '=',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.5934,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i= + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i= + j];
+        }
+    }
+    return 0;
+}"
+ARR-1003,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 127 with '+',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.5934,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i+ + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i+ + j];
+        }
+    }
+    return 0;
+}"
+ARR-1004,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 127 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6676,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[ii + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[ii + j];
+        }
+    }
+    return 0;
+}"
+ARR-1005,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 127 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.7219,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[iarr + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[iarr + j];
+        }
+    }
+    return 0;
+}"
+ARR-1006,single_bracket_character,nested_loops_array_access,syntax_correction,replace ']' at offset 127 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6676,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i + j];
+        }
+    }
+    return 0;
+}"
+ARR-1009,delimiter_inserted_after_bracket,nested_loops_array_access,syntax_correction,insert '[' after ']' at offset 127,False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.7219,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i][ + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i] + j;
+        }
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 2; j++) {
+            arr[i] = arr[i][ + j];
+        }
+    }
+    return 0;
+}"
+ARR-1037,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr;5;
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1041,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arri5;
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1042,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arrarr5;
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1043,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr5;
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1059,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];;
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1081,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 42 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.3445,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other;5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other;5;
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1085,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 42 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int otheri5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int otheri5;
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1086,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 42 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.5104,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int otherarr5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int otherarr5;
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1087,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 42 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other5;
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1103,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 44 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9649,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5;;
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];;
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}"
+ARR-1125,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 103 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8844,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr;i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr;i = other[i];
+    }
+    return 0;
+}"
+ARR-1127,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 103 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8478,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr=i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr=i = other[i];
+    }
+    return 0;
+}"
+ARR-1129,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 103 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.2855,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arrii] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arrii = other[i];
+    }
+    return 0;
+}"
+ARR-1130,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 103 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3240,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arrarri] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arrarri = other[i];
+    }
+    return 0;
+}"
+ARR-1131,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 103 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4012,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arri] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arri = other[i];
+    }
+    return 0;
+}"
+ARR-1149,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 105 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, CORRECT_KEYWORD","0.8481, 0.5234",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i= = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i=  other[i]];
+    }
+    return 0;
+}"
+ARR-1151,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 105 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,CORRECT_KEYWORD,0.5234,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[ii = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[ii = other[i]];
+    }
+    return 0;
+}"
+ARR-1152,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 105 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,CORRECT_KEYWORD,0.5234,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[iarr = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[iarr = other[i]];
+    }
+    return 0;
+}"
+ARR-1153,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 105 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,CORRECT_KEYWORD,0.5234,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i = other[i]];
+    }
+    return 0;
+}"
+ARR-1169,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 114 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.9396,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other;i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other;i;
+    }
+    return 0;
+}"
+ARR-1171,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 114 with '=',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.9189,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other=i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other=i;
+    }
+    return 0;
+}"
+ARR-1172,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 114 with '+',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.9205,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other+i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other+i;
+    }
+    return 0;
+}"
+ARR-1173,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 114 with 'i',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8902,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = otherii];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = otherii;
+    }
+    return 0;
+}"
+ARR-1174,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 114 with 'arr',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8902,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = otherarri];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = otherarri;
+    }
+    return 0;
+}"
+ARR-1175,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace '[' at offset 114 with '',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.8902,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = otheri];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = otheri;
+    }
+    return 0;
+}"
+ARR-1191,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 116 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.5515,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i;;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];;
+    }
+    return 0;
+}"
+ARR-1195,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 116 with 'i',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.6934,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[ii;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[ii];
+    }
+    return 0;
+}"
+ARR-1196,single_bracket_character,multiple_arrays_in_loop,syntax_correction,replace ']' at offset 116 with 'arr',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9249,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[iarr;
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[i];
+    }
+    return 0;
+}","int main() {
+    int arr[5];
+    int other[5];
+    int i = 0;
+    for (i = 0; i < 5; i++) {
+        arr[i] = other[iarr];
+    }
+    return 0;
+}"
+ARR-1232,single_bracket_character,array_element_as_function_argument,syntax_correction,replace '[' at offset 57 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int get(int x) {
+    return x;
+}
+int main() {
+    int arr;5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr;5;
+    int y = get(arr[0]);
+    return y;
+}"
+ARR-1236,single_bracket_character,array_element_as_function_argument,syntax_correction,replace '[' at offset 57 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int get(int x) {
+    return x;
+}
+int main() {
+    int arri5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arri5;
+    int y = get(arr[0]);
+    return y;
+}"
+ARR-1237,single_bracket_character,array_element_as_function_argument,syntax_correction,replace '[' at offset 57 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int get(int x) {
+    return x;
+}
+int main() {
+    int arrarr5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arrarr5;
+    int y = get(arr[0]);
+    return y;
+}"
+ARR-1238,single_bracket_character,array_element_as_function_argument,syntax_correction,replace '[' at offset 57 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int get(int x) {
+    return x;
+}
+int main() {
+    int arr5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr5;
+    int y = get(arr[0]);
+    return y;
+}"
+ARR-1254,single_bracket_character,array_element_as_function_argument,syntax_correction,replace ']' at offset 59 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5;;
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];;
+    int y = get(arr[0]);
+    return y;
+}"
+ARR-1288,delimiter_inserted_before_bracket,array_element_as_function_argument,syntax_correction,insert ')' before '[' at offset 81,False,0,1,Unexpected token RPAREN (')'); expected one of: SEMICOLON,1,APPLIED,REPLACE_BRACKET,0.9999,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr)[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr[0]);
+    return y;
+}","int get(int x) {
+    return x;
+}
+int main() {
+    int arr[5];
+    int y = get(arr)[0];
+    return y;
+}"
+ARR-1335,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 7 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, LPAREN, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4584,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arri5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arri5;
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}"
+ARR-1336,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 7 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, LPAREN, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.5123,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arrarr5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arrarr5;
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}"
+ARR-1337,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 7 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, LPAREN, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.3638,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr5;
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}"
+ARR-1375,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 32 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.5249,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr;0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr;0 = 1;
+    return arr[0];
+}"
+ARR-1377,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 32 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.4402,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr=0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr=0 = 1;
+    return arr[0];
+}"
+ARR-1379,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 32 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3013,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arri0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arri0 = 1;
+    return arr[0];
+}"
+ARR-1380,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 32 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,DELETE_EXTRA_TOKEN,0.3409,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arrarr0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arrarr0 = 1;
+    return arr[0];
+}"
+ARR-1381,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 32 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.3841,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr0 = 1;
+    return arr[0];
+}"
+ARR-1399,single_bracket_character,global_array_access,syntax_correction,replace ']' at offset 34 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","DELETE_EXTRA_TOKEN, REPLACE_BRACKET","0.9261, 0.9942",source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0= = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0=  1];
+    return arr[0];
+}"
+ARR-1403,single_bracket_character,global_array_access,syntax_correction,replace ']' at offset 34 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9942,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0 = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0 = 1];
+    return arr[0];
+}"
+ARR-1419,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 55 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7054,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr;0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr;0;
+}"
+ARR-1421,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 55 with '=',False,0,1,"Unexpected token RBRACKET (']'); expected one of: RPAREN, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.5560,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr=0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr=0;
+}"
+ARR-1422,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 55 with '+',False,0,1,"Unexpected token RBRACKET (']'); expected one of: RPAREN, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.5696,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr+0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr+0;
+}"
+ARR-1423,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 55 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: RPAREN, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3152,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arri0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arri0;
+}"
+ARR-1424,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 55 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: RPAREN, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.2812,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arrarr0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arrarr0;
+}"
+ARR-1425,single_bracket_character,global_array_access,syntax_correction,replace '[' at offset 55 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: RPAREN, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.5292,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr0;
+}"
+ARR-1441,single_bracket_character,global_array_access,syntax_correction,replace ']' at offset 57 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9117,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0;;
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];
+}","int arr[5];
+int main() {
+    arr[0] = 1;
+    return arr[0];;
+}"
+ARR-1478,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 24 with ';',False,0,1,Unexpected token RBRACKET (']'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6410,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr;5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr;5;
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1482,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 24 with 'i',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4374,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arri5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arri5;
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1483,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 24 with 'arr',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,DELETE_EXTRA_TOKEN,0.4878,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arrarr5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arrarr5;
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1484,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 24 with '',False,0,1,"Unexpected token RBRACKET (']'); expected one of: ASSIGN, LBRACKET, SEMICOLON",1,APPLIED,CORRECT_KEYWORD,0.3550,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr5;
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1500,single_bracket_character,parenthesized_index_expression,syntax_correction,replace ']' at offset 26 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.9305,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5;;
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];;
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1519,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 51 with ')',False,0,4,Unexpected token RPAREN (')'); expected one of: SEMICOLON | Unexpected token LPAREN ('('); expected one of: SEMICOLON | Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,3,"APPLIED, APPLIED, APPLIED","CORRECT_KEYWORD, CORRECT_KEYWORD, CORRECT_KEYWORD","0.7534, 0.7333, 0.6249",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr)(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1522,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 51 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7333,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr;(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr;(i + 1) = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1524,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 51 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7333,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr=(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr=(i + 1) = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1526,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 51 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7333,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arri(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arri(i + 1) = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1527,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 51 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.7333,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER | SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arrarr(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arrarr(i + 1) = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1528,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 51 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token ASSIGN ('='); expected one of: SEMICOLON,2,"APPLIED, APPLIED","CORRECT_KEYWORD, CORRECT_KEYWORD","0.7333, 0.6249",source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[i + 1] = arr[i + 1] + 2;
+    return 0;
+}"
+ARR-1546,single_bracket_character,parenthesized_index_expression,syntax_correction,replace ']' at offset 59 with '=',False,0,2,"Unexpected token ASSIGN ('='); expected one of: CHAR_LITERAL, DECREMENT, FALSE, FLOAT_LITERAL, IDENTIFIER, INCREMENT, INTEGER_LITERAL, LPAREN, MINUS, NOT, PLUS, STRING_LITERAL, TRUE | Unexpected token SEMICOLON (';'); expected one of: RBRACKET",2,"APPLIED, APPLIED","REPLACE_BRACKET, REPLACE_BRACKET","0.9998, 0.9986",source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)= = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)=  arr[i + 1] + 2];
+    return 0;
+}"
+ARR-1550,single_bracket_character,parenthesized_index_expression,syntax_correction,replace ']' at offset 59 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9986,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1) = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1) = arr[i + 1] + 2];
+    return 0;
+}"
+ARR-1563,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with ')',False,0,5,Unexpected token RPAREN (')'); expected one of: SEMICOLON | Unexpected token IDENTIFIER ('i'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON | Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,2,"APPLIED, APPLIED","CORRECT_KEYWORD, INSERT_RBRACKET","0.6804, 0.2213",source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr)i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arri + 1 + 2;
+    return 0;
+}"
+ARR-1566,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with ';',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6834,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr;i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr;i + 1 + 2;
+    return 0;
+}"
+ARR-1568,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with '=',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6834,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ASSIGNMENT,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr=i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr=i + 1 + 2;
+    return 0;
+}"
+ARR-1569,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with '+',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,CORRECT_KEYWORD,0.6834,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr+i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr+i + 1 + 2;
+    return 0;
+}"
+ARR-1570,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with 'i',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,INSERT_RBRACKET,0.2578,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arrii + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arrii + 1 + 2;
+    return 0;
+}"
+ARR-1571,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with 'arr',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,INSERT_RBRACKET,0.2786,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arrarri + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arrarri + 1 + 2;
+    return 0;
+}"
+ARR-1572,single_bracket_character,parenthesized_index_expression,syntax_correction,replace '[' at offset 66 with '',False,0,2,Unexpected token RBRACKET (']'); expected one of: SEMICOLON | Unexpected token PLUS ('+'); expected one of: SEMICOLON,1,APPLIED,INSERT_RBRACKET,0.2213,source_is_syntactically_valid,False,True,0,0,,SEM-UNDECLARED-IDENTIFIER,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arri + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arri + 1 + 2;
+    return 0;
+}"
+ARR-1588,single_bracket_character,parenthesized_index_expression,syntax_correction,replace ']' at offset 72 with ';',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,INSERT_RBRACKET,0.8404,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1; + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1]; + 2;
+    return 0;
+}"
+ARR-1591,single_bracket_character,parenthesized_index_expression,syntax_correction,replace ']' at offset 72 with '+',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9961,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1+ + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1+ + 2];
+    return 0;
+}"
+ARR-1594,single_bracket_character,parenthesized_index_expression,syntax_correction,replace ']' at offset 72 with '',False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9961,source_is_syntactically_valid,False,True,0,0,,,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1 + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1 + 2];
+    return 0;
+}"
+ARR-1597,delimiter_inserted_after_bracket,parenthesized_index_expression,syntax_correction,insert '[' after ']' at offset 72,False,0,1,Unexpected token SEMICOLON (';'); expected one of: RBRACKET,1,APPLIED,REPLACE_BRACKET,0.9961,source_is_syntactically_valid,False,True,0,0,,SEM-INVALID-ARRAY-USE,WRONG_REPAIR_VALID_PROGRAM,False,"int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1][ + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1] + 2;
+    return 0;
+}","int main() {
+    int arr[5];
+    int i = 1;
+    arr[(i + 1)] = arr[i + 1][ + 2];
+    return 0;
+}"
