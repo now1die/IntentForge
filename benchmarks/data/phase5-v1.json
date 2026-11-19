@@ -1,0 +1,1066 @@
+{
+  "version": 1,
+  "families": [
+    {
+      "family": "aperture-square",
+      "partition": "training",
+      "category": "arithmetic",
+      "specification": "Square the aperture width.",
+      "source": "int f(int width){return width+width;}",
+      "entry": "f",
+      "references": [
+        "int f(int width){return width*width;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            1
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            3
+          ],
+          "expected": 9
+        },
+        {
+          "arguments": [
+            6
+          ],
+          "expected": 36
+        }
+      ],
+      "explicit": "width*width",
+      "natural": "Compute the square of width",
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "diameter-transform",
+      "partition": "training",
+      "category": "binding",
+      "specification": "Return the calibrated diameter.",
+      "source": "int f(int diameter,int radius){return diametr;}",
+      "entry": "f",
+      "references": [
+        "int f(int diameter,int radius){return diameter;}"
+      ],
+      "compiler_valid": false,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            7,
+            2
+          ],
+          "expected": 7
+        },
+        {
+          "arguments": [
+            9,
+            4
+          ],
+          "expected": 9
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "fuel-colors",
+      "partition": "training",
+      "category": "comparison",
+      "specification": "A tank is usable at readings above 3.",
+      "source": "bool f(int fuel){return fuel>=3;}",
+      "entry": "f",
+      "references": [
+        "bool f(int fuel){return fuel>3;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            2
+          ],
+          "expected": false
+        },
+        {
+          "arguments": [
+            3
+          ],
+          "expected": false
+        },
+        {
+          "arguments": [
+            4
+          ],
+          "expected": true
+        }
+      ],
+      "explicit": "fuel>3",
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "survey-net-displacement",
+      "partition": "selection",
+      "category": "argument_permutation",
+      "specification": "Each surveying station measures end minus start, and the middle pass counts twice.",
+      "source": "int delta(int left,int right){return right-left;}int f(int start,int end){int x=delta(start,end);int y=delta(end,start);return x+2*y+delta(start,end);}",
+      "entry": "f",
+      "references": [
+        "int delta(int left,int right){return right-left;}int f(int start,int end){int x=delta(start,end);int y=delta(start,end);return x+2*y+delta(start,end);}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            1,
+            4
+          ],
+          "expected": 12
+        },
+        {
+          "arguments": [
+            2,
+            -3
+          ],
+          "expected": -20
+        },
+        {
+          "arguments": [
+            9,
+            9
+          ],
+          "expected": 0
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "granule-count",
+      "partition": "selection",
+      "category": "condition",
+      "specification": "Count samples divisible by two.",
+      "source": "int f(int n){int total=0;for(int i=1;i<=n;i++){if(i%2!=0){total++;}}return total;}",
+      "entry": "f",
+      "references": [
+        "int f(int n){int total=0;for(int i=1;i<=n;i++){if(i%2==0){total++;}}return total;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            2
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            3
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            5
+          ],
+          "expected": 2
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "arc-precision",
+      "partition": "selection",
+      "category": "binding",
+      "specification": "Use the corrected reading, without blending in raw or baseline.",
+      "source": "int f(int correct,int raw,int baseline){return base;}",
+      "entry": "f",
+      "references": [
+        "int f(int correct,int raw,int baseline){return correct;}"
+      ],
+      "compiler_valid": false,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            8,
+            3,
+            1
+          ],
+          "expected": 8
+        },
+        {
+          "arguments": [
+            3,
+            4,
+            10
+          ],
+          "expected": 3
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "strobe-divisibility",
+      "partition": "calibration",
+      "category": "modulo",
+      "specification": "Report whether the interval is a multiple of four.",
+      "source": "bool f(int interval){return interval%4==0;}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": true,
+      "vectors": [
+        {
+          "arguments": [
+            0
+          ],
+          "expected": true
+        },
+        {
+          "arguments": [
+            6
+          ],
+          "expected": false
+        },
+        {
+          "arguments": [
+            8
+          ],
+          "expected": true
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "marching-checksum",
+      "partition": "calibration",
+      "category": "comparison",
+      "specification": "Saturate the reading at 8.",
+      "source": "int f(int pulse){if(pulse>8){return 9;}return pulse;}",
+      "entry": "f",
+      "references": [
+        "int f(int pulse){if(pulse>8){return 8;}return pulse;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            4
+          ],
+          "expected": 4
+        },
+        {
+          "arguments": [
+            8
+          ],
+          "expected": 8
+        },
+        {
+          "arguments": [
+            11
+          ],
+          "expected": 8
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "rotor-progress",
+      "partition": "development",
+      "category": "loop_binding",
+      "specification": "Compute the sum of even rotor marks under the given count.",
+      "source": "int f(int n){int shadow=0;int total=0;for(int i=0;i<n;shadow++){total+=2*i;}return total;}",
+      "entry": "f",
+      "references": [
+        "int f(int n){int shadow=0;int total=0;for(int i=0;i<n;i++){total+=2*i;}return total;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            3
+          ],
+          "expected": 6
+        },
+        {
+          "arguments": [
+            4
+          ],
+          "expected": 12
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "stock-minimum",
+      "partition": "development",
+      "category": "return_dependency",
+      "specification": "Return the smaller stock quantity.",
+      "source": "int f(int a,int b){if(a<b){return b;}return b;}",
+      "entry": "f",
+      "references": [
+        "int f(int a,int b){if(a<b){return a;}return b;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            1,
+            9
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            7,
+            3
+          ],
+          "expected": 3
+        },
+        {
+          "arguments": [
+            8,
+            8
+          ],
+          "expected": 8
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "literal-capacity",
+      "partition": "development",
+      "category": "array_index",
+      "specification": "Read the last occupied cell.",
+      "source": "int f(){int weights[2];weights[1]=7;return weights[2];}",
+      "entry": "f",
+      "references": [
+        "int f(){int weights[2];weights[1]=7;return weights[1];}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [],
+          "expected": 7
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "stairwell-numbering",
+      "partition": "final",
+      "category": "loop_binding",
+      "specification": "Total the squares of the numbered landings from one through the supplied count.",
+      "source": "int f(int floors){int sensor=1;int checksum=0;for(int landing=1;landing<=floors;sensor++){checksum+=landing*landing;}return checksum;}",
+      "entry": "f",
+      "references": [
+        "int f(int floors){int sensor=1;int checksum=0;for(int landing=1;landing<=floors;landing++){checksum+=landing*landing;}return checksum;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            1
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            4
+          ],
+          "expected": 30
+        },
+        {
+          "arguments": [
+            7
+          ],
+          "expected": 140
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "reverse-cargo-labels",
+      "partition": "final",
+      "category": "loop_binding",
+      "specification": "Add all positive cargo labels below highest, descending in unit steps.",
+      "source": "int f(int highest){int meter=10;int carry=0;for(int tag=highest-1;tag>0;meter--){carry+=tag;}return carry;}",
+      "entry": "f",
+      "references": [
+        "int f(int highest){int meter=10;int carry=0;for(int tag=highest-1;tag>0;tag--){carry+=tag;}return carry;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            1
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            3
+          ],
+          "expected": 3
+        },
+        {
+          "arguments": [
+            6
+          ],
+          "expected": 15
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "dye-displacement",
+      "partition": "final",
+      "category": "argument_permutation",
+      "specification": "Combine three readings in a fixed origin-to-end orientation using distinct multipliers.",
+      "source": "int measure(int left,int right,int gain){return (right-left)*gain;}int f(int origin,int end,int gain){return measure(origin,end,gain)+measure(origin,end,gain)*2+measure(end,origin,gain)*3;}",
+      "entry": "f",
+      "references": [
+        "int measure(int left,int right,int gain){return (right-left)*gain;}int f(int origin,int end,int gain){return measure(origin,end,gain)+measure(origin,end,gain)*2+measure(origin,end,gain)*3;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            2,
+            4,
+            3
+          ],
+          "expected": 36
+        },
+        {
+          "arguments": [
+            7,
+            3,
+            1
+          ],
+          "expected": -24
+        },
+        {
+          "arguments": [
+            2,
+            2,
+            9
+          ],
+          "expected": 0
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "heat-budget-sensors",
+      "partition": "final",
+      "category": "multi_accumulator",
+      "specification": "Add all six sensor contributions to the initial heat offset.",
+      "source": "int f(int core,int skin,int side,int tip,int air,int shell){int load=5;load+=core;load-=skin;load+=side;load+=tip;load-=air;load+=shell;return load;}",
+      "entry": "f",
+      "references": [
+        "int f(int core,int skin,int side,int tip,int air,int shell){int load=5;load+=core;load+=skin;load+=side;load+=tip;load+=air;load+=shell;return load;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "expected": 26
+        },
+        {
+          "arguments": [
+            2,
+            0,
+            4,
+            0,
+            3,
+            -1
+          ],
+          "expected": 13
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "lamp-bank",
+      "partition": "final",
+      "category": "array_index",
+      "specification": "Read the calibration marker in the final lamp cell.",
+      "source": "int f(int id){int bank[5];bank[4]=id+2;if(id<0){return 0;}return bank[5];}",
+      "entry": "f",
+      "references": [
+        "int f(int id){int bank[5];bank[4]=id+2;if(id<0){return 0;}return bank[4];}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            -1
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            0
+          ],
+          "expected": 2
+        },
+        {
+          "arguments": [
+            4
+          ],
+          "expected": 6
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "mixed-water-inflows",
+      "partition": "final",
+      "category": "signed_accumulation_control",
+      "specification": "Three inflows increase the water level, and a drain lowers it.",
+      "source": "int f(int cistern,int rain,int spill,int drain){int water=0;water+=cistern;water+=rain;water+=spill;water-=drain;return water;}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": true,
+      "vectors": [
+        {
+          "arguments": [
+            1,
+            3,
+            5,
+            7
+          ],
+          "expected": 2
+        },
+        {
+          "arguments": [
+            0,
+            0,
+            4,
+            3
+          ],
+          "expected": 1
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "checkpoint-handles",
+      "partition": "final",
+      "category": "intentional_call_direction",
+      "specification": "Check two departures and a deliberate reversal back to the checkpoint.",
+      "source": "int leg(int from,int to){return to-from;}int f(int dock,int berth){return 2*leg(dock,berth)+leg(berth,dock)+leg(dock,berth);}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": true,
+      "vectors": [
+        {
+          "arguments": [
+            4,
+            11
+          ],
+          "expected": 14
+        },
+        {
+          "arguments": [
+            0,
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            8,
+            2
+          ],
+          "expected": -12
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "move-budget",
+      "partition": "final",
+      "category": "body_updates_control",
+      "specification": "Move a gauge downward once per loop while tracking rounds in a distinct counter.",
+      "source": "int f(int moves){int rounds=0;for(int travel=moves;travel>0;rounds++){travel--;}return rounds;}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": true,
+      "vectors": [
+        {
+          "arguments": [
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            1
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            5
+          ],
+          "expected": 5
+        },
+        {
+          "arguments": [
+            8
+          ],
+          "expected": 8
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "message-repetition",
+      "partition": "final",
+      "category": "recurrence",
+      "specification": "Count terminal sends in a full binary fanout tree.",
+      "source": "int f(int depth){if(depth<1){return 1;}return f(depth-1)+1;}",
+      "entry": "f",
+      "references": [
+        "int f(int depth){if(depth<1){return 1;}return 2*f(depth-1);}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            0
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            1
+          ],
+          "expected": 2
+        },
+        {
+          "arguments": [
+            2
+          ],
+          "expected": 4
+        },
+        {
+          "arguments": [
+            4
+          ],
+          "expected": 16
+        }
+      ],
+      "explicit": "2*f(depth-1)",
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs.",
+      "return_ordinal": 2
+    },
+    {
+      "family": "parcel-ceiling",
+      "partition": "final",
+      "category": "rounding",
+      "specification": "Convert positive item units to boxes of five, rounding up.",
+      "source": "int f(int units){int boxes=units/5;return boxes;}",
+      "entry": "f",
+      "references": [
+        "int f(int units){int boxes=units/5;return (units+4)/5;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            1
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            5
+          ],
+          "expected": 1
+        },
+        {
+          "arguments": [
+            9
+          ],
+          "expected": 2
+        },
+        {
+          "arguments": [
+            16
+          ],
+          "expected": 4
+        }
+      ],
+      "explicit": "(units+4)/5",
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "quality-samples",
+      "partition": "final",
+      "category": "binding",
+      "specification": "Read the accepted quantity from three independent readings.",
+      "source": "int f(int rejected,int marginal,int accepted){return rejection;}",
+      "entry": "f",
+      "references": [
+        "int f(int rejected,int marginal,int accepted){return accepted;}"
+      ],
+      "compiler_valid": false,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            5,
+            1,
+            3
+          ],
+          "expected": 3
+        },
+        {
+          "arguments": [
+            8,
+            2,
+            4
+          ],
+          "expected": 4
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "gate-pick",
+      "partition": "final",
+      "category": "ambiguous_binding",
+      "specification": "The available sample makes both gate position inputs plausible.",
+      "source": "int f(int inner,int outer){return missing;}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": false,
+      "ambiguous": true,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            6,
+            6
+          ],
+          "expected": 6
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "deck-area",
+      "partition": "final",
+      "category": "arithmetic",
+      "specification": "Compute the square area from the deck side.",
+      "source": "int f(int side){if(side<=0){return 0;}return side+side;}",
+      "entry": "f",
+      "references": [
+        "int f(int side){if(side<=0){return 0;}return side*side;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            -1
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            0
+          ],
+          "expected": 0
+        },
+        {
+          "arguments": [
+            3
+          ],
+          "expected": 9
+        },
+        {
+          "arguments": [
+            6
+          ],
+          "expected": 36
+        }
+      ],
+      "explicit": "side*side",
+      "natural": "Return the square of side",
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs.",
+      "return_ordinal": 2
+    },
+    {
+      "family": "turbine-pitch",
+      "partition": "final",
+      "category": "unsupported_float",
+      "specification": "The calibration already returns the pitch index. The float constant is outside the VM subset.",
+      "source": "int f(int pitch){float calibration=1.5;return pitch;}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": true,
+      "vectors": [
+        {
+          "arguments": [
+            2
+          ],
+          "expected": 2
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "window-shift",
+      "partition": "final",
+      "category": "comparison_boundary",
+      "specification": "The window includes its right endpoint.",
+      "source": "bool f(int offset){return offset<7;}",
+      "entry": "f",
+      "references": [
+        "bool f(int offset){return offset<=7;}"
+      ],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": false,
+      "vectors": [
+        {
+          "arguments": [
+            0
+          ],
+          "expected": true
+        },
+        {
+          "arguments": [
+            6
+          ],
+          "expected": true
+        },
+        {
+          "arguments": [
+            7
+          ],
+          "expected": true
+        },
+        {
+          "arguments": [
+            9
+          ],
+          "expected": false
+        }
+      ],
+      "explicit": "offset<=7",
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    },
+    {
+      "family": "color-cells",
+      "partition": "final",
+      "category": "stable_branch_control",
+      "specification": "Return 10 for a positive first marker, otherwise return 20 or 30 by the second marker.",
+      "source": "int f(int first,int second){if(first>0){return 10;}if(second>0){return 20;}return 30;}",
+      "entry": "f",
+      "references": [],
+      "compiler_valid": true,
+      "ambiguous": false,
+      "control": true,
+      "vectors": [
+        {
+          "arguments": [
+            1,
+            1
+          ],
+          "expected": 10
+        },
+        {
+          "arguments": [
+            0,
+            2
+          ],
+          "expected": 20
+        },
+        {
+          "arguments": [
+            0,
+            0
+          ],
+          "expected": 30
+        },
+        {
+          "arguments": [
+            -1,
+            -1
+          ],
+          "expected": 30
+        }
+      ],
+      "explicit": null,
+      "natural": null,
+      "license": "Repository license, newly authored fixture",
+      "origin": "Internally authored Mini-C and independent arithmetic or manual example oracle",
+      "adaptation": "Scalar function translated from the stated behavior without using generated candidate outputs."
+    }
+  ]
+}
