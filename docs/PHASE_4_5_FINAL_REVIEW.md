@@ -13,7 +13,7 @@
 
 ## Local verification
 
-- Python passed 649 tests with live Mini-C and Clang enabled. The dedicated isolation file passed all 24 tests with its live case enabled.
+- Python passed 651 tests with live Mini-C and Clang enabled. The dedicated isolation file passed all 26 tests with its live case enabled.
 - TypeScript/Vite built successfully. The Chromium suite passed 28 tests in the isolated profile. The default-disabled test passed separately.
 - The compiler suite passed 220/220. The 65-case keyboard and array baseline had zero unexpected results or crashes. Stress ran all 3,758 inputs and retained its established verification and observational classifications.
 - Historical corpus and training audits and all Phase 1 through 4 benchmark checks reproduced, including 111 historical deterministic cases, 18 Phase 3.5 final families and Phase 4's 14 semantic families, 144 reference vectors and seven repair families. Clang 19.1.7 passed 12 integration scenarios.

@@ -1,6 +1,7 @@
 """Negative-path coverage for the gateway, protocol and disposable supervisor."""
 from concurrent.futures import ThreadPoolExecutor
 import os
+import resource
 import socket
 import sys
 from tempfile import TemporaryFile
@@ -11,7 +12,7 @@ from fastapi.testclient import TestClient
 
 from backend.app.main import app
 from backend.app.routes import behavioral as gateway
-from execution_service import service
+from execution_service import launch, service
 from execution_service.contracts import Availability, Batch, BatchResult, LocalLimits, Program, TestVector as InputVector
 from execution_service.runner import RunnerFailure, collect
 from execution_service.worker import run_batch
@@ -77,6 +78,21 @@ def test_unavailable_or_untrusted_socket(monkeypatch, tmp_path):
 def test_private_service_profile_fails_closed(monkeypatch):
     monkeypatch.setattr(service, "deployment_policy", lambda: False)
     assert service.ready().status == "unsupported_environment"
+
+
+@pytest.mark.parametrize("pids", ["48", "max"])
+def test_launcher_uses_host_uid_process_limit_only_as_fallback(monkeypatch, tmp_path, pids):
+    (tmp_path / "cpu.max").write_text("100000 100000\n")
+    (tmp_path / "memory.max").write_text("536870912\n")
+    (tmp_path / "pids.max").write_text(pids)
+    check = launch.verified_cgroup
+    limits = {}
+    monkeypatch.setattr(launch, "verified_cgroup", lambda: check(tmp_path))
+    monkeypatch.setattr(launch, "clamp", limits.__setitem__)
+    launch.configure_limits()
+    assert limits[resource.RLIMIT_AS] == 384 * 1024**2
+    assert limits[resource.RLIMIT_CORE] == 0
+    assert limits.get(resource.RLIMIT_NPROC) == (48 if pids == "max" else None)
 
 
 @pytest.mark.parametrize(("program", "expected"), [

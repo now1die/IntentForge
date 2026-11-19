@@ -13,6 +13,7 @@ from starlette.concurrency import run_in_threadpool
 from backend.app.routes.request_body import bounded_body
 
 from .contracts import Availability, Batch, BatchResult
+from .launch import verified_cgroup
 from .runner import RunnerFailure, run_worker
 
 app = FastAPI(title="Private IntentForge Mini-C worker", docs_url=None, redoc_url=None, openapi_url=None)
@@ -42,15 +43,8 @@ def deployment_policy() -> bool:
 
 
 def verified_quotas():
-    cgroup = Path("/sys/fs/cgroup")
-    try:
-        quota, period = (cgroup / "cpu.max").read_text().split()
-        if (0 < int((cgroup / "memory.max").read_text()) <= 512 * 1024**2
-                and 0 < int((cgroup / "pids.max").read_text()) <= 48
-                and 0 < int(quota) <= int(period)):
-            return True
-    except (OSError, ValueError):
-        pass
+    if verified_cgroup():
+        return True
     # Rootless daemons may present the parent cgroup. The service requires
     # real kernel process limits in that case. Each disposable child further
     # restricts its address space and CPU and disallows process creation.
