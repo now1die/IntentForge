@@ -1,0 +1,1705 @@
+{
+  "version": 2,
+  "cases": [
+    {
+      "id": "v2-loop-accumulator",
+      "category": "missing_semicolon",
+      "source": "int chips(int n){ int total=1; for(int i=0;i<n;i++){ total+=i } return total; }",
+      "intended_source": "int chips(int n){ int total=1; for(int i=0;i<n;i++){ total+=i; } return total; }",
+      "specification": "Sum the indices below n and add one.",
+      "acceptable_sources": [
+        "int chips(int n){ int total=1; for(int i=0;i<n;i++){ total+=i; } return total; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "loop-accumulator",
+      "has_error": true,
+      "detection_scope": "compiler",
+      "behavior": {
+        "entry": "chips",
+        "tests": [
+          {
+            "args": [
+              0
+            ],
+            "expected_return": 1
+          },
+          {
+            "args": [
+              4
+            ],
+            "expected_return": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-void-early",
+      "category": "missing_semicolon",
+      "source": "int ready; void mark(bool enabled){ if(!enabled){ return } ready=1; }",
+      "intended_source": "int ready; void mark(bool enabled){ if(!enabled){ return; } ready=1; }",
+      "specification": "Return early when disabled and set ready only when enabled.",
+      "acceptable_sources": [
+        "int ready; void mark(bool enabled){ if(!enabled){ return; } ready=1; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "void-early",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-vec-global",
+      "category": "missing_semicolon",
+      "source": "float weights[7] void update(float x){weights[2]=x;}",
+      "intended_source": "float weights[7]; void update(float x){weights[2]=x;}",
+      "specification": "Declare the array before the function that sets index two.",
+      "acceptable_sources": [
+        "float weights[7]; void update(float x){weights[2]=x;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "vec-global",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-typed-two-scope",
+      "category": "missing_semicolon",
+      "source": "char answer(char c){ if(c=='q'){ char replacement='x' return replacement; } return c; }",
+      "intended_source": "char answer(char c){ if(c=='q'){ char replacement='x'; return replacement; } return c; }",
+      "specification": "Replace q with x in a nested scope.",
+      "acceptable_sources": [
+        "char answer(char c){ if(c=='q'){ char replacement='x'; return replacement; } return c; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "typed-two-scope",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-after-break",
+      "category": "missing_semicolon",
+      "source": "int stop(bool trigger){ while(trigger){ break } return 4; }",
+      "intended_source": "int stop(bool trigger){ while(trigger){ break; } return 4; }",
+      "specification": "Exit the loop and return four.",
+      "acceptable_sources": [
+        "int stop(bool trigger){ while(trigger){ break; } return 4; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "after-break",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-after-continue",
+      "category": "missing_semicolon",
+      "source": "int skip(int n){ for(int k=0;k<n;k++){ if(k==2){continue} } return n; }",
+      "intended_source": "int skip(int n){ for(int k=0;k<n;k++){ if(k==2){continue;} } return n; }",
+      "specification": "Skip the rest of the loop body at index two.",
+      "acceptable_sources": [
+        "int skip(int n){ for(int k=0;k<n;k++){ if(k==2){continue;} } return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "after-continue",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-after-call",
+      "category": "missing_semicolon",
+      "source": "void flush(){ return; } int report(){ flush() return 3; }",
+      "intended_source": "void flush(){ return; } int report(){ flush(); return 3; }",
+      "specification": "Call flush before returning three.",
+      "acceptable_sources": [
+        "void flush(){ return; } int report(){ flush(); return 3; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "after-call",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-global-list",
+      "category": "missing_semicolon",
+      "source": "int left=2, right=8 bool flags[2]; int difference(){ return right-left; }",
+      "intended_source": "int left=2, right=8; bool flags[2]; int difference(){ return right-left; }",
+      "specification": "Declare both endpoints and return right minus left.",
+      "acceptable_sources": [
+        "int left=2, right=8; bool flags[2]; int difference(){ return right-left; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_SEMICOLON",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "global-list",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-control-condition",
+      "category": "incorrect_delimiter",
+      "source": "int limit(int n){ if(n>0 && n<7{ n+=1; } else { n-=1; } return n; }",
+      "intended_source": "int limit(int n){ if(n>0 && n<7){ n+=1; } else { n-=1; } return n; }",
+      "specification": "Increment values inside the open range and decrement the others.",
+      "acceptable_sources": [
+        "int limit(int n){ if(n>0 && n<7){ n+=1; } else { n-=1; } return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_RPAREN",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "control-condition",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-while-nested",
+      "category": "incorrect_delimiter",
+      "source": "int trim(int n){ while((n+1)>8{ n-=2; } return n; }",
+      "intended_source": "int trim(int n){ while((n+1)>8){ n-=2; } return n; }",
+      "specification": "Repeat while n plus one exceeds eight.",
+      "acceptable_sources": [
+        "int trim(int n){ while((n+1)>8){ n-=2; } return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_RPAREN",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "while-nested",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-for-body-closer",
+      "category": "incorrect_delimiter",
+      "source": "int cycle(){ for(int k=0;k<3;k++{ if(k==1){ return k; } } return 0; }",
+      "intended_source": "int cycle(){ for(int k=0;k<3;k++){ if(k==1){ return k; } } return 0; }",
+      "specification": "Return one when the induction variable reaches one.",
+      "acceptable_sources": [
+        "int cycle(){ for(int k=0;k<3;k++){ if(k==1){ return k; } } return 0; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_RPAREN",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "for-body-closer",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-array-index-closer",
+      "category": "incorrect_delimiter",
+      "source": "int counters[9]; void bump(int i){ counters[i+1+=2; }",
+      "intended_source": "int counters[9]; void bump(int i){ counters[i+1]+=2; }",
+      "specification": "Add two at the index one above i.",
+      "acceptable_sources": [
+        "int counters[9]; void bump(int i){ counters[i+1]+=2; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_RBRACKET",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-index-closer",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-mismatched-while",
+      "category": "incorrect_delimiter",
+      "source": "bool found; void refresh(){ while(!found]{found=true;} }",
+      "intended_source": "bool found; void refresh(){ while(!found){found=true;} }",
+      "specification": "Run the loop while found is false.",
+      "acceptable_sources": [
+        "bool found; void refresh(){ while(!found){found=true;} }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "REPLACE_BRACKET",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "mismatched-while",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-punctuated-decl",
+      "category": "invalid_declaration",
+      "source": "bool present=true; char token+'a'; char current(){ return token; }",
+      "intended_source": "bool present=true; char token='a'; char current(){ return token; }",
+      "specification": "Initialize token to a.",
+      "acceptable_sources": [
+        "bool present=true; char token='a'; char current(){ return token; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "KEYBOARD_ASSIGNMENT",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "punctuated-decl",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-declaration-equals",
+      "category": "invalid_declaration",
+      "source": "float factor==2.5; float scale(float x){ return factor*x; }",
+      "intended_source": "float factor=2.5; float scale(float x){ return factor*x; }",
+      "specification": "Initialize the multiplier to 2.5.",
+      "acceptable_sources": [
+        "float factor=2.5; float scale(float x){ return factor*x; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "declaration-equals",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-decl-no-type",
+      "category": "invalid_declaration",
+      "source": "int high(int n){ float gain=2.5; cap=9; if(n<cap){ return cap; } return n; }",
+      "intended_source": "int high(int n){ float gain=2.5; int cap=9; if(n<cap){ return cap; } return n; }",
+      "specification": "Declare cap in scope with value nine.",
+      "acceptable_sources": [
+        "int high(int n){ float gain=2.5; int cap=9; if(n<cap){ return cap; } return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "decl-no-type",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-decl-shadow",
+      "category": "invalid_declaration",
+      "source": "int total(int n){ int result=n; if(n>1){ int result=n+1; result=other; } return result; }",
+      "intended_source": "int total(int n){ int result=n; if(n>1){ int other=n+1; result=other; } return result; }",
+      "specification": "Use a separate, declared temporary inside the branch.",
+      "acceptable_sources": [
+        "int total(int n){ int result=n; if(n>1){ int other=n+1; result=other; } return result; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "decl-shadow",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-decl-array-size",
+      "category": "invalid_declaration",
+      "source": "bool flags[true]; bool tail(){ return flags[3]; }",
+      "intended_source": "bool flags[4]; bool tail(){ return flags[3]; }",
+      "specification": "Declare exactly four boolean entries.",
+      "acceptable_sources": [
+        "bool flags[4]; bool tail(){ return flags[3]; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "decl-array-size",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-decl-missing-initializer",
+      "category": "invalid_declaration",
+      "source": "int allocate(){ int size=; if(size>0){return size;} return 0; }",
+      "intended_source": "int allocate(){ int size=6; if(size>0){return size;} return 0; }",
+      "specification": "Use six as the capacity.",
+      "acceptable_sources": [
+        "int allocate(){ int size=6; if(size>0){return size;} return 0; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "decl-missing-initializer",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ref-branch-typo",
+      "category": "wrong_variable_reference",
+      "source": "int choose_left(int left,int right,bool pick){ if(pick){return lift;} return right; }",
+      "intended_source": "int choose_left(int left,int right,bool pick){ if(pick){return left;} return right; }",
+      "specification": "Return left on true and right otherwise.",
+      "acceptable_sources": [
+        "int choose_left(int left,int right,bool pick){ if(pick){return left;} return right; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ref-branch-typo",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ref-for-counter",
+      "category": "wrong_variable_reference",
+      "source": "int add_even(int n){ int sum=0; for(int i=0;i<n;i+=2){sum+=j;} return sum; }",
+      "intended_source": "int add_even(int n){ int sum=0; for(int i=0;i<n;i+=2){sum+=i;} return sum; }",
+      "specification": "Sum the even indices below n.",
+      "acceptable_sources": [
+        "int add_even(int n){ int sum=0; for(int i=0;i<n;i+=2){sum+=i;} return sum; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ref-for-counter",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ref-local-v-global",
+      "category": "wrong_variable_reference",
+      "source": "int bias=8; int shift(int delta){ int offset=2; return delta+bias; }",
+      "intended_source": "int bias=8; int shift(int delta){ int offset=2; return delta+offset; }",
+      "specification": "Add the local offset of two.",
+      "acceptable_sources": [
+        "int bias=8; int shift(int delta){ int offset=2; return delta+offset; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ref-local-v-global",
+      "has_error": true,
+      "detection_scope": "logic",
+      "behavior": {
+        "entry": "shift",
+        "tests": [
+          {
+            "args": [
+              0
+            ],
+            "expected_return": 2
+          },
+          {
+            "args": [
+              5
+            ],
+            "expected_return": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-ref-index",
+      "category": "wrong_variable_reference",
+      "source": "int samples[8]; int read_at(int pos){ if(pos<0){return 0;} return samples[position]; }",
+      "intended_source": "int samples[8]; int read_at(int pos){ if(pos<0){return 0;} return samples[pos]; }",
+      "specification": "Read the sample at pos for nonnegative indices.",
+      "acceptable_sources": [
+        "int samples[8]; int read_at(int pos){ if(pos<0){return 0;} return samples[pos]; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ref-index",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ref-final-tmp",
+      "category": "wrong_variable_reference",
+      "source": "int effective(int gross,int fee){ int net=gross-fee; if(net<0){return 0;} return gross; }",
+      "intended_source": "int effective(int gross,int fee){ int net=gross-fee; if(net<0){return 0;} return net; }",
+      "specification": "Clamp net at zero and return it.",
+      "acceptable_sources": [
+        "int effective(int gross,int fee){ int net=gross-fee; if(net<0){return 0;} return net; }"
+      ],
+      "rejected_sources": [
+        "int effective(int gross,int fee){ int net=gross-fee; if(net<0){return 0;} return gross; }"
+      ],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ref-final-tmp",
+      "has_error": true,
+      "detection_scope": "logic",
+      "behavior": {
+        "entry": "effective",
+        "tests": [
+          {
+            "args": [
+              12,
+              4
+            ],
+            "expected_return": 8
+          },
+          {
+            "args": [
+              2,
+              8
+            ],
+            "expected_return": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-operator-backwards",
+      "category": "incorrect_operator",
+      "source": "bool between(int x,int low,int high){ return x=>low && x<=high; }",
+      "intended_source": "bool between(int x,int low,int high){ return x>=low && x<=high; }",
+      "specification": "Check the inclusive range.",
+      "acceptable_sources": [
+        "bool between(int x,int low,int high){ return x>=low && x<=high; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "REPLACE_OPERATOR",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "operator-backwards",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-operator-double-assign",
+      "category": "incorrect_operator",
+      "source": "int step(int n){ if(n<4){ n+==3; } return n*2; }",
+      "intended_source": "int step(int n){ if(n<4){ n+=3; } return n*2; }",
+      "specification": "Add three before doubling small values.",
+      "acceptable_sources": [
+        "int step(int n){ if(n<4){ n+=3; } return n*2; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "operator-double-assign",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-operator-colon",
+      "category": "incorrect_operator",
+      "source": "int mod2(int n){ while(n>1){ n-:2; } return n; }",
+      "intended_source": "int mod2(int n){ while(n>1){ n-=2; } return n; }",
+      "specification": "Subtract two until n is at most one.",
+      "acceptable_sources": [
+        "int mod2(int n){ while(n>1){ n-=2; } return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "operator-colon",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-operator-wrong-update",
+      "category": "incorrect_operator",
+      "source": "int mutate(int n){ if(n>0){ n+=2; } else { n-=2; } return n; }",
+      "intended_source": "int mutate(int n){ if(n>0){ n*=2; } else { n-=2; } return n; }",
+      "specification": "Double positive values.",
+      "acceptable_sources": [
+        "int mutate(int n){ if(n>0){ n*=2; } else { n-=2; } return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "operator-wrong-update",
+      "has_error": true,
+      "detection_scope": "logic",
+      "behavior": {
+        "entry": "mutate",
+        "tests": [
+          {
+            "args": [
+              3
+            ],
+            "expected_return": 6
+          },
+          {
+            "args": [
+              0
+            ],
+            "expected_return": -2
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-operator-sign",
+      "category": "incorrect_operator",
+      "source": "int invert(int n){ int margin=4; if(n>margin){return +n;} return n+margin; }",
+      "intended_source": "int invert(int n){ int margin=4; if(n>margin){return -n;} return n+margin; }",
+      "specification": "Negate values above the margin.",
+      "acceptable_sources": [
+        "int invert(int n){ int margin=4; if(n>margin){return -n;} return n+margin; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "operator-sign",
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "v2-operator-trailing-and",
+      "category": "incorrect_operator",
+      "source": "bool is_live(bool enabled,bool paused){ if(enabled &&){return true;} return false; }",
+      "intended_source": "bool is_live(bool enabled,bool paused){ if(enabled && !paused){return true;} return false; }",
+      "specification": "A session is live when enabled and unpaused.",
+      "acceptable_sources": [
+        "bool is_live(bool enabled,bool paused){ if(enabled && !paused){return true;} return false; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "operator-trailing-and",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-argument-too-few",
+      "category": "wrong_function_argument",
+      "source": "int ratio(int a,int b){return a/b;} int half_of(int n){if(n<=0){return 0;} return ratio(n);}",
+      "intended_source": "int ratio(int a,int b){return a/b;} int half_of(int n){if(n<=0){return 0;} return ratio(n,2);}",
+      "specification": "Return half of positive n.",
+      "acceptable_sources": [
+        "int ratio(int a,int b){return a/b;} int half_of(int n){if(n<=0){return 0;} return ratio(n,2);}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "argument-too-few",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-argument-too-many",
+      "category": "wrong_function_argument",
+      "source": "int scale_by_two(int a){return a*2;} int compute(int n){n+=2; return scale_by_two(n,2);}",
+      "intended_source": "int scale_by_two(int a){return a*2;} int compute(int n){n+=2; return scale_by_two(n);}",
+      "specification": "Pass only the incremented n to the one-argument helper.",
+      "acceptable_sources": [
+        "int scale_by_two(int a){return a*2;} int compute(int n){n+=2; return scale_by_two(n);}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "argument-too-many",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-argument-wrong-type",
+      "category": "wrong_function_argument",
+      "source": "bool accepts(bool on){return on;} bool entry(int n){return accepts(1.5);}",
+      "intended_source": "bool accepts(bool on){return on;} bool entry(int n){return accepts(n>0);}",
+      "specification": "Pass the Boolean comparison n greater than zero.",
+      "acceptable_sources": [
+        "bool accepts(bool on){return on;} bool entry(int n){return accepts(n>0);}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "argument-wrong-type",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-argument-order",
+      "category": "wrong_function_argument",
+      "source": "int minus(int a,int b){return a-b;} int entry(int x){return minus(3,x)+2;}",
+      "intended_source": "int minus(int a,int b){return a-b;} int entry(int x){return minus(x,3)+2;}",
+      "specification": "Subtract three from x and add two.",
+      "acceptable_sources": [
+        "int minus(int a,int b){return a-b;} int entry(int x){return minus(x,3)+2;}"
+      ],
+      "rejected_sources": [
+        "int minus(int a,int b){return a-b;} int entry(int x){return minus(3,x)+2;}"
+      ],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "argument-order",
+      "has_error": true,
+      "detection_scope": "logic",
+      "behavior": {
+        "entry": "entry",
+        "tests": [
+          {
+            "args": [
+              8
+            ],
+            "expected_return": 7
+          },
+          {
+            "args": [
+              3
+            ],
+            "expected_return": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-argument-comma",
+      "category": "wrong_function_argument",
+      "source": "int min2(int x,int y){if(x<y){return x;} return y;} int limit_to(int n){return min2(n 7);}",
+      "intended_source": "int min2(int x,int y){if(x<y){return x;} return y;} int limit_to(int n){return min2(n,7);}",
+      "specification": "Pass n and seven as separate arguments.",
+      "acceptable_sources": [
+        "int min2(int x,int y){if(x<y){return x;} return y;} int limit_to(int n){return min2(n,7);}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "argument-comma",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-argument-group",
+      "category": "wrong_function_argument",
+      "source": "int stored[4]; int unwrap(int x){return x;} int copy(int pos){ return unwrap(stored[pos]; }",
+      "intended_source": "int stored[4]; int unwrap(int x){return x;} int copy(int pos){ return unwrap(stored[pos]); }",
+      "specification": "Pass the stored element to unwrap.",
+      "acceptable_sources": [
+        "int stored[4]; int unwrap(int x){return x;} int copy(int pos){ return unwrap(stored[pos]); }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "INSERT_RPAREN",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "argument-group",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-array-reversed-brackets",
+      "category": "array_indexing",
+      "source": "int bins[8]; void store(int pos,int value){ if(pos>=0){bins]pos[=value;} }",
+      "intended_source": "int bins[8]; void store(int pos,int value){ if(pos>=0){bins[pos]=value;} }",
+      "specification": "Write value at pos when it is nonnegative.",
+      "acceptable_sources": [
+        "int bins[8]; void store(int pos,int value){ if(pos>=0){bins[pos]=value;} }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-reversed-brackets",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-array-index-call",
+      "category": "array_indexing",
+      "source": "int archive[5]; int peek(int n){ n-=1; return archive(n); }",
+      "intended_source": "int archive[5]; int peek(int n){ n-=1; return archive[n]; }",
+      "specification": "Return the archived element one below n.",
+      "acceptable_sources": [
+        "int archive[5]; int peek(int n){ n-=1; return archive[n]; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": "ARRAY_CALL_ERROR",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-index-call",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-array-index-type",
+      "category": "array_indexing",
+      "source": "int readings[5]; void replace(float n){readings[2.5]=3; if(n>1.0){readings[3]=4;}}",
+      "intended_source": "int readings[5]; void replace(float n){readings[2]=3; if(n>1.0){readings[3]=4;}}",
+      "specification": "Write three to the integer index two.",
+      "acceptable_sources": [
+        "int readings[5]; void replace(float n){readings[2]=3; if(n>1.0){readings[3]=4;}}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-index-type",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-array-constant-bound",
+      "category": "array_indexing",
+      "source": "int slots[3]; int inspect_slot(int cap){ if(cap>1){return slots[4];} return 0; }",
+      "intended_source": "int slots[3]; int inspect_slot(int cap){ if(cap>1){return slots[2];} return 0; }",
+      "specification": "Read the last element of a three-element array.",
+      "acceptable_sources": [
+        "int slots[3]; int inspect_slot(int cap){ if(cap>1){return slots[2];} return 0; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-constant-bound",
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "v2-array-no-index",
+      "category": "array_indexing",
+      "source": "int fields[4]; int first_two(){return fields+fields[1];}",
+      "intended_source": "int fields[4]; int first_two(){return fields[0]+fields[1];}",
+      "specification": "Return the sum of the first two elements.",
+      "acceptable_sources": [
+        "int fields[4]; int first_two(){return fields[0]+fields[1];}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-no-index",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-array-wrong-position",
+      "category": "array_indexing",
+      "source": "int cols[8]; void save_center(int reading){cols[3]=reading; cols[0]=0;}",
+      "intended_source": "int cols[8]; void save_center(int reading){cols[4]=reading; cols[0]=0;}",
+      "specification": "Save reading in the fifth element.",
+      "acceptable_sources": [
+        "int cols[8]; void save_center(int reading){cols[4]=reading; cols[0]=0;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "array-wrong-position",
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "v2-type-string-assignment",
+      "category": "type_mismatch",
+      "source": "int limit; void use(int n){limit=\"n\"; if(n<0){limit=0;}}",
+      "intended_source": "int limit; void use(int n){limit=n; if(n<0){limit=0;}}",
+      "specification": "Assign the actual numeric input.",
+      "acceptable_sources": [
+        "int limit; void use(int n){limit=n; if(n<0){limit=0;}}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "type-string-assignment",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-type-return-string",
+      "category": "type_mismatch",
+      "source": "int doubled(int n){int value=n*2; return \"value\";}",
+      "intended_source": "int doubled(int n){int value=n*2; return value;}",
+      "specification": "Return the computed integer.",
+      "acceptable_sources": [
+        "int doubled(int n){int value=n*2; return value;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "type-return-string",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-type-bool-init",
+      "category": "type_mismatch",
+      "source": "bool enabled=\"false\"; bool get_enabled(){return enabled;}",
+      "intended_source": "bool enabled=false; bool get_enabled(){return enabled;}",
+      "specification": "Initialize enabled to Boolean false.",
+      "acceptable_sources": [
+        "bool enabled=false; bool get_enabled(){return enabled;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "type-bool-init",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-type-float-to-int",
+      "category": "type_mismatch",
+      "source": "int allowed(int n){ int budget=2.3; if(n>budget){ return n-budget; } return 0; }",
+      "intended_source": "int allowed(int n){ int budget=2; if(n>budget){ return n-budget; } return 0; }",
+      "specification": "Use an integer budget of two.",
+      "acceptable_sources": [
+        "int allowed(int n){ int budget=2; if(n>budget){ return n-budget; } return 0; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "type-float-to-int",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-type-return-void",
+      "category": "type_mismatch",
+      "source": "int calls; void count(){ calls+=1; return calls; }",
+      "intended_source": "int calls; void count(){ calls+=1; return; }",
+      "specification": "Increment calls and return without a value.",
+      "acceptable_sources": [
+        "int calls; void count(){ calls+=1; return; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "type-return-void",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-type-modulo",
+      "category": "type_mismatch",
+      "source": "float weight(float n,int rest){return n+\"rest\"%2;}",
+      "intended_source": "float weight(float n,int rest){return n+rest/2;}",
+      "specification": "Add the integer half of rest.",
+      "acceptable_sources": [
+        "float weight(float n,int rest){return n+rest/2;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "type-modulo",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-condition-operator-bound",
+      "category": "incorrect_condition",
+      "source": "int price(int units){ if(units>10){return 8;} return 10;}",
+      "intended_source": "int price(int units){ if(units>=10){return 8;} return 10;}",
+      "specification": "Offer bulk pricing at ten units and above.",
+      "acceptable_sources": [
+        "int price(int units){ if(units>=10){return 8;} return 10;}"
+      ],
+      "rejected_sources": [
+        "int price(int units){ if(units>10){return 8;} return 10;}"
+      ],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "condition-operator-bound",
+      "has_error": true,
+      "detection_scope": "logic",
+      "behavior": {
+        "entry": "price",
+        "tests": [
+          {
+            "args": [
+              9
+            ],
+            "expected_return": 10
+          },
+          {
+            "args": [
+              10
+            ],
+            "expected_return": 8
+          },
+          {
+            "args": [
+              12
+            ],
+            "expected_return": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-condition-conjunction",
+      "category": "incorrect_condition",
+      "source": "bool allowed(bool ready,bool blocked){if(ready||!blocked){return true;} return false;}",
+      "intended_source": "bool allowed(bool ready,bool blocked){if(ready&&!blocked){return true;} return false;}",
+      "specification": "Both prerequisites are required.",
+      "acceptable_sources": [
+        "bool allowed(bool ready,bool blocked){if(ready&&!blocked){return true;} return false;}"
+      ],
+      "rejected_sources": [
+        "bool allowed(bool ready,bool blocked){if(ready||!blocked){return true;} return false;}"
+      ],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "condition-conjunction",
+      "has_error": true,
+      "detection_scope": "logic",
+      "behavior": {
+        "entry": "allowed",
+        "tests": [
+          {
+            "args": [
+              true,
+              true
+            ],
+            "expected_return": false
+          },
+          {
+            "args": [
+              true,
+              false
+            ],
+            "expected_return": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-condition-empty",
+      "category": "incorrect_condition",
+      "source": "int ahead(int n){ if(){n-=1;} return n; }",
+      "intended_source": "int ahead(int n){ if(n>10){n-=1;} return n; }",
+      "specification": "Only lower values above ten.",
+      "acceptable_sources": [
+        "int ahead(int n){ if(n>10){n-=1;} return n; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "condition-empty",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-condition-missing-operand",
+      "category": "incorrect_condition",
+      "source": "int max_hint(int x,int y){ if(x>){return x;} else {return y;} }",
+      "intended_source": "int max_hint(int x,int y){ if(x>y){return x;} else {return y;} }",
+      "specification": "Return the larger input.",
+      "acceptable_sources": [
+        "int max_hint(int x,int y){ if(x>y){return x;} else {return y;} }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "condition-missing-operand",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-condition-string",
+      "category": "incorrect_condition",
+      "source": "int check(bool active){while(\"active\"){return 1;} return 0;}",
+      "intended_source": "int check(bool active){while(active){return 1;} return 0;}",
+      "specification": "Enter the loop only when active.",
+      "acceptable_sources": [
+        "int check(bool active){while(active){return 1;} return 0;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "condition-string",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-return-missing-one-branch",
+      "category": "incorrect_return",
+      "source": "int offset(int n){if(n==0){return;} return n+7;}",
+      "intended_source": "int offset(int n){if(n==0){return 7;} return n+7;}",
+      "specification": "Return seven on zero, otherwise add seven.",
+      "acceptable_sources": [
+        "int offset(int n){if(n==0){return 7;} return n+7;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "return-missing-one-branch",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-return-value-as-statement",
+      "category": "incorrect_return",
+      "source": "int score(int base){ if(base>0){return base 2;} return 1; }",
+      "intended_source": "int score(int base){ if(base>0){return base*2;} return 1; }",
+      "specification": "Return twice positive base, otherwise one.",
+      "acceptable_sources": [
+        "int score(int base){ if(base>0){return base*2;} return 1; }"
+      ],
+      "rejected_sources": [
+        "int score(int base){ if(base>0){return base; 2;} return 1; }"
+      ],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "return-value-as-statement",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-return-stray-operator",
+      "category": "incorrect_return",
+      "source": "int remaining(int n){ if(n<0){return 0;} return n-; }",
+      "intended_source": "int remaining(int n){ if(n<0){return 0;} return n-1; }",
+      "specification": "Return one less for nonnegative n.",
+      "acceptable_sources": [
+        "int remaining(int n){ if(n<0){return 0;} return n-1; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "return-stray-operator",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-return-literal-swap",
+      "category": "incorrect_return",
+      "source": "bool has_margin(int n){ if(n<0){return false;} if(n>4){return false;} return false; }",
+      "intended_source": "bool has_margin(int n){ if(n<0){return false;} if(n>4){return true;} return false; }",
+      "specification": "Return true only above four.",
+      "acceptable_sources": [
+        "bool has_margin(int n){ if(n<0){return false;} if(n>4){return true;} return false; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "return-literal-swap",
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "v2-ambiguous-call-separator",
+      "category": "ambiguous_intent",
+      "source": "int link(int a,int b){return a-b;} int compose(int n){return link(n 2,3);}",
+      "intended_source": null,
+      "specification": "No operation between n and 2 is specified.",
+      "acceptable_sources": [
+        "int link(int a,int b){return a-b;} int compose(int n){return link(n+2,3);}",
+        "int link(int a,int b){return a-b;} int compose(int n){return link(n*2,3);}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ambiguous-call-separator",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ambiguous-loop-return",
+      "category": "ambiguous_intent",
+      "source": "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; return 1; }",
+      "intended_source": null,
+      "specification": "The location of the missing closer changes when one is returned.",
+      "acceptable_sources": [
+        "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; } return 1; }",
+        "int wait_until(int n){ while(n>0){ if(n==2){return 5;} n--; return 1; } }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ambiguous-loop-return",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ambiguous-declarator",
+      "category": "ambiguous_intent",
+      "source": "float minval=1.0 maxval=2.0; float width_now(){return maxval-minval;}",
+      "intended_source": null,
+      "specification": "A shared declaration and separate declarations are both acceptable.",
+      "acceptable_sources": [
+        "float minval=1.0,maxval=2.0; float width_now(){return maxval-minval;}",
+        "float minval=1.0; float maxval=2.0; float width_now(){return maxval-minval;}"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ambiguous-declarator",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ambiguous-assignment",
+      "category": "ambiguous_intent",
+      "source": "int latch(int a,int b){ a == = b; return a; }",
+      "intended_source": null,
+      "specification": "No requirement says whether to assign b or leave a untouched.",
+      "acceptable_sources": [
+        "int latch(int a,int b){ a = b; return a; }",
+        "int latch(int a,int b){ a == b; return a; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ambiguous-assignment",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-ambiguous-bound",
+      "category": "ambiguous_intent",
+      "source": "bool below(int n){ if(n=<6){return true;} return false; }",
+      "intended_source": null,
+      "specification": "Inclusion of the boundary is unspecified.",
+      "acceptable_sources": [
+        "bool below(int n){ if(n<=6){return true;} return false; }",
+        "bool below(int n){ if(n<6){return true;} return false; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "ambiguous-bound",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-multi-while-and-return",
+      "category": "multiple_errors",
+      "source": "int twos(int n){ int total=0 while(n>0 {total+=2; n--;} return total }",
+      "intended_source": "int twos(int n){ int total=0; while(n>0){total+=2; n--;} return total; }",
+      "specification": "Add two to total n times and return total.",
+      "acceptable_sources": [
+        "int twos(int n){ int total=0; while(n>0){total+=2; n--;} return total; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "multi-while-and-return",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-multi-index-and-ref",
+      "category": "multiple_errors",
+      "source": "int points[4]; void write(int i,int value){ while(i>0){ point[i = value; i--; } }",
+      "intended_source": "int points[4]; void write(int i,int value){ while(i>0){ points[i] = value; i--; } }",
+      "specification": "Fill indices above zero through i with the supplied value.",
+      "acceptable_sources": [
+        "int points[4]; void write(int i,int value){ while(i>0){ points[i] = value; i--; } }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "multi-index-and-ref",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-multi-decl-and-paren",
+      "category": "multiple_errors",
+      "source": "bool eligible(int age){ int limit+18; if(age>=limit {return true;} return false; }",
+      "intended_source": "bool eligible(int age){ int limit=18; if(age>=limit){return true;} return false; }",
+      "specification": "Eligibility starts at age eighteen.",
+      "acceptable_sources": [
+        "bool eligible(int age){ int limit=18; if(age>=limit){return true;} return false; }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "multi-decl-and-paren",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-multi-comma-and-return",
+      "category": "multiple_errors",
+      "source": "int pair(int a,int b){return a+b;} int pair_with_floor(int n){if(n<0){return;} return pair(n 2); }",
+      "intended_source": "int pair(int a,int b){return a+b;} int pair_with_floor(int n){if(n<0){return 0;} return pair(n,2); }",
+      "specification": "Return zero for negatives and n plus two otherwise.",
+      "acceptable_sources": [
+        "int pair(int a,int b){return a+b;} int pair_with_floor(int n){if(n<0){return 0;} return pair(n,2); }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "multi-comma-and-return",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-multi-brackets-and-operator",
+      "category": "multiple_errors",
+      "source": "bool mask[4); void set(bool allowed){ if(allowed => true){ mask[1=true; } }",
+      "intended_source": "bool mask[4]; void set(bool allowed){ if(allowed == true){ mask[1]=true; } }",
+      "specification": "Set the second mask cell when allowed is true.",
+      "acceptable_sources": [
+        "bool mask[4]; void set(bool allowed){ if(allowed == true){ mask[1]=true; } }"
+      ],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "multi-brackets-and-operator",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-valid-nested-break",
+      "category": "valid_control",
+      "source": "int locate(int target){ for(int x=0;x<5;x++){ for(int y=0;y<5;y++){ if(y==target){return x+y;} } } return -1; }",
+      "intended_source": null,
+      "specification": "Return the first matching row-plus-column.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "valid-nested-break",
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-valid-char-branch",
+      "category": "valid_control",
+      "source": "char pick_char(bool flag,char yes,char no){ if(flag){return yes;} else {return no;} }",
+      "intended_source": null,
+      "specification": "Select a character by flag.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "valid-char-branch",
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-valid-floating-helper",
+      "category": "valid_control",
+      "source": "float norm(float x){if(x<0.0){return 0.0-x;} return x;} float twice(float x){ return 2.0*norm(x); }",
+      "intended_source": null,
+      "specification": "Return twice the absolute value.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "valid-floating-helper",
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-valid-spaced-comments",
+      "category": "valid_control",
+      "source": "int zones[2]; /* both slots */ void clear(){ zones[0]=0; /* next */ zones[1]=0; }",
+      "intended_source": null,
+      "specification": "Clear both zones.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "valid-spaced-comments",
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-valid-lexically-sensitive",
+      "category": "valid_control",
+      "source": "bool equal_text(){ return \"a  b\" == \"a b\"; }",
+      "intended_source": null,
+      "specification": "Compare strings whose spaces differ.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "valid-lexically-sensitive",
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-valid-updates",
+      "category": "valid_control",
+      "source": "int report_counter(){ int count=2; int limit=count++; if(limit<3){++count;} return count; }",
+      "intended_source": null,
+      "specification": "Increment twice and return four.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "valid-updates",
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "v2-unsupported-switch",
+      "category": "unsupported_minic",
+      "source": "int choose_mode(int n){ switch(n){case 0: return 8; default: return 1;} }",
+      "intended_source": null,
+      "specification": "Return eight for zero and one otherwise.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "unsupported-switch",
+      "has_error": false,
+      "detection_scope": "unsupported"
+    },
+    {
+      "id": "v2-unsupported-struct",
+      "category": "unsupported_minic",
+      "source": "struct pair { int x; int y; }; int read_pair(){struct pair p; p.x=3; return p.x;}",
+      "intended_source": null,
+      "specification": "Access a structure member.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "unsupported-struct",
+      "has_error": false,
+      "detection_scope": "unsupported"
+    },
+    {
+      "id": "v2-unsupported-do-while",
+      "category": "unsupported_minic",
+      "source": "int once(int n){do{n++;}while(n<0); return n;}",
+      "intended_source": null,
+      "specification": "Increment at least once.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "unsupported-do-while",
+      "has_error": false,
+      "detection_scope": "unsupported"
+    },
+    {
+      "id": "v2-unsupported-ternary",
+      "category": "unsupported_minic",
+      "source": "int positive_or_zero(int n){return n>0 ? n : 0;}",
+      "intended_source": null,
+      "specification": "Clamp negative numbers to zero.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "unsupported-ternary",
+      "has_error": false,
+      "detection_scope": "unsupported"
+    },
+    {
+      "id": "v2-unsupported-pointer-arithmetic",
+      "category": "unsupported_minic",
+      "source": "int second(int *values){return *(values+1);}",
+      "intended_source": null,
+      "specification": "Read through a pointer offset.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "unsupported-pointer-arithmetic",
+      "has_error": false,
+      "detection_scope": "unsupported"
+    },
+    {
+      "id": "v2-unsupported-multidimensional",
+      "category": "unsupported_minic",
+      "source": "int grid[2][3]; int center(){return grid[1][1];}",
+      "intended_source": null,
+      "specification": "Access a multidimensional cell.",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "expected_class": null,
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "AI_ASSISTED_REVIEWED",
+      "review_status": "COMPILER_CHECKED_SPEC_REVIEWED",
+      "split": "phase_1_5_holdout",
+      "mutation_family": "unsupported-multidimensional",
+      "has_error": false,
+      "detection_scope": "unsupported"
+    }
+  ]
+}
