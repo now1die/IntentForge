@@ -14,6 +14,8 @@ try:
 except ImportError:
     cx = None
 
+LIBRARY_ERROR = cx.LibclangError if cx is not None else ImportError
+
 SEVERITIES = {1: "note", 2: "warning", 3: "error", 4: "fatal"}
 SCOPES = {"FUNCTION_DECL", "COMPOUND_STMT", "FOR_STMT", "STRUCT_DECL", "UNION_DECL", "ENUM_DECL"}
 MAX_NODES = 3500
@@ -183,7 +185,7 @@ def main():
     request = json.loads(Path("request.json").read_bytes()) if sys.argv[2] == "analyze" else None
     try:
         version = configure(sys.argv[1])
-    except (OSError, AttributeError, cx.LibclangError if cx is not None else ImportError):
+    except (OSError, AttributeError, LIBRARY_ERROR):
         version = None
     if not version:
         result = {"status": "unavailable", "detail": "Clang requires libclang 19 and its Python bindings."}
