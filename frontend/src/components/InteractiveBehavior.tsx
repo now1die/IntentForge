@@ -138,7 +138,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
 
   return <details className="inspector behavior-panel" aria-label="Interactive behavioral verification">
     <summary>Interactive behavioral verification</summary>
-    <div className="inspector-body live-behavior">
+    <div className="live-behavior">
       <p>{capability?.detail ?? "Checking local execution availability…"}</p>
       {capability?.status !== "available" && <>
         <p>Recorded demonstrations are available below.</p>
@@ -191,8 +191,9 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
         </section>}
         {candidate && <section aria-label="Behavioral candidate review">
           <h3>Candidate {candidate.static_rank} · {candidate.id}</h3>
-          <div className="diff-pair">
-            <pre className="diff-before">{code}</pre><pre className="diff-after">{candidate.source}</pre>
+          <div className="behavior-evidence">
+            <div><strong>Original source</strong><pre className="diff-before">{code}</pre></div>
+            <div><strong>Proposed source</strong><pre className="diff-after">{candidate.source}</pre></div>
           </div>
           <button type="button" className="primary" onClick={() => onApply(code, candidate.source)}>
             Apply reviewed behavioral repair

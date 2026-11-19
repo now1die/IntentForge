@@ -39,8 +39,7 @@ test("isolated editor run shows before and after and requires manual approval", 
   const capture = process.env.INTENTFORGE_PHASE45_CAPTURES;
   if (capture) {
     await mkdir(capture, { recursive: true });
-    await panel.scrollIntoViewIfNeeded();
-    await page.screenshot({ path: `${capture}/live-review.png`, fullPage: true });
+    await panel.screenshot({ path: `${capture}/live-review.png` });
   }
   await panel.getByRole("button", { name: "Apply reviewed behavioral repair" }).click();
   await expect(page.locator(sourceLines)).toContainText("x*2");
@@ -61,8 +60,7 @@ test("isolated disagreement yields editable inputs without expectations and hide
   const capture = process.env.INTENTFORGE_PHASE45_CAPTURES;
   if (capture) {
     await mkdir(capture, { recursive: true });
-    await section.scrollIntoViewIfNeeded();
-    await page.screenshot({ path: `${capture}/live-probes-mobile.png`, fullPage: true });
+    await section.screenshot({ path: `${capture}/live-probes-mobile.png` });
   }
   await section.getByRole("button", { name: "Use probe input" }).first().click();
   await expect(panel.getByLabel("Test vectors (JSON)")).toHaveValue(/"expected": null/);
