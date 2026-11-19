@@ -147,6 +147,8 @@ def main() -> int:
                     f"Remaining syntax errors after temporary edit: "
                     f"{item.validation.remaining_syntax_errors}"
                 )
+            if item.safety and item.safety.requires_review:
+                print(f"Review required: {item.safety.reason}")
             if item.reason:
                 print(f"Decision: {item.reason}")
         print(f"\nCorrections applied: {correction.corrections_applied}")

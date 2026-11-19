@@ -394,7 +394,7 @@ def test_ambiguity_ml_unique_match_does_not_call_groq() -> None:
     result = CorrectionOrchestrator(
         LabelPredictor(CorrectionClass.INSERT_RBRACE),
         llm_fallback=selector,
-    ).correct(ambiguity_source())
+    ).correct(ambiguity_source(), preview=True)
 
     assert result.success and selector.selection_calls == 0
     assert result.history[0].selected_candidate.action is CorrectionAction.INSERT
@@ -424,7 +424,7 @@ def test_ambiguity_groq_selection_is_revalidated_and_prepared() -> None:
     result = CorrectionOrchestrator(
         LabelPredictor(CorrectionClass.REPLACE_BRACKET),
         llm_fallback=selector,
-    ).correct(source)
+    ).correct(source, preview=True)
 
     assert result.success and result.corrections_applied == 1
     assert result.original_source == source

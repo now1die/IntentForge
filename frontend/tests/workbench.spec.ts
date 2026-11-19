@@ -600,3 +600,20 @@ test("backend tables expose accessible captions", async ({ page }) => {
     page.locator("caption").filter({ hasText: "Symbols in the global scope" }),
   ).toBeAttached();
 });
+
+test("a behavior-changing operator stays in review until the user selects and applies it", async ({ page }) => {
+  await page.goto("/");
+  await page.locator(".source-editor .view-lines").click();
+  await page.keyboard.press("Control+A");
+  await page.keyboard.insertText("int main(){ int a,b; if(a.b){return 0;} }");
+  await page.getByRole("button", { name: "Correct", exact: true }).click();
+
+  await expect(page.getByRole("status")).toContainText("Source has not changed");
+  await expect(page.locator(".source-editor .view-lines")).toContainText("a.b");
+  await expect(page.getByRole("button", { name: "Apply Corrected Code" })).toBeDisabled();
+  await expect(page.locator(".history")).toContainText("Review required");
+  await page.getByRole("button", { name: /Option.*a>b/ }).first().click();
+  await page.getByRole("button", { name: "Apply Selected", exact: true }).click();
+  await expect(page.locator(".source-editor .view-lines")).toContainText("a>b");
+  await expect(page.getByRole("status")).toContainText("All checks passed");
+});

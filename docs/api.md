@@ -110,8 +110,16 @@ Invokes the existing Phase 6/7 orchestrator. The response includes:
 - separate post-correction semantic diagnostics
 - stop reason
 
-The route does not implement correction logic or call Groq directly. The cached
-predictor avoids loading the Joblib artifact on every request. A missing or
+A review-required edit uses `status: SUGGESTED`, preserves the current source
+as `corrected_code`, and includes the proposal at
+`history[].validation.corrected_source`. An ambiguous unresolved result keeps
+candidate validation records in `history[].attempts`. History and interactive
+options can contain additive `safety` metadata with category, reason and
+whether explicit review is required. A successful AI candidate selection
+means that the candidate passed validation. Use `applied` and
+`corrections_applied` to determine what the orchestrator applied.
+
+The cached predictor avoids loading the Joblib artifact on every request. A missing or
 unreadable model returns HTTP `503` without preventing the server or analysis
 endpoints from starting.
 
@@ -123,8 +131,7 @@ large source bodies return FastAPI/Pydantic validation responses (normally HTTP
 `422`). Unexpected backend failures return a generic HTTP `500` message without a
 Python traceback.
 
-Ollama failures use the existing sanitized fallback record. local environment
-variables, and raw provider responses are never serialized.
+Ollama failures are represented in the fallback record.
 
 ## CORS
 
@@ -133,5 +140,5 @@ Development CORS permits only:
 - `http://localhost:5173`
 - `http://127.0.0.1:5173`
 
-Allowed methods are `GET`, `POST`, and `OPTIONS`. This is intended for the local
-React/Vite development frontend, not as an unrestricted production policy.
+Allowed methods are `GET`, `POST`, and `OPTIONS`. Add exact HTTP(S) origins
+using the API process variable `CORS_ALLOWED_ORIGINS` for a split deployment.

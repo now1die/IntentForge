@@ -56,13 +56,8 @@ export function Toolbar({
           className="connection"
         >
           <span className={`status-dot ${health ? "connected" : ""}`} />
-          {checking
-            ? "Connecting"
-            : health
-              ? health.ollama_configured
-                ? "Backend + Ollama connected"
-                : "Backend connected · Ollama offline"
-              : "Backend offline"}
+          <span>{checking ? "Connecting" : health ? "Backend connected" : "Backend offline"}</span>
+          {!checking && health && <span>· Ollama {health.ollama_configured ? "ready" : "offline"}</span>}
           <ArrowClockwise size={12} />
         </button>
       </div>

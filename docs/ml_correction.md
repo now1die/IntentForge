@@ -15,7 +15,7 @@ Lexer / Parser / Semantic diagnostics
   ↓
 Structured compiler context
   ↓
-20-class ML classifier
+25-class ML classifier
   ↓
 ML class → candidate edit
   ↓
@@ -23,18 +23,18 @@ Compiler-native alternatives (only as safety candidates when available)
   ↓
 Candidate ranking + re-lex/re-parse validation
   ↓
-Apply one uniquely supported correction, or leave ambiguity unresolved
+Apply eligible structural edits or return proposals for explicit review
 ```
 
-The compiler remains the correctness authority. The ML classifier does not freely
-rewrite the source: it chooses a repair family, and the adapter creates bounded edits.
+The compiler checks Mini-C validity. The classifier chooses a repair family and
+the adapter creates bounded edits.
 Legacy parser recovery remains available as a source of compiler-native candidates for
 ordinary syntax errors; it is not used as a special-case keyboard/array fixer. An
 ambiguous program is left unchanged rather than receiving an arbitrary edit.
 
 ## Correction classes
 
-The saved classifier has **20 classes**:
+The saved classifier has **25 classes**:
 
 - `INSERT_SEMICOLON`
 - `INSERT_RPAREN`
@@ -56,17 +56,19 @@ The saved classifier has **20 classes**:
 - `ARRAY_INDEX_ERROR`
 - `ARRAY_CALL_ERROR`
 - `REPAIR_MISMATCHED_DELIMITER`
+- `DECLARATION_SEPARATOR_ERROR`
+- `DECLARATION_DOT_ERROR`
+- `DECLARATION_COLON_ERROR`
+- `SCALAR_ARRAY_USE_ERROR`
+- `ARRAY_BRACE_INDEX_ERROR`
 
 ## Training data and evaluation
 
-The packaged dataset contains **2,400 compiler-validated synthetic records**, balanced at
-83 examples per class. Training uses a stratified 80/20 split with `random_state=42`:
-**1,328 training records and 332 held-out records**.
-
-The measured held-out accuracy is **1.000 on this controlled synthetic split**. This is
-not a claim of 100% performance on arbitrary student code; the real-scenario regression
-matrix and parser-validated end-to-end tests are reported separately in
-`test_suite/ML_FIRST_FULL_SCENARIO_VERIFICATION.md`.
+The artifact report records **2,560 training rows and 640 test rows** in a
+seed-42 stratified synthetic split. The archived corpora contain 2,400 generator
+records and 640 scenario records. The historical reported accuracy was 640/640.
+The [generalization analysis](ml_generalization_analysis.md) gives the archive
+coverage, template overlap, and independent benchmark results.
 
 A record stores original and corrupted source, the correction-class label, compiler
 diagnostic, structured error context, candidate information, and the ground-truth edit.
@@ -103,14 +105,12 @@ balanced `LogisticRegression`.
 
 ## Validation rule
 
-Every proposed edit is checked by the actual Mini-C compiler. A syntactically valid
-candidate is re-parsed, and semantic repairs are re-analysed. The system does not claim
-that a prediction probability alone proves a repair is correct. If two plausible edits
-produce valid programs and the system cannot distinguish them reliably, it leaves the
-original code unchanged and reports ambiguity.
+The compiler validates proposed edits. The safety policy allows eligible
+localized structural repairs to apply automatically. Ambiguous and
+potentially behavior-changing repairs remain available for explicit review.
 
 The model artifact is `models/syntax_error_classifier.joblib`; training records are in
-`datasets/syntax_corrections.jsonl`.
+`datasets/syntax_corrections.jsonl` and `datasets/adversarial_scenarios.jsonl`.
 
 ## Commands
 

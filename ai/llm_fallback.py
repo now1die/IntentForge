@@ -4,13 +4,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import json
+import math
 import os
 from pathlib import Path
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 from typing import Any, Protocol, Sequence
 
-from dotenv import find_dotenv, load_dotenv
+from dotenv import dotenv_values, find_dotenv, load_dotenv
 
 from compiler.correction import CandidateValidation, CorrectionAction, CorrectionCandidate
 from compiler.errors import SyntaxDiagnostic
@@ -331,18 +333,50 @@ class OllamaFallbackService:
         timeout: float = DEFAULT_OLLAMA_TIMEOUT,
         opener: Any | None = None,
     ) -> None:
-        self.host = (host or os.getenv("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
-        self.model = model or os.getenv("OLLAMA_MODEL") or DEFAULT_OLLAMA_MODEL
+        settings = dotenv_values(Path(__file__).resolve().parents[1] / ".env")
+        self.host = (host or os.getenv("OLLAMA_HOST") or settings.get("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
+        self.model = (model or os.getenv("OLLAMA_MODEL") or settings.get("OLLAMA_MODEL") or DEFAULT_OLLAMA_MODEL).strip()
+        enabled = (os.getenv("OLLAMA_ENABLED") or settings.get("OLLAMA_ENABLED") or "true").lower()
         self.timeout = timeout
         self._opener = opener
+        self.configuration_error = None
+        try:
+            endpoint = urlsplit(self.host)
+            if (
+                endpoint.scheme not in {"http", "https"} or not endpoint.hostname
+                or endpoint.username is not None or endpoint.password is not None
+                or endpoint.path or endpoint.query or endpoint.fragment
+                or (endpoint.port is not None and endpoint.port == 0)
+            ):
+                raise ValueError("OLLAMA_HOST must be an HTTP(S) origin without credentials, a path, or a query")
+            if not self.model or any(c.isspace() for c in self.model):
+                raise ValueError("OLLAMA_MODEL must be a nonempty model name")
+            if enabled not in {"true", "false"}:
+                raise ValueError("OLLAMA_ENABLED must be true or false")
+            if timeout <= 0:
+                raise ValueError("Ollama timeout must be positive")
+        except ValueError as exc:
+            self.configuration_error = str(exc)
+        self.enabled = enabled == "true"
+
+    @property
+    def unavailable_reason(self) -> str:
+        if self.configuration_error:
+            return self.configuration_error
+        if not self.enabled:
+            return "Ollama is disabled by OLLAMA_ENABLED"
+        return f"Ollama is unavailable at {self.host} or model {self.model!r} is not installed"
 
     @property
     def available(self) -> bool:
+        if self.configuration_error or not self.enabled:
+            return False
         try:
             payload = self._request("/api/tags", method="GET", body=None, timeout=min(self.timeout, 1.5))
             models = payload.get("models", []) if isinstance(payload, dict) else []
-            names = {str(item.get("name", "")) for item in models if isinstance(item, dict)}
-            return self.model in names or any(name.split(":", 1)[0] == self.model.split(":", 1)[0] for name in names)
+            names = {item.get("name", item.get("model")) for item in models if isinstance(item, dict)}
+            requested = self.model if ":" in self.model.rsplit("/", 1)[-1] else self.model + ":latest"
+            return self.model in names or requested in names
         except Exception:
             return False
 
@@ -354,7 +388,7 @@ class OllamaFallbackService:
                 available=False,
                 attempted=False,
                 model=self.model,
-                error=f"Ollama is unavailable at {self.host} or model {self.model!r} is not installed",
+                error=self.unavailable_reason,
             )
         try:
             payload = self._chat(_SYSTEM_PROMPT, _structured_context(context, prediction))
@@ -389,7 +423,7 @@ class OllamaFallbackService:
                 available=False,
                 attempted=False,
                 model=self.model,
-                error=f"Ollama is unavailable at {self.host} or model {self.model!r} is not installed",
+                error=self.unavailable_reason,
             )
         try:
             payload = self._chat(_SELECTION_SYSTEM_PROMPT, _selection_context(source, context, candidates))
@@ -405,7 +439,7 @@ class OllamaFallbackService:
         self, source: str, context: ErrorContext, candidates: Sequence[dict[str, Any]]
     ) -> LLMReviewResult:
         if not self.available:
-            return LLMReviewResult(False, False, self.model, error=f"Ollama is unavailable at {self.host}")
+            return LLMReviewResult(False, False, self.model, error=self.unavailable_reason)
         if not candidates:
             return LLMReviewResult(True, False, self.model, reason="No candidates to review")
         try:
@@ -416,9 +450,19 @@ class OllamaFallbackService:
             })
             content = _extract_ollama_content(payload)
             data = json.loads(content)
-            approved = tuple(str(item) for item in data.get("approved_ids", []) if any(str(item) == str(c.get("id")) for c in candidates))
+            allowed_ids = {item["id"] for item in candidates}
+            approved_ids = data.get("approved_ids", [])
+            if not isinstance(approved_ids, list) or any(not isinstance(item, str) for item in approved_ids):
+                raise ValueError("approved_ids must be a list of candidate IDs")
+            approved = tuple(dict.fromkeys(item for item in approved_ids if item in allowed_ids))
             scores_raw = data.get("scores", {})
-            scores = {str(k): max(0.0, min(1.0, float(v))) for k, v in scores_raw.items()} if isinstance(scores_raw, dict) else {}
+            if not isinstance(scores_raw, dict):
+                raise ValueError("scores must be an object")
+            scores = {
+                key: max(0.0, min(1.0, value))
+                for key, value in scores_raw.items()
+                if key in allowed_ids and type(value) in (int, float) and math.isfinite(value)
+            }
             return LLMReviewResult(True, True, self.model, approved_ids=approved, scores=scores, reason=str(data.get("reason", ""))[:500])
         except Exception as exc:
             return LLMReviewResult(True, True, self.model, error=f"Ollama review failed: {type(exc).__name__}")
@@ -427,7 +471,7 @@ class OllamaFallbackService:
         self, source: str, context: ErrorContext, prediction: ErrorPrediction
     ) -> LLMGeneratedOptionsResult:
         if not self.available:
-            return LLMGeneratedOptionsResult(False, False, self.model, error=f"Ollama is unavailable at {self.host}")
+            return LLMGeneratedOptionsResult(False, False, self.model, error=self.unavailable_reason)
         try:
             payload = self._chat(_GENERATION_SYSTEM_PROMPT, {
                 "original_source": source,
@@ -479,7 +523,10 @@ class OllamaFallbackService:
         opener = self._opener or urlopen
         with opener(request, timeout=timeout) as response:
             raw = response.read().decode("utf-8")
-        return json.loads(raw)
+        payload = json.loads(raw)
+        if not isinstance(payload, dict):
+            raise ValueError("Ollama response must be a JSON object")
+        return payload
 
 
 def _extract_ollama_content(payload: dict[str, Any]) -> str:

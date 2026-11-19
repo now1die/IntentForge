@@ -157,6 +157,12 @@ export interface CandidateAttempt {
   accepted: boolean;
   rejection_reason: string | null;
 }
+export interface RepairSafety {
+  category: "LOW_RISK_STRUCTURAL" | "AMBIGUOUS" | "POTENTIALLY_BEHAVIOR_CHANGING" | "UNVERIFIED";
+  reason: string;
+  requires_review: boolean;
+}
+
 export interface CorrectionHistory {
   sequence: number;
   status: "APPLIED" | "SUGGESTED" | "UNRESOLVED";
@@ -172,6 +178,7 @@ export interface CorrectionHistory {
   source_offset: number;
   validation: Validation | null;
   attempts?: CandidateAttempt[];
+  safety?: RepairSafety;
   reason: string | null;
   llm_fallback: GroqFallback | null;
   ambiguity_selection: GroqAmbiguitySelection | null;
@@ -200,6 +207,7 @@ export interface CorrectionOption {
   validation: Validation | null;
   semantic_errors: number | null;
   fully_valid: boolean;
+  safety?: RepairSafety;
   origin: string;
 }
 export interface CorrectionOptionsResponse {

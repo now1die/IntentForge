@@ -6,7 +6,7 @@ from ai.error_predictor import MLCorrectionPredictor
 
 def run(source: str):
     predictor = MLCorrectionPredictor.load("models/syntax_error_classifier.joblib")
-    return CorrectionOrchestrator(predictor).correct(source)
+    return CorrectionOrchestrator(predictor).correct(source, preview=True)
 
 
 def test_array_declaration_wrong_opening_bracket_is_ml_fixed():

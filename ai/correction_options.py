@@ -11,6 +11,7 @@ from compiler.errors import SyntaxDiagnostic
 from compiler.source_location import SourceLocation, SourceSpan
 
 from .candidate_ranker import rank_candidates
+from .correction_safety import RepairSafety, assess_repair, repair_key
 from compiler.compound_recovery import generate_compound_candidates
 from .error_context import ErrorContext
 from .error_predictor import MLCorrectionPredictor
@@ -198,7 +199,8 @@ def _ollama_review_and_fallback(source: str, context: ErrorContext, prediction: 
     """Verify compiler-valid options with local Ollama; generate fresh options only
     when the ML/compiler pipeline has none. Ollama never bypasses compiler validation."""
     service = OllamaFallbackService()
-    meta = {"available": service.available, "attempted": False, "model": service.model, "mode": "not_used", "approved_ids": [], "reason": ""}
+    meta = {"mode": "not_used", "approved_ids": []}
+    _annotate_safety(options)
     if options:
         review = service.review_candidates(source, context, [{"id": x["id"], "corrected_code": x["corrected_code"], "reason": x["reason"], "fully_valid": x["fully_valid"]} for x in options])
         meta.update(review.to_dict()); meta["mode"] = "verification"
@@ -225,7 +227,25 @@ def _ollama_review_and_fallback(source: str, context: ErrorContext, prediction: 
             "grammar_context": context.grammar_context or "unknown", "candidate": None, "validation": None,
             "semantic_errors": 0, "fully_valid": True, "origin": "ollama_fallback", "ollama_verified": True,
         })
+    _annotate_safety(generated_options)
     return generated_options[:limit], meta
+
+def _annotate_safety(options: list[dict[str, Any]]) -> None:
+    viable = [item for item in options if item["fully_valid"]] or options
+    ambiguous = len({repair_key(item["corrected_code"]) for item in viable}) > 1
+    for item in options:
+        if ambiguous:
+            safety = assess_repair(None, None, ambiguous=True)
+        elif item.get("safety"):
+            continue
+        elif item["fully_valid"]:
+            safety = RepairSafety(
+                "POTENTIALLY_BEHAVIOR_CHANGING", "This whole-source proposal may change bindings or behavior."
+            )
+        else:
+            safety = assess_repair(None, None)
+        item["safety"] = safety.to_dict()
+
 
 def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, limit: int = 8) -> dict[str, Any]:
     baseline = parse(source)
@@ -347,6 +367,7 @@ def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, li
             "grammar_context": candidate.grammar_context,
             "candidate": candidate.to_dict(),
             "validation": validation.to_dict(),
+            "safety": assess_repair(candidate, validation).to_dict(),
             "semantic_errors": semantic_errors if semantic_errors < 10_000 else None,
             "fully_valid": validation.valid and semantic_errors == 0,
             "origin": candidate.origin,
@@ -402,19 +423,10 @@ def suggest_correction_options(source: str, predictor: MLCorrectionPredictor, li
     # Never expose an invalid candidate alongside valid whole-program repairs.
     if any(item["fully_valid"] for item in options):
         options = [item for item in options if item["fully_valid"]]
-    # De-duplicate formatting-only variants so `int x,y;` and `int x, y;`
-    # do not consume two UI slots.
-    normalized_seen = set()
-    unique_options = []
-    import re
+    unique_options = {}
     for item in options:
-        normalized = re.sub(r"\s+", " ", item["corrected_code"]).strip()
-        normalized = re.sub(r"\s*([,;()\[\]])\s*", r"\1", normalized)
-        if normalized in normalized_seen:
-            continue
-        normalized_seen.add(normalized)
-        unique_options.append(item)
-    options = unique_options
+        unique_options.setdefault(repair_key(item["corrected_code"]), item)
+    options = list(unique_options.values())
     options.sort(key=lambda item: (not item["fully_valid"], -float(item["score"]), item["semantic_errors"] if item["semantic_errors"] is not None else 9999))
     options, ollama_meta = _ollama_review_and_fallback(source, context, prediction, options, limit)
     for index, item in enumerate(options, start=1):

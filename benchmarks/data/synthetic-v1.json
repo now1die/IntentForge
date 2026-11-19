@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "gen-global-bool-missing-terminator-0",
+      "category": "missing_semicolon",
+      "source": "bool idle25 = false\n int enable25(int current) { return current + 25; }",
+      "acceptable_sources": [
+        "bool idle25 = false;\n int enable25(int current) { return current + 25; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Preserve the global flag and return the offset input.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-global-bool-missing-terminator",
+      "expected_class": "INSERT_SEMICOLON",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "gen-undeclared-return-in-second-function-0",
+      "category": "incorrect_variable_reference",
+      "source": "int step25(int a) { return a / 2; } int out25(int a) { return step25(b); }",
+      "acceptable_sources": [
+        "int step25(int a) { return a / 2; } int out25(int a) { return step25(a); }"
+      ],
+      "rejected_sources": [],
+      "specification": "Pass the supplied argument to the halving function.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-undeclared-return-in-second-function",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "gen-loop-boundary-off-by-one-0",
+      "category": "valid_syntax_wrong_logic",
+      "source": "int count25(int x) { int result = 0; while(x >= 25) { x--; result++; } return result; }",
+      "acceptable_sources": [
+        "int count25(int x) { int result = 0; while(x > 25) { x--; result++; } return result; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Count decrements needed to reach the threshold.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-loop-boundary-off-by-one",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "gen-global-bool-missing-terminator-1",
+      "category": "missing_semicolon",
+      "source": "bool idle14 = false\n int enable14(int current) { return current + 14; }",
+      "acceptable_sources": [
+        "bool idle14 = false;\n int enable14(int current) { return current + 14; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Preserve the global flag and return the offset input.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-global-bool-missing-terminator",
+      "expected_class": "INSERT_SEMICOLON",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "gen-undeclared-return-in-second-function-1",
+      "category": "incorrect_variable_reference",
+      "source": "int step14(int a) { return a / 2; } int out14(int a) { return step14(b); }",
+      "acceptable_sources": [
+        "int step14(int a) { return a / 2; } int out14(int a) { return step14(a); }"
+      ],
+      "rejected_sources": [],
+      "specification": "Pass the supplied argument to the halving function.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-undeclared-return-in-second-function",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "gen-loop-boundary-off-by-one-1",
+      "category": "valid_syntax_wrong_logic",
+      "source": "int count14(int x) { int result = 0; while(x >= 14) { x--; result++; } return result; }",
+      "acceptable_sources": [
+        "int count14(int x) { int result = 0; while(x > 14) { x--; result++; } return result; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Count decrements needed to reach the threshold.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-loop-boundary-off-by-one",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "gen-global-bool-missing-terminator-2",
+      "category": "missing_semicolon",
+      "source": "bool idle46 = false\n int enable46(int current) { return current + 46; }",
+      "acceptable_sources": [
+        "bool idle46 = false;\n int enable46(int current) { return current + 46; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Preserve the global flag and return the offset input.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-global-bool-missing-terminator",
+      "expected_class": "INSERT_SEMICOLON",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "gen-undeclared-return-in-second-function-2",
+      "category": "incorrect_variable_reference",
+      "source": "int step46(int a) { return a / 2; } int out46(int a) { return step46(b); }",
+      "acceptable_sources": [
+        "int step46(int a) { return a / 2; } int out46(int a) { return step46(a); }"
+      ],
+      "rejected_sources": [],
+      "specification": "Pass the supplied argument to the halving function.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-undeclared-return-in-second-function",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "gen-loop-boundary-off-by-one-2",
+      "category": "valid_syntax_wrong_logic",
+      "source": "int count46(int x) { int result = 0; while(x >= 46) { x--; result++; } return result; }",
+      "acceptable_sources": [
+        "int count46(int x) { int result = 0; while(x > 46) { x--; result++; } return result; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Count decrements needed to reach the threshold.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "generated",
+      "mutation_family": "gen-loop-boundary-off-by-one",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    }
+  ]
+}

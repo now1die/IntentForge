@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from urllib.parse import urlsplit
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -26,8 +27,18 @@ def configured_cors_origins(value: str | None = None) -> list[str]:
 
     configured = os.getenv("CORS_ALLOWED_ORIGINS", "") if value is None else value
     configured_origins = [origin.strip().rstrip("/") for origin in configured.split(",")]
-    if "*" in configured_origins:
-        raise ValueError("CORS_ALLOWED_ORIGINS must contain exact origins, not '*'")
+    for origin in filter(None, configured_origins):
+        try:
+            parts = urlsplit(origin)
+            if (
+                parts.scheme not in {"http", "https"} or not parts.hostname or "*" in origin
+                or parts.path or parts.query or parts.fragment
+                or parts.username is not None or parts.password is not None
+                or (parts.port is not None and parts.port == 0)
+            ):
+                raise ValueError
+        except ValueError:
+            raise ValueError("CORS_ALLOWED_ORIGINS must contain exact origins using HTTP(S)") from None
     origins = [
         *DEVELOPMENT_ORIGINS,
         *configured_origins,

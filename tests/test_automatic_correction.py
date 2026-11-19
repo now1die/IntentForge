@@ -46,9 +46,9 @@ def fixed(label: CorrectionClass, confidence: float = 0.99, probabilities=None):
     return FixedPredictor(label.value, confidence, probabilities)
 
 
-def run(source: str, label: CorrectionClass, **policy_overrides):
+def run(source: str, label: CorrectionClass, *, preview=False, **policy_overrides):
     policy = CorrectionPolicy(**policy_overrides) if policy_overrides else CorrectionPolicy()
-    return CorrectionOrchestrator(fixed(label), policy).correct(source)
+    return CorrectionOrchestrator(fixed(label), policy).correct(source, preview=preview)
 
 
 def test_candidate_ranking_uses_model_probability() -> None:
@@ -164,7 +164,7 @@ def test_low_confidence_remains_unresolved_for_future_fallback() -> None:
     ],
 )
 def test_supported_automatic_corrections(source, label, fragment) -> None:
-    result = run(source, label)
+    result = run(source, label, preview=True)
     assert result.success
     assert fragment in result.corrected_source
 
@@ -244,7 +244,7 @@ def test_whole_program_repair_wins_over_higher_ranked_partial_repair() -> None:
         },
     )
 
-    result = CorrectionOrchestrator(predictor).correct(source)
+    result = CorrectionOrchestrator(predictor).correct(source, preview=True)
 
     assert result.success and result.corrections_applied == 1
     assert result.history[0].selected_candidate.action is CorrectionAction.DELETE
@@ -275,7 +275,7 @@ def test_surplus_closer_is_a_unique_validated_compiler_deletion() -> None:
     source = "int main(){ int x=10; if(x>5)) { return x; } return 0; }"
     result = CorrectionOrchestrator(
         fixed(CorrectionClass.CORRECT_KEYWORD, 0.40)
-    ).correct(source)
+    ).correct(source, preview=True)
 
     assert result.success and result.corrections_applied == 1
     entry = result.history[0]
@@ -289,7 +289,7 @@ def test_wrong_closer_type_remains_a_unique_validated_replacement() -> None:
     source = "int main(){ int x=10; if(x>5] { return x; } return 0; }"
     result = CorrectionOrchestrator(
         fixed(CorrectionClass.INSERT_RPAREN, 0.40)
-    ).correct(source)
+    ).correct(source, preview=True)
 
     assert result.success and result.corrections_applied == 1
     entry = result.history[0]
@@ -316,7 +316,7 @@ def test_target_can_resolve_while_later_error_remains() -> None:
 
 def test_multiple_errors_are_corrected_iteratively() -> None:
     source = "int main(){int x=1 if(x>0 {retrun x;} return 0;}"
-    result = CorrectionOrchestrator(CandidateAwarePredictor()).correct(source)
+    result = CorrectionOrchestrator(CandidateAwarePredictor()).correct(source, preview=True)
     assert result.success
     assert result.corrections_applied == 3
     assert all(item.status is CorrectionStatus.APPLIED for item in result.history)

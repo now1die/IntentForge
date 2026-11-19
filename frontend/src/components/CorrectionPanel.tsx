@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { CheckCircle, WarningCircle, PencilSimple, MagicWand } from "@phosphor-icons/react";
 import { CodeEditor } from "./CodeEditor";
 import type { CorrectionHistory, CorrectionOption, CorrectionOptionsResponse, CorrectionResponse } from "../types/compiler";
@@ -31,6 +31,7 @@ function OptionCard({ option, selected, onSelect }: { option: CorrectionOption; 
         <strong>{option.label}{option.fully_valid ? " · compiler valid" : " · syntax valid"}</strong>
         <code>{option.corrected_code}</code>
         <small>{option.reason}</small>
+        {option.safety?.requires_review && <small>{option.safety.reason}</small>}
       </span>
       <span className="suggestion-confidence">{(option.confidence * 100).toFixed(0)}%</span>
     </button>
@@ -48,11 +49,11 @@ export function CorrectionPanel({
   onApplyCode: (code: string, label: string) => void;
   onValidateCustom: (code: string) => Promise<{ valid: boolean; message: string }>;
 }) {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<CorrectionOption | null>(null);
   const [customOpen, setCustomOpen] = useState(false);
   const [customCode, setCustomCode] = useState("");
   const [customMessage, setCustomMessage] = useState<string | null>(null);
-  const selectedOption = useMemo(() => options?.options.find((item) => item.id === selected) ?? null, [options, selected]);
+  const selectedOption = selected && options?.options.includes(selected) ? selected : null;
 
   if (!result && !options) {
     return <div className="empty"><strong>Choose how to correct your code</strong><span>Run Correct to generate ranked alternatives you can review before applying.</span></div>;
@@ -60,7 +61,15 @@ export function CorrectionPanel({
 
   const firstHistory = result?.history[0];
   const disabledReason = result ? unresolvedReason(result.stop_reason, firstHistory) : null;
-  const legacyCanApply = result ? canApplyCorrection(result) : false;
+  const validatedSource = result && canApplyCorrection(result) ? result.corrected_code : null;
+  const reviewedProposal = result?.history.at(-1);
+  const reviewSource = reviewedProposal?.status === "SUGGESTED" && reviewedProposal.validation?.valid
+    ? reviewedProposal.validation.corrected_source
+    : null;
+  const availableCount = result?.corrections_applied || options?.options.length || (reviewSource ? 1 : 0);
+  const reviewLabel = availableCount
+    ? `${availableCount} validated correction${availableCount === 1 ? "" : "s"} ready`
+    : "No validated correction is ready";
 
   async function validateCustom() {
     if (!customCode.trim()) return;
@@ -73,30 +82,35 @@ export function CorrectionPanel({
     <div className="correction-panel">
       <div className="review-header">
         <div>
-          <strong>Choose your correction</strong>
-          <span>{options?.message ?? (legacyCanApply ? "A validated correction is available." : disabledReason ?? "Review the available result.")}</span>
+          <strong>{reviewLabel}</strong>
+          <span>{availableCount ? options?.message : disabledReason ?? options?.message}</span>
         </div>
-        {selectedOption && (
+        {selectedOption ? (
           <button className="primary" onClick={() => onApplyCode(selectedOption.corrected_code, selectedOption.label)}>
             <CheckCircle /> Apply Selected
+          </button>
+        ) : result && (
+          <button className="primary" type="button" disabled={!validatedSource}
+            onClick={() => validatedSource && onApplyCode(validatedSource, "Correction")}>
+            <CheckCircle /> Apply Corrected Code
           </button>
         )}
       </div>
 
-      {options?.diagnostic && (
+      {options && (options.diagnostic || options.options.length > 0) && (
         <section className="suggestion-section" aria-label="AI correction suggestions">
           <div className="suggestion-heading">
-            <div><span className="section-label">AI SUGGESTIONS</span><strong>{options.diagnostic.message}</strong></div>
+            <div><span className="section-label">AI SUGGESTIONS</span><strong>{options.diagnostic?.message ?? "Review the proposed changes"}</strong></div>
             {options.prediction && <code>{options.prediction.label} · {(options.prediction.confidence * 100).toFixed(1)}%</code>}
           </div>
           {options.ollama && (
             <div className="ollama-review-status">
-              <span>{options.ollama.available ? "✓ Local Ollama verified the candidates" : "Local Ollama unavailable — compiler validation used"}</span>
+              <span>{options.ollama.error ? options.ollama.error : options.ollama.approved_ids?.length ? "Local Ollama reviewed the candidates" : options.ollama.attempted ? "Local Ollama ran" : "Compiler validation used"}</span>
               {options.ollama.model && <small>{options.ollama.model}</small>}
             </div>
           )}
           <div className="suggestion-list">
-            {options.options.map((option) => <OptionCard key={option.id} option={option} selected={selected === option.id} onSelect={() => setSelected(option.id)} />)}
+            {options.options.map((option) => <OptionCard key={option.id} option={option} selected={selectedOption === option} onSelect={() => setSelected(option)} />)}
           </div>
           {options.options.length === 0 && <div className="empty compact"><strong>No compiler-validated alternatives</strong><span>Try Edit Original or write a custom correction below.</span></div>}
         </section>
@@ -130,15 +144,38 @@ export function CorrectionPanel({
         </section>
       )}
 
+      {reviewSource && !options?.options.length && (
+        <section className="selected-preview">
+          <div className="suggestion-heading">
+            <strong>Proposed correction</strong>
+            <span>{reviewedProposal?.safety?.reason}</span>
+          </div>
+          <div className="review-code compact-review"><CodeEditor code={reviewSource} readOnly /></div>
+          <button className="primary" type="button" onClick={() => onApplyCode(reviewSource, "Reviewed proposal")}>
+            <CheckCircle /> Apply Reviewed Proposal
+          </button>
+        </section>
+      )}
+
       {result && result.history.length > 0 && (
         <section className="history" aria-label="Correction history">
           <div className="history-heading">Correction history</div>
           {result.history.map((history) => {
-            const validated = history.status === "APPLIED" && history.validation?.relevant_valid === true;
+            const validated = history.validation?.relevant_valid === true;
+            const reviewRequired = history.safety?.requires_review ?? false;
             return <article key={history.sequence}>
               <div className="history-step">Correction {history.sequence}</div>
-              <div className="history-title"><strong>{describeCandidate(history.selected_candidate)}</strong><span className={validated ? "accent" : "warning"}>{validated ? <><CheckCircle /> Validated</> : <><WarningCircle /> Unresolved</>}</span></div>
+              <div className="history-title"><strong>{describeCandidate(history.selected_candidate)}</strong><span className={validated ? "accent" : "warning"}>{validated && !reviewRequired ? <><CheckCircle /> Validated</> : <><WarningCircle /> {reviewRequired ? "Review required" : "Unresolved"}</>}</span></div>
               <EditList history={history} />
+              {history.after_snippet && history.before_snippet !== history.after_snippet && (
+                <div className="inline-diff" aria-label="Proposed edit">
+                  <div className="diff-pair">
+                    <code className="diff-before"><span aria-hidden="true">−</span>{history.before_snippet}</code>
+                    <code className="diff-after"><span aria-hidden="true">+</span>{history.after_snippet}</code>
+                  </div>
+                </div>
+              )}
+              {reviewRequired && <small>{history.safety?.reason}</small>}
             </article>;
           })}
         </section>

@@ -236,17 +236,19 @@ def test_correction_api_serializes_validated_compound_edit() -> None:
     response = request("POST", "/correct", json={"code": source})
     body = response.json()
 
-    assert response.status_code == 200 and body["success"]
+    assert response.status_code == 200 and not body["success"]
     assert body["original_code"] == source
-    assert body["corrected_code"] != source
+    assert body["corrected_code"] == source
     history = body["history"][0]
+    assert history["status"] == "SUGGESTED" and not history["applied"]
+    assert history["safety"]["requires_review"]
     candidate = history["selected_candidate"]
     assert candidate["action"] == "COMPOUND"
     assert candidate["origin"] == "ml_predicted_class"
     assert len(candidate["edits"]) == 2
     assert {edit["action"] for edit in candidate["edits"]} == {"INSERT", "REPLACE"}
     assert history["validation"]["relevant_valid"]
-    assert parse(body["corrected_code"]).valid
+    assert parse(history["validation"]["corrected_source"]).valid
 
 
 def test_correction_api_serializes_groq_selected_compound_edit() -> None:
@@ -258,16 +260,18 @@ def test_correction_api_serializes_groq_selected_compound_edit() -> None:
 
     body = request("POST", "/correct", json={"code": source}).json()
 
-    assert body["success"] and body["corrections_applied"] == 1
+    assert not body["success"] and body["corrections_applied"] == 0
     assert body["original_code"] == source
-    assert body["corrected_code"] != source
+    assert body["corrected_code"] == source
     assert body["ambiguity_selection_used"]
     history = body["history"][0]
+    assert history["status"] == "SUGGESTED" and not history["applied"]
+    assert history["safety"]["requires_review"]
     assert history["selected_candidate"]["action"] == "COMPOUND"
     assert len(history["selected_candidate"]["edits"]) == 2
     assert history["ambiguity_selection"]["accepted"]
     assert history["ambiguity_selection"]["validation"]["relevant_valid"]
-    assert parse(body["corrected_code"]).valid
+    assert parse(history["validation"]["corrected_source"]).valid
 
 
 def test_correction_api_preserves_unique_validated_semicolon_over_unrelated_ml_class() -> None:
@@ -328,12 +332,14 @@ def test_correction_api_exposes_successful_groq_ambiguity_selection() -> None:
     body = response.json()
 
     assert response.status_code == 200
-    assert body["success"] and body["corrections_applied"] == 1
+    assert not body["success"] and body["corrections_applied"] == 0
     assert body["original_code"] == source
-    assert body["corrected_code"] != source
+    assert body["corrected_code"] == source
     assert body["ambiguity_selection_used"]
     assert not body["ollama_fallback_used"]
     history = body["history"][0]
+    assert history["status"] == "SUGGESTED" and not history["applied"]
+    assert history["safety"]["requires_review"]
     selection = history["ambiguity_selection"]
     assert selection["attempted"] and selection["accepted"]
     assert selection["selected_candidate_id"] == history["selected_candidate"]["id"]
@@ -341,7 +347,7 @@ def test_correction_api_exposes_successful_groq_ambiguity_selection() -> None:
     assert selection["reason"].startswith("Deleting the trailing opener")
     assert selection["validation"]["valid"]
     assert history["validation"]["valid"]
-    assert parse(body["corrected_code"]).valid
+    assert parse(history["validation"]["corrected_source"]).valid
 
 
 def test_correction_endpoint_supports_mocked_llm_fallback() -> None:

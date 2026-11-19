@@ -153,10 +153,11 @@ export default function App() {
         setSelected(result.history[0]?.original_error ?? null);
         setActive("Corrections");
         setNotice(
-          result.corrected_code !== source
+          result.corrected_code !== source || optionResult.options.length > 0 ||
+          result.history.some((entry) => entry.status === "SUGGESTED" && entry.validation?.valid)
             ? "Correction ready for review. Source has not changed."
             : result.success
-              ? "Source is already syntax-valid."
+              ? "Source passes syntax checks. See analysis for semantic diagnostics."
               : "No correction applied. Review the unresolved result.",
         );
       }

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
-import re
 from enum import Enum
 from pathlib import Path
 from typing import Any
@@ -16,6 +15,7 @@ from compiler.semantic_analyzer import analyze_source_semantics
 from compiler.source_location import SourceLocation, SourceSpan
 
 from .candidate_ranker import RankedCandidate, rank_candidates
+from .correction_safety import RepairSafety, assess_repair, repair_key
 from .error_context import ErrorContext
 from .ml_candidate_generator import generate_ml_candidates
 from .error_predictor import AIErrorPredictor, ErrorPrediction, MLCorrectionPredictor
@@ -164,6 +164,7 @@ class CorrectionHistoryEntry:
     reason: str | None = None
     llm_fallback: LLMFallbackRecord | None = None
     ambiguity_selection: AmbiguitySelectionRecord | None = None
+    safety: RepairSafety | None = None
 
     @property
     def applied(self) -> bool:
@@ -188,6 +189,7 @@ class CorrectionHistoryEntry:
             "validation": self.validation.to_dict() if self.validation else None,
             "attempts": [attempt.to_dict() for attempt in self.attempts],
             "reason": self.reason,
+            "safety": (self.safety or assess_repair(self.selected_candidate, self.validation)).to_dict(),
             "llm_fallback": self.llm_fallback.to_dict() if self.llm_fallback else None,
             "ambiguity_selection": (
                 self.ambiguity_selection.to_dict() if self.ambiguity_selection else None
@@ -269,7 +271,21 @@ class CorrectionOrchestrator:
         self.policy = policy or CorrectionPolicy()
         self.llm_fallback = llm_fallback
 
-    def correct(self, source: str, *, auto_apply: bool = True) -> CorrectionResult:
+    def _generate_ml_candidates(self, source, diagnostic, context, prediction):
+        return generate_ml_candidates(source, diagnostic, context, prediction)
+
+    def _syntax_candidates(self, source, baseline, diagnostic, context, prediction):
+        return (
+            *self._generate_ml_candidates(source, diagnostic, context, prediction),
+            *diagnostic.correction_candidates,
+            *generate_compound_candidates(source, baseline.tokens, baseline.syntax_errors, diagnostic),
+        )
+
+    def correct(self, source: str, *, auto_apply: bool = True, preview: bool = False) -> CorrectionResult:
+        """Return safe automatic changes, or simulate legacy selection for review only.
+
+        Preview results are hypothetical and must never be applied without approval.
+        """
         current = source
         history: list[CorrectionHistoryEntry] = []
         predictions: list[ErrorPrediction] = []
@@ -295,7 +311,7 @@ class CorrectionOrchestrator:
                     context = ErrorContext.from_diagnostic(diagnostic, baseline.tokens, current)
                     prediction = self.predictor.predict_error_type(context)
                     predictions.append(prediction)
-                    ml_candidates = generate_ml_candidates(current, diagnostic, context, prediction)
+                    ml_candidates = self._generate_ml_candidates(current, diagnostic, context, prediction)
                     semantic_threshold = 0.60 if prediction.label == CorrectionClass.ARRAY_CALL_ERROR.value else min(self.policy.auto_apply_threshold, 0.75)
                     if ml_candidates and prediction.confidence >= semantic_threshold and corrections < self.policy.max_corrections:
                         candidate = ml_candidates[0]
@@ -310,14 +326,19 @@ class CorrectionOrchestrator:
                                 valid=True, remaining_lexical_errors=0, remaining_syntax_errors=0,
                                 target_resolved=True, relevant_valid=True, syntax_error_delta=0,
                             )
-                            history.append(CorrectionHistoryEntry(
+                            entry = CorrectionHistoryEntry(
                                 sequence=len(history)+1, status=CorrectionStatus.APPLIED, diagnostic=diagnostic,
                                 prediction=prediction, selected_candidate=candidate, candidate_rank=1,
                                 candidate_probability=prediction.confidence, before_snippet=_snippet(current,candidate.offset),
                                 after_snippet=_snippet(corrected,candidate.offset), source_offset=candidate.offset,
                                 validation=validation, reason="ml_predicted_semantic_class_repair",
-                            ))
-                            current=corrected; seen_sources.add(current); corrections += 1
+                            )
+                            if self._record_review(history, entry, auto_apply, preview):
+                                stop_reason = "correction_requires_review"
+                                break
+                            current = corrected
+                            seen_sources.add(current)
+                            corrections += 1
                             continue
                 stop_reason = "source_is_syntactically_valid"
                 break
@@ -333,13 +354,14 @@ class CorrectionOrchestrator:
                     context = _build_lexical_context(current, baseline, diagnostic)
                 prediction = self.predictor.predict_error_type(context)
                 predictions.append(prediction)
-                ml_candidates = generate_ml_candidates(current, diagnostic, context, prediction)
+                ml_candidates = self._generate_ml_candidates(current, diagnostic, context, prediction)
                 ranked = rank_candidates(ml_candidates, prediction, context=context)
                 if not ranked:
                     stop_reason = "no_ml_candidate_for_lexical_error"
                     needs_llm = True
                     break
-                applied = False
+                lexical_attempts: list[CandidateAttempt] = []
+                lexical_choices: list[CandidateAttempt] = []
                 for rank, ranked_item in enumerate(ranked[: self.policy.max_candidate_attempts], start=1):
                     scored = replace(ranked_item.candidate, score=ranked_item.compatibility_score)
                     corrected = apply_candidate(current, scored)
@@ -354,17 +376,45 @@ class CorrectionOrchestrator:
                         syntax_error_delta=len(result.syntax_errors)-len(baseline.syntax_errors),
                         first_remaining_error_offset=result.syntax_errors[0].span.start.offset if result.syntax_errors else None,
                     )
-                    attempt = CandidateAttempt(rank, ranked_item, validation, validation.relevant_valid, None if validation.relevant_valid else "ml_candidate_did_not_resolve_lexical_error")
-                    if validation.relevant_valid and corrected not in seen_sources:
-                        history.append(CorrectionHistoryEntry(
-                            sequence=len(history)+1, status=CorrectionStatus.APPLIED, diagnostic=diagnostic,
-                            prediction=prediction, selected_candidate=scored, candidate_rank=rank,
-                            candidate_probability=ranked_item.compatibility_score, before_snippet=_snippet(current, scored.offset),
-                            after_snippet=_snippet(corrected, scored.offset), source_offset=scored.offset,
-                            validation=validation, attempts=(attempt,), reason="ml_predicted_class_repair",
-                        ))
-                        current = corrected; seen_sources.add(current); corrections += 1; applied = True; break
-                if applied:
+                    makes_progress = validation.relevant_valid and corrected not in seen_sources
+                    attempt = CandidateAttempt(
+                        rank, ranked_item, validation, makes_progress,
+                        None if makes_progress else "ml_candidate_did_not_resolve_lexical_error",
+                    )
+                    lexical_attempts.append(attempt)
+                    if makes_progress:
+                        lexical_choices.append(attempt)
+                if lexical_choices:
+                    selected = lexical_choices[0]
+                    validation = selected.validation
+                    assert validation is not None
+                    candidate = validation.candidate
+                    current_repair = validation.corrected_source
+                    entry = CorrectionHistoryEntry(
+                        sequence=len(history) + 1,
+                        status=CorrectionStatus.APPLIED,
+                        diagnostic=diagnostic,
+                        prediction=prediction,
+                        selected_candidate=candidate,
+                        candidate_rank=selected.rank,
+                        candidate_probability=selected.ranked_candidate.compatibility_score,
+                        before_snippet=_snippet(current, candidate.offset),
+                        after_snippet=_snippet(current_repair, candidate.offset),
+                        source_offset=candidate.offset,
+                        validation=validation,
+                        attempts=tuple(lexical_attempts),
+                        reason="ml_predicted_class_repair",
+                    )
+                    ambiguous = len({
+                        repair_key(choice.validation.corrected_source)
+                        for choice in lexical_choices if choice.validation is not None
+                    }) > 1
+                    if self._record_review(history, entry, auto_apply, preview, ambiguous=ambiguous):
+                        stop_reason = "correction_requires_review"
+                        break
+                    current = current_repair
+                    seen_sources.add(current)
+                    corrections += 1
                     continue
                 # If lexical input was only one symptom of a syntax error, fall through
                 # to the normal parser path rather than invoking a deterministic recovery rule.
@@ -392,14 +442,7 @@ class CorrectionOrchestrator:
             context = ErrorContext.from_diagnostic(diagnostic, baseline.tokens, current)
             prediction = self.predictor.predict_error_type(context)
             predictions.append(prediction)
-            ml_candidates = generate_ml_candidates(current, diagnostic, context, prediction)
-            # The ML prediction provides the leading class-conditioned candidates.
-            # Compiler-produced alternatives remain available as safety checks if
-            # the classifier is uncertain or its first proposal does not validate.
-            compound_candidates = generate_compound_candidates(
-                current, baseline.tokens, baseline.syntax_errors, diagnostic
-            ) if baseline.syntax_errors else ()
-            all_candidates = tuple(ml_candidates) + tuple(diagnostic.correction_candidates) + tuple(compound_candidates)
+            all_candidates = self._syntax_candidates(current, baseline, diagnostic, context, prediction)
             seen_candidate_signatures: set[tuple[Any, ...]] = set()
             candidates_list: list[CorrectionCandidate] = []
             for item in all_candidates:
@@ -421,11 +464,12 @@ class CorrectionOrchestrator:
                     current, baseline, diagnostic, context, prediction, seen_sources
                 ) if auto_apply else None
                 if fallback is not None and fallback.accepted:
-                    history.append(
-                        self._fallback_applied_entry(
-                            history, diagnostic, prediction, before_snippet, fallback
-                        )
+                    entry = self._fallback_applied_entry(
+                        history, diagnostic, prediction, before_snippet, fallback
                     )
+                    if self._record_review(history, entry, auto_apply, preview):
+                        stop_reason = "correction_requires_review"
+                        break
                     current = fallback.validation.corrected_source
                     seen_sources.add(current)
                     corrections += 1
@@ -477,16 +521,17 @@ class CorrectionOrchestrator:
                     current, baseline, diagnostic, context, prediction, seen_sources
                 ) if auto_apply else None
                 if fallback is not None and fallback.accepted:
-                    history.append(
-                        self._fallback_applied_entry(
-                            history,
-                            diagnostic,
-                            prediction,
-                            before_snippet,
-                            fallback,
-                            attempts=tuple(attempts),
-                        )
+                    entry = self._fallback_applied_entry(
+                        history,
+                        diagnostic,
+                        prediction,
+                        before_snippet,
+                        fallback,
+                        attempts=tuple(attempts),
                     )
+                    if self._record_review(history, entry, auto_apply, preview):
+                        stop_reason = "correction_requires_review"
+                        break
                     current = fallback.validation.corrected_source
                     seen_sources.add(current)
                     corrections += 1
@@ -517,9 +562,9 @@ class CorrectionOrchestrator:
                 item for item in progressing if item[2].valid
             ]
             eligible = whole_program_repairs or progressing
-            distinct_repairs: dict[str, tuple[int, RankedCandidate, CandidateValidation]] = {}
+            distinct_repairs = {}
             for item in eligible:
-                distinct_repairs.setdefault(_repair_equivalence_key(item[2].corrected_source), item)
+                distinct_repairs.setdefault(repair_key(item[2].corrected_source), item)
             choices = list(distinct_repairs.values())
 
             predicted_choices = [
@@ -567,27 +612,28 @@ class CorrectionOrchestrator:
                         if item[2].candidate.id == ambiguity.selected_candidate_id
                     )
                     rank, ranked_item, _ = selected_choice
-                    history.append(
-                        CorrectionHistoryEntry(
-                            sequence=len(history) + 1,
-                            status=CorrectionStatus.APPLIED,
-                            diagnostic=diagnostic,
-                            prediction=prediction,
-                            selected_candidate=ambiguity.selected_candidate,
-                            candidate_rank=rank,
-                            candidate_probability=ranked_item.compatibility_score,
-                            before_snippet=before_snippet,
-                            after_snippet=_snippet(
-                                ambiguity.validation.corrected_source,
-                                ambiguity.selected_candidate.offset,
-                            ),
-                            source_offset=ambiguity.selected_candidate.offset,
-                            validation=ambiguity.validation,
-                            attempts=tuple(attempts),
-                            reason="ambiguity_selection_ollama_parser_validated",
-                            ambiguity_selection=ambiguity,
-                        )
+                    entry = CorrectionHistoryEntry(
+                        sequence=len(history) + 1,
+                        status=CorrectionStatus.APPLIED,
+                        diagnostic=diagnostic,
+                        prediction=prediction,
+                        selected_candidate=ambiguity.selected_candidate,
+                        candidate_rank=rank,
+                        candidate_probability=ranked_item.compatibility_score,
+                        before_snippet=before_snippet,
+                        after_snippet=_snippet(
+                            ambiguity.validation.corrected_source,
+                            ambiguity.selected_candidate.offset,
+                        ),
+                        source_offset=ambiguity.selected_candidate.offset,
+                        validation=ambiguity.validation,
+                        attempts=tuple(attempts),
+                        reason="ambiguity_selection_ollama_parser_validated",
+                        ambiguity_selection=ambiguity,
                     )
+                    if self._record_review(history, entry, auto_apply, preview, ambiguous=True):
+                        stop_reason = "correction_requires_review"
+                        break
                     current = ambiguity.validation.corrected_source
                     seen_sources.add(current)
                     corrections += 1
@@ -612,6 +658,7 @@ class CorrectionOrchestrator:
                             else "ambiguous_valid_candidates_without_reliable_model_preference"
                         ),
                         ambiguity_selection=ambiguity,
+                        safety=assess_repair(None, None, ambiguous=True),
                     )
                 )
                 stop_reason = "ambiguous_valid_candidates"
@@ -622,9 +669,9 @@ class CorrectionOrchestrator:
 
             rank, ranked_item, validation = selected
             selected_candidate = validation.candidate
-            # A uniquely validated whole-program repair is safe even when the ML
-            # class confidence is low: the compiler has proved this exact edit.
-            # This is especially important for an unambiguous missing delimiter.
+            safety = assess_repair(selected_candidate, validation, ambiguous=len(choices) > 1)
+            # Compiler-native repairs can bypass the ML threshold. The review
+            # policy still determines whether the proposed edit may be applied.
             uniquely_validated_structural_ml_edit = (
                 selected_candidate.origin == "ml_predicted_class"
                 and "insert missing condition closer" in selected_candidate.reason
@@ -638,6 +685,7 @@ class CorrectionOrchestrator:
             # authoritative. The classifier still ranks and explains it, but an
             # unrelated/low model class must not discard deterministic parser
             # recovery or trigger an unnecessary remote fallback.
+            fallback = None
             if (
                 prediction.confidence < self.policy.llm_fallback_threshold
                 and not deterministic_compiler_edit
@@ -655,50 +703,36 @@ class CorrectionOrchestrator:
                     else None
                 )
                 if fallback is not None and fallback.accepted:
-                    history.append(
-                        self._fallback_applied_entry(
-                            history,
-                            diagnostic,
-                            prediction,
-                            before_snippet,
-                            fallback,
-                            attempts=tuple(attempts),
-                        )
-                    )
-                    current = fallback.validation.corrected_source
-                    seen_sources.add(current)
-                    corrections += 1
-                    continue
-                history.append(
-                    self._unresolved_entry(
+                    entry = self._fallback_applied_entry(
                         history,
                         diagnostic,
                         prediction,
                         before_snippet,
-                        "prediction_below_fallback_threshold",
-                        ranked[0],
-                        llm_fallback=fallback,
+                        fallback,
+                        attempts=tuple(attempts),
                     )
-                )
-                stop_reason = "low_confidence_unresolved"
-                needs_llm = True
-                break
-
-            learned_classes = {
-                CorrectionClass.KEYBOARD_GREATER_THAN.value, CorrectionClass.KEYBOARD_LESS_THAN.value,
-                CorrectionClass.KEYBOARD_MULTIPLY.value, CorrectionClass.KEYBOARD_ASSIGNMENT.value,
-                CorrectionClass.KEYBOARD_SEMICOLON.value, CorrectionClass.KEYBOARD_LPAREN.value,
-                CorrectionClass.KEYBOARD_RPAREN.value, CorrectionClass.ARRAY_DECLARATION_ERROR.value,
-                CorrectionClass.ARRAY_INDEX_ERROR.value, CorrectionClass.ARRAY_CALL_ERROR.value,
-                CorrectionClass.REPAIR_MISMATCHED_DELIMITER.value,
-                CorrectionClass.INSERT_SEMICOLON.value, CorrectionClass.INSERT_RPAREN.value,
-                CorrectionClass.INSERT_LPAREN.value, CorrectionClass.INSERT_RBRACKET.value,
-                CorrectionClass.INSERT_RBRACE.value, CorrectionClass.DELETE_EXTRA_TOKEN.value,
-                CorrectionClass.REPLACE_BRACKET.value, CorrectionClass.REPLACE_OPERATOR.value,
-                CorrectionClass.CORRECT_KEYWORD.value,
-            }
-            effective_threshold = min(self.policy.auto_apply_threshold, 0.75) if prediction.label in learned_classes else self.policy.auto_apply_threshold
-            should_suggest = not auto_apply or (
+                    if self._record_review(
+                        history, entry, auto_apply, preview,
+                        ambiguous=repair_key(entry.validation.corrected_source) != repair_key(validation.corrected_source),
+                    ):
+                        stop_reason = "correction_requires_review"
+                        break
+                    current = fallback.validation.corrected_source
+                    seen_sources.add(current)
+                    corrections += 1
+                    continue
+                if preview or not safety.requires_review:
+                    history.append(
+                        self._unresolved_entry(
+                            history, diagnostic, prediction, before_snippet,
+                            "prediction_below_fallback_threshold", ranked[0], llm_fallback=fallback,
+                        )
+                    )
+                    stop_reason = "low_confidence_unresolved"
+                    needs_llm = True
+                    break
+            requires_review = not preview and safety.requires_review
+            should_suggest = not auto_apply or requires_review or (
                 prediction.confidence < effective_threshold
                 and not deterministic_compiler_edit
             )
@@ -720,13 +754,15 @@ class CorrectionOrchestrator:
                         validation=validation,
                         attempts=tuple(attempts),
                         reason=(
-                            "suggestion_only_mode"
-                            if not auto_apply
-                            else "prediction_below_auto_apply_threshold"
+                            "correction_requires_review" if requires_review else
+                            "suggestion_only_mode" if not auto_apply else
+                            "prediction_below_auto_apply_threshold"
                         ),
+                        safety=safety,
+                        llm_fallback=fallback,
                     )
                 )
-                stop_reason = "suggestion_returned_without_source_mutation"
+                stop_reason = "correction_requires_review" if requires_review else "suggestion_returned_without_source_mutation"
                 break
 
             history.append(
@@ -745,6 +781,7 @@ class CorrectionOrchestrator:
                     source_offset=selected_candidate.offset,
                     validation=validation,
                     attempts=tuple(attempts),
+                    safety=safety,
                     reason=(
                         "unique_compiler_candidate_parser_validated"
                         if deterministic_compiler_edit
@@ -777,6 +814,22 @@ class CorrectionOrchestrator:
             stop_reason=stop_reason,
             policy=self.policy,
         )
+
+    @staticmethod
+    def _record_review(
+        history: list[CorrectionHistoryEntry],
+        entry: CorrectionHistoryEntry,
+        auto_apply: bool,
+        preview: bool,
+        *,
+        ambiguous: bool = False,
+    ) -> bool:
+        safety = assess_repair(entry.selected_candidate, entry.validation, ambiguous=ambiguous)
+        requires_review = not auto_apply or (not preview and safety.requires_review)
+        if requires_review:
+            entry = replace(entry, status=CorrectionStatus.SUGGESTED, reason="correction_requires_review")
+        history.append(replace(entry, safety=safety))
+        return requires_review
 
     @staticmethod
     def _unresolved_entry(
@@ -975,13 +1028,6 @@ def correct_source(
     return CorrectionOrchestrator(active_predictor, policy, llm_fallback).correct(
         source, auto_apply=auto_apply
     )
-
-
-def _repair_equivalence_key(source: str) -> str:
-    """Deduplicate repair candidates differing only by delimiter-adjacent spaces."""
-    normalized = re.sub(r"\s+([)\]};,{])", r"\1", source)
-    normalized = re.sub(r"([(\[{])\s+", r"\1", normalized)
-    return normalized
 
 
 def _snippet(source: str, offset: int, radius: int = 70) -> str:

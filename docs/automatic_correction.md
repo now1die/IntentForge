@@ -1,4 +1,4 @@
-# Automatic correction (Phase 6)
+# Automatic correction
 
 Phase 6 connects compiler diagnostics and validation to the ML-first correction classifier.
 Logistic Regression classifier. It does not add another model and does not call
@@ -104,3 +104,12 @@ py main.py --correct --auto-apply-threshold 0.30 --llm-fallback-threshold 0.20 e
 
 The final command demonstrates configurable thresholds with the current
 synthetic model, whose confidence varies across source templates.
+
+## Phase 1 safety policy
+
+The orchestrator gates automatic correction after ranking and validation.
+A localized structural edit can be eligible for automatic application.
+Ambiguity, possible behavior changes and unverified edits require review.
+The UI displays the proposed span and text, compiler validation status, and
+reason for review. Use the interactive options or edit the original source
+when a proposal needs approval. See the [architecture audit](phase1_architecture_audit.md).

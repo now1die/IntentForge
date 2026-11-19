@@ -1,4 +1,7 @@
 import { defineConfig } from "@playwright/test";
+
+const browserExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
+
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
@@ -7,7 +10,7 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:5173",
     browserName: "chromium",
-    channel: "msedge",
+    launchOptions: browserExecutable ? { executablePath: browserExecutable } : undefined,
     headless: true,
     viewport: { width: 1440, height: 1000 },
   },
@@ -18,8 +21,7 @@ export default defineConfig({
       reuseExistingServer: true,
     },
     {
-      command:
-        "py -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000",
+      command: "python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000",
       cwd: "..",
       url: "http://127.0.0.1:8000/health",
       reuseExistingServer: true,

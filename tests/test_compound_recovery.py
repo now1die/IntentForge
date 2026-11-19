@@ -149,7 +149,7 @@ def test_only_compiler_valid_array_and_call_compound_repairs_survive(source, exp
 
     result = CorrectionOrchestrator(
         FixedPredictor(CorrectionClass.REPLACE_BRACKET, confidence=0.70)
-    ).correct(source)
+    ).correct(source, preview=True)
     assert result.success
     assert result.history[0].selected_candidate.id == valid[0].candidate.id
     assert result.history[0].selected_candidate.action is CorrectionAction.COMPOUND
@@ -178,7 +178,7 @@ def test_single_edit_nested_delimiter_repair_remains_unchanged() -> None:
     assert compounds == ()
     result = CorrectionOrchestrator(
         FixedPredictor(CorrectionClass.REPLACE_BRACKET)
-    ).correct(B_NESTED)
+    ).correct(B_NESTED, preview=True)
     assert result.success and result.corrections_applied == 1
     assert result.history[0].selected_candidate.origin in {"traditional_recovery", "ml_predicted_class"}
     assert result.history[0].selected_candidate.action is CorrectionAction.REPLACE
@@ -198,7 +198,7 @@ def test_existing_single_edit_control_condition_path_does_not_attempt_compound()
 
 
 def test_original_multi_error_program_continues_after_compound_repair() -> None:
-    result = CorrectionOrchestrator(MultiErrorPredictor()).correct(MULTI_ERROR)
+    result = CorrectionOrchestrator(MultiErrorPredictor()).correct(MULTI_ERROR, preview=True)
 
     assert result.success and parse(result.corrected_source).valid
     assert result.original_source == MULTI_ERROR
@@ -220,7 +220,7 @@ def test_ml_unique_compound_class_skips_groq() -> None:
     result = CorrectionOrchestrator(
         FixedPredictor(CorrectionClass.INSERT_RPAREN),
         llm_fallback=fallback,
-    ).correct(A_IF_MIXED)
+    ).correct(A_IF_MIXED, preview=True)
 
     assert result.success
     assert fallback.selection_calls == 0
@@ -236,7 +236,7 @@ def test_low_confidence_unique_compound_class_uses_constrained_groq() -> None:
     result = CorrectionOrchestrator(
         FixedPredictor(CorrectionClass.INSERT_RPAREN, confidence=0.70),
         llm_fallback=fallback,
-    ).correct(A_IF_MIXED)
+    ).correct(A_IF_MIXED, preview=True)
 
     assert result.success and fallback.selection_calls == 1
     assert result.history[0].ambiguity_selection is not None
@@ -259,7 +259,7 @@ def test_ambiguous_compound_candidates_use_groq_and_revalidate(monkeypatch) -> N
     result = CorrectionOrchestrator(
         FixedPredictor(CorrectionClass.REPLACE_BRACKET),
         llm_fallback=fallback,
-    ).correct(A_IF_MIXED)
+    ).correct(A_IF_MIXED, preview=True)
 
     assert result.success and fallback.selection_calls == 1
     assert len(fallback.received) == 2

@@ -128,7 +128,7 @@ def orchestrator(predictor: MLCorrectionPredictor) -> CorrectionOrchestrator:
     ],
 )
 def test_repair_scenario_matrix(orchestrator, name: str, source: str, expected: str) -> None:
-    result = orchestrator.correct(source, auto_apply=True)
+    result = orchestrator.correct(source, preview=True)
     assert result.success, f"{name}: correction failed ({result.stop_reason})"
     assert result.corrected_source == expected, f"{name}: got {result.corrected_source!r}"
     assert parse(result.corrected_source).valid, f"{name}: correction did not parse"
@@ -140,10 +140,15 @@ def test_exact_screenshot_via_http_correct_endpoint() -> None:
     response = client.post("/correct", json={"code": source})
     assert response.status_code == 200, response.text
     body = response.json()
-    assert body["success"] is True
-    assert body["corrected_code"] == "int main(){ int a,b; if(a>b){return 0;} }"
-    assert body["fully_syntactically_valid"] is True
-    assert body["corrections_applied"] == 1
+    assert body["success"] is False
+    assert body["corrected_code"] == source
+    assert body["fully_syntactically_valid"] is False
+    assert body["corrections_applied"] == 0
+    proposal = body["history"][0]
+    assert proposal["status"] == "SUGGESTED"
+    assert proposal["safety"]["requires_review"]
+    assert proposal["validation"]["valid"]
+    assert proposal["validation"]["corrected_source"] == "int main(){ int a,b; if(a>b){return 0;} }"
 
 
 def test_valid_comma_separated_declarations_are_supported() -> None:
@@ -159,7 +164,7 @@ def test_ambiguous_edit_is_not_silently_applied(orchestrator) -> None:
     result = orchestrator.correct(source, auto_apply=True)
     assert result.success is False
     assert result.corrected_source == source
-    assert result.stop_reason == "ambiguous_valid_candidates"
+    assert result.history[0].to_dict()["safety"]["requires_review"]
 
 
 def test_dot_outside_condition_is_not_guessed_as_comparison(orchestrator) -> None:
@@ -173,7 +178,7 @@ def test_dot_outside_condition_is_not_guessed_as_comparison(orchestrator) -> Non
 def test_each_trained_class_repairs_a_packaged_example(orchestrator, label: str) -> None:
     records = read_jsonl("datasets/syntax_corrections.jsonl")
     record = next(item for item in records if item.label == label)
-    result = orchestrator.correct(record.corrupted_source, auto_apply=True)
+    result = orchestrator.correct(record.corrupted_source, preview=True)
     assert result.predictions and result.predictions[0].label == label
     # Declaration-separator errors can have multiple equally valid repairs; the
     # interactive UI intentionally does not silently choose one. The options

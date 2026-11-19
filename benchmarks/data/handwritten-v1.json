@@ -1,0 +1,446 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "seed-semicolon",
+      "category": "missing_semicolon",
+      "source": "int tally(int p) { p += 2\n return p; }",
+      "acceptable_sources": [
+        "int tally(int p) { p += 2;\n return p; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return the input incremented by two.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-semicolon",
+      "expected_class": "INSERT_SEMICOLON",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-while-closer",
+      "category": "missing_or_mismatched_brackets",
+      "source": "int countdown(int n) { while (n > 0 { n--; } return n; }",
+      "acceptable_sources": [
+        "int countdown(int n) { while (n > 0) { n--; } return n; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Decrement positive inputs to zero.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-while-closer",
+      "expected_class": "INSERT_RPAREN",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-array-closer",
+      "category": "missing_or_mismatched_brackets",
+      "source": "int slots[4; int first_slot() { return slots[0]; }",
+      "acceptable_sources": [
+        "int slots[4]; int first_slot() { return slots[0]; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Declare four global slots and return the first one.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-array-closer",
+      "expected_class": "INSERT_RBRACKET",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-comparison-spelling",
+      "category": "incorrect_operator",
+      "source": "bool at_limit(int n, int limit) { return n => limit; }",
+      "acceptable_sources": [
+        "bool at_limit(int n, int limit) { return n >= limit; }"
+      ],
+      "rejected_sources": [
+        "bool at_limit(int n, int limit) { return n <= limit; }",
+        "bool at_limit(int n, int limit) { return n > limit; }"
+      ],
+      "specification": "Return true at or above the limit.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-comparison-spelling",
+      "expected_class": "REPLACE_OPERATOR",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-declaration",
+      "category": "variable_declaration",
+      "source": "int reserve = 3; bool ready + true; int capacity() { return reserve; }",
+      "acceptable_sources": [
+        "int reserve = 3; bool ready = true; int capacity() { return reserve; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Initialize ready to true and preserve the reserve.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-declaration",
+      "expected_class": "KEYBOARD_ASSIGNMENT",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-indexing",
+      "category": "array_indexing_or_declaration",
+      "source": "int history[3]; void save(int pos, int reading) { history(pos) = reading; }",
+      "acceptable_sources": [
+        "int history[3]; void save(int pos, int reading) { history[pos] = reading; }"
+      ],
+      "rejected_sources": [
+        "int history[3]; void save(int pos, int reading) { history[0] = reading; }"
+      ],
+      "specification": "Write the reading to the chosen array element.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-indexing",
+      "expected_class": "ARRAY_CALL_ERROR",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-index-type",
+      "category": "array_indexing_or_declaration",
+      "source": "int bins[4]; int read_bin() { return bins[1.5]; }",
+      "acceptable_sources": [
+        "int bins[4]; int read_bin() { return bins[1]; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Read element at index one.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-index-type",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-unknown-reference",
+      "category": "incorrect_variable_reference",
+      "source": "int adjusted(int raw) { int bias = 4; return row + bias; }",
+      "acceptable_sources": [
+        "int adjusted(int raw) { int bias = 4; return raw + bias; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return raw plus the local bias.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-unknown-reference",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-wrong-reference",
+      "category": "incorrect_variable_reference",
+      "source": "int offset(int current, int previous) { int delta = current - previous; return previous; }",
+      "acceptable_sources": [
+        "int offset(int current, int previous) { int delta = current - previous; return delta; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return the difference between current and previous.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-wrong-reference",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "seed-arithmetic",
+      "category": "incorrect_arithmetic",
+      "source": "int pack_size(int units, int rows) { return units + rows; }",
+      "acceptable_sources": [
+        "int pack_size(int units, int rows) { return units * rows; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return the product of units and rows.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-arithmetic",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "seed-comparison",
+      "category": "incorrect_comparison",
+      "source": "bool hot(int sample) { return sample < 90; }",
+      "acceptable_sources": [
+        "bool hot(int sample) { return sample >= 90; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return true at or above ninety.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-comparison",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "seed-conditional",
+      "category": "incorrect_conditional",
+      "source": "int shipping(bool local) { if (!local) { return 2; } return 8; }",
+      "acceptable_sources": [
+        "int shipping(bool local) { if (local) { return 2; } return 8; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Local shipping costs two, otherwise eight.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-conditional",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "seed-return",
+      "category": "missing_or_incorrect_return",
+      "source": "int stored(bool use_cache) { if (use_cache) { return; } return 37; }",
+      "acceptable_sources": [
+        "int stored(bool use_cache) { if (use_cache) { return 37; } return 37; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return 37 regardless of whether the caller opts into the cached value.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-return",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-ambiguous-condition",
+      "category": "ambiguous_intent",
+      "source": "int award(int score, int cutoff) { if (score <> cutoff) { return 1; } return 0; }",
+      "acceptable_sources": [
+        "int award(int score, int cutoff) { if (score < cutoff) { return 1; } return 0; }",
+        "int award(int score, int cutoff) { if (score > cutoff) { return 1; } return 0; }"
+      ],
+      "rejected_sources": [],
+      "specification": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-ambiguous-condition",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-ambiguous-declaration",
+      "category": "ambiguous_intent",
+      "source": "float minimum, maximum reading; bool ready = false;",
+      "acceptable_sources": [
+        "float minimum, maximum, reading; bool ready = false;",
+        "float minimum, maximum; float reading; bool ready = false;"
+      ],
+      "rejected_sources": [],
+      "specification": null,
+      "unambiguous": false,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-ambiguous-declaration",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-valid-loop",
+      "category": "valid_control",
+      "source": "int clamp(int n) { while (n > 10) { n--; } return n; }",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "specification": "Clamp values above ten.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-valid-loop",
+      "expected_class": null,
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-valid-call",
+      "category": "valid_control",
+      "source": "int double_value(int n) { return n + n; } int output() { return double_value(6); }",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "specification": "Return twelve.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-valid-call",
+      "expected_class": null,
+      "has_error": false,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-pointer",
+      "category": "unsupported_minic",
+      "source": "int dereference(int *p) { return *p; }",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "specification": "Return the pointed-to integer.",
+      "unambiguous": true,
+      "minic_supported": false,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-pointer",
+      "expected_class": null,
+      "has_error": false,
+      "detection_scope": "unsupported"
+    },
+    {
+      "id": "seed-output-count",
+      "category": "valid_syntax_wrong_logic",
+      "source": "int emitted(int a, int b) { int total = a + b; return a; }",
+      "acceptable_sources": [
+        "int emitted(int a, int b) { int total = a + b; return total; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Return the total that the caller is supposed to emit.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-output-count",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "logic"
+    },
+    {
+      "id": "seed-return-adjacent-operands",
+      "category": "incorrect_arithmetic",
+      "source": "int merge(int wet, int dry) { return wet dry; }",
+      "acceptable_sources": [
+        "int merge(int wet, int dry) { return wet + dry; }"
+      ],
+      "rejected_sources": [
+        "int merge(int wet, int dry) { return wet; }",
+        "int merge(int wet, int dry) { return wet; dry; }"
+      ],
+      "specification": "Return the sum of both arguments.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-return-adjacent-operands",
+      "expected_class": null,
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-reversed-less-equal",
+      "category": "incorrect_operator",
+      "source": "bool allowed(int flow) { while (flow =< 3) { return true; } return false; }",
+      "acceptable_sources": [
+        "bool allowed(int flow) { while (flow <= 3) { return true; } return false; }"
+      ],
+      "rejected_sources": [
+        "bool allowed(int flow) { while (flow < 3) { return true; } return false; }"
+      ],
+      "specification": "Return true when the flow is at most three.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-reversed-less-equal",
+      "expected_class": "REPLACE_OPERATOR",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-interleaved-declaration-semicolon",
+      "category": "missing_semicolon",
+      "source": "int doubled_total(int x) { int result = x * 2\n if (x > 0) { return result; } return 0; }",
+      "acceptable_sources": [
+        "int doubled_total(int x) { int result = x * 2;\n if (x > 0) { return result; } return 0; }"
+      ],
+      "rejected_sources": [],
+      "specification": "Double positive input and return zero for other inputs.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-interleaved-declaration-semicolon",
+      "expected_class": "INSERT_SEMICOLON",
+      "has_error": true,
+      "detection_scope": "compiler"
+    },
+    {
+      "id": "seed-valid-global-array",
+      "category": "valid_control",
+      "source": "int queue[6]; bool has_head() { return queue[0] > 0; }",
+      "acceptable_sources": [],
+      "rejected_sources": [],
+      "specification": "Check whether the first queue entry is positive.",
+      "unambiguous": true,
+      "minic_supported": true,
+      "provenance": "synthetic",
+      "split": "evaluation",
+      "corpus": "handwritten",
+      "mutation_family": "seed-valid-global-array",
+      "expected_class": null,
+      "has_error": false,
+      "detection_scope": "compiler"
+    }
+  ]
+}

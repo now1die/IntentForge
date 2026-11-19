@@ -1,103 +1,87 @@
-# AI-Assisted Syntax Error Detection and Correction Compiler
+# IntentForge
 
-This repository contains **Phases 1 through 9** of a Mini-C compiler
-front-end: a PLY Lex lexer, an explicitly defined PLY Yacc grammar, source-located
-AST construction and visualization, structured lexical/syntax diagnostics,
-examples, tests, traditional syntax recovery, source correction candidates, and
-model-independent AI context interfaces, a scoped symbol table, and basic semantic
-analysis, validated synthetic ML data generation, explainable compiler-context
-features, a Scikit-learn correction classifier, iterative compiler-validated
-automatic correction, a constrained local Ollama fallback for unresolved errors, and a
-FastAPI backend with a React, TypeScript, Vite, and Monaco compiler workbench.
+IntentForge is a Mini-C compiler front end and code-repair workbench. It generates
+source-located diagnostics, ASTs and symbol tables, and offers repairs using
+compiler rules, a bundled scikit-learn classifier and optional local Ollama.
+Phase 1 measures how often these repairs recover a supplied programmer intention.
+General detection of specification-level logic errors remains unsupported.
 
-## Setup
+## Run locally
 
-```powershell
+From the repository root with Python 3.12 and Node 20.19 through 24:
+
+```sh
 python -m venv .venv
-.\.venv\Scripts\python -m pip install -r requirements.txt
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
 ```
 
-## Run
+On Windows PowerShell, activate with the
+relative path `./.venv/Scripts/Activate.ps1`. Start the frontend in a second terminal:
 
-```powershell
-.\.venv\Scripts\python main.py --tokens examples\valid\demo.mc
-.\.venv\Scripts\python main.py --ast examples\valid\demo.mc
-.\.venv\Scripts\python main.py --tokens examples\invalid\lexical_errors.mc
-.\.venv\Scripts\python main.py --errors examples\invalid\multiple_errors.mc
-.\.venv\Scripts\python main.py --error-context examples\invalid\broken_if.mc
-.\.venv\Scripts\python main.py --symbols examples\valid\scopes_and_functions.mc
-.\.venv\Scripts\python main.py --semantic-errors examples\invalid\semantic_errors.mc
-.\.venv\Scripts\python main.py --generate-dataset
-.\.venv\Scripts\python main.py --train-model
-.\.venv\Scripts\python main.py --predict-error examples\invalid\broken_if.mc
-.\.venv\Scripts\python main.py --correct examples\invalid\broken_if.mc
-.\.venv\Scripts\python main.py --suggest-corrections examples\invalid\missing_semicolon.mc
-.\.venv\Scripts\python main.py --correct --auto-apply-threshold 0.30 --llm-fallback-threshold 0.20 examples\invalid\multiple_errors.mc
-.\.venv\Scripts\python -m uvicorn backend.app.main:app --reload
-.\.venv\Scripts\python -m pytest
+```sh
+npm --prefix frontend ci
+npm --prefix frontend run dev
 ```
 
-In a second terminal, start the Phase 9 workbench:
+Open <http://127.0.0.1:5173>. The development frontend calls
+`http://127.0.0.1:8000` by default. Set `VITE_API_BASE_URL` at build time to
+use another API.
 
-```powershell
-cd frontend
-npm install
-npm run dev
+```sh
+python main.py --ast examples/valid/demo.mc
+python main.py --semantic-errors examples/invalid/semantic_errors.mc
+python main.py --correct examples/invalid/broken_if.mc
+python main.py --suggest-corrections examples/invalid/missing_semicolon.mc
 ```
 
-Open `http://127.0.0.1:5173`. The frontend expects the API at
-`http://127.0.0.1:8000` by default. See `frontend/.env.example` to override it.
+The workbench keeps source in the editor until you select and apply a repair.
+`POST /correct` returns safe automatic edits and review metadata for other
+proposals. `POST /correction-options` returns ranked choices.
+`POST /validate-correction` checks user-written corrections. Compiler validation
+covers syntax and supported semantic checks. Behavioral correctness depends on
+the intended program.
 
-With no mode flag, the CLI defaults to token output for backward compatibility.
-See `docs/mini_c_spec.md` for the language definition and `docs/grammar.md` for the
-CFG and precedence table.
-Recovery design and candidate semantics are documented in
-`docs/error_recovery.md`.
-Scope and type rules are documented in `docs/semantic_analysis.md`.
-The dataset, feature, training, and prediction design is documented in
-`docs/ml_correction.md`. The bundled ML-first model has 21 correction classes and
-2,400 compiler-validated synthetic training records. The unresolved-error fallback
-uses a local Ollama model; no cloud API key is required. Reproduced scenario coverage and
-current results are in `test_suite/ML_FIRST_FULL_SCENARIO_VERIFICATION.md`.
+## Verify Phase 1
 
-To run the complete local verification suite from PowerShell:
-
-```powershell
-.\.venv\Scripts\python.exe -m pytest -q --disable-warnings
-.\.venv\Scripts\python.exe test_suite\run_test_cases.py
-.\.venv\Scripts\python.exe test_suite\run_keyboard_and_array_regression.py
-.\.venv\Scripts\python.exe test_suite\stress\run_stress_tests.py .
+```sh
+python -m pytest -q
+python -m benchmarks.run
+python -m benchmarks.audit_training
+python -m scripts.verify_ollama
+npm --prefix frontend run build
+npm --prefix frontend exec -- playwright install chromium
+npm --prefix frontend test
 ```
-The Phase 6 ranking, confidence, validation, and iteration policy is documented
-in `docs/automatic_correction.md`.
-The optional structured local Ollama fallback is documented in `docs/llm_fallback.md`.
-The FastAPI endpoints, schemas, error policy, and local run instructions are in
-`docs/api.md`.
-The Phase 9 UI architecture, compiler-logic boundary, and verification commands
-are documented in `docs/frontend.md`.
 
-## Vercel deployment
+The Ollama probe exits with status 1 if the service, configured model, or a
+valid inference result is unavailable. The benchmark keeps that mode optional.
+Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to use an installed Chromium binary.
+Keep the virtual environment active when running Playwright so it can launch
+the backend.
 
-Deploy the repository root as one Vercel project. The Vite workbench is built as
-static output and the existing FastAPI application is mounted under `/api` by
-`api/index.py`. Production browser requests therefore stay on the deployment's
-own origin.
+The bundled classifier has 25 classes. Its historical report records 2,560 train
+rows and 640 test rows from a controlled synthetic split. The archived source
+corpora contain 3,040 rows, so the original 3,200-record run is not fully
+reconstructible from the archive. Phase 1 preserves the shipped model and
+evaluates a separate frozen corpus.
 
-Configure these environment variables for a local deployment:
+- [Architecture audit](docs/phase1_architecture_audit.md)
+- [Model generalization analysis](docs/ml_generalization_analysis.md)
+- [Verification and Phase 1 results](docs/phase1_results.md)
+- [Benchmark methodology](benchmarks/README.md)
+- [Historical verification](FINAL_VERIFICATION.md)
 
-- `OLLAMA_HOST` — local Ollama endpoint, default `http://127.0.0.1:11434`.
-- `OLLAMA_MODEL` — installed local model, default `llama3.2:3b`.
-- `CORS_ALLOWED_ORIGINS` — optional comma-separated exact frontend origins.
+## Configuration
 
-There is no `GROQ_API_KEY` requirement in the active local correction pipeline.
-Local `.env` and `.env.*` files are ignored; committed `.env.example` files contain
-names and safe defaults only. The deployment uses Python 3.12 so the pinned
-Scikit-learn and Joblib versions match the deployment classifier artifact.
+Ollama is optional. It defaults to `http://127.0.0.1:11434` and
+`llama3.2:3b`. Export `OLLAMA_HOST`, `OLLAMA_MODEL`, and `OLLAMA_ENABLED`,
+or put them in a root `.env` copied from `.env.example`. Leave Ollama on
+loopback or a trusted private network. The application never downloads a model.
 
-## Interactive correction choices
-
-The workbench now supports user-controlled correction review. Clicking **Correct** generates multiple compiler-validated alternatives ranked with the trained ML classifier, rather than silently applying one repair. Users can select an option and apply it, open the custom correction editor, or edit the original source themselves. Custom corrections are sent to `/validate-correction` before application.
-
-New API endpoints:
-- `POST /correction-options` — returns ranked, compiler-validated alternatives for the first repairable diagnostic.
-- `POST /validate-correction` — validates a user-selected or custom corrected source before it is applied.
+Vercel configuration serves the Vite build and mounts the FastAPI app under
+`/api`. Set `OLLAMA_ENABLED=false` on a hosted deployment without private
+Ollama connectivity. Set `CORS_ALLOWED_ORIGINS` in the API process environment
+for a separately hosted frontend. See the [deployment audit](docs/phase1_architecture_audit.md)
+and [API documentation](docs/api.md).
