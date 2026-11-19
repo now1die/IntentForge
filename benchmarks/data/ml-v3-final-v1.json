@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "barcode_ramp",
+      "family": "barcode_ramp",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "int marks[11]; int decode(int bias){int answer=bias;for(int n=0;n<=11;n++){int digit=marks[n];if(digit>0){answer+=digit;}} return answer;}",
+      "accepted": [
+        "int marks[11]; int decode(int bias){int answer=bias;for(int n=0;n<11;n++){int digit=marks[n];if(digit>0){answer+=digit;}} return answer;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "shifted_port",
+      "family": "shifted_port",
+      "category": "ARRAY_INDEX",
+      "kind": "logic",
+      "source": "int ports[13]; int update(int mask){for(int phase=0;phase<13;phase++){ports[phase-1]=mask%16;mask/=2;}return mask;}",
+      "accepted": [
+        "int ports[13]; int update(int mask){for(int phase=0;phase<13;phase++){ports[phase]=mask%16;mask/=2;}return mask;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "ticket_adjustment",
+      "family": "ticket_adjustment",
+      "category": "RETURN_EXPRESSION",
+      "kind": "logic",
+      "source": "int ticket(int base,int discount,bool approved){int reduced=base-discount;if(reduced<0){return 0;}if(approved){return reduced;}return base;}",
+      "accepted": [
+        "int ticket(int base,int discount,bool approved){int reduced=base-discount;if(reduced<0){return 0;}if(approved){return reduced;}return reduced;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "layout_mirror",
+      "family": "layout_mirror",
+      "category": "ARITHMETIC_OPERATOR",
+      "kind": "logic",
+      "source": "int layout(int first,int middle,int last,int padding){int a=first+padding;int b=middle+padding;int c=last-padding;if(c<a){return c;}return a+b+c;}",
+      "accepted": [
+        "int layout(int first,int middle,int last,int padding){int a=first+padding;int b=middle+padding;int c=last+padding;if(c<a){return c;}return a+b+c;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "log_update",
+      "family": "log_update",
+      "category": "MULTIPLE_LOCALIZED",
+      "kind": "logic",
+      "source": "int flips[7]; int gaps[8]; int chart(){for(int j=0;j<=7;j++){flips[j]=j-1;}for(int k=0;k<8;k++){gaps[k+1]=k*2;}return flips[0]+gaps[7];}",
+      "accepted": [
+        "int flips[7]; int gaps[8]; int chart(){for(int j=0;j<7;j++){flips[j]=j-1;}for(int k=0;k<8;k++){gaps[k]=k*2;}return flips[0]+gaps[7];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "ice_report",
+      "family": "ice_report",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "compiler",
+      "source": "bool reading(int station,char mode,bool on){if(mode=='?'){return false;}return station>0 && on;} bool publish(char token,bool enabled,int station){return reading(token,enabled,station);}",
+      "accepted": [
+        "bool reading(int station,char mode,bool on){if(mode=='?'){return false;}return station>0 && on;} bool publish(char token,bool enabled,int station){return reading(station,token,enabled);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "reset_shift",
+      "family": "reset_shift",
+      "category": "DECLARATION_TYPE",
+      "kind": "compiler",
+      "source": "bool set(int amount,bool ready,int phase){while(phase>0){amount*=2;phase--;} if(amount<0){return false;} bool chosen=amount;return chosen || phase==1;}",
+      "accepted": [
+        "bool set(int amount,bool ready,int phase){while(phase>0){amount*=2;phase--;} if(amount<0){return false;} bool chosen=ready;return chosen || phase==1;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "terminal_dispatch",
+      "family": "terminal_dispatch",
+      "category": "VARIABLE_REFERENCE",
+      "kind": "compiler",
+      "source": "int dispatch(int base,int end,bool hold){int total=base+end; {int end=total*2;if(end<0){return base;}} if(hold){total-=1;}return totl;}",
+      "accepted": [
+        "int dispatch(int base,int end,bool hold){int total=base+end; {int end=total*2;if(end<0){return base;}} if(hold){total-=1;}return total;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "joined_alpha",
+      "family": "joined_alpha",
+      "category": "MISSING_EXPRESSION",
+      "kind": "compiler",
+      "source": "int alpha(int signal,int key){for(int j=0;j<3;j++){if(signal==key){break;}signal-=j;}signal+=key;return;}",
+      "accepted": [
+        "int alpha(int signal,int key){for(int j=0;j<3;j++){if(signal==key){break;}signal-=j;}signal+=key;return signal;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "split": "final"
+    },
+    {
+      "id": "cell_selection",
+      "family": "cell_selection",
+      "category": "ARRAY_INDEX",
+      "kind": "logic",
+      "source": "int logs[21]; int point(int offset,int skip){if(offset<0){offset=0;} while(skip<0){skip++;}return logs[skip];}",
+      "accepted": [
+        "int logs[21]; int point(int offset,int skip){if(offset<0){offset=0;} while(skip<0){skip++;}return logs[offset];}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "description": "return the element of logs at index offset"
+      },
+      "explicit": {
+        "return_expression": "logs[offset]"
+      },
+      "split": "final"
+    },
+    {
+      "id": "exclusion_band",
+      "family": "exclusion_band",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "bool pass(int level,int upper,int lower){while(level<0){level+=2;}if(upper<=lower){upper=lower+1;}return level>=lower && level<=upper;}",
+      "accepted": [
+        "bool pass(int level,int upper,int lower){while(level<0){level+=2;}if(upper<=lower){upper=lower+1;}return level>lower && level<upper;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "description": "return whether level is between lower and upper exclusive"
+      },
+      "explicit": {
+        "return_expression": "level>lower && level<upper"
+      },
+      "split": "final"
+    },
+    {
+      "id": "negated_latch",
+      "family": "negated_latch",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "bool settle(bool armed,bool locked){return armed == locked;}",
+      "accepted": [
+        "bool settle(bool armed,bool locked){return !(armed == locked);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "description": "return whether not (armed is equal to locked)"
+      },
+      "explicit": {
+        "return_expression": "!(armed == locked)"
+      },
+      "split": "final"
+    },
+    {
+      "id": "charged_meter",
+      "family": "charged_meter",
+      "category": "ARITHMETIC_OPERATOR",
+      "kind": "logic",
+      "source": "int fee(int delivered,int prior){int cents=delivered/2; return cents-(prior);}",
+      "accepted": [
+        "int fee(int delivered,int prior){int cents=delivered/2; return cents+(prior);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "description": "return the accumulator cents plus prior"
+      },
+      "explicit": {
+        "return_expression": "cents+(prior)"
+      },
+      "split": "final"
+    },
+    {
+      "id": "ordered_blend",
+      "family": "ordered_blend",
+      "category": "FUNCTION_ARGUMENT",
+      "kind": "logic",
+      "source": "int blend(int left,int right){return left*3+right;} int pick(int weight,int value){return blend(value,weight);}",
+      "accepted": [
+        "int blend(int left,int right){return left*3+right;} int pick(int weight,int value){return blend(weight,value);}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "function": "pick",
+        "description": "return the result of calling blend with weight and value"
+      },
+      "explicit": {
+        "function": "pick",
+        "return_expression": "blend(weight,value)"
+      },
+      "split": "final"
+    },
+    {
+      "id": "join_boundary",
+      "family": "join_boundary",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "bool range(int input,int near,int far,bool enabled){if(!enabled){return false;}return input>=near || input<=far;}",
+      "accepted": [
+        "bool range(int input,int near,int far,bool enabled){if(!enabled){return false;}return input>=near && input<=far;}"
+      ],
+      "provenance": "Original IntentForge Mini-C exercise and authored fault",
+      "natural": {
+        "description": "return whether input is between near and far inclusive",
+        "return_ordinal": 2
+      },
+      "explicit": {
+        "return_expression": "input>=near && input<=far",
+        "return_ordinal": 2
+      },
+      "split": "final"
+    },
+    {
+      "id": "armstrong_partial_digit_power",
+      "family": "armstrong_partial_digit_power",
+      "category": "COMPARISON_OPERATOR",
+      "kind": "logic",
+      "source": "bool armstrong3(int n){if(n<100 || n>999){return false;} int left=n/100;int mid=n/10%10;int right=n%10;int sum=left*left*left+mid*mid*mid+right*right*right;return sum!=n;}",
+      "accepted": [
+        "bool armstrong3(int n){if(n<100 || n>999){return false;} int left=n/100;int mid=n/10%10;int right=n%10;int sum=left*left*left+mid*mid*mid+right*right*right;return sum==n;}"
+      ],
+      "provenance": "Original Mini-C exercise adapted from Exercism task description",
+      "external_task": "https://github.com/exercism/problem-specifications/blob/4812c213a2647e2034ad5ac78155ce9265cdd171/exercises/armstrong-numbers/description.md",
+      "license": "MIT",
+      "license_url": "https://github.com/exercism/problem-specifications/blob/4812c213a2647e2034ad5ac78155ce9265cdd171/LICENSE",
+      "split": "final"
+    },
+    {
+      "id": "resistor_numeric_lookup",
+      "family": "resistor_numeric_lookup",
+      "category": "ARRAY_INDEX",
+      "kind": "logic",
+      "source": "int bands[10]; int code(int first,int second){if(first<0 || second<0 || first>9 || second>9){return -1;}return bands[first]*10+bands[first];}",
+      "accepted": [
+        "int bands[10]; int code(int first,int second){if(first<0 || second<0 || first>9 || second>9){return -1;}return bands[first]*10+bands[second];}"
+      ],
+      "provenance": "Original Mini-C exercise adapted from Exercism task description",
+      "external_task": "https://github.com/exercism/problem-specifications/blob/4812c213a2647e2034ad5ac78155ce9265cdd171/exercises/resistor-color-duo/description.md",
+      "license": "MIT",
+      "license_url": "https://github.com/exercism/problem-specifications/blob/4812c213a2647e2034ad5ac78155ce9265cdd171/LICENSE",
+      "split": "final"
+    },
+    {
+      "id": "series_numeric_slice_cell",
+      "family": "series_numeric_slice_cell",
+      "category": "ARITHMETIC_OPERATOR",
+      "kind": "logic",
+      "source": "int digits[16]; int slice_digit(int begin,int width,int cell){if(cell<0 || cell>=width || begin+width>16){return -1;}return digits[begin-cell];}",
+      "accepted": [
+        "int digits[16]; int slice_digit(int begin,int width,int cell){if(cell<0 || cell>=width || begin+width>16){return -1;}return digits[begin+cell];}"
+      ],
+      "provenance": "Original Mini-C exercise adapted from Exercism task description",
+      "external_task": "https://github.com/exercism/problem-specifications/blob/4812c213a2647e2034ad5ac78155ce9265cdd171/exercises/series/description.md",
+      "license": "MIT",
+      "license_url": "https://github.com/exercism/problem-specifications/blob/4812c213a2647e2034ad5ac78155ce9265cdd171/LICENSE",
+      "split": "final"
+    },
+    {
+      "id": "control_source_quota",
+      "family": "control_source_quota",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int quota(int capacity,int count,bool reserve){if(reserve){capacity-=1;}int score=capacity*count;capacity--;return capacity;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "control_boundary_break",
+      "family": "control_boundary_break",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int bank[15];int deposit(int s){for(int i=0;i<=15;i++){if(i>=15){continue;}bank[i]=s*i;}return bank[0];}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "control_countdown",
+      "family": "control_countdown",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int cells[6];int take(){int sum=0;for(int x=5;x>=0;x--){sum+=cells[x];}return sum;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "control_intentional_rollover",
+      "family": "control_intentional_rollover",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int calc(int base,int bump,int gate){int hi=base+bump;if(hi>=gate){return hi;}else{base-=gate;}return base;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "control_conversion",
+      "family": "control_conversion",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "float ratio(float a,int b,bool safe){if(!safe || b==0){return 0;}return a/b;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "control_shadow_ring",
+      "family": "control_shadow_ring",
+      "category": "VALID_CONTROL",
+      "kind": "control",
+      "source": "int shift(int pos,int limit){int reserve=pos+1;while(pos<limit){int reserve=limit-pos;if(reserve==0){return pos;}pos++;}return reserve;}",
+      "accepted": [],
+      "ambiguous": false,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "ambiguous_identifier",
+      "family": "ambiguous_identifier",
+      "category": "AMBIGUOUS",
+      "kind": "control",
+      "source": "int resolve(int upper,int lower){if(upper==lower){return upper;}return marked+3;}",
+      "accepted": [],
+      "ambiguous": true,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    },
+    {
+      "id": "ambiguous_operator",
+      "family": "ambiguous_operator",
+      "category": "AMBIGUOUS",
+      "kind": "control",
+      "source": "int resolve_rate(int units,int rate,int change){int base=units*rate;if(base<10){return base+change;}return base-change;}",
+      "accepted": [],
+      "ambiguous": true,
+      "provenance": "Original IntentForge Mini-C exercise",
+      "split": "final"
+    }
+  ]
+}
