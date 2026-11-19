@@ -13,7 +13,7 @@ from vm.interpreter import prepare
 from vm.runtime import RuntimeFault, WorkBudget
 
 from .contracts import Batch, BatchResult
-from .probes import compare_probes
+from .probes import compare_probes, ranked_probes
 
 MAX_PRIVATE_INPUT = 384_000
 
@@ -75,7 +75,8 @@ def run_batch(batch):
                 eligible.append((program.candidate_id, prepare(program.source)))
             except RuntimeFault:
                 continue
-    probes = compare_probes(eligible, batch.entry_point, tuple(row.arguments for row in vectors), batch.limits, shared)
+    probe_method = ranked_probes if batch.engine_version == 5 else compare_probes
+    probes = probe_method(eligible, batch.entry_point, tuple(row.arguments for row in vectors), batch.limits, shared)
     return BatchResult(runs=tuple(runs), probes=probes)
 
 

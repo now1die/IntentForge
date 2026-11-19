@@ -18,7 +18,7 @@ from ai.intention_engine import analyze_intention
 from ai.intention_requirements import InvalidRequirement
 from ai.intention_uncertainty import classify
 from execution_service.contracts import (
-    Availability, Batch, BatchResult, CandidateReview, Program, VerifyRequest, VerifyResponse,
+    Availability, Batch, BatchResult, CandidateReview, Program, RankedProbe, VerifyRequest, VerifyResponse,
 )
 from .request_body import bounded_body
 
@@ -102,13 +102,17 @@ def validate_identity(batch, returned):
     vectors = tuple(row.model_dump_json() for row in batch.vectors)
     for program, run in zip(batch.programs, returned.runs, strict=True):
         if (run.program != program_identity(program.source) or run.entry_point != batch.entry_point
-                or run.candidate_id != program.candidate_id or run.execution is None
-                or tuple(row.model_dump_json() for row in run.execution.vectors) != vectors):
+                or run.candidate_id != program.candidate_id):
             raise ValueError("Worker returned evidence for a different program or test")
+        if vectors and (run.execution is None or tuple(row.model_dump_json() for row in run.execution.vectors) != vectors):
+            raise ValueError("Worker returned evidence for a different program or test")
+        if not vectors and (run.status != Status.ORACLE_UNAVAILABLE or run.execution is not None or run.observations):
+            raise ValueError("Worker reported verification without expected values")
     ids = {program.candidate_id for program in batch.programs[1:]}
     for probe in returned.probes:
         observed_ids = {row.candidate_id for row in probe.candidates}
-        if not observed_ids <= ids or len(observed_ids) != len(probe.candidates):
+        if (not observed_ids <= ids or len(observed_ids) != len(probe.candidates)
+                or isinstance(probe, RankedProbe) != (batch.engine_version == 5)):
             raise ValueError("Worker returned probe evidence for an unexpected candidate")
 
 
@@ -131,7 +135,7 @@ def compare(path, payload, identity):
         requirement = Requirement(function=payload.entry_point, return_expression=payload.return_expression,
                                   condition=payload.condition) if payload.return_expression or payload.condition else None
         try:
-            result = analyze_intention(payload.source, requirement, phase35=True)
+            result = analyze_intention(payload.source, requirement, phase35=True, phase5=payload.engine_version == 5)
             candidates = [(rank, item) for rank, item in enumerate(result.candidates, 1)
                           if item.compiler_valid and len(item.proposed_code) <= 24_000
                           and len(item.proposed_code.encode()) <= 48_000][:4]
@@ -141,11 +145,13 @@ def compare(path, payload, identity):
             # The isolated original still returns its compiler-admission status.
             pass
     batch = Batch(entry_point=payload.entry_point, vectors=payload.vectors, limits=payload.limits,
+                  engine_version=payload.engine_version,
                   trace=payload.trace, programs=(Program(source=payload.source), *(
                       Program(source=choice.proposed_code, candidate_id=choice.id) for _, choice in candidates
                   )))
     try:
-        envelope = wire(path, "/internal/verify", batch.model_dump_json().encode())
+        envelope = wire(path, "/internal/verify", batch.model_dump_json(
+            exclude={"engine_version"} if batch.engine_version == 4 else None).encode())
         availability = Availability.model_validate(envelope["availability"])
         if availability.status != "available":
             return VerifyResponse(availability=availability, **identity)
@@ -163,15 +169,27 @@ def compare(path, payload, identity):
                                     hypothesis=choice.proposal.assumption, behavior=run)
                     for (rank, choice), run in zip(candidates, alternatives, strict=True))
     passing = tuple(item.id for item in reviews if item.behavior.status == Status.MATCHES_SUPPLIED_TESTS)
-    order = tuple(item.id for item in reviews)
-    if original.status == Status.MISMATCHES_SUPPLIED_TESTS or (
-        original.status == Status.BEHAVIOR_UNKNOWN and original.execution.issue
-        and original.execution.issue.code != "INTERNAL_FAILURE"
-    ):
-        order = (*passing, *(key for key in order if key not in passing))
-    status = "MULTIPLE_MATCHES" if len(passing) > 1 else "ONE_MATCH" if passing else "NO_OBSERVED_MATCH"
+    order = review_order(original, reviews, payload.engine_version)
+    status = None
+    if payload.vectors:
+        status = "MULTIPLE_MATCHES" if len(passing) > 1 else "ONE_MATCH" if passing else "NO_OBSERVED_MATCH"
     return VerifyResponse(availability=availability, original=original, candidates=reviews,
                           review_order=order, comparison_status=status, probes=returned.probes, **identity)
+
+
+def review_order(original, candidates, version):
+    issue = original.execution.issue if original.execution else None
+    known_failure = original.status == Status.MISMATCHES_SUPPLIED_TESTS or (
+        original.status == Status.BEHAVIOR_UNKNOWN and issue and issue.code != "INTERNAL_FAILURE"
+    )
+    if version == 5 and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
+        known_failure = True
+    if not known_failure:
+        return tuple(row.id for row in candidates)
+    tiers = {Status.MATCHES_SUPPLIED_TESTS: 0}
+    if version == 5:
+        tiers[Status.MISMATCHES_SUPPLIED_TESTS] = 1
+    return tuple(row.id for row in sorted(candidates, key=lambda row: tiers.get(row.behavior.status, 2)))
 
 
 @router.get("/v1/behavioral-verification/capability", response_model=Availability)
