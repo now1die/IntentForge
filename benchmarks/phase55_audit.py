@@ -10,7 +10,7 @@ from ai.correction_safety import repair_key
 from benchmarks.phase5_evaluate import historical_sources, shape
 
 DATA = Path(__file__).with_name("data") / "phase55"
-CASE_HASH = "$(python -c 'import json;print(json.load(open("benchmarks/data/phase55/manifest-v1.json"))["sha256"])')"
+CASE_HASH = "a74f37dee293ffed3dc7e6052882d5013031faf3ed5d353542cea41bebcccbd2"
 
 
 def splice_signature(source, fixed):
@@ -60,6 +60,21 @@ def audit():
     exact = [row["case_id"] for row in rows if repair_key(row["mini_c_source"]) in old_exact]
     renamed = [key for key, tokens in alpha.items() if tokens in old_alpha]
     quarantine = {row["source_family"] for row in rows if row["case_id"] in set(exact) | set(renamed)}
+    historical_near = []
+    indexed = [(sha256(source.encode()).hexdigest(), shape(source)) for source in sorted(history)]
+    for row in rows:
+        key = row["case_id"]
+        current = alpha[key]
+        if len(current) < 25 or row["source_family"] in quarantine:
+            continue
+        for digest, previous in indexed:
+            if min(len(current), len(previous)) < .94 * max(len(current), len(previous)):
+                continue
+            score = SequenceMatcher(None, current, previous, autojunk=False).ratio()
+            if score >= .94:
+                historical_near.append({"case": key, "historical_sha256": digest, "ratio": round(score, 3)})
+                quarantine.add(row["source_family"])
+                break
     near = []
     structural = []
     for left, right in combinations(rows, 2):
@@ -75,9 +90,11 @@ def audit():
             likeness = SequenceMatcher(None, a, b, autojunk=False).ratio()
             if likeness >= .90:
                 near.append({"cases": [left["case_id"], right["case_id"]], "ratio": round(likeness, 3)})
-                quarantine.add(left["source_family"] if right["partition"] == "final" else right["source_family"])
+                if not {left["source_family"], right["source_family"]} & quarantine:
+                    quarantine.add(left["source_family"] if right["partition"] == "final" else right["source_family"])
     report = {"data_sha256": CASE_HASH, "partitions": partitions, "families": len(grouped),
               "historical_sources_checked": len(history), "historical_exact": exact, "historical_alpha": renamed,
+              "historical_near": historical_near,
               "interfamily_exact_structure": structural, "near_cross_partition": near,
               "reused_specifications": [sorted(group) for group in specifications.values() if len(group) > 1],
               "reused_full_fixtures": [sorted(group) for group in fixtures.values() if len(group) > 1],
