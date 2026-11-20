@@ -13,7 +13,7 @@ from pydantic import ValidationError
 from starlette.concurrency import run_in_threadpool
 
 from ai.behavior_oracle import Status, program_identity
-from ai.intention_context import ContextLimit, Requirement
+from ai.intention_context import ContextLimit, Example, Requirement, UnsupportedContext
 from ai.intention_engine import analyze_intention
 from ai.intention_requirements import InvalidRequirement
 from ai.intention_uncertainty import classify
@@ -135,14 +135,17 @@ def compare(path, payload, identity):
         requirement = Requirement(function=payload.entry_point, return_expression=payload.return_expression,
                                   condition=payload.condition) if payload.return_expression or payload.condition else None
         try:
+            semantic = payload.engine_version == 6
             result = analyze_intention(payload.source, requirement, phase35=True, phase5=payload.engine_version == 5,
-                                       phase55=payload.engine_version == 55)
+                                       phase55=payload.engine_version == 55, phase6=semantic, phase6_entry=payload.entry_point,
+                                       phase6_examples=tuple(Example(row.arguments, row.expected) for row in payload.vectors)
+                                       if semantic else ())
             candidates = [(rank, item) for rank, item in enumerate(result.candidates, 1)
                           if item.compiler_valid and len(item.proposed_code) <= 24_000
                           and len(item.proposed_code.encode()) <= 48_000][:4]
         except InvalidRequirement as exc:
             raise HTTPException(status_code=422, detail="The supplied static expression could not be interpreted.") from exc
-        except (ContextLimit, RecursionError, TypeError):
+        except (ContextLimit, RecursionError, TypeError, UnsupportedContext):
             # The isolated original still returns its compiler-admission status.
             pass
     batch = Batch(entry_point=payload.entry_point, vectors=payload.vectors, limits=payload.limits,
@@ -183,12 +186,12 @@ def review_order(original, candidates, version):
     known_failure = original.status == Status.MISMATCHES_SUPPLIED_TESTS or (
         original.status == Status.BEHAVIOR_UNKNOWN and issue and issue.code != "INTERNAL_FAILURE"
     )
-    if version in {5, 55} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
+    if version in {5, 55, 6} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
         known_failure = True
     if not known_failure:
         return tuple(row.id for row in candidates)
     tiers = {Status.MATCHES_SUPPLIED_TESTS: 0}
-    if version in {5, 55}:
+    if version in {5, 55, 6}:
         tiers[Status.MISMATCHES_SUPPLIED_TESTS] = 1
     return tuple(row.id for row in sorted(candidates, key=lambda row: tiers.get(row.behavior.status, 2)))
 

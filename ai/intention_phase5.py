@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from itertools import groupby, islice
 from time import monotonic
 
+from analysis_evidence.expression_normalization import normalized_comparison
 from compiler import ast_nodes as ast
 from compiler.symbol_table import Symbol, SymbolKind
 
@@ -54,11 +55,11 @@ class Dependencies:
         return index == len(writes) or writes[index] >= self.end[left]
 
 
-def loop_progress(loop, flow):
+def loop_progress(loop, flow, comparison=None):
     if not isinstance(loop.initializer, ast.VariableDeclaration) or not isinstance(loop.update, ast.UpdateExpression):
         return None
-    guard = loop.condition
-    if (not isinstance(guard, ast.BinaryExpression) or guard.operator not in ORDERED
+    guard = comparison or loop.condition
+    if ((comparison is None and not isinstance(guard, ast.BinaryExpression)) or guard.operator not in ORDERED
             or not isinstance(guard.left, ast.Identifier) or not isinstance(guard.right, (ast.Identifier, ast.Literal))
             or not isinstance(loop.update.operand, ast.Identifier)):
         return None
@@ -145,7 +146,7 @@ def accumulation(block, flow):
         ), "The adjacent parameters may be contributions with the same sign.", "Assignment", "update", type_match=True)
 
 
-def scan(context: IntentionContext, deadline):
+def scan(context: IntentionContext, deadline, *, normalize=False):
     if not context.compiler_valid:
         return "INCOMPLETE_COMPILER_EVIDENCE", ()
     if len(context.nodes) > MAX_NODES or monotonic() >= deadline:
@@ -158,7 +159,13 @@ def scan(context: IntentionContext, deadline):
             return "SCAN_LIMITED", tuple(findings)
         node = row.node
         if isinstance(node, ast.ForStatement):
-            proposal = loop_progress(node, flow)
+            comparison = None
+            if normalize and isinstance(node.initializer, ast.VariableDeclaration):
+                scope = context.scope_at(node.span.start.offset)
+                binding = scope.symbols.get(node.initializer.name) if scope else None
+                comparison = normalized_comparison(node.condition, context.semantic.expression_types,
+                                                   flow.bindings, preferred=binding.id if binding else None)
+            proposal = loop_progress(node, flow, comparison)
             if proposal:
                 findings.append(proposal)
         elif isinstance(node, ast.ArrayAccess):

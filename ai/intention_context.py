@@ -23,6 +23,10 @@ class ContextLimit(ValueError):
     """The input exceeds the bounded intention-analysis policy."""
 
 
+class UnsupportedContext(ValueError):
+    """The legacy parser cannot represent the requested source shape."""
+
+
 @dataclass(frozen=True, slots=True)
 class Example:
     args: tuple[int | bool, ...]
