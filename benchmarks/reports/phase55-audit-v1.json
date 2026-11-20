@@ -1,0 +1,87 @@
+{
+  "data_sha256": "a74f37dee293ffed3dc7e6052882d5013031faf3ed5d353542cea41bebcccbd2",
+  "partitions": {
+    "calibration": 2,
+    "development": 8,
+    "final": 47,
+    "selection": 4,
+    "training": 2
+  },
+  "families": 34,
+  "historical_sources_checked": 797,
+  "historical_exact": [],
+  "historical_alpha": [
+    "invoice-net-control",
+    "difference-steps-fault",
+    "optional-view-ambiguous",
+    "balance-source-ambiguous",
+    "frame-offset-ambiguous"
+  ],
+  "historical_near": [
+    {
+      "case": "antenna-displacement-fault",
+      "historical_sha256": "59c75503594ddfecde59622448a54b474e2127fe5951ef5451cff3eb97c8074c",
+      "ratio": 0.942
+    }
+  ],
+  "interfamily_exact_structure": [
+    [
+      "difference-steps-fault",
+      "frame-offset-ambiguous"
+    ]
+  ],
+  "near_cross_partition": [
+    {
+      "cases": [
+        "packed-address-control",
+        "difference-steps-fault"
+      ],
+      "ratio": 0.941
+    },
+    {
+      "cases": [
+        "packed-address-control",
+        "frame-offset-ambiguous"
+      ],
+      "ratio": 0.941
+    },
+    {
+      "cases": [
+        "packed-address-fault",
+        "difference-steps-fault"
+      ],
+      "ratio": 0.941
+    },
+    {
+      "cases": [
+        "packed-address-fault",
+        "frame-offset-ambiguous"
+      ],
+      "ratio": 0.941
+    },
+    {
+      "cases": [
+        "lateral-window-fault",
+        "marked-break-fault"
+      ],
+      "ratio": 0.909
+    }
+  ],
+  "reused_specifications": [],
+  "reused_full_fixtures": [],
+  "repair_templates_shared_across_partitions": 2,
+  "quarantined_upstream": {
+    "searches/binary_search.py": "Phase 3.5 binary search",
+    "strings/hamming_distance.py": "Phase 3.5 Hamming distance",
+    "maths/special_numbers/armstrong_numbers.py": "ML v3 Armstrong numbers"
+  },
+  "quarantined_families": [
+    "antenna-displacement",
+    "balance-source",
+    "difference-steps",
+    "frame-offset",
+    "invoice-net",
+    "lateral-window",
+    "optional-view"
+  ]
+}

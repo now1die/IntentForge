@@ -318,6 +318,7 @@ export interface IntentionResponse {
   recommendation?: "ABSTAIN" | "REVIEW_WITH_EVIDENCE" | null;
   requirement_status?: string | null;
   structural_scan?: {
+    withheld?: { category: string; evidence: IntentionEvidence[]; counter_evidence: IntentionEvidence }[];
     status: "HEURISTIC_SCAN" | "SCAN_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     findings: { category: string; assumption: string; evidence: IntentionEvidence[] }[];
   };

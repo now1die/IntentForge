@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "sha256": "a74f37dee293ffed3dc7e6052882d5013031faf3ed5d353542cea41bebcccbd2",
+  "upstream": "https://github.com/TheAlgorithms/Python",
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "dynamic_programming/tribonacci.py": "27a2cceab62312656a9227505a04c5d60c67a8779c82a8b7c774466e2938bfe7",
+    "maths/average_median.py": "016bb5900cacd60592a72ed0cca12afcd21724066dec78a35573ac6b8c557fd0",
+    "maths/collatz_sequence.py": "0d3586728251af0c28d95ff2380bb8a0ac34eeb143a40b1a5e6fac6c685d6ff1",
+    "maths/double_factorial.py": "c48437588d8f3efa6716b13ccab8c06230ea5673a64026130874406e5136dbca",
+    "maths/factorial.py": "0c8dad750ed6376ca2143da032f11b18f7a627f7018cbd2fdaf528b51ed68be4",
+    "maths/fibonacci.py": "9b183e0f8ab752ca23b57a22c7d89a9aaa199e79241d3dc09cb03748be5d1323",
+    "maths/greatest_common_divisor.py": "c9b11d7bf05beb6c48348002c6ff2c8fe12da252da80dd3345b6b32b83221e5d",
+    "maths/integer_square_root.py": "2a016065c6f3f2b713cfdeae6ee5396706238cf49da66871a5cc72b3e70c5d6f",
+    "maths/modular_exponential.py": "4b116eefbe1cfaf380f830cc396ea39f29a23c2d8577810ad83c37c04d4d117f",
+    "maths/special_numbers/armstrong_numbers.py": "07e75e0a022cefe435a53f979de4eb8e94e1b2db65568ad5bb5395561e4f0a8e",
+    "maths/special_numbers/harshad_numbers.py": "609125192e76d55fb7cfa01bed936dd5e494a467da95d121b29a00bdf8338747",
+    "maths/sum_of_digits.py": "7137250ef6e246e088f24e58d3e0b8894b3b037ba38fd09ad6386c5706457d56",
+    "searches/binary_search.py": "bf2d0a3cfb68b0518857385cfb41fccebd21c4884b1bd00f44360027b584b88e",
+    "strings/hamming_distance.py": "f295d43530c0fe2209bbc9c152ff2a92f5c5dcdba184f7186293df6a3dc6fec9"
+  },
+  "quarantined_upstream": {
+    "searches/binary_search.py": "Phase 3.5 binary search",
+    "strings/hamming_distance.py": "Phase 3.5 Hamming distance",
+    "maths/special_numbers/armstrong_numbers.py": "ML v3 Armstrong numbers"
+  },
+  "partitions": {
+    "calibration": 2,
+    "development": 8,
+    "final": 47,
+    "selection": 4,
+    "training": 2
+  }
+}

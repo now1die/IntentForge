@@ -171,3 +171,15 @@ settings retain their existing behavior.
 [Phase 5 review](docs/PHASE_5_FINAL_REVIEW.md) ·
 [Frozen evaluation](docs/phase5_generalization_evaluation.md) ·
 [Workbench screenshots](docs/phase5_workbench.md)
+
+## Phase 5.5 precision and independent evaluation
+
+Select **Phase 5.5 precision gates** to review supporting evidence alongside
+counter-evidence and missing requirements. The gates remain opt-in. On the
+frozen cohort they reduced some false alerts and missed additional defects.
+The live option uses the same restricted local Mini-C worker and explicit
+approval path as Phase 5.
+
+[Phase 5.5 technical review](docs/PHASE_5_5_FINAL_REVIEW.md) ·
+[Corpus and provenance](docs/phase5_5_dataset_provenance.md) ·
+[Workbench screenshots](docs/phase5_5_workbench.md)

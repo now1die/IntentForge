@@ -1,0 +1,524 @@
+{
+  "cases": [
+    {
+      "case": "euclidean-remainder-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "euclidean-remainder-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "decimal-digit-weight-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "decimal-digit-weight-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "root-bracket-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "root-bracket-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "factorial-product-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "factorial-product-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "stride-two-product-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "stride-two-product-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "hailstone-length-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "hailstone-length-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "modular-squaring-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "modular-squaring-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "base-divisibility-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "base-divisibility-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "third-order-sequence-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "third-order-sequence-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "fibonacci-scalar-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "fibonacci-scalar-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "median-of-three-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "median-of-three-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "terminal-palette-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "terminal-palette-fault",
+      "static_rank": 1,
+      "observed_rank": 1,
+      "original": "BEHAVIOR_UNKNOWN",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "reconciliation-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "reconciliation-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "three-direction-readings-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "three-direction-readings-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "marked-break-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "marked-break-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "independent-block-counter-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "independent-block-counter-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "dual-bank-guard-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "dual-bank-guard-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "signed-register-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "signed-register-fault",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "nested-marks-control",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "nested-marks-fault",
+      "static_rank": 1,
+      "observed_rank": 1,
+      "original": "EXECUTION_LIMITED",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0
+    },
+    {
+      "case": "coupled-valves-ambiguous",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "EXECUTION_UNSUPPORTED",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "MULTIPLE_MATCHES",
+      "probes": 8,
+      "redundant_probes": 7,
+      "distinct_pairs": 1,
+      "probe_steps": 170,
+      "observation_only_pairs": 1
+    },
+    {
+      "case": "opaque-rounding-ambiguous",
+      "static_rank": null,
+      "observed_rank": null,
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "redundant_probes": 0,
+      "distinct_pairs": 0,
+      "probe_steps": 0,
+      "observation_only_pairs": 0
+    }
+  ],
+  "controlled": {
+    "equivalent_add_zero": {
+      "passing": 2,
+      "pairs": 0,
+      "runtime_probe": false,
+      "probe_steps": 72
+    },
+    "boundary_fault": {
+      "passing": 2,
+      "pairs": 1,
+      "runtime_probe": true,
+      "probe_steps": 117
+    },
+    "partial_first_reading": {
+      "passing": 2,
+      "pairs": 1,
+      "runtime_probe": false,
+      "probe_steps": 60
+    }
+  },
+  "latency": {
+    "mean_ms": 837.959,
+    "median_ms": 652.161,
+    "p95_ms": 1673.619
+  }
+}
