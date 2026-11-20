@@ -49,7 +49,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [trace, setTrace] = useState(false);
   const [compare, setCompare] = useState(false);
   const [phase5, setPhase5] = useState(false);
-  const [precision, setPrecision] = useState(false);
+  const [profile, setProfile] = useState<5 | 55 | 6>(5);
   const [expression, setExpression] = useState("");
   const [reply, setReply] = useState<{ snapshot: string; result: VerificationResponse } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -57,7 +57,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [error, setError] = useState<string | null>(null);
   const request = useRef<AbortController | null>(null);
   const discovery = useRef<AbortController | null>(null);
-  const snapshot = JSON.stringify([code, entry, vectors, trace, compare, phase5, precision, expression, steps, depth, cells]);
+  const snapshot = JSON.stringify([code, entry, vectors, trace, compare, phase5, profile, expression, steps, depth, cells]);
 
   function invalidate() {
     request.current?.abort();
@@ -112,7 +112,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
     try {
       const payload = {
         source: code, entry_point: entry, vectors: input, trace, compare_candidates: compare,
-        ...(phase5 ? { engine_version: precision ? 55 : 5 } : {}),
+        ...(phase5 ? { engine_version: profile } : {}),
         limits: { steps: Number(steps), call_depth: Number(depth), memory_cells: Number(cells) },
         ...(compare && expression.trim() ? { return_expression: expression.trim() } : {}),
       };
@@ -168,7 +168,8 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           <label><input type="checkbox" checked={trace} onChange={(event) => setTrace(event.target.checked)} /> Record trace</label>
           <label><input type="checkbox" checked={compare} onChange={(event) => setCompare(event.target.checked)} /> Compare repair candidates</label>
           {compare && <label><input type="checkbox" checked={phase5} onChange={(event) => setPhase5(event.target.checked)} /> Phase 5 repair and probes</label>}
-          {compare && phase5 && <label><input type="checkbox" checked={precision} onChange={(event) => setPrecision(event.target.checked)} /> Phase 5.5 precision gates</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={profile === 55} onChange={(event) => setProfile(event.target.checked ? 55 : 5)} /> Phase 5.5 precision gates</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={profile === 6} onChange={(event) => setProfile(event.target.checked ? 6 : 5)} /> Phase 6 program reasoning</label>}
         </div>
         {compare && phase5 && <p>Use an empty test list to compare probe observations without expected values.</p>}
         {compare && <label>Expected return expression (optional)<input value={expression} maxLength={160}

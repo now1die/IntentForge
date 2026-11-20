@@ -309,6 +309,7 @@ export interface IntentionCandidate {
   safety: { category: string; reason: string; requires_review: boolean };
   hypothesis: string;
   evidence: IntentionEvidence[];
+  counter_evidence?: IntentionEvidence[];
   edits: { span: Diagnostic["span"]; original: string; proposed: string }[];
 }
 
@@ -317,6 +318,23 @@ export type IntentionMode = "code_only" | "natural_language" | "explicit";
 export interface IntentionResponse {
   recommendation?: "ABSTAIN" | "REVIEW_WITH_EVIDENCE" | null;
   requirement_status?: string | null;
+  program_analysis?: {
+    status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
+    functions: {
+      name: string;
+      parameters: { name: string; type: string }[];
+      return_type: string;
+      calls: string[];
+      recursion: "DIRECT" | "MUTUAL" | "DIRECT_AND_MUTUAL" | "NONE";
+      blocks: number;
+      reachable_blocks: number;
+      possible_missing_return: boolean;
+      complete: boolean;
+      conditions: { span: Diagnostic["span"]; normalized: string[] | null; kind: string }[];
+      returns: { span: Diagnostic["span"]; definitions: { name: string; site: number; span: Diagnostic["span"] }[] }[];
+      effects: string[];
+    }[];
+  };
   structural_scan?: {
     withheld?: { category: string; evidence: IntentionEvidence[]; counter_evidence: IntentionEvidence }[];
     status: "HEURISTIC_SCAN" | "SCAN_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";

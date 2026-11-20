@@ -49,7 +49,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -103,12 +103,13 @@ export function IntentionPanel({ code, onApply }: {
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
           <label>Intention engine
-            <select value={engineVersion} onChange={(event) => setEngineVersion(Number(event.target.value) as 2 | 3 | 4 | 5 | 55)}>
+            <select value={engineVersion} onChange={(event) => setEngineVersion(Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6)}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
               <option value="4">Phase 3.5 evidence</option>
               <option value="5">Phase 5 structural evidence</option>
               <option value="55">Phase 5.5 precision gates</option>
+              <option value="6">Phase 6 program reasoning</option>
             </select>
           </label>
           <label>Analysis mode
@@ -156,6 +157,28 @@ export function IntentionPanel({ code, onApply }: {
           {result.diagnostics.map((diagnostic, index) => (
             <p key={index}>{diagnostic.message}</p>
           ))}
+          {result.program_analysis && <section aria-label="Program-level evidence">
+            <h4>Program-level evidence</h4>
+            {result.program_analysis.status === "ANALYSIS_LIMITED" && <p>Analysis reached its work limit. Completed evidence is shown.</p>}
+            {result.program_analysis.status === "INCOMPLETE_COMPILER_EVIDENCE" && <p>Program reasoning requires a compiler-valid source snapshot.</p>}
+            {result.program_analysis.functions.map((fn) => <details key={fn.name}>
+              <summary>{fn.name}({fn.parameters.map((parameter) => `${parameter.type} ${parameter.name}`).join(", ")}) · {fn.return_type}</summary>
+              <p>{fn.reachable_blocks}/{fn.blocks} reachable control-flow blocks
+                {fn.recursion !== "NONE" && ` · ${fn.recursion.toLowerCase().replaceAll("_", " ")} recursion`}</p>
+              {!!fn.calls.length && <p>Calls {fn.calls.join(", ")}</p>}
+              {fn.possible_missing_return && <p>One modeled path can reach the function exit without returning a value.</p>}
+              {!fn.complete && <p>Dependency evidence is incomplete.</p>}
+              {!!fn.conditions.length && <ul>{fn.conditions.map((row, index) => <li key={index}>
+                {row.kind.replaceAll("_", " ")} · line {row.span.start.line}
+                {row.normalized && <code> · {row.normalized.join(" ")}</code>}
+              </li>)}</ul>}
+              {!!fn.returns.length && <ul aria-label="Return dependencies">{fn.returns.map((row, index) => <li key={index}>
+                Return on line {row.span.start.line}{!!row.definitions.length && " depends on "}
+                {row.definitions.map((definition) => `${definition.name} (line ${definition.span.start.line})`).join(", ")}
+              </li>)}</ul>}
+              {!!fn.effects.length && <p>Analysis limits · {fn.effects.map((effect) => effect.replaceAll("_", " ")).join(" · ")}</p>}
+            </details>)}
+          </section>}
           {result.structural_scan && <section aria-label="Structural scan">
             <h4>Structural scan</h4>
             {result.structural_scan.status === "SCAN_LIMITED" && <p>Structural scan reached its work limit.</p>}
@@ -209,6 +232,9 @@ export function IntentionPanel({ code, onApply }: {
               <ul>{choice.evidence.map((fact, index) => <li key={index}>
                 {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
               </li>)}</ul>
+              {!!choice.counter_evidence?.length && <ul aria-label="Counter-evidence and missing assumptions">
+                {choice.counter_evidence.map((fact, index) => <li key={index}>{fact.detail}</li>)}
+              </ul>}
               {choice.edits.map((edit, index) => (
                 <div className="inline-diff" key={index}>
                   <div className="diff-pair">
