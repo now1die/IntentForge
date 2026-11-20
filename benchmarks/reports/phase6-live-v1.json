@@ -1,0 +1,590 @@
+{
+  "cases": [
+    {
+      "id": "proper-divisor-total-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 532
+    },
+    {
+      "id": "proper-divisor-total-fault",
+      "original": "EXECUTION_LIMITED",
+      "issue": "STEP_LIMIT",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "observed_rank": 1,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 10546
+    },
+    {
+      "id": "fixed-point-horner-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 76
+    },
+    {
+      "id": "fixed-point-horner-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "observed_rank": 1,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 152
+    },
+    {
+      "id": "scaled-geometric-total-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 184
+    },
+    {
+      "id": "scaled-geometric-total-fault",
+      "original": "EXECUTION_LIMITED",
+      "issue": "CALL_DEPTH",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "observed_rank": 1,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 611
+    },
+    {
+      "id": "factorial-trailing-decimal-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 143
+    },
+    {
+      "id": "factorial-trailing-decimal-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 143
+    },
+    {
+      "id": "decimal-width-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 104
+    },
+    {
+      "id": "decimal-width-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 104
+    },
+    {
+      "id": "catalan-table-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 908
+    },
+    {
+      "id": "catalan-table-fault",
+      "original": "BEHAVIOR_UNKNOWN",
+      "issue": "UNINITIALIZED_VALUE",
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 56
+    },
+    {
+      "id": "inserted-order-statistic-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 581
+    },
+    {
+      "id": "inserted-order-statistic-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 446
+    },
+    {
+      "id": "pascal-choice-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 1818
+    },
+    {
+      "id": "pascal-choice-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 1818
+    },
+    {
+      "id": "two-channel-gain-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 61
+    },
+    {
+      "id": "two-channel-gain-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "observed_rank": 1,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 122
+    },
+    {
+      "id": "intermediate-report-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 102
+    },
+    {
+      "id": "intermediate-report-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 102
+    },
+    {
+      "id": "ascending-threshold-steps-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 138
+    },
+    {
+      "id": "ascending-threshold-steps-fault",
+      "original": "EXECUTION_LIMITED",
+      "issue": "CALL_DEPTH",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "observed_rank": 1,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 533
+    },
+    {
+      "id": "restricted-recursive-product-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 100
+    },
+    {
+      "id": "restricted-recursive-product-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "observed_rank": 1,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 200
+    },
+    {
+      "id": "bounded-mutual-parity-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 208
+    },
+    {
+      "id": "bounded-mutual-parity-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 208
+    },
+    {
+      "id": "threshold-channel-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 61
+    },
+    {
+      "id": "threshold-channel-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 122
+    },
+    {
+      "id": "shadowed-crossing-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 161
+    },
+    {
+      "id": "shadowed-crossing-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 161
+    },
+    {
+      "id": "weighted-settlement-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 36
+    },
+    {
+      "id": "weighted-settlement-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 36
+    },
+    {
+      "id": "partial-selector-ambiguous",
+      "original": "EXECUTION_UNSUPPORTED",
+      "issue": "COMPILER_INVALID",
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "MULTIPLE_MATCHES",
+      "probes": 8,
+      "separated_pairs": 3,
+      "probe_steps": 273,
+      "test_steps": 69,
+      "observation_only_pairs": 3
+    },
+    {
+      "id": "partial-recurrence-ambiguous",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "observed_rank": null,
+      "other_candidates_matching_vectors": 0,
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "separated_pairs": 0,
+      "probe_steps": 0,
+      "test_steps": 60,
+      "observation_only_pairs": 0
+    }
+  ],
+  "controlled_probes": {
+    "recursive_boundary": {
+      "passing": 2,
+      "pairs": 1,
+      "steps": 1074,
+      "distinguishing_inputs": [
+        [
+          3
+        ]
+      ],
+      "assessments": [
+        "different_values",
+        "insufficient_observations",
+        "same_values"
+      ]
+    },
+    "return_equivalence": {
+      "passing": 2,
+      "pairs": 0,
+      "steps": 80,
+      "distinguishing_inputs": [],
+      "assessments": [
+        "same_values"
+      ]
+    },
+    "recursive_limit": {
+      "passing": 2,
+      "pairs": 1,
+      "steps": 1109,
+      "distinguishing_inputs": [
+        [
+          2
+        ]
+      ],
+      "assessments": [
+        "candidate_execution_limit",
+        "insufficient_observations",
+        "same_values"
+      ]
+    }
+  },
+  "latency": {
+    "mean_ms": 450.298,
+    "median_ms": 395.983,
+    "p95_ms": 750.533
+  },
+  "metrics": {
+    "static_rank": {
+      "top1": {
+        "hits": 6,
+        "total": 16,
+        "wilson95": [
+          0.185,
+          0.614
+        ]
+      },
+      "top3": {
+        "hits": 6,
+        "total": 16,
+        "wilson95": [
+          0.185,
+          0.614
+        ]
+      }
+    },
+    "observed_rank": {
+      "top1": {
+        "hits": 6,
+        "total": 16,
+        "wilson95": [
+          0.185,
+          0.614
+        ]
+      },
+      "top3": {
+        "hits": 6,
+        "total": 16,
+        "wilson95": [
+          0.185,
+          0.614
+        ]
+      }
+    }
+  }
+}
