@@ -1,0 +1,2500 @@
+[
+  {
+    "case_id": "euclidean-remainder-control",
+    "source_family": "euclidean-remainder",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/greatest_common_divisor.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int x,int y){while(y!=0){int next=x%y;x=y;y=next;}return x;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        21,
+        14
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        44,
+        0
+      ]
+    ],
+    "expected_outputs": [
+      7,
+      1,
+      8,
+      44
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Compute the greatest common divisor for nonnegative integers.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "euclidean-remainder-fault",
+    "source_family": "euclidean-remainder",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/greatest_common_divisor.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int x,int y){while(y!=0){int next=x/y;x=y;y=next;}return x;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        21,
+        14
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        44,
+        0
+      ]
+    ],
+    "expected_outputs": [
+      7,
+      1,
+      8,
+      44
+    ],
+    "reference_repairs": [
+      "int f(int x,int y){while(y!=0){int next=x%y;x=y;y=next;}return x;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Compute the greatest common divisor for nonnegative integers.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "decimal-digit-weight-control",
+    "source_family": "decimal-digit-weight",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/sum_of_digits.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){int s=0;while(n>0){s+=n%10;n/=10;}return s;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        9
+      ],
+      [
+        315
+      ],
+      [
+        9000
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      9,
+      9,
+      9
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Sum the decimal digits of a nonnegative integer.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "decimal-digit-weight-fault",
+    "source_family": "decimal-digit-weight",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/sum_of_digits.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){int s=0;while(n>0){s+=n/10;n/=10;}return s;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        9
+      ],
+      [
+        315
+      ],
+      [
+        9000
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      9,
+      9,
+      9
+    ],
+    "reference_repairs": [
+      "int f(int n){int s=0;while(n>0){s+=n%10;n/=10;}return s;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Sum the decimal digits of a nonnegative integer.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "root-bracket-control",
+    "source_family": "root-bracket",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/integer_square_root.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<2){return n;}int lo=0;int hi=n/2;while(lo<=hi){int m=lo+(hi-lo)/2;int sq=m*m;if(sq==n){return m;}if(sq<n){lo=m+1;}else{hi=m-1;}}return hi;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "return_dependency",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        9
+      ],
+      [
+        19
+      ],
+      [
+        625
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      3,
+      4,
+      25
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return the floor of the square root for nonnegative bounded inputs.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "root-bracket-fault",
+    "source_family": "root-bracket",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/integer_square_root.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<2){return n;}int lo=0;int hi=n/2;while(lo<=hi){int m=lo+(hi-lo)/2;int sq=m*m;if(sq==n){return m;}if(sq<n){lo=m+1;}else{hi=m-1;}}return lo;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "return_dependency",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        9
+      ],
+      [
+        19
+      ],
+      [
+        625
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      3,
+      4,
+      25
+    ],
+    "reference_repairs": [
+      "int f(int n){if(n<2){return n;}int lo=0;int hi=n/2;while(lo<=hi){int m=lo+(hi-lo)/2;int sq=m*m;if(sq==n){return m;}if(sq<n){lo=m+1;}else{hi=m-1;}}return hi;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return the floor of the square root for nonnegative bounded inputs.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "factorial-product-control",
+    "source_family": "factorial-product",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/factorial.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){int p=1;while(n>1){p*=n;n--;}return p;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        4
+      ],
+      [
+        8
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      1,
+      24,
+      40320
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return n factorial for 0 through 9.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "factorial-product-fault",
+    "source_family": "factorial-product",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/factorial.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){int p=1;while(n>1){p+=n;n--;}return p;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        4
+      ],
+      [
+        8
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      1,
+      24,
+      40320
+    ],
+    "reference_repairs": [
+      "int f(int n){int p=1;while(n>1){p*=n;n--;}return p;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return n factorial for 0 through 9.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "stride-two-product-control",
+    "source_family": "stride-two-product",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/double_factorial.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<=1){return 1;}return n*f(n-2);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "recurrence",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        7
+      ],
+      [
+        10
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      2,
+      105,
+      3840
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Multiply positive terms n, n-2, … through the same parity.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "stride-two-product-fault",
+    "source_family": "stride-two-product",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/double_factorial.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<=1){return 1;}return n*f(n-1);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "recurrence",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        7
+      ],
+      [
+        10
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      2,
+      105,
+      3840
+    ],
+    "reference_repairs": [
+      "int f(int n){if(n<=1){return 1;}return n*f(n-2);}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Multiply positive terms n, n-2, … through the same parity.",
+    "guidance": {
+      "return_expression": "n*f(n-2)",
+      "return_ordinal": 2
+    },
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "hailstone-length-control",
+    "source_family": "hailstone-length",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/collatz_sequence.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){int terms=1;while(n!=1){if(n%2==0){n/=2;}else{n=3*n+1;}terms++;}return terms;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "initialization",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        4
+      ],
+      [
+        11
+      ],
+      [
+        31
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      2,
+      3,
+      15,
+      107
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Count the terms in the bounded hailstone sequence, including the starting value and 1.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "hailstone-length-fault",
+    "source_family": "hailstone-length",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/collatz_sequence.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){int terms=0;while(n!=1){if(n%2==0){n/=2;}else{n=3*n+1;}terms++;}return terms;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "initialization",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        4
+      ],
+      [
+        11
+      ],
+      [
+        31
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      2,
+      3,
+      15,
+      107
+    ],
+    "reference_repairs": [
+      "int f(int n){int terms=1;while(n!=1){if(n%2==0){n/=2;}else{n=3*n+1;}terms++;}return terms;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Count the terms in the bounded hailstone sequence, including the starting value and 1.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "modular-squaring-control",
+    "source_family": "modular-squaring",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/modular_exponential.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int b,int e,int m){int p=1%m;while(e>0){if(e%2==1){p=(p*b)%m;}e/=2;b=(b*b)%m;}return p;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        9,
+        7
+      ],
+      [
+        7,
+        0,
+        11
+      ],
+      [
+        13,
+        4,
+        8
+      ],
+      [
+        2,
+        4,
+        1
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Compute base to exponent modulo a positive modulus on bounded inputs.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "modular-squaring-fault",
+    "source_family": "modular-squaring",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/modular_exponential.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int b,int e,int m){int p=1%m;while(e>0){if(e%2==1){p=(p+b)%m;}e/=2;b=(b*b)%m;}return p;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "operator",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        9,
+        7
+      ],
+      [
+        7,
+        0,
+        11
+      ],
+      [
+        13,
+        4,
+        8
+      ],
+      [
+        2,
+        4,
+        1
+      ]
+    ],
+    "expected_outputs": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "reference_repairs": [
+      "int f(int b,int e,int m){int p=1%m;while(e>0){if(e%2==1){p=(p*b)%m;}e/=2;b=(b*b)%m;}return p;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Compute base to exponent modulo a positive modulus on bounded inputs.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "base-divisibility-control",
+    "source_family": "base-divisibility",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/harshad_numbers.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "bool f(int n,int b){int x=n;int sum=0;while(x>0){sum+=x%b;x/=b;}return n%sum==0;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "comparison",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        18,
+        10
+      ],
+      [
+        19,
+        10
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        14,
+        3
+      ]
+    ],
+    "expected_outputs": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Report if a positive number is divisible by its digit sum in base b.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "base-divisibility-fault",
+    "source_family": "base-divisibility",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/harshad_numbers.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "bool f(int n,int b){int x=n;int sum=0;while(x>0){sum+=x%b;x/=b;}return n%sum!=0;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "comparison",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        18,
+        10
+      ],
+      [
+        19,
+        10
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        14,
+        3
+      ]
+    ],
+    "expected_outputs": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "reference_repairs": [
+      "bool f(int n,int b){int x=n;int sum=0;while(x>0){sum+=x%b;x/=b;}return n%sum==0;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Report if a positive number is divisible by its digit sum in base b.",
+    "guidance": {
+      "return_expression": "n%sum==0"
+    },
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "third-order-sequence-control",
+    "source_family": "third-order-sequence",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/dynamic_programming/tribonacci.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<2){return 0;}if(n==2){return 1;}int a=0;int b=0;int c=1;for(int i=3;i<=n;i++){int next=a+b+c;a=b;b=c;c=next;}return c;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "recurrence",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        4
+      ],
+      [
+        7
+      ],
+      [
+        9
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      2,
+      13,
+      44
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return term n of the sequence seeded 0, 0, 1 with three-term addition.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "third-order-sequence-fault",
+    "source_family": "third-order-sequence",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/dynamic_programming/tribonacci.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<2){return 0;}if(n==2){return 1;}int a=0;int b=0;int c=1;for(int i=3;i<=n;i++){int next=b+c;a=b;b=c;c=next;}return c;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "recurrence",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        4
+      ],
+      [
+        7
+      ],
+      [
+        9
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      2,
+      13,
+      44
+    ],
+    "reference_repairs": [
+      "int f(int n){if(n<2){return 0;}if(n==2){return 1;}int a=0;int b=0;int c=1;for(int i=3;i<=n;i++){int next=a+b+c;a=b;b=c;c=next;}return c;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return term n of the sequence seeded 0, 0, 1 with three-term addition.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "fibonacci-scalar-control",
+    "source_family": "fibonacci-scalar",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/fibonacci.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<2){return n;}return f(n-1)+f(n-2);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "base_case",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        4
+      ],
+      [
+        8
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      3,
+      21
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return term n of the sequence seeded 0, 1 with two-term addition.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "fibonacci-scalar-fault",
+    "source_family": "fibonacci-scalar",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/fibonacci.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int n){if(n<2){return 1;}return f(n-1)+f(n-2);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "base_case",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        4
+      ],
+      [
+        8
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      3,
+      21
+    ],
+    "reference_repairs": [
+      "int f(int n){if(n<2){return n;}return f(n-1)+f(n-2);}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return term n of the sequence seeded 0, 1 with two-term addition.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "median-of-three-control",
+    "source_family": "median-of-three",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/average_median.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int a,int b,int c){if(a>b){int t=a;a=b;b=t;}if(b>c){int t=b;b=c;c=t;}if(a>b){return a;}return b;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "return_dependency",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        9,
+        -1,
+        3
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        9,
+        9,
+        1
+      ],
+      [
+        5,
+        4,
+        -3
+      ]
+    ],
+    "expected_outputs": [
+      3,
+      2,
+      9,
+      4
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return the middle of three signed inputs, allowing ties.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "median-of-three-fault",
+    "source_family": "median-of-three",
+    "source_origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/average_median.py",
+    "source_license": "MIT",
+    "adaptation_notes": "Manually ported scalar behavior to bounded Mini-C. Faults were introduced for this study.",
+    "mini_c_source": "int f(int a,int b,int c){if(a>b){int t=a;a=b;b=t;}if(b>c){int t=b;b=c;c=t;}if(a>b){return c;}return b;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "return_dependency",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        9,
+        -1,
+        3
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        9,
+        9,
+        1
+      ],
+      [
+        5,
+        4,
+        -3
+      ]
+    ],
+    "expected_outputs": [
+      3,
+      2,
+      9,
+      4
+    ],
+    "reference_repairs": [
+      "int f(int a,int b,int c){if(a>b){int t=a;a=b;b=t;}if(b>c){int t=b;b=c;c=t;}if(a>b){return a;}return b;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return the middle of three signed inputs, allowing ties.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "external_adaptation"
+  },
+  {
+    "case_id": "invoice-net-control",
+    "source_family": "invoice-net",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int price,int quantity,int fee,int deposit){int total=0;total+=price;total+=quantity;total+=fee;total-=deposit;return total;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "return_dependency",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        3,
+        4,
+        8,
+        2
+      ],
+      [
+        1,
+        9,
+        1,
+        6
+      ]
+    ],
+    "expected_outputs": [
+      13,
+      5
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Sum charges and subtract the deposit.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "invoice-net-fault",
+    "source_family": "invoice-net",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int price,int quantity,int fee,int deposit){int total=0;total+=price;total+=quantity;total+=fee;total-=deposit;return fee;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "return_dependency",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        3,
+        4,
+        8,
+        2
+      ],
+      [
+        1,
+        9,
+        1,
+        6
+      ]
+    ],
+    "expected_outputs": [
+      13,
+      5
+    ],
+    "reference_repairs": [
+      "int f(int price,int quantity,int fee,int deposit){int total=0;total+=price;total+=quantity;total+=fee;total-=deposit;return total;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Sum charges and subtract the deposit.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "opposing-bearing-control",
+    "source_family": "opposing-bearing",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int angle(int a,int b){return b-a;}int f(int a,int b){int first=angle(a,b);int second=angle(a,b);int back=angle(b,a);return first+second+back;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "argument_role_control",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1,
+        8
+      ],
+      [
+        -3,
+        3
+      ]
+    ],
+    "expected_outputs": [
+      7,
+      6
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Add two forward bearings and one reverse bearing.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "opposing-bearing-fault",
+    "source_family": "opposing-bearing",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int angle(int a,int b){return b-a;}int f(int a,int b){int first=angle(a,b);int second=angle(a,b);int back=angle(b,a);return first+second-back;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "argument_role_control",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1,
+        8
+      ],
+      [
+        -3,
+        3
+      ]
+    ],
+    "expected_outputs": [
+      7,
+      6
+    ],
+    "reference_repairs": [
+      "int angle(int a,int b){return b-a;}int f(int a,int b){int first=angle(a,b);int second=angle(a,b);int back=angle(b,a);return first+second+back;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Add two forward bearings and one reverse bearing.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "single-exit-meter-control",
+    "source_family": "single-exit-meter",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int n){int trips=0;for(int i=1;i<=n;trips++){return i+n;}return trips;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_early_exit",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        7
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      3,
+      8
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return n plus the first reading if a positive reading range exists.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "single-exit-meter-fault",
+    "source_family": "single-exit-meter",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int n){int trips=0;for(int i=1;i<=n;trips++){return i-n;}return trips;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_early_exit",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        7
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      3,
+      8
+    ],
+    "reference_repairs": [
+      "int f(int n){int trips=0;for(int i=1;i<=n;trips++){return i+n;}return trips;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return n plus the first reading if a positive reading range exists.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "disabled-bank-control",
+    "source_family": "disabled-bank",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(bool use){int a[3];a[2]=8;if(false){return a[3];}if(use){return a[2];}return 0;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "unreachable_array",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        true
+      ],
+      [
+        false
+      ]
+    ],
+    "expected_outputs": [
+      8,
+      0
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return 8 when enabled and zero otherwise.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "disabled-bank-fault",
+    "source_family": "disabled-bank",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(bool use){int a[3];a[2]=5;if(false){return a[3];}if(use){return a[2];}return 0;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "unreachable_array",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        true
+      ],
+      [
+        false
+      ]
+    ],
+    "expected_outputs": [
+      8,
+      0
+    ],
+    "reference_repairs": [
+      "int f(bool use){int a[3];a[2]=8;if(false){return a[3];}if(use){return a[2];}return 0;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return 8 when enabled and zero otherwise.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "development",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "packed-address-control",
+    "source_family": "packed-address",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int row,int col){return row*17+col;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "arithmetic",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "expected_outputs": [
+      37,
+      10
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return a row-major offset for width 17.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "training",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "packed-address-fault",
+    "source_family": "packed-address",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int row,int col){return row+17*col;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "arithmetic",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        3
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "expected_outputs": [
+      37,
+      10
+    ],
+    "reference_repairs": [
+      "int f(int row,int col){return row*17+col;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return a row-major offset for width 17.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "training",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "gift-boxes-control",
+    "source_family": "gift-boxes",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int units){int width=7;return (units+width-1)/width;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "rounding",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        3
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Round unit demand up to whole boxes of seven.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "calibration",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "gift-boxes-fault",
+    "source_family": "gift-boxes",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int units){int width=7;return (units)/width;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "rounding",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        3
+      ],
+      [
+        14
+      ],
+      [
+        15
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "reference_repairs": [
+      "int f(int units){int width=7;return (units+width-1)/width;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Round unit demand up to whole boxes of seven.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "calibration",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "lateral-window-control",
+    "source_family": "lateral-window",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int n){int stamp=0;int score=0;for(int j=2;j<n;j++){score+=j*2;}return score;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_progress",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        3
+      ],
+      [
+        6
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      4,
+      28
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Sum even-numbered markers 2*j for j from 2 until n.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "selection",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "lateral-window-fault",
+    "source_family": "lateral-window",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int n){int stamp=0;int score=0;for(int j=2;j<n;stamp++){score+=j*2;}return score;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_progress",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        3
+      ],
+      [
+        6
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      4,
+      28
+    ],
+    "reference_repairs": [
+      "int f(int n){int stamp=0;int score=0;for(int j=2;j<n;j++){score+=j*2;}return score;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Sum even-numbered markers 2*j for j from 2 until n.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "selection",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "wrap-period-control",
+    "source_family": "wrap-period",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int reading,int period){while(reading>=period){reading-=period;}return reading;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "comparison",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        4,
+        4
+      ],
+      [
+        28,
+        5
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      3,
+      0
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Wrap a positive-period reading to [0, period).",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "selection",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "wrap-period-fault",
+    "source_family": "wrap-period",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int reading,int period){while(reading>period){reading-=period;}return reading;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "comparison",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        4,
+        4
+      ],
+      [
+        28,
+        5
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      3,
+      0
+    ],
+    "reference_repairs": [
+      "int f(int reading,int period){while(reading>=period){reading-=period;}return reading;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Wrap a positive-period reading to [0, period).",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "selection",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "terminal-palette-control",
+    "source_family": "terminal-palette",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int seed){int rgb[4];rgb[3]=seed*2;return rgb[3];}",
+    "program_validity": "compiler_valid",
+    "fault_category": "array_edge",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        7
+      ]
+    ],
+    "expected_outputs": [
+      2,
+      14
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return the marker placed in the final palette cell.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "terminal-palette-fault",
+    "source_family": "terminal-palette",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int seed){int rgb[4];rgb[3]=seed*2;return rgb[4];}",
+    "program_validity": "compiler_valid",
+    "fault_category": "array_edge",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        7
+      ]
+    ],
+    "expected_outputs": [
+      2,
+      14
+    ],
+    "reference_repairs": [
+      "int f(int seed){int rgb[4];rgb[3]=seed*2;return rgb[3];}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return the marker placed in the final palette cell.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "reconciliation-control",
+    "source_family": "reconciliation",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int credits,int carry,int rebate,int debits,int adjustment){int net=4;net+=credits;net+=carry;net-=debits;net+=rebate;net-=adjustment;return net;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "accumulator_control",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        1,
+        4,
+        3,
+        5
+      ],
+      [
+        7,
+        5,
+        1,
+        0,
+        5
+      ]
+    ],
+    "expected_outputs": [
+      3,
+      12
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Start at four, add credits, carry and rebate, then subtract debits and the adjustment.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "reconciliation-fault",
+    "source_family": "reconciliation",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int credits,int carry,int rebate,int debits,int adjustment){int net=0;net+=credits;net+=carry;net-=debits;net+=rebate;net-=adjustment;return net;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "accumulator_control",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        1,
+        4,
+        3,
+        5
+      ],
+      [
+        7,
+        5,
+        1,
+        0,
+        5
+      ]
+    ],
+    "expected_outputs": [
+      3,
+      12
+    ],
+    "reference_repairs": [
+      "int f(int credits,int carry,int rebate,int debits,int adjustment){int net=4;net+=credits;net+=carry;net-=debits;net+=rebate;net-=adjustment;return net;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Start at four, add credits, carry and rebate, then subtract debits and the adjustment.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "three-direction-readings-control",
+    "source_family": "three-direction-readings",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int d(int l,int r){return r-l;}int f(int base,int limit,bool flip){if(flip){return d(limit,base);}return d(base,limit)+d(base,limit);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "branch_roles",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        3,
+        7,
+        true
+      ],
+      [
+        3,
+        7,
+        false
+      ],
+      [
+        0,
+        -2,
+        true
+      ]
+    ],
+    "expected_outputs": [
+      -4,
+      8,
+      2
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return a reverse reading in flip mode and two forward readings otherwise.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "three-direction-readings-fault",
+    "source_family": "three-direction-readings",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int d(int l,int r){return r-l;}int f(int base,int limit,bool flip){if(flip){return d(base,limit);}return d(base,limit)+d(base,limit);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "branch_roles",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        3,
+        7,
+        true
+      ],
+      [
+        3,
+        7,
+        false
+      ],
+      [
+        0,
+        -2,
+        true
+      ]
+    ],
+    "expected_outputs": [
+      -4,
+      8,
+      2
+    ],
+    "reference_repairs": [
+      "int d(int l,int r){return r-l;}int f(int base,int limit,bool flip){if(flip){return d(limit,base);}return d(base,limit)+d(base,limit);}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return a reverse reading in flip mode and two forward readings otherwise.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "marked-break-control",
+    "source_family": "marked-break",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int size){int clock=0;int tally=0;for(int slot=0;slot<size;clock++){tally=slot+3;break;}return tally;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_early_exit",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        5
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      3,
+      3
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "If the scan is nonempty, report its initial marker, 3.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "marked-break-fault",
+    "source_family": "marked-break",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int size){int clock=0;int tally=0;for(int slot=0;slot<size;clock++){tally=slot+2;break;}return tally;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_early_exit",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        5
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      3,
+      3
+    ],
+    "reference_repairs": [
+      "int f(int size){int clock=0;int tally=0;for(int slot=0;slot<size;clock++){tally=slot+3;break;}return tally;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "If the scan is nonempty, report its initial marker, 3.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "independent-block-counter-control",
+    "source_family": "independent-block-counter",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int size){int tick=0;for(int slot=0;slot<size;tick++){{int tick=8;slot+=2;}}return tick;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_body_progress",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        5
+      ],
+      [
+        8
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Count visits when the loop body advances by two.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "independent-block-counter-fault",
+    "source_family": "independent-block-counter",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int size){int tick=0;for(int slot=0;slot<size;tick++){{int tick=8;slot+=3;}}return tick;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_body_progress",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        2
+      ],
+      [
+        5
+      ],
+      [
+        8
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "reference_repairs": [
+      "int f(int size){int tick=0;for(int slot=0;slot<size;tick++){{int tick=8;slot+=2;}}return tick;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Count visits when the loop body advances by two.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "dual-bank-guard-control",
+    "source_family": "dual-bank-guard",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int n){int bank[2];bank[1]=n;if(false){return bank[2];}{int bank[4];bank[2]=7;return bank[2]+n;}}",
+    "program_validity": "compiler_valid",
+    "fault_category": "unreachable_array",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        3
+      ],
+      [
+        -5
+      ]
+    ],
+    "expected_outputs": [
+      8,
+      10,
+      2
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Use a larger inner bank and return its marker plus the input.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "dual-bank-guard-fault",
+    "source_family": "dual-bank-guard",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int n){int bank[2];bank[1]=n;if(false){return bank[2];}{int bank[4];bank[2]=8;return bank[2]+n;}}",
+    "program_validity": "compiler_valid",
+    "fault_category": "unreachable_array",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1
+      ],
+      [
+        3
+      ],
+      [
+        -5
+      ]
+    ],
+    "expected_outputs": [
+      8,
+      10,
+      2
+    ],
+    "reference_repairs": [
+      "int f(int n){int bank[2];bank[1]=n;if(false){return bank[2];}{int bank[4];bank[2]=7;return bank[2]+n;}}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Use a larger inner bank and return its marker plus the input.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "difference-steps-control",
+    "source_family": "difference-steps",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int a,int b){return a-b;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "arithmetic",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        7
+      ],
+      [
+        5,
+        -1
+      ],
+      [
+        -1,
+        0
+      ]
+    ],
+    "expected_outputs": [
+      -5,
+      6,
+      -1
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Return the signed difference of the two readings.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "difference-steps-fault",
+    "source_family": "difference-steps",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int a,int b){return a+b;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "arithmetic",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        7
+      ],
+      [
+        5,
+        -1
+      ],
+      [
+        -1,
+        0
+      ]
+    ],
+    "expected_outputs": [
+      -5,
+      6,
+      -1
+    ],
+    "reference_repairs": [
+      "int f(int a,int b){return a-b;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Return the signed difference of the two readings.",
+    "guidance": {
+      "return_expression": "a-b"
+    },
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "antenna-displacement-control",
+    "source_family": "antenna-displacement",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int d(int p,int q){return (q-p)*4;}int f(int start,int stop){return d(start,stop)+d(start,stop)+d(start,stop);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "argument_order",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1,
+        8
+      ],
+      [
+        -7,
+        -2
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "expected_outputs": [
+      84,
+      60,
+      0
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Add three identical scaled forward displacement samples.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "antenna-displacement-fault",
+    "source_family": "antenna-displacement",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int d(int p,int q){return (q-p)*4;}int f(int start,int stop){return d(start,stop)+d(stop,start)+d(start,stop);}",
+    "program_validity": "compiler_valid",
+    "fault_category": "argument_order",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        1,
+        8
+      ],
+      [
+        -7,
+        -2
+      ],
+      [
+        4,
+        4
+      ]
+    ],
+    "expected_outputs": [
+      84,
+      60,
+      0
+    ],
+    "reference_repairs": [
+      "int d(int p,int q){return (q-p)*4;}int f(int start,int stop){return d(start,stop)+d(start,stop)+d(start,stop);}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Add three identical scaled forward displacement samples.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "signed-register-control",
+    "source_family": "signed-register",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int w,int x,int y,int z){int r=2;{r+=w;r+=x;r+=y;r+=z;}if(r>40){return 40;}return r;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "accumulator_sign",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        -1,
+        8,
+        3
+      ],
+      [
+        10,
+        10,
+        10,
+        10
+      ]
+    ],
+    "expected_outputs": [
+      14,
+      40
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Add the four signed contributions, with a ceiling of 40.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "signed-register-fault",
+    "source_family": "signed-register",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int w,int x,int y,int z){int r=2;{r+=w;r+=x;r-=y;r+=z;}if(r>40){return 40;}return r;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "accumulator_sign",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        2,
+        -1,
+        8,
+        3
+      ],
+      [
+        10,
+        10,
+        10,
+        10
+      ]
+    ],
+    "expected_outputs": [
+      14,
+      40
+    ],
+    "reference_repairs": [
+      "int f(int w,int x,int y,int z){int r=2;{r+=w;r+=x;r+=y;r+=z;}if(r>40){return 40;}return r;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Add the four signed contributions, with a ceiling of 40.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "nested-marks-control",
+    "source_family": "nested-marks",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int level){int k=4;int s=0;if(level>0){for(int j=1;j<=level;j++){if(j%2==0){s+=j;}}}return s;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_progress",
+    "is_known_correct": true,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        4
+      ],
+      [
+        7
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      6,
+      12
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Sum even markers at or below the positive level.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "nested-marks-fault",
+    "source_family": "nested-marks",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int level){int k=4;int s=0;if(level>0){for(int j=1;j<=level;k++){if(j%2==0){s+=j;}}}return s;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "loop_progress",
+    "is_known_correct": false,
+    "is_ambiguous": false,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        0
+      ],
+      [
+        4
+      ],
+      [
+        7
+      ]
+    ],
+    "expected_outputs": [
+      0,
+      6,
+      12
+    ],
+    "reference_repairs": [
+      "int f(int level){int k=4;int s=0;if(level>0){for(int j=1;j<=level;j++){if(j%2==0){s+=j;}}}return s;}"
+    ],
+    "acceptable_alternatives": [],
+    "specification": "Sum even markers at or below the positive level.",
+    "guidance": null,
+    "reviewer_notes": "Reference justified by the task definition and independent fixture oracle.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "optional-view-ambiguous",
+    "source_family": "optional-view",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int low,int high){return missing;}",
+    "program_validity": "compiler_invalid",
+    "fault_category": "binding",
+    "is_known_correct": false,
+    "is_ambiguous": true,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        4,
+        4
+      ]
+    ],
+    "expected_outputs": [
+      4
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "One observed sample has equal endpoints.",
+    "guidance": null,
+    "reviewer_notes": "Expected values cover only the stated observations; intent remains partial.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "balance-source-ambiguous",
+    "source_family": "balance-source",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int base,int target,int closing){return missing;}",
+    "program_validity": "compiler_invalid",
+    "fault_category": "binding",
+    "is_known_correct": false,
+    "is_ambiguous": true,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        9,
+        9,
+        9
+      ]
+    ],
+    "expected_outputs": [
+      9
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "The only verified settlement has all readings equal.",
+    "guidance": null,
+    "reviewer_notes": "Expected values cover only the stated observations; intent remains partial.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "coupled-valves-ambiguous",
+    "source_family": "coupled-valves",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(bool enabled,int cold,int hot){if(!enabled){return 0;}return missing;}",
+    "program_validity": "compiler_invalid",
+    "fault_category": "binding",
+    "is_known_correct": false,
+    "is_ambiguous": true,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        false,
+        3,
+        8
+      ]
+    ],
+    "expected_outputs": [
+      0
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Only the disabled behavior is specified.",
+    "guidance": null,
+    "reviewer_notes": "Expected values cover only the stated observations; intent remains partial.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "frame-offset-ambiguous",
+    "source_family": "frame-offset",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int base,int shift){return base+shift;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "arithmetic",
+    "is_known_correct": false,
+    "is_ambiguous": true,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        3,
+        0
+      ],
+      [
+        8,
+        0
+      ]
+    ],
+    "expected_outputs": [
+      3,
+      8
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "The zero-shift behavior alone was supplied.",
+    "guidance": null,
+    "reviewer_notes": "Expected values cover only the stated observations; intent remains partial.",
+    "partition": "final",
+    "origin_group": "internal"
+  },
+  {
+    "case_id": "opaque-rounding-ambiguous",
+    "source_family": "opaque-rounding",
+    "source_origin": "Internally authored for Phase 5.5",
+    "source_license": "No separate reuse license published",
+    "adaptation_notes": "Written for an explicit local task or partial specification.",
+    "mini_c_source": "int f(int x){return x/4;}",
+    "program_validity": "compiler_valid",
+    "fault_category": "rounding",
+    "is_known_correct": false,
+    "is_ambiguous": true,
+    "entry_point": "f",
+    "input_vectors": [
+      [
+        8
+      ],
+      [
+        12
+      ]
+    ],
+    "expected_outputs": [
+      2,
+      3
+    ],
+    "reference_repairs": [],
+    "acceptable_alternatives": [],
+    "specification": "Only exact multiples of four have expectations.",
+    "guidance": null,
+    "reviewer_notes": "Expected values cover only the stated observations; intent remains partial.",
+    "partition": "final",
+    "origin_group": "internal"
+  }
+]
