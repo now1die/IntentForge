@@ -14,6 +14,7 @@ export type VerificationResponse = {
   review_order: string[];
   comparison_status: string | null;
   probes: { arguments: Scalar[]; relation: string;
+    assessment?: string; separated_pairs?: number; new_pairs?: number; steps?: number; input_basis?: string;
     candidates: { candidate_id: string; status: string; actual: Scalar | null; issue: string | null }[] }[];
 };
 type Props = {
@@ -28,9 +29,9 @@ function scalar(value: unknown): value is Scalar {
     && value >= -2147483648 && value <= 2147483647);
 }
 
-function readVectors(input: string): Vector[] {
+function readVectors(input: string, observational: boolean): Vector[] {
   const rows: unknown = JSON.parse(input);
-  if (!Array.isArray(rows) || !rows.length || rows.length > 12 || rows.some((item) =>
+  if (!Array.isArray(rows) || (!observational && !rows.length) || rows.length > 12 || rows.some((item) =>
     !item || !Array.isArray(item.arguments) || item.arguments.length > 16
     || !item.arguments.every(scalar) || !scalar(item.expected))) {
     throw new Error("Supply one to twelve tests with integer or Boolean arguments and an explicit expected value.");
@@ -47,6 +48,8 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [cells, setCells] = useState("4096");
   const [trace, setTrace] = useState(false);
   const [compare, setCompare] = useState(false);
+  const [phase5, setPhase5] = useState(false);
+  const [precision, setPrecision] = useState(false);
   const [expression, setExpression] = useState("");
   const [reply, setReply] = useState<{ snapshot: string; result: VerificationResponse } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -54,7 +57,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [error, setError] = useState<string | null>(null);
   const request = useRef<AbortController | null>(null);
   const discovery = useRef<AbortController | null>(null);
-  const snapshot = JSON.stringify([code, entry, vectors, trace, compare, expression, steps, depth, cells]);
+  const snapshot = JSON.stringify([code, entry, vectors, trace, compare, phase5, precision, expression, steps, depth, cells]);
 
   function invalidate() {
     request.current?.abort();
@@ -97,7 +100,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   async function verify() {
     let input: Vector[];
     try {
-      input = readVectors(vectors);
+      input = readVectors(vectors, compare && phase5);
     } catch (failure) {
       setError(failure instanceof SyntaxError ? "Test vectors must be valid JSON." : (failure as Error).message);
       return;
@@ -107,11 +110,17 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
     request.current = controller;
     setBusy(true);
     try {
-      const result = await verifyBehavior({
+      const payload = {
         source: code, entry_point: entry, vectors: input, trace, compare_candidates: compare,
+        ...(phase5 ? { engine_version: precision ? 55 : 5 } : {}),
         limits: { steps: Number(steps), call_depth: Number(depth), memory_cells: Number(cells) },
         ...(compare && expression.trim() ? { return_expression: expression.trim() } : {}),
-      }, controller.signal);
+      };
+      let result = await verifyBehavior(payload, controller.signal);
+      if (result.availability.status === "capacity_reached" && !controller.signal.aborted) {
+        await new Promise((resolve) => setTimeout(resolve, 650));
+        if (!controller.signal.aborted) result = await verifyBehavior(payload, controller.signal);
+      }
       if (!controller.signal.aborted) setReply({ snapshot, result });
     } catch (failure) {
       if (!controller.signal.aborted) setError(failure instanceof Error ? failure.message : "Could not verify behavior.");
@@ -158,7 +167,10 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
         <div className="behavior-controls">
           <label><input type="checkbox" checked={trace} onChange={(event) => setTrace(event.target.checked)} /> Record trace</label>
           <label><input type="checkbox" checked={compare} onChange={(event) => setCompare(event.target.checked)} /> Compare repair candidates</label>
+          {compare && <label><input type="checkbox" checked={phase5} onChange={(event) => setPhase5(event.target.checked)} /> Phase 5 repair and probes</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={precision} onChange={(event) => setPrecision(event.target.checked)} /> Phase 5.5 precision gates</label>}
         </div>
+        {compare && phase5 && <p>Use an empty test list to compare probe observations without expected values.</p>}
         {compare && <label>Expected return expression (optional)<input value={expression} maxLength={160}
           onChange={(event) => setExpression(event.target.value)} /></label>}
         <button className="primary" type="submit" disabled={busy}>{busy ? "Verifying…" : "Run verification"}</button>
@@ -167,15 +179,17 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
       {result && result.availability.status !== "available" && <p role="status">{result.availability.detail}</p>}
       {result?.original && <>
         <h2>Live interpreter evidence</h2>
+        {phase5 && result.original.status === "ORACLE_UNAVAILABLE" && <p>Observational comparison. Candidates retain static order until you supply expected outputs.</p>}
         {result.comparison_status === "MULTIPLE_MATCHES" && <p>Multiple candidates match. More test cases may distinguish them.</p>}
         <div className="behavior-evidence">
-          <Evidence label="Live original" result={result.original} onNavigate={onNavigate} />
-          {result.review_order.map((id) => {
+          <Evidence label="Live original" result={result.original} onNavigate={onNavigate} observationOnly={phase5} />
+          {result.review_order.map((id, index) => {
             const item = result.candidates.find((row) => row.id === id);
             return item && <article key={id}>
               <p>Compiler valid · Static rank {item.static_rank} · {item.static_evidence.toLowerCase().replaceAll("_", " ")}</p>
+              {phase5 && <p>Review position {index + 1} · {item.id}</p>}
               <p>{item.hypothesis}</p>
-              <Evidence label={`Live candidate ${item.static_rank}`} result={item.behavior} />
+              <Evidence label={`Live candidate ${item.static_rank}`} result={item.behavior} observationOnly={phase5} />
               <button type="button" onClick={() => setSelected(id)}>Review candidate {item.static_rank}</button>
             </article>;
           })}
@@ -186,6 +200,8 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           <ul>{result.probes.map((probe) => <li key={JSON.stringify(probe.arguments)}>
             <code>{JSON.stringify(probe.arguments)}</code> · {probe.relation} · {probe.candidates.map((row) =>
               `${row.candidate_id}: ${row.actual !== null ? String(row.actual) : row.issue ?? row.status}`).join(" · ")}
+            {probe.assessment && <small> · {probe.assessment.replaceAll("_", " ")} · {probe.separated_pairs} {probe.separated_pairs === 1 ? "pair" : "pairs"}
+              {" "}({probe.new_pairs} new) · {probe.steps} steps · {probe.input_basis?.replaceAll("_", " ")}</small>}
             <button type="button" onClick={() => addProbe(probe.arguments)}>Use probe input</button>
           </li>)}</ul>
         </section>}

@@ -1,0 +1,4485 @@
+{
+  "version": 1,
+  "audit": {
+    "sha256": "a27b4bae2284354f98567b7041deb32da6d1202a44e8ae75519479ad3dc90500",
+    "partitions": {
+      "calibration": 2,
+      "development": 3,
+      "final": 16,
+      "selection": 2,
+      "training": 2
+    },
+    "near_token_pairs": [
+      {
+        "families": [
+          "rotor-progress",
+          "stairwell-numbering"
+        ],
+        "token_similarity": 0.907
+      }
+    ],
+    "reused_full_vectors": [],
+    "repeated_categories": {
+      "arithmetic": [
+        "final",
+        "training"
+      ],
+      "comparison": [
+        "calibration",
+        "training"
+      ],
+      "argument_permutation": [
+        "final",
+        "selection"
+      ],
+      "loop_binding": [
+        "development",
+        "final"
+      ],
+      "array_index": [
+        "development",
+        "final"
+      ]
+    },
+    "historical_sources_checked": 750,
+    "quarantined_before_evaluation": {
+      "diameter-transform": "gate-pick",
+      "arc-precision": "quality-samples"
+    }
+  },
+  "v4_artifact": "V4_DETERMINISTIC",
+  "selection": {
+    "v4_baseline": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "control_abstention": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "condition": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "survey-net-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "granule-count",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "structural_scan_only": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "control_abstention": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "condition": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "survey-net-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "granule-count",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "generation_deterministic": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "control_abstention": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "condition": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "survey-net-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "granule-count",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "same_pool_v4": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "control_abstention": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "condition": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "survey-net-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "granule-count",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "same_pool_v4_pairwise": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "control_abstention": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "condition": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "survey-net-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "granule-count",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "same_pool_structural_features": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "control_abstention": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "condition": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "survey-net-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "granule-count",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    }
+  },
+  "development_calibration": {
+    "v4_baseline": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "control_abstention": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "return_dependency": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "strobe-divisibility",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "marching-checksum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "rotor-progress",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "stock-minimum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "literal-capacity",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        }
+      ]
+    },
+    "structural_scan_only": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "control_abstention": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "return_dependency": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "top_3": {
+          "hits": 1,
+          "total": 4,
+          "wilson95": [
+            0.046,
+            0.699
+          ]
+        },
+        "compiler_validity": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "strobe-divisibility",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "marching-checksum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "rotor-progress",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "stock-minimum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "literal-capacity",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        }
+      ]
+    },
+    "generation_deterministic": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "control_abstention": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "return_dependency": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_1": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_3": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "strobe-divisibility",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "marching-checksum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "rotor-progress",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "stock-minimum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "literal-capacity",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        }
+      ]
+    },
+    "same_pool_v4": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "control_abstention": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "return_dependency": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_1": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_3": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "strobe-divisibility",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "marching-checksum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "rotor-progress",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "stock-minimum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "literal-capacity",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        }
+      ]
+    },
+    "same_pool_v4_pairwise": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "control_abstention": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "return_dependency": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_1": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_3": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "strobe-divisibility",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "marching-checksum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "rotor-progress",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "stock-minimum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "literal-capacity",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        }
+      ]
+    },
+    "same_pool_structural_features": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "control_abstention": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "return_dependency": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "candidate_recall": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_1": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "top_3": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "strobe-divisibility",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "marching-checksum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "rotor-progress",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "stock-minimum",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "literal-capacity",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        }
+      ]
+    }
+  },
+  "final": {
+    "v4_baseline": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 2,
+          "total": 10,
+          "wilson95": [
+            0.057,
+            0.51
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 3,
+          "wilson95": [
+            0.208,
+            0.939
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        },
+        "control_abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "arithmetic": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison_boundary": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "multi_accumulator": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "recurrence": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "rounding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 2,
+          "total": 4,
+          "wilson95": [
+            0.15,
+            0.85
+          ]
+        },
+        "candidate_recall": {
+          "hits": 2,
+          "total": 10,
+          "wilson95": [
+            0.057,
+            0.51
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 10,
+          "wilson95": [
+            0.018,
+            0.404
+          ]
+        },
+        "top_3": {
+          "hits": 2,
+          "total": 10,
+          "wilson95": [
+            0.057,
+            0.51
+          ]
+        },
+        "compiler_validity": {
+          "hits": 7,
+          "total": 7,
+          "wilson95": [
+            0.646,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 16,
+          "total": 16,
+          "wilson95": [
+            0.806,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "stairwell-numbering",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "reverse-cargo-labels",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "dye-displacement",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "heat-budget-sensors",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "lamp-bank",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "mixed-water-inflows",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "checkpoint-handles",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "move-budget",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "message-repetition",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "parcel-ceiling",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "quality-samples",
+          "repair_rank": 3,
+          "proposals": 3,
+          "valid": 3,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 3
+        },
+        {
+          "family": "gate-pick",
+          "repair_rank": null,
+          "proposals": 2,
+          "valid": 2,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 2
+        },
+        {
+          "family": "deck-area",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "turbine-pitch",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "window-shift",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "color-cells",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "structural_scan_only": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "precision": {
+          "hits": 6,
+          "total": 8,
+          "wilson95": [
+            0.409,
+            0.929
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 2,
+          "total": 5,
+          "wilson95": [
+            0.118,
+            0.769
+          ]
+        },
+        "control_abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "arithmetic": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison_boundary": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "multi_accumulator": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "recurrence": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "rounding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 7,
+          "total": 9,
+          "wilson95": [
+            0.453,
+            0.937
+          ]
+        },
+        "candidate_recall": {
+          "hits": 2,
+          "total": 10,
+          "wilson95": [
+            0.057,
+            0.51
+          ]
+        },
+        "top_1": {
+          "hits": 1,
+          "total": 10,
+          "wilson95": [
+            0.018,
+            0.404
+          ]
+        },
+        "top_3": {
+          "hits": 2,
+          "total": 10,
+          "wilson95": [
+            0.057,
+            0.51
+          ]
+        },
+        "compiler_validity": {
+          "hits": 7,
+          "total": 7,
+          "wilson95": [
+            0.646,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 16,
+          "total": 16,
+          "wilson95": [
+            0.806,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "stairwell-numbering",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "reverse-cargo-labels",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "dye-displacement",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "heat-budget-sensors",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "lamp-bank",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "mixed-water-inflows",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "checkpoint-handles",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "move-budget",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "message-repetition",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "parcel-ceiling",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "quality-samples",
+          "repair_rank": 3,
+          "proposals": 3,
+          "valid": 3,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 3
+        },
+        {
+          "family": "gate-pick",
+          "repair_rank": null,
+          "proposals": 2,
+          "valid": 2,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 2
+        },
+        {
+          "family": "deck-area",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "turbine-pitch",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "window-shift",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "color-cells",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "generation_deterministic": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "precision": {
+          "hits": 6,
+          "total": 8,
+          "wilson95": [
+            0.409,
+            0.929
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 2,
+          "total": 5,
+          "wilson95": [
+            0.118,
+            0.769
+          ]
+        },
+        "control_abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "arithmetic": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison_boundary": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "multi_accumulator": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "recurrence": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "rounding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 7,
+          "total": 9,
+          "wilson95": [
+            0.453,
+            0.937
+          ]
+        },
+        "candidate_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "top_1": {
+          "hits": 5,
+          "total": 10,
+          "wilson95": [
+            0.237,
+            0.763
+          ]
+        },
+        "top_3": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 16,
+          "total": 16,
+          "wilson95": [
+            0.806,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "stairwell-numbering",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "reverse-cargo-labels",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "dye-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "heat-budget-sensors",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "lamp-bank",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "mixed-water-inflows",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "checkpoint-handles",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "move-budget",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "message-repetition",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "parcel-ceiling",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "quality-samples",
+          "repair_rank": 3,
+          "proposals": 3,
+          "valid": 3,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 3
+        },
+        {
+          "family": "gate-pick",
+          "repair_rank": null,
+          "proposals": 2,
+          "valid": 2,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 2
+        },
+        {
+          "family": "deck-area",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "turbine-pitch",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "window-shift",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "color-cells",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "same_pool_v4": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "precision": {
+          "hits": 6,
+          "total": 8,
+          "wilson95": [
+            0.409,
+            0.929
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 2,
+          "total": 5,
+          "wilson95": [
+            0.118,
+            0.769
+          ]
+        },
+        "control_abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "arithmetic": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison_boundary": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "multi_accumulator": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "recurrence": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "rounding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 7,
+          "total": 9,
+          "wilson95": [
+            0.453,
+            0.937
+          ]
+        },
+        "candidate_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "top_1": {
+          "hits": 5,
+          "total": 10,
+          "wilson95": [
+            0.237,
+            0.763
+          ]
+        },
+        "top_3": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 16,
+          "total": 16,
+          "wilson95": [
+            0.806,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "stairwell-numbering",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "reverse-cargo-labels",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "dye-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "heat-budget-sensors",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "lamp-bank",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "mixed-water-inflows",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "checkpoint-handles",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "move-budget",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "message-repetition",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "parcel-ceiling",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "quality-samples",
+          "repair_rank": 3,
+          "proposals": 3,
+          "valid": 3,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 3
+        },
+        {
+          "family": "gate-pick",
+          "repair_rank": null,
+          "proposals": 2,
+          "valid": 2,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 2
+        },
+        {
+          "family": "deck-area",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "turbine-pitch",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "window-shift",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "color-cells",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "same_pool_v4_pairwise": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "precision": {
+          "hits": 6,
+          "total": 8,
+          "wilson95": [
+            0.409,
+            0.929
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 2,
+          "total": 5,
+          "wilson95": [
+            0.118,
+            0.769
+          ]
+        },
+        "control_abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "arithmetic": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison_boundary": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "multi_accumulator": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "recurrence": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "rounding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 7,
+          "total": 9,
+          "wilson95": [
+            0.453,
+            0.937
+          ]
+        },
+        "candidate_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "top_1": {
+          "hits": 5,
+          "total": 10,
+          "wilson95": [
+            0.237,
+            0.763
+          ]
+        },
+        "top_3": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 16,
+          "total": 16,
+          "wilson95": [
+            0.806,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "stairwell-numbering",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "reverse-cargo-labels",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "dye-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "heat-budget-sensors",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "lamp-bank",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "mixed-water-inflows",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "checkpoint-handles",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "move-budget",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "message-repetition",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "parcel-ceiling",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "quality-samples",
+          "repair_rank": 3,
+          "proposals": 3,
+          "valid": 3,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 3,
+          "abstained": true,
+          "attempts": 3
+        },
+        {
+          "family": "gate-pick",
+          "repair_rank": null,
+          "proposals": 2,
+          "valid": 2,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 2,
+          "abstained": true,
+          "attempts": 2
+        },
+        {
+          "family": "deck-area",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "turbine-pitch",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "window-shift",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "color-cells",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    },
+    "same_pool_structural_features": {
+      "metrics": {
+        "detection_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "precision": {
+          "hits": 6,
+          "total": 8,
+          "wilson95": [
+            0.409,
+            0.929
+          ]
+        },
+        "false_positive_rate": {
+          "hits": 2,
+          "total": 5,
+          "wilson95": [
+            0.118,
+            0.769
+          ]
+        },
+        "control_abstention": {
+          "hits": 5,
+          "total": 5,
+          "wilson95": [
+            0.566,
+            1
+          ]
+        },
+        "per_category_detection": {
+          "argument_permutation": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "arithmetic": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "array_index": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "binding": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "comparison_boundary": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "loop_binding": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "multi_accumulator": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "recurrence": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "rounding": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "evidence_completeness": {
+          "hits": 7,
+          "total": 9,
+          "wilson95": [
+            0.453,
+            0.937
+          ]
+        },
+        "candidate_recall": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "top_1": {
+          "hits": 5,
+          "total": 10,
+          "wilson95": [
+            0.237,
+            0.763
+          ]
+        },
+        "top_3": {
+          "hits": 6,
+          "total": 10,
+          "wilson95": [
+            0.313,
+            0.832
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstention": {
+          "hits": 16,
+          "total": 16,
+          "wilson95": [
+            0.806,
+            1
+          ]
+        },
+        "incorrect_recommendations": 0
+      },
+      "cases": [
+        {
+          "family": "stairwell-numbering",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "reverse-cargo-labels",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "dye-displacement",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "heat-budget-sensors",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "lamp-bank",
+          "repair_rank": 1,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "mixed-water-inflows",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "checkpoint-handles",
+          "repair_rank": null,
+          "proposals": 1,
+          "valid": 1,
+          "alert": true,
+          "structural_alert": true,
+          "located_evidence": true,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 1
+        },
+        {
+          "family": "move-budget",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "message-repetition",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "parcel-ceiling",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "quality-samples",
+          "repair_rank": 3,
+          "proposals": 3,
+          "valid": 3,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 3
+        },
+        {
+          "family": "gate-pick",
+          "repair_rank": null,
+          "proposals": 2,
+          "valid": 2,
+          "alert": true,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 2
+        },
+        {
+          "family": "deck-area",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "turbine-pitch",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "window-shift",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        },
+        {
+          "family": "color-cells",
+          "repair_rank": null,
+          "proposals": 0,
+          "valid": 0,
+          "alert": false,
+          "structural_alert": false,
+          "located_evidence": false,
+          "scored_candidates": 0,
+          "abstained": true,
+          "attempts": 0
+        }
+      ]
+    }
+  },
+  "latency": {
+    "mean_ms": 2.065,
+    "median_ms": 2.276,
+    "p95_ms": 3.21
+  },
+  "structural_detector": {
+    "detection_recall": {
+      "hits": 5,
+      "total": 10,
+      "wilson95": [
+        0.237,
+        0.763
+      ]
+    },
+    "precision": {
+      "hits": 5,
+      "total": 7,
+      "wilson95": [
+        0.359,
+        0.918
+      ]
+    },
+    "false_positive_rate": {
+      "hits": 2,
+      "total": 5,
+      "wilson95": [
+        0.118,
+        0.769
+      ]
+    },
+    "control_abstention": {
+      "hits": 5,
+      "total": 5,
+      "wilson95": [
+        0.566,
+        1
+      ]
+    },
+    "per_category_detection": {
+      "argument_permutation": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "arithmetic": {
+        "hits": 0,
+        "total": 1,
+        "wilson95": [
+          0,
+          0.793
+        ]
+      },
+      "array_index": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "binding": {
+        "hits": 0,
+        "total": 1,
+        "wilson95": [
+          0,
+          0.793
+        ]
+      },
+      "comparison_boundary": {
+        "hits": 0,
+        "total": 1,
+        "wilson95": [
+          0,
+          0.793
+        ]
+      },
+      "loop_binding": {
+        "hits": 2,
+        "total": 2,
+        "wilson95": [
+          0.342,
+          1
+        ]
+      },
+      "multi_accumulator": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "recurrence": {
+        "hits": 0,
+        "total": 1,
+        "wilson95": [
+          0,
+          0.793
+        ]
+      },
+      "rounding": {
+        "hits": 0,
+        "total": 1,
+        "wilson95": [
+          0,
+          0.793
+        ]
+      }
+    },
+    "evidence_completeness": {
+      "hits": 7,
+      "total": 7,
+      "wilson95": [
+        0.646,
+        1
+      ]
+    },
+    "candidate_recall": {
+      "hits": 2,
+      "total": 10,
+      "wilson95": [
+        0.057,
+        0.51
+      ]
+    },
+    "top_1": {
+      "hits": 1,
+      "total": 10,
+      "wilson95": [
+        0.018,
+        0.404
+      ]
+    },
+    "top_3": {
+      "hits": 2,
+      "total": 10,
+      "wilson95": [
+        0.057,
+        0.51
+      ]
+    },
+    "compiler_validity": {
+      "hits": 7,
+      "total": 7,
+      "wilson95": [
+        0.646,
+        1
+      ]
+    },
+    "abstention": {
+      "hits": 16,
+      "total": 16,
+      "wilson95": [
+        0.806,
+        1
+      ]
+    },
+    "incorrect_recommendations": 0
+  },
+  "natural_language": {
+    "metrics": {
+      "detection_recall": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "false_positive_rate": {
+        "hits": 0,
+        "total": 0,
+        "wilson95": null
+      },
+      "control_abstention": {
+        "hits": 0,
+        "total": 0,
+        "wilson95": null
+      },
+      "per_category_detection": {
+        "arithmetic": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        }
+      },
+      "evidence_completeness": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "candidate_recall": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "top_1": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "top_3": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "compiler_validity": {
+        "hits": 1,
+        "total": 1,
+        "wilson95": [
+          0.207,
+          1
+        ]
+      },
+      "abstention": {
+        "hits": 0,
+        "total": 1,
+        "wilson95": [
+          0,
+          0.793
+        ]
+      },
+      "incorrect_recommendations": 0
+    },
+    "cases": [
+      {
+        "family": "deck-area",
+        "repair_rank": 1,
+        "proposals": 1,
+        "valid": 1,
+        "alert": true,
+        "structural_alert": false,
+        "located_evidence": true,
+        "scored_candidates": 0,
+        "abstained": false,
+        "attempts": 1
+      }
+    ]
+  },
+  "explicit": {
+    "metrics": {
+      "detection_recall": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "precision": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "false_positive_rate": {
+        "hits": 0,
+        "total": 0,
+        "wilson95": null
+      },
+      "control_abstention": {
+        "hits": 0,
+        "total": 0,
+        "wilson95": null
+      },
+      "per_category_detection": {
+        "arithmetic": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "comparison_boundary": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "recurrence": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "rounding": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        }
+      },
+      "evidence_completeness": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "candidate_recall": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "top_1": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "top_3": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "compiler_validity": {
+        "hits": 4,
+        "total": 4,
+        "wilson95": [
+          0.51,
+          1
+        ]
+      },
+      "abstention": {
+        "hits": 0,
+        "total": 4,
+        "wilson95": [
+          0,
+          0.49
+        ]
+      },
+      "incorrect_recommendations": 0
+    },
+    "cases": [
+      {
+        "family": "message-repetition",
+        "repair_rank": 1,
+        "proposals": 1,
+        "valid": 1,
+        "alert": true,
+        "structural_alert": false,
+        "located_evidence": true,
+        "scored_candidates": 0,
+        "abstained": false,
+        "attempts": 1
+      },
+      {
+        "family": "parcel-ceiling",
+        "repair_rank": 1,
+        "proposals": 1,
+        "valid": 1,
+        "alert": true,
+        "structural_alert": false,
+        "located_evidence": true,
+        "scored_candidates": 0,
+        "abstained": false,
+        "attempts": 1
+      },
+      {
+        "family": "deck-area",
+        "repair_rank": 1,
+        "proposals": 1,
+        "valid": 1,
+        "alert": true,
+        "structural_alert": false,
+        "located_evidence": true,
+        "scored_candidates": 0,
+        "abstained": false,
+        "attempts": 1
+      },
+      {
+        "family": "window-shift",
+        "repair_rank": 1,
+        "proposals": 1,
+        "valid": 1,
+        "alert": true,
+        "structural_alert": false,
+        "located_evidence": true,
+        "scored_candidates": 0,
+        "abstained": false,
+        "attempts": 1
+      }
+    ]
+  },
+  "probe_ablation": {
+    "reversed_threshold": {
+      "legacy": {
+        "probes": 6,
+        "pair_distinguished": false,
+        "first_distinguishing_position": null,
+        "steps": 84
+      },
+      "phase5": {
+        "probes": 8,
+        "pair_distinguished": true,
+        "first_distinguishing_position": 1,
+        "steps": 115
+      }
+    },
+    "runtime_at_boundary": {
+      "legacy": {
+        "probes": 6,
+        "pair_distinguished": false,
+        "first_distinguishing_position": null,
+        "steps": 84
+      },
+      "phase5": {
+        "probes": 8,
+        "pair_distinguished": true,
+        "first_distinguishing_position": 1,
+        "steps": 117
+      }
+    },
+    "paired_inputs": {
+      "legacy": {
+        "probes": 8,
+        "pair_distinguished": false,
+        "first_distinguishing_position": null,
+        "steps": 128
+      },
+      "phase5": {
+        "probes": 8,
+        "pair_distinguished": true,
+        "first_distinguishing_position": 1,
+        "steps": 128
+      }
+    },
+    "equivalent": {
+      "legacy": {
+        "probes": 6,
+        "pair_distinguished": false,
+        "first_distinguishing_position": null,
+        "steps": 72
+      },
+      "phase5": {
+        "probes": 6,
+        "pair_distinguished": false,
+        "first_distinguishing_position": null,
+        "steps": 72
+      }
+    }
+  }
+}

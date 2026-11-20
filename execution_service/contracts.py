@@ -30,7 +30,8 @@ class VerifyRequest(Message):
     language: Literal["mini-c"] = "mini-c"
     source: Source
     entry_point: Entry
-    vectors: tuple[TestVector, ...] = Field(min_length=1, max_length=12)
+    vectors: tuple[TestVector, ...] = Field(max_length=12)
+    engine_version: Literal[4, 5, 55] = 4
     limits: LocalLimits = Field(default_factory=LocalLimits)
     trace: bool = Field(default=False, strict=True)
     compare_candidates: bool = Field(default=False, strict=True)
@@ -41,6 +42,8 @@ class VerifyRequest(Message):
     def limits_and_source(self):
         if len(self.source.encode()) > 48_000:
             raise ValueError("Local execution admission limits exceeded")
+        if not self.vectors and (self.engine_version not in {5, 55} or not self.compare_candidates):
+            raise ValueError("Supply a test vector or explicitly request Phase 5 observational comparison")
         return self
 
 
@@ -51,13 +54,16 @@ class Program(Message):
 
 class Batch(Message):
     entry_point: Entry
-    vectors: tuple[TestVector, ...] = Field(min_length=1, max_length=12)
+    vectors: tuple[TestVector, ...] = Field(max_length=12)
+    engine_version: Literal[4, 5] = 4
     limits: LocalLimits
     trace: bool = Field(strict=True)
     programs: tuple[Program, ...] = Field(min_length=1, max_length=5)
 
     @model_validator(mode="after")
     def enforce(self):
+        if not self.vectors and self.engine_version != 5:
+            raise ValueError("Legacy verification needs an expected result")
         if self.programs[0].candidate_id is not None or any(row.candidate_id is None for row in self.programs[1:]):
             raise ValueError("Supply the original followed by identified candidates")
         if len({row.candidate_id for row in self.programs}) != len(self.programs):
@@ -80,9 +86,18 @@ class Probe(Message):
     candidates: tuple[ProbeResult, ...] = Field(max_length=4)
 
 
+class RankedProbe(Probe):
+    assessment: Literal["different_values", "candidate_runtime_failure", "candidate_execution_limit",
+                        "same_values", "insufficient_observations"]
+    separated_pairs: int = Field(ge=0, le=6)
+    new_pairs: int = Field(ge=0, le=6)
+    steps: int = Field(ge=0, le=80_000)
+    input_basis: Literal["boundary", "combination", "scalar_seed"]
+
+
 class BatchResult(Message):
     runs: tuple[BehaviorResult, ...] = Field(min_length=1, max_length=5)
-    probes: tuple[Probe, ...] = Field(default=(), max_length=8)
+    probes: tuple[RankedProbe | Probe, ...] = Field(default=(), max_length=8)
 
 
 class Availability(Message):
@@ -110,5 +125,5 @@ class VerifyResponse(Message):
     candidates: tuple[CandidateReview, ...] = ()
     review_order: tuple[CandidateId, ...] = ()
     comparison_status: Literal["MULTIPLE_MATCHES", "ONE_MATCH", "NO_OBSERVED_MATCH"] | None = None
-    probes: tuple[Probe, ...] = ()
+    probes: tuple[RankedProbe | Probe, ...] = ()
     requires_approval: Literal[True] = True

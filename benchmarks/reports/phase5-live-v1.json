@@ -1,0 +1,287 @@
+{
+  "cases": [
+    {
+      "family": "stairwell-numbering",
+      "static_rank": 1,
+      "behavior_rank": 1,
+      "original_status": "EXECUTION_LIMITED",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 10231
+    },
+    {
+      "family": "reverse-cargo-labels",
+      "static_rank": 1,
+      "behavior_rank": 1,
+      "original_status": "EXECUTION_LIMITED",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 10145
+    },
+    {
+      "family": "dye-displacement",
+      "static_rank": 1,
+      "behavior_rank": 1,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 342
+    },
+    {
+      "family": "heat-budget-sensors",
+      "static_rank": 1,
+      "behavior_rank": 1,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 144
+    },
+    {
+      "family": "lamp-bank",
+      "static_rank": 1,
+      "behavior_rank": 1,
+      "original_status": "BEHAVIOR_UNKNOWN",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 123
+    },
+    {
+      "family": "mixed-water-inflows",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 104
+    },
+    {
+      "family": "checkpoint-handles",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 252
+    },
+    {
+      "family": "move-budget",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 192
+    },
+    {
+      "family": "message-repetition",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 138
+    },
+    {
+      "family": "parcel-ceiling",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 36
+    },
+    {
+      "family": "quality-samples",
+      "static_rank": 3,
+      "behavior_rank": 1,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS",
+        "MISMATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "ONE_MATCH",
+      "probes": 8,
+      "pairs_distinguished": 3,
+      "probe_steps": 168,
+      "test_steps": 42
+    },
+    {
+      "family": "gate-pick",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "comparison": "MULTIPLE_MATCHES",
+      "probes": 8,
+      "pairs_distinguished": 1,
+      "probe_steps": 96,
+      "test_steps": 12,
+      "additional_explicit_specification": "Return the first argument",
+      "after_new_vector": "ONE_MATCH"
+    },
+    {
+      "family": "deck-area",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 42
+    },
+    {
+      "family": "turbine-pitch",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "EXECUTION_UNSUPPORTED",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 0
+    },
+    {
+      "family": "window-shift",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MISMATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 28
+    },
+    {
+      "family": "color-cells",
+      "static_rank": null,
+      "behavior_rank": null,
+      "original_status": "MATCHES_SUPPLIED_TESTS",
+      "candidate_statuses": [],
+      "comparison": "NO_OBSERVED_MATCH",
+      "probes": 0,
+      "pairs_distinguished": 0,
+      "probe_steps": 0,
+      "test_steps": 54
+    }
+  ],
+  "metrics": {
+    "static_rank": {
+      "top_1": {
+        "hits": 5,
+        "total": 10,
+        "wilson95": [
+          0.237,
+          0.763
+        ]
+      },
+      "top_3": {
+        "hits": 6,
+        "total": 10,
+        "wilson95": [
+          0.313,
+          0.832
+        ]
+      }
+    },
+    "behavior_rank": {
+      "top_1": {
+        "hits": 6,
+        "total": 10,
+        "wilson95": [
+          0.313,
+          0.832
+        ]
+      },
+      "top_3": {
+        "hits": 6,
+        "total": 10,
+        "wilson95": [
+          0.313,
+          0.832
+        ]
+      }
+    },
+    "original_statuses": {
+      "BEHAVIOR_UNKNOWN": 1,
+      "EXECUTION_LIMITED": 2,
+      "EXECUTION_UNSUPPORTED": 3,
+      "MATCHES_SUPPLIED_TESTS": 4,
+      "MISMATCHES_SUPPLIED_TESTS": 6
+    },
+    "candidate_statuses": {
+      "MATCHES_SUPPLIED_TESTS": 8,
+      "MISMATCHES_SUPPLIED_TESTS": 4
+    },
+    "comparison_statuses": {
+      "MULTIPLE_MATCHES": 1,
+      "NO_OBSERVED_MATCH": 9,
+      "ONE_MATCH": 6
+    },
+    "execution_support": {
+      "hits": 25,
+      "total": 28,
+      "wilson95": [
+        0.728,
+        0.963
+      ]
+    },
+    "worker_steps": 22149
+  },
+  "latency": {
+    "mean_ms": 714.528,
+    "median_ms": 667.226,
+    "p95_ms": 1295.994
+  }
+}

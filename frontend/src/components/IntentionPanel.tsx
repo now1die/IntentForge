@@ -49,7 +49,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -99,14 +99,16 @@ export function IntentionPanel({ code, onApply }: {
   const choice = result?.candidates.find((candidate) => candidate.id === selected);
 
   return (
-    <section className="intention-panel" aria-label="Intention analysis">
+    <section className="intention-panel" aria-label="Intention analysis" data-engine={engineVersion}>
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
           <label>Intention engine
-            <select value={engineVersion} onChange={(event) => setEngineVersion(event.target.value === "4" ? 4 : event.target.value === "3" ? 3 : 2)}>
+            <select value={engineVersion} onChange={(event) => setEngineVersion(Number(event.target.value) as 2 | 3 | 4 | 5 | 55)}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
               <option value="4">Phase 3.5 evidence</option>
+              <option value="5">Phase 5 structural evidence</option>
+              <option value="55">Phase 5.5 precision gates</option>
             </select>
           </label>
           <label>Analysis mode
@@ -154,6 +156,30 @@ export function IntentionPanel({ code, onApply }: {
           {result.diagnostics.map((diagnostic, index) => (
             <p key={index}>{diagnostic.message}</p>
           ))}
+          {result.structural_scan && <section aria-label="Structural scan">
+            <h4>Structural scan</h4>
+            {result.structural_scan.status === "SCAN_LIMITED" && <p>Structural scan reached its work limit.</p>}
+            {result.structural_scan.status === "INCOMPLETE_COMPILER_EVIDENCE" && <p>Structural scan needs a compiler-valid program.</p>}
+            {result.structural_scan.status === "HEURISTIC_SCAN" && !result.structural_scan.findings.length &&
+              !result.structural_scan.withheld?.length &&
+              <p>No supported structural suspicion found.</p>}
+            {result.structural_scan.findings.map((finding, index) => <article key={index}>
+              <strong>{finding.category.toLowerCase().replaceAll("_", " ")}</strong>
+              <p>{finding.assumption}</p>
+              <ul>{finding.evidence.map((fact, number) => <li key={number}>
+                {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
+              </li>)}</ul>
+            </article>)}
+            {!!result.structural_scan.withheld?.length && <section aria-label="Withheld structural hypotheses">
+              <h4>Withheld structural hypotheses</h4>
+              {result.structural_scan.withheld.map((item, index) => <article key={index}>
+                <strong>{item.category.toLowerCase().replaceAll("_", " ")}</strong>
+                <ul>{item.evidence.map((fact, number) => <li key={number}>{fact.detail}</li>)}</ul>
+                <p><strong>Counter-evidence or missing evidence</strong> {item.counter_evidence.detail}
+                  {item.counter_evidence.span && <small> · Line {item.counter_evidence.span.start.line}</small>}</p>
+              </article>)}
+            </section>}
+          </section>}
           {result.evidence.map((fact, index) => <p key={index}>{fact.detail}</p>)}
           {result.notes.map((note) => <p key={note}>{note}</p>)}
           {result.candidates.length > 0 && (

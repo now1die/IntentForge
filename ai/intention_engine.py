@@ -17,6 +17,8 @@ from compiler.symbol_table import SymbolKind
 
 from .behavior_oracle import BehaviorResult, Status, Vector, program_identity
 from .intention_phase35 import phase35_features, phase35_hypotheses
+from .intention_phase5 import scan as phase5_scan
+from .intention_phase55 import RULES as PRECISION_RULES, apply_precision_gates
 from .intention_uncertainty import classify
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
@@ -83,6 +85,7 @@ class IntentionResult:
     candidate_ms: float = 0.0
     evidence_policy: bool = False
     behavior: BehaviorResult | None = None
+    structural_scan: dict | None = None
 
     def record_behavior(self, result: BehaviorResult) -> None:
         """Accept evidence only from a caller that owns a trusted executor."""
@@ -124,6 +127,7 @@ class IntentionResult:
             "evidence": [fact.to_dict() for fact in self.evidence],
             "notes": self.notes, "attempts": self.attempts,
             **({"requirement_status": self.requirement_status} if self.requirement_status else {}),
+            **({"structural_scan": self.structural_scan} if self.structural_scan is not None else {}),
             "candidates": candidates,
             "context": self.context.to_dict() if include_context else None,
         }
@@ -255,14 +259,20 @@ def analyze_intention(
     candidate_budget: int = MAX_CANDIDATES, enhanced: bool = False,
     expanded_ranker: ExpandedRanker | None = None, experimental: str | None = None,
     generalized: bool = False, generation_v3: bool = True, phase35: bool = False,
+    phase5: bool = False, phase5_generate: bool = True,
+    phase55: bool = False, phase55_rules: frozenset[str] = PRECISION_RULES,
 ) -> IntentionResult:
+    phase5 = phase5 or phase55
+    phase35 = phase35 or phase5
     generalized = generalized or phase35
     enhanced = enhanced or generalized
     deadline = monotonic() + budget_seconds
     context = build_context(source, requirement)
     if _unsupported(context):
         return IntentionResult(context, "UNSUPPORTED_LANGUAGE", "NO_SUPPORTED_CORRECTION", ranking_status, [],
-                               ["The source contains syntax outside the supported Mini-C subset."])
+                               ["The source contains syntax outside the supported Mini-C subset."],
+                               structural_scan={"status": "INCOMPLETE_COMPILER_EVIDENCE", "findings": []}
+                               if phase5 and requirement is None else None)
     targets, notes = resolve_targets(context, enhanced=enhanced, generalized=generalized)
     mismatches = [target for target in targets if not target.matches]
     heuristic = _heuristic(context) if not enhanced and context.compiler_valid and not mismatches else ()
@@ -281,9 +291,33 @@ def analyze_intention(
     elif heuristic:
         notes.append("The computed value could be intentional or unused. Provide a requirement before proposing a logic edit.")
     started_generation = monotonic()
+    scan_status, discovered = phase5_scan(context, deadline) if phase5 and requirement is None else (None, ())
+    structural = None
+    withheld = ()
+    if phase55 and discovered:
+        discovered, withheld, limited = apply_precision_gates(context, discovered, deadline, phase55_rules)
+        if limited:
+            scan_status = "SCAN_LIMITED"
+    if scan_status:
+        structural = {"status": scan_status, "findings": [
+            {"category": proposal.category, "assumption": proposal.assumption,
+             "evidence": [item.to_dict() for item in proposal.evidence]} for proposal in discovered
+        ]}
+        if phase55:
+            structural["withheld"] = [
+                {"category": proposal.category, "assumption": proposal.assumption,
+                 "evidence": [fact.to_dict() for fact in proposal.evidence], "counter_evidence": reason.to_dict()}
+                for proposal, reason in withheld
+            ]
+    if discovered and finding == "NO_SUPPORTED_MISMATCH":
+        finding = "HEURISTIC_SUSPICION"
+        evidence = discovered[0].evidence
+        notes.append("The structural scan found a plausible inconsistency. Programmer intent remains unknown.")
     if enhanced:
         def stream():
             yield from requirement_proposals(context, targets)
+            if phase5_generate:
+                yield from discovered
             if phase35 and requirement is None:
                 yield from phase35_hypotheses(context)
             if generalized and generation_v3:
@@ -383,4 +417,4 @@ def analyze_intention(
         if requirement_status == "UNSUPPORTED_DESCRIPTION":
             decision = "INSUFFICIENT_CONTEXT"
     return IntentionResult(context, finding, decision, ranking_status, candidates, notes, evidence, attempts,
-                           requirement_status, candidate_ms, evidence_policy=phase35)
+                           requirement_status, candidate_ms, evidence_policy=phase35, structural_scan=structural)
