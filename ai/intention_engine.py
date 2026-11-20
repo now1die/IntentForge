@@ -18,6 +18,7 @@ from compiler.symbol_table import SymbolKind
 from .behavior_oracle import BehaviorResult, Status, Vector, program_identity
 from .intention_phase35 import phase35_features, phase35_hypotheses
 from .intention_phase5 import scan as phase5_scan
+from .intention_phase55 import RULES as PRECISION_RULES, apply_precision_gates
 from .intention_uncertainty import classify
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
@@ -259,7 +260,9 @@ def analyze_intention(
     expanded_ranker: ExpandedRanker | None = None, experimental: str | None = None,
     generalized: bool = False, generation_v3: bool = True, phase35: bool = False,
     phase5: bool = False, phase5_generate: bool = True,
+    phase55: bool = False, phase55_rules: frozenset[str] = PRECISION_RULES,
 ) -> IntentionResult:
+    phase5 = phase5 or phase55
     phase35 = phase35 or phase5
     generalized = generalized or phase35
     enhanced = enhanced or generalized
@@ -290,11 +293,22 @@ def analyze_intention(
     started_generation = monotonic()
     scan_status, discovered = phase5_scan(context, deadline) if phase5 and requirement is None else (None, ())
     structural = None
+    withheld = ()
+    if phase55 and discovered:
+        discovered, withheld, limited = apply_precision_gates(context, discovered, deadline, phase55_rules)
+        if limited:
+            scan_status = "SCAN_LIMITED"
     if scan_status:
         structural = {"status": scan_status, "findings": [
             {"category": proposal.category, "assumption": proposal.assumption,
              "evidence": [item.to_dict() for item in proposal.evidence]} for proposal in discovered
         ]}
+        if phase55:
+            structural["withheld"] = [
+                {"category": proposal.category, "assumption": proposal.assumption,
+                 "evidence": [fact.to_dict() for fact in proposal.evidence], "counter_evidence": reason.to_dict()}
+                for proposal, reason in withheld
+            ]
     if discovered and finding == "NO_SUPPORTED_MISMATCH":
         finding = "HEURISTIC_SUSPICION"
         evidence = discovered[0].evidence

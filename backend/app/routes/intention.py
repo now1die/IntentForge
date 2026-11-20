@@ -52,7 +52,7 @@ class IntentionRequest(BaseModel):
     code: str = Field(max_length=MAX_SOURCE)
     requirement: RequirementRequest | None = None
     include_context: bool = False
-    engine_version: Literal[2, 3, 4, 5] = 2
+    engine_version: Literal[2, 3, 4, 5, 55] = 2
     mode: Literal["code_only", "natural_language", "explicit"] | None = None
 
     @model_validator(mode="after")
@@ -94,8 +94,8 @@ class IntentionResponse(BaseModel):
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.engine_version == 5:
-        ranker, status = None, "V5_DETERMINISTIC"
+    if request.engine_version in {5, 55}:
+        ranker, status = None, f"V{request.engine_version}_DETERMINISTIC"
     elif request.engine_version >= 3:
         ranker = None
         expanded, status = load_generalized_ranker(request.engine_version)
@@ -109,13 +109,13 @@ def intention_analysis(request: IntentionRequest) -> dict:
         result = analyze_intention(request.code, requirement, ranker=ranker, ranking_status=status,
                                    enhanced=request.mode is not None, expanded_ranker=expanded,
                                    generalized=request.engine_version >= 3, phase35=request.engine_version == 4,
-                                   phase5=request.engine_version == 5)
+                                   phase5=request.engine_version == 5, phase55=request.engine_version == 55)
     except InvalidRequirement as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
     response = result.to_dict(include_context=request.include_context)
-    if request.engine_version == 5:
+    if request.engine_version in {5, 55}:
         response["source_fingerprint"] = program_identity(request.code)
     response.setdefault("requirement_status", None)
     return response
