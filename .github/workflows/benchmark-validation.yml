@@ -34,3 +34,4 @@ jobs:
       - run: python -m benchmarks.phase5_taxonomy --check
       - run: python -m benchmarks.phase5_evaluate --check
       - run: python -m benchmarks.phase55_evaluate --check
+      - run: python -m benchmarks.phase6_evaluate --check

@@ -183,3 +183,16 @@ approval path as Phase 5.
 [Phase 5.5 technical review](docs/PHASE_5_5_FINAL_REVIEW.md) ·
 [Corpus and provenance](docs/phase5_5_dataset_provenance.md) ·
 [Workbench screenshots](docs/phase5_5_workbench.md)
+
+## Phase 6 program reasoning
+
+The opt-in Phase 6 engine adds bounded control-flow, lexical reaching
+definitions, return slices and recursion summaries. It can propose
+review-only repairs for direct recursive progress, specified base cases and
+a narrow class of stale return dependencies. Pure integer comparison
+orientation is normalized for loop analysis. Isolated local verification
+keeps the existing resource and approval controls.
+
+[Phase 6 review](docs/PHASE_6_FINAL_REVIEW.md) ·
+[Evaluation provenance](docs/phase6_dataset_provenance.md) ·
+[Workbench screenshots](docs/phase6_workbench.md)
