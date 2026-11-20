@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "case_sha256": "e438de6cc64af3656d4a0b8ab0e95af2d6617c4d7e5e07a2cff9b2ecfb41d22c",
+  "upstream": "https://github.com/TheAlgorithms/Python",
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "dynamic_programming/catalan_numbers.py": "6d217116c2a050243cb2c4a13dce7da5b27a423c516cc63dddfa77044d5d2922",
+    "maths/aliquot_sum.py": "d5490e8d00cb929fde550bafb6cea318857f6c33c0a719082d7e75c88cfb4cf2",
+    "maths/binomial_coefficient.py": "8259ba897db18bfee144117a7d051f701f3d095b2dfe8e5f0a79f7930b08b853",
+    "maths/number_of_digits.py": "c990cec2b0769ccca2282f7d1aa81f8963e7465a30a8064ecd52df43d378c14b",
+    "maths/polynomial_evaluation.py": "7d4263f4a784602890cde2861e1c4c28109178fb7e08451f1698027e41f94d5d",
+    "maths/sum_of_geometric_progression.py": "b9c66a2043b7d3d5ed72fa9e2f69d2540fa4cfafcc2028be6b20680dd8264e6c",
+    "maths/trailing_zeroes.py": "773eaf675f4a94a51a1468cc09becbf28b13d3700febae65bef10515bc579bb3",
+    "sorts/insertion_sort.py": "2b244e03a5831e74fc615090828949d6155b56eb1e898e34e021c73ac0723b75"
+  },
+  "partitions": {
+    "calibration": 2,
+    "development": 6,
+    "final": 34,
+    "selection": 6
+  }
+}
