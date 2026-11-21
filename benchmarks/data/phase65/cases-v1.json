@@ -780,7 +780,7 @@
         "arguments": [
           7
         ],
-        "expected": 64
+        "expected": 32
       }
     ],
     "compiler_valid": true,
@@ -825,7 +825,7 @@
         "arguments": [
           7
         ],
-        "expected": 64
+        "expected": 32
       }
     ],
     "compiler_valid": true,

@@ -72,7 +72,7 @@ def fixtures():
         "Shrink two interval endpoints until they meet or cross.")
     add("multiplicative-tree", "final",
         "int f(int n){if(n<=3){return 2;}return f(n-1)*f(n-4);}",
-        [(3,), (4,), (5,), (7,)], lambda n: [2,2,2,2,4,8,16,64][n],
+        [(3,), (4,), (5,), (7,)], lambda n: [2,2,2,2,4,8,16,32][n],
         "Multiply two asymmetric prior terms with seed two.", ("f(n-1)*f(n-4)", "f(n-1)-f(n-4)"))
     add("weighted-tree", "final",
         "int f(int n){if(n<=2){return n+3;}return 2*f(n-1)-f(n-2);}",
