@@ -41,3 +41,5 @@ jobs:
       - run: python -m benchmarks.phase8_evaluate --check
       - run: python -m benchmarks.phase85_audit
       - run: python -m benchmarks.phase85_evaluate --check
+      - run: python -m benchmarks.phase9_audit
+      - run: python -m benchmarks.phase9_evaluate --check

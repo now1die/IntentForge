@@ -153,3 +153,16 @@ def test_worker_runtime_evidence_preserves_classification_and_source_identity():
         assert alone["runtime_observation"]["input"] == [5,5] and alone["specification"] is None
         legacy = http.post(URL,json=payload | {"engine_version":85}).json()
         assert "runtime_observation" not in legacy
+
+
+@pytest.mark.skipif(not os.getenv("INTENTFORGE_VM_SOCKET"), reason="Requires the restricted Linux worker")
+def test_matching_original_keeps_the_archived_optional_pool_collapsed():
+    payload = {"source":"int f(int n,int a){if(n<=0){return a;}return f(n-2,a+n);}",
+               "entry_point":"f","compare_candidates":True,
+               "vectors":[{"arguments":[4,0],"expected":6},{"arguments":[7,0],"expected":16}]}
+    with client() as http:
+        legacy, current = [http.post(URL,json=payload | {"engine_version":version}).json() for version in (85,9)]
+        assert current["guided_evidence"]["original"] == "ORIGINAL_MATCHES_SUPPLIED_TESTS"
+        assert current["review_presentation"] == "OPTIONAL_COLLAPSED"
+        assert current["candidates"]
+        assert [row["id"] for row in current["candidates"]] == [row["id"] for row in legacy["candidates"]]
