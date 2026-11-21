@@ -1,4 +1,5 @@
 import { FiniteRepairEvidence, CoordinatedLocations } from "./FiniteRepairEvidence";
+import { ControlFlowEvidence } from "./ControlFlowEvidence";
 import { RobustRepairEvidence } from "./RobustRepairEvidence";
 import { SpecificationEvidence } from "./SpecificationEvidence";
 import { Phase65Evidence } from "./Phase65Evidence";
@@ -55,7 +56,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -93,7 +94,7 @@ export function IntentionPanel({ code, onApply }: {
         return;
       }
       const options: Phase8Inputs = {};
-      if ((engineVersion === 8 || engineVersion === 85 || engineVersion === 9) && input.mode !== "code_only") {
+      if ((engineVersion === 8 || engineVersion === 85 || engineVersion === 9 || engineVersion === 95) && input.mode !== "code_only") {
         const fields = new FormData(form);
         const domain = String(fields.get("input_domain") ?? "").trim();
         const partial = String(fields.get("partial_inputs") ?? "").trim();
@@ -123,9 +124,9 @@ export function IntentionPanel({ code, onApply }: {
         <div className="intention-fields">
           <label>Intention engine
             <select value={engineVersion} onChange={(event) => {
-              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9;
+              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95;
               setEngineVersion(version);
-              if (version !== 7 && version !== 75 && version !== 8 && version !== 85 && version !== 9 && mode === "examples") setMode("code_only");
+              if (version !== 7 && version !== 75 && version !== 8 && version !== 85 && version !== 9 && version !== 95 && mode === "examples") setMode("code_only");
             }}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
@@ -139,12 +140,13 @@ export function IntentionPanel({ code, onApply }: {
               <option value="8">Phase 8 specification-guided arithmetic</option>
               <option value="85">Phase 8.5 branch-aware repair</option>
               <option value="9">Phase 9 semantic robustness</option>
+              <option value="95">Phase 9.5 control-flow repair</option>
             </select>
           </label>
           <label>Analysis mode
             <select name="mode" value={mode} onChange={(event) => setMode(event.target.value as IntentionMode | "auto")}>
               <option value="auto">Use entered fields</option>
-              {(engineVersion === 7 || engineVersion === 75 || engineVersion === 8 || engineVersion === 85 || engineVersion === 9) && <option value="examples">Supplied input/output examples</option>}
+              {(engineVersion === 7 || engineVersion === 75 || engineVersion === 8 || engineVersion === 85 || engineVersion === 9 || engineVersion === 95) && <option value="examples">Supplied input/output examples</option>}
               <option value="code_only">Code only</option>
               <option value="natural_language">Natural-language requirement</option>
               <option value="explicit">Explicit specification</option>
@@ -167,7 +169,7 @@ export function IntentionPanel({ code, onApply }: {
               <label>Condition location<input name="condition_ordinal" type="number" min={1} max={3000} /></label>
             </>}
             <label>Input/output examples<textarea name="examples" maxLength={4000} placeholder='[{"args":[3],"expected_return":9}]' /></label>
-            {(engineVersion === 8 || engineVersion === 85 || engineVersion === 9) && <>
+            {(engineVersion === 8 || engineVersion === 85 || engineVersion === 9 || engineVersion === 95) && <>
               <label>Input domain (JSON)<textarea name="input_domain" maxLength={2000}
                 placeholder='[{"minimum":0,"maximum":32},null]' /></label>
               <label>Partial inputs (JSON)<textarea name="partial_inputs" maxLength={2000} placeholder='[[2,3]]' /></label>
@@ -197,7 +199,8 @@ export function IntentionPanel({ code, onApply }: {
             <p key={index}>{diagnostic.message}</p>
           ))}
           {result.program_analysis?.phase8 && <SpecificationEvidence analysis={result.program_analysis.phase8} />}
-          {result.program_analysis?.phase9 && <RobustRepairEvidence analysis={result.program_analysis.phase9} />}
+          {result.program_analysis?.phase95 && <ControlFlowEvidence analysis={result.program_analysis.phase95} />}
+          {result.program_analysis?.phase9 && !result.program_analysis.phase95?.loops?.length && <RobustRepairEvidence analysis={result.program_analysis.phase9} />}
           {result.program_analysis?.phase85 && (!result.program_analysis.phase9?.branch && !result.program_analysis.phase9?.loop_summary)
             && <FiniteRepairEvidence analysis={result.program_analysis.phase85} />}
           {result.program_analysis && <section aria-label="Program-level evidence">
@@ -280,7 +283,7 @@ export function IntentionPanel({ code, onApply }: {
                   : result.finding === "COMPILER_ERROR" ? "Compiler-supported repair hypothesis" : "Code-only hypothesis"
               }</p>
               {choice.evidence_basis && <p>Evidence basis · {choice.evidence_basis.replaceAll("_", " ")}
-                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase9" ? "Phase 9" : choice.hypothesis_origin === "phase85" ? "Phase 8.5" : choice.hypothesis_origin === "phase8" ? "Phase 8" : choice.hypothesis_origin === "phase75" ? "Phase 7.5" : choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
+                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase95" ? "Phase 9.5" : choice.hypothesis_origin === "phase9" ? "Phase 9" : choice.hypothesis_origin === "phase85" ? "Phase 8.5" : choice.hypothesis_origin === "phase8" ? "Phase 8" : choice.hypothesis_origin === "phase75" ? "Phase 7.5" : choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
               <ul>{choice.evidence.map((fact, index) => <li key={index}>
                 {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
               </li>)}</ul>

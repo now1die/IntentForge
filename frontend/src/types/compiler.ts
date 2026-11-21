@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -377,7 +377,30 @@ export type Phase9Analysis = Pick<Phase85Analysis, "status" | "branch" | "exampl
   modeled_faults?: { example: number; code: string; operator: string; operands: number[]; span: AnalysisSpan }[];
 };
 
+export type Phase95Analysis = {
+  status: string;
+  loops?: {
+    function: string;
+    span: AnalysisSpan;
+    relation: string;
+    bound: string;
+    origin: string;
+    latch: string;
+    indexed_bindings: string[];
+    point_limit: number;
+    samples: { iterations: number; first: number | null; last: number | null }[];
+  }[];
+  exits?: Record<string, number>;
+  helper_calls?: Record<string, number>;
+  witnesses?: {
+    category: string;
+    edit: { span: AnalysisSpan; replacement: string };
+    guard?: { parameter: string; comparison: string; threshold: number; expected_return: number | boolean; covered_examples: number[] };
+    loops?: NonNullable<Phase95Analysis["loops"]>;
+  }[];
+};
 export interface Phase8Analysis {
+  phase95?: Phase95Analysis | null;
   phase9?: Phase9Analysis | null;
   phase85?: Phase85Analysis | null;
   specification: {
@@ -463,6 +486,7 @@ export interface IntentionResponse {
     phase8?: Phase8Analysis;
     phase85?: Phase85Analysis;
     phase9?: Phase9Analysis;
+    phase95?: Phase95Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;
