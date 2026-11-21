@@ -52,7 +52,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -107,9 +107,9 @@ export function IntentionPanel({ code, onApply }: {
         <div className="intention-fields">
           <label>Intention engine
             <select value={engineVersion} onChange={(event) => {
-              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7;
+              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75;
               setEngineVersion(version);
-              if (version !== 7 && mode === "examples") setMode("code_only");
+              if (version !== 7 && version !== 75 && mode === "examples") setMode("code_only");
             }}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
@@ -119,12 +119,13 @@ export function IntentionPanel({ code, onApply }: {
               <option value="6">Phase 6 program reasoning</option>
               <option value="65">Phase 6.5 interprocedural reasoning</option>
               <option value="7">Phase 7 guided repair precision</option>
+              <option value="75">Phase 7.5 generalized repair recovery</option>
             </select>
           </label>
           <label>Analysis mode
             <select name="mode" value={mode} onChange={(event) => setMode(event.target.value as IntentionMode | "auto")}>
               <option value="auto">Use entered fields</option>
-              {engineVersion === 7 && <option value="examples">Supplied input/output examples</option>}
+              {(engineVersion === 7 || engineVersion === 75) && <option value="examples">Supplied input/output examples</option>}
               <option value="code_only">Code only</option>
               <option value="natural_language">Natural-language requirement</option>
               <option value="explicit">Explicit specification</option>
@@ -251,7 +252,7 @@ export function IntentionPanel({ code, onApply }: {
                   : result.finding === "COMPILER_ERROR" ? "Compiler-supported repair hypothesis" : "Code-only hypothesis"
               }</p>
               {choice.evidence_basis && <p>Evidence basis · {choice.evidence_basis.replaceAll("_", " ")}
-                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
+                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase75" ? "Phase 7.5" : choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
               <ul>{choice.evidence.map((fact, index) => <li key={index}>
                 {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
               </li>)}</ul>

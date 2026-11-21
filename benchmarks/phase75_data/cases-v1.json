@@ -1,0 +1,3883 @@
+[
+  {
+    "family": "sequential-quarters",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Add sampled levels separated by four down to two.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          12,
+          -1
+        ],
+        "expected": 23
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          2
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          15,
+          -4
+        ],
+        "expected": 32
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "sequential-quarters-fault",
+    "source": "int f(int n,int score){if(n<=2){return score;}int next=score+n;return f(n-1,next);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n,int score){if(n<=2){return score;}int next=score+n;return f(n-4,next);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "sequential-quarters",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Add sampled levels separated by four down to two.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          12,
+          -1
+        ],
+        "expected": 23
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          2
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          15,
+          -4
+        ],
+        "expected": 32
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "sequential-quarters-control",
+    "source": "int f(int n,int score){if(n<=2){return score;}int next=score+n;return f(n-4,next);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "capped-depth",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Return an upper capped sensor.",
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          17
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          99
+        ],
+        "expected": 17
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 17
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "capped-depth-fault",
+    "source": "int f(int x){if(x>17){return x;}return 17;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int x){if(x<17){return x;}return 17;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "capped-depth",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Return an upper capped sensor.",
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          17
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          99
+        ],
+        "expected": 17
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 17
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "capped-depth-control",
+    "source": "int f(int x){if(x<17){return x;}return 17;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "bitflag-choice",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Conjunction over two flags.",
+    "vectors": [
+      {
+        "arguments": [
+          true,
+          true
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          true,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          false,
+          true
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          false,
+          false
+        ],
+        "expected": false
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "bitflag-choice-fault",
+    "source": "bool f(bool first,bool second){if(first){return first;}return false;}",
+    "disposition": "fault",
+    "references": [
+      "bool f(bool first,bool second){if(first){return second;}return false;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "bitflag-choice",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Conjunction over two flags.",
+    "vectors": [
+      {
+        "arguments": [
+          true,
+          true
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          true,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          false,
+          true
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          false,
+          false
+        ],
+        "expected": false
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "bitflag-choice-control",
+    "source": "bool f(bool first,bool second){if(first){return second;}return false;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "septal-packing",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Pack base-seven representation into decimal digit positions for 0..777.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          67
+        ],
+        "expected": 124
+      },
+      {
+        "arguments": [
+          221
+        ],
+        "expected": 434
+      },
+      {
+        "arguments": [
+          44
+        ],
+        "expected": 62
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          103
+        ],
+        "expected": 205
+      },
+      {
+        "arguments": [
+          777
+        ],
+        "expected": 2160
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/conversions/decimal_to_any.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "septal-packing-fault",
+    "source": "int f(int n){int place=1;int out=0;while(n>0){out=out+n%7*place;place*=10;n=n/6;}return out;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){int place=1;int out=0;while(n>0){out=out+n%7*place;place*=10;n=n/7;}return out;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "septal-packing",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Pack base-seven representation into decimal digit positions for 0..777.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          67
+        ],
+        "expected": 124
+      },
+      {
+        "arguments": [
+          221
+        ],
+        "expected": 434
+      },
+      {
+        "arguments": [
+          44
+        ],
+        "expected": 62
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          103
+        ],
+        "expected": 205
+      },
+      {
+        "arguments": [
+          777
+        ],
+        "expected": 2160
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/conversions/decimal_to_any.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "septal-packing-control",
+    "source": "int f(int n){int place=1;int out=0;while(n>0){out=out+n%7*place;place*=10;n=n/7;}return out;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "weighted-jacobsthal",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Jacobsthal terms with seeds 0, 1 and a weight of two on the lag-two term.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 85
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 171
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/jacobsthal_number.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "weighted-jacobsthal-fault",
+    "source": "int f(int n){if(n<=1){return n;}int prior=f(n-1);int weighted=2*f(n-2);return prior-weighted;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=1){return n;}int prior=f(n-1);int weighted=2*f(n-2);return prior+weighted;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "weighted-jacobsthal",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Jacobsthal terms with seeds 0, 1 and a weight of two on the lag-two term.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 85
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 171
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/jacobsthal_number.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "weighted-jacobsthal-control",
+    "source": "int f(int n){if(n<=1){return n;}int prior=f(n-1);int weighted=2*f(n-2);return prior+weighted;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "geometric-remainder",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum a unit-seeded geometric progression, reported modulo 97.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 61
+      },
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 34
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/series/geometric_series.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "geometric-remainder-fault",
+    "source": "int f(int count,int ratio){if(count<=0){return 0;}return (1+ratio*f(count,ratio))%97;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int count,int ratio){if(count<=0){return 0;}return (1+ratio*f(count-1,ratio))%97;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "geometric-remainder",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum a unit-seeded geometric progression, reported modulo 97.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 61
+      },
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 34
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/series/geometric_series.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "geometric-remainder-control",
+    "source": "int f(int count,int ratio){if(count<=0){return 0;}return (1+ratio*f(count-1,ratio))%97;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "hexagonal-layer",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return hexagonal lattice count n(2n−1).",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 91
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 276
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          19
+        ],
+        "expected": 703
+      }
+    ],
+    "requirement": {
+      "return_expression": "n*span"
+    },
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/hexagonal_number.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "hexagonal-layer-fault",
+    "source": "int f(int n){int span=2*n+1;return n*span;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){int span=2*n-1;return n*span;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "hexagonal-layer",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return hexagonal lattice count n(2n−1).",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 91
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 276
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          19
+        ],
+        "expected": 703
+      }
+    ],
+    "requirement": {
+      "return_expression": "n*span"
+    },
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/hexagonal_number.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "hexagonal-layer-control",
+    "source": "int f(int n){int span=2*n-1;return n*span;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "padovan-through-local",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Padovan terms with seeds 1,1,1 and lags two and three.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 16
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/padovan_sequence.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "padovan-through-local-fault",
+    "source": "int carry(int x){int a=x;return a;}int f(int n){if(n<=2){return 1;}int a=f(n-2);int b=f(n-3);int mix=a*b;return carry(mix);}",
+    "disposition": "fault",
+    "references": [
+      "int carry(int x){int a=x;return a;}int f(int n){if(n<=2){return 1;}int a=f(n-2);int b=f(n-3);int mix=a+b;return carry(mix);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "padovan-through-local",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Padovan terms with seeds 1,1,1 and lags two and three.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 16
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/padovan_sequence.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "padovan-through-local-control",
+    "source": "int carry(int x){int a=x;return a;}int f(int n){if(n<=2){return 1;}int a=f(n-2);int b=f(n-3);int mix=a+b;return carry(mix);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "coprime-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count positive integers up to n coprime to n.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          18
+        ],
+        "expected": 6
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/eulers_totient.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "coprime-count-fault",
+    "source": "int gcd2(int a,int b){while(b>0){int r=a%b;a=b;b=r;}return a;}int f(int n){int total=0;for(int i=1;i<=n;i++){if(gcd2(n,i)!=1){total++;}}return total;}",
+    "disposition": "fault",
+    "references": [
+      "int gcd2(int a,int b){while(b>0){int r=a%b;a=b;b=r;}return a;}int f(int n){int total=0;for(int i=1;i<=n;i++){if(gcd2(n,i)==1){total++;}}return total;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "coprime-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count positive integers up to n coprime to n.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          18
+        ],
+        "expected": 6
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/eulers_totient.py",
+      "license": "MIT",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "coprime-count-control",
+    "source": "int gcd2(int a,int b){while(b>0){int r=a%b;a=b;b=r;}return a;}int f(int n){int total=0;for(int i=1;i<=n;i++){if(gcd2(n,i)==1){total++;}}return total;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "parity-square-tally",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate squares at every second level until below two.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          6,
+          0
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          9,
+          -3
+        ],
+        "expected": 161
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          5
+        ],
+        "expected": 125
+      },
+      {
+        "arguments": [
+          5,
+          10
+        ],
+        "expected": 44
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "parity-square-tally-fault",
+    "source": "int f(int n,int a){if(n<2){return a;}int next=a+n*n;return f(n-1,next);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n,int a){if(n<2){return a;}int next=a+n*n;return f(n-2,next);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "parity-square-tally",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate squares at every second level until below two.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          6,
+          0
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          9,
+          -3
+        ],
+        "expected": 161
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          5
+        ],
+        "expected": 125
+      },
+      {
+        "arguments": [
+          5,
+          10
+        ],
+        "expected": 44
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "parity-square-tally-control",
+    "source": "int f(int n,int a){if(n<2){return a;}int next=a+n*n;return f(n-2,next);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "descending-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sample descending positive indices at the supplied positive stride.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          9
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          5,
+          2,
+          2
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          11,
+          3,
+          7
+        ],
+        "expected": 59
+      },
+      {
+        "arguments": [
+          8,
+          4,
+          1
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          5,
+          -4
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          3
+        ],
+        "expected": 35
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "descending-window-fault",
+    "source": "int f(int index,int step,int accum){if(index<1){return accum;}return f(index-1,step,accum+2*index);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int index,int step,int accum){if(index<1){return accum;}return f(index-step,step,accum+2*index);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "descending-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sample descending positive indices at the supplied positive stride.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          9
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          5,
+          2,
+          2
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          11,
+          3,
+          7
+        ],
+        "expected": 59
+      },
+      {
+        "arguments": [
+          8,
+          4,
+          1
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          5,
+          -4
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          3
+        ],
+        "expected": 35
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "descending-window-control",
+    "source": "int f(int index,int step,int accum){if(index<1){return accum;}return f(index-step,step,accum+2*index);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "rise-shot",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum weighted ticks at the supplied positive stride up to twelve.",
+    "vectors": [
+      {
+        "arguments": [
+          13,
+          2,
+          5
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          2,
+          3,
+          1
+        ],
+        "expected": 79
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          8
+        ],
+        "expected": 89
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          7
+        ],
+        "expected": 43
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          4,
+          -3
+        ],
+        "expected": 39
+      },
+      {
+        "arguments": [
+          10,
+          2,
+          0
+        ],
+        "expected": 30
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "rise-shot-fault",
+    "source": "int f(int cursor,int step,int score){if(cursor>=12){return score;}return f(cursor+2,step,score+cursor*3);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int cursor,int step,int score){if(cursor>=12){return score;}return f(cursor+step,step,score+cursor*3);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "rise-shot",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum weighted ticks at the supplied positive stride up to twelve.",
+    "vectors": [
+      {
+        "arguments": [
+          13,
+          2,
+          5
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          2,
+          3,
+          1
+        ],
+        "expected": 79
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          8
+        ],
+        "expected": 89
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          7
+        ],
+        "expected": 43
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          4,
+          -3
+        ],
+        "expected": 39
+      },
+      {
+        "arguments": [
+          10,
+          2,
+          0
+        ],
+        "expected": 30
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "rise-shot-control",
+    "source": "int f(int cursor,int step,int score){if(cursor>=12){return score;}return f(cursor+step,step,score+cursor*3);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "triple-attenuation",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply a checked halving transform once per three units.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          10
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          6,
+          18
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          9,
+          33
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          50
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          12,
+          19
+        ],
+        "expected": 3
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "triple-attenuation-fault",
+    "source": "int soften(int x){int local=x+2;int result=local/2;return result;}int f(int n,int value){if(n<=0){return value;}int recursive=f(n-1,value);return soften(recursive);}",
+    "disposition": "fault",
+    "references": [
+      "int soften(int x){int local=x+2;int result=local/2;return result;}int f(int n,int value){if(n<=0){return value;}int recursive=f(n-3,value);return soften(recursive);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "triple-attenuation",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply a checked halving transform once per three units.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          10
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          6,
+          18
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          9,
+          33
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          50
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          12,
+          19
+        ],
+        "expected": 3
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "triple-attenuation-control",
+    "source": "int soften(int x){int local=x+2;int result=local/2;return result;}int f(int n,int value){if(n<=0){return value;}int recursive=f(n-3,value);return soften(recursive);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "phase-wedge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Expose the composed wedge setting on each control path.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          7,
+          10
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -5,
+          9
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          4,
+          8
+        ],
+        "expected": 20
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -7,
+          12
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 8
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "phase-wedge-fault",
+    "source": "int f(int x,int state){int seed=x+4;int varying=seed*2;int result=varying+x;if(state>8){return seed;}return result;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int x,int state){int seed=x+4;int varying=seed*2;int result=varying+x;if(state>8){return result;}return result;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "phase-wedge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Expose the composed wedge setting on each control path.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          7,
+          10
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -5,
+          9
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          4,
+          8
+        ],
+        "expected": 20
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -7,
+          12
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 8
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "phase-wedge-control",
+    "source": "int f(int x,int state){int seed=x+4;int varying=seed*2;int result=varying+x;if(state>8){return result;}return result;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "dual-offset-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum two weighted pair readings.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          5,
+          9
+        ],
+        "expected": 22
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          5,
+          9
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          -2,
+          1,
+          2,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          4,
+          0,
+          -3,
+          8
+        ],
+        "expected": 13
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          -5,
+          7,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          8,
+          3,
+          2,
+          5
+        ],
+        "expected": 29
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "dual-offset-grid-fault",
+    "source": "int pixel(int u,int v){int mid=u*2;return mid+v;}int f(int a,int b,int c,int d){return pixel(a,c)+pixel(a,d);}",
+    "disposition": "fault",
+    "references": [
+      "int pixel(int u,int v){int mid=u*2;return mid+v;}int f(int a,int b,int c,int d){return pixel(a,c)+pixel(b,d);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "dual-offset-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum two weighted pair readings.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          5,
+          9
+        ],
+        "expected": 22
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          5,
+          9
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          -2,
+          1,
+          2,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          4,
+          0,
+          -3,
+          8
+        ],
+        "expected": 13
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          -5,
+          7,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          8,
+          3,
+          2,
+          5
+        ],
+        "expected": 29
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "dual-offset-grid-control",
+    "source": "int pixel(int u,int v){int mid=u*2;return mid+v;}int f(int a,int b,int c,int d){return pixel(a,c)+pixel(b,d);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "multiplicative-channels",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply independently composed channels.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1,
+          3,
+          7
+        ],
+        "expected": 40
+      },
+      {
+        "arguments": [
+          2,
+          4,
+          3,
+          7
+        ],
+        "expected": 55
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          0,
+          8
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          6,
+          2,
+          3,
+          -1
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          -3,
+          2,
+          7
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          -3,
+          4,
+          0,
+          5
+        ],
+        "expected": -27
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "multiplicative-channels-fault",
+    "source": "int channel(int x,int gain){return x+gain;}int f(int a,int b,int first,int second){return channel(a,first)*channel(a,second);}",
+    "disposition": "fault",
+    "references": [
+      "int channel(int x,int gain){return x+gain;}int f(int a,int b,int first,int second){return channel(a,first)*channel(b,second);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "multiplicative-channels",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply independently composed channels.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1,
+          3,
+          7
+        ],
+        "expected": 40
+      },
+      {
+        "arguments": [
+          2,
+          4,
+          3,
+          7
+        ],
+        "expected": 55
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          0,
+          8
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          6,
+          2,
+          3,
+          -1
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          -3,
+          2,
+          7
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          -3,
+          4,
+          0,
+          5
+        ],
+        "expected": -27
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "multiplicative-channels-control",
+    "source": "int channel(int x,int gain){return x+gain;}int f(int a,int b,int first,int second){return channel(a,first)*channel(b,second);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "clamped-helper-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum independently clipped channels and their offsets.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          4,
+          5
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          4,
+          5
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          2,
+          9
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          1,
+          8,
+          7,
+          2
+        ],
+        "expected": 15
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          2,
+          4,
+          6
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          0,
+          3,
+          -2,
+          6
+        ],
+        "expected": 7
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "clamped-helper-offset-fault",
+    "source": "int clip(int x,int base){if(x>5){return 5+base;}return x+base;}int f(int a,int b,int low,int high){return clip(a,low)+clip(a,high);}",
+    "disposition": "fault",
+    "references": [
+      "int clip(int x,int base){if(x>5){return 5+base;}return x+base;}int f(int a,int b,int low,int high){return clip(a,low)+clip(b,high);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "clamped-helper-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum independently clipped channels and their offsets.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          4,
+          5
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          4,
+          5
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          2,
+          9
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          1,
+          8,
+          7,
+          2
+        ],
+        "expected": 15
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          2,
+          4,
+          6
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          0,
+          3,
+          -2,
+          6
+        ],
+        "expected": 7
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "clamped-helper-offset-control",
+    "source": "int clip(int x,int base){if(x>5){return 5+base;}return x+base;}int f(int a,int b,int low,int high){return clip(a,low)+clip(b,high);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "odd-radix-fold",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Fold base-five digits from low to high with binary weighting.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          21
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          57
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          111
+        ],
+        "expected": 20
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          79
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          141
+        ],
+        "expected": 37
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "odd-radix-fold-fault",
+    "source": "int f(int digits){int packed=1;while(digits>0){packed=packed*2+digits%5;digits/=4;}return packed;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int digits){int packed=1;while(digits>0){packed=packed*2+digits%5;digits/=5;}return packed;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "odd-radix-fold",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Fold base-five digits from low to high with binary weighting.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          21
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          57
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          111
+        ],
+        "expected": 20
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          79
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          141
+        ],
+        "expected": 37
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "odd-radix-fold-control",
+    "source": "int f(int digits){int packed=1;while(digits>0){packed=packed*2+digits%5;digits/=5;}return packed;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "runtime-scale-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate the powers of eight traversed during quotient reduction.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          64
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          319
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          900
+        ],
+        "expected": 584
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4096
+        ],
+        "expected": 4680
+      },
+      {
+        "arguments": [
+          4500
+        ],
+        "expected": 4680
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "runtime-scale-count-fault",
+    "source": "int f(int n){int steps=0;int scale=1;while(n>=8){scale*=8;steps+=scale;n/=16;}return steps;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){int steps=0;int scale=1;while(n>=8){scale*=8;steps+=scale;n/=8;}return steps;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "runtime-scale-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate the powers of eight traversed during quotient reduction.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          64
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          319
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          900
+        ],
+        "expected": 584
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4096
+        ],
+        "expected": 4680
+      },
+      {
+        "arguments": [
+          4500
+        ],
+        "expected": 4680
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "runtime-scale-count-control",
+    "source": "int f(int n){int steps=0;int scale=1;while(n>=8){scale*=8;steps+=scale;n/=8;}return steps;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "difference-lag-three",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Subtract a lag-four value from the immediately previous term.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": -12
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": -14
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -15
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "difference-lag-three-fault",
+    "source": "int f(int n){if(n<=3){return n+3;}int newest=f(n-1);int old=f(n-4);return newest+old;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=3){return n+3;}int newest=f(n-1);int old=f(n-4);return newest-old;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "difference-lag-three",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Subtract a lag-four value from the immediately previous term.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": -12
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": -14
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -15
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "difference-lag-three-control",
+    "source": "int f(int n){if(n<=3){return n+3;}int newest=f(n-1);int old=f(n-4);return newest-old;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "narrow-quadrature",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply distinct lag-two and lag-three terms.",
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 240
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 1200
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 60
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 14400
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "narrow-quadrature-fault",
+    "source": "int f(int n){if(n<=3){return n+2;}int a=f(n-2);int b=f(n-3);return a+b;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=3){return n+2;}int a=f(n-2);int b=f(n-3);return a*b;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "narrow-quadrature",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply distinct lag-two and lag-three terms.",
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 240
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 1200
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 60
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 14400
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "narrow-quadrature-control",
+    "source": "int f(int n){if(n<=3){return n+2;}int a=f(n-2);int b=f(n-3);return a*b;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "forwarded-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Keep the intermediate offset before scaling.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -4,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          3,
+          -1
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          10,
+          2
+        ],
+        "expected": 16
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          0
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -2,
+          1
+        ],
+        "expected": 3
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "forwarded-offset-fault",
+    "source": "int shift(int local){int first=local+4;int scaled=first*2;return scaled;}int f(int a,int b){return shift(a)+b;}",
+    "disposition": "fault",
+    "references": [
+      "int shift(int local){int first=local+4;int scaled=first*2;return first;}int f(int a,int b){return shift(a)+b;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "forwarded-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Keep the intermediate offset before scaling.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -4,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          3,
+          -1
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          10,
+          2
+        ],
+        "expected": 16
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          0
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -2,
+          1
+        ],
+        "expected": 3
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "forwarded-offset-control",
+    "source": "int shift(int local){int first=local+4;int scaled=first*2;return first;}int f(int a,int b){return shift(a)+b;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "weighted-reserve",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Reserve twice the per-unit requirement before releasing excess.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          10,
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          19,
+          3
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          9,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          0
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          3,
+          6
+        ],
+        "expected": 0
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "weighted-reserve-fault",
+    "source": "int f(int stock,int reserve){int security=reserve*2;if(stock>security){return stock+security;}return 0;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int stock,int reserve){int security=reserve*2;if(stock>security){return stock-security;}return 0;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "weighted-reserve",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Reserve twice the per-unit requirement before releasing excess.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          10,
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          19,
+          3
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          9,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          0
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          3,
+          6
+        ],
+        "expected": 0
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "weighted-reserve-control",
+    "source": "int f(int stock,int reserve){int security=reserve*2;if(stock>security){return stock-security;}return 0;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "three-stage-counter",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the fully adjusted calibrated stage.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": -28
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": -40
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": -19
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "three-stage-counter-fault",
+    "source": "int f(int x){int a=x-8;int b=a*3;int c=b-7;return a;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int x){int a=x-8;int b=a*3;int c=b-7;return c;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "three-stage-counter",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the fully adjusted calibrated stage.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": -28
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": -40
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": -19
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "three-stage-counter-control",
+    "source": "int f(int x){int a=x-8;int b=a*3;int c=b-7;return c;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "rectangle-greater-edge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the larger edge.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          -1,
+          -3
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          9
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -2,
+          7
+        ],
+        "expected": 7
+      }
+    ],
+    "requirement": {
+      "condition": "a>b",
+      "condition_ordinal": 1
+    },
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "rectangle-greater-edge-fault",
+    "source": "int f(int a,int b){if(a<b){return a;}return b;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int a,int b){if(a>b){return a;}return b;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "rectangle-greater-edge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the larger edge.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          -1,
+          -3
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          9
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -2,
+          7
+        ],
+        "expected": 7
+      }
+    ],
+    "requirement": {
+      "condition": "a>b",
+      "condition_ordinal": 1
+    },
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "rectangle-greater-edge-control",
+    "source": "int f(int a,int b){if(a>b){return a;}return b;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "bisector-step",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Move halfway toward v with division rounded toward zero.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          12,
+          5
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -3,
+          5
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          7
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -8,
+          -3
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          24,
+          -7
+        ],
+        "expected": 9
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "bisector-step-fault",
+    "source": "int f(int u,int v){int r=u-v;int delta=r/2;return u+delta;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int u,int v){int r=u-v;int delta=r/2;return u-delta;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "bisector-step",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Move halfway toward v with division rounded toward zero.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          12,
+          5
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -3,
+          5
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          7
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -8,
+          -3
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          24,
+          -7
+        ],
+        "expected": 9
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "bisector-step-control",
+    "source": "int f(int u,int v){int r=u-v;int delta=r/2;return u-delta;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "two-flag-restoration",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Material implication from r to s.",
+    "vectors": [
+      {
+        "arguments": [
+          false,
+          false
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          true,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          true,
+          true
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          false,
+          true
+        ],
+        "expected": true
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "two-flag-restoration-fault",
+    "source": "bool f(bool r,bool s){if(r){return s;}return false;}",
+    "disposition": "fault",
+    "references": [
+      "bool f(bool r,bool s){if(r){return s;}return true;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "two-flag-restoration",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Material implication from r to s.",
+    "vectors": [
+      {
+        "arguments": [
+          false,
+          false
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          true,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          true,
+          true
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          false,
+          true
+        ],
+        "expected": true
+      }
+    ],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "two-flag-restoration-control",
+    "source": "bool f(bool r,bool s){if(r){return s;}return true;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "squared-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Square the input after applying an offset of five.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 100
+      },
+      {
+        "arguments": [
+          -7
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 169
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 625
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": {
+      "description": "Return the square of the shifted input"
+    },
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "squared-offset-fault",
+    "source": "int f(int x){int bias=x+5;return bias+x;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int x){int bias=x+5;return bias*bias;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "squared-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Square the input after applying an offset of five.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 100
+      },
+      {
+        "arguments": [
+          -7
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 169
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 625
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": {
+      "description": "Return the square of the shifted input"
+    },
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "squared-offset-control",
+    "source": "int f(int x){int bias=x+5;return bias*bias;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "sparse-interval",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only finished intervals are specified.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          3,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          4,
+          4,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7,
+          4,
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "sparse-interval-control",
+    "source": "int f(int a,int b,int carry){if(a>=b){return carry;}return f(a+2,b-1,carry+3);}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "unspecified-helper-fallback",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only the unadjusted mode is specified.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          false
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4,
+          false
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -7,
+          false
+        ],
+        "expected": -7
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "unspecified-helper-fallback-control",
+    "source": "int h(int n){int previous=n-3;int adjusted=previous*2;return previous;}int f(int a,bool mode){if(mode){return h(a);}return a;}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "optional-nonunit-domain",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only the base domain has expected outputs.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          5
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          3,
+          -1
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          2,
+          3
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "optional-nonunit-domain-control",
+    "source": "int f(int n,int p){if(n<=3){return p;}return f(n-3,p+2);}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "partial-branched-product",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only product mode is specified.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          7,
+          4
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          -2,
+          5,
+          4
+        ],
+        "expected": -10
+      },
+      {
+        "arguments": [
+          0,
+          -5,
+          4
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "partial-branched-product-control",
+    "source": "int f(int x,int y,int mode){if(mode==4){return x*y;}return x+y;}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "sparse-odd-base",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only seed outputs are supplied.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "sparse-odd-base-control",
+    "source": "int f(int x){if(x<4){return 2;}int a=f(x-2);int b=f(x-3);return a-b;}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "partial-redistribution",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only nonnegative x was specified.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          1,
+          -7
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 11
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "partial-redistribution-control",
+    "source": "int f(int x,int y){if(x>=0){return x+2*y;}return y-x;}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "unset-carry",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Expectations cover only zero carry.",
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          2,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          10,
+          -3,
+          0
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          0
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "unset-carry-control",
+    "source": "int f(int n,int seed,int carry){if(n<2){return seed;}return f(n-2,seed+carry,carry);}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  },
+  {
+    "family": "partial-alarm",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only the disarmed state was supplied.",
+    "vectors": [
+      {
+        "arguments": [
+          11,
+          4,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          -1,
+          5,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          3,
+          1,
+          false
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 7.5",
+      "license": "repository license",
+      "review": "independent arithmetic or executable reference, internally adjudicated"
+    },
+    "id": "partial-alarm-control",
+    "source": "bool f(int high,int low,bool armed){if(armed){return high>low+3;}return false;}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  }
+]

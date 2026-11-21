@@ -33,9 +33,9 @@ def run_static(case, options, examples=(), requirement=None):
     return report
 
 
-def static(cases):
+def static(cases, configurations=CONFIGURATIONS):
     readings = {}
-    for configuration, options in CONFIGURATIONS.items():
+    for configuration, options in configurations.items():
         timings, static_rows, guided = [], [], []
         for case in cases:
             start = perf_counter()
@@ -51,10 +51,10 @@ def static(cases):
     for condition, key in (("natural_language", "description"), ("explicit", "expression")):
         selection = [case for case in cases if case["requirement"] and (("description" in case["requirement"]) == (key == "description"))]
         scores = {}
-        for profile in ("phase65", "phase7_full"):
+        for profile in ("phase65", tuple(configurations)[-1]):
             values = []
             for case in selection:
-                result = run_static(case, CONFIGURATIONS[profile], requirement=Requirement(function="f", **case["requirement"]))
+                result = run_static(case, configurations[profile], requirement=Requirement(function="f", **case["requirement"]))
                 values.append(row(case, result, result.candidates) | {"requirement_status": result.requirement_status})
             scores[profile] = {"metrics": metrics(selection, values), "rows": values}
         readings[condition] = scores

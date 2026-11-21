@@ -7,6 +7,7 @@ function lineNumber(span: { start: { line: number } }) {
 export function Phase65Evidence({ analysis, name }: { analysis: Phase65Analysis; name: string }) {
   const paths = analysis.paths[name];
   const summary = analysis.interprocedural[name];
+  const progress = analysis.progress?.[name];
   if (!paths && !summary) return null;
 
   return <section aria-label="Path and call evidence">
@@ -30,6 +31,17 @@ export function Phase65Evidence({ analysis, name }: { analysis: Phase65Analysis;
         <p>Other modeled return sites: {paths.other_return_sites.length}. Supplied examples are required to compare recurrence operators.</p>
       </>}
     </>}
+    {progress && <section aria-label="Recursive progress evidence">
+      <h5>Recursive progress</h5>
+      {progress.complete ? <>
+        <p>Base guard <code>{progress.parameter} {progress.comparison} {progress.threshold}</code> · argument {progress.position + 1}</p>
+        <ul>{progress.calls.map((call, index) => <li key={index}>
+          Line {lineNumber(call.span)} · {"offset" in call.argument ? `Guarded argument offset ${call.argument.offset}`
+            : "step_name" in call.argument ? `Symbolic step ${call.argument.sign < 0 ? "−" : "+"}${call.argument.step_name}`
+            : "Argument relationship unknown"} · feeds return
+        </li>)}</ul>
+      </> : <p>{progress.reason}</p>}
+    </section>}
     {summary && <>
       <h5>Function dependencies</h5>
       {summary.scalar_helper && <p>Scalar helper · depth {summary.scalar_helper.depth} · Possible argument inputs {summary.scalar_helper.parameter_inputs.map((position) => position + 1).join(", ") || "none"}</p>}

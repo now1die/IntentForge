@@ -32,7 +32,7 @@ class VerifyRequest(Message):
     source: Source
     entry_point: Entry
     vectors: tuple[TestVector, ...] = Field(max_length=12)
-    engine_version: Literal[4, 5, 55, 6, 65, 7] = 4
+    engine_version: Literal[4, 5, 55, 6, 65, 7, 75] = 4
     limits: LocalLimits = Field(default_factory=LocalLimits)
     trace: bool = Field(default=False, strict=True)
     compare_candidates: bool = Field(default=False, strict=True)
@@ -43,9 +43,9 @@ class VerifyRequest(Message):
     def limits_and_source(self):
         if len(self.source.encode()) > 48_000:
             raise ValueError("Local execution admission limits exceeded")
-        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7} or not self.compare_candidates):
+        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7, 75} or not self.compare_candidates):
             raise ValueError("Supply a test vector or explicitly request Phase 5 observational comparison")
-        if self.engine_version == 7 and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
+        if self.engine_version in {7, 75} and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
             raise ValueError("The same input has conflicting expected outputs.")
         return self
 

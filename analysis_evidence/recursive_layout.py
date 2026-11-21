@@ -1,11 +1,13 @@
 """Recognize a guarded base and self-call return through the existing CFG."""
+from time import monotonic
+
 from compiler import ast_nodes as ast
 
 from .expression_normalization import Comparison, INT_MIN, INT_MAX, NEGATE
 from .interprocedural import descendants
 
 
-def guarded_layout(item, path, bindings, comparison):
+def guarded_layout(item, path, bindings, comparison, *, local_definitions=False, deadline=None):
     flow = item.flow
     live = [block for block in flow.graph.blocks if path.incoming[block.id]]
     guards = [block for block in live if block.kind == "branch"]
@@ -24,12 +26,12 @@ def guarded_layout(item, path, bindings, comparison):
         if block.kind != "statement" or not isinstance(statement, ast.VariableDeclaration):
             return None
         binding = bindings.declaration(statement)
-        if not binding or binding in reads or binding in bindings.globals:
+        if not binding or binding in bindings.globals or (not local_definitions and binding in reads):
             return None
         initializer = statement.initializer
-        if not isinstance(initializer, ast.Literal) or not (
-                type(initializer.value) is bool or type(initializer.value) is int and
-                INT_MIN <= initializer.value <= INT_MAX):
+        literal = isinstance(initializer, ast.Literal) and (
+            type(initializer.value) is bool or type(initializer.value) is int and INT_MIN <= initializer.value <= INT_MAX)
+        if initializer is None or (not local_definitions and not literal):
             return None
         transparent.add(block.id)
 
@@ -49,11 +51,24 @@ def guarded_layout(item, path, bindings, comparison):
     if set(branch_targets) != {"true", "false"} or set(branch_targets.values()) != {row.id for row in returns}:
         return None
 
-    def is_recursive(block):
+    def has_self_call(expression):
         return any(isinstance(node, ast.FunctionCall) and isinstance(node.callee, ast.Identifier)
-                   and node.callee.name == item.function.name for node in descendants(block.expression))
+                   and node.callee.name == item.function.name for node in descendants(expression))
 
-    base = [row for row in returns if not is_recursive(row)]
+    recursive = set()
+    for block in returns:
+        if has_self_call(block.expression):
+            recursive.add(block.id)
+        if local_definitions:
+            if monotonic() >= deadline:
+                return None
+            definitions, complete = flow.return_slice(block.id, deadline)
+            if not complete:
+                return None
+            if any(row.site in transparent and has_self_call(flow.graph.blocks[row.site].expression)
+                   for row in definitions):
+                recursive.add(block.id)
+    base = [row for row in returns if row.id not in recursive]
     if len(base) != 1:
         return None
     base, = base

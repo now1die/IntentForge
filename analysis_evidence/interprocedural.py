@@ -172,7 +172,7 @@ def contracts(program, paths, deadline):
     return result, not unknown
 
 
-def scalar_helpers(program, summaries, deadline):
+def scalar_helpers(program, summaries, deadline, *, local_definitions=False):
     """Describe small, acyclic scalar helpers over parameters and literals.
 
     Arithmetic can still fault under checked Mini-C semantics. This witness
@@ -189,8 +189,15 @@ def scalar_helpers(program, summaries, deadline):
             row = summaries.get(function.name)
             body = function.body.statements
             if (function.name in helpers or not row or not row["complete"] or row["possible_global_reads"]
-                    or row["possible_global_writes"] or len(body) != 1 or not isinstance(body[0], ast.ReturnStatement)
-                    or body[0].value is None):
+                    or row["possible_global_writes"]):
+                continue
+            if local_definitions:
+                witness = scalar_cfg_helper(item, bindings, helpers)
+                if witness is not None:
+                    helpers[function.name] = witness
+                    changed = True
+                continue
+            if len(body) != 1 or not isinstance(body[0], ast.ReturnStatement) or body[0].value is None:
                 continue
             positions = {bindings.declaration(parameter): n for n, parameter in enumerate(function.parameters)}
             expressions = [body[0].value]
@@ -227,3 +234,88 @@ def scalar_helpers(program, summaries, deadline):
         if not changed:
             break
     return helpers
+
+
+
+def local_initializer(flow, site, binding, bindings):
+    """Return the unique scalar declaration that reaches this lexical read."""
+    definitions = flow.for_binding(site, binding)
+    if len(definitions) != 1:
+        return None
+    definition, = definitions
+    node = flow.graph.blocks[definition.site].syntax
+    if isinstance(node, ast.VariableDeclaration) and bindings.declaration(node) == binding and node.initializer is not None:
+        return definition.site, node.initializer
+    return None
+
+
+def scalar_cfg_helper(item, bindings, helpers):
+    flow = item.flow
+    blocks = [block for block in flow.graph.blocks if block.id in item.reachable]
+    returns = [block for block in blocks if block.kind == "return"]
+    if not returns or len(blocks) > 24 or any(
+        edge.target == flow.graph.exit and edge.kind != "return" and edge.source in item.reachable
+        for edge in flow.graph.edges
+    ):
+        return None
+    parameters = {bindings.declaration(parameter): i for i, parameter in enumerate(item.function.parameters)}
+    expressions = []
+    for block in blocks:
+        if block.kind in {"entry", "exit"}:
+            continue
+        if block.kind in {"return", "branch"} and block.expression is not None:
+            expressions.append((block.id, block.expression))
+        elif block.kind == "statement" and isinstance(block.syntax, ast.VariableDeclaration) and block.syntax.initializer is not None:
+            expressions.append((block.id, block.syntax.initializer))
+        else:
+            return None
+    inputs, depth, visited = set(), 0, 0
+    while expressions:
+        site, node = expressions.pop()
+        visited += 1
+        if visited > 72:
+            return None
+        if isinstance(node, ast.Literal) and type(node.value) in {int, bool}:
+            continue
+        if isinstance(node, ast.Identifier):
+            binding = bindings.identifiers.get(id(node))
+            if binding and binding.id in parameters:
+                inputs.add(parameters[binding.id])
+                continue
+            if binding and local_initializer(flow, site, binding.id, bindings):
+                # The declaration's initializer is checked in its own CFG block.
+                continue
+        elif isinstance(node, ast.UnaryExpression) and node.operator in {"!", "-", "+"}:
+            expressions.append((site, node.operand))
+            continue
+        elif isinstance(node, ast.BinaryExpression) and node.operator in {
+            "+", "-", "*", "/", "%", "<", ">", "<=", ">=", "==", "!=",
+        }:
+            expressions.extend(((site, node.left), (site, node.right)))
+            continue
+        elif isinstance(node, ast.FunctionCall) and isinstance(node.callee, ast.Identifier):
+            callee = helpers.get(node.callee.name)
+            if callee and callee["depth"] < 2:
+                depth = max(depth, callee["depth"] + 1)
+                expressions.extend((site, argument) for argument in node.arguments)
+                continue
+        return None
+
+    identity = None
+    if len(returns) == 1:
+        site, expression = returns[0].id, returns[0].expression
+        for _ in range(8):
+            if not isinstance(expression, ast.Identifier):
+                break
+            binding = bindings.identifiers.get(id(expression))
+            if not binding:
+                break
+            if binding.id in parameters:
+                identity = parameters[binding.id]
+                break
+            declaration = local_initializer(flow, site, binding.id, bindings)
+            if not declaration:
+                break
+            site, expression = declaration
+    return {"parameter_inputs": sorted(inputs), "depth": depth, "identity_parameter": identity,
+            "modeled_returns": len(returns)}

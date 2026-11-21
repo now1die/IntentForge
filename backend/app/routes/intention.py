@@ -53,7 +53,7 @@ class IntentionRequest(BaseModel):
     code: str = Field(max_length=MAX_SOURCE)
     requirement: RequirementRequest | None = None
     include_context: bool = False
-    engine_version: Literal[2, 3, 4, 5, 55, 6, 65, 7] = 2
+    engine_version: Literal[2, 3, 4, 5, 55, 6, 65, 7, 75] = 2
     mode: Literal["code_only", "natural_language", "explicit", "examples"] | None = None
 
     @model_validator(mode="after")
@@ -68,11 +68,11 @@ class IntentionRequest(BaseModel):
         ):
             raise ValueError("Natural-language analysis accepts a description without an explicit expression.")
         if self.mode == "examples" and (
-            self.engine_version != 7 or not requirement or not requirement.function or not requirement.examples
+            self.engine_version not in {7, 75} or not requirement or not requirement.function or not requirement.examples
             or requirement.return_expression or requirement.condition or requirement.description
         ):
             raise ValueError("Phase 7 examples mode requires an entry point and supplied expected outputs.")
-        if self.engine_version == 7 and requirement and conflicting_expectations(
+        if self.engine_version in {7, 75} and requirement and conflicting_expectations(
             (row.args, row.expected_return) for row in requirement.examples
         ):
             raise ValueError("The same input has conflicting expected outputs.")
@@ -106,7 +106,7 @@ class IntentionResponse(BaseModel):
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.engine_version in {5, 55, 6, 65, 7}:
+    if request.engine_version in {5, 55, 6, 65, 7, 75}:
         ranker, status = None, f"V{request.engine_version}_DETERMINISTIC"
     elif request.engine_version >= 3:
         ranker = None
@@ -125,16 +125,16 @@ def intention_analysis(request: IntentionRequest) -> dict:
                                    generalized=request.engine_version >= 3, phase35=request.engine_version == 4,
                                    phase5=request.engine_version == 5, phase55=request.engine_version == 55,
                                    phase6=request.engine_version == 6, phase65=request.engine_version == 65,
-                                   phase7=request.engine_version == 7, phase6_entry=entry, phase6_examples=examples,
+                                   phase7=request.engine_version == 7, phase75=request.engine_version == 75, phase6_entry=entry, phase6_examples=examples,
                                    phase6_graph=request.include_context)
     except (InvalidRequirement, UnsupportedContext) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
     response = result.to_dict(include_context=request.include_context)
-    if request.engine_version in {5, 55, 6, 65, 7}:
+    if request.engine_version in {5, 55, 6, 65, 7, 75}:
         response["source_fingerprint"] = program_identity(request.code)
-    if request.engine_version == 7 and request.requirement and request.requirement.examples:
+    if request.engine_version in {7, 75} and request.requirement and request.requirement.examples:
         response["guided_evidence"] = "POSSIBLE_REPAIR" if result.candidates else "INSUFFICIENT_SPECIFICATION"
         if response["finding"] == "HEURISTIC_SUSPICION":
             response["finding"] = response["guided_evidence"]
