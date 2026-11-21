@@ -426,7 +426,10 @@ def analyze_intention(
         evidence = candidates[0].proposal.evidence
         if generalized:
             notes.append("A boundary or peer pattern suggests an alternative. Deliberate asymmetry is possible.")
-            notes.append("No behavior specification was supplied. Compilation verifies syntax and types only.")
+            if phase7 and (phase6_examples or requirement and requirement.examples):
+                notes.append("Supplied examples guide synthesis. Isolated verification observes program behavior.")
+            else:
+                notes.append("No behavior specification was supplied. Compilation verifies syntax and types only.")
         else:
             notes.append("Context supports review of these alternatives. Programmer intent remains uncertain.")
     try:

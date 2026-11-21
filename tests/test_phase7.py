@@ -113,6 +113,8 @@ def test_static_examples_return_hypotheses_and_legacy_contract_is_unchanged():
         data = result.json()
         assert data["finding"] == data["guided_evidence"] == "POSSIBLE_REPAIR"
         assert data["behavioral_status"] == "ORACLE_UNAVAILABLE" and len(data["candidates"]) == 2
+        assert any("Supplied examples guide synthesis" in note for note in data["notes"])
+        assert all("No behavior specification was supplied" not in note for note in data["notes"])
         assert client.post("/v1/intention-analysis", json=body | {"engine_version":65}).status_code == 422
         legacy = client.post("/v1/intention-analysis", json={"code":SUBTRACTION,"mode":"code_only","engine_version":65}).json()
         assert "guided_evidence" not in legacy

@@ -14,3 +14,7 @@ On the independent final cohort, Phase 7 confirmed 15/19 faults, gave 0/19 confi
 - [Phase 7.5 readiness](PHASE_7_5_READINESS.md)
 
 [Static report](../benchmarks/reports/phase7-static-v1.json) · [Worker verification report](../benchmarks/reports/phase7-live-v1.json) · [Dataset audit](../benchmarks/reports/phase7-audit-v1.json)
+
+## Regression verification
+
+The restricted-profile Python suite passed 744 tests. The compiler regression passed 220/220, keyboard and array verification had zero unexpected outcomes across 65 cases, and the stress harness completed 3,758 cases. Clang 19.1.7 passed its 12-case replay. Historical static benchmarks and the restricted Phase 4.5 through 6.5 live replays reproduced. Local Phase 7 verification used the established worker image with the changed modules mounted read-only under the same runtime restrictions.
