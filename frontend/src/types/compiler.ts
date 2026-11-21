@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -399,7 +399,18 @@ export type Phase95Analysis = {
     loops?: NonNullable<Phase95Analysis["loops"]>;
   }[];
 };
+export type Phase10Analysis = {
+  status: string;
+  arrays?: { function: string; name: string; length: number; element_type: string; span: AnalysisSpan }[];
+  accesses?: { sample: number; span: AnalysisSpan; minimum: number; maximum: number; length: number;
+    initialized: boolean; valid: boolean; access: "read" | "write" }[];
+  search_intervals?: { function: string; lower: string; upper: string; midpoint: string; extent: number;
+    inclusive: boolean; recursive: boolean; span: AnalysisSpan; sampled_frames: [number, number][][] }[];
+  progress?: { function: string; kind: string; guard: string; span: AnalysisSpan;
+    samples: { count: number; first: number | null; last: number | null }[] }[];
+};
 export interface Phase8Analysis {
+  phase10?: Phase10Analysis | null;
   phase95?: Phase95Analysis | null;
   phase9?: Phase9Analysis | null;
   phase85?: Phase85Analysis | null;
@@ -487,6 +498,7 @@ export interface IntentionResponse {
     phase85?: Phase85Analysis;
     phase9?: Phase9Analysis;
     phase95?: Phase95Analysis;
+    phase10?: Phase10Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;
