@@ -21,6 +21,7 @@ from .intention_phase35 import phase35_features, phase35_hypotheses
 from .intention_phase5 import scan as phase5_scan
 from .intention_phase55 import RULES as PRECISION_RULES, apply_precision_gates
 from .intention_phase6 import proposals as semantic_proposals
+from .intention_phase65 import COMPONENTS as PHASE65_COMPONENTS, augment as interprocedural_proposals
 from .intention_uncertainty import classify
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
@@ -125,6 +126,14 @@ class IntentionResult:
                            analysis_completeness=self.program_analysis["status"],
                            counter_evidence=[fact.to_dict() for fact in item.proposal.counter_evidence],
                            requires_approval=True)
+                if "phase65" in self.program_analysis:
+                    facts = {fact.kind for fact in item.proposal.evidence}
+                    row["evidence_basis"] = ("supplied_specification" if item.proposal.specification_matches else
+                        "supplied_examples" if facts & {"PATH_TEST_DOMAIN", "SUPPLIED_RECURSIVE_TEST",
+                                                        "SUPPLIED_DOMAIN_POINT", "SUPPLIED_BASE_RESULT"} else "static")
+                    row["hypothesis_origin"] = ("phase65" if item.proposal.category in {
+                        "RECURSIVE_PARAMETER_PROGRESS", "RECURRENCE_OPERATOR_MISMATCH", "PATH_RETURN_DEPENDENCY"}
+                        else "earlier_engine")
         return {
             "finding": self.finding, "decision": self.decision, "ranking": self.ranking,
             "compiler_valid": self.context.compiler_valid,
@@ -273,7 +282,9 @@ def analyze_intention(
     phase55: bool = False, phase55_rules: frozenset[str] = PRECISION_RULES,
     phase6: bool = False, phase6_generate: bool = True, phase6_graph: bool = False,
     phase6_entry: str | None = None, phase6_examples=(),
+    phase65: bool = False, phase65_components: frozenset[str] = PHASE65_COMPONENTS,
 ) -> IntentionResult:
+    phase6 = phase6 or phase65
     phase55 = phase55 or phase6
     phase5 = phase5 or phase55
     phase35 = phase35 or phase5
@@ -338,7 +349,14 @@ def analyze_intention(
         if entry is None:
             examples = ()
         semantic = semantic_proposals(context, program, entry, examples)
+        extended = None
+        if phase65:
+            semantic, extended = interprocedural_proposals(context, program, semantic, entry, examples, phase65_components)
         program_analysis = summaries(context, program, include_graph=phase6_graph)
+        if extended is not None:
+            program_analysis["phase65"] = extended
+            if program_analysis["status"] == "AVAILABLE":
+                program_analysis["status"] = extended["status"]
         program_analysis["hypotheses"] = [{"category": proposal.category, "assumption": proposal.assumption,
                                             "evidence": [fact.to_dict() for fact in proposal.evidence],
                                             "counter_evidence": [fact.to_dict() for fact in proposal.counter_evidence]}
