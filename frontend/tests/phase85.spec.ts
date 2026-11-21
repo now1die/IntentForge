@@ -115,6 +115,12 @@ test("Phase 8.5 binds isolated verification and review to current vectors, limit
   await expect(page.locator(editor)).toContainText("left=4*x");
   await run.click();
   await choice.click();
+  await panel.getByLabel("Test vectors (JSON)").fill(
+    '[{"arguments":[1,0],"expected":3},{"arguments":[0,1],"expected":7},{"arguments":[2,3],"expected":27},{"arguments":[3,-1],"expected":2}]'
+  );
+  await expect(review).toHaveCount(0);
+  await run.click();
+  await choice.click();
   await review.getByRole("button", { name: "Apply reviewed behavioral repair" }).click();
   await expect(page.locator(editor)).toContainText("left=3*x");
   await expect(page.locator(editor)).toContainText("right=7*y");

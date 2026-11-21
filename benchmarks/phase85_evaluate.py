@@ -163,6 +163,23 @@ def summarize(cases, runs):
     }
 
 
+def policy_comparison(cases, profiles, archived_controls):
+    phase8_pool = review_burden(cases, profiles["8"])
+    retained = sum(row["retained"] for row in archived_controls)
+    precision_only = {
+        "base_engine": 8,
+        "same_pool": phase8_pool,
+        "archive": {"controls": len(archived_controls), "review_all": retained, "initially_visible": 0},
+    }
+    grid = next(run for run in profiles["85"] if run["id"] == "finite-relay-grid-fault")
+    finite_domain = {
+        "size": 9, "discovery": 4, "holdout": 5,
+        "passing_candidates": [candidate["id"] for candidate in grid["holdout"]
+                               if candidate["status"] == Status.MATCHES_SUPPLIED_TESTS],
+    }
+    return {"precision_policy_only": precision_only, "exhaustive_finite_domain": finite_domain}
+
+
 def live(cases):
     from fastapi.testclient import TestClient
     from backend.app.main import app
@@ -202,6 +219,7 @@ def live(cases):
             assert old["review_presentation"] == new["review_presentation"] == "OPTIONAL_COLLAPSED"
             archived_controls.append({"id":case["id"],"retained":len(new["candidates"]),"visible":0})
     return {"profiles":profiles,"statistics":{profile:summarize(cases,runs) for profile,runs in profiles.items()},
+            **policy_comparison(cases, profiles, archived_controls),
             "roundtrip_with_holdout_latency":{profile:latency(times) for profile,times in durations.items()},
             "insufficient_information":ambiguous, "archived_control_presentation":archived_controls}
 
@@ -242,6 +260,7 @@ def main():
     if args.live:
         results = live(final)
         if args.check:
+            assert results["exhaustive_finite_domain"]["passing_candidates"]
             assert results["statistics"]["85"]["false_alerts"]["hits"] == 0
             assert results["statistics"]["85"]["exact_accepted_both"]["hits"] >= results["statistics"]["8"]["exact_accepted_both"]["hits"]
         outputs["phase85-live-v1"] = results

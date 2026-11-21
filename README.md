@@ -247,3 +247,16 @@ collapsed and remain available for manual review.
 [Phase 8 review](docs/PHASE_8_FINAL_REVIEW.md) ·
 [Holdout validation](docs/phase8_holdout_validation.md) ·
 [Workbench screenshots](docs/phase8_workbench.md)
+
+## Phase 8.5 branch-aware repair
+
+Opt in to engine 85 in the Mini-C workbench or API. Trusted examples can guide
+conditional arithmetic, integer interval guards, coordinated two-site
+coefficient edits, and bounded affine counting repairs. The workbench shows
+sampled branch paths, loop counts, and the source locations of coordinated
+edits. Local verification and explicit approval use the existing isolated
+worker and review flow.
+
+[Phase 8.5 review](docs/PHASE_8_5_FINAL_REVIEW.md) ·
+[Holdout validation](docs/phase8_5_holdout_validation.md) ·
+[Workbench screenshots](docs/phase8_5_workbench.md)
