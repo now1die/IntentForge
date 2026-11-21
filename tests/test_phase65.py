@@ -78,6 +78,12 @@ def test_call_effects_and_reordered_return_dependencies():
     assert [x["affine"]["name"] for x in call["arguments"]] == ["q", "p"]
 
 
+def test_returned_global_may_depend_on_argument_through_a_call():
+    source = "int g=0;int set(int n){g=n;return n;}int f(int x){set(x);return g;}"
+    summary = evidence(analyze(source))["interprocedural"]["f"]
+    assert summary["return_parameter_inputs"] == [0] and summary["possible_global_writes"]
+
+
 def test_global_atomic_fact_dropped_at_call():
     source = "int g=0;int set(){g=4;return g;}int f(){if(g==0){set();if(g==4){return 2;}}return 3;}"
     row = evidence(analyze(source))["paths"]["f"]["returns"][0]

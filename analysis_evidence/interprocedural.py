@@ -78,6 +78,7 @@ def inspect(item, reachable, bindings, deadline, budget):
                 name = node.callee.name if isinstance(node.callee, ast.Identifier) else None
                 summary.calls.append(Call(node, name, site, site in value_sites))
     # Refine direct return expressions in straight-line bodies only.
+    parameters = {bindings.declaration(parameter): index for index, parameter in enumerate(function.parameters)}
     summary.return_inputs = set(range(len(function.parameters)))
     statements = function.body.statements
     if (len(return_sites) == 1 and statements
@@ -88,10 +89,9 @@ def inspect(item, reachable, bindings, deadline, budget):
             summary.return_inputs.clear()
         elif isinstance(value, ast.Identifier):
             bound = bindings.identifiers.get(id(value))
-            if bound and bound.id not in writes:
-                summary.return_inputs = {i for i, p in enumerate(function.parameters) if bindings.declaration(p) == bound.id}
+            if bound and bound.id in parameters and bound.id not in writes:
+                summary.return_inputs = {parameters[bound.id]}
         elif isinstance(value, ast.FunctionCall) and isinstance(value.callee, ast.Identifier):
-            parameters = {bindings.declaration(p): i for i, p in enumerate(function.parameters)}
             mapped = []
             for argument in value.arguments:
                 bound = bindings.identifiers.get(id(argument))
