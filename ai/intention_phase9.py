@@ -15,15 +15,28 @@ CATEGORIES = frozenset({"GENERALIZED_LOOP_CONSTRAINT", "RUNTIME_CONSTRAINT", "CR
 
 
 class LocalizedArithmetic(ArithmeticError):
-    def __init__(self, origin, operator, left, right):
-        self.origin = origin
+    def __init__(self, term, operator, left, right):
+        self.term = term
         self.operator = operator
         self.operands = (left, right)
         self.code = "ZERO_DIVISOR" if operator in {"/", "%"} and right == 0 else "INT32_OVERFLOW"
 
 
-def localize(origin, operator, left, right):
-    raise LocalizedArithmetic(origin, operator, left, right)
+def localize(term, operator, left, right):
+    raise LocalizedArithmetic(term, operator, left, right)
+
+
+def fault_dependencies(fault):
+    """Follow a small typed term slice, starting at the failed expression."""
+    roots = fault.term.children[1:] if fault.code == "ZERO_DIVISOR" else fault.term.children
+    origins = {fault.term.origin}
+    pending = [(term, 0) for term in roots]
+    while pending:
+        term, depth = pending.pop()
+        origins.add(term.origin)
+        if depth < 3:
+            pending.extend((child, depth+1) for child in term.children)
+    return origins
 
 
 def inside(outer, inner):
@@ -144,15 +157,20 @@ def synthesize(context, program, links, helpers, spec, enabled):
             failures = [(position, result) for position, result in enumerate(modeled) if isinstance(result, LocalizedArithmetic)]
             if not failures:
                 return (), report | {"status": "NO_MODELED_RUNTIME_FAILURE"}
-            if len(failures) == len(examples) or any(fault.origin not in by_origin for _, fault in failures):
+            if len(failures) == len(examples) or any(fault.term.origin not in by_origin for _, fault in failures):
                 return (), report | {"status": "INSUFFICIENT_RUNTIME_CONSTRAINTS"}
-            spans = [by_origin[fault.origin] for _, fault in failures]
+            spans = [by_origin[fault.term.origin] for _, fault in failures]
+            dependencies = set().union(*(fault_dependencies(fault) for _, fault in failures))
             report["modeled_faults"] = [
                 {"example": position+1, "code": fault.code, "operator": fault.operator, "operands": list(fault.operands),
-                 "span": by_origin[fault.origin].to_dict()} for position, fault in failures
+                 "span": by_origin[fault.term.origin].to_dict(), "dependency_spans": [
+                     span.to_dict() for span in sorted((by_origin[origin] for origin in fault_dependencies(fault)
+                                                        if origin in by_origin and origin != fault.term.origin),
+                                                       key=lambda span: (span.start.offset, span.end.offset))
+                 ]} for position, fault in failures
             ]
             changes = tuple(change for change in changes if change.action in {"literal", "operation", "drop_offset"}
-                            and any(inside(span, change.edit.span) for span in spans))
+                            and (change.origin in dependencies or any(inside(span, change.edit.span) for span in spans)))
         if modeled == expected:
             return (), report | {"status": "CONSTRAINTS_ALREADY_AGREE"}
 

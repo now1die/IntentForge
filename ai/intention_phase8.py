@@ -249,7 +249,7 @@ def substitution(inputs, changes=(), *, on_fault=None):
                 value = COMPARISONS[operation](a, b) if operation in COMPARISONS else arithmetic_value(operation, a, b)
             except ArithmeticError:
                 if on_fault is not None:
-                    on_fault(term.origin, operation, a, b)
+                    on_fault(term, operation, a, b)
                 raise
         values[key] = value
         return value
