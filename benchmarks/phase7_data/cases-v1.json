@@ -473,6 +473,12 @@
           76
         ],
         "expected": true
+      },
+      {
+        "arguments": [
+          376
+        ],
+        "expected": true
       }
     ],
     "compiler_valid": true,
@@ -523,6 +529,12 @@
       {
         "arguments": [
           76
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          376
         ],
         "expected": true
       }

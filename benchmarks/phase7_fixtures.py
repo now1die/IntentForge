@@ -58,7 +58,7 @@ def fixtures():
         [(0,),(8,),(388,),(4224,)],lambda v:0 if v==0 else 1+(v-1)%9,"Repeated decimal digit summation for nonnegative v.",
         ("v=v/10","v=v/9"),external=EXTERNAL[0])
     add("automorphic-tail", "bool f(int n){int power=10;int temp=n;while(temp>=10){power*=10;temp/=10;}return n*n%power==n;}",
-        [(5,),(6,),(25,),(12,),(76,)],lambda n:str(n*n).endswith(str(n)),"Square ends in n's decimal digits.",
+        [(5,),(6,),(25,),(12,),(76,),(376,)],lambda n:str(n*n).endswith(str(n)),"Square ends in n's decimal digits.",
         ("temp/=10","temp/=100"),external=EXTERNAL[2])
     add("polygonal-layer", "int f(int index,int sides){return ((sides-2)*index*index-(sides-4)*index)/2;}",
         [(1,5),(4,3),(3,5),(5,6)],lambda n,s:sum(1+(s-2)*k for k in range(n)),"Count points in polygonal layers.",
