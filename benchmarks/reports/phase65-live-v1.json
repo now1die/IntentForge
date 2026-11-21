@@ -1,0 +1,432 @@
+{
+  "cases": [
+    {
+      "id": "plain-power-fault",
+      "original": "EXECUTION_LIMITED",
+      "issue": "CALL_DEPTH",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "behavioral_rank": 1,
+      "passing_candidates": 1,
+      "passing_exact": true,
+      "comparison": "ONE_MATCH",
+      "test_steps": 680,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "plain-power-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 220,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "sylvester-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 180,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "sylvester-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 180,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "counted-offset-fault",
+      "original": "EXECUTION_LIMITED",
+      "issue": "CALL_DEPTH",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "behavioral_rank": 1,
+      "passing_candidates": 1,
+      "passing_exact": true,
+      "comparison": "ONE_MATCH",
+      "test_steps": 735,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "counted-offset-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 210,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "ascending-ticks-fault",
+      "original": "EXECUTION_LIMITED",
+      "issue": "CALL_DEPTH",
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "behavioral_rank": 1,
+      "passing_candidates": 1,
+      "passing_exact": true,
+      "comparison": "ONE_MATCH",
+      "test_steps": 645,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "ascending-ticks-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 183,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "bounded-interval-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 156,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "multiplicative-tree-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 2,
+      "behavioral_rank": 1,
+      "passing_candidates": 1,
+      "passing_exact": true,
+      "comparison": "ONE_MATCH",
+      "test_steps": 687,
+      "probe_steps": 934,
+      "probes": 6,
+      "separated_pairs": 0
+    },
+    {
+      "id": "multiplicative-tree-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS",
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 687,
+      "probe_steps": 934,
+      "probes": 6,
+      "separated_pairs": 0
+    },
+    {
+      "id": "weighted-tree-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 1319,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "alternating-tree-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS",
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 1623,
+      "probe_steps": 906,
+      "probes": 4,
+      "separated_pairs": 0
+    },
+    {
+      "id": "latched-reading-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 102,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "staged-selector-fault",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": 1,
+      "behavioral_rank": 1,
+      "passing_candidates": 1,
+      "passing_exact": true,
+      "comparison": "ONE_MATCH",
+      "test_steps": 180,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "staged-selector-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 90,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "asymmetric-selector-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [
+        "MISMATCHES_SUPPLIED_TESTS"
+      ],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 136,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "function-forwarding-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 66,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "mutual-stage-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 193,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    },
+    {
+      "id": "sparse-expectations-control",
+      "original": "MATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_statuses": [],
+      "static_rank": null,
+      "behavioral_rank": null,
+      "passing_candidates": 0,
+      "passing_exact": false,
+      "comparison": "NO_OBSERVED_MATCH",
+      "test_steps": 20,
+      "probe_steps": 0,
+      "probes": 0,
+      "separated_pairs": 0
+    }
+  ],
+  "controlled_probes": {
+    "multi_argument_threshold": {
+      "passing": 2,
+      "pairs": 1,
+      "steps": 240,
+      "distinguishing_inputs": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    "recurrence_operator": {
+      "passing": 2,
+      "pairs": 0,
+      "steps": 914,
+      "distinguishing_inputs": []
+    },
+    "return_path": {
+      "passing": 2,
+      "pairs": 0,
+      "steps": 206,
+      "distinguishing_inputs": []
+    },
+    "equivalent_return": {
+      "passing": 2,
+      "pairs": 0,
+      "steps": 124,
+      "distinguishing_inputs": []
+    }
+  },
+  "latency": {
+    "mean_ms": 434.904,
+    "median_ms": 446.542,
+    "p95_ms": 484.555
+  },
+  "metrics": {
+    "test_agreeing_repair": {
+      "hits": 5,
+      "total": 6,
+      "wilson95": [
+        0.436,
+        0.97
+      ]
+    },
+    "exact_and_test_agreeing": {
+      "hits": 5,
+      "total": 6,
+      "wilson95": [
+        0.436,
+        0.97
+      ]
+    },
+    "static_rank": {
+      "top1": {
+        "hits": 4,
+        "total": 6,
+        "wilson95": [
+          0.3,
+          0.903
+        ]
+      },
+      "top3": {
+        "hits": 5,
+        "total": 6,
+        "wilson95": [
+          0.436,
+          0.97
+        ]
+      }
+    },
+    "behavioral_rank": {
+      "top1": {
+        "hits": 5,
+        "total": 6,
+        "wilson95": [
+          0.436,
+          0.97
+        ]
+      },
+      "top3": {
+        "hits": 5,
+        "total": 6,
+        "wilson95": [
+          0.436,
+          0.97
+        ]
+      }
+    },
+    "execution_supported": {
+      "hits": 20,
+      "total": 20,
+      "wilson95": [
+        0.839,
+        1
+      ]
+    },
+    "original_statuses": {
+      "EXECUTION_LIMITED": 3,
+      "MATCHES_SUPPLIED_TESTS": 14,
+      "MISMATCHES_SUPPLIED_TESTS": 3
+    },
+    "test_steps": 8292,
+    "probe_steps": 2774,
+    "probes": 16,
+    "separated_pairs": 0
+  }
+}

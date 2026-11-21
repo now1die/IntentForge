@@ -1,3 +1,4 @@
+import { Phase65Evidence } from "./Phase65Evidence";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { analyzeIntention } from "../services/api";
 import type { IntentionMode, IntentionRequirement, IntentionResponse } from "../types/compiler";
@@ -49,7 +50,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -103,13 +104,14 @@ export function IntentionPanel({ code, onApply }: {
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
           <label>Intention engine
-            <select value={engineVersion} onChange={(event) => setEngineVersion(Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6)}>
+            <select value={engineVersion} onChange={(event) => setEngineVersion(Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65)}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
               <option value="4">Phase 3.5 evidence</option>
               <option value="5">Phase 5 structural evidence</option>
               <option value="55">Phase 5.5 precision gates</option>
               <option value="6">Phase 6 program reasoning</option>
+              <option value="65">Phase 6.5 interprocedural reasoning</option>
             </select>
           </label>
           <label>Analysis mode
@@ -176,8 +178,15 @@ export function IntentionPanel({ code, onApply }: {
                 Return on line {row.span.start.line}{!!row.definitions.length && " depends on "}
                 {row.definitions.map((definition) => `${definition.name} (line ${definition.span.start.line})`).join(", ")}
               </li>)}</ul>}
+              {result.program_analysis?.phase65 && <Phase65Evidence analysis={result.program_analysis.phase65} name={fn.name} />}
               {!!fn.effects.length && <p>Analysis limits · {fn.effects.map((effect) => effect.replaceAll("_", " ")).join(" · ")}</p>}
             </details>)}
+            {!!result.program_analysis.phase65?.withheld.length && <section aria-label="Withheld return hypotheses">
+              <h5>Withheld return hypotheses</h5>
+              {result.program_analysis.phase65.withheld.map((item, index) => <p key={index}>
+                {item.reason} · Line {item.span.start.line}
+              </p>)}
+            </section>}
           </section>}
           {result.structural_scan && <section aria-label="Structural scan">
             <h4>Structural scan</h4>
@@ -229,6 +238,8 @@ export function IntentionPanel({ code, onApply }: {
                   ? "Supported by the supplied requirement"
                   : result.finding === "COMPILER_ERROR" ? "Compiler-supported repair hypothesis" : "Code-only hypothesis"
               }</p>
+              {choice.evidence_basis && <p>Evidence basis · {choice.evidence_basis.replaceAll("_", " ")}
+                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
               <ul>{choice.evidence.map((fact, index) => <li key={index}>
                 {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
               </li>)}</ul>

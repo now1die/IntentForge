@@ -49,7 +49,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [trace, setTrace] = useState(false);
   const [compare, setCompare] = useState(false);
   const [phase5, setPhase5] = useState(false);
-  const [profile, setProfile] = useState<5 | 55 | 6>(5);
+  const [profile, setProfile] = useState<5 | 55 | 6 | 65>(5);
   const [expression, setExpression] = useState("");
   const [reply, setReply] = useState<{ snapshot: string; result: VerificationResponse } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -170,6 +170,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           {compare && <label><input type="checkbox" checked={phase5} onChange={(event) => setPhase5(event.target.checked)} /> Phase 5 repair and probes</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 55} onChange={(event) => setProfile(event.target.checked ? 55 : 5)} /> Phase 5.5 precision gates</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 6} onChange={(event) => setProfile(event.target.checked ? 6 : 5)} /> Phase 6 program reasoning</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={profile === 65} onChange={(event) => setProfile(event.target.checked ? 65 : 5)} /> Phase 6.5 interprocedural reasoning</label>}
         </div>
         {compare && phase5 && <p>Use an empty test list to compare probe observations without expected values.</p>}
         {compare && <label>Expected return expression (optional)<input value={expression} maxLength={160}
