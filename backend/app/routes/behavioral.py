@@ -120,7 +120,7 @@ def validate_identity(batch, returned):
 
 
 def response(version, *, candidate_categories=None, **fields):
-    if version != 7:
+    if version not in {7, 75}:
         return VerifyResponse(**fields)
     candidates = fields.get("candidates", ())
     original = classify_original(fields.get("original"))
@@ -165,10 +165,10 @@ def compare(path, payload, identity):
         requirement = Requirement(function=payload.entry_point, return_expression=payload.return_expression,
                                   condition=payload.condition) if payload.return_expression or payload.condition else None
         try:
-            semantic = payload.engine_version in {6, 65, 7}
+            semantic = payload.engine_version in {6, 65, 7, 75}
             result = analyze_intention(payload.source, requirement, phase35=True, phase5=payload.engine_version == 5,
                                        phase55=payload.engine_version == 55, phase6=semantic, phase65=payload.engine_version == 65,
-                                       phase7=payload.engine_version == 7, phase6_entry=payload.entry_point,
+                                       phase7=payload.engine_version == 7, phase75=payload.engine_version == 75, phase6_entry=payload.entry_point,
                                        phase6_examples=tuple(Example(row.arguments, row.expected) for row in payload.vectors)
                                        if semantic else ())
             candidates = [(rank, item) for rank, item in enumerate(result.candidates, 1)
@@ -180,7 +180,7 @@ def compare(path, payload, identity):
             # The isolated original still returns its compiler-admission status.
             pass
     batch = Batch(entry_point=payload.entry_point, vectors=payload.vectors, limits=payload.limits,
-                  engine_version=payload.engine_version if payload.engine_version in {4, 7} else 5,
+                  engine_version={4: 4, 7: 7, 75: 7}.get(payload.engine_version, 5),
                   trace=payload.trace, programs=(Program(source=payload.source), *(
                       Program(source=choice.proposed_code, candidate_id=choice.id) for _, choice in candidates
                   )))
@@ -218,12 +218,12 @@ def review_order(original, candidates, version):
     known_failure = original.status == Status.MISMATCHES_SUPPLIED_TESTS or (
         original.status == Status.BEHAVIOR_UNKNOWN and issue and issue.code != "INTERNAL_FAILURE"
     )
-    if version in {5, 55, 6, 65, 7} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
+    if version in {5, 55, 6, 65, 7, 75} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
         known_failure = True
     if not known_failure:
         return tuple(row.id for row in candidates)
     tiers = {Status.MATCHES_SUPPLIED_TESTS: 0}
-    if version in {5, 55, 6, 65, 7}:
+    if version in {5, 55, 6, 65, 7, 75}:
         tiers[Status.MISMATCHES_SUPPLIED_TESTS] = 1
     return tuple(row.id for row in sorted(candidates, key=lambda row: tiers.get(row.behavior.status, 2)))
 

@@ -11,6 +11,7 @@ from compiler.symbol_table import SymbolKind
 
 from .intention_candidates import Edit, Evidence, Proposal
 from .intention_phase6 import MATH, computed_chain, guarded_return
+from .intention_phase75 import study as extended_repairs
 
 COMPONENTS = frozenset({"precision", "recursion", "recurrence"})
 MAX_NEW = 6
@@ -224,7 +225,7 @@ def recurrence_structure(context, item, path):
     return {"recursive_returns": results, "other_return_sites": bases if results else [], "base_guards": guards}
 
 
-def augment(context, program, previous, entry, examples, enabled):
+def augment(context, program, previous, entry, examples, enabled, *, phase75=None):
     paths, locations = {}, {}
     if program.status == "AVAILABLE":
         for item in program.functions:
@@ -239,10 +240,13 @@ def augment(context, program, previous, entry, examples, enabled):
                                              "returns": return_paths(item, path, program.bindings, program.deadline),
                                              **recurrence_structure(context, item, path)}
     links, links_complete = contracts(program, paths, program.deadline) if paths else ({}, False)
-    helpers = scalar_helpers(program, links, program.deadline) if "helpers" in enabled and links else {}
+    helpers = scalar_helpers(program, links, program.deadline,
+                             local_definitions=phase75 is not None and "helper_layout" in phase75
+                             ) if "helpers" in enabled and links else {}
     for name, witness in helpers.items():
         links[name]["scalar_helper"] = witness
-    withheld, retained, extra = [], [], []
+    withheld, retained, extra, added = [], [], [], []
+    progress = {}
     for proposal in previous:
         if ("precision" in enabled and proposal.category == "RETURN_DEPENDENCY_MISMATCH"
                 and not examples and not precise_return(proposal, locations)):
@@ -260,10 +264,23 @@ def augment(context, program, previous, entry, examples, enabled):
         extra.extend(islice(recursive_candidates(context, item, program.bindings, path, examples, enabled, helpers), MAX_NEW-len(extra)))
         if "precision" in enabled:
             extra.extend(islice(branch_returns(context, item, program.bindings, path, examples), MAX_NEW-len(extra)))
+        if phase75 is not None:
+            model, proposals = extended_repairs(context, item, program.bindings, path, helpers, examples, phase75, program.deadline)
+            if model:
+                progress[name] = model
+            added.extend(islice(proposals, MAX_NEW-len(added)))
+    existing_edits = [proposal.edits for proposal in (*extra, *retained)] if added else ()
+    added = [proposal for proposal in added if proposal.edits not in existing_edits]
     status = program.status
     if status == "AVAILABLE" and (not links_complete or any(not path.complete for path in paths.values())
                                   or any(not state["dependencies_complete"] for details in locations.values()
                                          for row in details["returns"] for state in row["paths"])
                                   or monotonic() >= program.deadline):
         status = "ANALYSIS_LIMITED"
-    return (*extra, *retained), {"status": status, "paths": locations, "interprocedural": links, "withheld": withheld}
+    output = {"status": status, "paths": locations, "interprocedural": links, "withheld": withheld}
+    if phase75 is not None:
+        for name, summary in links.items():
+            if name not in progress and any(call["self_recursive"] for call in summary["call_sites"]):
+                progress[name] = {"complete": False, "reason": "The recursion falls outside the bounded guarded-return model."}
+        output["progress"] = progress
+    return (*added, *extra, *retained), output

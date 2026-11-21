@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -317,7 +317,18 @@ export interface IntentionCandidate {
 
 export type IntentionMode = "code_only" | "natural_language" | "explicit" | "examples";
 
+type ProgressArgument = { offset: number } | { step_name: string; sign: number } | Record<string, never>;
+
 export interface Phase65Analysis {
+  progress?: Record<string, { complete: false; reason: string } | {
+    complete: true;
+    parameter: string;
+    position: number;
+    comparison: string;
+    threshold: number;
+    direction: number;
+    calls: { span: Diagnostic["span"]; argument: ProgressArgument; feeds_return: boolean }[];
+  }>;
   paths: Record<string, {
     complete: boolean;
     unresolved_conditions: number[];
