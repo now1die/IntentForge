@@ -18,7 +18,7 @@ The three unrecovered independent defects expose missing saturation semantics, r
 - Baseline and post-merge CI for Phase 9.5. [Baseline](phase10_baseline.md)
 - Reproduced the applicable historical offline benchmarks and all historical isolated replays, including the isolation enforcement benchmark.
 - Passed 825 Python tests with the Clang and restricted-worker paths enabled. The compiler suite passed 220/220 cases, and the keyboard/array verification and stress commands exited successfully.
-- Exercised explicit atomic approval, stale-preview invalidation and original runtime classification in Chromium. [Screenshots and workbench coverage](phase10_workbench.md)
+- Chromium passed 56 cases with one hosted-mode skip in the full isolated run. A focused rerun passed all four Phase 10 scenarios, including atomic approval, stale-preview invalidation, original runtime classification and derived traversal origins. [Screenshots and workbench coverage](phase10_workbench.md)
 - Preserved the private worker contract and disabled public execution. [Security](phase10_security.md)
 
 ## Evaluation and implementation

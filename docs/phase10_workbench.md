@@ -9,3 +9,5 @@ The Chromium scenarios exercise an invalid recursive access, manual atomic appro
 ![Atomic handoff review](../audit/phase10/atomic-expanding-handoff.png)
 
 ![Isolated runtime failure](../audit/phase10/isolated-runtime-failure.png)
+
+![Sampled traversal origin](../audit/phase10/derived-traversal-origin.png)

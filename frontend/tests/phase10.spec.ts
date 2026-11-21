@@ -117,4 +117,5 @@ test("Phase 10 shows a sampled traversal origin derived from local cells", async
   await evidence.getByText("Array traversal origins",{exact:true}).click();
   await expect(evidence).toContainText("start at low");
   await expect(evidence).toContainText("Input 2 · first -2");
+  await capture(evidence,"derived-traversal-origin");
 });
