@@ -1,0 +1,1208 @@
+[
+  {
+    "family": "indexed-weight",
+    "partition": "development",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Accumulate twice each index below 6.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          3,
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          6,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "compiler_valid": true,
+    "id": "indexed-weight-fault",
+    "source": "int f(int i,int sum){if(i>=6){return sum;}return f(i,sum+i*2);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int i,int sum){if(i>=6){return sum;}return f(i+1,sum+i*2);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "indexed-weight",
+    "partition": "development",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Accumulate twice each index below 6.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          3,
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          6,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "compiler_valid": true,
+    "id": "indexed-weight-control",
+    "source": "int f(int i,int sum){if(i>=6){return sum;}return f(i+1,sum+i*2);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "decoded-stage",
+    "partition": "development",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Return the pre-scale decoded stage.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 8
+      }
+    ],
+    "compiler_valid": true,
+    "id": "decoded-stage-control",
+    "source": "int f(int code){int raw=code-3;int shifted=raw*7;int masked=shifted+11;return raw;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "signed-tree",
+    "partition": "selection",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Use a signed three-step recurrence with constant seed.",
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 3
+      }
+    ],
+    "compiler_valid": true,
+    "id": "signed-tree-fault",
+    "source": "int f(int n){if(n<=2){return 3;}return f(n-1)+f(n-3);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=2){return 3;}return f(n-1)-f(n-3);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "signed-tree",
+    "partition": "selection",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Use a signed three-step recurrence with constant seed.",
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 3
+      }
+    ],
+    "compiler_valid": true,
+    "id": "signed-tree-control",
+    "source": "int f(int n){if(n<=2){return 3;}return f(n-1)-f(n-3);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "unchanged-period",
+    "partition": "calibration",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Constant period with changing index.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7,
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          9,
+          5
+        ],
+        "expected": 9
+      }
+    ],
+    "compiler_valid": true,
+    "id": "unchanged-period-control",
+    "source": "int f(int period,int n){if(n>=5){return period;}return 3+f(period,n+1);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "plain-power",
+    "partition": "final",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/power_using_recursion.py",
+      "license": "MIT",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Nonnegative exponent and small signed base.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          4
+        ],
+        "expected": 81
+      },
+      {
+        "arguments": [
+          -2,
+          5
+        ],
+        "expected": -32
+      },
+      {
+        "arguments": [
+          5,
+          2
+        ],
+        "expected": 25
+      }
+    ],
+    "compiler_valid": true,
+    "id": "plain-power-fault",
+    "source": "int f(int base,int exponent){if(exponent<=0){return 1;}return base*f(base,exponent);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int base,int exponent){if(exponent<=0){return 1;}return base*f(base,exponent-1);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "plain-power",
+    "partition": "final",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/power_using_recursion.py",
+      "license": "MIT",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Nonnegative exponent and small signed base.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          4
+        ],
+        "expected": 81
+      },
+      {
+        "arguments": [
+          -2,
+          5
+        ],
+        "expected": -32
+      },
+      {
+        "arguments": [
+          5,
+          2
+        ],
+        "expected": 25
+      }
+    ],
+    "compiler_valid": true,
+    "id": "plain-power-control",
+    "source": "int f(int base,int exponent){if(exponent<=0){return 1;}return base*f(base,exponent-1);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "double-factorial",
+    "partition": "final",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/double_factorial.py",
+      "license": "MIT",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Multiply descending same-parity integers for n ≥ 0.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 105
+      }
+    ],
+    "compiler_valid": true,
+    "id": "double-factorial-fault",
+    "source": "int f(int n){if(n<=1){return 1;}return n*f(n);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=1){return 1;}return n*f(n-2);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "double-factorial",
+    "partition": "final",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/double_factorial.py",
+      "license": "MIT",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Multiply descending same-parity integers for n ≥ 0.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 105
+      }
+    ],
+    "compiler_valid": true,
+    "id": "double-factorial-control",
+    "source": "int f(int n){if(n<=1){return 1;}return n*f(n-2);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "sylvester",
+    "partition": "final",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/sylvester_sequence.py",
+      "license": "MIT",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Sylvester sequence, one-based indices 1 through 5.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 1807
+      }
+    ],
+    "compiler_valid": true,
+    "id": "sylvester-fault",
+    "source": "int f(int n){if(n<=1){return 2;}int last=f(n-1);return last*(last-1)-1;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=1){return 2;}int last=f(n-1);return last*(last-1)+1;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "sylvester",
+    "partition": "final",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/sylvester_sequence.py",
+      "license": "MIT",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Sylvester sequence, one-based indices 1 through 5.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 1807
+      }
+    ],
+    "compiler_valid": true,
+    "id": "sylvester-control",
+    "source": "int f(int n){if(n<=1){return 2;}int last=f(n-1);return last*(last-1)+1;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "counted-offset",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Add a signed fixed step remaining times.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          11,
+          3
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          -2
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          3,
+          -4,
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          1,
+          9,
+          0
+        ],
+        "expected": 9
+      }
+    ],
+    "compiler_valid": true,
+    "id": "counted-offset-fault",
+    "source": "int f(int remaining,int initial,int step){if(0>=remaining){return initial;}return f(remaining,initial+step,step);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int remaining,int initial,int step){if(0>=remaining){return initial;}return f(remaining-1,initial+step,step);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "counted-offset",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Add a signed fixed step remaining times.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          11,
+          3
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          -2
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          3,
+          -4,
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          1,
+          9,
+          0
+        ],
+        "expected": 9
+      }
+    ],
+    "compiler_valid": true,
+    "id": "counted-offset-control",
+    "source": "int f(int remaining,int initial,int step){if(0>=remaining){return initial;}return f(remaining-1,initial+step,step);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "ascending-ticks",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Accumulate increasing ticks before the inclusive stop at nine.",
+    "vectors": [
+      {
+        "arguments": [
+          9,
+          8
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          2,
+          16
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          7,
+          -3
+        ],
+        "expected": 13
+      }
+    ],
+    "compiler_valid": true,
+    "id": "ascending-ticks-fault",
+    "source": "int f(int tick,int sum){if(tick>=9){return sum+1;}return f(tick,sum+tick);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int tick,int sum){if(tick>=9){return sum+1;}return f(tick+1,sum+tick);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "ascending-ticks",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Accumulate increasing ticks before the inclusive stop at nine.",
+    "vectors": [
+      {
+        "arguments": [
+          9,
+          8
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          2,
+          16
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          7,
+          -3
+        ],
+        "expected": 13
+      }
+    ],
+    "compiler_valid": true,
+    "id": "ascending-ticks-control",
+    "source": "int f(int tick,int sum){if(tick>=9){return sum+1;}return f(tick+1,sum+tick);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "bounded-interval",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Shrink two interval endpoints until they meet or cross.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          7,
+          3
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -2,
+          3,
+          5
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          8,
+          8,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "compiler_valid": true,
+    "id": "bounded-interval-control",
+    "source": "int f(int lo,int hi,int carry){if(lo>=hi){return carry;}return f(lo+1,hi-1,carry+2);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "multiplicative-tree",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Multiply two asymmetric prior terms with seed two.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 64
+      }
+    ],
+    "compiler_valid": true,
+    "id": "multiplicative-tree-fault",
+    "source": "int f(int n){if(n<=3){return 2;}return f(n-1)-f(n-4);}",
+    "disposition": "fault",
+    "references": [
+      "int f(int n){if(n<=3){return 2;}return f(n-1)*f(n-4);}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "multiplicative-tree",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Multiply two asymmetric prior terms with seed two.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 64
+      }
+    ],
+    "compiler_valid": true,
+    "id": "multiplicative-tree-control",
+    "source": "int f(int n){if(n<=3){return 2;}return f(n-1)*f(n-4);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "weighted-tree",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "The intentional weighted difference continues a linear sequence.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 12
+      }
+    ],
+    "compiler_valid": true,
+    "id": "weighted-tree-control",
+    "source": "int f(int n){if(n<=2){return n+3;}return 2*f(n-1)-f(n-2);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "alternating-tree",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Subtract the most recent result from the preceding result with seeds 2 and 3.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": -14
+      }
+    ],
+    "compiler_valid": true,
+    "id": "alternating-tree-control",
+    "source": "int f(int n){if(n<=1){return n+2;}return f(n-2)-f(n-1);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "latched-reading",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Expose the latched reading before gain and offset.",
+    "vectors": [
+      {
+        "arguments": [
+          -4
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 14
+      }
+    ],
+    "compiler_valid": true,
+    "id": "latched-reading-control",
+    "source": "int f(int in){int latched=in+5;int gain=latched*3;int final=gain+19;return latched;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "staged-selector",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Both mode paths expose the calibrated target.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 22
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 37
+      },
+      {
+        "arguments": [
+          9,
+          4
+        ],
+        "expected": 62
+      },
+      {
+        "arguments": [
+          5,
+          -1
+        ],
+        "expected": 42
+      }
+    ],
+    "compiler_valid": true,
+    "id": "staged-selector-fault",
+    "source": "int f(int pressure,int mode){int shifted=pressure+2;int valve=shifted*5;int target=valve+7;if(mode<2){return shifted;}return target;}",
+    "disposition": "fault",
+    "references": [
+      "int f(int pressure,int mode){int shifted=pressure+2;int valve=shifted*5;int target=valve+7;if(mode<2){return target;}return target;}"
+    ],
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "staged-selector",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Both mode paths expose the calibrated target.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 22
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 37
+      },
+      {
+        "arguments": [
+          9,
+          4
+        ],
+        "expected": 62
+      },
+      {
+        "arguments": [
+          5,
+          -1
+        ],
+        "expected": 42
+      }
+    ],
+    "compiler_valid": true,
+    "id": "staged-selector-control",
+    "source": "int f(int pressure,int mode){int shifted=pressure+2;int valve=shifted*5;int target=valve+7;if(mode<2){return target;}return target;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "asymmetric-selector",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Expose coarse depth except for diagnostic state six.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          9,
+          6
+        ],
+        "expected": 62
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 4
+      }
+    ],
+    "compiler_valid": true,
+    "id": "asymmetric-selector-control",
+    "source": "int f(int depth,int state){int coarse=depth*2;int fine=coarse+13;int limit=fine*2;if(state!=6){return coarse;}return limit;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "function-forwarding",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Route the second entry argument through a reordered helper.",
+    "vectors": [
+      {
+        "arguments": [
+          9,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          -1
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -8,
+          6
+        ],
+        "expected": 6
+      }
+    ],
+    "compiler_valid": true,
+    "id": "function-forwarding-control",
+    "source": "int first(int local,int ignored){return local;}int proxy(int signal,int gain){return first(gain,signal);}int f(int a,int b){return proxy(a,b);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "mutual-stage",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Alternate two functions, counting one per transition.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          -1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7,
+          6
+        ],
+        "expected": 13
+      }
+    ],
+    "compiler_valid": true,
+    "id": "mutual-stage-control",
+    "source": "int step(int x,int acc){if(x<=0){return acc;}return f(x-1,acc+1);}int f(int x,int acc){if(x<=0){return acc;}return step(x-1,acc+1);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "sparse-expectations",
+    "partition": "final",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 6.5",
+      "license": "repository license",
+      "review": "independent executable arithmetic reference, internally adjudicated"
+    },
+    "specification": "Only seed behavior was supplied.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "compiler_valid": true,
+    "id": "sparse-expectations-control",
+    "source": "int f(int n){if(n<=4){return 1;}return f(n-1)+f(n-3);}",
+    "references": [],
+    "disposition": "ambiguous",
+    "fault_origin": null
+  }
+]
