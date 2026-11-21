@@ -1,0 +1,2 @@
+# Preserve whitespace in pinned upstream source snapshots.
+*.py whitespace=-blank-at-eol,-blank-at-eof

@@ -1,0 +1,49 @@
+{
+  "revision": "multiple pinned revisions, see external",
+  "case_sha256": "44afa8ae970a0825c9efb33f3090a8842a8b8e7f2ab740244917c9d86d15349e",
+  "upstream_sha256": {
+    "LICENSE-digits.txt": "90ba3e7525ea1aa8bff31d781f4fa46445d6d52d8a72893c2c8033b87d5bdaba",
+    "LICENSE-missing.md": "2b7b16fdd422b878381c05e5c06f9cc223feae2a70d98389fb13bdd51fc0595a",
+    "LICENSE-prime.txt": "90ba3e7525ea1aa8bff31d781f4fa46445d6d52d8a72893c2c8033b87d5bdaba",
+    "digits-after.py": "c460a462d1db866272c1c67882f95a00773c4b18321a7af4b2cff1c4d274195b",
+    "digits-before.py": "ddfa695b22179d5000202c817e5f61f3786484ed9241f157d4695c07b810a1f9",
+    "missing-after.py": "670de478f393cef9f846aa14f1850567ef6d5cbc72cb0e948780af4132547a42",
+    "missing-before.py": "21b2d43574a8aa8ad4fde4c7a748551762780c1f0539921edfe521c4ba5b08f6",
+    "prime-after.py": "b7c9b799ec23d0f8b4082b31db12450bf7a1171eac4c39fb0ae3e80207def964",
+    "prime-before.py": "6bdfc2a6c19b6cb42b6e4f851a3cf04435eebeb417b351c8d233d5b48458ed02"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 38
+  },
+  "external": {
+    "lower-end-prime-classification": {
+      "before": "56513cb21f759ac26b31ac1edcb45d886a97f715",
+      "after": "36828b106f7905ecc0c0776e40c99929728a91a9",
+      "path": "maths/PrimeCheck.py",
+      "archive": "prime",
+      "license_file": "LICENSE-prime.txt",
+      "adaptation": "Replace the positive integer square-root bound with its equivalent square comparison on the declared range. Preserve the original even guard and odd divisor search."
+    },
+    "last-product-window": {
+      "before": "60418a6fd7a2f35aef237279bc721e6470af936f",
+      "after": "9417091dabf9d8e9ebec078942a2fbba0966e42f",
+      "path": "project_euler/problem_08/sol1.py",
+      "archive": "digits",
+      "license_file": "LICENSE-digits.txt",
+      "adaptation": "Pack 16 digits into four scalar arguments and decode them to a local array. Use the int32 minimum as the no-window sentinel. Preserve the upstream exclusive endpoint fault."
+    },
+    "shifted-missing-member": {
+      "before": "c9ba5e1b6f319e34815660542d8ca0c777c8008a",
+      "after": "3ecad36f92d26676cc73276553cd99763b025b33",
+      "path": "bit_manipulation/missing_number.py",
+      "archive": "missing",
+      "license_file": "LICENSE-missing.md",
+      "adaptation": "Accept five nonnegative members as scalar arguments. Replace XOR with an equivalent arithmetic helper over the declared inputs. Preserve zero-based versus minimum-based induction."
+    }
+  },
+  "selection": "Deterministic ranking and bounded projection frozen before final scoring.",
+  "holdout": "Disjoint holdout inputs admitted only as independent isolated verification requests."
+}

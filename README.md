@@ -260,3 +260,16 @@ worker and review flow.
 [Phase 8.5 review](docs/PHASE_8_5_FINAL_REVIEW.md) ·
 [Holdout validation](docs/phase8_5_holdout_validation.md) ·
 [Workbench screenshots](docs/phase8_5_workbench.md)
+
+## Phase 9 semantic robustness
+
+Opt in to engine 9 in Mini-C analysis and local behavioral verification.
+It recognizes equivalent loop layouts, summarizes invariant variable
+steps and bounded scalar updates, and can propose two coordinated branch
+edits. Static arithmetic failure hypotheses use trusted expected outputs.
+Observed runtime context comes from the existing isolated worker. Review
+and approval remain explicit and tied to the current source snapshot.
+
+[Phase 9 review](docs/PHASE_9_FINAL_REVIEW.md) ·
+[Independent defect provenance](docs/phase9_external_defect_review.md) ·
+[Workbench captures](docs/phase9_workbench.md)

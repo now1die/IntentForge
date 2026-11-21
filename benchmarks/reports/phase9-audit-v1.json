@@ -1,0 +1,50 @@
+{
+  "sha256": "44afa8ae970a0825c9efb33f3090a8842a8b8e7f2ab740244917c9d86d15349e",
+  "historical_sources": 1160,
+  "frozen_partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 38
+  },
+  "admitted_partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 38
+  },
+  "quarantined_families": [],
+  "historical_overlaps": [],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [],
+  "shared_cross_partition_edit_shapes": 2,
+  "external_families": {
+    "lower-end-prime-classification": {
+      "admitted": true,
+      "before": "56513cb21f759ac26b31ac1edcb45d886a97f715",
+      "after": "36828b106f7905ecc0c0776e40c99929728a91a9",
+      "path": "maths/PrimeCheck.py",
+      "archive": "prime",
+      "license_file": "LICENSE-prime.txt",
+      "adaptation": "Replace the positive integer square-root bound with its equivalent square comparison on the declared range. Preserve the original even guard and odd divisor search."
+    },
+    "last-product-window": {
+      "admitted": true,
+      "before": "60418a6fd7a2f35aef237279bc721e6470af936f",
+      "after": "9417091dabf9d8e9ebec078942a2fbba0966e42f",
+      "path": "project_euler/problem_08/sol1.py",
+      "archive": "digits",
+      "license_file": "LICENSE-digits.txt",
+      "adaptation": "Pack 16 digits into four scalar arguments and decode them to a local array. Use the int32 minimum as the no-window sentinel. Preserve the upstream exclusive endpoint fault."
+    },
+    "shifted-missing-member": {
+      "admitted": true,
+      "before": "c9ba5e1b6f319e34815660542d8ca0c777c8008a",
+      "after": "3ecad36f92d26676cc73276553cd99763b025b33",
+      "path": "bit_manipulation/missing_number.py",
+      "archive": "missing",
+      "license_file": "LICENSE-missing.md",
+      "adaptation": "Accept five nonnegative members as scalar arguments. Replace XOR with an equivalent arithmetic helper over the declared inputs. Preserve zero-based versus minimum-based induction."
+    }
+  }
+}

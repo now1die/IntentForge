@@ -1,0 +1,3234 @@
+[
+  {
+    "family": "development-recurring-offset",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Charge an even increment for each active checkpoint.",
+    "domain": "Positive steps 1–8 and small signed endpoints.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          7,
+          2
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          0,
+          9,
+          3
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          6,
+          4,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          4,
+          1
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          11,
+          4
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          1,
+          7,
+          6
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "development-recurring-offset-fault",
+    "source": "int f(int start,int end,int s){int cost=3;for(int i=start;i<=end;i+=s){cost+=2;}return cost;}",
+    "references": [
+      "int f(int start,int end,int s){int cost=3;for(int i=start;i<end;i+=s){cost+=2;}return cost;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "development-recurring-offset",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Charge an even increment for each active checkpoint.",
+    "domain": "Positive steps 1–8 and small signed endpoints.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          7,
+          2
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          0,
+          9,
+          3
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          6,
+          4,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          4,
+          1
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          11,
+          4
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          1,
+          7,
+          6
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "development-recurring-offset-control",
+    "source": "int f(int start,int end,int s){int cost=3;for(int i=start;i<end;i+=s){cost+=2;}return cost;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "selection-three-way-price",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Apply one of three fixed price rules.",
+    "domain": "Small integer quantities and mode tags.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          12,
+          5
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          13,
+          5
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          3,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          10
+        ],
+        "expected": 43
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          22,
+          11
+        ],
+        "expected": 68
+      },
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "selection-three-way-price-fault",
+    "source": "int f(int n,int x){if(n<3){return 5*x+3;}if(n>12){return 7*x+2;}return x;}",
+    "references": [
+      "int f(int n,int x){if(n<3){return 4*x+3;}if(n>12){return 6*x+2;}return x;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "selection-three-way-price",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Apply one of three fixed price rules.",
+    "domain": "Small integer quantities and mode tags.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          12,
+          5
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          13,
+          5
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          3,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          10
+        ],
+        "expected": 43
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          22,
+          11
+        ],
+        "expected": 68
+      },
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "selection-three-way-price-control",
+    "source": "int f(int n,int x){if(n<3){return 4*x+3;}if(n>12){return 6*x+2;}return x;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "calibration-checked-radix-shift",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Quantize by the displaced signed input.",
+    "domain": "Small signed n excluding -4.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -5
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -10
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "calibration-checked-radix-shift-fault",
+    "source": "int f(int n){return 18/(n+5);}",
+    "references": [
+      "int f(int n){return 18/(n+4);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "calibration-checked-radix-shift",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Quantize by the displaced signed input.",
+    "domain": "Small signed n excluding -4.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -5
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -10
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "calibration-checked-radix-shift-control",
+    "source": "int f(int n){return 18/(n+4);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "lower-end-prime-classification",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Classify nonnegative input by the positive prime definition.",
+    "domain": "Integers 0 through 100.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          49
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          97
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          25
+        ],
+        "expected": false
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/36828b106f7905ecc0c0776e40c99929728a91a9",
+      "license": "MIT",
+      "review": "Independent executable specification. External human adjudication unavailable.",
+      "before": "56513cb21f759ac26b31ac1edcb45d886a97f715",
+      "after": "36828b106f7905ecc0c0776e40c99929728a91a9",
+      "path": "maths/PrimeCheck.py",
+      "archive": "prime",
+      "license_file": "LICENSE-prime.txt",
+      "adaptation": "Replace the positive integer square-root bound with its equivalent square comparison on the declared range. Preserve the original even guard and odd divisor search."
+    },
+    "id": "lower-end-prime-classification-fault",
+    "source": "bool f(int n){if(n%2==0 && n>2){return false;}for(int i=3;i*i<=n;i+=2){if(n%i==0){return false;}}return true;}",
+    "references": [
+      "bool f(int n){if(n<2){return false;}if(n%2==0 && n>2){return false;}for(int i=3;i*i<=n;i+=2){if(n%i==0){return false;}}return true;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "lower-end-prime-classification",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Classify nonnegative input by the positive prime definition.",
+    "domain": "Integers 0 through 100.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          49
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          97
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          25
+        ],
+        "expected": false
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/36828b106f7905ecc0c0776e40c99929728a91a9",
+      "license": "MIT",
+      "review": "Independent executable specification. External human adjudication unavailable.",
+      "before": "56513cb21f759ac26b31ac1edcb45d886a97f715",
+      "after": "36828b106f7905ecc0c0776e40c99929728a91a9",
+      "path": "maths/PrimeCheck.py",
+      "archive": "prime",
+      "license_file": "LICENSE-prime.txt",
+      "adaptation": "Replace the positive integer square-root bound with its equivalent square comparison on the declared range. Preserve the original even guard and odd divisor search."
+    },
+    "id": "lower-end-prime-classification-control",
+    "source": "bool f(int n){if(n<2){return false;}if(n%2==0 && n>2){return false;}for(int i=3;i*i<=n;i+=2){if(n%i==0){return false;}}return true;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "last-product-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Maximize the product of the 13-digit contiguous windows.",
+    "domain": "Length 13–16, including the leading zeros of four packed four-digit chunks, digits 0–5.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          13,
+          1111,
+          2222,
+          3333,
+          4123
+        ],
+        "expected": 5184
+      },
+      {
+        "arguments": [
+          16,
+          0,
+          2222,
+          3333,
+          5555
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          15,
+          1000,
+          4321,
+          3333,
+          5412
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          14,
+          4231,
+          1122,
+          3345,
+          5551
+        ],
+        "expected": 108000
+      },
+      {
+        "arguments": [
+          16,
+          1111,
+          1111,
+          1111,
+          1111
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          5,
+          5555,
+          5555,
+          1234
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          16,
+          1234,
+          1234,
+          1234,
+          5555
+        ],
+        "expected": 1440000
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/9417091dabf9d8e9ebec078942a2fbba0966e42f",
+      "license": "MIT",
+      "review": "Independent executable specification. External human adjudication unavailable.",
+      "before": "60418a6fd7a2f35aef237279bc721e6470af936f",
+      "after": "9417091dabf9d8e9ebec078942a2fbba0966e42f",
+      "path": "project_euler/problem_08/sol1.py",
+      "archive": "digits",
+      "license_file": "LICENSE-digits.txt",
+      "adaptation": "Pack 16 digits into four scalar arguments and decode them to a local array. Use the int32 minimum as the no-window sentinel. Preserve the upstream exclusive endpoint fault."
+    },
+    "id": "last-product-window-fault",
+    "source": "int f(int n,int a,int b,int c,int d){\n        int digits[16];for(int k=3;k>=0;k--){digits[k]=a%10; digits[k+4]=b%10;\n        digits[k+8]=c%10; digits[k+12]=d%10; a=a/10; b=b/10; c=c/10; d=d/10;}\n        int largest=-2147483648;\n        for(int first=0;first<n-13;first++){int value=1;\n            for(int j=0;j<13;j++){value=value*digits[first+j];}\n            if(value>largest){largest=value;}}\n        return largest;\n    }",
+    "references": [
+      "int f(int n,int a,int b,int c,int d){\n        int digits[16];for(int k=3;k>=0;k--){digits[k]=a%10; digits[k+4]=b%10;\n        digits[k+8]=c%10; digits[k+12]=d%10; a=a/10; b=b/10; c=c/10; d=d/10;}\n        int largest=-2147483648;\n        for(int first=0;first<n-12;first++){int value=1;\n            for(int j=0;j<13;j++){value=value*digits[first+j];}\n            if(value>largest){largest=value;}}\n        return largest;\n    }"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "last-product-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Maximize the product of the 13-digit contiguous windows.",
+    "domain": "Length 13–16, including the leading zeros of four packed four-digit chunks, digits 0–5.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          13,
+          1111,
+          2222,
+          3333,
+          4123
+        ],
+        "expected": 5184
+      },
+      {
+        "arguments": [
+          16,
+          0,
+          2222,
+          3333,
+          5555
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          15,
+          1000,
+          4321,
+          3333,
+          5412
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          14,
+          4231,
+          1122,
+          3345,
+          5551
+        ],
+        "expected": 108000
+      },
+      {
+        "arguments": [
+          16,
+          1111,
+          1111,
+          1111,
+          1111
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          5,
+          5555,
+          5555,
+          1234
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          16,
+          1234,
+          1234,
+          1234,
+          5555
+        ],
+        "expected": 1440000
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/9417091dabf9d8e9ebec078942a2fbba0966e42f",
+      "license": "MIT",
+      "review": "Independent executable specification. External human adjudication unavailable.",
+      "before": "60418a6fd7a2f35aef237279bc721e6470af936f",
+      "after": "9417091dabf9d8e9ebec078942a2fbba0966e42f",
+      "path": "project_euler/problem_08/sol1.py",
+      "archive": "digits",
+      "license_file": "LICENSE-digits.txt",
+      "adaptation": "Pack 16 digits into four scalar arguments and decode them to a local array. Use the int32 minimum as the no-window sentinel. Preserve the upstream exclusive endpoint fault."
+    },
+    "id": "last-product-window-control",
+    "source": "int f(int n,int a,int b,int c,int d){\n        int digits[16];for(int k=3;k>=0;k--){digits[k]=a%10; digits[k+4]=b%10;\n        digits[k+8]=c%10; digits[k+12]=d%10; a=a/10; b=b/10; c=c/10; d=d/10;}\n        int largest=-2147483648;\n        for(int first=0;first<n-12;first++){int value=1;\n            for(int j=0;j<13;j++){value=value*digits[first+j];}\n            if(value>largest){largest=value;}}\n        return largest;\n    }",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "shifted-missing-member",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the absent interior member of a six-integer interval.",
+    "domain": "Five unique members, endpoints present, values 0–30.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3,
+          4,
+          5,
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          6,
+          5,
+          4,
+          2,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          6,
+          1,
+          5,
+          3,
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          9,
+          10,
+          7,
+          12,
+          11
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          5,
+          3,
+          2,
+          7
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          11,
+          14,
+          10,
+          9,
+          13
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/3ecad36f92d26676cc73276553cd99763b025b33",
+      "license": "MIT",
+      "review": "Independent executable specification. External human adjudication unavailable.",
+      "before": "c9ba5e1b6f319e34815660542d8ca0c777c8008a",
+      "after": "3ecad36f92d26676cc73276553cd99763b025b33",
+      "path": "bit_manipulation/missing_number.py",
+      "archive": "missing",
+      "license_file": "LICENSE-missing.md",
+      "adaptation": "Accept five nonnegative members as scalar arguments. Replace XOR with an equivalent arithmetic helper over the declared inputs. Preserve zero-based versus minimum-based induction."
+    },
+    "id": "shifted-missing-member-fault",
+    "source": "int blend(int p,int q){int total=0;int scale=1;\n        while(p>0 || q>0){if(p%2!=q%2){total+=scale;}p=p/2;q=q/2;scale=scale*2;}return total;}int f(int a,int b,int c,int d,int e){int value[5];\n        value[0]=a;value[1]=b;value[2]=c;value[3]=d;value[4]=e;\n        int answer=5;for(int k=0;k<5;k++){answer=blend(answer,blend(k,value[k]));}return answer;}",
+    "references": [
+      "int blend(int p,int q){int total=0;int scale=1;\n        while(p>0 || q>0){if(p%2!=q%2){total+=scale;}p=p/2;q=q/2;scale=scale*2;}return total;}int f(int a,int b,int c,int d,int e){int value[5];\n        value[0]=a;value[1]=b;value[2]=c;value[3]=d;value[4]=e;\n        int low=a;int high=a;\n        for(int i=1;i<5;i++){if(value[i]<low){low=value[i];}if(value[i]>high){high=value[i];}}\n        int answer=high;\n        for(int k=low;k<high;k++){answer=blend(answer,blend(k,value[k-low]));}\n        return answer;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "shifted-missing-member",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the absent interior member of a six-integer interval.",
+    "domain": "Five unique members, endpoints present, values 0–30.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3,
+          4,
+          5,
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          6,
+          5,
+          4,
+          2,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          6,
+          1,
+          5,
+          3,
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          9,
+          10,
+          7,
+          12,
+          11
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          5,
+          3,
+          2,
+          7
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          11,
+          14,
+          10,
+          9,
+          13
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/3ecad36f92d26676cc73276553cd99763b025b33",
+      "license": "MIT",
+      "review": "Independent executable specification. External human adjudication unavailable.",
+      "before": "c9ba5e1b6f319e34815660542d8ca0c777c8008a",
+      "after": "3ecad36f92d26676cc73276553cd99763b025b33",
+      "path": "bit_manipulation/missing_number.py",
+      "archive": "missing",
+      "license_file": "LICENSE-missing.md",
+      "adaptation": "Accept five nonnegative members as scalar arguments. Replace XOR with an equivalent arithmetic helper over the declared inputs. Preserve zero-based versus minimum-based induction."
+    },
+    "id": "shifted-missing-member-control",
+    "source": "int blend(int p,int q){int total=0;int scale=1;\n        while(p>0 || q>0){if(p%2!=q%2){total+=scale;}p=p/2;q=q/2;scale=scale*2;}return total;}int f(int a,int b,int c,int d,int e){int value[5];\n        value[0]=a;value[1]=b;value[2]=c;value[3]=d;value[4]=e;\n        int low=a;int high=a;\n        for(int i=1;i<5;i++){if(value[i]<low){low=value[i];}if(value[i]>high){high=value[i];}}\n        int answer=high;\n        for(int k=low;k<high;k++){answer=blend(answer,blend(k,value[k-low]));}\n        return answer;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "descending-range-coupons",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Credit each descending checkpoint, including the closing endpoint.",
+    "domain": "Signed checkpoints of magnitude at most 30 and positive stride.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          2,
+          3
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          3,
+          3,
+          2
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          2,
+          4,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          19,
+          0,
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          12,
+          0,
+          6
+        ],
+        "expected": 18
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          -8,
+          7
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          7,
+          0,
+          2
+        ],
+        "expected": 23
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "descending-range-coupons-fault",
+    "source": "int f(int start,int end,int pace){int paid=3;for(int k=start;end<k;k=k-pace){paid+=5;}return paid;}",
+    "references": [
+      "int f(int start,int end,int pace){int paid=3;for(int k=start;end<=k;k=k-pace){paid+=5;}return paid;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "descending-range-coupons",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Credit each descending checkpoint, including the closing endpoint.",
+    "domain": "Signed checkpoints of magnitude at most 30 and positive stride.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          2,
+          3
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          3,
+          3,
+          2
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          2,
+          4,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          19,
+          0,
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          12,
+          0,
+          6
+        ],
+        "expected": 18
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          -8,
+          7
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          7,
+          0,
+          2
+        ],
+        "expected": 23
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "descending-range-coupons-control",
+    "source": "int f(int start,int end,int pace){int paid=3;for(int k=start;end<=k;k=k-pace){paid+=5;}return paid;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "offset-channel-step",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count samples with a fixed two-point calibration added to the stride.",
+    "domain": "Sampled nonnegative stride inputs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          21,
+          1
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          1,
+          12,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -2,
+          4,
+          0
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3,
+          27,
+          3
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          19,
+          5
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          12,
+          8
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "offset-channel-step-fault",
+    "source": "int f(int from,int end,int step){int days=2;int stride=step+3;for(int i=from;i<end;i=stride+i){days++;}return days;}",
+    "references": [
+      "int f(int from,int end,int step){int days=2;int stride=step+2;for(int i=from;i<end;i=stride+i){days++;}return days;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "offset-channel-step",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count samples with a fixed two-point calibration added to the stride.",
+    "domain": "Sampled nonnegative stride inputs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          21,
+          1
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          1,
+          12,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -2,
+          4,
+          0
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3,
+          27,
+          3
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          19,
+          5
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          12,
+          8
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "offset-channel-step-control",
+    "source": "int f(int from,int end,int step){int days=2;int stride=step+2;for(int i=from;i<end;i=stride+i){days++;}return days;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "window-weighted-records",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accrue two units plus an index on marked positions, and three on every other position.",
+    "domain": "Counts 0 to 30, small signed baseline.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          6,
+          1
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          9,
+          -3
+        ],
+        "expected": 29
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          0
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          17,
+          7
+        ],
+        "expected": 83
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "window-weighted-records-fault",
+    "source": "int f(int n,int baseline){int record=1;int sum=baseline;for(int i=0;i<n;i++){\n            if(i%4==1){record+=2;sum+=i;}else{sum+=4;} }return sum+record;}",
+    "references": [
+      "int f(int n,int baseline){int record=1;int sum=baseline;for(int i=0;i<n;i++){\n            if(i%4==1){record+=2;sum+=i;}else{sum+=3;} }return sum+record;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "window-weighted-records",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accrue two units plus an index on marked positions, and three on every other position.",
+    "domain": "Counts 0 to 30, small signed baseline.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          6,
+          1
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          9,
+          -3
+        ],
+        "expected": 29
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          13,
+          0
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          17,
+          7
+        ],
+        "expected": 83
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "window-weighted-records-control",
+    "source": "int f(int n,int baseline){int record=1;int sum=baseline;for(int i=0;i<n;i++){\n            if(i%4==1){record+=2;sum+=i;}else{sum+=3;} }return sum+record;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "lagged-two-channel",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate successive calibrated readings, then remove the last stage.",
+    "domain": "Nonnegative counts up to 30 and small signed seeds.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          9
+        ],
+        "expected": 39
+      },
+      {
+        "arguments": [
+          6,
+          -4
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          12,
+          3
+        ],
+        "expected": 165
+      },
+      {
+        "arguments": [
+          17,
+          0
+        ],
+        "expected": 272
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "lagged-two-channel-fault",
+    "source": "int f(int n,int seed){int total=0;int stage=seed;for(int i=0;i<n;i++){stage+=3;total+=stage;}return total-stage;}",
+    "references": [
+      "int f(int n,int seed){int total=0;int stage=seed;for(int i=0;i<n;i++){stage+=2;total+=stage;}return total-stage;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "lagged-two-channel",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate successive calibrated readings, then remove the last stage.",
+    "domain": "Nonnegative counts up to 30 and small signed seeds.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          9
+        ],
+        "expected": 39
+      },
+      {
+        "arguments": [
+          6,
+          -4
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          12,
+          3
+        ],
+        "expected": 165
+      },
+      {
+        "arguments": [
+          17,
+          0
+        ],
+        "expected": 272
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "lagged-two-channel-control",
+    "source": "int f(int n,int seed){int total=0;int stage=seed;for(int i=0;i<n;i++){stage+=2;total+=stage;}return total-stage;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "literal-trip-slabs",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum positions whose remainder is in the last three residues.",
+    "domain": "Nonnegative endpoints 0–25.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          5,
+          1
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          11,
+          3
+        ],
+        "expected": 31
+      },
+      {
+        "arguments": [
+          12,
+          7
+        ],
+        "expected": 24
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          18,
+          0
+        ],
+        "expected": 89
+      },
+      {
+        "arguments": [
+          20,
+          17
+        ],
+        "expected": 54
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "literal-trip-slabs-fault",
+    "source": "int f(int n,int min){int paid=0;for(int j=min;j<n;j++){if(j%5>2){paid+=j;} }return paid;}",
+    "references": [
+      "int f(int n,int min){int paid=0;for(int j=min;j<n;j++){if(j%5>=2){paid+=j;} }return paid;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "literal-trip-slabs",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum positions whose remainder is in the last three residues.",
+    "domain": "Nonnegative endpoints 0–25.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          5,
+          1
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          11,
+          3
+        ],
+        "expected": 31
+      },
+      {
+        "arguments": [
+          12,
+          7
+        ],
+        "expected": 24
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          18,
+          0
+        ],
+        "expected": 89
+      },
+      {
+        "arguments": [
+          20,
+          17
+        ],
+        "expected": 54
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "literal-trip-slabs-control",
+    "source": "int f(int n,int min){int paid=0;for(int j=min;j<n;j++){if(j%5>=2){paid+=j;} }return paid;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "path-coded-margins",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply the distinct base-tier and premium-tier charges.",
+    "domain": "Small signed values and both threshold sides.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          0,
+          9
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          12,
+          2
+        ],
+        "expected": 36
+      },
+      {
+        "arguments": [
+          19,
+          4
+        ],
+        "expected": 67
+      },
+      {
+        "arguments": [
+          8,
+          -3
+        ],
+        "expected": -23
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          16,
+          -2
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          4,
+          11
+        ],
+        "expected": 51
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "path-coded-margins-fault",
+    "source": "int f(int n,int cost){int fee=0;if(n>8){fee=11*cost+n;}else{fee=7*cost-n;} return fee;}",
+    "references": [
+      "int f(int n,int cost){int fee=0;if(n>8){fee=12*cost+n;}else{fee=5*cost-n;} return fee;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "path-coded-margins",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply the distinct base-tier and premium-tier charges.",
+    "domain": "Small signed values and both threshold sides.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          0,
+          9
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          12,
+          2
+        ],
+        "expected": 36
+      },
+      {
+        "arguments": [
+          19,
+          4
+        ],
+        "expected": 67
+      },
+      {
+        "arguments": [
+          8,
+          -3
+        ],
+        "expected": -23
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          16,
+          -2
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          4,
+          11
+        ],
+        "expected": 51
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "path-coded-margins-control",
+    "source": "int f(int n,int cost){int fee=0;if(n>8){fee=12*cost+n;}else{fee=5*cost-n;} return fee;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "piecewise-voltage",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use two differently calibrated gains on isolated mode groups.",
+    "domain": "Integer readings and offset, with mode 2 and all other modes.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          7,
+          6
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          2,
+          -3,
+          1
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          1,
+          3,
+          8
+        ],
+        "expected": -69
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          2
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          1,
+          -3,
+          11
+        ],
+        "expected": -102
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          -5,
+          9
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          4,
+          11,
+          -6
+        ],
+        "expected": 65
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "piecewise-voltage-fault",
+    "source": "int f(int mode,int reading,int fixed){if(mode==2){return (reading+fixed)*6;}return reading-8*fixed;}",
+    "references": [
+      "int f(int mode,int reading,int fixed){if(mode==2){return (reading+fixed)*4;}return reading-9*fixed;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "piecewise-voltage",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use two differently calibrated gains on isolated mode groups.",
+    "domain": "Integer readings and offset, with mode 2 and all other modes.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          7,
+          6
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          2,
+          -3,
+          1
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          1,
+          3,
+          8
+        ],
+        "expected": -69
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          2
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          1,
+          -3,
+          11
+        ],
+        "expected": -102
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          -5,
+          9
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          4,
+          11,
+          -6
+        ],
+        "expected": 65
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "piecewise-voltage-control",
+    "source": "int f(int mode,int reading,int fixed){if(mode==2){return (reading+fixed)*4;}return reading-9*fixed;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "density-singular-sum",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Divide a fixed workload by the combined extent plus one.",
+    "domain": "Nonnegative extents and a checked nonzero reference divisor.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          5
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          9,
+          9
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          17,
+          1
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          12,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          5
+        ],
+        "expected": 6
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "density-singular-sum-fault",
+    "source": "int f(int p,int q){int span=p-q;return 48/(span+1);}",
+    "references": [
+      "int f(int p,int q){int span=p+q;return 48/(span+1);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "density-singular-sum",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Divide a fixed workload by the combined extent plus one.",
+    "domain": "Nonnegative extents and a checked nonzero reference divisor.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          5
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          9,
+          9
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          17,
+          1
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          12,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          5
+        ],
+        "expected": 6
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "density-singular-sum-control",
+    "source": "int f(int p,int q){int span=p+q;return 48/(span+1);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "boundary-int32-increment",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add three before signed integer division.",
+    "domain": "v ≤ INT_MAX−3 and positive divisor.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2147483644,
+          1
+        ],
+        "expected": 2147483647
+      },
+      {
+        "arguments": [
+          100,
+          2
+        ],
+        "expected": 51
+      },
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -41,
+          3
+        ],
+        "expected": -12
+      },
+      {
+        "arguments": [
+          2147483640,
+          2
+        ],
+        "expected": 1073741821
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          205,
+          2
+        ],
+        "expected": 104
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "boundary-int32-increment-fault",
+    "source": "int f(int v,int z){return (v+4)/z;}",
+    "references": [
+      "int f(int v,int z){return (v+3)/z;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "boundary-int32-increment",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add three before signed integer division.",
+    "domain": "v ≤ INT_MAX−3 and positive divisor.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2147483644,
+          1
+        ],
+        "expected": 2147483647
+      },
+      {
+        "arguments": [
+          100,
+          2
+        ],
+        "expected": 51
+      },
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -41,
+          3
+        ],
+        "expected": -12
+      },
+      {
+        "arguments": [
+          2147483640,
+          2
+        ],
+        "expected": 1073741821
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          205,
+          2
+        ],
+        "expected": 104
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "boundary-int32-increment-control",
+    "source": "int f(int v,int z){return (v+3)/z;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "bounded-buffer-end",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the denoted buffer entry.",
+    "domain": "Positions 0–2.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          5
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          1,
+          -1
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          2,
+          11
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -5
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          1,
+          8
+        ],
+        "expected": 16
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "bounded-buffer-end-fault",
+    "source": "int f(int pos,int x){int buf[3];buf[0]=x;buf[1]=2*x;buf[2]=x-3;return buf[pos+1];}",
+    "references": [
+      "int f(int pos,int x){int buf[3];buf[0]=x;buf[1]=2*x;buf[2]=x-3;return buf[pos];}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "bounded-buffer-end",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the denoted buffer entry.",
+    "domain": "Positions 0–2.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          5
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          1,
+          -1
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          2,
+          11
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -5
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          1,
+          8
+        ],
+        "expected": 16
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "bounded-buffer-end-control",
+    "source": "int f(int pos,int x){int buf[3];buf[0]=x;buf[1]=2*x;buf[2]=x-3;return buf[pos];}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "field-guide-helper",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Combine a calibrated field reading and its supplemental contribution.",
+    "domain": "Small signed arguments.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          5
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          -3,
+          6
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          12,
+          -9
+        ],
+        "expected": 59
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          11
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          7,
+          3
+        ],
+        "expected": 46
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "field-guide-helper-fault",
+    "source": "int normalize(int x){int gain=5*x;int adjusted=gain+9;return adjusted;}int f(int a,int b){return normalize(a)+b;}",
+    "references": [
+      "int normalize(int x){int gain=5*x;int adjusted=gain+8;return adjusted;}int f(int a,int b){return normalize(a)+b;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "field-guide-helper",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Combine a calibrated field reading and its supplemental contribution.",
+    "domain": "Small signed arguments.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          5
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          -3,
+          6
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          12,
+          -9
+        ],
+        "expected": 59
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          11
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          7,
+          3
+        ],
+        "expected": 46
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "field-guide-helper-control",
+    "source": "int normalize(int x){int gain=5*x;int adjusted=gain+8;return adjusted;}int f(int a,int b){return normalize(a)+b;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "signed-rounding-band",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Measure the difference with asymmetric directional offsets.",
+    "domain": "Small signed positions.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          20
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9,
+          9
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          4,
+          1
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          6,
+          12
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          -3
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          22,
+          1
+        ],
+        "expected": 28
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "signed-rounding-band-fault",
+    "source": "int f(int n,int z){int spread=n-z; if(spread<0){return -spread+4;}return spread+7;}",
+    "references": [
+      "int f(int n,int z){int spread=n-z; if(spread<0){return -spread+2;}return spread+7;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "signed-rounding-band",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Measure the difference with asymmetric directional offsets.",
+    "domain": "Small signed positions.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          20
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9,
+          9
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          4,
+          1
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          6,
+          12
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          -3
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          22,
+          1
+        ],
+        "expected": 28
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "signed-rounding-band-control",
+    "source": "int f(int n,int z){int spread=n-z; if(spread<0){return -spread+2;}return spread+7;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "unbounded-stage-recursion",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate a constant recursively to a signed base case.",
+    "domain": "Nonnegative counts through 9.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 20
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "unbounded-stage-recursion-fault",
+    "source": "int f(int n){if(n<=0){return 2;}return 2+f(n+1);}",
+    "references": [
+      "int f(int n){if(n<=0){return 2;}return 2+f(n-1);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "unbounded-stage-recursion",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate a constant recursively to a signed base case.",
+    "domain": "Nonnegative counts through 9.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 20
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "unbounded-stage-recursion-control",
+    "source": "int f(int n){if(n<=0){return 2;}return 2+f(n-1);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "three-channel-loop",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Integrate the first running total into a third channel.",
+    "domain": "Small nonnegative counts.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 43
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 136
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 342
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "three-channel-loop-fault",
+    "source": "int f(int n){int a=0;int b=1;int c=3;for(int i=0;i<n;i++){a+=i;b+=a;c+=a;}return c;}",
+    "references": [
+      "int f(int n){int a=0;int b=1;int c=3;for(int i=0;i<n;i++){a+=i;b+=a;c+=b;}return c;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "three-channel-loop",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Integrate the first running total into a third channel.",
+    "domain": "Small nonnegative counts.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 43
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 136
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 342
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "three-channel-loop-control",
+    "source": "int f(int n){int a=0;int b=1;int c=3;for(int i=0;i<n;i++){a+=i;b+=a;c+=b;}return c;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "asymmetric-grid-value",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Give the privileged row a specific gate and use a separate sum threshold.",
+    "domain": "Exhaustive [0,2] × [0,2], split into four discovery and five holdout inputs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 7
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "asymmetric-grid-value-fault",
+    "source": "int f(int a,int b){if(a==0 && b==2){return 3;}if(a+b>2){return 7;}return 2;}",
+    "references": [
+      "int f(int a,int b){if(a==0 && b!=2){return 3;}if(a+b>2){return 7;}return 2;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "asymmetric-grid-value",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Give the privileged row a specific gate and use a separate sum threshold.",
+    "domain": "Exhaustive [0,2] × [0,2], split into four discovery and five holdout inputs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 7
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "asymmetric-grid-value-control",
+    "source": "int f(int a,int b){if(a==0 && b!=2){return 3;}if(a+b>2){return 7;}return 2;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "sparse-negative-reading",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only the low mode has trusted observed expected values.",
+    "domain": "Unspecified high mode.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          7,
+          false
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -5,
+          false
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          13,
+          false
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "sparse-negative-reading-control",
+    "source": "int f(int x,bool high){if(high){return x+7;}return x-3;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "constant-neutral-channel",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "The neutral rate is the only specified rate.",
+    "domain": "Nonzero rates unspecified.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          9
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          0,
+          23
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          0,
+          -5
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9",
+      "license": "repository license",
+      "review": "Independent executable specification. External human adjudication unavailable."
+    },
+    "id": "constant-neutral-channel-control",
+    "source": "int f(int rate,int q){return (q+31)*rate+7;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  }
+]
