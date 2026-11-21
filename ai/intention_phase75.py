@@ -269,15 +269,19 @@ def helper_argument(item, bindings, helpers, examples):
                        counter_evidence=(Evidence("AMBIGUOUS_CALL_SITE", "Either helper call could be the intended consumer.", value.span),))
 
 
-def radix_updates(item, bindings, examples, deadline):
+def radix_updates(item, path, bindings, examples, deadline):
     if not examples:
         return
-    for loop in (node for node in descendants(item.function.body) if isinstance(node, ast.WhileStatement)):
+    live = [block for block in item.flow.graph.blocks if path.incoming[block.id]]
+    modeled_statements = {id(block.syntax) for block in live}
+    for block in live:
         if monotonic() >= deadline:
             return
-        if not isinstance(loop.body, ast.Block):
+        loop = block.syntax
+        if block.kind != "loop_header" or not isinstance(loop, ast.WhileStatement) or not isinstance(loop.body, ast.Block):
             continue
-        expressions = [statement.expression for statement in loop.body.statements if isinstance(statement, ast.ExpressionStatement)]
+        expressions = [statement.expression for statement in loop.body.statements
+                       if isinstance(statement, ast.ExpressionStatement) and id(statement) in modeled_statements]
         for update in expressions:
             if monotonic() >= deadline:
                 return
@@ -345,5 +349,5 @@ def study(context, item, bindings, path, helpers, examples, enabled, deadline):
             proposals.extend(term_combination(context, item, facts, bindings, helpers, selected))
     if "dependencies" in enabled and len(proposals) < MAX_NEW and monotonic() < deadline:
         proposals.extend(helper_argument(item, bindings, helpers, selected))
-        proposals.extend(islice(radix_updates(item, bindings, selected, deadline), max(0, MAX_NEW-len(proposals))))
+        proposals.extend(islice(radix_updates(item, path, bindings, selected, deadline), max(0, MAX_NEW-len(proposals))))
     return progress, proposals[:MAX_NEW]

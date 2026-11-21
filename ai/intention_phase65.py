@@ -240,9 +240,9 @@ def augment(context, program, previous, entry, examples, enabled, *, phase75=Non
                                              "returns": return_paths(item, path, program.bindings, program.deadline),
                                              **recurrence_structure(context, item, path)}
     links, links_complete = contracts(program, paths, program.deadline) if paths else ({}, False)
-    helpers = scalar_helpers(program, links, program.deadline,
-                             local_definitions=phase75 is not None and "helper_layout" in phase75
-                             ) if "helpers" in enabled and links else {}
+    helpers = scalar_helpers(
+        program, links, program.deadline, local_definitions=phase75 is not None and "helper_layout" in phase75,
+    ) if "helpers" in enabled and links else {}
     for name, witness in helpers.items():
         links[name]["scalar_helper"] = witness
     withheld, retained, extra, added = [], [], [], []
@@ -281,6 +281,8 @@ def augment(context, program, previous, entry, examples, enabled, *, phase75=Non
     if phase75 is not None:
         for name, summary in links.items():
             if name not in progress and any(call["self_recursive"] for call in summary["call_sites"]):
-                progress[name] = {"complete": False, "reason": "The recursion falls outside the bounded guarded-return model."}
+                reason = ("Select this function to analyze its guarded progress." if entry and name != entry
+                          else "The recursion falls outside the bounded guarded-return model.")
+                progress[name] = {"complete": False, "reason": reason}
         output["progress"] = progress
     return (*added, *extra, *retained), output

@@ -105,6 +105,8 @@ def test_radix_repair_uses_a_lexically_related_remainder():
     assert verified(choice.proposed_code,suite).status==Status.MATCHES_SUPPLIED_TESTS
     shadow=source.replace("result+=v%7;","{int v=21;result+=v%7;}")
     assert not analysis(shadow,suite).candidates
+    unreachable = source.replace("while(v>0)", "while(false)")
+    assert not analysis(unreachable,suite).candidates
 
 
 @pytest.mark.parametrize("source", [
