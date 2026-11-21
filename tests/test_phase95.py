@@ -108,6 +108,7 @@ def test_helper_and_control_exits_use_compiler_edges_and_pure_local_state():
     ("int f(int n){int i=0;while(i<n){i++;}return i;}",(((1,),1),((2,),3))),
     ("int f(int n){if(n<0){return 0;}return f(n-1);}",(((0,),1),((2,),3))),
     ("int f(int n){int a[n];a[0]=n;return a[0];}",(((1,),0),((2,),3))),
+    ("int unused=1/0;" + GUARD,GUARD_ROWS),
     ("int f(int n){int x=0;for(int i=0;i<n;i++){n--;x++;}return x;}",(((3,),1),((6,),3))),
 ])
 def test_unsupported_effects_abstain(code,rows):

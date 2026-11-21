@@ -10,6 +10,7 @@ from time import monotonic
 
 from analysis_evidence.dataflow import effects
 from compiler import ast_nodes as ast
+from compiler.source_location import SourceSpan
 
 from .intention_phase8 import MAX_DEPTH, ProjectionLimit, Term, UnsupportedProjection, substitution
 from .intention_phase85 import BOUNDARY_ALTERNATES, ScalarProjection
@@ -54,7 +55,7 @@ class Loop:
     slot: int
     direction: int
     squared: bool
-    span: object
+    span: SourceSpan
     relation: str
     bound: str
     init: str
@@ -240,8 +241,12 @@ class FlowProjection(ScalarProjection):
                 and type(initial.initializer.value) is int and shape=="direct"):
             visible = self.context.visible_at(initial.initializer.span.start.offset)
             reaching = item.flow.incoming[init_site]
-            defined = {row.binding for row in reaching if row.site != graph.entry or
-                       self.bindings.symbols[row.binding].kind.value=="parameter"}
+            defined = {row.binding for row in reaching} - {
+                row.binding for row in reaching if
+                (row.site==graph.entry and self.bindings.symbols[row.binding].kind.value!="parameter")
+                or (isinstance(graph.blocks[row.site].syntax,ast.VariableDeclaration)
+                    and graph.blocks[row.site].syntax.initializer is None)
+            }
             for name, symbol in list(sorted(visible.items(),key=lambda pair:pair[1].declaration_span.start.offset))[-4:]:
                 if symbol.id in invariant and symbol.id in defined and symbol.type.display()=="int":
                     super().change(initial.initializer,initial.initializer.span,name,RANGE,"reference",name)

@@ -95,6 +95,8 @@ def synthesize(context, program, spec, enabled):
         return (), report
     if program.status!="AVAILABLE":
         return (),report | {"status":program.status}
+    if context.parsed.ast.globals:
+        return (),report | {"status":"UNSUPPORTED_PROJECTION"}
     item = next(row for row in program.functions if row.function.name==spec.function)
     model = FlowProjection(context,program,enabled)
     expected = [row.expected_return for row in spec.examples]
@@ -110,6 +112,8 @@ def synthesize(context, program, spec, enabled):
             return (),report | {"status":"INSUFFICIENT_SUCCESSFUL_SAMPLES"}
         if "domain" in enabled:
             for guard in guard_choices(model,item,spec,rows):
+                if report["trials"]>=MAX_TRIALS or monotonic()>=program.deadline:
+                    raise ProjectionLimit
                 report["trials"] += 1
                 # The guard affects only examples with trusted sentinel outputs.
                 if all(spec.examples[i-1].expected_return==guard.value for i in guard.affected):

@@ -43,3 +43,9 @@ jobs:
       - run: python -m benchmarks.phase85_evaluate --check
       - run: python -m benchmarks.phase9_audit
       - run: python -m benchmarks.phase9_evaluate --check
+      - run: python -m benchmarks.phase95_audit
+      - name: Replay pinned upstream defect specimens
+        run: |
+          python -m benchmarks.phase95_upstream
+          git diff --exit-code -- benchmarks/reports/phase95-upstream-v1.json
+      - run: python -m benchmarks.phase95_evaluate --check
