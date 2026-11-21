@@ -401,6 +401,7 @@ export type Phase95Analysis = {
 };
 export type Phase10Analysis = {
   status: string;
+  loops?: Phase95Analysis["loops"];
   arrays?: { function: string; name: string; length: number; element_type: string; span: AnalysisSpan }[];
   accesses?: { sample: number; span: AnalysisSpan; minimum: number; maximum: number; length: number;
     initialized: boolean; valid: boolean; access: "read" | "write" }[];

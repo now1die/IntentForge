@@ -284,3 +284,9 @@ worker's observed outcomes. Repairs require approval against the current source.
 [Phase 9.5 review](docs/PHASE_9_5_FINAL_REVIEW.md) ·
 [Upstream defect validation](docs/phase9_5_external_defect_validation.md) ·
 [Workbench captures](docs/phase9_5_workbench.md)
+
+## Phase 10 search repair
+
+Select **Phase 10 search repair** to analyze fixed-array indexes, recursive and iterative intervals, expanding windows, derived origins and pure remainder helpers against supplied typed examples. The workbench shows source-located evidence and requires explicit approval of the complete repair. Isolated verification checks candidate behavior and reports original runtime failures separately from wrong outputs.
+
+The frozen cohort includes four documented upstream defects, five injected faults and thirteen correct controls. [Final review](docs/PHASE_10_FINAL_REVIEW.md) · [Workbench screenshots](docs/phase10_workbench.md) · [Phase 10.5 readiness](docs/PHASE_10_5_READINESS.md)

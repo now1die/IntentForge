@@ -40,9 +40,18 @@ export function SearchRepairEvidence({ analysis }: { analysis: Phase10Analysis }
     </ul>}
     {!!analysis.progress?.length && <ul aria-label="Sampled progress">
       {analysis.progress.map((loop, i) => <li key={i}>
-        {progressLabels[loop.kind] ?? loop.kind} · <code>{loop.function}</code> · line {loop.span.start.line}
+        {progressLabels[loop.kind] ?? loop.kind} · <code>{loop.function}</code> · <code>{loop.guard}</code> · line {loop.span.start.line}
       </li>)}
     </ul>}
+    {!!analysis.loops?.some((loop) => loop.indexed_bindings.length > 0) && <details>
+      <summary>Array traversal origins</summary>
+      <ul>{analysis.loops.filter((loop) => loop.indexed_bindings.length > 0).map((loop, i) => <li key={i}>
+        Line {loop.span.start.line} · start at <code>{loop.origin}</code> · ending test <code>{loop.bound}</code>
+        <ul>{loop.samples.map((sample, index) => <li key={index}>
+          Input {index+1} · {sample.iterations ? `first ${sample.first} · last ${sample.last}` : "no entered iterations"}
+        </li>)}</ul>
+      </li>)}</ul>
+    </details>}
     {!!analysis.accesses?.length && <details open={analysis.accesses.some((site) => !site.valid)}>
       <summary>Index observations on supplied inputs</summary>
       <ul>{analysis.accesses.map((site, i) => <li key={i}>
