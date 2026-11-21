@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getExecutionCapability, verifyBehavior } from "../services/api";
+import { SpecificationEvidence } from "./SpecificationEvidence";
+import type { Phase8Analysis } from "../types/compiler";
 import { Evidence, type BehaviorEvidence, type Span } from "./BehaviorDemo";
 
 type Scalar = number | boolean;
@@ -22,6 +24,13 @@ export type VerificationResponse = {
   };
   candidate_pairs?: { candidates: [string, string]; status: keyof typeof pairEvidence; compared_inputs: number }[];
   candidate_categories?: Record<string, string>;
+  review_presentation?: "OPTIONAL_COLLAPSED" | "REVIEW_VISIBLE";
+  specification?: Phase8Analysis | null;
+  candidate_details?: Record<string, {
+    evidence: { detail: string }[];
+    counter_evidence: { detail: string }[];
+    evidence_basis: string;
+  }>;
   probes: { arguments: Scalar[]; relation: string;
     assessment?: string; separated_pairs?: number; new_pairs?: number; steps?: number; input_basis?: string;
     candidates: { candidate_id: string; status: string; actual: Scalar | null; issue: string | null }[] }[];
@@ -75,7 +84,9 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [trace, setTrace] = useState(false);
   const [compare, setCompare] = useState(false);
   const [phase5, setPhase5] = useState(false);
-  const [profile, setProfile] = useState<5 | 55 | 6 | 65 | 7 | 75>(5);
+  const [profile, setProfile] = useState<5 | 55 | 6 | 65 | 7 | 75 | 8>(5);
+  const [inputDomain, setInputDomain] = useState("");
+  const [showOptional, setShowOptional] = useState(false);
   const [expression, setExpression] = useState("");
   const [reply, setReply] = useState<{ snapshot: string; result: VerificationResponse } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -83,12 +94,13 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [error, setError] = useState<string | null>(null);
   const request = useRef<AbortController | null>(null);
   const discovery = useRef<AbortController | null>(null);
-  const snapshot = JSON.stringify([code, entry, vectors, trace, compare, phase5, profile, expression, steps, depth, cells]);
+  const snapshot = JSON.stringify([code, entry, vectors, trace, compare, phase5, profile, expression, inputDomain, steps, depth, cells]);
 
   function invalidate() {
     request.current?.abort();
     setReply(null);
     setSelected(null);
+    setShowOptional(false);
     setBusy(false);
     setError(null);
   }
@@ -125,10 +137,12 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
 
   async function verify() {
     let input: Vector[];
+    let domain: unknown;
     try {
       input = readVectors(vectors, compare && phase5);
+      if (phase5 && profile === 8 && inputDomain.trim()) domain = JSON.parse(inputDomain);
     } catch (failure) {
-      setError(failure instanceof SyntaxError ? "Test vectors must be valid JSON." : (failure as Error).message);
+      setError(failure instanceof SyntaxError ? "Test vectors and input domain must be valid JSON." : (failure as Error).message);
       return;
     }
     invalidate();
@@ -139,6 +153,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
       const payload = {
         source: code, entry_point: entry, vectors: input, trace, compare_candidates: compare,
         ...(phase5 ? { engine_version: profile } : {}),
+        ...(domain !== undefined ? { input_domain: domain } : {}),
         limits: { steps: Number(steps), call_depth: Number(depth), memory_cells: Number(cells) },
         ...(compare && expression.trim() ? { return_expression: expression.trim() } : {}),
       };
@@ -169,7 +184,9 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   }
 
   const result = reply?.snapshot === snapshot ? reply.result : null;
-  const candidate = result?.candidates.find((item) => item.id === selected);
+  const optional = result?.review_presentation === "OPTIONAL_COLLAPSED";
+  const showSuggestions = !optional || showOptional;
+  const candidate = showSuggestions ? result?.candidates.find((item) => item.id === selected) : undefined;
 
   return <details className="inspector behavior-panel" aria-label="Interactive behavioral verification">
     <summary>Interactive behavioral verification</summary>
@@ -199,7 +216,10 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           {compare && phase5 && <label><input type="checkbox" checked={profile === 65} onChange={(event) => setProfile(event.target.checked ? 65 : 5)} /> Phase 6.5 interprocedural reasoning</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 7} onChange={(event) => setProfile(event.target.checked ? 7 : 5)} /> Phase 7 guided repair precision</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 75} onChange={(event) => setProfile(event.target.checked ? 75 : 5)} /> Phase 7.5 generalized repair recovery</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={profile === 8} onChange={(event) => setProfile(event.target.checked ? 8 : 5)} /> Phase 8 specification-guided arithmetic</label>}
         </div>
+        {phase5 && profile === 8 && <label>Input domain (JSON)<textarea rows={2} value={inputDomain} maxLength={2000}
+          placeholder='[{"minimum":0,"maximum":32},null]' onChange={(event) => setInputDomain(event.target.value)} /></label>}
         {compare && phase5 && <p>Use an empty test list to compare probe observations without expected values.</p>}
         {compare && <label>Expected return expression (optional)<input value={expression} maxLength={160}
           onChange={(event) => setExpression(event.target.value)} /></label>}
@@ -207,6 +227,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
       </form>}
       {error && <p role="alert">{error}</p>}
       {result && result.availability.status !== "available" && <p role="status">{result.availability.detail}</p>}
+      {result?.specification && <SpecificationEvidence analysis={result.specification} />}
       {result?.guided_evidence && <section className="guided-evidence" aria-label="Guided repair evidence">
         <h2>Original verification</h2>
         <p role={result.guided_evidence.confirmed_fault ? "alert" : "status"}>{originalEvidence[result.guided_evidence.original]}</p>
@@ -218,10 +239,14 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
         <h2>Live interpreter evidence</h2>
         {phase5 && result.original.status === "ORACLE_UNAVAILABLE" && <p>Observational comparison. Candidates retain static order until you supply expected outputs.</p>}
         {result.comparison_status === "MULTIPLE_MATCHES" && <p>Multiple candidates match. More test cases may distinguish them.</p>}
-        {result.guided_evidence && !!result.candidates.length && <h3>Repair suggestions</h3>}
+        {optional && <button type="button" aria-expanded={showOptional} onClick={() => {
+          if (showOptional) setSelected(null);
+          setShowOptional(!showOptional);
+        }}>{showOptional ? "Hide" : "Show"} optional repairs ({result.candidates.length})</button>}
+        {showSuggestions && result.guided_evidence && !!result.candidates.length && <h3>Repair suggestions</h3>}
         <div className="behavior-evidence">
           <Evidence label="Live original" result={result.original} onNavigate={onNavigate} observationOnly={phase5} />
-          {result.review_order.map((id, index) => {
+          {showSuggestions && result.review_order.map((id, index) => {
             const item = result.candidates.find((row) => row.id === id);
             return item && <article key={id}>
               <p>Compiler valid · Static rank {item.static_rank} · {item.static_evidence.toLowerCase().replaceAll("_", " ")}</p>
@@ -229,19 +254,24 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
               {result.candidate_categories?.[id] && <p>{result.candidate_categories[id].toLowerCase().replaceAll("_", " ")}</p>}
               {result.guided_evidence?.recommended_candidate === id && <p>Eligible for guided review</p>}
               <p>{item.hypothesis}</p>
+              {result.candidate_details?.[id] && <details>
+                <summary>Supporting evidence and uncertainty</summary>
+                <ul>{result.candidate_details[id].evidence.map((fact, number) => <li key={number}>{fact.detail}</li>)}</ul>
+                <ul>{result.candidate_details[id].counter_evidence.map((fact, number) => <li key={number}>{fact.detail}</li>)}</ul>
+              </details>}
               <Evidence label={`Live candidate ${item.static_rank}`} result={item.behavior} observationOnly={phase5} />
               <button type="button" onClick={() => setSelected(id)}>Review candidate {item.static_rank}</button>
             </article>;
           })}
         </div>
-        {!!result.candidate_pairs?.length && <section aria-label="Candidate pair outcomes">
+        {showSuggestions && !!result.candidate_pairs?.length && <section aria-label="Candidate pair outcomes">
           <h3>Candidate pair outcomes</h3>
           <ul>{result.candidate_pairs.map((pair) => <li key={pair.candidates.join("/")}>
             {pair.candidates.map((id) => result.candidates.find((item) => item.id === id)?.static_rank ?? id).join(" / ")}
             {" · "}{pairEvidence[pair.status]} · {pair.compared_inputs} compared inputs
           </li>)}</ul>
         </section>}
-        {!!result.probes.length && <section aria-label="Candidate disagreement">
+        {showSuggestions && !!result.probes.length && <section aria-label="Candidate disagreement">
           <h3>Candidate probe inputs</h3>
           <p>Inspect candidate outputs and provide an expected value before rerunning a probe as a test.</p>
           <ul>{result.probes.map((probe) => <li key={JSON.stringify(probe.arguments)}>

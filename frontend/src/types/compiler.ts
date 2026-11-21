@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -313,6 +313,34 @@ export interface IntentionCandidate {
   evidence: IntentionEvidence[];
   counter_evidence?: IntentionEvidence[];
   edits: { span: Diagnostic["span"]; original: string; proposed: string }[];
+}
+
+export type InputDomain = ({ minimum: number; maximum: number } | null)[];
+export interface Phase8Inputs {
+  input_domain?: InputDomain;
+  partial_inputs?: (number | boolean)[][];
+}
+
+export interface Phase8Analysis {
+  specification: {
+    function: string | null;
+    parameters: { name: string; type: string }[];
+    return_type: string | null;
+    status: string;
+    source_snapshot: string;
+    provenance: string;
+    trusted_examples: number;
+    partial_inputs: number;
+    input_domain: InputDomain | null;
+    assumptions: string[];
+  };
+  constraints: {
+    status: string;
+    trials: number;
+    compatible_edits: number;
+    helper_functions: string[];
+    minimum_changed_tokens?: number | null;
+  };
 }
 
 export type IntentionMode = "code_only" | "natural_language" | "explicit" | "examples";
@@ -374,6 +402,7 @@ export interface IntentionResponse {
   requirement_status?: string | null;
   program_analysis?: {
     phase65?: Phase65Analysis;
+    phase8?: Phase8Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;
