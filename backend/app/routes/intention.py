@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, model_validator
 
 from ai.behavior_oracle import program_identity
+from ai.guided_evidence import conflicting_expectations
 from ai.intention_context import ContextLimit, Example, MAX_SOURCE, Requirement, UnsupportedContext
 from ai.intention_engine import analyze_intention
 from ai.intention_learning import load_expanded_ranker
@@ -52,8 +53,8 @@ class IntentionRequest(BaseModel):
     code: str = Field(max_length=MAX_SOURCE)
     requirement: RequirementRequest | None = None
     include_context: bool = False
-    engine_version: Literal[2, 3, 4, 5, 55, 6, 65] = 2
-    mode: Literal["code_only", "natural_language", "explicit"] | None = None
+    engine_version: Literal[2, 3, 4, 5, 55, 6, 65, 7] = 2
+    mode: Literal["code_only", "natural_language", "explicit", "examples"] | None = None
 
     @model_validator(mode="after")
     def enforce_mode(self):
@@ -66,6 +67,15 @@ class IntentionRequest(BaseModel):
             not requirement or not requirement.description or requirement.return_expression is not None or requirement.condition is not None
         ):
             raise ValueError("Natural-language analysis accepts a description without an explicit expression.")
+        if self.mode == "examples" and (
+            self.engine_version != 7 or not requirement or not requirement.function or not requirement.examples
+            or requirement.return_expression or requirement.condition or requirement.description
+        ):
+            raise ValueError("Phase 7 examples mode requires an entry point and supplied expected outputs.")
+        if self.engine_version == 7 and requirement and conflicting_expectations(
+            (row.args, row.expected_return) for row in requirement.examples
+        ):
+            raise ValueError("The same input has conflicting expected outputs.")
         if self.mode == "explicit" and (
             not requirement or requirement.description is not None or not (requirement.return_expression or requirement.condition)
         ):
@@ -90,12 +100,13 @@ class IntentionResponse(BaseModel):
     structural_scan: dict[str, Any] | None = None
     source_fingerprint: str | None = None
     program_analysis: dict[str, Any] | None = None
+    guided_evidence: Literal["POSSIBLE_REPAIR", "INSUFFICIENT_SPECIFICATION"] | None = None
 
 
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.engine_version in {5, 55, 6, 65}:
+    if request.engine_version in {5, 55, 6, 65, 7}:
         ranker, status = None, f"V{request.engine_version}_DETERMINISTIC"
     elif request.engine_version >= 3:
         ranker = None
@@ -106,19 +117,27 @@ def intention_analysis(request: IntentionRequest) -> dict:
         ranker = None
         expanded, status = load_expanded_ranker()
     requirement = request.requirement.to_domain() if request.requirement else None
+    examples = requirement.examples if request.mode == "examples" else ()
+    entry = requirement.function if examples else None
     try:
-        result = analyze_intention(request.code, requirement, ranker=ranker, ranking_status=status,
+        result = analyze_intention(request.code, None if examples else requirement, ranker=ranker, ranking_status=status,
                                    enhanced=request.mode is not None, expanded_ranker=expanded,
                                    generalized=request.engine_version >= 3, phase35=request.engine_version == 4,
                                    phase5=request.engine_version == 5, phase55=request.engine_version == 55,
                                    phase6=request.engine_version == 6, phase65=request.engine_version == 65,
+                                   phase7=request.engine_version == 7, phase6_entry=entry, phase6_examples=examples,
                                    phase6_graph=request.include_context)
     except (InvalidRequirement, UnsupportedContext) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
     response = result.to_dict(include_context=request.include_context)
-    if request.engine_version in {5, 55, 6, 65}:
+    if request.engine_version in {5, 55, 6, 65, 7}:
         response["source_fingerprint"] = program_identity(request.code)
+    if request.engine_version == 7 and request.requirement and request.requirement.examples:
+        response["guided_evidence"] = "POSSIBLE_REPAIR" if result.candidates else "INSUFFICIENT_SPECIFICATION"
+        if response["finding"] == "HEURISTIC_SUSPICION":
+            response["finding"] = response["guided_evidence"]
+        response["recommendation"] = "ABSTAIN"
     response.setdefault("requirement_status", None)
     return response

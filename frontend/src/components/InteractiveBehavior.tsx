@@ -13,10 +13,36 @@ export type VerificationResponse = {
     behavior: BehaviorEvidence }[];
   review_order: string[];
   comparison_status: string | null;
+  guided_evidence?: {
+    original: keyof typeof originalEvidence;
+    review: "REVIEW_MATCHING_REPAIR" | "MULTIPLE_PLAUSIBLE_REPAIRS" | "POSSIBLE_REPAIR" | "ABSTAIN";
+    confirmed_fault: boolean;
+    recommended_candidate: string | null;
+    matching_candidates: string[];
+  };
+  candidate_pairs?: { candidates: [string, string]; status: keyof typeof pairEvidence; compared_inputs: number }[];
+  candidate_categories?: Record<string, string>;
   probes: { arguments: Scalar[]; relation: string;
     assessment?: string; separated_pairs?: number; new_pairs?: number; steps?: number; input_basis?: string;
     candidates: { candidate_id: string; status: string; actual: Scalar | null; issue: string | null }[] }[];
 };
+const originalEvidence = {
+  CONFIRMED_TEST_MISMATCH: "Confirmed mismatch on supplied tests",
+  ORIGINAL_MATCHES_SUPPLIED_TESTS: "Original matches supplied tests",
+  INSUFFICIENT_SPECIFICATION: "More information required",
+  RUNTIME_FAILURE: "Original execution encountered a runtime failure",
+  EXECUTION_LIMITED: "Original execution reached a resource limit",
+  EXECUTION_UNSUPPORTED: "Original execution is unsupported",
+  VERIFICATION_UNAVAILABLE: "Verification unavailable",
+};
+
+const pairEvidence = {
+  distinguished: "Different observed outcomes",
+  agreed_on_probes: "Agreed on tested probes",
+  inconclusive: "Inconclusive observations",
+  untested: "No probe comparisons",
+};
+
 type Props = {
   code: string;
   functions: string[];
@@ -49,7 +75,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [trace, setTrace] = useState(false);
   const [compare, setCompare] = useState(false);
   const [phase5, setPhase5] = useState(false);
-  const [profile, setProfile] = useState<5 | 55 | 6 | 65>(5);
+  const [profile, setProfile] = useState<5 | 55 | 6 | 65 | 7>(5);
   const [expression, setExpression] = useState("");
   const [reply, setReply] = useState<{ snapshot: string; result: VerificationResponse } | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -171,6 +197,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           {compare && phase5 && <label><input type="checkbox" checked={profile === 55} onChange={(event) => setProfile(event.target.checked ? 55 : 5)} /> Phase 5.5 precision gates</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 6} onChange={(event) => setProfile(event.target.checked ? 6 : 5)} /> Phase 6 program reasoning</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 65} onChange={(event) => setProfile(event.target.checked ? 65 : 5)} /> Phase 6.5 interprocedural reasoning</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={profile === 7} onChange={(event) => setProfile(event.target.checked ? 7 : 5)} /> Phase 7 guided repair precision</label>}
         </div>
         {compare && phase5 && <p>Use an empty test list to compare probe observations without expected values.</p>}
         {compare && <label>Expected return expression (optional)<input value={expression} maxLength={160}
@@ -179,10 +206,18 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
       </form>}
       {error && <p role="alert">{error}</p>}
       {result && result.availability.status !== "available" && <p role="status">{result.availability.detail}</p>}
+      {result?.guided_evidence && <section className="guided-evidence" aria-label="Guided repair evidence">
+        <h2>Original verification</h2>
+        <p role={result.guided_evidence.confirmed_fault ? "alert" : "status"}>{originalEvidence[result.guided_evidence.original]}</p>
+        {result.guided_evidence.review === "REVIEW_MATCHING_REPAIR" && <p>One candidate matches the supplied tests and is eligible for guided review.</p>}
+        {result.guided_evidence.review === "MULTIPLE_PLAUSIBLE_REPAIRS" && <p>Multiple candidate behaviors remain plausible. Supply a distinguishing expectation.</p>}
+        {result.guided_evidence.review === "POSSIBLE_REPAIR" && <p>Compiler-valid hypotheses are available for manual inspection.</p>}
+      </section>}
       {result?.original && <>
         <h2>Live interpreter evidence</h2>
         {phase5 && result.original.status === "ORACLE_UNAVAILABLE" && <p>Observational comparison. Candidates retain static order until you supply expected outputs.</p>}
         {result.comparison_status === "MULTIPLE_MATCHES" && <p>Multiple candidates match. More test cases may distinguish them.</p>}
+        {result.guided_evidence && !!result.candidates.length && <h3>Repair suggestions</h3>}
         <div className="behavior-evidence">
           <Evidence label="Live original" result={result.original} onNavigate={onNavigate} observationOnly={phase5} />
           {result.review_order.map((id, index) => {
@@ -190,12 +225,21 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
             return item && <article key={id}>
               <p>Compiler valid · Static rank {item.static_rank} · {item.static_evidence.toLowerCase().replaceAll("_", " ")}</p>
               {phase5 && <p>Review position {index + 1} · {item.id}</p>}
+              {result.candidate_categories?.[id] && <p>{result.candidate_categories[id].toLowerCase().replaceAll("_", " ")}</p>}
+              {result.guided_evidence?.recommended_candidate === id && <p>Eligible for guided review</p>}
               <p>{item.hypothesis}</p>
               <Evidence label={`Live candidate ${item.static_rank}`} result={item.behavior} observationOnly={phase5} />
               <button type="button" onClick={() => setSelected(id)}>Review candidate {item.static_rank}</button>
             </article>;
           })}
         </div>
+        {!!result.candidate_pairs?.length && <section aria-label="Candidate pair outcomes">
+          <h3>Candidate pair outcomes</h3>
+          <ul>{result.candidate_pairs.map((pair) => <li key={pair.candidates.join("/")}>
+            {pair.candidates.map((id) => result.candidates.find((item) => item.id === id)?.static_rank ?? id).join(" / ")}
+            {" · "}{pairEvidence[pair.status]} · {pair.compared_inputs} compared inputs
+          </li>)}</ul>
+        </section>}
         {!!result.probes.length && <section aria-label="Candidate disagreement">
           <h3>Candidate probe inputs</h3>
           <p>Inspect candidate outputs and provide an expected value before rerunning a probe as a test.</p>

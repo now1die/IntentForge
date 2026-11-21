@@ -4,6 +4,8 @@ import { analyzeIntention } from "../services/api";
 import type { IntentionMode, IntentionRequirement, IntentionResponse } from "../types/compiler";
 
 const findings: Record<string, string> = {
+  POSSIBLE_REPAIR: "Possible repairs",
+  INSUFFICIENT_SPECIFICATION: "More information required",
   COMPILER_ERROR: "Compiler-detected error",
   SPECIFICATION_SUPPORTED_SUSPICION: "Possible mismatch with the supplied requirement",
   HEURISTIC_SUSPICION: "Unverified intention hypothesis",
@@ -37,8 +39,8 @@ function readRequirement(form: HTMLFormElement): { mode: IntentionMode; requirem
     description: mode === "natural_language" ? value("description") : undefined,
     return_expression: mode === "explicit" ? value("return_expression") : undefined,
     condition: mode === "explicit" ? value("condition") : undefined,
-    return_ordinal: value("return_ordinal") ? Number(value("return_ordinal")) : undefined,
-    condition_ordinal: value("condition_ordinal") ? Number(value("condition_ordinal")) : undefined,
+    return_ordinal: mode !== "examples" && value("return_ordinal") ? Number(value("return_ordinal")) : undefined,
+    condition_ordinal: mode !== "examples" && value("condition_ordinal") ? Number(value("condition_ordinal")) : undefined,
     examples,
   };
   return { mode, requirement };
@@ -50,7 +52,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -104,7 +106,11 @@ export function IntentionPanel({ code, onApply }: {
       <form onSubmit={(event) => void inspect(event)} onChange={invalidate}>
         <div className="intention-fields">
           <label>Intention engine
-            <select value={engineVersion} onChange={(event) => setEngineVersion(Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65)}>
+            <select value={engineVersion} onChange={(event) => {
+              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7;
+              setEngineVersion(version);
+              if (version !== 7 && mode === "examples") setMode("code_only");
+            }}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
               <option value="4">Phase 3.5 evidence</option>
@@ -112,17 +118,20 @@ export function IntentionPanel({ code, onApply }: {
               <option value="55">Phase 5.5 precision gates</option>
               <option value="6">Phase 6 program reasoning</option>
               <option value="65">Phase 6.5 interprocedural reasoning</option>
+              <option value="7">Phase 7 guided repair precision</option>
             </select>
           </label>
           <label>Analysis mode
             <select name="mode" value={mode} onChange={(event) => setMode(event.target.value as IntentionMode | "auto")}>
               <option value="auto">Use entered fields</option>
+              {engineVersion === 7 && <option value="examples">Supplied input/output examples</option>}
               <option value="code_only">Code only</option>
               <option value="natural_language">Natural-language requirement</option>
               <option value="explicit">Explicit specification</option>
             </select>
           </label>
-          {mode !== "code_only" && <label>Function<input name="function" placeholder="Optional for a single function" maxLength={80} /></label>}
+          {mode !== "code_only" && <label>Function<input name="function" required={mode === "examples"}
+            placeholder={mode === "examples" ? "Entry point" : "Optional for a single function"} maxLength={80} /></label>}
           {(mode === "auto" || mode === "explicit") && <>
             <label>Return expression<input name="return_expression" placeholder="x * x" maxLength={160} /></label>
             <label>Condition<input name="condition" placeholder="age >= 18" maxLength={160} /></label>
@@ -133,11 +142,13 @@ export function IntentionPanel({ code, onApply }: {
         {mode !== "code_only" && <details>
           <summary>Expression locations and input/output examples</summary>
           <div className="intention-fields">
-            <label>Return location<input name="return_ordinal" type="number" min={1} max={3000} /></label>
-            <label>Condition location<input name="condition_ordinal" type="number" min={1} max={3000} /></label>
+            {mode !== "examples" && <>
+              <label>Return location<input name="return_ordinal" type="number" min={1} max={3000} /></label>
+              <label>Condition location<input name="condition_ordinal" type="number" min={1} max={3000} /></label>
+            </>}
             <label>Input/output examples<textarea name="examples" maxLength={4000} placeholder='[{"args":[3],"expected_return":9}]' /></label>
           </div>
-          <p>Locations start at 1 in source order. Examples are recorded for review.</p>
+          <p>{mode !== "examples" && "Locations start at 1 in source order. "}Supplied examples inform static hypotheses. Use local verification to observe behavior.</p>
         </details>}
         <button type="submit" className="primary" disabled={busy}>{busy ? "Analyzing intention…" : "Analyze Intention"}</button>
       </form>
@@ -147,6 +158,7 @@ export function IntentionPanel({ code, onApply }: {
           <h3>{findings[result.finding] ?? result.finding}</h3>
           {result.requirement_status === "UNSUPPORTED_DESCRIPTION" &&
             <p><strong>Unsupported requirement wording.</strong> Use a named operation, a comparison, or an explicit expression.</p>}
+          {result.guided_evidence && <p>Original behavior awaits isolated verification. Compiler-valid alternatives are available for review when generated.</p>}
           <p>{decisions[result.decision] ?? result.decision}</p>
           {result.recommendation === "ABSTAIN" && <p>No repair recommendation. Review the available evidence.</p>}
           {result.recommendation === "REVIEW_WITH_EVIDENCE" && <p>Evidence supports reviewing the first alternative.</p>}

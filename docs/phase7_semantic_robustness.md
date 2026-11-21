@@ -1,0 +1,5 @@
+# Semantic robustness
+
+Phase 6.5 required the function body to contain two top-level statements with the base return in the guard's true arm. This excluded a logically equivalent reversed guard or a block containing an unused shadowed declaration. Phase 7 uses the existing lexical effects, reachable blocks and path edges to identify a single atomic guard with two returns. It permits unused scalar local literal declarations and uses the actual base edge to normalize polarity. Writes, live shadow bindings, arrays, extra branches and loops remain outside this synthesis rule.
+
+Phase 7 reproduced and recovered the candidate category on all six archived failures. The new evaluation checked 237 observation-preserving transformations including renaming, orientation, parentheses, formatting, shadow scopes, and a declaration reorder control. Two transformations still lost a candidate when an inserted shadow scope appeared inside a helper. The helper witness currently requires a single return expression. Exact edits and lexical scope are also checked by dedicated tests.

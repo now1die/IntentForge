@@ -1,0 +1,20 @@
+{
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "case_sha256": "4ca0a0814e5e3e7ae67d03931d99e0b0e345b5c39d7f581ec58f00fccc6ef318",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "maths/digital_root.py": "3371ad012c01ffe856aacbc2b415952e153129026594c41899a91f8bccd76803",
+    "maths/josephus_problem.py": "ba6e0f4d30faf62abc188e9f00dfb06b3fb6a4b3ff775e5ce244e1e7fe2e0eb7",
+    "maths/special_numbers/automorphic_number.py": "a64d9d75999b55c1727766a958aeebe2c3464c518d33226ef7bad0e866ac53c7",
+    "maths/special_numbers/polygonal_numbers.py": "0ab08c2f54c765a964377c447c633333c99854e3b70cc06ed5a5346a1a25d3b9",
+    "maths/manhattan_distance.py": "b73145bf85a86181705ff845c5be60904d9658ff1e676152d65bb6db516bbe66",
+    "maths/sum_of_arithmetic_series.py": "51211271f3c2ef8c98b31f3aad6dfdc7dafd3bace7927f202f7a1964c125c771"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 54
+  },
+  "policy": "Confirmed completed original mismatch; promote exactly one matching candidate; keep every compiled hypothesis visible. Deterministic static order."
+}

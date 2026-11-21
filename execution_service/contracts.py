@@ -4,6 +4,7 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 from ai.behavior_oracle import BehaviorResult, ExecutionLimits
+from ai.guided_evidence import OriginalEvidence, ReviewEvidence, conflicting_expectations
 
 Source = Annotated[str, StringConstraints(max_length=24_000)]
 Entry = Annotated[str, StringConstraints(pattern=r"^[A-Za-z_][A-Za-z_0-9]{0,79}$")]
@@ -31,7 +32,7 @@ class VerifyRequest(Message):
     source: Source
     entry_point: Entry
     vectors: tuple[TestVector, ...] = Field(max_length=12)
-    engine_version: Literal[4, 5, 55, 6, 65] = 4
+    engine_version: Literal[4, 5, 55, 6, 65, 7] = 4
     limits: LocalLimits = Field(default_factory=LocalLimits)
     trace: bool = Field(default=False, strict=True)
     compare_candidates: bool = Field(default=False, strict=True)
@@ -42,8 +43,10 @@ class VerifyRequest(Message):
     def limits_and_source(self):
         if len(self.source.encode()) > 48_000:
             raise ValueError("Local execution admission limits exceeded")
-        if not self.vectors and (self.engine_version not in {5, 55, 6, 65} or not self.compare_candidates):
+        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7} or not self.compare_candidates):
             raise ValueError("Supply a test vector or explicitly request Phase 5 observational comparison")
+        if self.engine_version == 7 and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
+            raise ValueError("The same input has conflicting expected outputs.")
         return self
 
 
@@ -55,14 +58,14 @@ class Program(Message):
 class Batch(Message):
     entry_point: Entry
     vectors: tuple[TestVector, ...] = Field(max_length=12)
-    engine_version: Literal[4, 5] = 4
+    engine_version: Literal[4, 5, 7] = 4
     limits: LocalLimits
     trace: bool = Field(strict=True)
     programs: tuple[Program, ...] = Field(min_length=1, max_length=5)
 
     @model_validator(mode="after")
     def enforce(self):
-        if not self.vectors and self.engine_version != 5:
+        if not self.vectors and self.engine_version not in {5, 7}:
             raise ValueError("Legacy verification needs an expected result")
         if self.programs[0].candidate_id is not None or any(row.candidate_id is None for row in self.programs[1:]):
             raise ValueError("Supply the original followed by identified candidates")
@@ -127,3 +130,24 @@ class VerifyResponse(Message):
     comparison_status: Literal["MULTIPLE_MATCHES", "ONE_MATCH", "NO_OBSERVED_MATCH"] | None = None
     probes: tuple[RankedProbe | Probe, ...] = ()
     requires_approval: Literal[True] = True
+
+
+
+class GuidedEvidence(Message):
+    original: OriginalEvidence
+    review: ReviewEvidence
+    confirmed_fault: bool
+    recommended_candidate: CandidateId | None
+    matching_candidates: tuple[CandidateId, ...]
+
+
+class CandidatePair(Message):
+    candidates: tuple[CandidateId, CandidateId]
+    status: Literal["distinguished", "agreed_on_probes", "inconclusive", "untested"]
+    compared_inputs: int = Field(ge=0, le=8)
+
+
+class Phase7Response(VerifyResponse):
+    guided_evidence: GuidedEvidence
+    candidate_pairs: tuple[CandidatePair, ...] = Field(default=(), max_length=6)
+    candidate_categories: dict[CandidateId, str] = Field(default_factory=dict)

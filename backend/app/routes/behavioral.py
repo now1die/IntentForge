@@ -1,6 +1,7 @@
 """Loopback-only gateway. Runtime observations come from a private socket."""
 import http.client
 import json
+from itertools import combinations
 import os
 from pathlib import Path
 import socket
@@ -13,12 +14,14 @@ from pydantic import ValidationError
 from starlette.concurrency import run_in_threadpool
 
 from ai.behavior_oracle import Status, program_identity
+from ai.guided_evidence import OriginalEvidence, ReviewEvidence, classify_original, classify_review, comparable_outcome
 from ai.intention_context import ContextLimit, Example, Requirement, UnsupportedContext
 from ai.intention_engine import analyze_intention
 from ai.intention_requirements import InvalidRequirement
 from ai.intention_uncertainty import classify
 from execution_service.contracts import (
-    Availability, Batch, BatchResult, CandidateReview, Program, RankedProbe, VerifyRequest, VerifyResponse,
+    Availability, Batch, BatchResult, CandidatePair, CandidateReview, GuidedEvidence, Phase7Response, Program,
+    RankedProbe, VerifyRequest, VerifyResponse,
 )
 from .request_body import bounded_body
 
@@ -112,16 +115,43 @@ def validate_identity(batch, returned):
     for probe in returned.probes:
         observed_ids = {row.candidate_id for row in probe.candidates}
         if (not observed_ids <= ids or len(observed_ids) != len(probe.candidates)
-                or isinstance(probe, RankedProbe) != (batch.engine_version == 5)):
+                or isinstance(probe, RankedProbe) != (batch.engine_version in {5, 7})):
             raise ValueError("Worker returned probe evidence for an unexpected candidate")
+
+
+def response(version, *, candidate_categories=None, **fields):
+    if version != 7:
+        return VerifyResponse(**fields)
+    candidates = fields.get("candidates", ())
+    original = classify_original(fields.get("original"))
+    passing = tuple(row.id for row in candidates if row.behavior and row.behavior.status == Status.MATCHES_SUPPLIED_TESTS)
+    review = classify_review(original, len(candidates), len(passing))
+    pairs = []
+    probes = fields.get("probes", ())
+    for left, right in combinations((row.id for row in candidates), 2):
+        compared = distinguishing = 0
+        for probe in probes:
+            outcomes = {row.candidate_id: comparable_outcome(row) for row in probe.candidates}
+            a, b = outcomes.get(left), outcomes.get(right)
+            if a is not None and b is not None:
+                compared += 1
+                distinguishing += a != b
+        status = ("distinguished" if distinguishing else "agreed_on_probes" if probes and compared == len(probes)
+                  else "inconclusive" if probes else "untested")
+        pairs.append(CandidatePair(candidates=(left, right), status=status, compared_inputs=compared))
+    return Phase7Response(**fields, candidate_pairs=tuple(pairs), candidate_categories=candidate_categories or {},
+                          guided_evidence=GuidedEvidence(
+                              original=original, review=review, matching_candidates=passing,
+                              confirmed_fault=original == OriginalEvidence.CONFIRMED_TEST_MISMATCH,
+                              recommended_candidate=passing[0] if review == ReviewEvidence.REVIEW_MATCHING_REPAIR else None))
 
 
 def verify_local(path, payload):
     identity = {"program": program_identity(payload.source), "entry_point": payload.entry_point}
     if isinstance(path, Availability):
-        return VerifyResponse(availability=path, **identity)
+        return response(payload.engine_version, availability=path, **identity)
     if not GATEWAY_SLOTS.acquire(blocking=False):
-        return VerifyResponse(availability=Availability(status="capacity_reached",
+        return response(payload.engine_version, availability=Availability(status="capacity_reached",
                               detail="The local verification gateway is busy."), **identity)
     try:
         return compare(path, payload, identity)
@@ -135,10 +165,10 @@ def compare(path, payload, identity):
         requirement = Requirement(function=payload.entry_point, return_expression=payload.return_expression,
                                   condition=payload.condition) if payload.return_expression or payload.condition else None
         try:
-            semantic = payload.engine_version in {6, 65}
+            semantic = payload.engine_version in {6, 65, 7}
             result = analyze_intention(payload.source, requirement, phase35=True, phase5=payload.engine_version == 5,
                                        phase55=payload.engine_version == 55, phase6=semantic, phase65=payload.engine_version == 65,
-                                       phase6_entry=payload.entry_point,
+                                       phase7=payload.engine_version == 7, phase6_entry=payload.entry_point,
                                        phase6_examples=tuple(Example(row.arguments, row.expected) for row in payload.vectors)
                                        if semantic else ())
             candidates = [(rank, item) for rank, item in enumerate(result.candidates, 1)
@@ -150,7 +180,7 @@ def compare(path, payload, identity):
             # The isolated original still returns its compiler-admission status.
             pass
     batch = Batch(entry_point=payload.entry_point, vectors=payload.vectors, limits=payload.limits,
-                  engine_version=4 if payload.engine_version == 4 else 5,
+                  engine_version=payload.engine_version if payload.engine_version in {4, 7} else 5,
                   trace=payload.trace, programs=(Program(source=payload.source), *(
                       Program(source=choice.proposed_code, candidate_id=choice.id) for _, choice in candidates
                   )))
@@ -159,15 +189,15 @@ def compare(path, payload, identity):
             exclude={"engine_version"} if batch.engine_version == 4 else None).encode())
         availability = Availability.model_validate(envelope["availability"])
         if availability.status != "available":
-            return VerifyResponse(availability=availability, **identity)
+            return response(payload.engine_version, availability=availability, **identity)
         if availability.boundary != "isolated-local-v1":
             raise ValueError("Private service did not pass its boundary check")
         returned = BatchResult.model_validate(envelope["result"])
         validate_identity(batch, returned)
     except (ConnectionError, FileNotFoundError):
-        return VerifyResponse(availability=unavailable_socket(), **identity)
+        return response(payload.engine_version, availability=unavailable_socket(), **identity)
     except (OSError, ValueError, KeyError, TypeError, RecursionError, http.client.HTTPException):
-        return VerifyResponse(availability=unhealthy(), **identity)
+        return response(payload.engine_version, availability=unhealthy(), **identity)
     original, *alternatives = returned.runs
     reviews = tuple(CandidateReview(id=choice.id, source=choice.proposed_code, static_rank=rank, compiler_valid=True,
                                     static_evidence=classify(choice, ambiguous=False)["tier"],
@@ -178,7 +208,8 @@ def compare(path, payload, identity):
     status = None
     if payload.vectors:
         status = "MULTIPLE_MATCHES" if len(passing) > 1 else "ONE_MATCH" if passing else "NO_OBSERVED_MATCH"
-    return VerifyResponse(availability=availability, original=original, candidates=reviews,
+    return response(payload.engine_version, availability=availability, original=original, candidates=reviews,
+                          candidate_categories={choice.id: choice.proposal.category for _, choice in candidates},
                           review_order=order, comparison_status=status, probes=returned.probes, **identity)
 
 
@@ -187,12 +218,12 @@ def review_order(original, candidates, version):
     known_failure = original.status == Status.MISMATCHES_SUPPLIED_TESTS or (
         original.status == Status.BEHAVIOR_UNKNOWN and issue and issue.code != "INTERNAL_FAILURE"
     )
-    if version in {5, 55, 6, 65} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
+    if version in {5, 55, 6, 65, 7} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
         known_failure = True
     if not known_failure:
         return tuple(row.id for row in candidates)
     tiers = {Status.MATCHES_SUPPLIED_TESTS: 0}
-    if version in {5, 55, 6, 65}:
+    if version in {5, 55, 6, 65, 7}:
         tiers[Status.MISMATCHES_SUPPLIED_TESTS] = 1
     return tuple(row.id for row in sorted(candidates, key=lambda row: tiers.get(row.behavior.status, 2)))
 
@@ -203,7 +234,7 @@ async def capability(request: Request):
     return path if isinstance(path, Availability) else await run_in_threadpool(get_availability, path)
 
 
-@router.post("/v1/behavioral-verification", response_model=VerifyResponse)
+@router.post("/v1/behavioral-verification", response_model=Phase7Response | VerifyResponse)
 async def verification(request: Request):
     raw = await bounded_body(request, 300_000)
     try:

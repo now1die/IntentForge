@@ -32,18 +32,18 @@ def encoded(value):
     return json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
 
 
-def audit():
-    payload = (ROOT/"cases-v1.json").read_bytes()
-    manifest = json.loads((ROOT/"manifest-v1.json").read_text())
+def audit(root=ROOT, fixture_factory=fixtures, history_roots=(HISTORICAL,)):
+    payload = (root/"cases-v1.json").read_bytes()
+    manifest = json.loads((root/"manifest-v1.json").read_text())
     cases = json.loads(payload)
     assert sha256(payload).hexdigest() == manifest["case_sha256"]
-    assert cases == fixtures()
+    assert cases == fixture_factory()
     assert len({row["id"] for row in cases}) == len(cases)
     assert dict(Counter(row["partition"] for row in cases)) == manifest["partitions"]
     for path, expected in manifest["upstream_sha256"].items():
-        assert sha256((ROOT/"upstream"/Path(path).name).read_bytes()).hexdigest() == expected
+        assert sha256((root/"upstream"/Path(path).name).read_bytes()).hexdigest() == expected
     history, specs, vectors = set(), set(), set()
-    for path in sorted(HISTORICAL.rglob("*.json")):
+    for path in sorted(path for directory in history_roots for path in directory.rglob("*.json")):
         document = json.loads(path.read_text())
         history.update(extended_sources(document))
         for row in records(document):

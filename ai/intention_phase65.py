@@ -3,8 +3,9 @@ from itertools import islice
 from time import monotonic
 
 from analysis_evidence.expression_normalization import normalized_comparison
-from analysis_evidence.interprocedural import atom, contracts, descendants
+from analysis_evidence.interprocedural import atom, contracts, descendants, scalar_helpers
 from analysis_evidence.path_flow import analyze_paths, return_paths
+from analysis_evidence.recursive_layout import guarded_layout
 from compiler import ast_nodes as ast
 from compiler.symbol_table import SymbolKind
 
@@ -15,22 +16,35 @@ COMPONENTS = frozenset({"precision", "recursion", "recurrence"})
 MAX_NEW = 6
 
 
-def simple_recurrence(context, item, bindings):
+def simple_recurrence(context, item, bindings, path, semantic_layout, helpers):
     function = item.function
     statements = function.body.statements
-    if len(statements) != 2 or not 1 <= len(function.parameters) <= 4:
+    if not 1 <= len(function.parameters) <= 4:
         return None
-    branch, fallback = statements
-    if (not isinstance(branch, ast.IfStatement) or branch.else_branch is not None
-            or not isinstance(fallback, ast.ReturnStatement) or fallback.value is None):
+    if semantic_layout:
+        branches = [block for block in item.flow.graph.blocks if block.kind == "branch" and path.incoming[block.id]]
+        if len(branches) != 1:
+            return None
+        condition = normalized_comparison(branches[0].expression, context.semantic.expression_types, bindings.identifiers)
+        layout = guarded_layout(item, path, bindings, condition) if condition else None
+        if layout is None:
+            return None
+        branch, base, fallback, condition = layout
+    else:
+        if len(statements) != 2:
+            return None
+        branch, fallback = statements
+        if not isinstance(branch, ast.IfStatement) or branch.else_branch is not None or not isinstance(fallback, ast.ReturnStatement):
+            return None
+        base = guarded_return(branch.then_branch)
+        condition = normalized_comparison(branch.condition, context.semantic.expression_types, bindings.identifiers)
+    if fallback.value is None:
         return None
-    base = guarded_return(branch.then_branch)
     if not base or base.value is None or any(
             not isinstance(node, (ast.Literal, ast.Identifier, ast.BinaryExpression))
             or isinstance(node, ast.BinaryExpression) and node.operator not in MATH
             for node in descendants(base.value)):
         return None
-    condition = normalized_comparison(branch.condition, context.semantic.expression_types, bindings.identifiers)
     if not condition or not isinstance(condition.left, ast.Identifier) or not isinstance(condition.right, ast.Literal):
         return None
     guard_binding = bindings.identifiers.get(id(condition.left))
@@ -41,27 +55,30 @@ def simple_recurrence(context, item, bindings):
     if position is None:
         return None
     parts = tuple(descendants(fallback.value))
-    calls = tuple(node for node in parts if isinstance(node, ast.FunctionCall))
+    all_calls = tuple(node for node in parts if isinstance(node, ast.FunctionCall))
+    if any(not isinstance(call.callee, ast.Identifier) or
+           call.callee.name != function.name and call.callee.name not in helpers for call in all_calls):
+        return None
+    calls = tuple(call for call in all_calls if call.callee.name == function.name)
     if (not calls or any(not isinstance(node, (ast.FunctionCall, ast.BinaryExpression, ast.Identifier, ast.Literal))
                         or isinstance(node, ast.BinaryExpression) and node.operator not in MATH for node in parts)):
         return None
-    if any(not isinstance(call.callee, ast.Identifier) or call.callee.name != function.name
-           or len(call.arguments) != len(function.parameters) for call in calls):
+    if any(len(call.arguments) != len(function.parameters) for call in calls):
         return None
     if any(not isinstance(node, (ast.BinaryExpression, ast.Identifier, ast.Literal))
            for call in calls for arg in call.arguments for node in descendants(arg)):
         return None
-    return branch, fallback, condition, guard_binding, position, calls
+    return branch, base, fallback, condition, guard_binding, position, calls
 
 
-def recursive_candidates(context, item, bindings, path, examples, enabled):
-    studied = simple_recurrence(context, item, bindings)
+def recursive_candidates(context, item, bindings, path, examples, enabled, helpers):
+    studied = simple_recurrence(context, item, bindings, path, "layout" in enabled, helpers)
     if studied is None:
         return
-    branch, fallback, condition, binding, position, calls = studied
+    branch, base, fallback, condition, binding, position, calls = studied
     reachable_returns = {id(block.syntax) for block in item.flow.graph.blocks
                          if block.kind == "return" and path.incoming[block.id]}
-    if not {id(guarded_return(branch.then_branch)), id(fallback)} <= reachable_returns:
+    if not {id(base), id(fallback)} <= reachable_returns:
         return
     direction = {">": 1, ">=": 1, "<": -1, "<=": -1}.get(condition.operator)
     if direction is None:
@@ -82,6 +99,11 @@ def recursive_candidates(context, item, bindings, path, examples, enabled):
     if "recurrence" not in enabled or not examples or len(calls) != 2:
         return
     expression = fallback.value
+    while isinstance(expression, ast.FunctionCall) and isinstance(expression.callee, ast.Identifier):
+        helper = helpers.get(expression.callee.name)
+        if not helper or helper["identity_parameter"] != 0 or len(expression.arguments) != 1:
+            break
+        expression = expression.arguments[0]
     if not isinstance(expression, ast.BinaryExpression) or expression.left is not calls[0] or expression.right is not calls[1]:
         return
     relations = [atom(call.arguments[position], bindings) for call in calls]
@@ -217,6 +239,9 @@ def augment(context, program, previous, entry, examples, enabled):
                                              "returns": return_paths(item, path, program.bindings, program.deadline),
                                              **recurrence_structure(context, item, path)}
     links, links_complete = contracts(program, paths, program.deadline) if paths else ({}, False)
+    helpers = scalar_helpers(program, links, program.deadline) if "helpers" in enabled and links else {}
+    for name, witness in helpers.items():
+        links[name]["scalar_helper"] = witness
     withheld, retained, extra = [], [], []
     for proposal in previous:
         if ("precision" in enabled and proposal.category == "RETURN_DEPENDENCY_MISMATCH"
@@ -232,7 +257,7 @@ def augment(context, program, previous, entry, examples, enabled):
         path = paths.get(name)
         if not path or not path.complete or monotonic() >= program.deadline:
             continue
-        extra.extend(islice(recursive_candidates(context, item, program.bindings, path, examples, enabled), MAX_NEW-len(extra)))
+        extra.extend(islice(recursive_candidates(context, item, program.bindings, path, examples, enabled, helpers), MAX_NEW-len(extra)))
         if "precision" in enabled:
             extra.extend(islice(branch_returns(context, item, program.bindings, path, examples), MAX_NEW-len(extra)))
     status = program.status

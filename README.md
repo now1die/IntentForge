@@ -209,3 +209,16 @@ local worker verifies candidate behavior. Repairs require manual approval.
 [Phase 6.5 review](docs/PHASE_6_5_FINAL_REVIEW.md) ·
 [Independent evaluation](docs/phase6_5_generalization_evaluation.md) ·
 [Workbench screenshots](docs/phase6_5_workbench.md)
+
+## Phase 7 guided repair precision
+
+Opt in to engine 7 in the Mini-C workbench or API. Phase 7 shows
+compiler-valid repair hypotheses separately from confirmed mismatches on
+supplied tests. It recognizes equivalent guarded recursion layouts and
+a bounded set of scalar helper calls. Optional input-only probes can
+help distinguish candidate behavior. Local execution retains the existing
+isolated worker and every applied edit requires manual approval.
+
+[Phase 7 review](docs/PHASE_7_FINAL_REVIEW.md) ·
+[Evaluation](docs/phase7_generalization_evaluation.md) ·
+[Workbench screenshots](docs/phase7_workbench.md)
