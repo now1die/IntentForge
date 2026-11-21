@@ -54,11 +54,15 @@ def simple_recurrence(context, item, bindings):
     return branch, fallback, condition, guard_binding, position, calls
 
 
-def recursive_candidates(context, item, bindings, examples, enabled):
+def recursive_candidates(context, item, bindings, path, examples, enabled):
     studied = simple_recurrence(context, item, bindings)
     if studied is None:
         return
     branch, fallback, condition, binding, position, calls = studied
+    reachable_returns = {id(block.syntax) for block in item.flow.graph.blocks
+                         if block.kind == "return" and path.incoming[block.id]}
+    if not {id(guarded_return(branch.then_branch)), id(fallback)} <= reachable_returns:
+        return
     direction = {">": 1, ">=": 1, "<": -1, "<=": -1}.get(condition.operator)
     if direction is None:
         return
@@ -117,8 +121,9 @@ def typed_arguments(function, arguments):
         for value, parameter in zip(arguments, function.parameters, strict=True))
 
 
-def path_examples(function, bindings, paths, examples):
-    positions = {bindings.declaration(parameter): index for index, parameter in enumerate(function.parameters)}
+def path_examples(function, bindings, paths, examples, writes):
+    positions = {binding: index for index, parameter in enumerate(function.parameters)
+                 if (binding := bindings.declaration(parameter)) not in writes}
     for state in sorted(paths):
         if not state.facts or any(binding not in positions for binding, _ in state.facts):
             continue
@@ -141,6 +146,7 @@ def branch_returns(context, item, bindings, paths, examples):
     returns = [block for block in live if block.kind == "return" and isinstance(block.expression, ast.Identifier)]
     if len(returns) != 2:
         return
+    writes = set().union(*(flow.effects[block.id].writes for block in live))
     for site, sibling in (returns, reversed(returns)):
         initial = bindings.identifiers.get(id(site.expression))
         terminal = bindings.identifiers.get(id(sibling.expression))
@@ -150,7 +156,7 @@ def branch_returns(context, item, bindings, paths, examples):
                 or context.visible_at(site.expression.span.start.offset).get(terminal.name) is not terminal):
             continue
         chain = computed_chain(flow, site.id, terminal.id, initial.id, bindings)
-        if not chain or not path_examples(item.function, bindings, paths.incoming[site.id], examples):
+        if not chain or not path_examples(item.function, bindings, paths.incoming[site.id], examples, writes):
             continue
         yield Proposal((Edit(site.expression.span, terminal.name),), "PATH_RETURN_DEPENDENCY",
                        (Evidence("PATH_TEST_DOMAIN", "A supplied input satisfies modeled facts for this earlier return.", site.syntax.span),
@@ -187,7 +193,13 @@ def recurrence_structure(context, item, path):
             continue
         results.append({"site": block.id, "self_calls": len(calls), "expression": context.text(block.expression.span),
                         "root_operator": block.expression.operator if isinstance(block.expression, ast.BinaryExpression) else None})
-    return {"recursive_returns": results, "other_return_sites": bases if results else []}
+    graph = item.flow.graph
+    guards = [{"span": graph.blocks[edge.source].expression.span.to_dict(),
+               "condition": context.text(graph.blocks[edge.source].expression.span),
+               "outcome": edge.kind == "true"}
+              for edge in graph.edges if results and edge in path.edges and edge.target in bases
+              and edge.kind in {"true", "false"} and graph.blocks[edge.source].expression is not None]
+    return {"recursive_returns": results, "other_return_sites": bases if results else [], "base_guards": guards}
 
 
 def augment(context, program, previous, entry, examples, enabled):
@@ -198,7 +210,11 @@ def augment(context, program, previous, entry, examples, enabled):
             paths[item.function.name] = path
             locations[item.function.name] = {"complete": path.complete, "transfers": path.transfers,
                                              "unresolved_conditions": sorted(path.unresolved),
-                                             "returns": return_paths(item, path, program.bindings),
+                                             "loop_edges": [{"source": edge.source, "target": edge.target, "kind": edge.kind}
+                                                            for edge in item.flow.graph.edges if edge in path.edges and (
+                                                                edge.kind in {"back", "break", "continue"}
+                                                                or item.flow.graph.blocks[edge.source].kind == "loop_header")],
+                                             "returns": return_paths(item, path, program.bindings, program.deadline),
                                              **recurrence_structure(context, item, path)}
     links, links_complete = contracts(program, paths, program.deadline) if paths else ({}, False)
     withheld, retained, extra = [], [], []
@@ -216,11 +232,13 @@ def augment(context, program, previous, entry, examples, enabled):
         path = paths.get(name)
         if not path or not path.complete or monotonic() >= program.deadline:
             continue
-        extra.extend(islice(recursive_candidates(context, item, program.bindings, examples, enabled), MAX_NEW-len(extra)))
+        extra.extend(islice(recursive_candidates(context, item, program.bindings, path, examples, enabled), MAX_NEW-len(extra)))
         if "precision" in enabled:
             extra.extend(islice(branch_returns(context, item, program.bindings, path, examples), MAX_NEW-len(extra)))
     status = program.status
     if status == "AVAILABLE" and (not links_complete or any(not path.complete for path in paths.values())
+                                  or any(not state["dependencies_complete"] for details in locations.values()
+                                         for row in details["returns"] for state in row["paths"])
                                   or monotonic() >= program.deadline):
         status = "ANALYSIS_LIMITED"
     return (*extra, *retained), {"status": status, "paths": locations, "interprocedural": links, "withheld": withheld}

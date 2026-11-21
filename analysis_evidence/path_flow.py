@@ -6,7 +6,8 @@ from time import monotonic
 
 from compiler import ast_nodes as ast
 
-from .dataflow import Definition
+from .control_flow import Edge
+from .dataflow import Definition, MAX_SLICE
 from .expression_normalization import INT_MAX, INT_MIN, NEGATE, normalized_comparison
 
 MAX_STATES_PER_BLOCK = 8
@@ -48,6 +49,7 @@ class Paths:
     complete: bool
     transfers: int
     unresolved: set[int]
+    edges: set[Edge]
 
 
 def predicate(expression, context, bindings):
@@ -93,11 +95,11 @@ def analyze_paths(context, item, bindings, deadline):
     pending = deque([(graph.entry, start)])
     predicates = {block.id: predicate(block.expression, context, bindings) for block in graph.blocks
                   if block.kind in {"branch", "loop_header"} and block.expression is not None}
-    unresolved = set()
+    unresolved, feasible = set(), set()
     transfers = 0
     while pending:
         if transfers >= MAX_PATH_TRANSFERS or monotonic() >= deadline:
-            return Paths(incoming, False, transfers, unresolved)
+            return Paths(incoming, False, transfers, unresolved, feasible)
         site, state = pending.popleft()
         transfers += 1
         effects = flow.effects[site]
@@ -112,34 +114,61 @@ def analyze_paths(context, item, bindings, deadline):
             next_facts = propagate(facts, condition, edge.kind == "true") if edge.kind in {"true", "false"} else facts
             if next_facts is None:
                 continue
+            feasible.add(edge)
             proposal = State(tuple(sorted(next_facts.items())), defs)
             states = incoming[edge.target]
             if proposal in states:
                 continue
             if len(states) >= MAX_STATES_PER_BLOCK:
-                return Paths(incoming, False, transfers, unresolved)
+                return Paths(incoming, False, transfers, unresolved, feasible)
             states.add(proposal)
             pending.append((edge.target, proposal))
-    return Paths(incoming, flow.complete, transfers, unresolved)
+    return Paths(incoming, flow.complete, transfers, unresolved, feasible)
 
 
-def return_paths(item, paths, bindings):
+def value_slice(flow, direct, deadline):
+    pending, known = list(reversed(direct)), set()
+    while pending:
+        if len(known) >= MAX_SLICE or monotonic() >= deadline:
+            return sorted(known), False
+        row = pending.pop()
+        if row in known:
+            continue
+        known.add(row)
+        if row.site != flow.graph.entry:
+            for binding in sorted(flow.effects[row.site].reads):
+                pending.extend(reversed(sorted(flow.use_defs(row.site, binding) - known)))
+    return sorted(known), flow.complete
+
+
+def return_paths(item, paths, bindings, deadline):
     flow = item.flow
     rows = []
-    for block in flow.graph.blocks:
-        if block.kind != "return":
-            continue
-        reads = flow.effects[block.id].reads
+    returns = sorted((block for block in flow.graph.blocks if block.kind == "return"),
+                     key=lambda block: block.syntax.span.start.offset)
+    for block in returns:
+        effect = flow.effects[block.id]
+        reads = effect.reads
+        local = {Definition(block.id, binding) for binding in effect.writes & reads}
         states = sorted(paths.incoming[block.id])
+        def describe(definition):
+            return {"binding": definition.binding, "name": bindings.symbols[definition.binding].name,
+                    "site": definition.site, "span": flow.graph.blocks[definition.site].syntax.span.to_dict()}
+
+        results = []
+        for state in states:
+            direct = [row for row in sorted(set(state.definitions) | local) if row.binding in reads]
+            dependencies, complete = value_slice(flow, direct, deadline)
+            results.append({
+                "facts": [{"binding": binding, "name": bindings.symbols[binding].name, "min": bound.minimum,
+                           "max": bound.maximum, "excluded": list(bound.excluded)} for binding, bound in state.facts],
+                "definitions": [describe(row) for row in direct],
+                "possible_upstream_definitions": [describe(row) for row in dependencies if row not in direct],
+                "dependencies_complete": paths.complete and complete,
+            })
         rows.append({
             "site": block.id, "span": block.syntax.span.to_dict(),
             "feasibility": "modeled" if states else "excluded" if paths.complete else "unknown",
-            "paths": [{
-                "facts": [{"binding": binding, "name": bindings.symbols[binding].name, "min": bound.minimum,
-                           "max": bound.maximum, "excluded": list(bound.excluded)} for binding, bound in state.facts],
-                "definitions": [{"binding": row.binding, "name": bindings.symbols[row.binding].name,
-                                 "site": row.site, "span": flow.graph.blocks[row.site].syntax.span.to_dict()}
-                                for row in state.definitions if row.binding in reads],
-            } for state in states],
+            "paths": results,
         })
     return rows

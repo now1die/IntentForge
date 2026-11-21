@@ -60,12 +60,14 @@ def inspect(item, reachable, bindings, deadline, budget):
         definitions, complete = flow.return_slice(site, deadline)
         summary.complete &= complete
         value_sites.update(row.site for row in definitions)
+    writes = set()
     for site in sorted(reachable):
         if monotonic() >= deadline:
             summary.complete = False
             break
         block = flow.graph.blocks[site]
         effect = effects(block.expression, bindings, conservative_calls=False)
+        writes.update(effect.writes)
         summary.local_reads.update(effect.reads & bindings.globals)
         summary.local_writes.update(effect.writes & bindings.globals)
         for node in descendants(block.expression):
@@ -75,24 +77,25 @@ def inspect(item, reachable, bindings, deadline, budget):
                     break
                 name = node.callee.name if isinstance(node.callee, ast.Identifier) else None
                 summary.calls.append(Call(node, name, site, site in value_sites))
-    # Only a constant or parameter single-expression body gets a precise argument mask.
-    # All other summaries remain conservative over control and value dependencies.
+    # Refine direct return expressions in straight-line bodies only.
     summary.return_inputs = set(range(len(function.parameters)))
-    if len(function.body.statements) == 1 and len(return_sites) == 1:
-        statement = function.body.statements[0]
+    statements = function.body.statements
+    if (len(return_sites) == 1 and statements
+            and all(isinstance(statement, (ast.VariableDeclaration, ast.ExpressionStatement)) for statement in statements[:-1])):
+        statement = statements[-1]
         value = statement.value if isinstance(statement, ast.ReturnStatement) else None
         if isinstance(value, ast.Literal):
             summary.return_inputs.clear()
         elif isinstance(value, ast.Identifier):
             bound = bindings.identifiers.get(id(value))
-            if bound:
+            if bound and bound.id not in writes:
                 summary.return_inputs = {i for i, p in enumerate(function.parameters) if bindings.declaration(p) == bound.id}
         elif isinstance(value, ast.FunctionCall) and isinstance(value.callee, ast.Identifier):
             parameters = {bindings.declaration(p): i for i, p in enumerate(function.parameters)}
             mapped = []
             for argument in value.arguments:
                 bound = bindings.identifiers.get(id(argument))
-                if bound and bound.id in parameters:
+                if bound and bound.id in parameters and bound.id not in writes:
                     mapped.append(parameters[bound.id])
                 elif isinstance(argument, ast.Literal) and type(argument.value) in {int, bool}:
                     mapped.append(None)

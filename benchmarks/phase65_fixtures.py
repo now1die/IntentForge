@@ -5,7 +5,7 @@ import json
 from math import prod
 from pathlib import Path
 
-ROOT = Path(__file__).with_name("data") / "phase65"
+ROOT = Path(__file__).with_name("phase65_data")
 REVISION = "30507bbe41397065728167fb09aa820f9fce8dc7"
 UPSTREAM = "https://github.com/TheAlgorithms/Python"
 
