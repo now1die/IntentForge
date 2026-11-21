@@ -1,0 +1,2346 @@
+[
+  {
+    "family": "development-cold-reading",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Use the cold-reading override.",
+    "domain": "Small signed readings.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -9,
+          0
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -8,
+          5
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -5,
+          0
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          9,
+          -4
+        ],
+        "expected": 31
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -20,
+          4
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -3,
+          7
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "development-cold-reading-fault",
+    "source": "int f(int x,int y){int n=x*2+y; if(n<-12){return 29;}return 2*n+3;}",
+    "references": [
+      "int f(int x,int y){int n=x*2+y; if(n<-10){return 29;}return 2*n+3;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "development-cold-reading",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Use the cold-reading override.",
+    "domain": "Small signed readings.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -9,
+          0
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -8,
+          5
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -5,
+          0
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          9,
+          -4
+        ],
+        "expected": 31
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -20,
+          4
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -3,
+          7
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "development-cold-reading-control",
+    "source": "int f(int x,int y){int n=x*2+y; if(n<-10){return 29;}return 2*n+3;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "selection-charged-checkpoints",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Charge each third checkpoint through the end.",
+    "domain": "Counts 0–15.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 9
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "selection-charged-checkpoints-fault",
+    "source": "int f(int n){int x=9;for(int j=2;j<n;j+=3){x-=j;}return x;}",
+    "references": [
+      "int f(int n){int x=9;for(int j=2;j<=n;j+=3){x-=j;}return x;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "selection-charged-checkpoints",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Charge each third checkpoint through the end.",
+    "domain": "Counts 0–15.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 9
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "selection-charged-checkpoints-control",
+    "source": "int f(int n){int x=9;for(int j=2;j<=n;j+=3){x-=j;}return x;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "calibration-rebased-count",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Accumulate from an adjusted starting point.",
+    "domain": "Small signed counts.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          6
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          7,
+          1
+        ],
+        "expected": 81
+      },
+      {
+        "arguments": [
+          5,
+          8
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          -1,
+          -2
+        ],
+        "expected": -8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          8
+        ],
+        "expected": 95
+      },
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "calibration-rebased-count-fault",
+    "source": "int f(int k,int v){int p=v-3;int sum=0;for(int j=0;j<k;j++){sum+=j*2+5;}return sum;}",
+    "references": [
+      "int f(int k,int v){int p=v-3;int sum=0;for(int j=p;j<k;j++){sum+=j*2+5;}return sum;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "calibration-rebased-count",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Accumulate from an adjusted starting point.",
+    "domain": "Small signed counts.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          6
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          7,
+          1
+        ],
+        "expected": 81
+      },
+      {
+        "arguments": [
+          5,
+          8
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          -1,
+          -2
+        ],
+        "expected": -8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          8
+        ],
+        "expected": 95
+      },
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "calibration-rebased-count-control",
+    "source": "int f(int k,int v){int p=v-3;int sum=0;for(int j=p;j<k;j++){sum+=j*2+5;}return sum;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "recursive-empty-interval",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the key position or -1 on an empty search interval.",
+    "domain": "Four distinct increasing integers with key at least the first.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          19,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          13,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          -1,
+          2,
+          6,
+          12
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          6,
+          -1,
+          2,
+          6,
+          12
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/53681f199c46bebeca3c019d91af79c392f570b3",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Python",
+      "path": "searches/binary_search.py",
+      "archive": "recursion",
+      "before": "c4234192facc1b13ad3cb7be25dbd829c32fbe2d",
+      "after": "53681f199c46bebeca3c019d91af79c392f570b3",
+      "adaptation": "Four ordered cells. Emulate Python floor on the midpoint and map None to -1 and recursion exhaustion to CALL_DEPTH. Exclude keys below the first cell."
+    },
+    "id": "recursive-empty-interval-fault",
+    "source": "int locate(int key,int d,int e,int g,int h,int low,int high){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        \n        int middle=low+(high-low)/2;if((high-low)%2<0){middle--;}\n        if(data[middle]==key){return middle;}\n        if(data[middle]>key){return locate(key,d,e,g,h,low,middle-1);}\n        return locate(key,d,e,g,h,middle+1,high);}\n        int f(int key,int d,int e,int g,int h){return locate(key,d,e,g,h,0,3);}",
+    "references": [
+      "int locate(int key,int d,int e,int g,int h,int low,int high){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        if(high<low){return -1;}\n        int middle=low+(high-low)/2;if((high-low)%2<0){middle--;}\n        if(data[middle]==key){return middle;}\n        if(data[middle]>key){return locate(key,d,e,g,h,low,middle-1);}\n        return locate(key,d,e,g,h,middle+1,high);}\n        int f(int key,int d,int e,int g,int h){return locate(key,d,e,g,h,0,3);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "recursive-empty-interval",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the key position or -1 on an empty search interval.",
+    "domain": "Four distinct increasing integers with key at least the first.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          19,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          13,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          4,
+          9,
+          13
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          -1,
+          2,
+          6,
+          12
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          6,
+          -1,
+          2,
+          6,
+          12
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/53681f199c46bebeca3c019d91af79c392f570b3",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Python",
+      "path": "searches/binary_search.py",
+      "archive": "recursion",
+      "before": "c4234192facc1b13ad3cb7be25dbd829c32fbe2d",
+      "after": "53681f199c46bebeca3c019d91af79c392f570b3",
+      "adaptation": "Four ordered cells. Emulate Python floor on the midpoint and map None to -1 and recursion exhaustion to CALL_DEPTH. Exclude keys below the first cell."
+    },
+    "id": "recursive-empty-interval-control",
+    "source": "int locate(int key,int d,int e,int g,int h,int low,int high){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        if(high<low){return -1;}\n        int middle=low+(high-low)/2;if((high-low)%2<0){middle--;}\n        if(data[middle]==key){return middle;}\n        if(data[middle]>key){return locate(key,d,e,g,h,low,middle-1);}\n        return locate(key,d,e,g,h,middle+1,high);}\n        int f(int key,int d,int e,int g,int h){return locate(key,d,e,g,h,0,3);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "zero-lcm",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the least common multiple, with a zero result if either input is zero.",
+    "domain": "Small nonnegative operands.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          7
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          6,
+          8
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          3,
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          12
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          4,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/4aca14b650a238e4906c3d753b075cc324774e67",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Python",
+      "path": "maths/least_common_multiple.py",
+      "archive": "lcm",
+      "before": "d9027b034699aa60f3e89e1344211b686274af27",
+      "after": "4aca14b650a238e4906c3d753b075cc324774e67",
+      "adaptation": "Translate the fast LCM implementation on nonnegative integers. Replace the GCD dependency with equivalent iterative arithmetic on this domain."
+    },
+    "id": "zero-lcm-fault",
+    "source": "int divisor(int x,int y){while(y!=0){int r=x%y;x=y;y=r;}return x;}\n        int f(int a,int b){return a/divisor(a,b)*b;}",
+    "references": [
+      "int divisor(int x,int y){while(y!=0){int r=x%y;x=y;y=r;}return x;}\n        int f(int a,int b){if(a==0 || b==0){return 0;}return a/divisor(a,b)*b;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "zero-lcm",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the least common multiple, with a zero result if either input is zero.",
+    "domain": "Small nonnegative operands.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          0,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          7
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          6,
+          8
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          3,
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          12
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          4,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/4aca14b650a238e4906c3d753b075cc324774e67",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Python",
+      "path": "maths/least_common_multiple.py",
+      "archive": "lcm",
+      "before": "d9027b034699aa60f3e89e1344211b686274af27",
+      "after": "4aca14b650a238e4906c3d753b075cc324774e67",
+      "adaptation": "Translate the fast LCM implementation on nonnegative integers. Replace the GCD dependency with equivalent iterative arithmetic on this domain."
+    },
+    "id": "zero-lcm-control",
+    "source": "int divisor(int x,int y){while(y!=0){int r=x%y;x=y;y=r;}return x;}\n        int f(int a,int b){if(a==0 || b==0){return 0;}return a/divisor(a,b)*b;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "duplicate-lower-bound",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the first element at least the key, or the final index.",
+    "domain": "Five sorted integer cells, possibly with duplicates.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          3,
+          3,
+          3,
+          8
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          5,
+          5,
+          5,
+          7,
+          9
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          3,
+          7,
+          8,
+          10
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          3,
+          5,
+          7,
+          7
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          1
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          15,
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          8,
+          3,
+          8,
+          8,
+          8,
+          9
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/f8207cc34ca0bd5694cce3120a9741ee50b2d2e8",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/LowerBound.java",
+      "archive": "lower",
+      "before": "d9b86d1992b8bd4cadbd832822c792628117e69d",
+      "after": "f8207cc34ca0bd5694cce3120a9741ee50b2d2e8",
+      "adaptation": "Translate Comparable values as integers. Five ordered cells and a saturated lower bound preserve the recursive partition and equality shortcut."
+    },
+    "id": "duplicate-lower-bound-fault",
+    "source": "int seek(int key,int left,int right,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;\n        if(right<=left){return left;}int m=left+(right-left)/2;\n        if(key==cell[m]){return m;}if(key<cell[m]){return seek(key,left,m,a,b,c,d,e);}\n        return seek(key,m+1,right,a,b,c,d,e);}\n        int f(int key,int a,int b,int c,int d,int e){return seek(key,0,4,a,b,c,d,e);}",
+    "references": [
+      "int seek(int key,int left,int right,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;\n        if(right<=left){return left;}int m=left+(right-left)/2;\n        if(key<=cell[m]){return seek(key,left,m,a,b,c,d,e);}\n        return seek(key,m+1,right,a,b,c,d,e);}\n        int f(int key,int a,int b,int c,int d,int e){return seek(key,0,4,a,b,c,d,e);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "duplicate-lower-bound",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the first element at least the key, or the final index.",
+    "domain": "Five sorted integer cells, possibly with duplicates.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          3,
+          3,
+          3,
+          8
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          5,
+          5,
+          5,
+          7,
+          9
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          3,
+          7,
+          8,
+          10
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          3,
+          5,
+          7,
+          7
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          -2,
+          -2,
+          -2,
+          -2,
+          0,
+          1
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          15,
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          8,
+          3,
+          8,
+          8,
+          8,
+          9
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/f8207cc34ca0bd5694cce3120a9741ee50b2d2e8",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/LowerBound.java",
+      "archive": "lower",
+      "before": "d9b86d1992b8bd4cadbd832822c792628117e69d",
+      "after": "f8207cc34ca0bd5694cce3120a9741ee50b2d2e8",
+      "adaptation": "Translate Comparable values as integers. Five ordered cells and a saturated lower bound preserve the recursive partition and equality shortcut."
+    },
+    "id": "duplicate-lower-bound-control",
+    "source": "int seek(int key,int left,int right,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;\n        if(right<=left){return left;}int m=left+(right-left)/2;\n        if(key<=cell[m]){return seek(key,left,m,a,b,c,d,e);}\n        return seek(key,m+1,right,a,b,c,d,e);}\n        int f(int key,int a,int b,int c,int d,int e){return seek(key,0,4,a,b,c,d,e);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "short-rotation-pivot",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the minimum position in the rotated sorted prefix.",
+    "domain": "Distinct rotated cells. Length one, two, or five with pivot two on the longer samples.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          12,
+          2,
+          0,
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          5,
+          7,
+          1,
+          3,
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          5,
+          11,
+          21,
+          -2,
+          4,
+          9
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          -10,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          -5,
+          3,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          6,
+          8,
+          -9,
+          -5,
+          1
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/ed2928f659e2424321b51967bc641a24340b69f7",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/HowManyTimesRotated.java",
+      "archive": "rotated",
+      "before": "b33b75b846774274440d7c871e0802e26bed6dc0",
+      "after": "ed2928f659e2424321b51967bc641a24340b69f7",
+      "adaptation": "Recreate lengths one, two and five with a checked negative neighbor. Five-cell original samples pivot immediately. Omit original hanging inputs."
+    },
+    "id": "short-rotation-pivot-fault",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;int low=0;int high=n-1;int middle=0;while(low<=high){middle=low+(high-low)/2;\n        if(cell[middle]<cell[middle-1]&&cell[middle]<cell[middle+1]){break;}\n        else if(cell[middle]>cell[middle-1]&&cell[middle]<cell[middle+1]){high=middle+1;}\n        else if(cell[middle]>cell[middle-1]&&cell[middle]>cell[middle+1]){low=middle-1;}}\n        return middle;}",
+    "references": [
+      "int f(int n,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;int low=0;int high=n-1;while(low<high){int middle=low+(high-low)/2;\n        if(cell[middle]>cell[high]){low=middle+1;}else{high=middle;}}return low;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "short-rotation-pivot",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the minimum position in the rotated sorted prefix.",
+    "domain": "Distinct rotated cells. Length one, two, or five with pivot two on the longer samples.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          12,
+          2,
+          0,
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          5,
+          7,
+          1,
+          3,
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          5,
+          11,
+          21,
+          -2,
+          4,
+          9
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          -10,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          -5,
+          3,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          6,
+          8,
+          -9,
+          -5,
+          1
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/ed2928f659e2424321b51967bc641a24340b69f7",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/HowManyTimesRotated.java",
+      "archive": "rotated",
+      "before": "b33b75b846774274440d7c871e0802e26bed6dc0",
+      "after": "ed2928f659e2424321b51967bc641a24340b69f7",
+      "adaptation": "Recreate lengths one, two and five with a checked negative neighbor. Five-cell original samples pivot immediately. Omit original hanging inputs."
+    },
+    "id": "short-rotation-pivot-control",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;int low=0;int high=n-1;while(low<high){int middle=low+(high-low)/2;\n        if(cell[middle]>cell[high]){low=middle+1;}else{high=middle;}}return low;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "lookahead-calibration-cell",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Calibrate from the next physical cell.",
+    "domain": "Logical indices zero through two.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          6,
+          5,
+          -1,
+          9
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          -8,
+          10,
+          12
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          0,
+          9,
+          17,
+          11,
+          13
+        ],
+        "expected": 49
+      },
+      {
+        "arguments": [
+          2,
+          -5,
+          3,
+          6,
+          2
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          7,
+          4,
+          6
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          2,
+          2,
+          -5,
+          -7,
+          -9
+        ],
+        "expected": -29
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "lookahead-calibration-cell-fault",
+    "source": "int f(int p,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;return 3*data[p+2]-2;}",
+    "references": [
+      "int f(int p,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;return 3*data[p+1]-2;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "lookahead-calibration-cell",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Calibrate from the next physical cell.",
+    "domain": "Logical indices zero through two.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          6,
+          5,
+          -1,
+          9
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          -8,
+          10,
+          12
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          0,
+          9,
+          17,
+          11,
+          13
+        ],
+        "expected": 49
+      },
+      {
+        "arguments": [
+          2,
+          -5,
+          3,
+          6,
+          2
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          7,
+          4,
+          6
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          2,
+          2,
+          -5,
+          -7,
+          -9
+        ],
+        "expected": -29
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "lookahead-calibration-cell-control",
+    "source": "int f(int p,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;return 3*data[p+1]-2;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "inclusive-ceiling-lookup",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Inclusive array lookup with -19 absent sentinel.",
+    "domain": "Four distinct increasing integers.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          15,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          11,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          32,
+          -9,
+          3,
+          12,
+          26
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          23,
+          2,
+          8,
+          17,
+          23
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "inclusive-ceiling-lookup-fault",
+    "source": "int f(int key,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        if(key<data[0]){return -19;}int p=0;int q=4;\n        while(q>=p){int pivot=p+(q-p)/2;\n        if(data[pivot]==key){return pivot;}\n        if(key<data[pivot]){q=pivot-1;}else{p=pivot+1;}}\n        return -19;}",
+    "references": [
+      "int f(int key,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        if(key<data[0]){return -19;}int p=0;int q=3;\n        while(q>=p){int pivot=p+(q-p)/2;\n        if(data[pivot]==key){return pivot;}\n        if(key<data[pivot]){q=pivot-1;}else{p=pivot+1;}}\n        return -19;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "inclusive-ceiling-lookup",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Inclusive array lookup with -19 absent sentinel.",
+    "domain": "Four distinct increasing integers.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          15,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          11,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          4,
+          7,
+          11
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          32,
+          -9,
+          3,
+          12,
+          26
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          23,
+          2,
+          8,
+          17,
+          23
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "inclusive-ceiling-lookup-control",
+    "source": "int f(int key,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        if(key<data[0]){return -19;}int p=0;int q=3;\n        while(q>=p){int pivot=p+(q-p)/2;\n        if(data[pivot]==key){return pivot;}\n        if(key<data[pivot]){q=pivot-1;}else{p=pivot+1;}}\n        return -19;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "minimum-rebased-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate weighted values from the computed minimum coordinate.",
+    "domain": "Three small signed cells.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4,
+          5
+        ],
+        "expected": 26
+      },
+      {
+        "arguments": [
+          5,
+          -2,
+          8
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          3
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          7,
+          9,
+          11
+        ],
+        "expected": 83
+      },
+      {
+        "arguments": [
+          -1,
+          8,
+          3
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          4,
+          -3
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          8,
+          7,
+          8
+        ],
+        "expected": 75
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "minimum-rebased-grid-fault",
+    "source": "int f(int a,int b,int c){int cell[3];cell[0]=a;cell[1]=b;cell[2]=c;\n        int low=a;for(int v=1;v<3;v++){if(cell[v]<low){low=cell[v];}}\n        int out=5;for(int i=low;i<low+3;i++){out+=2*cell[i-0]+i;}return out;}",
+    "references": [
+      "int f(int a,int b,int c){int cell[3];cell[0]=a;cell[1]=b;cell[2]=c;\n        int low=a;for(int v=1;v<3;v++){if(cell[v]<low){low=cell[v];}}\n        int out=5;for(int i=low;i<low+3;i++){out+=2*cell[i-low]+i;}return out;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "minimum-rebased-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate weighted values from the computed minimum coordinate.",
+    "domain": "Three small signed cells.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4,
+          5
+        ],
+        "expected": 26
+      },
+      {
+        "arguments": [
+          5,
+          -2,
+          8
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          3
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          7,
+          9,
+          11
+        ],
+        "expected": 83
+      },
+      {
+        "arguments": [
+          -1,
+          8,
+          3
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          4,
+          -3
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          8,
+          7,
+          8
+        ],
+        "expected": 75
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "minimum-rebased-grid-control",
+    "source": "int f(int a,int b,int c){int cell[3];cell[0]=a;cell[1]=b;cell[2]=c;\n        int low=a;for(int v=1;v<3;v++){if(cell[v]<low){low=cell[v];}}\n        int out=5;for(int i=low;i<low+3;i++){out+=2*cell[i-low]+i;}return out;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "even-gcd-weight",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum even checkpoint weight when the common divisor is two.",
+    "domain": "Small positive n and cutoff.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          6,
+          2
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          10,
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          14,
+          5
+        ],
+        "expected": 47
+      },
+      {
+        "arguments": [
+          12,
+          2
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9,
+          3
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          16,
+          6
+        ],
+        "expected": 40
+      },
+      {
+        "arguments": [
+          18,
+          8
+        ],
+        "expected": 59
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "even-gcd-weight-fault",
+    "source": "int reduce(int x,int y){while(y!=0){int rem=x%y;x=y;y=rem;}return x;}\n        int f(int n,int p){int total=7;for(int t=2;t<=n;t+=2){\n        if(t<p){continue;}if(reduce(n,t)!=2){total+=t+1;}}return total;}",
+    "references": [
+      "int reduce(int x,int y){while(y!=0){int rem=x%y;x=y;y=rem;}return x;}\n        int f(int n,int p){int total=7;for(int t=2;t<=n;t+=2){\n        if(t<p){continue;}if(reduce(n,t)==2){total+=t+1;}}return total;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "even-gcd-weight",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum even checkpoint weight when the common divisor is two.",
+    "domain": "Small positive n and cutoff.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          6,
+          2
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          10,
+          4
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          14,
+          5
+        ],
+        "expected": 47
+      },
+      {
+        "arguments": [
+          12,
+          2
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9,
+          3
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          16,
+          6
+        ],
+        "expected": 40
+      },
+      {
+        "arguments": [
+          18,
+          8
+        ],
+        "expected": 59
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "even-gcd-weight-control",
+    "source": "int reduce(int x,int y){while(y!=0){int rem=x%y;x=y;y=rem;}return x;}\n        int f(int n,int p){int total=7;for(int t=2;t<=n;t+=2){\n        if(t<p){continue;}if(reduce(n,t)==2){total+=t+1;}}return total;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "tripled-window-handoff",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Lookup in a tripled window with a stable absent sentinel.",
+    "domain": "Five distinct increasing integers.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          9,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          8,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": -23
+      },
+      {
+        "arguments": [
+          13,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          32,
+          -3,
+          2,
+          5,
+          8,
+          23
+        ],
+        "expected": -23
+      },
+      {
+        "arguments": [
+          15,
+          3,
+          5,
+          9,
+          15,
+          24
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "tripled-window-handoff-fault",
+    "source": "int f(int key,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;\n        if(key==cell[0]){return 0;}int width=1;\n        while(width<5 && cell[width]<key){width*=3;}\n        int lo=width/3;int hi=width;if(hi>5){hi=5;}hi--;\n        while(lo<=hi){int m=lo+(hi-lo)/2;if(cell[m]==key){return m;}\n        if(key>cell[m]){lo=m+1;}else{hi=m-1;}}\n        return -lo-23;}",
+    "references": [
+      "int f(int key,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;\n        if(key==cell[0]){return 0;}int width=1;\n        while(width<5 && cell[width]<key){width*=3;}\n        int lo=width/3;int hi=width+1;if(hi>5){hi=5;}hi--;\n        while(lo<=hi){int m=lo+(hi-lo)/2;if(cell[m]==key){return m;}\n        if(key>cell[m]){lo=m+1;}else{hi=m-1;}}\n        return -23;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "tripled-window-handoff",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Lookup in a tripled window with a stable absent sentinel.",
+    "domain": "Five distinct increasing integers.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          9,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          7,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          8,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": -23
+      },
+      {
+        "arguments": [
+          13,
+          2,
+          4,
+          7,
+          9,
+          13
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          32,
+          -3,
+          2,
+          5,
+          8,
+          23
+        ],
+        "expected": -23
+      },
+      {
+        "arguments": [
+          15,
+          3,
+          5,
+          9,
+          15,
+          24
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "tripled-window-handoff-control",
+    "source": "int f(int key,int a,int b,int c,int d,int e){int cell[5];cell[0]=a;cell[1]=b;cell[2]=c;cell[3]=d;cell[4]=e;\n        if(key==cell[0]){return 0;}int width=1;\n        while(width<5 && cell[width]<key){width*=3;}\n        int lo=width/3;int hi=width+1;if(hi>5){hi=5;}hi--;\n        while(lo<=hi){int m=lo+(hi-lo)/2;if(cell[m]==key){return m;}\n        if(key>cell[m]){lo=m+1;}else{hi=m-1;}}\n        return -23;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "intentional-descending-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Reverse traversal excludes the zeroth metadata cell.",
+    "domain": "Indices zero through three.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          3,
+          6,
+          7
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          4,
+          6,
+          8
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          -7,
+          2,
+          3,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          2,
+          8,
+          2,
+          4,
+          -8
+        ],
+        "expected": 6
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          1,
+          0,
+          4,
+          5
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          0,
+          6,
+          1,
+          7
+        ],
+        "expected": 14
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "intentional-descending-offset-control",
+    "source": "int f(int x,int d,int e,int g,int h){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;int out=0;for(int p=x;p>=1;p--){out+=data[p];}return out;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "fixed-singleton-preset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "One-cell lookup with a deliberate absent result.",
+    "domain": "Small signed integers.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          6
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          3,
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          7,
+          12
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -12,
+          -12
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          8,
+          6
+        ],
+        "expected": -13
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "fixed-singleton-preset-control",
+    "source": "int f(int x,int d){int table[1];table[0]=d;if(x==table[0]){return 0;}return -13;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "unobserved-short-circuit",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Guard the quotient and preserve the inactive result.",
+    "domain": "Small signed integer pairs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          0,
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          9
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          2,
+          -1
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -5,
+          -11
+        ],
+        "expected": -11
+      },
+      {
+        "arguments": [
+          -8,
+          1
+        ],
+        "expected": -8
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "unobserved-short-circuit-control",
+    "source": "int f(int a,int b){int table[2];table[0]=a;table[1]=b;if(a!=0 && table[1]/a>0){return table[1];}return table[0];}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "half-open-recursive-control",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "The upper endpoint is exclusive in the recursive search.",
+    "domain": "Four distinct increasing cells.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          10,
+          1,
+          2,
+          4,
+          6
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          6,
+          1,
+          2,
+          4,
+          6
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          2,
+          4,
+          6
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          2,
+          4,
+          6
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -2,
+          0,
+          5,
+          12
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          -3,
+          -2,
+          0,
+          5,
+          12
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 10",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "half-open-recursive-control-control",
+    "source": "int locate(int key,int d,int e,int g,int h,int low,int high){int data[4];data[0]=d;data[1]=e;data[2]=g;data[3]=h;\n        if(high<=low){return -1;}\n        int middle=low+(high-low)/2;if((high-low)%2<0){middle--;}\n        if(data[middle]==key){return middle;}\n        if(data[middle]>key){return locate(key,d,e,g,h,low,middle);}\n        return locate(key,d,e,g,h,middle+1,high);}\n        int f(int key,int d,int e,int g,int h){return locate(key,d,e,g,h,0,4);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  }
+]

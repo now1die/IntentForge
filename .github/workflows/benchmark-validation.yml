@@ -49,3 +49,9 @@ jobs:
           python -m benchmarks.phase95_upstream
           git diff --exit-code -- benchmarks/reports/phase95-upstream-v1.json
       - run: python -m benchmarks.phase95_evaluate --check
+      - run: python -m benchmarks.phase10_audit
+      - name: Replay Phase 10 upstream defect pairs
+        run: |
+          python -m benchmarks.phase10_upstream --write
+          git diff --exit-code -- benchmarks/reports/phase10-upstream-v1.json
+      - run: python -m benchmarks.phase10_evaluate --check

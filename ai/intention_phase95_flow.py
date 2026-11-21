@@ -48,6 +48,7 @@ class Write:
     index: Term | None = None
     size: int = 0
     operation: str = "="
+    origin: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -102,7 +103,7 @@ class FlowProjection(ScalarProjection):
             if array not in self.array_slots:
                 raise UnsupportedProjection
             index = self.expression(node.index, locals_, call_depth, depth+1)
-            return Term("cell", (index,), value=self.array_slots[array])
+            return Term("cell", (index,), value=self.array_slots[array], origin=id(node))
         if isinstance(node, ast.FunctionCall):
             if not isinstance(node.callee, ast.Identifier) or "helpers" not in self.components:
                 raise UnsupportedProjection
@@ -112,11 +113,26 @@ class FlowProjection(ScalarProjection):
                 raise UnsupportedProjection
             name = node.callee.name
             args = tuple(self.scalar(arg, depth+1) for arg in node.arguments)
-            self.compile(name)
-            return Term("helper", args, value=name)
+            return self.call_term(node, name, args)
         if isinstance(node, ast.Literal) and type(node.value) is bool:
             return Term("literal", value=node.value)
         return super().expression(node, locals_, call_depth, depth, **flags)
+
+    def call_term(self, node, name, args):
+        self.compile(name)
+        return Term("helper", args, value=name)
+
+    def loop_site(self, item, block, initializations):
+        node = block.syntax
+        if not isinstance(node,ast.ForStatement) or id(node.initializer) not in initializations:
+            raise UnsupportedProjection
+        return self.loop(item,block,initializations[id(node.initializer)])
+
+    def loop_sites(self, item):
+        return [block for block in item.flow.graph.blocks if block.kind=="loop_header" and block.id in item.reachable]
+
+    def latch_transfer(self, node):
+        return self.assignment(node)
 
     def boolean(self, node, locals_, depth=0):
         if isinstance(node, (ast.Identifier, ast.FunctionCall)):
@@ -164,7 +180,7 @@ class FlowProjection(ScalarProjection):
             array = self.binding(operand.array)
             if array not in self.array_slots:
                 raise UnsupportedProjection
-            return Write(self.array_slots[array], value, self.scalar(operand.index), operation=operator)
+            return Write(self.array_slots[array], value, self.scalar(operand.index), operation=operator, origin=id(operand))
         binding = self.binding(operand)
         if binding not in self.layout:
             raise UnsupportedProjection
@@ -292,12 +308,8 @@ class FlowProjection(ScalarProjection):
             edges = graph.outgoing()
             loops, latches, steps = {}, {}, {}
             initializations = {id(block.syntax):block.id for block in graph.blocks if block.kind=="statement"}
-            for block in graph.blocks:
-                if block.kind=="loop_header" and block.id in item.reachable:
-                    node = block.syntax
-                    if not isinstance(node,ast.ForStatement) or id(node.initializer) not in initializations:
-                        raise UnsupportedProjection
-                    loops[block.id] = self.loop(item,block,initializations[id(node.initializer)])
+            for block in self.loop_sites(item):
+                loops[block.id] = self.loop_site(item,block,initializations)
             if len(loops)>3:
                 raise ProjectionLimit
             for block in graph.blocks:
@@ -317,9 +329,12 @@ class FlowProjection(ScalarProjection):
                             transition = Write(transition.slot, Term("identity",(transition.value,),
                                                origin=id(node.initializer),alternatives=alternatives))
                 elif kind in {"statement","loop_latch"}:
-                    transition = self.assignment(node)
                     if kind=="loop_latch":
-                        latches[block.id] = loops[edges[block.id][0].target]
+                        header = edges[block.id][0].target
+                        transition = self.latch_transfer(node)
+                        latches[block.id] = (header, loops[header])
+                    else:
+                        transition = self.assignment(node)
                 elif kind in {"entry","exit","break","continue"}:
                     transition = None
                 else:
@@ -343,32 +358,38 @@ class Sample:
     issue: str | None = None
 
 
-def project(model,name,args,changes=(),*,trace=False):
+def project(model,name,args,changes=(),*,trace=False,observer=None):
     remaining = MAX_TRANSFERS
     visits, exits, helpers = defaultdict(list), defaultdict(int), defaultdict(int)
 
-    def function(label,values,depth):
+    def function(label,values,depth,parent=None):
         nonlocal remaining
-        if depth>MAX_CALL_DEPTH:
+        if depth>(observer.depth_limit if observer is not None else MAX_CALL_DEPTH):
             raise ProjectionLimit
+        if observer is not None:
+            override = observer.enter(label, values, parent)
+            if override is not None:
+                return override
         item = model.models[label]
         facts = Facts(zip(item.args,values,strict=True))
-        sizes, iterations = {}, defaultdict(int)
+        sizes, iterations, measures = {}, defaultdict(int), {}
         site = item.entry
 
-        def cell(slot,index):
+        def cell(slot,index,origin=None,mode="read"):
             length = sizes.get(slot,0)
+            if observer is not None:
+                observer.cell(label, origin, index, length, (slot,index) in facts, mode)
             if type(index) is not int or not 0<=index<length:
                 raise InvalidSample("INDEX_OUTSIDE_EXTENT")
             return (slot,index)
 
         def resolve(term,evaluate):
             if term.operation=="cell":
-                return facts[cell(term.value,evaluate(term.children[0]))]
+                return facts[cell(term.value,evaluate(term.children[0]),term.origin)]
             args = tuple(evaluate(child) for child in term.children)
             if trace:
                 helpers[term.value] += 1
-            return function(term.value,args,depth+1)
+            return function(term.value,args,depth+1,(label,values))
 
         while True:
             remaining -= 1
@@ -386,9 +407,11 @@ def project(model,name,args,changes=(),*,trace=False):
                 if kind=="loop_header":
                     summary = item.loops[site]
                     index = facts[summary.slot]
-                    if summary.squared and index<0:
+                    if getattr(summary,"squared",False) and index<0:
                         raise InvalidSample("NON_MONOTONE_SQUARE")
                     if edge_kind=="true":
+                        if observer is not None:
+                            measures[site] = observer.measure(summary, facts)
                         iterations[site] += 1
                         if iterations[site]>MAX_LOOP_POINTS:
                             raise ProjectionLimit
@@ -409,15 +432,18 @@ def project(model,name,args,changes=(),*,trace=False):
                 elif action.value is None:
                     facts.pop(action.slot,None)
                 else:
-                    key = cell(action.slot,evaluate(action.index)) if action.index else action.slot
+                    key = cell(action.slot,evaluate(action.index),action.origin,"write") if action.index else action.slot
                     operand = action.value
                     if action.operation!="=":
                         operand = Term(action.operation[:-1],(Term("literal",value=facts[key]),operand))
                     old = facts.get(key)
                     value = evaluate(operand)
-                    if kind=="loop_latch" and (value-old)*item.latches[site].direction<=0:
+                    if kind=="loop_latch" and (value-old)*item.latches[site][1].direction<=0:
                         raise InvalidSample("NON_PROGRESSING_LATCH")
                     facts[key] = value
+            if kind=="loop_latch" and observer is not None and action is None:
+                header, summary = item.latches[site]
+                observer.progress(summary, facts, measures[header])
             if not edges:
                 raise InvalidSample("NO_PROJECTED_RETURN")
             if trace and kind in {"break","continue"}:

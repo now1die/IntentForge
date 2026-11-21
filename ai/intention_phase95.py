@@ -7,7 +7,7 @@ from compiler.source_location import SourceSpan
 
 from .intention_candidates import Edit, Evidence, Proposal, point
 from .intention_phase8 import ProjectionLimit, UnsupportedProjection, edit_cost
-from .intention_phase95_flow import FlowProjection, MAX_LOOP_POINTS, RANGE, WINDOW, project
+from .intention_phase95_flow import FlowProjection, Loop, MAX_LOOP_POINTS, RANGE, WINDOW, project
 from .specification import INT_MAX, INT_MIN
 
 DOMAIN = "DOMAIN_BASE_CASE_CONSTRAINT"
@@ -73,6 +73,8 @@ def sample_evidence(model, rows):
     loops, exits, helpers = [], Counter(), Counter()
     for label,function in model.models.items():
         for site,loop in function.loops.items():
+            if not isinstance(loop,Loop):
+                continue
             indices = [row.loops.get((label,site),()) for row in rows]
             loops.append({"function":label,"span":loop.span.to_dict(),"relation":loop.relation,
                           "bound":loop.bound,"origin":loop.init,"latch":loop.latch,
