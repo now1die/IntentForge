@@ -21,3 +21,7 @@ The final evaluation admitted 20 programs, including six injected faults, thirte
 - [Phase 7 readiness](PHASE_7_READINESS.md)
 
 Reproducible results are in the [static](../benchmarks/reports/phase65-static-v1.json), [live](../benchmarks/reports/phase65-live-v1.json), and [audit](../benchmarks/reports/phase65-audit-v1.json) reports. Historical reports remain versioned separately.
+
+## Regression verification
+
+The compiler regression passed 220/220. Keyboard and array verification had zero unexpected outcomes across 65 cases, and the stress harness completed 3,758 cases, including 3,498 observational rows. Clang 19.1.7 passed its 12-case replay. Historical static and isolated Phase 4.5, 5, 5.5 and 6 evaluations reproduced. The workbench built and the local browser suite passed 36 scenarios, with the default-disabled scenario exercised separately.

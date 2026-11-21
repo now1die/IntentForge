@@ -1107,9 +1107,9 @@
       }
     },
     "latency": {
-      "mean_ms": 2.789,
-      "median_ms": 2.789,
-      "p95_ms": 2.789
+      "mean_ms": 1.501,
+      "median_ms": 1.501,
+      "p95_ms": 1.501
     }
   },
   "selection": {
@@ -2858,9 +2858,9 @@
       }
     },
     "latency": {
-      "mean_ms": 3.132,
-      "median_ms": 3.132,
-      "p95_ms": 3.132
+      "mean_ms": 1.672,
+      "median_ms": 1.672,
+      "p95_ms": 1.672
     }
   },
   "final": {
@@ -8075,9 +8075,9 @@
       }
     },
     "latency": {
-      "mean_ms": 5.388,
-      "median_ms": 3.194,
-      "p95_ms": 5.058
+      "mean_ms": 2.085,
+      "median_ms": 1.906,
+      "p95_ms": 2.838
     }
   },
   "audit": {
@@ -8916,6 +8916,12 @@
     {
       "id": "mutual-stage-control",
       "transform": "unused_shadow_scope",
+      "alert_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "independent-declarations-control",
+      "transform": "reorder_independent_declarations",
       "alert_preserved": true,
       "categories_preserved": true
     }

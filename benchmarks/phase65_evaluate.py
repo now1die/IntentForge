@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from time import perf_counter, sleep
 
-from ai.behavior_oracle import ExecutionLimits, Status
+from ai.behavior_oracle import ExecutionLimits, Status, Vector
 from ai.intention_context import Example, build_context
 from ai.intention_engine import analyze_intention, order_candidates
 from ai.intention_v3_ranker import load_generalized_ranker
@@ -110,6 +110,17 @@ def robustness(cases):
             output.append({"id": case["id"], "transform": name,
                            "alert_preserved": (current.finding in ALERTS) == (base.finding in ALERTS),
                            "categories_preserved": sorted(item.proposal.category for item in current.candidates) == before})
+    source = "int f(int n){int left=n+2;int right=n*3;if(n<0){return left;}return right;}"
+    left, right = "int left=n+2;", "int right=n*3;"
+    reordered = source.replace(left+right, right+left)
+    suite = tuple(Vector(arguments=(n,), expected=n+2 if n < 0 else n*3) for n in (-4, 0, 5))
+    original, changed = [oracle.verify(text, "f", suite, ExecutionLimits()) for text in (source, reordered)]
+    assert original.status == changed.status == Status.MATCHES_SUPPLIED_TESTS
+    before, after = [analyze_intention(text, phase65=True, phase6_entry="f") for text in (source, reordered)]
+    output.append({"id": "independent-declarations-control", "transform": "reorder_independent_declarations",
+                   "alert_preserved": before.finding == after.finding,
+                   "categories_preserved": [c.proposal.category for c in before.candidates] ==
+                                           [c.proposal.category for c in after.candidates]})
     return output
 
 

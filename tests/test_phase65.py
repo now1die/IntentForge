@@ -55,6 +55,15 @@ def test_disjunctive_definitions_and_explicit_path_limit():
     assert all(row["feasibility"] != "excluded" for row in limited["paths"]["f"]["returns"])
 
 
+def test_loop_edges_and_possible_upstream_dependencies():
+    source = "int f(int n){int raw=n+5;int total=raw*2;while(n>0){n--;if(n==2){break;}continue;}return total;}"
+    details = evidence(analyze(source))["paths"]["f"]
+    assert details["complete"]
+    assert {edge["kind"] for edge in details["loop_edges"]} == {"true", "false", "back", "break", "continue"}
+    assert all({item["name"] for item in path["possible_upstream_definitions"]} == {"raw", "n"}
+               for path in details["returns"][0]["paths"])
+
+
 def test_call_effects_and_reordered_return_dependencies():
     source = """int counter=0;
       int pick(int first,int second){counter++;return first;}
