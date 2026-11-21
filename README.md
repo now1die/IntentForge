@@ -273,3 +273,14 @@ and approval remain explicit and tied to the current source snapshot.
 [Phase 9 review](docs/PHASE_9_FINAL_REVIEW.md) ·
 [Independent defect provenance](docs/phase9_external_defect_review.md) ·
 [Workbench captures](docs/phase9_workbench.md)
+
+## Phase 9.5 control-flow repair
+
+Opt in to engine 95 for evidence-backed entry guards, sampled window bounds,
+lexical range starts and bounded pure helper or early-exit paths. The
+workbench shows projected evidence and separately displays the restricted
+worker's observed outcomes. Repairs require approval against the current source.
+
+[Phase 9.5 review](docs/PHASE_9_5_FINAL_REVIEW.md) ·
+[Upstream defect validation](docs/phase9_5_external_defect_validation.md) ·
+[Workbench captures](docs/phase9_5_workbench.md)

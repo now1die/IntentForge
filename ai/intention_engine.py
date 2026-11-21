@@ -23,6 +23,7 @@ from .intention_phase55 import RULES as PRECISION_RULES, apply_precision_gates
 from .intention_phase6 import proposals as semantic_proposals
 from .intention_phase65 import COMPONENTS as PHASE65_COMPONENTS, augment as interprocedural_proposals
 from .intention_phase75 import CATEGORIES as PHASE75_CATEGORIES, COMPONENTS as PHASE75_COMPONENTS
+from .intention_phase95 import CATEGORIES as PHASE95_CATEGORIES, COMPONENTS as PHASE95_COMPONENTS, synthesize as control_repairs
 from .intention_phase9 import CATEGORIES as PHASE9_CATEGORIES, COMPONENTS as PHASE9_COMPONENTS, synthesize as robust_repairs
 from .intention_phase85 import CATEGORIES as PHASE85_CATEGORIES, COMPONENTS as PHASE85_COMPONENTS, synthesize as finite_repairs
 from .intention_phase8 import CATEGORIES as PHASE8_CATEGORIES, COMPONENTS as PHASE8_COMPONENTS, synthesize as arithmetic_repairs
@@ -139,7 +140,8 @@ class IntentionResult:
                                                         "MULTIPLE_RECURSIVE_EXAMPLES", "LEXICAL_RECURSIVE_TERMS",
                                                         "MISSING_INPUT_DEPENDENCY", "INCONSISTENT_LOOP_RADIX",
                                                         "ARITHMETIC_CONSTRAINT_WITNESS", "FINITE_CONSTRAINT_WITNESS"} else "static")
-                    row["hypothesis_origin"] = ("phase9" if item.proposal.category in PHASE9_CATEGORIES else
+                    row["hypothesis_origin"] = ("phase95" if item.proposal.category in PHASE95_CATEGORIES else
+                                                "phase9" if item.proposal.category in PHASE9_CATEGORIES else
                                                 "phase85" if item.proposal.category in PHASE85_CATEGORIES else
                                                 "phase8" if item.proposal.category in PHASE8_CATEGORIES else
                                                 "phase75" if item.proposal.category in PHASE75_CATEGORIES else "phase65" if item.proposal.category in {
@@ -300,7 +302,9 @@ def analyze_intention(
     phase8_domain=None, phase8_partial=(),
     phase85: bool = False, phase85_components: frozenset[str] = PHASE85_COMPONENTS,
     phase9: bool = False, phase9_components: frozenset[str] = PHASE9_COMPONENTS,
+    phase95: bool = False, phase95_components: frozenset[str] = PHASE95_COMPONENTS,
 ) -> IntentionResult:
+    phase9 = phase9 or phase95
     phase85 = phase85 or phase9
     phase8 = phase8 or phase85
     phase75 = phase75 or phase8
@@ -400,6 +404,10 @@ def analyze_intention(
                 robust, report = robust_repairs(context, program, links, helper_shapes, spec, phase9_components)
                 semantic = (*robust, *semantic)
                 program_analysis["phase9"] = report
+            if phase95:
+                control, report = control_repairs(context, program, spec, phase95_components)
+                semantic = (*control, *semantic)
+                program_analysis["phase95"] = report
         program_analysis["hypotheses"] = [{"category": proposal.category, "assumption": proposal.assumption,
                                             "evidence": [fact.to_dict() for fact in proposal.evidence],
                                             "counter_evidence": [fact.to_dict() for fact in proposal.counter_evidence]}

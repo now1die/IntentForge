@@ -1,0 +1,5062 @@
+{
+  "profiles": {
+    "85": [
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1069,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "exclusive-multiple-sum-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 3,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 969,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "exclusive-multiple-sum-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 3,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 813,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "gregorian-day-difference-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 14,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 793,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "gregorian-day-difference-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 14,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "ARRAY_BOUNDS",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 226,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "recursive-search-upper-bound-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 54,
+        "max_call_depth": 4,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1128,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "recursive-search-upper-bound-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 68,
+        "max_call_depth": 5,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 683,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "expanding-search-boundary-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 727,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "expanding-search-boundary-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1286,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "smith-composite-domain-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1035,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "smith-composite-domain-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 60,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "negative-gauge-baseline-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 75,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "negative-gauge-baseline-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 54,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "upper-clock-preset-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 72,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "upper-clock-preset-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 75,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-marker-gate-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 82,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-marker-gate-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 544,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minimum-filter-window-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 828,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minimum-filter-window-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 172,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "marked-tail-sentinel-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 214,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "marked-tail-sentinel-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 348,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "helper-gated-tail-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 449,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "helper-gated-tail-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 623,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "weighted-derived-origin-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 548,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "weighted-derived-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 184,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "descending-margin-origin-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 282,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "descending-margin-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 190,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "post-loop-only-origin-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 223,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "post-loop-only-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1640,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "projection-limit-control-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 4,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 70,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "side-effect-domain-control-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "ARRAY_BOUNDS",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 26,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "array-extent-negative-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 96,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "array-extent-negative-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "incomplete-domain-samples-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      }
+    ],
+    "9": [
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-6ba34bb4ae47"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 2038,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-6ba34bb4ae47",
+          "matching_candidates": [
+            "IR-6ba34bb4ae47"
+          ]
+        },
+        "id": "exclusive-multiple-sum-fault",
+        "holdout": [
+          {
+            "id": "IR-6ba34bb4ae47",
+            "category": "GENERALIZED_LOOP_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 39,
+                    "offset": 38
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 41,
+                    "offset": 40
+                  }
+                },
+                "original": "<=",
+                "proposed": "<"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 1577
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 3,
+        "max_call_depth": 1,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 969,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "exclusive-multiple-sum-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 3,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 813,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "gregorian-day-difference-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 14,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 793,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "gregorian-day-difference-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 14,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "ARRAY_BOUNDS",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 226,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "recursive-search-upper-bound-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 54,
+        "max_call_depth": 4,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1128,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "recursive-search-upper-bound-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 68,
+        "max_call_depth": 5,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 683,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "expanding-search-boundary-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 727,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "expanding-search-boundary-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1286,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "smith-composite-domain-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1035,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "smith-composite-domain-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 60,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "negative-gauge-baseline-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 75,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "negative-gauge-baseline-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 54,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "upper-clock-preset-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 72,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "upper-clock-preset-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 75,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-marker-gate-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 82,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-marker-gate-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 544,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minimum-filter-window-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 828,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minimum-filter-window-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 172,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "marked-tail-sentinel-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 214,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "marked-tail-sentinel-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 348,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "helper-gated-tail-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 449,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "helper-gated-tail-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 623,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "weighted-derived-origin-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 548,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "weighted-derived-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 184,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "descending-margin-origin-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 282,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "descending-margin-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-7c0702e6c7a8",
+          "IR-888985f8ca8f"
+        ],
+        "tests_matching_candidates": 2,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 2,
+        "behavioral_rank": 2,
+        "exact_test_agreement": true,
+        "first_matching_exact": false,
+        "behavioral_match": true,
+        "observed_steps": 669,
+        "probe_steps": 353,
+        "new_pairs": 0,
+        "probes": 8,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [
+          "agreed_on_probes"
+        ],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": [
+            "IR-7c0702e6c7a8",
+            "IR-888985f8ca8f"
+          ]
+        },
+        "id": "post-loop-only-origin-fault",
+        "holdout": [
+          {
+            "id": "IR-7c0702e6c7a8",
+            "category": "GENERALIZED_LOOP_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 54,
+                    "offset": 53
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 55,
+                    "offset": 54
+                  }
+                },
+                "original": "2",
+                "proposed": "0"
+              }
+            ],
+            "exact": false,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 139
+          },
+          {
+            "id": "IR-888985f8ca8f",
+            "category": "GENERALIZED_LOOP_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 54,
+                    "offset": 53
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 55,
+                    "offset": 54
+                  }
+                },
+                "original": "2",
+                "proposed": "1"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 117
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 2,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 2
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 223,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "post-loop-only-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1640,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "projection-limit-control-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 4,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 70,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "side-effect-domain-control-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "ARRAY_BOUNDS",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 26,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "array-extent-negative-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 96,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "array-extent-negative-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "incomplete-domain-samples-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      }
+    ],
+    "95": [
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-6ba34bb4ae47"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 2038,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-6ba34bb4ae47",
+          "matching_candidates": [
+            "IR-6ba34bb4ae47"
+          ]
+        },
+        "id": "exclusive-multiple-sum-fault",
+        "holdout": [
+          {
+            "id": "IR-6ba34bb4ae47",
+            "category": "WINDOW_BOUNDARY_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 39,
+                    "offset": 38
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 41,
+                    "offset": 40
+                  }
+                },
+                "original": "<=",
+                "proposed": "<"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 1577
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 3,
+        "max_call_depth": 1,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 969,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "exclusive-multiple-sum-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 3,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 813,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "gregorian-day-difference-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 14,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 793,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "gregorian-day-difference-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 14,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "ARRAY_BOUNDS",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 226,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "recursive-search-upper-bound-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 54,
+        "max_call_depth": 4,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1128,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "recursive-search-upper-bound-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 68,
+        "max_call_depth": 5,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 683,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "expanding-search-boundary-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 727,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "expanding-search-boundary-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1286,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "smith-composite-domain-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1035,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "smith-composite-domain-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 3,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-74fd2dd376a9",
+          "IR-b57f0bc93658"
+        ],
+        "tests_matching_candidates": 2,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 205,
+        "probe_steps": 219,
+        "new_pairs": 1,
+        "probes": 8,
+        "redundant_probes": 4,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [
+          "distinguished"
+        ],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": [
+            "IR-74fd2dd376a9",
+            "IR-b57f0bc93658"
+          ]
+        },
+        "id": "negative-gauge-baseline-fault",
+        "holdout": [
+          {
+            "id": "IR-74fd2dd376a9",
+            "category": "DOMAIN_BASE_CASE_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 29,
+                    "offset": 28
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 29,
+                    "offset": 28
+                  }
+                },
+                "original": "",
+                "proposed": "\n    if (reading < -3) { return 17; }\n"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 29
+          },
+          {
+            "id": "IR-b57f0bc93658",
+            "category": "DOMAIN_BASE_CASE_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 29,
+                    "offset": 28
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 29,
+                    "offset": 28
+                  }
+                },
+                "original": "",
+                "proposed": "\n    if (bias < 3) { return 17; }\n"
+              }
+            ],
+            "exact": false,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 27
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 2,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 2
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 75,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "negative-gauge-baseline-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-2ba25c4b835b"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 126,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-2ba25c4b835b",
+          "matching_candidates": [
+            "IR-2ba25c4b835b"
+          ]
+        },
+        "id": "upper-clock-preset-fault",
+        "holdout": [
+          {
+            "id": "IR-2ba25c4b835b",
+            "category": "DOMAIN_BASE_CASE_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 18,
+                    "offset": 17
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 18,
+                    "offset": 17
+                  }
+                },
+                "original": "",
+                "proposed": "\n    if (ticks > 11) { return -7; }\n"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 24
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 72,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "upper-clock-preset-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 75,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-marker-gate-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 82,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-marker-gate-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 1,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-03d4520d61b3",
+          "IR-ddb846f71d3c"
+        ],
+        "tests_matching_candidates": 2,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 2200,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [
+          "untested"
+        ],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": [
+            "IR-03d4520d61b3",
+            "IR-ddb846f71d3c"
+          ]
+        },
+        "id": "minimum-filter-window-fault",
+        "holdout": [
+          {
+            "id": "IR-03d4520d61b3",
+            "category": "WINDOW_BOUNDARY_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 3,
+                    "column": 40,
+                    "offset": 158
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 41,
+                    "offset": 159
+                  }
+                },
+                "original": "<",
+                "proposed": "<="
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 378
+          },
+          {
+            "id": "IR-ddb846f71d3c",
+            "category": "WINDOW_BOUNDARY_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 3,
+                    "column": 43,
+                    "offset": 161
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 44,
+                    "offset": 162
+                  }
+                },
+                "original": "3",
+                "proposed": "2"
+              }
+            ],
+            "exact": false,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 378
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 2,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 2
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 828,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minimum-filter-window-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 16,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-bcd08ff65471"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 386,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-bcd08ff65471",
+          "matching_candidates": [
+            "IR-bcd08ff65471"
+          ]
+        },
+        "id": "marked-tail-sentinel-fault",
+        "holdout": [
+          {
+            "id": "IR-bcd08ff65471",
+            "category": "WINDOW_BOUNDARY_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 60,
+                    "offset": 59
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 61,
+                    "offset": 60
+                  }
+                },
+                "original": "<",
+                "proposed": "<="
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 112
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 214,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "marked-tail-sentinel-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-0baf99dab06a"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 797,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-0baf99dab06a",
+          "matching_candidates": [
+            "IR-0baf99dab06a"
+          ]
+        },
+        "id": "helper-gated-tail-fault",
+        "holdout": [
+          {
+            "id": "IR-0baf99dab06a",
+            "category": "WINDOW_BOUNDARY_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 2,
+                    "column": 69,
+                    "offset": 131
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 70,
+                    "offset": 132
+                  }
+                },
+                "original": "<",
+                "proposed": "<="
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 207
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 7,
+        "max_call_depth": 2,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 449,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "helper-gated-tail-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 7,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-eb618efca706"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 1171,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-eb618efca706",
+          "matching_candidates": [
+            "IR-eb618efca706"
+          ]
+        },
+        "id": "weighted-derived-origin-fault",
+        "holdout": [
+          {
+            "id": "IR-eb618efca706",
+            "category": "RANGE_ORIGIN_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 2,
+                    "column": 90,
+                    "offset": 166
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 91,
+                    "offset": 167
+                  }
+                },
+                "original": "0",
+                "proposed": "from"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 214
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 6,
+        "max_call_depth": 2,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 548,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "weighted-derived-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 2,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-3e0111712fd7"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 466,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-3e0111712fd7",
+          "matching_candidates": [
+            "IR-3e0111712fd7"
+          ]
+        },
+        "id": "descending-margin-origin-fault",
+        "holdout": [
+          {
+            "id": "IR-3e0111712fd7",
+            "category": "RANGE_ORIGIN_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 2,
+                    "column": 19,
+                    "offset": 87
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 20,
+                    "offset": 88
+                  }
+                },
+                "original": "0",
+                "proposed": "first"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 138
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 1,
+        "max_peak_cells": 6,
+        "max_call_depth": 1,
+        "compiled": 1
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 282,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "descending-margin-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 6,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-7c0702e6c7a8",
+          "IR-888985f8ca8f"
+        ],
+        "tests_matching_candidates": 2,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 2,
+        "behavioral_rank": 2,
+        "exact_test_agreement": true,
+        "first_matching_exact": false,
+        "behavioral_match": true,
+        "observed_steps": 669,
+        "probe_steps": 353,
+        "new_pairs": 0,
+        "probes": 8,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [
+          "agreed_on_probes"
+        ],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": [
+            "IR-7c0702e6c7a8",
+            "IR-888985f8ca8f"
+          ]
+        },
+        "id": "post-loop-only-origin-fault",
+        "holdout": [
+          {
+            "id": "IR-7c0702e6c7a8",
+            "category": "GENERALIZED_LOOP_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 54,
+                    "offset": 53
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 55,
+                    "offset": 54
+                  }
+                },
+                "original": "2",
+                "proposed": "0"
+              }
+            ],
+            "exact": false,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 139
+          },
+          {
+            "id": "IR-888985f8ca8f",
+            "category": "GENERALIZED_LOOP_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 54,
+                    "offset": 53
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 55,
+                    "offset": 54
+                  }
+                },
+                "original": "2",
+                "proposed": "1"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 117
+          }
+        ],
+        "original_holdout": null,
+        "visible_suggestions": 2,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 2
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 223,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "post-loop-only-origin-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 1640,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "projection-limit-control-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 4,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 70,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "side-effect-domain-control-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "ARRAY_BOUNDS",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 26,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "array-extent-negative-fault",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 96,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "array-extent-negative-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 5,
+        "max_call_depth": 1,
+        "compiled": 0
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "incomplete-domain-samples-control",
+        "holdout": [],
+        "original_holdout": null,
+        "visible_suggestions": 0,
+        "max_peak_cells": 2,
+        "max_call_depth": 1,
+        "compiled": 0
+      }
+    ]
+  },
+  "metrics": {
+    "85": {
+      "fault_alerts": {
+        "hits": 13,
+        "total": 15,
+        "wilson95": [
+          0.621,
+          0.963
+        ]
+      },
+      "false_alerts": {
+        "hits": 0,
+        "total": 17,
+        "wilson95": [
+          0,
+          0.184
+        ]
+      },
+      "precision": {
+        "hits": 13,
+        "total": 13,
+        "wilson95": [
+          0.772,
+          1
+        ]
+      },
+      "correct_control_hypotheses": {
+        "hits": 0,
+        "total": 17,
+        "wilson95": [
+          0,
+          0.184
+        ]
+      },
+      "exact_recall": {
+        "hits": 0,
+        "total": 15,
+        "wilson95": [
+          0,
+          0.204
+        ]
+      },
+      "matching_discovery": {
+        "hits": 0,
+        "total": 15,
+        "wilson95": [
+          0,
+          0.204
+        ]
+      },
+      "accepted_both": {
+        "hits": 0,
+        "total": 15,
+        "wilson95": [
+          0,
+          0.204
+        ]
+      },
+      "exact_accepted_both": {
+        "hits": 0,
+        "total": 15,
+        "wilson95": [
+          0,
+          0.204
+        ]
+      },
+      "non_exact_accepted_both": 0,
+      "contradicted_after_discovery": 0,
+      "recommendations": {
+        "hits": 0,
+        "total": 33,
+        "wilson95": [
+          0,
+          0.104
+        ]
+      },
+      "abstentions": 33,
+      "ambiguity": 0,
+      "original_statuses": {
+        "MISMATCHES_SUPPLIED_TESTS": 13,
+        "MATCHES_SUPPLIED_TESTS": 18,
+        "BEHAVIOR_UNKNOWN": 2
+      },
+      "holdout_steps": 0,
+      "probe_steps": 0,
+      "observed_steps": 15620,
+      "new_pairs": 0,
+      "probes": 0,
+      "runtime_fault_observations": 0,
+      "exact_rank": {
+        "top1": {
+          "hits": 0,
+          "total": 15,
+          "wilson95": [
+            0,
+            0.204
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 15,
+          "wilson95": [
+            0,
+            0.204
+          ]
+        }
+      },
+      "behavioral_rank": {
+        "top1": {
+          "hits": 0,
+          "total": 15,
+          "wilson95": [
+            0,
+            0.204
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 15,
+          "wilson95": [
+            0,
+            0.204
+          ]
+        }
+      },
+      "candidate_discovery_passes": {
+        "hits": 0,
+        "total": 0,
+        "wilson95": null
+      },
+      "candidate_holdout_passes": {
+        "hits": 0,
+        "total": 0,
+        "wilson95": null
+      },
+      "exact_on_both_top1": {
+        "hits": 0,
+        "total": 15,
+        "wilson95": [
+          0,
+          0.204
+        ]
+      },
+      "max_peak_cells": 68,
+      "max_call_depth": 5,
+      "review_burden": {
+        "review_all_same_pool": 0,
+        "initially_visible": 0,
+        "controls": 17,
+        "original_control_agreement": 17,
+        "with_visible_suggestions": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "fault_candidate_recall_same_pool": {
+          "hits": 0,
+          "total": 15,
+          "wilson95": [
+            0,
+            0.204
+          ]
+        },
+        "compiled_candidates": 0,
+        "holdout_checks": 0,
+        "holdout_passes": 0,
+        "recommended_holdout_failures": 0
+      }
+    },
+    "9": {
+      "fault_alerts": {
+        "hits": 13,
+        "total": 15,
+        "wilson95": [
+          0.621,
+          0.963
+        ]
+      },
+      "false_alerts": {
+        "hits": 0,
+        "total": 17,
+        "wilson95": [
+          0,
+          0.184
+        ]
+      },
+      "precision": {
+        "hits": 13,
+        "total": 13,
+        "wilson95": [
+          0.772,
+          1
+        ]
+      },
+      "correct_control_hypotheses": {
+        "hits": 0,
+        "total": 17,
+        "wilson95": [
+          0,
+          0.184
+        ]
+      },
+      "exact_recall": {
+        "hits": 2,
+        "total": 15,
+        "wilson95": [
+          0.037,
+          0.379
+        ]
+      },
+      "matching_discovery": {
+        "hits": 2,
+        "total": 15,
+        "wilson95": [
+          0.037,
+          0.379
+        ]
+      },
+      "accepted_both": {
+        "hits": 2,
+        "total": 15,
+        "wilson95": [
+          0.037,
+          0.379
+        ]
+      },
+      "exact_accepted_both": {
+        "hits": 2,
+        "total": 15,
+        "wilson95": [
+          0.037,
+          0.379
+        ]
+      },
+      "non_exact_accepted_both": 1,
+      "contradicted_after_discovery": 0,
+      "recommendations": {
+        "hits": 1,
+        "total": 33,
+        "wilson95": [
+          0.005,
+          0.153
+        ]
+      },
+      "abstentions": 32,
+      "ambiguity": 1,
+      "original_statuses": {
+        "MISMATCHES_SUPPLIED_TESTS": 13,
+        "MATCHES_SUPPLIED_TESTS": 18,
+        "BEHAVIOR_UNKNOWN": 2
+      },
+      "holdout_steps": 1833,
+      "probe_steps": 353,
+      "observed_steps": 17068,
+      "new_pairs": 0,
+      "probes": 8,
+      "runtime_fault_observations": 0,
+      "exact_rank": {
+        "top1": {
+          "hits": 1,
+          "total": 15,
+          "wilson95": [
+            0.012,
+            0.298
+          ]
+        },
+        "top3": {
+          "hits": 2,
+          "total": 15,
+          "wilson95": [
+            0.037,
+            0.379
+          ]
+        }
+      },
+      "behavioral_rank": {
+        "top1": {
+          "hits": 1,
+          "total": 15,
+          "wilson95": [
+            0.012,
+            0.298
+          ]
+        },
+        "top3": {
+          "hits": 2,
+          "total": 15,
+          "wilson95": [
+            0.037,
+            0.379
+          ]
+        }
+      },
+      "candidate_discovery_passes": {
+        "hits": 3,
+        "total": 3,
+        "wilson95": [
+          0.438,
+          1
+        ]
+      },
+      "candidate_holdout_passes": {
+        "hits": 3,
+        "total": 3,
+        "wilson95": [
+          0.438,
+          1
+        ]
+      },
+      "exact_on_both_top1": {
+        "hits": 1,
+        "total": 15,
+        "wilson95": [
+          0.012,
+          0.298
+        ]
+      },
+      "max_peak_cells": 68,
+      "max_call_depth": 5,
+      "review_burden": {
+        "review_all_same_pool": 0,
+        "initially_visible": 0,
+        "controls": 17,
+        "original_control_agreement": 17,
+        "with_visible_suggestions": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "fault_candidate_recall_same_pool": {
+          "hits": 2,
+          "total": 15,
+          "wilson95": [
+            0.037,
+            0.379
+          ]
+        },
+        "compiled_candidates": 3,
+        "holdout_checks": 3,
+        "holdout_passes": 3,
+        "recommended_holdout_failures": 0
+      }
+    },
+    "95": {
+      "fault_alerts": {
+        "hits": 13,
+        "total": 15,
+        "wilson95": [
+          0.621,
+          0.963
+        ]
+      },
+      "false_alerts": {
+        "hits": 0,
+        "total": 17,
+        "wilson95": [
+          0,
+          0.184
+        ]
+      },
+      "precision": {
+        "hits": 13,
+        "total": 13,
+        "wilson95": [
+          0.772,
+          1
+        ]
+      },
+      "correct_control_hypotheses": {
+        "hits": 0,
+        "total": 17,
+        "wilson95": [
+          0,
+          0.184
+        ]
+      },
+      "exact_recall": {
+        "hits": 9,
+        "total": 15,
+        "wilson95": [
+          0.357,
+          0.802
+        ]
+      },
+      "matching_discovery": {
+        "hits": 9,
+        "total": 15,
+        "wilson95": [
+          0.357,
+          0.802
+        ]
+      },
+      "accepted_both": {
+        "hits": 9,
+        "total": 15,
+        "wilson95": [
+          0.357,
+          0.802
+        ]
+      },
+      "exact_accepted_both": {
+        "hits": 9,
+        "total": 15,
+        "wilson95": [
+          0.357,
+          0.802
+        ]
+      },
+      "non_exact_accepted_both": 3,
+      "contradicted_after_discovery": 0,
+      "recommendations": {
+        "hits": 6,
+        "total": 33,
+        "wilson95": [
+          0.086,
+          0.344
+        ]
+      },
+      "abstentions": 27,
+      "ambiguity": 3,
+      "original_statuses": {
+        "MISMATCHES_SUPPLIED_TESTS": 13,
+        "MATCHES_SUPPLIED_TESTS": 18,
+        "BEHAVIOR_UNKNOWN": 2
+      },
+      "holdout_steps": 3340,
+      "probe_steps": 572,
+      "observed_steps": 20434,
+      "new_pairs": 1,
+      "probes": 16,
+      "runtime_fault_observations": 0,
+      "exact_rank": {
+        "top1": {
+          "hits": 8,
+          "total": 15,
+          "wilson95": [
+            0.301,
+            0.752
+          ]
+        },
+        "top3": {
+          "hits": 9,
+          "total": 15,
+          "wilson95": [
+            0.357,
+            0.802
+          ]
+        }
+      },
+      "behavioral_rank": {
+        "top1": {
+          "hits": 8,
+          "total": 15,
+          "wilson95": [
+            0.301,
+            0.752
+          ]
+        },
+        "top3": {
+          "hits": 9,
+          "total": 15,
+          "wilson95": [
+            0.357,
+            0.802
+          ]
+        }
+      },
+      "candidate_discovery_passes": {
+        "hits": 12,
+        "total": 12,
+        "wilson95": [
+          0.757,
+          1
+        ]
+      },
+      "candidate_holdout_passes": {
+        "hits": 12,
+        "total": 12,
+        "wilson95": [
+          0.757,
+          1
+        ]
+      },
+      "exact_on_both_top1": {
+        "hits": 8,
+        "total": 15,
+        "wilson95": [
+          0.301,
+          0.752
+        ]
+      },
+      "max_peak_cells": 68,
+      "max_call_depth": 5,
+      "review_burden": {
+        "review_all_same_pool": 0,
+        "initially_visible": 0,
+        "controls": 17,
+        "original_control_agreement": 17,
+        "with_visible_suggestions": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "fault_candidate_recall_same_pool": {
+          "hits": 9,
+          "total": 15,
+          "wilson95": [
+            0.357,
+            0.802
+          ]
+        },
+        "compiled_candidates": 12,
+        "holdout_checks": 12,
+        "holdout_passes": 12,
+        "recommended_holdout_failures": 0
+      }
+    }
+  },
+  "by_provenance": {
+    "85": {
+      "adapted_real_defect": {
+        "count": 5,
+        "confirmed_mismatch": {
+          "hits": 4,
+          "total": 5,
+          "wilson95": [
+            0.376,
+            0.964
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "project_injected": {
+        "count": 10,
+        "confirmed_mismatch": {
+          "hits": 9,
+          "total": 10,
+          "wilson95": [
+            0.596,
+            0.982
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 10,
+          "wilson95": [
+            0,
+            0.278
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 10,
+          "wilson95": [
+            0,
+            0.278
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 10,
+          "wilson95": [
+            0,
+            0.278
+          ]
+        }
+      },
+      "correct_control": {
+        "count": 17,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        }
+      },
+      "incomplete_specification": {
+        "count": 1,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        }
+      },
+      "runtime_fault": {
+        "count": 2,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        }
+      }
+    },
+    "9": {
+      "adapted_real_defect": {
+        "count": 5,
+        "confirmed_mismatch": {
+          "hits": 4,
+          "total": 5,
+          "wilson95": [
+            0.376,
+            0.964
+          ]
+        },
+        "has_candidate": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        },
+        "exact_repair": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        }
+      },
+      "project_injected": {
+        "count": 10,
+        "confirmed_mismatch": {
+          "hits": 9,
+          "total": 10,
+          "wilson95": [
+            0.596,
+            0.982
+          ]
+        },
+        "has_candidate": {
+          "hits": 1,
+          "total": 10,
+          "wilson95": [
+            0.018,
+            0.404
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 1,
+          "total": 10,
+          "wilson95": [
+            0.018,
+            0.404
+          ]
+        },
+        "exact_repair": {
+          "hits": 1,
+          "total": 10,
+          "wilson95": [
+            0.018,
+            0.404
+          ]
+        }
+      },
+      "correct_control": {
+        "count": 17,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        }
+      },
+      "incomplete_specification": {
+        "count": 1,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        }
+      },
+      "runtime_fault": {
+        "count": 2,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        }
+      }
+    },
+    "95": {
+      "adapted_real_defect": {
+        "count": 5,
+        "confirmed_mismatch": {
+          "hits": 4,
+          "total": 5,
+          "wilson95": [
+            0.376,
+            0.964
+          ]
+        },
+        "has_candidate": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        },
+        "exact_repair": {
+          "hits": 1,
+          "total": 5,
+          "wilson95": [
+            0.036,
+            0.624
+          ]
+        }
+      },
+      "project_injected": {
+        "count": 10,
+        "confirmed_mismatch": {
+          "hits": 9,
+          "total": 10,
+          "wilson95": [
+            0.596,
+            0.982
+          ]
+        },
+        "has_candidate": {
+          "hits": 8,
+          "total": 10,
+          "wilson95": [
+            0.49,
+            0.943
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 8,
+          "total": 10,
+          "wilson95": [
+            0.49,
+            0.943
+          ]
+        },
+        "exact_repair": {
+          "hits": 8,
+          "total": 10,
+          "wilson95": [
+            0.49,
+            0.943
+          ]
+        }
+      },
+      "correct_control": {
+        "count": 17,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 17,
+          "wilson95": [
+            0,
+            0.184
+          ]
+        }
+      },
+      "incomplete_specification": {
+        "count": 1,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        }
+      },
+      "runtime_fault": {
+        "count": 2,
+        "confirmed_mismatch": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "has_candidate": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "acceptable_repair": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "exact_repair": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        }
+      },
+      "unsupported_projection": {
+        "count": 8,
+        "faults": 3,
+        "holdout_recovered_by_inherited_engines": 0
+      }
+    }
+  },
+  "latency": {
+    "85": {
+      "mean_ms": 340.816,
+      "median_ms": 317.672,
+      "p95_ms": 408.475
+    },
+    "9": {
+      "mean_ms": 365.583,
+      "median_ms": 333.401,
+      "p95_ms": 617.419
+    },
+    "95": {
+      "mean_ms": 469.232,
+      "median_ms": 338.744,
+      "p95_ms": 951.647
+    }
+  },
+  "historical_diagnostics_only": [
+    {
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_ids": [
+        "IR-d1a3350cf3b3"
+      ],
+      "tests_matching_candidates": 1,
+      "candidate_results": [
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "exact_rank": 1,
+      "behavioral_rank": 1,
+      "exact_test_agreement": true,
+      "first_matching_exact": true,
+      "behavioral_match": true,
+      "observed_steps": 345,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "CONFIRMED_TEST_MISMATCH",
+        "review": "REVIEW_MATCHING_REPAIR",
+        "confirmed_fault": true,
+        "recommended_candidate": "IR-d1a3350cf3b3",
+        "matching_candidates": [
+          "IR-d1a3350cf3b3"
+        ]
+      },
+      "id": "lower-end-prime-classification-fault",
+      "holdout": [
+        {
+          "id": "IR-d1a3350cf3b3",
+          "category": "DOMAIN_BASE_CASE_CONSTRAINT",
+          "edits": [
+            {
+              "span": {
+                "start": {
+                  "line": 1,
+                  "column": 15,
+                  "offset": 14
+                },
+                "end": {
+                  "line": 1,
+                  "column": 15,
+                  "offset": 14
+                }
+              },
+              "original": "",
+              "proposed": "\n    if (n < 2) { return false; }\n"
+            }
+          ],
+          "exact": true,
+          "status": "MATCHES_SUPPLIED_TESTS",
+          "recommended": true,
+          "counterexamples": [],
+          "steps": 137
+        }
+      ],
+      "original_holdout": null,
+      "visible_suggestions": 1,
+      "max_peak_cells": 2,
+      "max_call_depth": 1,
+      "compiled": 1
+    },
+    {
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_ids": [
+        "IR-18a0341525ab",
+        "IR-1b6d2398d69e"
+      ],
+      "tests_matching_candidates": 2,
+      "candidate_results": [
+        "MATCHES_SUPPLIED_TESTS",
+        "MATCHES_SUPPLIED_TESTS"
+      ],
+      "exact_rank": 2,
+      "behavioral_rank": 2,
+      "exact_test_agreement": true,
+      "first_matching_exact": false,
+      "behavioral_match": true,
+      "observed_steps": 13594,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [
+        "untested"
+      ],
+      "policy": {
+        "original": "CONFIRMED_TEST_MISMATCH",
+        "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+        "confirmed_fault": true,
+        "recommended_candidate": null,
+        "matching_candidates": [
+          "IR-18a0341525ab",
+          "IR-1b6d2398d69e"
+        ]
+      },
+      "id": "last-product-window-fault",
+      "holdout": [
+        {
+          "id": "IR-18a0341525ab",
+          "category": "WINDOW_BOUNDARY_CONSTRAINT",
+          "edits": [
+            {
+              "span": {
+                "start": {
+                  "line": 5,
+                  "column": 30,
+                  "offset": 257
+                },
+                "end": {
+                  "line": 5,
+                  "column": 31,
+                  "offset": 258
+                }
+              },
+              "original": "<",
+              "proposed": "<="
+            }
+          ],
+          "exact": false,
+          "status": "MATCHES_SUPPLIED_TESTS",
+          "recommended": false,
+          "counterexamples": [],
+          "steps": 1843
+        },
+        {
+          "id": "IR-1b6d2398d69e",
+          "category": "WINDOW_BOUNDARY_CONSTRAINT",
+          "edits": [
+            {
+              "span": {
+                "start": {
+                  "line": 5,
+                  "column": 33,
+                  "offset": 260
+                },
+                "end": {
+                  "line": 5,
+                  "column": 35,
+                  "offset": 262
+                }
+              },
+              "original": "13",
+              "proposed": "12"
+            }
+          ],
+          "exact": true,
+          "status": "MATCHES_SUPPLIED_TESTS",
+          "recommended": false,
+          "counterexamples": [],
+          "steps": 1843
+        }
+      ],
+      "original_holdout": null,
+      "visible_suggestions": 2,
+      "max_peak_cells": 26,
+      "max_call_depth": 1,
+      "compiled": 2
+    },
+    {
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 6588,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "CONFIRMED_TEST_MISMATCH",
+        "review": "ABSTAIN",
+        "confirmed_fault": true,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "shifted-missing-member-fault",
+      "holdout": [],
+      "original_holdout": null,
+      "visible_suggestions": 0,
+      "max_peak_cells": 17,
+      "max_call_depth": 2,
+      "compiled": 0
+    }
+  ]
+}

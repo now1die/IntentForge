@@ -39,7 +39,7 @@ class ProjectionLimit(ValueError):
 class Term:
     operation: str
     children: tuple = ()
-    value: int | None = None
+    value: int | str | None = None
     origin: int | None = None
     alternatives: tuple = ()
 
@@ -201,7 +201,7 @@ def arithmetic_value(operation, a, b):
     return signed(q) if operation == "/" else signed(a - q * b)
 
 
-def substitution(inputs, changes=(), *, on_fault=None):
+def substitution(inputs, changes=(), *, on_fault=None, resolve=None):
     """Bind one input and one atomic edit set to a restricted term graph."""
     values = {}
     by_origin = {change.origin: change for change in changes}
@@ -226,6 +226,8 @@ def substitution(inputs, changes=(), *, on_fault=None):
                 value = signed(value + applied.value)
         elif term.operation == "negate":
             value = signed(-substitute(term.children[0]))
+        elif resolve is not None and term.operation in {"cell", "helper"}:
+            value = resolve(term, substitute)
         elif term.operation == "sequence":
             for child in term.children:
                 substitute(child)
