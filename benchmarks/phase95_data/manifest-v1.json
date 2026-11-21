@@ -1,0 +1,73 @@
+{
+  "revision": "multiple pinned upstream revisions",
+  "case_sha256": "347a9f88dc85678137e990390a276b8d2105f38c05bb0d84f368966978549e10",
+  "upstream_sha256": {
+    "BinarySearchAlgorithm.java": "a03b6662c83a07eb0de32d9d6d1a038ab10155cf7c513ca59f074d359ce64a05",
+    "ExponentialSearchAlgorithm.java": "916005d23e3d00b6865b87053618d4ccb8fe3d8e2027c193c94dc3ff41d2219f",
+    "LICENSE-Java.txt": "d8499582b215ce90b33be4736260b1bb2e2dc312f71c1b29d19b8fc6d2dcdc3f",
+    "LICENSE-JavaScript.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "NOTICE.md": "0b2832648fd8563fa755f4e9884864430d736c0e6fe10fe3eb61db9ca965932f",
+    "PrimeCheck.java": "70e80df6c1a3b978c00a6a926f3aa019c80f136e6ae21e91f925c1ff0475756e",
+    "SumOfDigits.java": "5c465d9c998d5d133468d996ac20e3a3096810f35f2a1c7fc2dd8e8a247d226d",
+    "binary-after.java": "1bb1e7ad7fc4d97eb4417a910e22095f07efc59962a0302a815a28b97a266044",
+    "binary-before.java": "0c8e092d4ee737d24ec56d04199abedbc553cf8666aec7b6764aab32af602feb",
+    "date-after.js": "b9db2e4f0f86e1a34c66c3a313d8e15d97d735b410650ad0aa42c37c32e67869",
+    "date-before.js": "029b7a3f8ceadd06f817979c6d1a7f7aa695a79152ef257ee5bd7ba7c46c058b",
+    "exponential-after.java": "59c7c857a0bcef942bfea1383324ea81ab16e806096247fa5490239be30f9821",
+    "exponential-before.java": "a9669a852d8243b8a3845ca7db9d0f963a0ca0e1b672841b6f97cdaf96145b92",
+    "multiples-after.js": "355ce2bef1bb047d4e6e6c4dd599f69f9ac0c8a7a496544caf2e15b57fb71a80",
+    "multiples-before.js": "8eecfb9d7873d5c7fb45ac53eb26dfc1d2c0e6c6bae4c62f4476030fe8dbb226",
+    "smith-after.java": "40820802f48ca4860fe19f3b1412a96763d403a791555e933c462ce9a95ee95e",
+    "smith-before.java": "efacb7f55bc0fc0e850deb3a78a1ea03d7335528d1348ee4004fb8814266778f"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 33
+  },
+  "external_sources": {
+    "exclusive-multiple-sum": [
+      "TheAlgorithms/JavaScript",
+      "Project-Euler/Problem1.js",
+      "multiples",
+      "cedab196e7da0a48859baba4839e8ef0dd4aba46",
+      "90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "Translate the extracted numeric function to int32 and omit its CLI. Preserve the inclusive defective loop."
+    ],
+    "gregorian-day-difference": [
+      "TheAlgorithms/JavaScript",
+      "Conversions/DateDayDifference.js",
+      "date",
+      "2fe0dfde23b1179a6fa5fdd7425a3f2bf303d538",
+      "f13eec1bbb94484912d10a4e5376aacf533b3de6",
+      "Pass components as signed integer arguments for valid dates. Use exact rational scaling for the old floor and integer truncation of each positive term for the fix."
+    ],
+    "recursive-search-upper-bound": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/BinarySearch.java",
+      "binary",
+      "69d0070c99453f0a5d4793d41aa5d750a5a4a5de",
+      "d22420fea8d7b05d02e42111d9bc5e24137e907f",
+      "Use five sorted unique integer cells, rebuilt in the recursive frame. Preserve the inclusive upper bound and map index failures to Mini-C ARRAY_BOUNDS."
+    ],
+    "expanding-search-boundary": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/ExponentialSearch.java",
+      "exponential",
+      "171bdc5cb06df69d9070d5ed1f95a3544a4276e9",
+      "55f551b17bd0c48b7cb1ba7ecfb7092803c7a150",
+      "Use five sorted unique cells. Translate doubling and exclusive binary-search limits, including Java's raw negative insertion-point result before the fix."
+    ],
+    "smith-composite-domain": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/maths/SmithNumber.java",
+      "smith",
+      "b42e5df87251019f8836b2799ced4c6e20c4c6f8",
+      "e79b0f106477774020d4c5c2738f0854ff3d2444",
+      "Translate digit sums, trial division and composite admission for bounded integers. The long product and int32 product agree on the checked sample domain."
+    ]
+  },
+  "grouping": "One split per upstream repository and algorithm family. Archived Phase 9 adaptations are diagnostics only.",
+  "holdout": "Generate with supplied discovery only, then submit candidates separately to the isolated worker."
+}

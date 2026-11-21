@@ -1,0 +1,3083 @@
+[
+  {
+    "family": "development-upper-limit",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Above seven return a sentinel, otherwise report a squared measurement.",
+    "domain": "Signals -15 to 20.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 50
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 26
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "development-upper-limit-fault",
+    "source": "int f(int signal){return signal*signal+1;}",
+    "references": [
+      "int f(int signal){if(signal>7){return -8;}return signal*signal+1;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "development-upper-limit",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Above seven return a sentinel, otherwise report a squared measurement.",
+    "domain": "Signals -15 to 20.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 50
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 26
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "development-upper-limit-control",
+    "source": "int f(int signal){if(signal>7){return -8;}return signal*signal+1;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "selection-missed-suffix",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Visit odd checked checkpoints through the closing endpoint.",
+    "domain": "Counts 0 to 20.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 34
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 34
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "selection-missed-suffix-fault",
+    "source": "int f(int n){int cost=2;for(int j=1;j<n;j+=2){cost+=j*2;}return cost;}",
+    "references": [
+      "int f(int n){int cost=2;for(int j=1;j<=n;j+=2){cost+=j*2;}return cost;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "selection-missed-suffix",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Visit odd checked checkpoints through the closing endpoint.",
+    "domain": "Counts 0 to 20.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 34
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 34
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "selection-missed-suffix-control",
+    "source": "int f(int n){int cost=2;for(int j=1;j<=n;j+=2){cost+=j*2;}return cost;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "calibration-independent-offset",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Accumulate weighted zero-origin offsets and add a distinct baseline.",
+    "domain": "Small signed baselines and nonnegative bounds.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 34
+      },
+      {
+        "arguments": [
+          5,
+          6
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 5
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          9,
+          11
+        ],
+        "expected": 77
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "calibration-independent-offset-fault",
+    "source": "int f(int a,int k){int a0=a+2;int visits=0;for(int i=1;i<k;i++){visits+=i+1;}return a0+visits;}",
+    "references": [
+      "int f(int a,int k){int a0=a+2;int visits=0;for(int i=0;i<k;i++){visits+=i+1;}return a0+visits;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "calibration-independent-offset",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Accumulate weighted zero-origin offsets and add a distinct baseline.",
+    "domain": "Small signed baselines and nonnegative bounds.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 34
+      },
+      {
+        "arguments": [
+          5,
+          6
+        ],
+        "expected": 28
+      },
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 5
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          9,
+          11
+        ],
+        "expected": 77
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "calibration-independent-offset-control",
+    "source": "int f(int a,int k){int a0=a+2;int visits=0;for(int i=0;i<k;i++){visits+=i+1;}return a0+visits;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "exclusive-multiple-sum",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum nonnegative multiples of three or five strictly below the bound.",
+    "domain": "Nonnegative bounds up to 60.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 33
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          30
+        ],
+        "expected": 195
+      },
+      {
+        "arguments": [
+          49
+        ],
+        "expected": 543
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "license": "GPL-3.0",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Project-Euler/Problem1.js",
+      "archive": "multiples",
+      "before": "cedab196e7da0a48859baba4839e8ef0dd4aba46",
+      "after": "90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "adaptation": "Translate the extracted numeric function to int32 and omit its CLI. Preserve the inclusive defective loop."
+    },
+    "id": "exclusive-multiple-sum-fault",
+    "source": "int f(int n){int total=0;for(int i=0;i<=n;i++){if(i%3==0 || i%5==0){total+=i;}}return total;}",
+    "references": [
+      "int f(int n){int total=0;for(int i=0;i<n;i++){if(i%3==0 || i%5==0){total+=i;}}return total;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "exclusive-multiple-sum",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum nonnegative multiples of three or five strictly below the bound.",
+    "domain": "Nonnegative bounds up to 60.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 33
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          30
+        ],
+        "expected": 195
+      },
+      {
+        "arguments": [
+          49
+        ],
+        "expected": 543
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "license": "GPL-3.0",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Project-Euler/Problem1.js",
+      "archive": "multiples",
+      "before": "cedab196e7da0a48859baba4839e8ef0dd4aba46",
+      "after": "90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "adaptation": "Translate the extracted numeric function to int32 and omit its CLI. Preserve the inclusive defective loop."
+    },
+    "id": "exclusive-multiple-sum-control",
+    "source": "int f(int n){int total=0;for(int i=0;i<n;i++){if(i%3==0 || i%5==0){total+=i;}}return total;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "gregorian-day-difference",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Absolute Gregorian day difference.",
+    "domain": "Valid dates in years 1800 through 2050.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          17,
+          8,
+          2002,
+          10,
+          10,
+          2020
+        ],
+        "expected": 6629
+      },
+      {
+        "arguments": [
+          18,
+          2,
+          2001,
+          16,
+          3,
+          2022
+        ],
+        "expected": 7696
+      },
+      {
+        "arguments": [
+          11,
+          11,
+          2011,
+          12,
+          12,
+          2012
+        ],
+        "expected": 397
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          2001,
+          16,
+          3,
+          2011
+        ],
+        "expected": 3726
+      },
+      {
+        "arguments": [
+          29,
+          2,
+          2024,
+          4,
+          3,
+          2024
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          3,
+          2023,
+          4,
+          3,
+          2024
+        ],
+        "expected": 366
+      },
+      {
+        "arguments": [
+          30,
+          12,
+          1899,
+          2,
+          1,
+          1900
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/f13eec1bbb94484912d10a4e5376aacf533b3de6",
+      "license": "GPL-3.0",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Conversions/DateDayDifference.js",
+      "archive": "date",
+      "before": "2fe0dfde23b1179a6fa5fdd7425a3f2bf303d538",
+      "after": "f13eec1bbb94484912d10a4e5376aacf533b3de6",
+      "adaptation": "Pass components as signed integer arguments for valid dates. Use exact rational scaling for the old floor and integer truncation of each positive term for the fix."
+    },
+    "id": "gregorian-day-difference-fault",
+    "source": "bool leap(int y){if(y%400==0){return true;}if(y%100==0){return false;}return y%4==0;}\n    int ordinal(int d,int m,int y){int u=y-1;int shift=0;\n      if(m>2){shift=-2;if(leap(y)){shift=-1;}}\n      return 365*u+d+shift+(300*u-12*u+3*u+100*(367*m-362))/1200;}\n    int f(int d,int m,int y,int e,int w,int z){int a=ordinal(d,m,y);int b=ordinal(e,w,z);\n      if(a<b){return b-a;}return a-b;}",
+    "references": [
+      "bool leap(int y){if(y%400==0){return true;}if(y%100==0){return false;}return y%4==0;}\n    int ordinal(int d,int m,int y){int u=y-1;int shift=0;\n      if(m>2){shift=-2;if(leap(y)){shift=-1;}}\n      return 365*u+d+shift+u/4-u/100+u/400+(367*m-362)/12;}\n    int f(int d,int m,int y,int e,int w,int z){int a=ordinal(d,m,y);int b=ordinal(e,w,z);\n      if(a<b){return b-a;}return a-b;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "gregorian-day-difference",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Absolute Gregorian day difference.",
+    "domain": "Valid dates in years 1800 through 2050.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          17,
+          8,
+          2002,
+          10,
+          10,
+          2020
+        ],
+        "expected": 6629
+      },
+      {
+        "arguments": [
+          18,
+          2,
+          2001,
+          16,
+          3,
+          2022
+        ],
+        "expected": 7696
+      },
+      {
+        "arguments": [
+          11,
+          11,
+          2011,
+          12,
+          12,
+          2012
+        ],
+        "expected": 397
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          2001,
+          16,
+          3,
+          2011
+        ],
+        "expected": 3726
+      },
+      {
+        "arguments": [
+          29,
+          2,
+          2024,
+          4,
+          3,
+          2024
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          3,
+          2023,
+          4,
+          3,
+          2024
+        ],
+        "expected": 366
+      },
+      {
+        "arguments": [
+          30,
+          12,
+          1899,
+          2,
+          1,
+          1900
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/f13eec1bbb94484912d10a4e5376aacf533b3de6",
+      "license": "GPL-3.0",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Conversions/DateDayDifference.js",
+      "archive": "date",
+      "before": "2fe0dfde23b1179a6fa5fdd7425a3f2bf303d538",
+      "after": "f13eec1bbb94484912d10a4e5376aacf533b3de6",
+      "adaptation": "Pass components as signed integer arguments for valid dates. Use exact rational scaling for the old floor and integer truncation of each positive term for the fix."
+    },
+    "id": "gregorian-day-difference-control",
+    "source": "bool leap(int y){if(y%400==0){return true;}if(y%100==0){return false;}return y%4==0;}\n    int ordinal(int d,int m,int y){int u=y-1;int shift=0;\n      if(m>2){shift=-2;if(leap(y)){shift=-1;}}\n      return 365*u+d+shift+u/4-u/100+u/400+(367*m-362)/12;}\n    int f(int d,int m,int y,int e,int w,int z){int a=ordinal(d,m,y);int b=ordinal(e,w,z);\n      if(a<b){return b-a;}return a-b;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "recursive-search-upper-bound",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the index of a unique key by recursive binary search.",
+    "domain": "Five strictly ascending small integers and a signed key.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          20,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          18,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          0,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          37,
+          -3,
+          2,
+          5,
+          33,
+          36
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          -2,
+          0,
+          3,
+          11,
+          50
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          7,
+          9,
+          11,
+          13
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/d22420fea8d7b05d02e42111d9bc5e24137e907f",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/BinarySearch.java",
+      "archive": "binary",
+      "before": "69d0070c99453f0a5d4793d41aa5d750a5a4a5de",
+      "after": "d22420fea8d7b05d02e42111d9bc5e24137e907f",
+      "adaptation": "Use five sorted unique integer cells, rebuilt in the recursive frame. Preserve the inclusive upper bound and map index failures to Mini-C ARRAY_BOUNDS."
+    },
+    "id": "recursive-search-upper-bound-fault",
+    "source": "int at(int target,int lo,int hi,int a,int b,int c,int d,int e){int values[5]; values[0]=a;values[1]=b;values[2]=c;values[3]=d;values[4]=e;\n      if(hi<lo){return -1;}int mid=(lo+hi)/2;int value=values[mid];\n      if(target==value){return mid;}\n      if(target<value){return at(target,lo,mid-1,a,b,c,d,e);}return at(target,mid+1,hi,a,b,c,d,e);}\n    int f(int key,int a,int b,int c,int d,int e){return at(key,0,5,a,b,c,d,e);}",
+    "references": [
+      "int at(int target,int lo,int hi,int a,int b,int c,int d,int e){int values[5]; values[0]=a;values[1]=b;values[2]=c;values[3]=d;values[4]=e;\n      if(hi<lo){return -1;}int mid=(lo+hi)/2;int value=values[mid];\n      if(target==value){return mid;}\n      if(target<value){return at(target,lo,mid-1,a,b,c,d,e);}return at(target,mid+1,hi,a,b,c,d,e);}\n    int f(int key,int a,int b,int c,int d,int e){return at(key,0,4,a,b,c,d,e);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "recursive-search-upper-bound",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the index of a unique key by recursive binary search.",
+    "domain": "Five strictly ascending small integers and a signed key.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          20,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          18,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          0,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          37,
+          -3,
+          2,
+          5,
+          33,
+          36
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          -2,
+          0,
+          3,
+          11,
+          50
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          7,
+          9,
+          11,
+          13
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/d22420fea8d7b05d02e42111d9bc5e24137e907f",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/BinarySearch.java",
+      "archive": "binary",
+      "before": "69d0070c99453f0a5d4793d41aa5d750a5a4a5de",
+      "after": "d22420fea8d7b05d02e42111d9bc5e24137e907f",
+      "adaptation": "Use five sorted unique integer cells, rebuilt in the recursive frame. Preserve the inclusive upper bound and map index failures to Mini-C ARRAY_BOUNDS."
+    },
+    "id": "recursive-search-upper-bound-control",
+    "source": "int at(int target,int lo,int hi,int a,int b,int c,int d,int e){int values[5]; values[0]=a;values[1]=b;values[2]=c;values[3]=d;values[4]=e;\n      if(hi<lo){return -1;}int mid=(lo+hi)/2;int value=values[mid];\n      if(target==value){return mid;}\n      if(target<value){return at(target,lo,mid-1,a,b,c,d,e);}return at(target,mid+1,hi,a,b,c,d,e);}\n    int f(int key,int a,int b,int c,int d,int e){return at(key,0,4,a,b,c,d,e);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "expanding-search-boundary",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the index of a key using a doubled search range.",
+    "domain": "Five unique sorted integers with a bounded signed search key.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          10,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          18,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -2,
+          -9,
+          -2,
+          3,
+          15,
+          17
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          20,
+          1,
+          4,
+          9,
+          17,
+          31
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          30,
+          1,
+          5,
+          8,
+          10,
+          15
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/55f551b17bd0c48b7cb1ba7ecfb7092803c7a150",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/ExponentialSearch.java",
+      "archive": "exponential",
+      "before": "171bdc5cb06df69d9070d5ed1f95a3544a4276e9",
+      "after": "55f551b17bd0c48b7cb1ba7ecfb7092803c7a150",
+      "adaptation": "Use five sorted unique cells. Translate doubling and exclusive binary-search limits, including Java's raw negative insertion-point result before the fix."
+    },
+    "id": "expanding-search-boundary-fault",
+    "source": "int f(int key,int a,int b,int c,int d,int e){int values[5]; values[0]=a;values[1]=b;values[2]=c;values[3]=d;values[4]=e;\n        if(a==key){return 0;}if(e==key){return 4;}\n        int extent=1;while(extent<5 && values[extent]<key){extent*=2;}\n        int lo=extent/2;int hi=extent;if(hi>5){hi=5;}hi--;\n        while(lo<=hi){int mid=(lo+hi)/2;if(values[mid]==key){return mid;}\n          if(values[mid]<key){lo=mid+1;}else{hi=mid-1;}}\n        return -lo-1;}",
+    "references": [
+      "int f(int key,int a,int b,int c,int d,int e){int values[5]; values[0]=a;values[1]=b;values[2]=c;values[3]=d;values[4]=e;\n        if(a==key){return 0;}if(e==key){return 4;}\n        int extent=1;while(extent<5 && values[extent]<key){extent*=2;}\n        int lo=extent/2;int hi=extent+1;if(hi>5){hi=5;}hi--;\n        while(lo<=hi){int mid=(lo+hi)/2;if(values[mid]==key){return mid;}\n          if(values[mid]<key){lo=mid+1;}else{hi=mid-1;}}\n        return -1;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "expanding-search-boundary",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the index of a key using a doubled search range.",
+    "domain": "Five unique sorted integers with a bounded signed search key.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          10,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          18,
+          1,
+          3,
+          7,
+          10,
+          18
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -2,
+          -9,
+          -2,
+          3,
+          15,
+          17
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          20,
+          1,
+          4,
+          9,
+          17,
+          31
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          30,
+          1,
+          5,
+          8,
+          10,
+          15
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/55f551b17bd0c48b7cb1ba7ecfb7092803c7a150",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/ExponentialSearch.java",
+      "archive": "exponential",
+      "before": "171bdc5cb06df69d9070d5ed1f95a3544a4276e9",
+      "after": "55f551b17bd0c48b7cb1ba7ecfb7092803c7a150",
+      "adaptation": "Use five sorted unique cells. Translate doubling and exclusive binary-search limits, including Java's raw negative insertion-point result before the fix."
+    },
+    "id": "expanding-search-boundary-control",
+    "source": "int f(int key,int a,int b,int c,int d,int e){int values[5]; values[0]=a;values[1]=b;values[2]=c;values[3]=d;values[4]=e;\n        if(a==key){return 0;}if(e==key){return 4;}\n        int extent=1;while(extent<5 && values[extent]<key){extent*=2;}\n        int lo=extent/2;int hi=extent+1;if(hi>5){hi=5;}hi--;\n        while(lo<=hi){int mid=(lo+hi)/2;if(values[mid]==key){return mid;}\n          if(values[mid]<key){lo=mid+1;}else{hi=mid-1;}}\n        return -1;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "smith-composite-domain",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "A composite is Smith when its digit sum agrees with the digit sums of its prime factors.",
+    "domain": "Integers -100 through 100. The int32 and widened trial bounds agree on these samples.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          22
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          -4
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          85
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          94
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          100
+        ],
+        "expected": false
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/e79b0f106477774020d4c5c2738f0854ff3d2444",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/maths/SmithNumber.java",
+      "archive": "smith",
+      "before": "b42e5df87251019f8836b2799ced4c6e20c4c6f8",
+      "after": "e79b0f106477774020d4c5c2738f0854ff3d2444",
+      "adaptation": "Translate digit sums, trial division and composite admission for bounded integers. The long product and int32 product agree on the checked sample domain."
+    },
+    "id": "smith-composite-domain-fault",
+    "source": "int digits(int n){if(n<0){n=-n;}int sum=0;while(n!=0){sum+=n%10;n/=10;}return sum;}\n    bool prime(int n){if(n<=1){return false;}for(int i=2;i*i<=n;i++){if(n%i==0){return false;}}return true;}\n    int factors(int n){int sum=0;int original=n;for(int i=2;i*i<=original;i++){while(n%i==0){sum+=digits(i);n/=i;}}\n      if(n>1){sum+=digits(n);}return sum;}\n    bool f(int n){if(prime(n)){return false;}return digits(n)==factors(n);}",
+    "references": [
+      "int digits(int n){if(n<0){n=-n;}int sum=0;while(n!=0){sum+=n%10;n/=10;}return sum;}\n    bool prime(int n){if(n<=1){return false;}for(int i=2;i*i<=n;i++){if(n%i==0){return false;}}return true;}\n    int factors(int n){int sum=0;int original=n;for(int i=2;i*i<=n;i++){while(n%i==0){sum+=digits(i);n/=i;}}\n      if(n>1){sum+=digits(n);}return sum;}\n    bool f(int n){if(n<=3 || prime(n)){return false;}return digits(n)==factors(n);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "smith-composite-domain",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "A composite is Smith when its digit sum agrees with the digit sums of its prime factors.",
+    "domain": "Integers -100 through 100. The int32 and widened trial bounds agree on these samples.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          22
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          -4
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          85
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          94
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          100
+        ],
+        "expected": false
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/e79b0f106477774020d4c5c2738f0854ff3d2444",
+      "license": "MIT",
+      "review": "Independent executable reference. External human review unavailable.",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/maths/SmithNumber.java",
+      "archive": "smith",
+      "before": "b42e5df87251019f8836b2799ced4c6e20c4c6f8",
+      "after": "e79b0f106477774020d4c5c2738f0854ff3d2444",
+      "adaptation": "Translate digit sums, trial division and composite admission for bounded integers. The long product and int32 product agree on the checked sample domain."
+    },
+    "id": "smith-composite-domain-control",
+    "source": "int digits(int n){if(n<0){n=-n;}int sum=0;while(n!=0){sum+=n%10;n/=10;}return sum;}\n    bool prime(int n){if(n<=1){return false;}for(int i=2;i*i<=n;i++){if(n%i==0){return false;}}return true;}\n    int factors(int n){int sum=0;int original=n;for(int i=2;i*i<=n;i++){while(n%i==0){sum+=digits(i);n/=i;}}\n      if(n>1){sum+=digits(n);}return sum;}\n    bool f(int n){if(n<=3 || prime(n)){return false;}return digits(n)==factors(n);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "negative-gauge-baseline",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the disabled gauge value before the certified lower point.",
+    "domain": "Signed readings and bias.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -5,
+          2
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          -4,
+          1
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          -3,
+          5
+        ],
+        "expected": -22
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          0,
+          9
+        ],
+        "expected": -26
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -9,
+          -2
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          15,
+          6
+        ],
+        "expected": 46
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "negative-gauge-baseline-fault",
+    "source": "int f(int reading,int bias){return 4*(reading-bias)+10;}",
+    "references": [
+      "int f(int reading,int bias){if(reading<-3){return 17;}return 4*(reading-bias)+10;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "negative-gauge-baseline",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the disabled gauge value before the certified lower point.",
+    "domain": "Signed readings and bias.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -5,
+          2
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          -4,
+          1
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          -3,
+          5
+        ],
+        "expected": -22
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          0,
+          9
+        ],
+        "expected": -26
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -9,
+          -2
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          15,
+          6
+        ],
+        "expected": 46
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "negative-gauge-baseline-control",
+    "source": "int f(int reading,int bias){if(reading<-3){return 17;}return 4*(reading-bias)+10;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "upper-clock-preset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the overflow preset after tick eleven.",
+    "domain": "Tick sample interval 0–20.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          12
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          14
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 53
+      },
+      {
+        "arguments": [
+          19
+        ],
+        "expected": -7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": -7
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "upper-clock-preset-fault",
+    "source": "int f(int ticks){return 53-ticks*4;}",
+    "references": [
+      "int f(int ticks){if(ticks>11){return -7;}return 53-ticks*4;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "upper-clock-preset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the overflow preset after tick eleven.",
+    "domain": "Tick sample interval 0–20.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          12
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          14
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 53
+      },
+      {
+        "arguments": [
+          19
+        ],
+        "expected": -7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": -7
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "upper-clock-preset-control",
+    "source": "int f(int ticks){if(ticks>11){return -7;}return 53-ticks*4;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "boolean-marker-gate",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Namespaced markers become active at four and are selected by two independent periods.",
+    "domain": "Small signed marker values.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          -4
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          23
+        ],
+        "expected": false
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "boolean-marker-gate-fault",
+    "source": "bool f(int mark){return mark%4==0 || mark%7==0;}",
+    "references": [
+      "bool f(int mark){if(mark<4){return false;}return mark%4==0 || mark%7==0;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "boolean-marker-gate",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Namespaced markers become active at four and are selected by two independent periods.",
+    "domain": "Small signed marker values.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          -4
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          23
+        ],
+        "expected": false
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "boolean-marker-gate-control",
+    "source": "bool f(int mark){if(mark<4){return false;}return mark%4==0 || mark%7==0;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "minimum-filter-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the least energy of a complete three-sample window.",
+    "domain": "n 0–5, bounded signed signals.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          5,
+          7,
+          4,
+          8,
+          9
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          4,
+          7,
+          1,
+          2,
+          -7,
+          8
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          5,
+          9,
+          5,
+          8,
+          1,
+          -3
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          2,
+          1,
+          -2,
+          3,
+          2,
+          -1
+        ],
+        "expected": 99
+      },
+      {
+        "arguments": [
+          4,
+          3,
+          5,
+          -2,
+          0,
+          0
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          -2,
+          -1,
+          7,
+          7,
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          1,
+          0,
+          2,
+          7
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "minimum-filter-window-fault",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int input[5];\n      input[0]=a;input[1]=b;input[2]=c;input[3]=d;input[4]=e;\n      int best=99;for(int start=0;start<n-3;start++){int cost=0;\n      for(int j=0;j<3;j++){cost+=input[start+j];}\n      if(cost<best){best=cost;}}return best;}",
+    "references": [
+      "int f(int n,int a,int b,int c,int d,int e){int input[5];\n      input[0]=a;input[1]=b;input[2]=c;input[3]=d;input[4]=e;\n      int best=99;for(int start=0;start<=n-3;start++){int cost=0;\n      for(int j=0;j<3;j++){cost+=input[start+j];}\n      if(cost<best){best=cost;}}return best;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "minimum-filter-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Find the least energy of a complete three-sample window.",
+    "domain": "n 0–5, bounded signed signals.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          5,
+          7,
+          4,
+          8,
+          9
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          4,
+          7,
+          1,
+          2,
+          -7,
+          8
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          5,
+          9,
+          5,
+          8,
+          1,
+          -3
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          2,
+          1,
+          -2,
+          3,
+          2,
+          -1
+        ],
+        "expected": 99
+      },
+      {
+        "arguments": [
+          4,
+          3,
+          5,
+          -2,
+          0,
+          0
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          -2,
+          -1,
+          7,
+          7,
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          1,
+          0,
+          2,
+          7
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "minimum-filter-window-control",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int input[5];\n      input[0]=a;input[1]=b;input[2]=c;input[3]=d;input[4]=e;\n      int best=99;for(int start=0;start<=n-3;start++){int cost=0;\n      for(int j=0;j<3;j++){cost+=input[start+j];}\n      if(cost<best){best=cost;}}return best;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "marked-tail-sentinel",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the first selected position through the closed endpoint, or a sentinel.",
+    "domain": "Nonnegative bounds and tag 0–4.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          6,
+          9,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          8,
+          6,
+          1
+        ],
+        "expected": -71
+      },
+      {
+        "arguments": [
+          3,
+          3,
+          3
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          23,
+          0
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          4,
+          5,
+          0
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "marked-tail-sentinel-fault",
+    "source": "int f(int lo,int end,int tag){int picked=-71;for(int i=lo;i<end;i++){if(i%5==tag){picked=i;break;}}return picked;}",
+    "references": [
+      "int f(int lo,int end,int tag){int picked=-71;for(int i=lo;i<=end;i++){if(i%5==tag){picked=i;break;}}return picked;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "marked-tail-sentinel",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the first selected position through the closed endpoint, or a sentinel.",
+    "domain": "Nonnegative bounds and tag 0–4.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          6,
+          9,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          8,
+          6,
+          1
+        ],
+        "expected": -71
+      },
+      {
+        "arguments": [
+          3,
+          3,
+          3
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          23,
+          0
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          4,
+          5,
+          0
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "marked-tail-sentinel-control",
+    "source": "int f(int lo,int end,int tag){int picked=-71;for(int i=lo;i<=end;i++){if(i%5==tag){picked=i;break;}}return picked;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "helper-gated-tail",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Select the first non-skipped checkpoint satisfying a helper's typed condition.",
+    "domain": "Small signed checkpoints and residue 0–2.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          5,
+          2,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          4,
+          7,
+          5,
+          0
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          -2,
+          1,
+          0,
+          0
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          8,
+          8,
+          7,
+          2
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          15,
+          10,
+          1
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          2,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "helper-gated-tail-fault",
+    "source": "bool parity(int k,int t){if(k<0){return false;}return k%3==t;}\n        int f(int first,int last,int skip,int tag){for(int p=first;p<last;p++){\n          if(p==skip){continue;}if(parity(p,tag)){return p;}}return -13;}",
+    "references": [
+      "bool parity(int k,int t){if(k<0){return false;}return k%3==t;}\n        int f(int first,int last,int skip,int tag){for(int p=first;p<=last;p++){\n          if(p==skip){continue;}if(parity(p,tag)){return p;}}return -13;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "helper-gated-tail",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Select the first non-skipped checkpoint satisfying a helper's typed condition.",
+    "domain": "Small signed checkpoints and residue 0–2.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          5,
+          2,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          4,
+          7,
+          5,
+          0
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          -2,
+          1,
+          0,
+          0
+        ],
+        "expected": -13
+      },
+      {
+        "arguments": [
+          8,
+          8,
+          7,
+          2
+        ],
+        "expected": 8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          15,
+          10,
+          1
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          2,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "helper-gated-tail-control",
+    "source": "bool parity(int k,int t){if(k<0){return false;}return k%3==t;}\n        int f(int first,int last,int skip,int tag){for(int p=first;p<=last;p++){\n          if(p==skip){continue;}if(parity(p,tag)){return p;}}return -13;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "weighted-derived-origin",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate weighted positions from the lower adjusted input.",
+    "domain": "Small signed endpoints and bounded iteration.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          8,
+          9
+        ],
+        "expected": 106
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          5
+        ],
+        "expected": 34
+      },
+      {
+        "arguments": [
+          8,
+          2,
+          7
+        ],
+        "expected": 71
+      },
+      {
+        "arguments": [
+          3,
+          6,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          4,
+          9
+        ],
+        "expected": 113
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -2,
+          5,
+          6
+        ],
+        "expected": 26
+      },
+      {
+        "arguments": [
+          8,
+          11,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "weighted-derived-origin-fault",
+    "source": "int start(int cap,int margin){if(cap<margin){return cap-2;}return margin-2;}\n        int f(int cap,int margin,int end){int from=start(cap,margin);int pay=1;for(int i=0;i<end;i++){pay+=3*i+1;}return pay;}",
+    "references": [
+      "int start(int cap,int margin){if(cap<margin){return cap-2;}return margin-2;}\n        int f(int cap,int margin,int end){int from=start(cap,margin);int pay=1;for(int i=from;i<end;i++){pay+=3*i+1;}return pay;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "weighted-derived-origin",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Accumulate weighted positions from the lower adjusted input.",
+    "domain": "Small signed endpoints and bounded iteration.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          8,
+          9
+        ],
+        "expected": 106
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          5
+        ],
+        "expected": 34
+      },
+      {
+        "arguments": [
+          8,
+          2,
+          7
+        ],
+        "expected": 71
+      },
+      {
+        "arguments": [
+          3,
+          6,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          4,
+          9
+        ],
+        "expected": 113
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -2,
+          5,
+          6
+        ],
+        "expected": 26
+      },
+      {
+        "arguments": [
+          8,
+          11,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "weighted-derived-origin-control",
+    "source": "int start(int cap,int margin){if(cap<margin){return cap-2;}return margin-2;}\n        int f(int cap,int margin,int end){int from=start(cap,margin);int pay=1;for(int i=from;i<end;i++){pay+=3*i+1;}return pay;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "descending-margin-origin",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the sum-adjusted descending start.",
+    "domain": "Signed bounds and fixed negative stride.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          2,
+          0
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          8,
+          3,
+          1
+        ],
+        "expected": 75
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          0
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          3,
+          0,
+          4
+        ],
+        "expected": -9
+      },
+      {
+        "arguments": [
+          -3,
+          -1,
+          -7
+        ],
+        "expected": -3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          2,
+          0
+        ],
+        "expected": 51
+      },
+      {
+        "arguments": [
+          2,
+          -2,
+          -3
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "descending-margin-origin-fault",
+    "source": "int f(int upper,int offset,int end){int first=upper+offset;int n=-9;\n        for(int i=0;i>=end;i-=2){n+=i+8;}return n;}",
+    "references": [
+      "int f(int upper,int offset,int end){int first=upper+offset;int n=-9;\n        for(int i=first;i>=end;i-=2){n+=i+8;}return n;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "descending-margin-origin",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the sum-adjusted descending start.",
+    "domain": "Signed bounds and fixed negative stride.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          2,
+          0
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          8,
+          3,
+          1
+        ],
+        "expected": 75
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          0
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          3,
+          0,
+          4
+        ],
+        "expected": -9
+      },
+      {
+        "arguments": [
+          -3,
+          -1,
+          -7
+        ],
+        "expected": -3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          2,
+          0
+        ],
+        "expected": 51
+      },
+      {
+        "arguments": [
+          2,
+          -2,
+          -3
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "descending-margin-origin-control",
+    "source": "int f(int upper,int offset,int end){int first=upper+offset;int n=-9;\n        for(int i=first;i>=end;i-=2){n+=i+8;}return n;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "post-loop-only-origin",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use a one-based range and add a separate calibration.",
+    "domain": "Signed calibration and nonnegative bound.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          5,
+          4
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          -2,
+          10
+        ],
+        "expected": 53
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 13
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          6
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -8,
+          3
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "post-loop-only-origin-fault",
+    "source": "int f(int a,int b){int first=a+9;int sum=1;for(int i=2;i<b;i++){sum+=i;}return sum+first;}",
+    "references": [
+      "int f(int a,int b){int first=a+9;int sum=1;for(int i=1;i<b;i++){sum+=i;}return sum+first;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "post-loop-only-origin",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use a one-based range and add a separate calibration.",
+    "domain": "Signed calibration and nonnegative bound.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          5,
+          4
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          -2,
+          10
+        ],
+        "expected": 53
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 13
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          6
+        ],
+        "expected": 29
+      },
+      {
+        "arguments": [
+          -8,
+          3
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "post-loop-only-origin-control",
+    "source": "int f(int a,int b){int first=a+9;int sum=1;for(int i=1;i<b;i++){sum+=i;}return sum+first;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "projection-limit-control",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use a deliberate range exceeding the projection budget on some inputs.",
+    "domain": "Small signed bias and counts 0–99.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          67,
+          3
+        ],
+        "expected": 137
+      },
+      {
+        "arguments": [
+          75,
+          -1
+        ],
+        "expected": 149
+      },
+      {
+        "arguments": [
+          0,
+          6
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 5
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          99,
+          8
+        ],
+        "expected": 206
+      },
+      {
+        "arguments": [
+          4,
+          -1
+        ],
+        "expected": 7
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "projection-limit-control-control",
+    "source": "int f(int n,int bias){int result=bias;for(int i=0;i<n;i++){result+=2;}return result;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "side-effect-domain-control",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Preserve the global counter update ahead of a deliberate sentinel.",
+    "domain": "Each verification vector starts with fresh globals.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -2
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -9
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": 40
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "side-effect-domain-control-control",
+    "source": "int trials=0;int f(int n){trials++;if(n<0){return trials-8;}return n*3+trials;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "array-extent-negative",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the specified physical cell within a fixed extent.",
+    "domain": "Indices zero and one.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          4
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          0,
+          -2
+        ],
+        "expected": -2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          1,
+          7
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          0,
+          11
+        ],
+        "expected": 11
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "array-extent-negative-fault",
+    "source": "int f(int i,int x){int slab[2];slab[0]=x;slab[1]=x+9;return slab[i+1];}",
+    "references": [
+      "int f(int i,int x){int slab[2];slab[0]=x;slab[1]=x+9;return slab[i];}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "array-extent-negative",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the specified physical cell within a fixed extent.",
+    "domain": "Indices zero and one.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          4
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          0,
+          -2
+        ],
+        "expected": -2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          1,
+          7
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          0,
+          11
+        ],
+        "expected": 11
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "array-extent-negative-control",
+    "source": "int f(int i,int x){int slab[2];slab[0]=x;slab[1]=x+9;return slab[i];}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "incomplete-domain-samples",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only nonnegative positions are sampled.",
+    "domain": "Negative positions unspecified.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          -3
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          12,
+          4
+        ],
+        "expected": 5
+      }
+    ],
+    "holdout_vectors": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 9.5",
+      "license": "repository license",
+      "review": "Independent executable reference. External human review unavailable."
+    },
+    "id": "incomplete-domain-samples-control",
+    "source": "int f(int q,int n){if(q<0){return 8;}return n+1;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  }
+]
