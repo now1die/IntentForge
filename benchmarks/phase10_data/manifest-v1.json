@@ -1,0 +1,61 @@
+{
+  "case_sha256": "ccc5d2f559b042a00495ef2b775b6d96e4e7ba072fd841478dc96da2841a9dff",
+  "upstream_sha256": {
+    "LICENSE-Java.txt": "d8499582b215ce90b33be4736260b1bb2e2dc312f71c1b29d19b8fc6d2dcdc3f",
+    "LICENSE-Python-lcm.txt": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "LICENSE-Python-recursion.txt": "90ba3e7525ea1aa8bff31d781f4fa46445d6d52d8a72893c2c8033b87d5bdaba",
+    "NOTICE.md": "6de8b1bd45386690a2d596ed5a9d342974217af11b6d7048cf9c4ec3e2f460a0",
+    "SearchAlgorithm.java": "916005d23e3d00b6865b87053618d4ccb8fe3d8e2027c193c94dc3ff41d2219f",
+    "gcd.py": "c9b11d7bf05beb6c48348002c6ff2c8fe12da252da80dd3345b6b32b83221e5d",
+    "lcm-after.py": "5817ac295ef7475e45f3df576dcc31f6bbc5511f9f50aae826acd9df4112e4c2",
+    "lcm-before.py": "ea57fd67cb3f84866e656d9c8b2484adb87b760627a47daf09b51a773acca232",
+    "lower-after.java": "d3e23f0a32b42ac8d31e6f191b643b59977602043f0d70a79e34dd3b2cabd1dc",
+    "lower-before.java": "f979b46cca04c64e7b5c366d5321cb33095305a803c9fe73b449ac60cfa0b44c",
+    "recursion-after.py": "4703c2431e9863f0efbccdcb3306c22028cd9908dffd20174bbeccccf5a697b7",
+    "recursion-before.py": "73789a2b9f2a1d14bdb40c6177e8d7eb4a947a19d2a5a2fe60bbf79dfa990e74",
+    "rotated-after.java": "423e3c501483a697e9b46ea2a466fb5a94aadc4d4d7efe9d7294b4cc4d8cb0e1",
+    "rotated-before.java": "34db5da348262beaf6831053e79f94570bdd177d5c36810fdba6ade98737cacd"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 22
+  },
+  "external_sources": {
+    "recursive-empty-interval": [
+      "TheAlgorithms/Python",
+      "searches/binary_search.py",
+      "recursion",
+      "c4234192facc1b13ad3cb7be25dbd829c32fbe2d",
+      "53681f199c46bebeca3c019d91af79c392f570b3",
+      "Four ordered cells. Emulate Python floor on the midpoint and map None to -1 and recursion exhaustion to CALL_DEPTH. Exclude keys below the first cell."
+    ],
+    "zero-lcm": [
+      "TheAlgorithms/Python",
+      "maths/least_common_multiple.py",
+      "lcm",
+      "d9027b034699aa60f3e89e1344211b686274af27",
+      "4aca14b650a238e4906c3d753b075cc324774e67",
+      "Translate the fast LCM implementation on nonnegative integers. Replace the GCD dependency with equivalent iterative arithmetic on this domain."
+    ],
+    "duplicate-lower-bound": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/LowerBound.java",
+      "lower",
+      "d9b86d1992b8bd4cadbd832822c792628117e69d",
+      "f8207cc34ca0bd5694cce3120a9741ee50b2d2e8",
+      "Translate Comparable values as integers. Five ordered cells and a saturated lower bound preserve the recursive partition and equality shortcut."
+    ],
+    "short-rotation-pivot": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/HowManyTimesRotated.java",
+      "rotated",
+      "b33b75b846774274440d7c871e0802e26bed6dc0",
+      "ed2928f659e2424321b51967bc641a24340b69f7",
+      "Recreate lengths one, two and five with a checked negative neighbor. Five-cell original samples pivot immediately. Omit original hanging inputs."
+    ]
+  },
+  "grouping": "One split per repository and family. Archived misses are diagnostic only.",
+  "holdout": "Discovery generates candidates. Held-out vectors are separate verification requests."
+}
