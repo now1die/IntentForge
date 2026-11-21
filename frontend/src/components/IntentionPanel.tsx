@@ -39,8 +39,8 @@ function readRequirement(form: HTMLFormElement): { mode: IntentionMode; requirem
     description: mode === "natural_language" ? value("description") : undefined,
     return_expression: mode === "explicit" ? value("return_expression") : undefined,
     condition: mode === "explicit" ? value("condition") : undefined,
-    return_ordinal: value("return_ordinal") ? Number(value("return_ordinal")) : undefined,
-    condition_ordinal: value("condition_ordinal") ? Number(value("condition_ordinal")) : undefined,
+    return_ordinal: mode !== "examples" && value("return_ordinal") ? Number(value("return_ordinal")) : undefined,
+    condition_ordinal: mode !== "examples" && value("condition_ordinal") ? Number(value("condition_ordinal")) : undefined,
     examples,
   };
   return { mode, requirement };
@@ -130,7 +130,8 @@ export function IntentionPanel({ code, onApply }: {
               <option value="explicit">Explicit specification</option>
             </select>
           </label>
-          {mode !== "code_only" && <label>Function<input name="function" placeholder="Optional for a single function" maxLength={80} /></label>}
+          {mode !== "code_only" && <label>Function<input name="function" required={mode === "examples"}
+            placeholder={mode === "examples" ? "Entry point" : "Optional for a single function"} maxLength={80} /></label>}
           {(mode === "auto" || mode === "explicit") && <>
             <label>Return expression<input name="return_expression" placeholder="x * x" maxLength={160} /></label>
             <label>Condition<input name="condition" placeholder="age >= 18" maxLength={160} /></label>
@@ -141,11 +142,13 @@ export function IntentionPanel({ code, onApply }: {
         {mode !== "code_only" && <details>
           <summary>Expression locations and input/output examples</summary>
           <div className="intention-fields">
-            <label>Return location<input name="return_ordinal" type="number" min={1} max={3000} /></label>
-            <label>Condition location<input name="condition_ordinal" type="number" min={1} max={3000} /></label>
+            {mode !== "examples" && <>
+              <label>Return location<input name="return_ordinal" type="number" min={1} max={3000} /></label>
+              <label>Condition location<input name="condition_ordinal" type="number" min={1} max={3000} /></label>
+            </>}
             <label>Input/output examples<textarea name="examples" maxLength={4000} placeholder='[{"args":[3],"expected_return":9}]' /></label>
           </div>
-          <p>Locations start at 1 in source order. Supplied examples inform static hypotheses. Use local verification to observe behavior.</p>
+          <p>{mode !== "examples" && "Locations start at 1 in source order. "}Supplied examples inform static hypotheses. Use local verification to observe behavior.</p>
         </details>}
         <button type="submit" className="primary" disabled={busy}>{busy ? "Analyzing intention…" : "Analyze Intention"}</button>
       </form>

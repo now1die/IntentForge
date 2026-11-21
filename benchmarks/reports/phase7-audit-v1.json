@@ -1,0 +1,75 @@
+{
+  "sha256": "4ca0a0814e5e3e7ae67d03931d99e0b0e345b5c39d7f581ec58f00fccc6ef318",
+  "historical_sources": 935,
+  "frozen_partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 54
+  },
+  "admitted_partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 47
+  },
+  "quarantined_families": [
+    "integer-shelf",
+    "lookup-weight",
+    "unspecified-peak",
+    "upper-inlet"
+  ],
+  "historical_overlaps": [
+    {
+      "case": "lookup-weight-fault",
+      "match": "near",
+      "ratio": 0.9412,
+      "historical_sha256": "bf110b2a684e6e0d339afc1590576bef07469e2348debc5bf312a0dea73ee59b"
+    },
+    {
+      "case": "lookup-weight-fault",
+      "match": "near",
+      "ratio": 0.9706,
+      "historical_sha256": "0e843220dfe1a4d3f5e81d3e40acffc49e78189c3e2eb9c17a30432835d0b879"
+    },
+    {
+      "case": "lookup-weight-control",
+      "match": "near",
+      "ratio": 0.9706,
+      "historical_sha256": "0e843220dfe1a4d3f5e81d3e40acffc49e78189c3e2eb9c17a30432835d0b879"
+    },
+    {
+      "case": "integer-shelf-fault",
+      "match": "near",
+      "ratio": 0.963,
+      "historical_sha256": "37bd8f33d8fbe0b348e1a51d7865a11569b3e8b2bafb98529a25a95a37e26076"
+    },
+    {
+      "case": "upper-inlet-fault",
+      "match": "near",
+      "ratio": 0.96,
+      "historical_sha256": "cc6334ce59910b4bcf0eff114252c16e6caba8377e057696d50544020e6a189b"
+    },
+    {
+      "case": "upper-inlet-fault",
+      "match": "near",
+      "ratio": 0.96,
+      "historical_sha256": "ba91f3c1aa1ae29b99484845b1ee9c269ec26c8aeb50b344df4c8f07d12af124"
+    },
+    {
+      "case": "upper-inlet-control",
+      "match": "near",
+      "ratio": 0.96,
+      "historical_sha256": "ba91f3c1aa1ae29b99484845b1ee9c269ec26c8aeb50b344df4c8f07d12af124"
+    },
+    {
+      "case": "unspecified-peak-control",
+      "match": "near",
+      "ratio": 0.96,
+      "historical_sha256": "ba91f3c1aa1ae29b99484845b1ee9c269ec26c8aeb50b344df4c8f07d12af124"
+    }
+  ],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [],
+  "shared_cross_partition_edit_shapes": 1
+}
