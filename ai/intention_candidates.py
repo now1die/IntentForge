@@ -52,6 +52,7 @@ class Proposal:
     symbol_kind: str = ""
     specification_matches: int = 0
     in_return_position: bool = False
+    counter_evidence: tuple[Evidence, ...] = ()
 
 
 def point(location: SourceLocation) -> SourceSpan:

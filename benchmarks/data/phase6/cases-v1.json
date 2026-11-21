@@ -1,0 +1,2044 @@
+[
+  {
+    "id": "proper-divisor-total-control",
+    "family": "proper-divisor-total",
+    "partition": "final",
+    "disposition": "control",
+    "category": "loop_progress",
+    "source": "int f(int n){int total=0;int visits=0;if(n<=1){return 0;}for(int d=1;n>d;d++){if(n%d==0){total+=d;}}return total;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Sum positive proper divisors of a positive integer.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          17
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/aliquot_sum.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "proper-divisor-total-fault",
+    "family": "proper-divisor-total",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "loop_progress",
+    "source": "int f(int n){int total=0;int visits=0;if(n<=1){return 0;}for(int d=1;n>d;visits++){if(n%d==0){total+=d;}}return total;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Sum positive proper divisors of a positive integer.",
+    "references": [
+      "int f(int n){int total=0;int visits=0;if(n<=1){return 0;}for(int d=1;n>d;d++){if(n%d==0){total+=d;}}return total;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          17
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/aliquot_sum.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "fixed-point-horner-control",
+    "family": "fixed-point-horner",
+    "partition": "final",
+    "disposition": "control",
+    "category": "return_dependency",
+    "source": "int f(int coefficient){int head=7+coefficient;int folded=head*2;int value=folded*2-5;return value;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Evaluate Horner's polynomial with head coefficient 7+coefficient, then two doublings and a terminal -5.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          -8
+        ],
+        "expected": -9
+      },
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 103
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/polynomial_evaluation.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "fixed-point-horner-fault",
+    "family": "fixed-point-horner",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "return_dependency",
+    "source": "int f(int coefficient){int head=7+coefficient;int folded=head*2;int value=folded*2-5;return head;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Evaluate Horner's polynomial with head coefficient 7+coefficient, then two doublings and a terminal -5.",
+    "references": [
+      "int f(int coefficient){int head=7+coefficient;int folded=head*2;int value=folded*2-5;return value;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          -8
+        ],
+        "expected": -9
+      },
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 103
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/polynomial_evaluation.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "scaled-geometric-total-control",
+    "family": "scaled-geometric-total",
+    "partition": "final",
+    "disposition": "control",
+    "category": "recursive_progress",
+    "source": "int f(int n){if(n<=0){return 0;}return 4*f(n-1)+3;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Sum the first n positive terms of ratio four and initial term three.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 1023
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/sum_of_geometric_progression.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "scaled-geometric-total-fault",
+    "family": "scaled-geometric-total",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "recursive_progress",
+    "source": "int f(int n){if(n<=0){return 0;}return 4*f(n)+3;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Sum the first n positive terms of ratio four and initial term three.",
+    "references": [
+      "int f(int n){if(n<=0){return 0;}return 4*f(n-1)+3;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 1023
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/sum_of_geometric_progression.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "factorial-trailing-decimal-control",
+    "family": "factorial-trailing-decimal",
+    "partition": "final",
+    "disposition": "control",
+    "category": "arithmetic",
+    "source": "int f(int n){int q=n;int result=0;while(q>=5){q/=5;result+=q;}return result;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Count decimal trailing zeroes in a small nonnegative factorial.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          18
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          25
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          50
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/trailing_zeroes.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "factorial-trailing-decimal-fault",
+    "family": "factorial-trailing-decimal",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "arithmetic",
+    "source": "int f(int n){int q=n;int result=0;while(q>=5){q/=4;result+=q;}return result;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Count decimal trailing zeroes in a small nonnegative factorial.",
+    "references": [
+      "int f(int n){int q=n;int result=0;while(q>=5){q/=5;result+=q;}return result;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          18
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          25
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          50
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/trailing_zeroes.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "decimal-width-control",
+    "family": "decimal-width",
+    "partition": "final",
+    "disposition": "control",
+    "category": "initialization",
+    "source": "int f(int n){int count=1;while(n>=10){n/=10;count++;}return count;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Measure the decimal representation width of a nonnegative integer.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          99
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          10240
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/number_of_digits.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "decimal-width-fault",
+    "family": "decimal-width",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "initialization",
+    "source": "int f(int n){int count=0;while(n>=10){n/=10;count++;}return count;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Measure the decimal representation width of a nonnegative integer.",
+    "references": [
+      "int f(int n){int count=1;while(n>=10){n/=10;count++;}return count;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          99
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          10240
+        ],
+        "expected": 5
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/number_of_digits.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "catalan-table-control",
+    "family": "catalan-table",
+    "partition": "final",
+    "disposition": "control",
+    "category": "array_boundary",
+    "source": "int f(int n){int table[8];table[0]=1;for(int i=1;i<=n;i++){table[i]=0;for(int k=0;k<i;k++){table[i]+=table[k]*table[i-1-k];}}return table[n];}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return Catalan(n) on the fixed table range.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 132
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/dynamic_programming/catalan_numbers.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "catalan-table-fault",
+    "family": "catalan-table",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "array_boundary",
+    "source": "int f(int n){int table[8];table[0]=1;for(int i=1;i<n;i++){table[i]=0;for(int k=0;k<i;k++){table[i]+=table[k]*table[i-1-k];}}return table[n];}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return Catalan(n) on the fixed table range.",
+    "references": [
+      "int f(int n){int table[8];table[0]=1;for(int i=1;i<=n;i++){table[i]=0;for(int k=0;k<i;k++){table[i]+=table[k]*table[i-1-k];}}return table[n];}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 132
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/dynamic_programming/catalan_numbers.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "inserted-order-statistic-control",
+    "family": "inserted-order-statistic",
+    "partition": "final",
+    "disposition": "control",
+    "category": "control_flow",
+    "source": "int f(int p,int q,int r,int s){int a[4];a[0]=p;a[1]=q;a[2]=r;a[3]=s;for(int i=1;i<4;i++){int item=a[i];int j=i-1;while(j>=0){if(a[j]<=item){break;}a[j+1]=a[j];j--;}a[j+1]=item;}return a[1];}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return the second smallest of four values.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          1,
+          2,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -2,
+          0,
+          -3,
+          9
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          -5,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/sorts/insertion_sort.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "inserted-order-statistic-fault",
+    "family": "inserted-order-statistic",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "control_flow",
+    "source": "int f(int p,int q,int r,int s){int a[4];a[0]=p;a[1]=q;a[2]=r;a[3]=s;for(int i=1;i<4;i++){int item=a[i];int j=i-1;while(j>=1){if(a[j]<=item){break;}a[j+1]=a[j];j--;}a[j+1]=item;}return a[1];}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return the second smallest of four values.",
+    "references": [
+      "int f(int p,int q,int r,int s){int a[4];a[0]=p;a[1]=q;a[2]=r;a[3]=s;for(int i=1;i<4;i++){int item=a[i];int j=i-1;while(j>=0){if(a[j]<=item){break;}a[j+1]=a[j];j--;}a[j+1]=item;}return a[1];}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          1,
+          2,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -2,
+          0,
+          -3,
+          9
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          -5,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/sorts/insertion_sort.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "pascal-choice-control",
+    "family": "pascal-choice",
+    "partition": "final",
+    "disposition": "control",
+    "category": "base_case_result",
+    "source": "int f(int n,int k){if(k==0||k==n){return 1;}return f(n-1,k-1)+f(n-1,k);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Count k-element subsets of a small n-element set.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          7,
+          3
+        ],
+        "expected": 35
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/binomial_coefficient.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "pascal-choice-fault",
+    "family": "pascal-choice",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "base_case_result",
+    "source": "int f(int n,int k){if(k==0||k==n){return 0;}return f(n-1,k-1)+f(n-1,k);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Count k-element subsets of a small n-element set.",
+    "references": [
+      "int f(int n,int k){if(k==0||k==n){return 1;}return f(n-1,k-1)+f(n-1,k);}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          7,
+          3
+        ],
+        "expected": 35
+      }
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/binomial_coefficient.py",
+      "license": "MIT",
+      "adaptation": "Scalar Mini-C port and injected defect; separate reference oracle."
+    }
+  },
+  {
+    "id": "two-channel-gain-control",
+    "family": "two-channel-gain",
+    "partition": "final",
+    "disposition": "control",
+    "category": "multi_return_dependency",
+    "source": "int f(int pulse,bool high){int frame=3*pulse;int reduced=frame-4;int gain=reduced*2;if(high){return gain;}return gain;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Both delivery channels report twice the corrected frame, with a correction of four.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          true
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -1,
+          false
+        ],
+        "expected": -14
+      },
+      {
+        "arguments": [
+          2,
+          false
+        ],
+        "expected": 4
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "two-channel-gain-fault",
+    "family": "two-channel-gain",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "multi_return_dependency",
+    "source": "int f(int pulse,bool high){int frame=3*pulse;int reduced=frame-4;int gain=reduced*2;if(high){return frame;}return frame;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Both delivery channels report twice the corrected frame, with a correction of four.",
+    "references": [
+      "int f(int pulse,bool high){int frame=3*pulse;int reduced=frame-4;int gain=reduced*2;if(high){return gain;}return gain;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          true
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -1,
+          false
+        ],
+        "expected": -14
+      },
+      {
+        "arguments": [
+          2,
+          false
+        ],
+        "expected": 4
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "intermediate-report-control",
+    "family": "intermediate-report",
+    "partition": "final",
+    "disposition": "control",
+    "category": "initialization",
+    "source": "int f(int tick){int measured=tick+4;int projected=measured*6;int display=projected-7;return measured;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return the calibrated intermediate measurement. The stored projection is a separate computation.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          -2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "intermediate-report-fault",
+    "family": "intermediate-report",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "initialization",
+    "source": "int f(int tick){int measured=tick+5;int projected=measured*6;int display=projected-7;return measured;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return the calibrated intermediate measurement. The stored projection is a separate computation.",
+    "references": [
+      "int f(int tick){int measured=tick+4;int projected=measured*6;int display=projected-7;return measured;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          -2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "ascending-threshold-steps-control",
+    "family": "ascending-threshold-steps",
+    "partition": "final",
+    "disposition": "control",
+    "category": "recursive_progress",
+    "source": "int f(int x){if(9<=x){return 1;}return 3+f(x+1);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Count three units for each step to nine, with terminal weight one.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "ascending-threshold-steps-fault",
+    "family": "ascending-threshold-steps",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "recursive_progress",
+    "source": "int f(int x){if(9<=x){return 1;}return 3+f(x);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Count three units for each step to nine, with terminal weight one.",
+    "references": [
+      "int f(int x){if(9<=x){return 1;}return 3+f(x+1);}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "restricted-recursive-product-control",
+    "family": "restricted-recursive-product",
+    "partition": "final",
+    "disposition": "control",
+    "category": "base_case_result",
+    "source": "int f(int n){if(n==2){return 2;}return n+f(n-1);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Sum integers from two through n on the stated domain n >= 2.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 20
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "restricted-recursive-product-fault",
+    "family": "restricted-recursive-product",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "base_case_result",
+    "source": "int f(int n){if(n==2){return 3;}return n+f(n-1);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Sum integers from two through n on the stated domain n >= 2.",
+    "references": [
+      "int f(int n){if(n==2){return 2;}return n+f(n-1);}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": 20
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "bounded-mutual-parity-control",
+    "family": "bounded-mutual-parity",
+    "partition": "final",
+    "disposition": "control",
+    "category": "mutual_base_case",
+    "source": "bool odd(int n){if(n<=0){return false;}return f(n-1);}bool f(int n){if(n<=0){return true;}return odd(n-1);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Evaluate even parity with mutually recursive helpers on nonnegative inputs.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": true
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "bounded-mutual-parity-fault",
+    "family": "bounded-mutual-parity",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "mutual_base_case",
+    "source": "bool odd(int n){if(n<=0){return true;}return f(n-1);}bool f(int n){if(n<=0){return true;}return odd(n-1);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Evaluate even parity with mutually recursive helpers on nonnegative inputs.",
+    "references": [
+      "bool odd(int n){if(n<=0){return false;}return f(n-1);}bool f(int n){if(n<=0){return true;}return odd(n-1);}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": true
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "threshold-channel-control",
+    "family": "threshold-channel",
+    "partition": "final",
+    "disposition": "control",
+    "category": "different_branch_returns",
+    "source": "int f(int p,bool mode){int base=p+5;int display=base*2;int final=display+11;if(mode){return base;}return final;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Raw mode reports the base reading. Other mode reports the final adjusted reading.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          true
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          2,
+          false
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          -4,
+          false
+        ],
+        "expected": 13
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "threshold-channel-fault",
+    "family": "threshold-channel",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "different_branch_returns",
+    "source": "int f(int p,bool mode){int base=p+5;int display=base*2;int final=display+11;if(mode){return base;}return base;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Raw mode reports the base reading. Other mode reports the final adjusted reading.",
+    "references": [
+      "int f(int p,bool mode){int base=p+5;int display=base*2;int final=display+11;if(mode){return base;}return final;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          true
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          2,
+          false
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          -4,
+          false
+        ],
+        "expected": 13
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "shadowed-crossing-control",
+    "family": "shadowed-crossing",
+    "partition": "final",
+    "disposition": "control",
+    "category": "scoped_loop",
+    "source": "int f(int stop){int result=1;for(int q=3;!(stop<=q);q++){{int stop=6;result+=q+stop;}}return result;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Start at one and add q+6 for each q in [3, stop).",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 56
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "shadowed-crossing-fault",
+    "family": "shadowed-crossing",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "scoped_loop",
+    "source": "int f(int stop){int result=2;for(int q=3;!(stop<=q);q++){{int stop=6;result+=q+stop;}}return result;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Start at one and add q+6 for each q in [3, stop).",
+    "references": [
+      "int f(int stop){int result=1;for(int q=3;!(stop<=q);q++){{int stop=6;result+=q+stop;}}return result;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 56
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "weighted-settlement-control",
+    "family": "weighted-settlement",
+    "partition": "final",
+    "disposition": "control",
+    "category": "arithmetic",
+    "source": "int f(int left,int right){int state=left-right;int displayed=state*5;int terminal=displayed+1;return terminal;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return five times the signed net plus one.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          -2,
+          4
+        ],
+        "expected": -29
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "weighted-settlement-fault",
+    "family": "weighted-settlement",
+    "partition": "final",
+    "disposition": "fault",
+    "category": "arithmetic",
+    "source": "int f(int left,int right){int state=left-right;int displayed=state*5;int terminal=displayed-1;return terminal;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return five times the signed net plus one.",
+    "references": [
+      "int f(int left,int right){int state=left-right;int displayed=state*5;int terminal=displayed+1;return terminal;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          -2,
+          4
+        ],
+        "expected": -29
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "partial-selector-ambiguous",
+    "family": "partial-selector",
+    "partition": "final",
+    "disposition": "ambiguous",
+    "category": "binding",
+    "source": "int f(int x,int y,bool direct){int control=3;if(direct){return control;}return missing;}",
+    "compiler_valid": false,
+    "entry": "f",
+    "specification": "Only observations where the two channel values coincide are supplied.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          4,
+          false
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          3,
+          true
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "partial-recurrence-ambiguous",
+    "family": "partial-recurrence",
+    "partition": "final",
+    "disposition": "ambiguous",
+    "category": "recursion_domain",
+    "source": "int f(int n){if(n<4){return n;}return 3+f(n);}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Only the base-region behavior is specified.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "linear-tariff-study-control",
+    "family": "linear-tariff-study",
+    "partition": "development",
+    "disposition": "control",
+    "category": "return_dependency",
+    "source": "int f(int beds){int units=beds*2;int taxed=units*4;int subtotal=taxed-3;return subtotal;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Compute an eight-unit tariff with a discount of three.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 53
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "linear-tariff-study-fault",
+    "family": "linear-tariff-study",
+    "partition": "development",
+    "disposition": "fault",
+    "category": "return_dependency",
+    "source": "int f(int beds){int units=beds*2;int taxed=units*4;int subtotal=taxed-3;return units;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Compute an eight-unit tariff with a discount of three.",
+    "references": [
+      "int f(int beds){int units=beds*2;int taxed=units*4;int subtotal=taxed-3;return subtotal;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 53
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "descending-token-study-control",
+    "family": "descending-token-study",
+    "partition": "development",
+    "disposition": "control",
+    "category": "recursive_progress",
+    "source": "int f(int k){if(k>=3){return 2;}return f(k+1)-3;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return two less three per step below threshold.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": -10
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "descending-token-study-fault",
+    "family": "descending-token-study",
+    "partition": "development",
+    "disposition": "fault",
+    "category": "recursive_progress",
+    "source": "int f(int k){if(k>=3){return 2;}return f(k)-3;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Return two less three per step below threshold.",
+    "references": [
+      "int f(int k){if(k>=3){return 2;}return f(k+1)-3;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": -10
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "planar-marker-study-control",
+    "family": "planar-marker-study",
+    "partition": "development",
+    "disposition": "control",
+    "category": "loop_progress",
+    "source": "int f(int n){int shadow=0;int result=8;for(int idx=2;idx<n;idx++){result+=idx*idx;}return result;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Add squares from two until n to the initial marker.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 37
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "planar-marker-study-fault",
+    "family": "planar-marker-study",
+    "partition": "development",
+    "disposition": "fault",
+    "category": "loop_progress",
+    "source": "int f(int n){int shadow=0;int result=8;for(int idx=2;idx<n;shadow++){result+=idx*idx;}return result;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Add squares from two until n to the initial marker.",
+    "references": [
+      "int f(int n){int shadow=0;int result=8;for(int idx=2;idx<n;idx++){result+=idx*idx;}return result;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 37
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "scaled-rebate-selection-control",
+    "family": "scaled-rebate-selection",
+    "partition": "selection",
+    "disposition": "control",
+    "category": "return_dependency",
+    "source": "int f(int base,bool flag){int adjusted=base-6;int doubled=adjusted*2;int final=doubled+9;if(flag){return final;}return 4;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Rebate mode reports double the adjustment plus nine, otherwise four.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          true
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          9,
+          true
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7,
+          false
+        ],
+        "expected": 4
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "scaled-rebate-selection-fault",
+    "family": "scaled-rebate-selection",
+    "partition": "selection",
+    "disposition": "fault",
+    "category": "return_dependency",
+    "source": "int f(int base,bool flag){int adjusted=base-6;int doubled=adjusted*2;int final=doubled+9;if(flag){return adjusted;}return 4;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Rebate mode reports double the adjustment plus nine, otherwise four.",
+    "references": [
+      "int f(int base,bool flag){int adjusted=base-6;int doubled=adjusted*2;int final=doubled+9;if(flag){return final;}return 4;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          true
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          9,
+          true
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7,
+          false
+        ],
+        "expected": 4
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "package-grid-calibration-control",
+    "family": "package-grid-calibration",
+    "partition": "calibration",
+    "disposition": "control",
+    "category": "rounding",
+    "source": "int f(int a,int b){int width=4;int units=a+b;return (units+width-1)/width;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Round combined units upward to packages of four.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "package-grid-calibration-fault",
+    "family": "package-grid-calibration",
+    "partition": "calibration",
+    "disposition": "fault",
+    "category": "rounding",
+    "source": "int f(int a,int b){int width=4;int units=a+b;return (units)/width;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Round combined units upward to packages of four.",
+    "references": [
+      "int f(int a,int b){int width=4;int units=a+b;return (units+width-1)/width;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "sample-clamp-selection-control",
+    "family": "sample-clamp-selection",
+    "partition": "selection",
+    "disposition": "control",
+    "category": "return_binding",
+    "source": "int tap(int v){return v*3;}int f(int scale,int raw,int margin,bool enabled){int sample=tap(raw);while(enabled){enabled=false;sample-=margin;}if(sample<0){return scale;}return sample;}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Triple the sample, conditionally deduct a margin, and substitute scale for negative results.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          2,
+          3,
+          true
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          -2,
+          1,
+          false
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          2,
+          false
+        ],
+        "expected": 21
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "sample-clamp-selection-fault",
+    "family": "sample-clamp-selection",
+    "partition": "selection",
+    "disposition": "fault",
+    "category": "return_binding",
+    "source": "int tap(int v){return v*3;}int f(int scale,int raw,int margin,bool enabled){int sample=tap(raw);while(enabled){enabled=false;sample-=margin;}if(sample<0){return scale;}return missing;}",
+    "compiler_valid": false,
+    "entry": "f",
+    "specification": "Triple the sample, conditionally deduct a margin, and substitute scale for negative results.",
+    "references": [
+      "int tap(int v){return v*3;}int f(int scale,int raw,int margin,bool enabled){int sample=tap(raw);while(enabled){enabled=false;sample-=margin;}if(sample<0){return scale;}return sample;}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          2,
+          3,
+          true
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          -2,
+          1,
+          false
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          2,
+          false
+        ],
+        "expected": 21
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "three-bank-read-selection-control",
+    "family": "three-bank-read-selection",
+    "partition": "selection",
+    "disposition": "control",
+    "category": "array_initialization",
+    "source": "int f(int seed,bool left){int a[4];a[0]=2;a[2]=seed;int spot=2;if(left){spot=0;}{int backup[3];backup[1]=6;return a[spot]+backup[1];}}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Read the selected data cell and add the constant offset held in the backup bank.",
+    "references": [],
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          true
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          2,
+          false
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          9,
+          false
+        ],
+        "expected": 15
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  },
+  {
+    "id": "three-bank-read-selection-fault",
+    "family": "three-bank-read-selection",
+    "partition": "selection",
+    "disposition": "fault",
+    "category": "array_initialization",
+    "source": "int f(int seed,bool left){int a[4];a[0]=2;a[2]=seed;int spot=2;if(left){spot=0;}{int backup[3];backup[1]=7;return a[spot]+backup[1];}}",
+    "compiler_valid": true,
+    "entry": "f",
+    "specification": "Read the selected data cell and add the constant offset held in the backup bank.",
+    "references": [
+      "int f(int seed,bool left){int a[4];a[0]=2;a[2]=seed;int spot=2;if(left){spot=0;}{int backup[3];backup[1]=6;return a[spot]+backup[1];}}"
+    ],
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          true
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          2,
+          false
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          9,
+          false
+        ],
+        "expected": 15
+      }
+    ],
+    "provenance": {
+      "group": "internal",
+      "origin": "Project-authored Phase 6 fixture",
+      "license": "No separate reuse license published",
+      "adaptation": "Separately specified Mini-C example with arithmetic or reviewed expected values."
+    }
+  }
+]

@@ -12,6 +12,7 @@ from time import monotonic
 from typing import Any
 
 from compiler.ast_nodes import BinaryExpression, Identifier, ReturnStatement, VariableDeclaration
+from analysis_evidence.function_summary import analyze_program, summaries
 from compiler.semantic_analyzer import analyze_source_semantics
 from compiler.symbol_table import SymbolKind
 
@@ -19,6 +20,7 @@ from .behavior_oracle import BehaviorResult, Status, Vector, program_identity
 from .intention_phase35 import phase35_features, phase35_hypotheses
 from .intention_phase5 import scan as phase5_scan
 from .intention_phase55 import RULES as PRECISION_RULES, apply_precision_gates
+from .intention_phase6 import proposals as semantic_proposals
 from .intention_uncertainty import classify
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
@@ -26,7 +28,7 @@ from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edi
 from .intention_generalization import duplicate_guards, evidence_strength, generalized_features, hypotheses
 from .intention_learning import ExpandedRanker, contextual_features
 from .intention_recovery import expanded_proposals
-from .intention_context import ContextLimit, IntentionContext, Requirement, build_context
+from .intention_context import ContextLimit, IntentionContext, Requirement, UnsupportedContext, build_context
 from .intention_ranker import Ranker
 from .intention_requirements import expression_key, resolve_targets
 
@@ -86,6 +88,7 @@ class IntentionResult:
     evidence_policy: bool = False
     behavior: BehaviorResult | None = None
     structural_scan: dict | None = None
+    program_analysis: dict | None = None
 
     def record_behavior(self, result: BehaviorResult) -> None:
         """Accept evidence only from a caller that owns a trusted executor."""
@@ -116,6 +119,12 @@ class IntentionResult:
     def to_dict(self, *, include_context=False):
         ambiguous = self.decision == "AMBIGUOUS"
         candidates = [item.to_dict(self.context.source, ambiguous, self.evidence_policy) for item in self.candidates]
+        if self.program_analysis is not None:
+            for row, item in zip(candidates, self.candidates, strict=True):
+                row.update(source_snapshot=program_identity(self.context.source),
+                           analysis_completeness=self.program_analysis["status"],
+                           counter_evidence=[fact.to_dict() for fact in item.proposal.counter_evidence],
+                           requires_approval=True)
         return {
             "finding": self.finding, "decision": self.decision, "ranking": self.ranking,
             "compiler_valid": self.context.compiler_valid,
@@ -128,6 +137,7 @@ class IntentionResult:
             "notes": self.notes, "attempts": self.attempts,
             **({"requirement_status": self.requirement_status} if self.requirement_status else {}),
             **({"structural_scan": self.structural_scan} if self.structural_scan is not None else {}),
+            **({"program_analysis": self.program_analysis} if self.program_analysis is not None else {}),
             "candidates": candidates,
             "context": self.context.to_dict() if include_context else None,
         }
@@ -261,18 +271,28 @@ def analyze_intention(
     generalized: bool = False, generation_v3: bool = True, phase35: bool = False,
     phase5: bool = False, phase5_generate: bool = True,
     phase55: bool = False, phase55_rules: frozenset[str] = PRECISION_RULES,
+    phase6: bool = False, phase6_generate: bool = True, phase6_graph: bool = False,
+    phase6_entry: str | None = None, phase6_examples=(),
 ) -> IntentionResult:
+    phase55 = phase55 or phase6
     phase5 = phase5 or phase55
     phase35 = phase35 or phase5
     generalized = generalized or phase35
     enhanced = enhanced or generalized
     deadline = monotonic() + budget_seconds
-    context = build_context(source, requirement)
+    try:
+        context = build_context(source, requirement)
+    except TypeError as exc:
+        if phase6 and str(exc) == "Cannot obtain source span for list":
+            raise UnsupportedContext("Wrap control-body declarations in a block for Phase 6 analysis.") from exc
+        raise
     if _unsupported(context):
         return IntentionResult(context, "UNSUPPORTED_LANGUAGE", "NO_SUPPORTED_CORRECTION", ranking_status, [],
                                ["The source contains syntax outside the supported Mini-C subset."],
                                structural_scan={"status": "INCOMPLETE_COMPILER_EVIDENCE", "findings": []}
-                               if phase5 and requirement is None else None)
+                               if phase5 and requirement is None else None,
+                               program_analysis={"status": "INCOMPLETE_COMPILER_EVIDENCE", "functions": [], "hypotheses": []}
+                               if phase6 else None)
     targets, notes = resolve_targets(context, enhanced=enhanced, generalized=generalized)
     mismatches = [target for target in targets if not target.matches]
     heuristic = _heuristic(context) if not enhanced and context.compiler_valid and not mismatches else ()
@@ -291,7 +311,7 @@ def analyze_intention(
     elif heuristic:
         notes.append("The computed value could be intentional or unused. Provide a requirement before proposing a logic edit.")
     started_generation = monotonic()
-    scan_status, discovered = phase5_scan(context, deadline) if phase5 and requirement is None else (None, ())
+    scan_status, discovered = phase5_scan(context, deadline, normalize=phase6) if phase5 and requirement is None else (None, ())
     structural = None
     withheld = ()
     if phase55 and discovered:
@@ -309,13 +329,30 @@ def analyze_intention(
                  "evidence": [fact.to_dict() for fact in proposal.evidence], "counter_evidence": reason.to_dict()}
                 for proposal, reason in withheld
             ]
-    if discovered and finding == "NO_SUPPORTED_MISMATCH":
+    semantic = ()
+    program_analysis = None
+    if phase6:
+        program = analyze_program(context, deadline)
+        examples = requirement.examples if requirement and not phase6_examples else phase6_examples
+        entry = phase6_entry or (requirement.function if requirement else None)
+        if entry is None:
+            examples = ()
+        semantic = semantic_proposals(context, program, entry, examples)
+        program_analysis = summaries(context, program, include_graph=phase6_graph)
+        program_analysis["hypotheses"] = [{"category": proposal.category, "assumption": proposal.assumption,
+                                            "evidence": [fact.to_dict() for fact in proposal.evidence],
+                                            "counter_evidence": [fact.to_dict() for fact in proposal.counter_evidence]}
+                                           for proposal in semantic]
+    if (semantic or discovered) and finding == "NO_SUPPORTED_MISMATCH":
         finding = "HEURISTIC_SUSPICION"
-        evidence = discovered[0].evidence
-        notes.append("The structural scan found a plausible inconsistency. Programmer intent remains unknown.")
+        evidence = (semantic or discovered)[0].evidence
+        notes.append("Analysis found a plausible inconsistency. Programmer intent remains unknown." if phase6 else
+                     "The structural scan found a plausible inconsistency. Programmer intent remains unknown.")
     if enhanced:
         def stream():
             yield from requirement_proposals(context, targets)
+            if phase6_generate:
+                yield from semantic
             if phase5_generate:
                 yield from discovered
             if phase35 and requirement is None:
@@ -350,7 +387,7 @@ def analyze_intention(
             if monotonic() >= deadline:
                 timed_out = True
                 break
-            if candidate:
+            if candidate and (not phase6 or candidate.compiler_valid):
                 key = candidate.ast_key or repair_key(candidate.proposed_code)
                 if key not in unique:
                     unique[key] = len(candidates)
@@ -417,4 +454,5 @@ def analyze_intention(
         if requirement_status == "UNSUPPORTED_DESCRIPTION":
             decision = "INSUFFICIENT_CONTEXT"
     return IntentionResult(context, finding, decision, ranking_status, candidates, notes, evidence, attempts,
-                           requirement_status, candidate_ms, evidence_policy=phase35, structural_scan=structural)
+                           requirement_status, candidate_ms, evidence_policy=phase35, structural_scan=structural,
+                           program_analysis=program_analysis)

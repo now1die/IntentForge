@@ -1,0 +1,6394 @@
+{
+  "audit": {
+    "sha256": "e438de6cc64af3656d4a0b8ab0e95af2d6617c4d7e5e07a2cff9b2ecfb41d22c",
+    "historical_sources": 860,
+    "frozen_partitions": {
+      "calibration": 2,
+      "development": 6,
+      "final": 34,
+      "selection": 6
+    },
+    "admitted_partitions": {
+      "calibration": 2,
+      "development": 4,
+      "final": 34,
+      "selection": 4
+    },
+    "quarantined_families": [
+      "planar-marker-study",
+      "scaled-rebate-selection"
+    ],
+    "historical_overlaps": [
+      {
+        "case": "planar-marker-study-control",
+        "match": "near",
+        "ratio": 0.9535,
+        "historical_sha256": "0248d1d62d7df189f019a7b554a73dbfc6d639d4b77c6cf3000a58945f4d81d6"
+      },
+      {
+        "case": "planar-marker-study-fault",
+        "match": "near",
+        "ratio": 0.9535,
+        "historical_sha256": "0b7d383da888d701e44edef6000655324f648e2ce6d9e7ac33d4f2ed6f176390"
+      }
+    ],
+    "interfamily_overlaps": [
+      {
+        "cases": [
+          "threshold-channel-control",
+          "scaled-rebate-selection-fault"
+        ],
+        "match": "near",
+        "ratio": 0.9091
+      },
+      {
+        "cases": [
+          "threshold-channel-fault",
+          "scaled-rebate-selection-fault"
+        ],
+        "match": "near",
+        "ratio": 0.9091
+      }
+    ],
+    "same_full_specification": [],
+    "same_full_vectors": [],
+    "shared_cross_partition_edit_shapes": 3
+  },
+  "development": {
+    "rows": {
+      "phase5": [
+        {
+          "id": "linear-tariff-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "linear-tariff-study-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase55": [
+        {
+          "id": "linear-tariff-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "linear-tariff-study-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "semantic_scan_without_generation": [
+        {
+          "id": "linear-tariff-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "linear-tariff-study-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase6": [
+        {
+          "id": "linear-tariff-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "linear-tariff-study-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "v4_same_pool": [
+        {
+          "id": "linear-tariff-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "linear-tariff-study-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "pairwise_same_pool": [
+        {
+          "id": "linear-tariff-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "linear-tariff-study-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "descending-token-study-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ]
+    },
+    "metrics": {
+      "phase5": {
+        "alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 4,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "phase55": {
+        "alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 4,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "semantic_scan_without_generation": {
+        "alerts": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 4,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "phase6": {
+        "alerts": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "top1": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "top3": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 2,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "v4_same_pool": {
+        "alerts": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "top1": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "top3": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 2,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "pairwise_same_pool": {
+        "alerts": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "precision": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "top1": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "top3": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "compiler_validity": {
+          "hits": 2,
+          "total": 2,
+          "wilson95": [
+            0.342,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 2,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      }
+    },
+    "latency": {
+      "mean_ms": 2.202,
+      "median_ms": 2.152,
+      "p95_ms": 3.06
+    }
+  },
+  "selection": {
+    "rows": {
+      "phase5": [
+        {
+          "id": "sample-clamp-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "sample-clamp-selection-fault",
+          "alert": true,
+          "rank": 3,
+          "attempts": 4,
+          "valid": 4,
+          "candidates": 4,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase55": [
+        {
+          "id": "sample-clamp-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "sample-clamp-selection-fault",
+          "alert": true,
+          "rank": 3,
+          "attempts": 4,
+          "valid": 4,
+          "candidates": 4,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "semantic_scan_without_generation": [
+        {
+          "id": "sample-clamp-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "sample-clamp-selection-fault",
+          "alert": true,
+          "rank": 3,
+          "attempts": 4,
+          "valid": 4,
+          "candidates": 4,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "three-bank-read-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase6": [
+        {
+          "id": "sample-clamp-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "sample-clamp-selection-fault",
+          "alert": true,
+          "rank": 3,
+          "attempts": 4,
+          "valid": 4,
+          "candidates": 4,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "three-bank-read-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "v4_same_pool": [
+        {
+          "id": "sample-clamp-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "sample-clamp-selection-fault",
+          "alert": true,
+          "rank": 3,
+          "attempts": 4,
+          "valid": 4,
+          "candidates": 4,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "three-bank-read-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "pairwise_same_pool": [
+        {
+          "id": "sample-clamp-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "sample-clamp-selection-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 4,
+          "valid": 4,
+          "candidates": 4,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 4,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "three-bank-read-selection-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "three-bank-read-selection-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ]
+    },
+    "metrics": {
+      "phase5": {
+        "alerts": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "phase55": {
+        "alerts": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "semantic_scan_without_generation": {
+        "alerts": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 1,
+        "learned_scored": 0
+      },
+      "phase6": {
+        "alerts": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 1,
+        "learned_scored": 0
+      },
+      "v4_same_pool": {
+        "alerts": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 1,
+        "learned_scored": 0
+      },
+      "pairwise_same_pool": {
+        "alerts": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "precision": {
+          "hits": 1,
+          "total": 1,
+          "wilson95": [
+            0.207,
+            1
+          ]
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 2,
+          "wilson95": [
+            0,
+            0.658
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top1": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 2,
+          "wilson95": [
+            0.095,
+            0.905
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 4,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 1,
+        "learned_scored": 4
+      }
+    },
+    "latency": {
+      "mean_ms": 13.684,
+      "median_ms": 5.481,
+      "p95_ms": 41.599
+    }
+  },
+  "calibration": {
+    "rows": {
+      "phase5": [
+        {
+          "id": "package-grid-calibration-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "package-grid-calibration-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase55": [
+        {
+          "id": "package-grid-calibration-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "package-grid-calibration-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "semantic_scan_without_generation": [
+        {
+          "id": "package-grid-calibration-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "package-grid-calibration-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase6": [
+        {
+          "id": "package-grid-calibration-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "package-grid-calibration-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "v4_same_pool": [
+        {
+          "id": "package-grid-calibration-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "package-grid-calibration-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "pairwise_same_pool": [
+        {
+          "id": "package-grid-calibration-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "package-grid-calibration-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ]
+    },
+    "metrics": {
+      "phase5": {
+        "alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 2,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "phase55": {
+        "alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 2,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "semantic_scan_without_generation": {
+        "alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 2,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "phase6": {
+        "alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 2,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "v4_same_pool": {
+        "alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 2,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "pairwise_same_pool": {
+        "alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 1,
+          "wilson95": [
+            0,
+            0.793
+          ]
+        },
+        "compiler_validity": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "abstentions": 2,
+        "attempts": 0,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      }
+    },
+    "latency": {
+      "mean_ms": 1.549,
+      "median_ms": 1.549,
+      "p95_ms": 1.653
+    }
+  },
+  "final": {
+    "rows": {
+      "phase5": [
+        {
+          "id": "proper-divisor-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "proper-divisor-total-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-selector-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 3,
+          "valid": 3,
+          "candidates": 3,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-recurrence-ambiguous",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase55": [
+        {
+          "id": "proper-divisor-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "proper-divisor-total-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-selector-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 3,
+          "valid": 3,
+          "candidates": 3,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-recurrence-ambiguous",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "semantic_scan_without_generation": [
+        {
+          "id": "proper-divisor-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "proper-divisor-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "LOOP_PROGRESS_BINDING"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-control",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-selector-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 3,
+          "valid": 3,
+          "candidates": 3,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "partial-recurrence-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "phase6": [
+        {
+          "id": "proper-divisor-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "proper-divisor-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "LOOP_PROGRESS_BINDING"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 1,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-control",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 1,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-selector-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 3,
+          "valid": 3,
+          "candidates": 3,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "partial-recurrence-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "v4_same_pool": [
+        {
+          "id": "proper-divisor-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "proper-divisor-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "LOOP_PROGRESS_BINDING"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 1,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-control",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 1,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-selector-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 3,
+          "valid": 3,
+          "candidates": 3,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "partial-recurrence-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ],
+      "pairwise_same_pool": [
+        {
+          "id": "proper-divisor-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "proper-divisor-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "LOOP_PROGRESS_BINDING"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "fixed-point-horner-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "scaled-geometric-total-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "factorial-trailing-decimal-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "decimal-width-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "catalan-table-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "inserted-order-statistic-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "pascal-choice-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "two-channel-gain-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 1,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-control",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "intermediate-report-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "ascending-threshold-steps-fault",
+          "alert": true,
+          "rank": 1,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "restricted-recursive-product-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "bounded-mutual-parity-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "threshold-channel-fault",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RETURN_DEPENDENCY_MISMATCH"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 1,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "shadowed-crossing-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-control",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "weighted-settlement-fault",
+          "alert": false,
+          "rank": null,
+          "attempts": 0,
+          "valid": 0,
+          "candidates": 0,
+          "duplicates": 0,
+          "categories": [],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        },
+        {
+          "id": "partial-selector-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 3,
+          "valid": 3,
+          "candidates": 3,
+          "duplicates": 0,
+          "categories": [
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE",
+            "VARIABLE_REFERENCE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 3,
+          "multi_site": 0,
+          "limited": true
+        },
+        {
+          "id": "partial-recurrence-ambiguous",
+          "alert": true,
+          "rank": null,
+          "attempts": 1,
+          "valid": 1,
+          "candidates": 1,
+          "duplicates": 0,
+          "categories": [
+            "RECURSIVE_ARGUMENT_UPDATE"
+          ],
+          "recommendation": "ABSTAIN",
+          "learned_scored": 0,
+          "multi_site": 0,
+          "limited": false
+        }
+      ]
+    },
+    "metrics": {
+      "phase5": {
+        "alerts": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "compiler_validity": {
+          "hits": 3,
+          "total": 3,
+          "wilson95": [
+            0.438,
+            1
+          ]
+        },
+        "abstentions": 34,
+        "attempts": 3,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "phase55": {
+        "alerts": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "precision": {
+          "hits": 0,
+          "total": 0,
+          "wilson95": null
+        },
+        "false_alerts": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "recall": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "top1": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 16,
+          "wilson95": [
+            0,
+            0.194
+          ]
+        },
+        "compiler_validity": {
+          "hits": 3,
+          "total": 3,
+          "wilson95": [
+            0.438,
+            1
+          ]
+        },
+        "abstentions": 34,
+        "attempts": 3,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 0,
+        "learned_scored": 0
+      },
+      "semantic_scan_without_generation": {
+        "alerts": {
+          "hits": 7,
+          "total": 16,
+          "wilson95": [
+            0.231,
+            0.668
+          ]
+        },
+        "precision": {
+          "hits": 7,
+          "total": 8,
+          "wilson95": [
+            0.529,
+            0.978
+          ]
+        },
+        "false_alerts": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "recall": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "top1": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "top3": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "compiler_validity": {
+          "hits": 4,
+          "total": 4,
+          "wilson95": [
+            0.51,
+            1
+          ]
+        },
+        "abstentions": 34,
+        "attempts": 4,
+        "duplicates": 0,
+        "multi_site": 0,
+        "limited": 1,
+        "learned_scored": 0
+      },
+      "phase6": {
+        "alerts": {
+          "hits": 7,
+          "total": 16,
+          "wilson95": [
+            0.231,
+            0.668
+          ]
+        },
+        "precision": {
+          "hits": 7,
+          "total": 8,
+          "wilson95": [
+            0.529,
+            0.978
+          ]
+        },
+        "false_alerts": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "recall": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "top1": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "top3": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstentions": 34,
+        "attempts": 12,
+        "duplicates": 0,
+        "multi_site": 2,
+        "limited": 1,
+        "learned_scored": 0
+      },
+      "v4_same_pool": {
+        "alerts": {
+          "hits": 7,
+          "total": 16,
+          "wilson95": [
+            0.231,
+            0.668
+          ]
+        },
+        "precision": {
+          "hits": 7,
+          "total": 8,
+          "wilson95": [
+            0.529,
+            0.978
+          ]
+        },
+        "false_alerts": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "recall": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "top1": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "top3": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstentions": 34,
+        "attempts": 12,
+        "duplicates": 0,
+        "multi_site": 2,
+        "limited": 1,
+        "learned_scored": 0
+      },
+      "pairwise_same_pool": {
+        "alerts": {
+          "hits": 7,
+          "total": 16,
+          "wilson95": [
+            0.231,
+            0.668
+          ]
+        },
+        "precision": {
+          "hits": 7,
+          "total": 8,
+          "wilson95": [
+            0.529,
+            0.978
+          ]
+        },
+        "false_alerts": {
+          "hits": 1,
+          "total": 16,
+          "wilson95": [
+            0.011,
+            0.283
+          ]
+        },
+        "recall": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "top1": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "top3": {
+          "hits": 5,
+          "total": 16,
+          "wilson95": [
+            0.142,
+            0.556
+          ]
+        },
+        "compiler_validity": {
+          "hits": 12,
+          "total": 12,
+          "wilson95": [
+            0.757,
+            1
+          ]
+        },
+        "abstentions": 34,
+        "attempts": 12,
+        "duplicates": 0,
+        "multi_site": 2,
+        "limited": 1,
+        "learned_scored": 3
+      }
+    },
+    "latency": {
+      "mean_ms": 2.902,
+      "median_ms": 2.394,
+      "p95_ms": 6.832
+    }
+  },
+  "robustness": [
+    {
+      "id": "proper-divisor-total-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-control",
+      "transform": "swap_independent_initializers",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-fault",
+      "transform": "swap_independent_initializers",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "proper-divisor-total-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "fixed-point-horner-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "fixed-point-horner-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "fixed-point-horner-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "fixed-point-horner-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "fixed-point-horner-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "fixed-point-horner-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "scaled-geometric-total-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "factorial-trailing-decimal-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "decimal-width-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "catalan-table-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "inserted-order-statistic-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "pascal-choice-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "pascal-choice-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "pascal-choice-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "pascal-choice-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "pascal-choice-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "pascal-choice-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "two-channel-gain-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "two-channel-gain-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "two-channel-gain-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "two-channel-gain-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "two-channel-gain-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "two-channel-gain-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "intermediate-report-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "intermediate-report-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "intermediate-report-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "intermediate-report-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "intermediate-report-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "intermediate-report-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "ascending-threshold-steps-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "restricted-recursive-product-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "restricted-recursive-product-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "restricted-recursive-product-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "restricted-recursive-product-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "restricted-recursive-product-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "restricted-recursive-product-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "bounded-mutual-parity-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "threshold-channel-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "threshold-channel-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "threshold-channel-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "threshold-channel-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "threshold-channel-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "threshold-channel-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-control",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "shadowed-crossing-fault",
+      "transform": "reverse_comparison",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "weighted-settlement-control",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "weighted-settlement-control",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "weighted-settlement-control",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "weighted-settlement-fault",
+      "transform": "alpha_rename",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "weighted-settlement-fault",
+      "transform": "format",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    },
+    {
+      "id": "weighted-settlement-fault",
+      "transform": "parenthesize_return",
+      "observation_equivalent": true,
+      "alerts_preserved": true,
+      "categories_preserved": true
+    }
+  ],
+  "provenance_groups": {
+    "external_adaptation": {
+      "alerts": {
+        "hits": 3,
+        "total": 8,
+        "wilson95": [
+          0.137,
+          0.694
+        ]
+      },
+      "precision": {
+        "hits": 3,
+        "total": 3,
+        "wilson95": [
+          0.438,
+          1
+        ]
+      },
+      "false_alerts": {
+        "hits": 0,
+        "total": 8,
+        "wilson95": [
+          0,
+          0.324
+        ]
+      },
+      "recall": {
+        "hits": 3,
+        "total": 8,
+        "wilson95": [
+          0.137,
+          0.694
+        ]
+      },
+      "top1": {
+        "hits": 3,
+        "total": 8,
+        "wilson95": [
+          0.137,
+          0.694
+        ]
+      },
+      "top3": {
+        "hits": 3,
+        "total": 8,
+        "wilson95": [
+          0.137,
+          0.694
+        ]
+      },
+      "compiler_validity": {
+        "hits": 3,
+        "total": 3,
+        "wilson95": [
+          0.438,
+          1
+        ]
+      },
+      "abstentions": 16,
+      "attempts": 3,
+      "duplicates": 0,
+      "multi_site": 0,
+      "limited": 0,
+      "learned_scored": 0
+    },
+    "internal": {
+      "alerts": {
+        "hits": 4,
+        "total": 8,
+        "wilson95": [
+          0.215,
+          0.785
+        ]
+      },
+      "precision": {
+        "hits": 4,
+        "total": 5,
+        "wilson95": [
+          0.376,
+          0.964
+        ]
+      },
+      "false_alerts": {
+        "hits": 1,
+        "total": 8,
+        "wilson95": [
+          0.022,
+          0.471
+        ]
+      },
+      "recall": {
+        "hits": 2,
+        "total": 8,
+        "wilson95": [
+          0.071,
+          0.591
+        ]
+      },
+      "top1": {
+        "hits": 2,
+        "total": 8,
+        "wilson95": [
+          0.071,
+          0.591
+        ]
+      },
+      "top3": {
+        "hits": 2,
+        "total": 8,
+        "wilson95": [
+          0.071,
+          0.591
+        ]
+      },
+      "compiler_validity": {
+        "hits": 9,
+        "total": 9,
+        "wilson95": [
+          0.701,
+          1
+        ]
+      },
+      "abstentions": 18,
+      "attempts": 9,
+      "duplicates": 0,
+      "multi_site": 2,
+      "limited": 1,
+      "learned_scored": 0
+    }
+  },
+  "semantic_categories": {
+    "RECURSIVE_ARGUMENT_UPDATE": 3,
+    "RETURN_DEPENDENCY_MISMATCH": 5
+  }
+}

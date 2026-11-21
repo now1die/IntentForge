@@ -1,0 +1,55 @@
+{
+  "sha256": "e438de6cc64af3656d4a0b8ab0e95af2d6617c4d7e5e07a2cff9b2ecfb41d22c",
+  "historical_sources": 860,
+  "frozen_partitions": {
+    "calibration": 2,
+    "development": 6,
+    "final": 34,
+    "selection": 6
+  },
+  "admitted_partitions": {
+    "calibration": 2,
+    "development": 4,
+    "final": 34,
+    "selection": 4
+  },
+  "quarantined_families": [
+    "planar-marker-study",
+    "scaled-rebate-selection"
+  ],
+  "historical_overlaps": [
+    {
+      "case": "planar-marker-study-control",
+      "match": "near",
+      "ratio": 0.9535,
+      "historical_sha256": "0248d1d62d7df189f019a7b554a73dbfc6d639d4b77c6cf3000a58945f4d81d6"
+    },
+    {
+      "case": "planar-marker-study-fault",
+      "match": "near",
+      "ratio": 0.9535,
+      "historical_sha256": "0b7d383da888d701e44edef6000655324f648e2ce6d9e7ac33d4f2ed6f176390"
+    }
+  ],
+  "interfamily_overlaps": [
+    {
+      "cases": [
+        "threshold-channel-control",
+        "scaled-rebate-selection-fault"
+      ],
+      "match": "near",
+      "ratio": 0.9091
+    },
+    {
+      "cases": [
+        "threshold-channel-fault",
+        "scaled-rebate-selection-fault"
+      ],
+      "match": "near",
+      "ratio": 0.9091
+    }
+  ],
+  "same_full_specification": [],
+  "same_full_vectors": [],
+  "shared_cross_partition_edit_shapes": 3
+}
