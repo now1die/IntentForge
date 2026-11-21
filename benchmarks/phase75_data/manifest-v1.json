@@ -1,0 +1,20 @@
+{
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "case_sha256": "7c5720f3ca8596858cffda0c126c8a162aefcd5b3ce8f6a4ff0d8e60478ea216",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "conversions/decimal_to_any.py": "2d16ca436358609145f0fccfe8d5c3a399c852426514d343b59e0c87b16cac01",
+    "maths/special_numbers/jacobsthal_number.py": "d8f1d09f467520cf02e4fbcd4f49a579cfebb873e2c84c88590d9456b0df2acc",
+    "maths/series/geometric_series.py": "caf69e223ca1a884a69bd455fc51f82b989af6d5fed59f9a92384feeeb56a49d",
+    "maths/special_numbers/hexagonal_number.py": "47423a82a8e93af59943d93491c30096e246a25a063737fca089d9f4194cf45e",
+    "maths/padovan_sequence.py": "a0ca15a4a5c06333c7423e6c837aba7955df3ebf7030cbb803b76bd4771d2a37",
+    "maths/eulers_totient.py": "7b5c501b882b23a4ab22849ef8a1f8c545f27a2cc99e958b8fcd6a5f453ecb01"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 58
+  },
+  "selection_policy": "Deterministic Phase 7 ranking and verified-original gate, fixed before final scoring. Holdout vectors never guide synthesis."
+}
