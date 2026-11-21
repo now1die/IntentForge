@@ -22,7 +22,7 @@ from ai.specification import InvalidSpecification, includes_input
 from ai.intention_uncertainty import classify
 from execution_service.contracts import (
     Availability, Batch, BatchResult, CandidatePair, CandidateReview, GuidedEvidence, Phase7Response, Program,
-    Phase8Response, RankedProbe, VerifyRequest, VerifyResponse,
+    Phase8Response, Phase9Response, RankedProbe, RuntimeObservation, VerifyRequest, VerifyResponse,
 )
 from .request_body import bounded_body
 
@@ -121,8 +121,8 @@ def validate_identity(batch, returned):
             raise ValueError("Worker returned probe evidence for an unexpected candidate")
 
 
-def response(version, *, candidate_categories=None, specification=None, candidate_details=None, **fields):
-    if version not in {7, 75, 8, 85}:
+def response(version, *, candidate_categories=None, specification=None, candidate_details=None, runtime_observation=None, **fields):
+    if version not in {7, 75, 8, 85, 9}:
         return VerifyResponse(**fields)
     candidates = fields.get("candidates", ())
     original = classify_original(fields.get("original"))
@@ -146,10 +146,12 @@ def response(version, *, candidate_categories=None, specification=None, candidat
                     original=original, review=review, matching_candidates=passing,
                     confirmed_fault=original == OriginalEvidence.CONFIRMED_TEST_MISMATCH,
                     recommended_candidate=passing[0] if review == ReviewEvidence.REVIEW_MATCHING_REPAIR else None))
-    if version in {8, 85}:
+    if version in {8, 85, 9}:
         collapse = original == OriginalEvidence.ORIGINAL_MATCHES_SUPPLIED_TESTS and bool(candidates)
-        return Phase8Response(**data, review_presentation="OPTIONAL_COLLAPSED" if collapse else "REVIEW_VISIBLE",
-                              specification=specification, candidate_details=candidate_details or {})
+        profile = Phase9Response if version == 9 else Phase8Response
+        return profile(**data, review_presentation="OPTIONAL_COLLAPSED" if collapse else "REVIEW_VISIBLE",
+                       specification=specification, candidate_details=candidate_details or {},
+                       **({"semantic_profile": 9, "runtime_observation": runtime_observation} if version == 9 else {}))
     return Phase7Response(**data)
 
 
@@ -170,41 +172,43 @@ def compare(path, payload, identity):
     candidates = []
     specification = None
     candidate_details = {}
-    if payload.compare_candidates or payload.engine_version in {8, 85} and payload.input_domain is not None:
+    if payload.compare_candidates or payload.engine_version in {8, 85, 9} and payload.input_domain is not None:
         requirement = Requirement(function=payload.entry_point, return_expression=payload.return_expression,
                                   condition=payload.condition) if payload.compare_candidates and (
                                       payload.return_expression or payload.condition
                                   ) else None
         try:
-            semantic = payload.engine_version in {6, 65, 7, 75, 8, 85}
+            semantic = payload.engine_version in {6, 65, 7, 75, 8, 85, 9}
             result = analyze_intention(payload.source, requirement, phase35=True, phase5=payload.engine_version == 5,
                                        phase55=payload.engine_version == 55, phase6=semantic, phase65=payload.engine_version == 65,
                                        phase7=payload.engine_version == 7, phase75=payload.engine_version == 75, phase6_entry=payload.entry_point,
                                        phase6_examples=tuple(Example(row.arguments, row.expected) for row in payload.vectors)
-                                       if semantic else (), phase8=payload.engine_version in {8, 85},
-                                       phase8_domain=payload.input_domain, phase85=payload.engine_version == 85,
+                                       if semantic else (), phase8=payload.engine_version in {8, 85, 9},
+                                       phase8_domain=payload.input_domain, phase85=payload.engine_version == 85, phase9=payload.engine_version == 9,
                                        **({"candidate_budget": 0} if not payload.compare_candidates else {}))
             candidates = [(rank, item) for rank, item in enumerate(result.candidates, 1)
                           if item.compiler_valid and len(item.proposed_code) <= 24_000
                           and len(item.proposed_code.encode()) <= 48_000][:4]
-            if payload.engine_version in {8, 85}:
+            if payload.engine_version in {8, 85, 9}:
                 specification = (result.program_analysis or {}).get("phase8")
                 if payload.input_domain is not None and (not specification or
                         specification["specification"]["status"] not in {"VALIDATED_EXAMPLES", "INCOMPLETE_SPECIFICATION"}):
                     raise InvalidSpecification("The supplied domain needs a compiler-valid scalar signature.")
-                if specification and payload.engine_version == 85:
+                if specification and payload.engine_version in {85, 9}:
                     specification = {**specification, "phase85": result.program_analysis.get("phase85")}
+                    if payload.engine_version == 9:
+                        specification["phase9"] = result.program_analysis.get("phase9")
                 admitted = {choice.id for _, choice in candidates}
                 candidate_details = {row["id"]: {key: row[key] for key in ("edits", "evidence", "counter_evidence", "evidence_basis")}
                                      for row in result.to_dict()["candidates"] if row["id"] in admitted}
         except (InvalidRequirement, InvalidSpecification) as exc:
-            raise HTTPException(status_code=422, detail=str(exc) if payload.engine_version in {8, 85} else "The supplied static expression could not be interpreted.") from exc
+            raise HTTPException(status_code=422, detail=str(exc) if payload.engine_version in {8, 85, 9} else "The supplied static expression could not be interpreted.") from exc
         except (ContextLimit, RecursionError, TypeError, UnsupportedContext):
             # The isolated original still returns its compiler-admission status.
-            if payload.engine_version in {8, 85} and payload.input_domain is not None:
+            if payload.engine_version in {8, 85, 9} and payload.input_domain is not None:
                 raise HTTPException(status_code=422, detail="The supplied domain could not be validated.")
     batch = Batch(entry_point=payload.entry_point, vectors=payload.vectors, limits=payload.limits,
-                  engine_version={4: 4, 7: 7, 75: 7, 8: 8, 85: 8}.get(payload.engine_version, 5),
+                  engine_version={4: 4, 7: 7, 75: 7, 8: 8, 85: 8, 9: 8}.get(payload.engine_version, 5),
                   input_domain=payload.input_domain,
                   trace=payload.trace, programs=(Program(source=payload.source), *(
                       Program(source=choice.proposed_code, candidate_id=choice.id) for _, choice in candidates
@@ -230,6 +234,20 @@ def compare(path, payload, identity):
                                     static_evidence=classify(choice, ambiguous=False)["tier"],
                                     hypothesis=choice.proposal.assumption, behavior=run)
                     for (rank, choice), run in zip(candidates, alternatives, strict=True))
+    runtime_observation = None
+    if payload.engine_version == 9 and classify_original(original) == OriginalEvidence.RUNTIME_FAILURE:
+        issue = original.execution.issue
+        vectors = original.execution.vectors
+        vector = vectors[issue.vector] if issue.vector is not None and issue.vector < len(vectors) else None
+        runtime_observation = RuntimeObservation(
+            issue=issue, program=original.program, input=vector.arguments if vector else None,
+            alternatives={item.id: {
+                "completed_trusted_suite": item.behavior.status in {
+                    Status.MATCHES_SUPPLIED_TESTS, Status.MISMATCHES_SUPPLIED_TESTS,
+                },
+                "matched_trusted_suite": item.behavior.status == Status.MATCHES_SUPPLIED_TESTS,
+            } for item in reviews},
+        )
     passing = tuple(item.id for item in reviews if item.behavior.status == Status.MATCHES_SUPPLIED_TESTS)
     order = review_order(original, reviews, payload.engine_version)
     status = None
@@ -238,7 +256,7 @@ def compare(path, payload, identity):
     return response(payload.engine_version, availability=availability, original=original, candidates=reviews,
                           candidate_categories={choice.id: choice.proposal.category for _, choice in candidates},
                           specification=specification, candidate_details=candidate_details,
-                          review_order=order, comparison_status=status, probes=returned.probes, **identity)
+                          runtime_observation=runtime_observation, review_order=order, comparison_status=status, probes=returned.probes, **identity)
 
 
 def review_order(original, candidates, version):
@@ -246,12 +264,12 @@ def review_order(original, candidates, version):
     known_failure = original.status == Status.MISMATCHES_SUPPLIED_TESTS or (
         original.status == Status.BEHAVIOR_UNKNOWN and issue and issue.code != "INTERNAL_FAILURE"
     )
-    if version in {5, 55, 6, 65, 7, 75, 8, 85} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
+    if version in {5, 55, 6, 65, 7, 75, 8, 85, 9} and issue and issue.code in {"STEP_LIMIT", "CALL_DEPTH", "MEMORY_CELLS", "COMPILER_INVALID"}:
         known_failure = True
     if not known_failure:
         return tuple(row.id for row in candidates)
     tiers = {Status.MATCHES_SUPPLIED_TESTS: 0}
-    if version in {5, 55, 6, 65, 7, 75, 8, 85}:
+    if version in {5, 55, 6, 65, 7, 75, 8, 85, 9}:
         tiers[Status.MISMATCHES_SUPPLIED_TESTS] = 1
     return tuple(row.id for row in sorted(candidates, key=lambda row: tiers.get(row.behavior.status, 2)))
 
@@ -262,7 +280,7 @@ async def capability(request: Request):
     return path if isinstance(path, Availability) else await run_in_threadpool(get_availability, path)
 
 
-@router.post("/v1/behavioral-verification", response_model=Phase8Response | Phase7Response | VerifyResponse)
+@router.post("/v1/behavioral-verification", response_model=Phase9Response | Phase8Response | Phase7Response | VerifyResponse)
 async def verification(request: Request):
     raw = await bounded_body(request, 300_000)
     try:

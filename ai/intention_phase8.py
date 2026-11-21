@@ -201,7 +201,7 @@ def arithmetic_value(operation, a, b):
     return signed(q) if operation == "/" else signed(a - q * b)
 
 
-def substitution(inputs, changes=()):
+def substitution(inputs, changes=(), *, on_fault=None):
     """Bind one input and one atomic edit set to a restricted term graph."""
     values = {}
     by_origin = {change.origin: change for change in changes}
@@ -226,6 +226,13 @@ def substitution(inputs, changes=()):
                 value = signed(value + applied.value)
         elif term.operation == "negate":
             value = signed(-substitute(term.children[0]))
+        elif term.operation == "sequence":
+            for child in term.children:
+                substitute(child)
+            value = 0
+        elif term.operation == "select":
+            condition, yes, no = term.children
+            value = substitute(yes if substitute(condition) else no)
         elif term.operation == "!":
             value = not substitute(term.children[0])
         elif term.operation in {"&&", "||"}:
@@ -238,7 +245,12 @@ def substitution(inputs, changes=()):
             operation = applied.value if applied else term.operation
             if applied and applied.action == "swap":
                 a, b = b, a
-            value = COMPARISONS[operation](a, b) if operation in COMPARISONS else arithmetic_value(operation, a, b)
+            try:
+                value = COMPARISONS[operation](a, b) if operation in COMPARISONS else arithmetic_value(operation, a, b)
+            except ArithmeticError:
+                if on_fault is not None:
+                    on_fault(term.origin, operation, a, b)
+                raise
         values[key] = value
         return value
 

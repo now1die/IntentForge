@@ -12,7 +12,7 @@ const statusLabels: Record<string, string> = {
   ANALYSIS_LIMITED: "The projection reached its work limit.",
 };
 
-function BranchEvidence({ witness }: { witness: BranchWitness }) {
+export function BranchEvidence({ witness }: { witness: BranchWitness }) {
   return <>
     {!!witness.guards.length && <ul aria-label="Branch coverage">{witness.guards.map((guard) => <li key={guard.site}>
       Line {guard.span.start.line} · <code>{guard.predicate}</code> · {Object.entries(guard.supplied_coverage)

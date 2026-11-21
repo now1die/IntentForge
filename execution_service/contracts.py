@@ -3,7 +3,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
-from ai.behavior_oracle import BehaviorResult, ExecutionLimits
+from ai.behavior_oracle import BehaviorResult, ExecutionLimits, RuntimeIssue
 from ai.guided_evidence import OriginalEvidence, ReviewEvidence, conflicting_expectations
 from ai.specification import Domain, includes_input
 
@@ -33,7 +33,7 @@ class VerifyRequest(Message):
     source: Source
     entry_point: Entry
     vectors: tuple[TestVector, ...] = Field(max_length=12)
-    engine_version: Literal[4, 5, 55, 6, 65, 7, 75, 8, 85] = 4
+    engine_version: Literal[4, 5, 55, 6, 65, 7, 75, 8, 85, 9] = 4
     limits: LocalLimits = Field(default_factory=LocalLimits)
     trace: bool = Field(default=False, strict=True)
     compare_candidates: bool = Field(default=False, strict=True)
@@ -45,11 +45,11 @@ class VerifyRequest(Message):
     def limits_and_source(self):
         if len(self.source.encode()) > 48_000:
             raise ValueError("Local execution admission limits exceeded")
-        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7, 75, 8, 85} or not self.compare_candidates):
+        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7, 75, 8, 85, 9} or not self.compare_candidates):
             raise ValueError("Supply a test vector or explicitly request Phase 5 observational comparison")
-        if self.engine_version in {7, 75, 8, 85} and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
+        if self.engine_version in {7, 75, 8, 85, 9} and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
             raise ValueError("The same input has conflicting expected outputs.")
-        if "input_domain" in self.model_fields_set and self.engine_version not in {8, 85}:
+        if "input_domain" in self.model_fields_set and self.engine_version not in {8, 85, 9}:
             raise ValueError("Input domains require Phase 8.")
         if any(not includes_input(self.input_domain, row.arguments) for row in self.vectors):
             raise ValueError("A test input lies outside the declared domain.")
@@ -169,3 +169,20 @@ class Phase8Response(Phase7Response):
     review_presentation: Literal["OPTIONAL_COLLAPSED", "REVIEW_VISIBLE"]
     specification: dict | None = None
     candidate_details: dict[CandidateId, dict] = Field(default_factory=dict)
+
+
+class RuntimeAlternative(Message):
+    completed_trusted_suite: bool
+    matched_trusted_suite: bool
+
+
+class RuntimeObservation(Message):
+    issue: RuntimeIssue
+    program: str
+    input: tuple[Scalar, ...] | None
+    alternatives: dict[CandidateId, RuntimeAlternative]
+
+
+class Phase9Response(Phase8Response):
+    semantic_profile: Literal[9]
+    runtime_observation: RuntimeObservation | None = None
