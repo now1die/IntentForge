@@ -1,3 +1,4 @@
+import { FiniteRepairEvidence, CoordinatedLocations } from "./FiniteRepairEvidence";
 import { SpecificationEvidence } from "./SpecificationEvidence";
 import { Phase65Evidence } from "./Phase65Evidence";
 import { useEffect, useRef, useState, type FormEvent } from "react";
@@ -53,7 +54,7 @@ export function IntentionPanel({ code, onApply }: {
 }) {
   const pending = useRef<AbortController | null>(null);
   const [busy, setBusy] = useState(false);
-  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8>(2);
+  const [engineVersion, setEngineVersion] = useState<2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85>(2);
   const [mode, setMode] = useState<IntentionMode | "auto">("auto");
   const [error, setError] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<{ code: string; result: IntentionResponse } | null>(null);
@@ -91,7 +92,7 @@ export function IntentionPanel({ code, onApply }: {
         return;
       }
       const options: Phase8Inputs = {};
-      if (engineVersion === 8 && input.mode !== "code_only") {
+      if ((engineVersion === 8 || engineVersion === 85) && input.mode !== "code_only") {
         const fields = new FormData(form);
         const domain = String(fields.get("input_domain") ?? "").trim();
         const partial = String(fields.get("partial_inputs") ?? "").trim();
@@ -121,9 +122,9 @@ export function IntentionPanel({ code, onApply }: {
         <div className="intention-fields">
           <label>Intention engine
             <select value={engineVersion} onChange={(event) => {
-              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8;
+              const version = Number(event.target.value) as 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85;
               setEngineVersion(version);
-              if (version !== 7 && version !== 75 && version !== 8 && mode === "examples") setMode("code_only");
+              if (version !== 7 && version !== 75 && version !== 8 && version !== 85 && mode === "examples") setMode("code_only");
             }}>
               <option value="2">Phase 2.5</option>
               <option value="3">Generalization v3</option>
@@ -135,12 +136,13 @@ export function IntentionPanel({ code, onApply }: {
               <option value="7">Phase 7 guided repair precision</option>
               <option value="75">Phase 7.5 generalized repair recovery</option>
               <option value="8">Phase 8 specification-guided arithmetic</option>
+              <option value="85">Phase 8.5 branch-aware repair</option>
             </select>
           </label>
           <label>Analysis mode
             <select name="mode" value={mode} onChange={(event) => setMode(event.target.value as IntentionMode | "auto")}>
               <option value="auto">Use entered fields</option>
-              {(engineVersion === 7 || engineVersion === 75 || engineVersion === 8) && <option value="examples">Supplied input/output examples</option>}
+              {(engineVersion === 7 || engineVersion === 75 || engineVersion === 8 || engineVersion === 85) && <option value="examples">Supplied input/output examples</option>}
               <option value="code_only">Code only</option>
               <option value="natural_language">Natural-language requirement</option>
               <option value="explicit">Explicit specification</option>
@@ -163,7 +165,7 @@ export function IntentionPanel({ code, onApply }: {
               <label>Condition location<input name="condition_ordinal" type="number" min={1} max={3000} /></label>
             </>}
             <label>Input/output examples<textarea name="examples" maxLength={4000} placeholder='[{"args":[3],"expected_return":9}]' /></label>
-            {engineVersion === 8 && <>
+            {(engineVersion === 8 || engineVersion === 85) && <>
               <label>Input domain (JSON)<textarea name="input_domain" maxLength={2000}
                 placeholder='[{"minimum":0,"maximum":32},null]' /></label>
               <label>Partial inputs (JSON)<textarea name="partial_inputs" maxLength={2000} placeholder='[[2,3]]' /></label>
@@ -193,6 +195,7 @@ export function IntentionPanel({ code, onApply }: {
             <p key={index}>{diagnostic.message}</p>
           ))}
           {result.program_analysis?.phase8 && <SpecificationEvidence analysis={result.program_analysis.phase8} />}
+          {result.program_analysis?.phase85 && <FiniteRepairEvidence analysis={result.program_analysis.phase85} />}
           {result.program_analysis && <section aria-label="Program-level evidence">
             <h4>Program-level evidence</h4>
             {result.program_analysis.status === "ANALYSIS_LIMITED" && <p>Analysis reached its work limit. Completed evidence is shown.</p>}
@@ -273,13 +276,14 @@ export function IntentionPanel({ code, onApply }: {
                   : result.finding === "COMPILER_ERROR" ? "Compiler-supported repair hypothesis" : "Code-only hypothesis"
               }</p>
               {choice.evidence_basis && <p>Evidence basis · {choice.evidence_basis.replaceAll("_", " ")}
-                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase8" ? "Phase 8" : choice.hypothesis_origin === "phase75" ? "Phase 7.5" : choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
+                {choice.hypothesis_origin && ` · ${choice.hypothesis_origin === "phase85" ? "Phase 8.5" : choice.hypothesis_origin === "phase8" ? "Phase 8" : choice.hypothesis_origin === "phase75" ? "Phase 7.5" : choice.hypothesis_origin === "phase65" ? "Phase 6.5" : "Earlier engine"}`}</p>}
               <ul>{choice.evidence.map((fact, index) => <li key={index}>
                 {fact.detail}{fact.span && <small> · Line {fact.span.start.line}</small>}
               </li>)}</ul>
               {!!choice.counter_evidence?.length && <ul aria-label="Counter-evidence and missing assumptions">
                 {choice.counter_evidence.map((fact, index) => <li key={index}>{fact.detail}</li>)}
               </ul>}
+              {choice.hypothesis_origin === "phase85" && <CoordinatedLocations edits={choice.edits} />}
               {choice.edits.map((edit, index) => (
                 <div className="inline-diff" key={index}>
                   <div className="diff-pair">

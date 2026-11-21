@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -321,7 +321,47 @@ export interface Phase8Inputs {
   partial_inputs?: (number | boolean)[][];
 }
 
+type AnalysisSpan = Diagnostic["span"];
+
+export type BranchWitness = {
+  guards: { site: number; span: AnalysisSpan; predicate: string; supplied_coverage: Record<string, number> }[];
+  returns: {
+    site: number; span: AnalysisSpan; expression_span: AnalysisSpan; examples: number;
+    conditions: { site: number; outcome: string }[];
+    definitions: { name: string; site: number; span: AnalysisSpan }[];
+  }[];
+};
+
+export type LoopWitness = {
+  guard_span: AnalysisSpan;
+  update_span: AnalysisSpan;
+  seed_span: AnalysisSpan;
+  accumulator_update_span: AnalysisSpan;
+  predicate_span: AnalysisSpan | null;
+  return_span: AnalysisSpan;
+  step: number;
+  point_limit: number;
+  iterations: number[];
+  matches: number[];
+};
+
+export type Phase85Analysis = {
+  status: string;
+  mode?: "branches" | "coordinated" | "loops";
+  examples?: number;
+  original_mismatches?: number;
+  compatible_candidates: number;
+  branch?: BranchWitness;
+  loop?: LoopWitness;
+  witnesses?: {
+    edits: { span: AnalysisSpan; replacement: string }[];
+    branch?: BranchWitness;
+    loop?: LoopWitness;
+  }[];
+};
+
 export interface Phase8Analysis {
+  phase85?: Phase85Analysis | null;
   specification: {
     function: string | null;
     parameters: { name: string; type: string }[];
@@ -403,6 +443,7 @@ export interface IntentionResponse {
   program_analysis?: {
     phase65?: Phase65Analysis;
     phase8?: Phase8Analysis;
+    phase85?: Phase85Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;

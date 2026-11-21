@@ -4,6 +4,7 @@ This module projects a restricted CFG to mathematical terms. It has no Mini-C
 runtime, native execution, or ability to evaluate arbitrary source.
 """
 from dataclasses import dataclass
+from operator import eq, ge, gt, le, lt, ne
 from time import monotonic
 
 from compiler import ast_nodes as ast
@@ -21,6 +22,9 @@ MAX_CALL_DEPTH = 2
 MAX_TRIALS = 144
 MAX_PROPOSALS = 4
 OPERATOR_CLASS = {"+": ("-",), "-": ("+",), "*": ("/", "%"), "/": ("*", "%"), "%": ("*", "/")}
+
+
+COMPARISONS = {"<": lt, "<=": le, ">": gt, ">=": ge, "==": eq, "!=": ne}
 
 
 class UnsupportedProjection(ValueError):
@@ -197,15 +201,16 @@ def arithmetic_value(operation, a, b):
     return signed(q) if operation == "/" else signed(a - q * b)
 
 
-def project(formula, inputs, change=None):
-    """Substitute one input into the bounded arithmetic constraints."""
+def substitution(inputs, changes=()):
+    """Bind one input and one atomic edit set to a restricted term graph."""
     values = {}
+    by_origin = {change.origin: change for change in changes}
 
     def substitute(term):
         key = id(term)
         if key in values:
             return values[key]
-        applied = change if change is not None and term.origin == change.origin else None
+        applied = by_origin.get(term.origin)
         if applied and applied.action == "reference":
             matching = dict(term.alternatives).get(applied.value)
             if matching is None:
@@ -221,12 +226,32 @@ def project(formula, inputs, change=None):
                 value = signed(value + applied.value)
         elif term.operation == "negate":
             value = signed(-substitute(term.children[0]))
+        elif term.operation == "!":
+            value = not substitute(term.children[0])
+        elif term.operation in {"&&", "||"}:
+            left, right = term.children
+            operation = applied.value if applied else term.operation
+            value = (substitute(left) and substitute(right) if operation == "&&"
+                     else substitute(left) or substitute(right))
         else:
             a, b = (substitute(child) for child in term.children)
-            value = arithmetic_value(applied.value if applied else term.operation, a, b)
+            operation = applied.value if applied else term.operation
+            if applied and applied.action == "swap":
+                a, b = b, a
+            value = COMPARISONS[operation](a, b) if operation in COMPARISONS else arithmetic_value(operation, a, b)
         values[key] = value
         return value
 
+    return substitute
+
+
+def project(formula, inputs, change=None):
+    """Substitute one input into the bounded arithmetic constraints."""
+    return project_changes(formula, inputs, (change,) if change else ())
+
+
+def project_changes(formula, inputs, changes):
+    substitute = substitution(inputs, changes)
     try:
         for obligation in formula.obligations:
             substitute(obligation)

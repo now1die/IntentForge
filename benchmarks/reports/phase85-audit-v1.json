@@ -1,0 +1,21 @@
+{
+  "sha256": "57a69b93e60828ecfaa9d4c55c33b53e9b671745b889badd6289d09bf9a17b61",
+  "historical_sources": 1124,
+  "frozen_partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 30
+  },
+  "admitted_partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 30
+  },
+  "quarantined_families": [],
+  "historical_overlaps": [],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [],
+  "shared_cross_partition_edit_shapes": 2
+}
