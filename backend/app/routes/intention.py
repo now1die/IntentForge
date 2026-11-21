@@ -52,7 +52,7 @@ class IntentionRequest(BaseModel):
     code: str = Field(max_length=MAX_SOURCE)
     requirement: RequirementRequest | None = None
     include_context: bool = False
-    engine_version: Literal[2, 3, 4, 5, 55, 6] = 2
+    engine_version: Literal[2, 3, 4, 5, 55, 6, 65] = 2
     mode: Literal["code_only", "natural_language", "explicit"] | None = None
 
     @model_validator(mode="after")
@@ -95,7 +95,7 @@ class IntentionResponse(BaseModel):
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.engine_version in {5, 55, 6}:
+    if request.engine_version in {5, 55, 6, 65}:
         ranker, status = None, f"V{request.engine_version}_DETERMINISTIC"
     elif request.engine_version >= 3:
         ranker = None
@@ -111,13 +111,14 @@ def intention_analysis(request: IntentionRequest) -> dict:
                                    enhanced=request.mode is not None, expanded_ranker=expanded,
                                    generalized=request.engine_version >= 3, phase35=request.engine_version == 4,
                                    phase5=request.engine_version == 5, phase55=request.engine_version == 55,
-                                   phase6=request.engine_version == 6, phase6_graph=request.include_context)
+                                   phase6=request.engine_version == 6, phase65=request.engine_version == 65,
+                                   phase6_graph=request.include_context)
     except (InvalidRequirement, UnsupportedContext) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
     response = result.to_dict(include_context=request.include_context)
-    if request.engine_version in {5, 55, 6}:
+    if request.engine_version in {5, 55, 6, 65}:
         response["source_fingerprint"] = program_identity(request.code)
     response.setdefault("requirement_status", None)
     return response

@@ -47,7 +47,7 @@ class BindingIndex:
         return self.declarations.get((node.name, node.span))
 
 
-def effects(expression, bindings):
+def effects(expression, bindings, *, conservative_calls=True):
     if expression is None:
         return Effects()
     reads, writes, definite, calls = set(), set(), set(), set()
@@ -88,8 +88,9 @@ def effects(expression, bindings):
             else:
                 calls.add("<unknown>")
             # The callee may read or write global state, including an array cell.
-            reads.update(bindings.globals)
-            writes.update(bindings.globals)
+            if conservative_calls:
+                reads.update(bindings.globals)
+                writes.update(bindings.globals)
         pending.extend(child for _, child in ast_children(node))
     return Effects(frozenset(reads), frozenset(writes), frozenset(definite), frozenset(calls), array_access)
 

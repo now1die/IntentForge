@@ -1,0 +1,17 @@
+{
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "case_sha256": "1cf1e4da43e31033152f8c1c0caa42f315b388ad021a415e25c483b2b94024f9",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "maths/power_using_recursion.py": "509f99198cf29e9588aac3ed264f3afd4b56e7ff39176fa0106432cdb6a9780a",
+    "maths/double_factorial.py": "c48437588d8f3efa6716b13ccab8c06230ea5673a64026130874406e5136dbca",
+    "maths/sylvester_sequence.py": "fd510aa147de4cee4276de848924a0f1287889b2dc9bfe87bcc223b088770072"
+  },
+  "partitions": {
+    "development": 3,
+    "selection": 2,
+    "calibration": 1,
+    "final": 22
+  },
+  "selection_policy": "Deterministic ordering. Fixed precision gate; expose broadening as review hypotheses with supplied tests only."
+}

@@ -1,0 +1,100 @@
+{
+  "sha256": "1cf1e4da43e31033152f8c1c0caa42f315b388ad021a415e25c483b2b94024f9",
+  "historical_sources": 908,
+  "frozen_partitions": {
+    "development": 3,
+    "selection": 2,
+    "calibration": 1,
+    "final": 22
+  },
+  "admitted_partitions": {
+    "development": 1,
+    "calibration": 1,
+    "final": 20
+  },
+  "quarantined_families": [
+    "double-factorial",
+    "indexed-weight",
+    "signed-tree"
+  ],
+  "historical_overlaps": [
+    {
+      "case": "double-factorial-fault",
+      "match": "near",
+      "ratio": 0.9643,
+      "historical_sha256": "e431d7c70654ea504dd9b00decd61fae686fdd04f990dab6ef789922c6cd39b4"
+    },
+    {
+      "case": "double-factorial-fault",
+      "match": "exact"
+    },
+    {
+      "case": "double-factorial-control",
+      "match": "exact"
+    }
+  ],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [
+    {
+      "left": "indexed-weight-fault",
+      "right": "ascending-ticks-fault",
+      "similarity": 0.9167,
+      "repeated": []
+    },
+    {
+      "left": "indexed-weight-fault",
+      "right": "ascending-ticks-control",
+      "similarity": 0.9167,
+      "repeated": []
+    },
+    {
+      "left": "indexed-weight-control",
+      "right": "ascending-ticks-fault",
+      "similarity": 0.9167,
+      "repeated": []
+    },
+    {
+      "left": "indexed-weight-control",
+      "right": "ascending-ticks-control",
+      "similarity": 0.9167,
+      "repeated": []
+    },
+    {
+      "left": "signed-tree-fault",
+      "right": "multiplicative-tree-fault",
+      "similarity": 0.9118,
+      "repeated": []
+    },
+    {
+      "left": "signed-tree-fault",
+      "right": "weighted-tree-control",
+      "similarity": 0.9167,
+      "repeated": []
+    },
+    {
+      "left": "signed-tree-fault",
+      "right": "sparse-expectations-control",
+      "similarity": 0.9412,
+      "repeated": []
+    },
+    {
+      "left": "signed-tree-control",
+      "right": "multiplicative-tree-fault",
+      "similarity": 0.9118,
+      "repeated": []
+    },
+    {
+      "left": "signed-tree-control",
+      "right": "weighted-tree-control",
+      "similarity": 0.9167,
+      "repeated": []
+    },
+    {
+      "left": "signed-tree-control",
+      "right": "sparse-expectations-control",
+      "similarity": 0.9118,
+      "repeated": []
+    }
+  ],
+  "shared_cross_partition_edit_shapes": 0
+}

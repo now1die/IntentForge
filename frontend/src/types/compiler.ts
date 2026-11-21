@@ -298,6 +298,8 @@ export interface IntentionEvidence {
 }
 
 export interface IntentionCandidate {
+  evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
+  hypothesis_origin?: "phase65" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -315,10 +317,50 @@ export interface IntentionCandidate {
 
 export type IntentionMode = "code_only" | "natural_language" | "explicit";
 
+export interface Phase65Analysis {
+  paths: Record<string, {
+    complete: boolean;
+    unresolved_conditions: number[];
+    returns: {
+      site: number;
+      span: Diagnostic["span"];
+      feasibility: "modeled" | "excluded" | "unknown";
+      paths: {
+        facts: { binding: string; name: string; min: number; max: number; excluded: number[] }[];
+        definitions: { binding: string; name: string; span: Diagnostic["span"] }[];
+        possible_upstream_definitions: { binding: string; name: string; span: Diagnostic["span"] }[];
+        dependencies_complete: boolean;
+      }[];
+    }[];
+    recursive_returns: { site: number; self_calls: number; expression: string }[];
+    other_return_sites: number[];
+    base_guards: { condition: string; outcome: boolean; span: Diagnostic["span"] }[];
+  }>;
+  interprocedural: Record<string, {
+    complete: boolean;
+    effects_unknown: boolean;
+    return_parameter_inputs: number[];
+    call_sites: {
+      target: string | null;
+      span: Diagnostic["span"];
+      feeds_return: boolean;
+      self_recursive: boolean;
+      arguments: {
+        position: number;
+        parameter: string | null;
+        affine: { binding: string; name: string; offset: number } | null;
+      }[];
+      callee_result_inputs: number[] | null;
+    }[];
+  }>;
+  withheld: { category: string; reason: string; span: Diagnostic["span"] }[];
+}
+
 export interface IntentionResponse {
   recommendation?: "ABSTAIN" | "REVIEW_WITH_EVIDENCE" | null;
   requirement_status?: string | null;
   program_analysis?: {
+    phase65?: Phase65Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;

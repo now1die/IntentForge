@@ -196,3 +196,16 @@ keeps the existing resource and approval controls.
 [Phase 6 review](docs/PHASE_6_FINAL_REVIEW.md) ·
 [Evaluation provenance](docs/phase6_dataset_provenance.md) ·
 [Workbench screenshots](docs/phase6_workbench.md)
+
+## Phase 6.5 interprocedural reasoning
+
+Select Phase 6.5 in the Mini-C workbench or send `engine_version: 65`
+to opt in. The profile adds bounded branch facts, per-path reaching
+definitions, call parameter mappings and transitive global effects. It can
+propose a one-argument recursive progress edit or compare supported
+recurrence operators when expectations are supplied. The same restricted
+local worker verifies candidate behavior. Repairs require manual approval.
+
+[Phase 6.5 review](docs/PHASE_6_5_FINAL_REVIEW.md) ·
+[Independent evaluation](docs/phase6_5_generalization_evaluation.md) ·
+[Workbench screenshots](docs/phase6_5_workbench.md)
