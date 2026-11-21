@@ -315,7 +315,7 @@ export interface IntentionCandidate {
   edits: { span: Diagnostic["span"]; original: string; proposed: string }[];
 }
 
-export type IntentionMode = "code_only" | "natural_language" | "explicit";
+export type IntentionMode = "code_only" | "natural_language" | "explicit" | "examples";
 
 export interface Phase65Analysis {
   paths: Record<string, {
@@ -339,6 +339,7 @@ export interface Phase65Analysis {
   interprocedural: Record<string, {
     complete: boolean;
     effects_unknown: boolean;
+    scalar_helper?: { parameter_inputs: number[]; depth: number; identity_parameter: number | null };
     return_parameter_inputs: number[];
     call_sites: {
       target: string | null;
@@ -357,6 +358,7 @@ export interface Phase65Analysis {
 }
 
 export interface IntentionResponse {
+  guided_evidence?: "POSSIBLE_REPAIR" | "INSUFFICIENT_SPECIFICATION";
   recommendation?: "ABSTAIN" | "REVIEW_WITH_EVIDENCE" | null;
   requirement_status?: string | null;
   program_analysis?: {

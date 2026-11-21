@@ -1,6 +1,7 @@
 """Generate small typed input sets. Probe execution has no expectation field."""
-from itertools import combinations, zip_longest
+from itertools import combinations, islice, zip_longest
 
+from ai.guided_evidence import comparable_outcome
 from ai.intention_context import ast_children
 from compiler import ast_nodes as ast
 from vm.behavioral_executor import compatible
@@ -98,7 +99,7 @@ def signed_literal(node):
     return None
 
 
-def boundary_inputs(function, base):
+def boundary_points(function):
     positions = {parameter.name: i for i, parameter in enumerate(function.parameters) if parameter.type_name == "int"}
     pending = [function.body]
     seen = []
@@ -125,7 +126,12 @@ def boundary_inputs(function, base):
             i = positions[identifier.name]
             for value in (boundary, boundary - 1, boundary + 1):
                 if INT_MIN <= value <= INT_MAX:
-                    yield (*base[:i], value, *base[i+1:])
+                    yield i, value
+
+
+def boundary_inputs(function, base):
+    for i, value in boundary_points(function):
+        yield (*base[:i], value, *base[i+1:])
 
 
 def ranked_inputs(programs, entry, supplied):
@@ -165,18 +171,53 @@ def ranked_inputs(programs, entry, supplied):
     return tuple(rows[:MAX_PROBES])
 
 
-def comparable_outcome(item):
-    if item.status == "observed":
-        return ("value", type(item.actual), item.actual)
-    if item.status in {"runtime_failure", "execution_limited"} and item.issue != "VERIFICATION_BUDGET":
-        return (item.status, item.issue)
-    return None
+def guided_inputs(programs, entry, supplied):
+    legacy = ranked_inputs(programs, entry, supplied)
+    if not legacy:
+        return ()
+    functions = [program.functions[entry] for program in programs]
+    signature = tuple(parameter.type_name for parameter in functions[0].parameters)
+    base = tuple(False if kind == "bool" else 0 for kind in signature)
+    seeds = tuple(supplied)
+    seed = next((args for args in seeds if len(args) == len(signature) and all(
+        type(value) is (bool if kind == "bool" else int)
+        for value, kind in zip(args, signature, strict=True))), base)
+    fallback = tuple(not value if kind == "bool" else value or 1 for value, kind in zip(seed, signature, strict=True))
+    seen = {tuple((type(value), value) for value in args) for args in seeds}
+    generated = []
+
+    def add(args, basis):
+        key = tuple((type(value), value) for value in args)
+        if key not in seen and len(generated) < MAX_PROBES:
+            generated.append((args, basis))
+            seen.add(key)
+
+    merged = zip_longest(*(islice(boundary_points(function), 12) for function in functions))
+    points = list(dict.fromkeys(point for group in merged for point in group if point is not None))
+    for index, value in points[:2]:
+        add((*base[:index], value, *base[index+1:]), "boundary")
+    for index, value in points:
+        if len(generated) >= 5:
+            break
+        add((*fallback[:index], value, *fallback[index+1:]), "combination")
+    positions = tuple(dict.fromkeys(index for index, _ in points))
+    for delta in (2, -2, 3, -3):
+        for index in positions:
+            if len(generated) >= 7:
+                break
+            threshold = next(value for position, value in points if position == index)
+            value = threshold + delta
+            if INT_MIN <= value <= INT_MAX:
+                add((*fallback[:index], value, *fallback[index+1:]), "boundary")
+    for args, basis in legacy:
+        add(args, basis)
+    return tuple(generated)
 
 
-def ranked_probes(programs, entry, supplied, limits, budget):
+def ranked_probes(programs, entry, supplied, limits, budget, *, input_strategy=ranked_inputs):
     if len(programs) < 2:
         return ()
-    inputs = ranked_inputs([program for _, program in programs], entry, supplied)
+    inputs = input_strategy([program for _, program in programs], entry, supplied)
     measured = []
     for args, basis in inputs:
         if budget.remaining == 0:

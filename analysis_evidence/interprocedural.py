@@ -170,3 +170,60 @@ def contracts(program, paths, deadline):
                         "possible_global_writes": sorted(bindings.globals if name in unknown else writes),
                         "effects_unknown": name in unknown, "complete": name not in unknown}
     return result, not unknown
+
+
+def scalar_helpers(program, summaries, deadline):
+    """Describe small, acyclic scalar helpers over parameters and literals.
+
+    Arithmetic can still fault under checked Mini-C semantics. This witness
+    certifies data dependence and the absence of mutable effects, not totality.
+    """
+    helpers = {}
+    bindings = program.bindings
+    for _ in range(3):
+        changed = False
+        for item in program.functions:
+            function = item.function
+            if monotonic() >= deadline:
+                return helpers
+            row = summaries.get(function.name)
+            body = function.body.statements
+            if (function.name in helpers or not row or not row["complete"] or row["possible_global_reads"]
+                    or row["possible_global_writes"] or len(body) != 1 or not isinstance(body[0], ast.ReturnStatement)
+                    or body[0].value is None):
+                continue
+            positions = {bindings.declaration(parameter): n for n, parameter in enumerate(function.parameters)}
+            expressions = [body[0].value]
+            inputs, depth, nodes = set(), 0, 0
+            while expressions and nodes < 48:
+                node = expressions.pop()
+                nodes += 1
+                if isinstance(node, ast.Literal) and type(node.value) in {int, bool}:
+                    continue
+                if isinstance(node, ast.Identifier):
+                    binding = bindings.identifiers.get(id(node))
+                    if binding and binding.id in positions:
+                        inputs.add(positions[binding.id])
+                        continue
+                elif isinstance(node, ast.BinaryExpression) and node.operator in {"+", "-", "*"}:
+                    expressions.extend((node.left, node.right))
+                    continue
+                elif isinstance(node, ast.FunctionCall) and isinstance(node.callee, ast.Identifier):
+                    callee = helpers.get(node.callee.name)
+                    if callee and callee["depth"] < 2:
+                        depth = max(depth, callee["depth"] + 1)
+                        # Every actual is evaluated, so conservatively include
+                        # their dependencies even if the callee ignores one.
+                        expressions.extend(node.arguments)
+                        continue
+                break
+            else:
+                if not expressions:
+                    value = body[0].value
+                    parameter = bindings.identifiers.get(id(value)) if isinstance(value, ast.Identifier) else None
+                    helpers[function.name] = {"parameter_inputs": sorted(inputs), "depth": depth,
+                                              "identity_parameter": positions[parameter.id] if parameter else None}
+                    changed = True
+        if not changed:
+            break
+    return helpers

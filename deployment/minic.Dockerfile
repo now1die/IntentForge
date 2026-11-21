@@ -9,7 +9,7 @@ RUN --mount=type=bind,target=/build --mount=type=secret,id=pip_ca \
     pip install --no-cache-dir fastapi==0.135.1 uvicorn==0.41.0 ply==3.11; \
     cd /build; \
     for file in analysis_evidence/*.py compiler/*.py vm/*.py execution_service/*.py \
-        ai/intention_context.py ai/behavior_oracle.py backend/app/routes/request_body.py; do \
+        ai/intention_context.py ai/behavior_oracle.py ai/guided_evidence.py backend/app/routes/request_body.py; do \
         install -D -m 0644 "$file" "/app/$file"; \
     done
 

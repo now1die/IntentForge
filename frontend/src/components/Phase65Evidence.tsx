@@ -32,6 +32,7 @@ export function Phase65Evidence({ analysis, name }: { analysis: Phase65Analysis;
     </>}
     {summary && <>
       <h5>Function dependencies</h5>
+      {summary.scalar_helper && <p>Scalar helper · depth {summary.scalar_helper.depth} · Possible argument inputs {summary.scalar_helper.parameter_inputs.map((position) => position + 1).join(", ") || "none"}</p>}
       <p>Possible return argument positions · {summary.return_parameter_inputs.map((position) => position + 1).join(", ") || "none"}</p>
       {summary.effects_unknown && <p>Call effects remain unknown. Global accesses are conservatively included.</p>}
       {!!summary.call_sites.length && <ul>{summary.call_sites.map((call, index) => <li key={index}>

@@ -283,7 +283,9 @@ def analyze_intention(
     phase6: bool = False, phase6_generate: bool = True, phase6_graph: bool = False,
     phase6_entry: str | None = None, phase6_examples=(),
     phase65: bool = False, phase65_components: frozenset[str] = PHASE65_COMPONENTS,
+    phase7: bool = False, phase7_components: frozenset[str] = frozenset({"layout", "helpers"}),
 ) -> IntentionResult:
+    phase65 = phase65 or phase7
     phase6 = phase6 or phase65
     phase55 = phase55 or phase6
     phase5 = phase5 or phase55
@@ -351,7 +353,7 @@ def analyze_intention(
         semantic = semantic_proposals(context, program, entry, examples)
         extended = None
         if phase65:
-            semantic, extended = interprocedural_proposals(context, program, semantic, entry, examples, phase65_components)
+            semantic, extended = interprocedural_proposals(context, program, semantic, entry, examples, phase65_components | (phase7_components if phase7 else frozenset()))
         program_analysis = summaries(context, program, include_graph=phase6_graph)
         if extended is not None:
             program_analysis["phase65"] = extended
