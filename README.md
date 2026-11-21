@@ -222,3 +222,16 @@ isolated worker and every applied edit requires manual approval.
 [Phase 7 review](docs/PHASE_7_FINAL_REVIEW.md) ·
 [Evaluation](docs/phase7_generalization_evaluation.md) ·
 [Workbench screenshots](docs/phase7_workbench.md)
+
+## Phase 7.5 generalized repair recovery
+
+Opt in to engine 75 in the Mini-C workbench or API. It adds bounded
+nonunit recursion, repair hypotheses for helper and temporary
+dependencies, and quotient/radix recovery. The Phase 7 policy keeps
+speculative suggestions separate from verified original mismatches.
+Local execution uses the same restricted worker and source edits
+require explicit approval.
+
+[Phase 7.5 review](docs/PHASE_7_5_FINAL_REVIEW.md) ·
+[Evaluation](docs/phase7_5_generalization_evaluation.md) ·
+[Workbench screenshots](docs/phase7_5_workbench.md)

@@ -50,7 +50,7 @@ def audit(root=ROOT, fixture_factory=fixtures, history_roots=(HISTORICAL,)):
             for key in ("specification", "requirement"):
                 if row.get(key):
                     specs.add(encoded(row[key]))
-            for key in ("vectors", "examples", "tests"):
+            for key in ("vectors", "examples", "tests", "holdout_vectors"):
                 if isinstance(row.get(key), list) and row[key]:
                     values = row[key]
                     if all(isinstance(item, dict) and ("args" in item or "arguments" in item)
@@ -79,7 +79,8 @@ def audit(root=ROOT, fixture_factory=fixtures, history_roots=(HISTORICAL,)):
             if matched:
                 quarantined.add(family)
                 historical.append({"case": row["id"], **matched})
-        hits = [key for key, index in [("specification", specs), ("vectors", vectors)] if encoded(row[key]) in index]
+        hits = [key for key, index in [("specification", specs), ("vectors", vectors), ("holdout_vectors", vectors)]
+                if row.get(key) and encoded(row[key]) in index]
         if hits:
             quarantined.add(family)
             full_metadata.append({"case": row["id"], "fields": hits})
@@ -89,7 +90,10 @@ def audit(root=ROOT, fixture_factory=fixtures, history_roots=(HISTORICAL,)):
             continue
         overlap = max((1 if a == b else ratio(a,b,.90) if min(len(a),len(b)) >= 25 else 0
                        for a in shapes[left["id"]] for b in shapes[right["id"]]), default=0)
-        repeated = [key for key in ("specification", "vectors") if left[key] == right[key]]
+        repeated = [key for key in ("specification", "vectors", "holdout_vectors") if left.get(key) and left[key] == right.get(key)]
+        if (left.get("holdout_vectors") and left["holdout_vectors"] == right.get("vectors")
+                or right.get("holdout_vectors") and right["holdout_vectors"] == left.get("vectors")):
+            repeated.append("cross_mode_vectors")
         if overlap >= .90 or repeated:
             across.append({"left": left["id"], "right": right["id"], "similarity": round(overlap, 4), "repeated": repeated})
             if not {left["family"], right["family"]} & quarantined:
