@@ -118,6 +118,7 @@ def test_public_static_contract_and_legacy_profiles():
     with client() as http:
         prior=http.post("/v1/intention-analysis",json=body|{"engine_version":75}).json()
         assert "phase8" not in prior["program_analysis"]
+        assert http.post("/v1/intention-analysis",json=body|{"engine_version":75,"partial_inputs":[]}).status_code==422
         current=http.post("/v1/intention-analysis",json=body|{"engine_version":8,
             "input_domain":[None,{"minimum":1,"maximum":5},None],"partial_inputs":[[1,2,3]]}).json()
         assert current["guided_evidence"]=="POSSIBLE_REPAIR"
@@ -140,6 +141,7 @@ def test_new_domain_whitelist_rejects_observations_disguised_as_requirements(mon
         assert http.post(URL,json=body|{"language":"c"}).status_code==422
         assert http.post(URL,json=body|{"input_domain":[None,{"minimum":3,"maximum":5},None]}).status_code==422
         assert http.post(URL,json=body|{"engine_version":75,"input_domain":[None,None,None]}).status_code==422
+        assert http.post(URL,json=body|{"engine_version":75,"input_domain":None}).status_code==422
         assert http.post(URL,json=body).json()["guided_evidence"]["original"]=="VERIFICATION_UNAVAILABLE"
 
 

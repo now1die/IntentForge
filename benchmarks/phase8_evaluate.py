@@ -104,7 +104,7 @@ def candidate_evidence(cases):
             assert behavior.status == Status.MATCHES_SUPPLIED_TESTS, (case["id"],candidate.proposed_code,behavior.status)
         rows.append({"id":case["id"],"model":result.program_analysis["phase8"]["constraints"],
                      "generated_arithmetic":len(generated)})
-    return {"rows":rows,"arithmetic_edit_costs":dict(sorted(Counter(costs).items()))}
+    return {"rows":rows,"arithmetic_edit_costs":{str(cost): count for cost, count in sorted(Counter(costs).items())}}
 
 
 def worker_call(client, payload):

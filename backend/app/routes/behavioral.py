@@ -172,7 +172,9 @@ def compare(path, payload, identity):
     candidate_details = {}
     if payload.compare_candidates or payload.engine_version == 8 and payload.input_domain is not None:
         requirement = Requirement(function=payload.entry_point, return_expression=payload.return_expression,
-                                  condition=payload.condition) if payload.return_expression or payload.condition else None
+                                  condition=payload.condition) if payload.compare_candidates and (
+                                      payload.return_expression or payload.condition
+                                  ) else None
         try:
             semantic = payload.engine_version in {6, 65, 7, 75, 8}
             result = analyze_intention(payload.source, requirement, phase35=True, phase5=payload.engine_version == 5,

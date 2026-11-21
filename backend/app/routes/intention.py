@@ -70,9 +70,9 @@ class IntentionRequest(BaseModel):
             not requirement or not requirement.description or requirement.return_expression is not None or requirement.condition is not None
         ):
             raise ValueError("Natural-language analysis accepts a description without an explicit expression.")
-        if (self.input_domain is not None or self.partial_inputs) and (
-            self.engine_version != 8 or not requirement or not requirement.function
-        ):
+        if self.engine_version != 8 and self.model_fields_set & {"input_domain", "partial_inputs"}:
+            raise ValueError("Input domains and partial inputs require Phase 8.")
+        if (self.input_domain is not None or self.partial_inputs) and (not requirement or not requirement.function):
             raise ValueError("Select a Phase 8 function to use a domain or partial inputs.")
         if self.mode == "examples" and (
             self.engine_version not in {7, 75, 8} or not requirement or not requirement.function

@@ -142,7 +142,8 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
       input = readVectors(vectors, compare && phase5);
       if (phase5 && profile === 8 && inputDomain.trim()) domain = JSON.parse(inputDomain);
     } catch (failure) {
-      setError(failure instanceof SyntaxError ? "Test vectors and input domain must be valid JSON." : (failure as Error).message);
+      const jsonMessage = phase5 && profile === 8 ? "Test vectors and input domain must be valid JSON." : "Test vectors must be valid JSON.";
+      setError(failure instanceof SyntaxError ? jsonMessage : (failure as Error).message);
       return;
     }
     invalidate();

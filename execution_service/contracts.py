@@ -49,7 +49,7 @@ class VerifyRequest(Message):
             raise ValueError("Supply a test vector or explicitly request Phase 5 observational comparison")
         if self.engine_version in {7, 75, 8} and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
             raise ValueError("The same input has conflicting expected outputs.")
-        if self.input_domain is not None and self.engine_version != 8:
+        if "input_domain" in self.model_fields_set and self.engine_version != 8:
             raise ValueError("Input domains require Phase 8.")
         if any(not includes_input(self.input_domain, row.arguments) for row in self.vectors):
             raise ValueError("A test input lies outside the declared domain.")
