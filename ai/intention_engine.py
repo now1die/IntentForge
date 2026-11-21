@@ -23,6 +23,8 @@ from .intention_phase55 import RULES as PRECISION_RULES, apply_precision_gates
 from .intention_phase6 import proposals as semantic_proposals
 from .intention_phase65 import COMPONENTS as PHASE65_COMPONENTS, augment as interprocedural_proposals
 from .intention_phase75 import CATEGORIES as PHASE75_CATEGORIES, COMPONENTS as PHASE75_COMPONENTS
+from .intention_phase8 import CATEGORIES as PHASE8_CATEGORIES, COMPONENTS as PHASE8_COMPONENTS, synthesize as arithmetic_repairs
+from .specification import specification
 from .intention_uncertainty import classify
 from .correction_safety import RepairSafety, repair_key
 from .intention_candidates import (MAX_CANDIDATES, Evidence, Proposal, apply_edits, candidate_stream,
@@ -133,8 +135,10 @@ class IntentionResult:
                         "supplied_examples" if facts & {"PATH_TEST_DOMAIN", "SUPPLIED_RECURSIVE_TEST",
                                                         "SUPPLIED_DOMAIN_POINT", "SUPPLIED_BASE_RESULT",
                                                         "MULTIPLE_RECURSIVE_EXAMPLES", "LEXICAL_RECURSIVE_TERMS",
-                                                        "MISSING_INPUT_DEPENDENCY", "INCONSISTENT_LOOP_RADIX"} else "static")
-                    row["hypothesis_origin"] = ("phase75" if item.proposal.category in PHASE75_CATEGORIES else "phase65" if item.proposal.category in {
+                                                        "MISSING_INPUT_DEPENDENCY", "INCONSISTENT_LOOP_RADIX",
+                                                        "ARITHMETIC_CONSTRAINT_WITNESS"} else "static")
+                    row["hypothesis_origin"] = ("phase8" if item.proposal.category in PHASE8_CATEGORIES else
+                                                "phase75" if item.proposal.category in PHASE75_CATEGORIES else "phase65" if item.proposal.category in {
                         "RECURSIVE_PARAMETER_PROGRESS", "RECURRENCE_OPERATOR_MISMATCH", "PATH_RETURN_DEPENDENCY"}
                         else "earlier_engine")
         return {
@@ -288,7 +292,10 @@ def analyze_intention(
     phase65: bool = False, phase65_components: frozenset[str] = PHASE65_COMPONENTS,
     phase7: bool = False, phase7_components: frozenset[str] = frozenset({"layout", "helpers"}),
     phase75: bool = False, phase75_components: frozenset[str] = PHASE75_COMPONENTS,
+    phase8: bool = False, phase8_components: frozenset[str] = PHASE8_COMPONENTS,
+    phase8_domain=None, phase8_partial=(),
 ) -> IntentionResult:
+    phase75 = phase75 or phase8
     phase7 = phase7 or phase75
     phase65 = phase65 or phase7
     phase6 = phase6 or phase65
@@ -353,8 +360,11 @@ def analyze_intention(
         program = analyze_program(context, deadline)
         examples = requirement.examples if requirement and not phase6_examples else phase6_examples
         entry = phase6_entry or (requirement.function if requirement else None)
+        spec = specification(context, entry, examples, phase8_domain, phase8_partial) if phase8 else None
         if entry is None:
             examples = ()
+        elif spec is not None:
+            examples = spec.examples
         semantic = semantic_proposals(context, program, entry, examples)
         extended = None
         if phase65:
@@ -368,6 +378,12 @@ def analyze_intention(
             program_analysis["phase65"] = extended
             if program_analysis["status"] == "AVAILABLE":
                 program_analysis["status"] = extended["status"]
+        if spec is not None:
+            links = extended["interprocedural"] if extended else {}
+            helper_shapes = {name: item["scalar_helper"] for name, item in links.items() if "scalar_helper" in item}
+            arithmetic, constraints = arithmetic_repairs(context, program, links, helper_shapes, spec, phase8_components)
+            semantic = (*arithmetic, *semantic)
+            program_analysis["phase8"] = {"specification": spec.summary(), "constraints": constraints}
         program_analysis["hypotheses"] = [{"category": proposal.category, "assumption": proposal.assumption,
                                             "evidence": [fact.to_dict() for fact in proposal.evidence],
                                             "counter_evidence": [fact.to_dict() for fact in proposal.counter_evidence]}

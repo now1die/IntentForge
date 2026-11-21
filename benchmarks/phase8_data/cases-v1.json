@@ -1,0 +1,4390 @@
+[
+  {
+    "family": "biased-reading",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Apply gain eleven and then remove seven.",
+    "vectors": [
+      {
+        "arguments": [
+          -2
+        ],
+        "expected": -29
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 26
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 37
+      },
+      {
+        "arguments": [
+          -8
+        ],
+        "expected": -95
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "biased-reading-fault",
+    "source": "int f(int x){return 12*x-7;}",
+    "references": [
+      "int f(int x){return 11*x-7;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "biased-reading",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Apply gain eleven and then remove seven.",
+    "vectors": [
+      {
+        "arguments": [
+          -2
+        ],
+        "expected": -29
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 26
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 37
+      },
+      {
+        "arguments": [
+          -8
+        ],
+        "expected": -95
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "biased-reading-control",
+    "source": "int f(int x){return 11*x-7;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "selection-box",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Area of signed translated edges.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": -21
+      },
+      {
+        "arguments": [
+          1,
+          4
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          5,
+          9
+        ],
+        "expected": 60
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -2,
+          6
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          4,
+          -1
+        ],
+        "expected": -36
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "selection-box-fault",
+    "source": "int f(int u,int v){return (u+5)*(v-4);}",
+    "references": [
+      "int f(int u,int v){return (u+5)*(v-3);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "selection-box",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Area of signed translated edges.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": -21
+      },
+      {
+        "arguments": [
+          1,
+          4
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          5,
+          9
+        ],
+        "expected": 60
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -2,
+          6
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          4,
+          -1
+        ],
+        "expected": -36
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "selection-box-control",
+    "source": "int f(int u,int v){return (u+5)*(v-3);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "calibration-shortage",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Measure shortage against limit.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          7
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          -8,
+          8
+        ],
+        "expected": 16
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          98,
+          2
+        ],
+        "expected": 0
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "calibration-shortage-fault",
+    "source": "int f(int value,int limit){if(value<limit){return limit+value;}return 0;}",
+    "references": [
+      "int f(int value,int limit){if(value<limit){return limit-value;}return 0;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "calibration-shortage",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Measure shortage against limit.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          7
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          -8,
+          8
+        ],
+        "expected": 16
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          98,
+          2
+        ],
+        "expected": 0
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "calibration-shortage-control",
+    "source": "int f(int value,int limit){if(value<limit){return limit-value;}return 0;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "square-pyramid-volume",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return integer square pyramid volume for nonnegative dimensions.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          7
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 42
+      },
+      {
+        "arguments": [
+          2,
+          16
+        ],
+        "expected": 21
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          14,
+          15
+        ],
+        "expected": 980
+      },
+      {
+        "arguments": [
+          17,
+          13
+        ],
+        "expected": 1252
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/volume.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "square-pyramid-volume-fault",
+    "source": "int f(int side,int height){int footprint=side*side;return footprint*height/2;}",
+    "references": [
+      "int f(int side,int height){int footprint=side*side;return footprint*height/3;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "square-pyramid-volume",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return integer square pyramid volume for nonnegative dimensions.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          7
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 42
+      },
+      {
+        "arguments": [
+          2,
+          16
+        ],
+        "expected": 21
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          14,
+          15
+        ],
+        "expected": 980
+      },
+      {
+        "arguments": [
+          17,
+          13
+        ],
+        "expected": 1252
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/volume.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "square-pyramid-volume-control",
+    "source": "int f(int side,int height){int footprint=side*side;return footprint*height/3;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "celsius-integer-fahrenheit",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Convert Celsius with signed integer truncation before offset.",
+    "vectors": [
+      {
+        "arguments": [
+          -40
+        ],
+        "expected": -40
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          17
+        ],
+        "expected": 62
+      },
+      {
+        "arguments": [
+          53
+        ],
+        "expected": 127
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -18
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          100
+        ],
+        "expected": 212
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/conversions/temperature_conversions.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "celsius-integer-fahrenheit-fault",
+    "source": "int f(int c){int scale=9*c;return scale/5+31;}",
+    "references": [
+      "int f(int c){int scale=9*c;return scale/5+32;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "celsius-integer-fahrenheit",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Convert Celsius with signed integer truncation before offset.",
+    "vectors": [
+      {
+        "arguments": [
+          -40
+        ],
+        "expected": -40
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          17
+        ],
+        "expected": 62
+      },
+      {
+        "arguments": [
+          53
+        ],
+        "expected": 127
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -18
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          100
+        ],
+        "expected": 212
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/conversions/temperature_conversions.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "celsius-integer-fahrenheit-control",
+    "source": "int f(int c){int scale=9*c;return scale/5+32;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "integer-tax-total",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add a tax rate measured in tenths to a nonnegative subtotal.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          25,
+          2
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          101,
+          7
+        ],
+        "expected": 171
+      },
+      {
+        "arguments": [
+          78,
+          1
+        ],
+        "expected": 85
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          210,
+          3
+        ],
+        "expected": 273
+      },
+      {
+        "arguments": [
+          37,
+          4
+        ],
+        "expected": 51
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/financial/price_plus_tax.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "integer-tax-total-fault",
+    "source": "int f(int subtotal,int tenths){int levy=subtotal*tenths/10;return subtotal-levy;}",
+    "references": [
+      "int f(int subtotal,int tenths){int levy=subtotal*tenths/10;return subtotal+levy;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "integer-tax-total",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add a tax rate measured in tenths to a nonnegative subtotal.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          25,
+          2
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          101,
+          7
+        ],
+        "expected": 171
+      },
+      {
+        "arguments": [
+          78,
+          1
+        ],
+        "expected": 85
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          210,
+          3
+        ],
+        "expected": 273
+      },
+      {
+        "arguments": [
+          37,
+          4
+        ],
+        "expected": 51
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/financial/price_plus_tax.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "integer-tax-total-control",
+    "source": "int f(int subtotal,int tenths){int levy=subtotal*tenths/10;return subtotal+levy;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "oriented-shoelace",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Truncated signed shoelace area of the listed counterclockwise triangles.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2,
+          7,
+          3,
+          1,
+          8
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          5,
+          0,
+          0,
+          7
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          2,
+          3,
+          9,
+          6,
+          3,
+          9
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          5,
+          1,
+          8,
+          8,
+          1,
+          7
+        ],
+        "expected": 23
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          -1,
+          7,
+          2,
+          0,
+          9
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          9,
+          0,
+          12,
+          9,
+          -1,
+          3
+        ],
+        "expected": 49
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/shoelace_area.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "oriented-shoelace-fault",
+    "source": "int f(int a,int b,int c,int d,int e,int g){int positive=a*d+c*g+e*b;int negative=b*c+d*e+g*a;return (positive+negative)/2;}",
+    "references": [
+      "int f(int a,int b,int c,int d,int e,int g){int positive=a*d+c*g+e*b;int negative=b*c+d*e+g*a;return (positive-negative)/2;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "oriented-shoelace",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Truncated signed shoelace area of the listed counterclockwise triangles.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2,
+          7,
+          3,
+          1,
+          8
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          5,
+          0,
+          0,
+          7
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          2,
+          3,
+          9,
+          6,
+          3,
+          9
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          5,
+          1,
+          8,
+          8,
+          1,
+          7
+        ],
+        "expected": 23
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          -1,
+          7,
+          2,
+          0,
+          9
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          9,
+          0,
+          12,
+          9,
+          -1,
+          3
+        ],
+        "expected": 49
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/shoelace_area.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "oriented-shoelace-control",
+    "source": "int f(int a,int b,int c,int d,int e,int g){int positive=a*d+c*g+e*b;int negative=b*c+d*e+g*a;return (positive-negative)/2;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "pronic-enumerator",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the nth nonnegative pronic number.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 156
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          31
+        ],
+        "expected": 992
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/pronic_number.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "pronic-enumerator-fault",
+    "source": "int f(int layer){return layer*layer;}",
+    "references": [
+      "int f(int layer){return layer*(layer+1);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "pronic-enumerator",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return the nth nonnegative pronic number.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 156
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          31
+        ],
+        "expected": 992
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/pronic_number.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "pronic-enumerator-control",
+    "source": "int f(int layer){return layer*(layer+1);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "signed-horner-quadratic",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Evaluate independently supplied quadratic coefficients.",
+    "vectors": [
+      {
+        "arguments": [
+          -3,
+          2,
+          5,
+          7
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          1,
+          7,
+          5,
+          -2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          3,
+          -2,
+          7,
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          5,
+          -1,
+          6
+        ],
+        "expected": 244
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          4,
+          2,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          11,
+          1,
+          3,
+          6
+        ],
+        "expected": 160
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/polynomial_evaluation.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "signed-horner-quadratic-fault",
+    "source": "int f(int x,int lead,int middle,int tail){int prior=lead*x-middle;return prior*x+tail;}",
+    "references": [
+      "int f(int x,int lead,int middle,int tail){int prior=lead*x+middle;return prior*x+tail;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "signed-horner-quadratic",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Evaluate independently supplied quadratic coefficients.",
+    "vectors": [
+      {
+        "arguments": [
+          -3,
+          2,
+          5,
+          7
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          1,
+          7,
+          5,
+          -2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          3,
+          -2,
+          7,
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          5,
+          -1,
+          6
+        ],
+        "expected": 244
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          4,
+          2,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          11,
+          1,
+          3,
+          6
+        ],
+        "expected": 160
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/polynomial_evaluation.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "signed-horner-quadratic-control",
+    "source": "int f(int x,int lead,int middle,int tail){int prior=lead*x+middle;return prior*x+tail;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "one-based-series-term",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "One-based arithmetic progression term.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          1,
+          7
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          2,
+          6
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -5,
+          4,
+          2
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          9,
+          8,
+          -3
+        ],
+        "expected": -12
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          13,
+          5
+        ],
+        "expected": 66
+      },
+      {
+        "arguments": [
+          15,
+          11,
+          -4
+        ],
+        "expected": -25
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/series/arithmetic.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "one-based-series-term-fault",
+    "source": "int f(int first,int position,int difference){return first+position*difference;}",
+    "references": [
+      "int f(int first,int position,int difference){return first+(position-1)*difference;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "one-based-series-term",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "One-based arithmetic progression term.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          1,
+          7
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          2,
+          6
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          -5,
+          4,
+          2
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          9,
+          8,
+          -3
+        ],
+        "expected": -12
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          13,
+          5
+        ],
+        "expected": 66
+      },
+      {
+        "arguments": [
+          15,
+          11,
+          -4
+        ],
+        "expected": -25
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/series/arithmetic.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "one-based-series-term-control",
+    "source": "int f(int first,int position,int difference){return first+(position-1)*difference;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "minute-seconds",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Convert whole minutes and residual seconds to seconds.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          17
+        ],
+        "expected": 77
+      },
+      {
+        "arguments": [
+          3,
+          49
+        ],
+        "expected": 229
+      },
+      {
+        "arguments": [
+          21,
+          2
+        ],
+        "expected": 1262
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          29,
+          27
+        ],
+        "expected": 1767
+      },
+      {
+        "arguments": [
+          55,
+          59
+        ],
+        "expected": 3359
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/conversions/time_conversions.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "minute-seconds-fault",
+    "source": "int minutes(int n){return n*61;}int f(int m,int s){return minutes(m)+s;}",
+    "references": [
+      "int minutes(int n){return n*60;}int f(int m,int s){return minutes(m)+s;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "minute-seconds",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Convert whole minutes and residual seconds to seconds.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          17
+        ],
+        "expected": 77
+      },
+      {
+        "arguments": [
+          3,
+          49
+        ],
+        "expected": 229
+      },
+      {
+        "arguments": [
+          21,
+          2
+        ],
+        "expected": 1262
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          29,
+          27
+        ],
+        "expected": 1767
+      },
+      {
+        "arguments": [
+          55,
+          59
+        ],
+        "expected": 3359
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/conversions/time_conversions.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "minute-seconds-control",
+    "source": "int minutes(int n){return n*60;}int f(int m,int s){return minutes(m)+s;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "triangular-edge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum the first n nonnegative integer levels.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          16
+        ],
+        "expected": 136
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          31
+        ],
+        "expected": 496
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/triangular_numbers.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "triangular-edge-fault",
+    "source": "int f(int n){return n*(n-1)/2;}",
+    "references": [
+      "int f(int n){return n*(n+1)/2;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "triangular-edge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Sum the first n nonnegative integer levels.",
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          16
+        ],
+        "expected": 136
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          31
+        ],
+        "expected": 496
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/triangular_numbers.py",
+      "license": "MIT",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "triangular-edge-control",
+    "source": "int f(int n){return n*(n+1)/2;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "paired-dial",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply independently shifted dial readings.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 42
+      },
+      {
+        "arguments": [
+          8,
+          6
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          10,
+          8
+        ],
+        "expected": 110
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          7
+        ],
+        "expected": 36
+      },
+      {
+        "arguments": [
+          -1,
+          5
+        ],
+        "expected": 0
+      }
+    ],
+    "requirement": null,
+    "domain": "Discovery follows x=y+2. Held-out signed pairs independently vary the two dials.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "paired-dial-fault",
+    "source": "int f(int x,int y){return (x+1)*(y+3);}",
+    "references": [
+      "int f(int x,int y){return (x+1)*(y+2);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "paired-dial",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply independently shifted dial readings.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 42
+      },
+      {
+        "arguments": [
+          8,
+          6
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          10,
+          8
+        ],
+        "expected": 110
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          7
+        ],
+        "expected": 36
+      },
+      {
+        "arguments": [
+          -1,
+          5
+        ],
+        "expected": 0
+      }
+    ],
+    "requirement": null,
+    "domain": "Discovery follows x=y+2. Held-out signed pairs independently vary the two dials.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "paired-dial-control",
+    "source": "int f(int x,int y){return (x+1)*(y+2);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "finite-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Evaluate the cell weight for the 0..2 by 0..2 finite grid.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 12
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": 21
+      }
+    ],
+    "requirement": null,
+    "domain": "Exhaustive pairs (row,column) in {0,1,2} × {0,1,2}, split 3/6.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "finite-grid-fault",
+    "source": "int f(int row,int column){return (row+1)*(4*column+1);}",
+    "references": [
+      "int f(int row,int column){return (row+1)*(3*column+1);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "finite-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Evaluate the cell weight for the 0..2 by 0..2 finite grid.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 12
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": 21
+      }
+    ],
+    "requirement": null,
+    "domain": "Exhaustive pairs (row,column) in {0,1,2} × {0,1,2}, split 3/6.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "finite-grid-control",
+    "source": "int f(int row,int column){return (row+1)*(3*column+1);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "checked-offset-edge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add three inside the checked int32 result domain.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          -7
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          53
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2147483644
+        ],
+        "expected": 2147483647
+      },
+      {
+        "arguments": [
+          -2147483648
+        ],
+        "expected": -2147483645
+      }
+    ],
+    "requirement": null,
+    "domain": "Inputs from INT_MIN through INT_MAX−3, including both endpoints on holdout.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "checked-offset-edge-fault",
+    "source": "int f(int x){return x+2;}",
+    "references": [
+      "int f(int x){return x+3;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "checked-offset-edge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add three inside the checked int32 result domain.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          -7
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          53
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2147483644
+        ],
+        "expected": 2147483647
+      },
+      {
+        "arguments": [
+          -2147483648
+        ],
+        "expected": -2147483645
+      }
+    ],
+    "requirement": null,
+    "domain": "Inputs from INT_MIN through INT_MAX−3, including both endpoints on holdout.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "checked-offset-edge-control",
+    "source": "int f(int x){return x+3;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "difference-of-scaled-stages",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Remove baseline after helper scaling and offset.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -5,
+          7
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          9,
+          0
+        ],
+        "expected": 31
+      },
+      {
+        "arguments": [
+          5,
+          -6
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          3
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          -4,
+          -2
+        ],
+        "expected": -6
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "difference-of-scaled-stages-fault",
+    "source": "int reduce(int z){int scaled=3*z;int adjustment=scaled+4;return scaled;}int f(int a,int b){return reduce(a)-b;}",
+    "references": [
+      "int reduce(int z){int scaled=3*z;int adjustment=scaled+4;return adjustment;}int f(int a,int b){return reduce(a)-b;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "difference-of-scaled-stages",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Remove baseline after helper scaling and offset.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -5,
+          7
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          9,
+          0
+        ],
+        "expected": 31
+      },
+      {
+        "arguments": [
+          5,
+          -6
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          3
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          -4,
+          -2
+        ],
+        "expected": -6
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "difference-of-scaled-stages-control",
+    "source": "int reduce(int z){int scaled=3*z;int adjustment=scaled+4;return adjustment;}int f(int a,int b){return reduce(a)-b;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "second-stage-source",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Keep the adjusted value while computing a separate label.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          -1,
+          -2
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          1,
+          23
+        ],
+        "expected": 32
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -8,
+          -4
+        ],
+        "expected": -22
+      },
+      {
+        "arguments": [
+          55,
+          6
+        ],
+        "expected": 177
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "second-stage-source-fault",
+    "source": "int f(int x,int y){int raw=x+2;int adjusted=raw*3+y;int label=adjusted+17;return label;}",
+    "references": [
+      "int f(int x,int y){int raw=x+2;int adjusted=raw*3+y;int label=adjusted+17;return adjusted;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "second-stage-source",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Keep the adjusted value while computing a separate label.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          -1,
+          -2
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          1,
+          23
+        ],
+        "expected": 32
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -8,
+          -4
+        ],
+        "expected": -22
+      },
+      {
+        "arguments": [
+          55,
+          6
+        ],
+        "expected": 177
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "second-stage-source-control",
+    "source": "int f(int x,int y){int raw=x+2;int adjusted=raw*3+y;int label=adjusted+17;return adjusted;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "one-argument-wrapper",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the one-based wrapper count to produce a signed offset.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          1,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          7,
+          -3
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9,
+          6
+        ],
+        "expected": 38
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          11
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          23,
+          -9
+        ],
+        "expected": 79
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "one-argument-wrapper-fault",
+    "source": "int origin(int n){int tick=n+1;return tick;}int scale(int n){int offset=origin(n);return offset*4;}int f(int position,int start){return start+scale(position);}",
+    "references": [
+      "int origin(int n){int tick=n-1;return tick;}int scale(int n){int offset=origin(n);return offset*4;}int f(int position,int start){return start+scale(position);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "one-argument-wrapper",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the one-based wrapper count to produce a signed offset.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          1,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          7,
+          -3
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          9,
+          6
+        ],
+        "expected": 38
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          5,
+          11
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          23,
+          -9
+        ],
+        "expected": 79
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "one-argument-wrapper-control",
+    "source": "int origin(int n){int tick=n-1;return tick;}int scale(int n){int offset=origin(n);return offset*4;}int f(int position,int start){return start+scale(position);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "signed-sampling-remainder",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return Mini-C signed remainder after bias removal.",
+    "vectors": [
+      {
+        "arguments": [
+          15,
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          -7,
+          5
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          26,
+          7
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": -3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -100,
+          9
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          121,
+          11
+        ],
+        "expected": 6
+      }
+    ],
+    "requirement": null,
+    "domain": "Supported small signed inputs and positive nonzero periods.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "signed-sampling-remainder-fault",
+    "source": "int f(int signal,int period){int adjusted=signal-5;return adjusted/period;}",
+    "references": [
+      "int f(int signal,int period){int adjusted=signal-5;return adjusted%period;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "signed-sampling-remainder",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return Mini-C signed remainder after bias removal.",
+    "vectors": [
+      {
+        "arguments": [
+          15,
+          3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          -7,
+          5
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          26,
+          7
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": -3
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -100,
+          9
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          121,
+          11
+        ],
+        "expected": 6
+      }
+    ],
+    "requirement": null,
+    "domain": "Supported small signed inputs and positive nonzero periods.",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "signed-sampling-remainder-control",
+    "source": "int f(int signal,int period){int adjusted=signal-5;return adjusted%period;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "successor-product",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Scale the next adjusted position.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          1,
+          -7
+        ],
+        "expected": -21
+      },
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          -4,
+          9
+        ],
+        "expected": -63
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          -9
+        ],
+        "expected": -153
+      },
+      {
+        "arguments": [
+          -3,
+          -8
+        ],
+        "expected": 40
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "successor-product-fault",
+    "source": "int f(int code,int delta){int adjustment=code*2;return adjustment*delta;}",
+    "references": [
+      "int f(int code,int delta){int adjustment=code*2;return (adjustment+1)*delta;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "successor-product",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Scale the next adjusted position.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          1,
+          -7
+        ],
+        "expected": -21
+      },
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          -4,
+          9
+        ],
+        "expected": -63
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          -9
+        ],
+        "expected": -153
+      },
+      {
+        "arguments": [
+          -3,
+          -8
+        ],
+        "expected": 40
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "successor-product-control",
+    "source": "int f(int code,int delta){int adjustment=code*2;return (adjustment+1)*delta;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "throttled-sum",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count the gaps between positive slice positions.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          5,
+          7
+        ],
+        "expected": 42
+      },
+      {
+        "arguments": [
+          -2,
+          8
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          15,
+          4
+        ],
+        "expected": 51
+      },
+      {
+        "arguments": [
+          3,
+          14
+        ],
+        "expected": 65
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "throttled-sum-fault",
+    "source": "int f(int work,int slices){return (work+2)*slices;}",
+    "references": [
+      "int f(int work,int slices){return (work+2)*(slices-1);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "throttled-sum",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count the gaps between positive slice positions.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          7,
+          2
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          5,
+          7
+        ],
+        "expected": 42
+      },
+      {
+        "arguments": [
+          -2,
+          8
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          15,
+          4
+        ],
+        "expected": 51
+      },
+      {
+        "arguments": [
+          3,
+          14
+        ],
+        "expected": 65
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "throttled-sum-control",
+    "source": "int f(int work,int slices){return (work+2)*(slices-1);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "triad-overlap",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply the two overlapping adjacent totals.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          3,
+          1
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          8,
+          0,
+          9
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          7
+        ],
+        "expected": 77
+      },
+      {
+        "arguments": [
+          5,
+          -1,
+          1
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          -1,
+          -2
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          4,
+          11,
+          7
+        ],
+        "expected": 270
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "triad-overlap-fault",
+    "source": "int f(int a,int b,int c){int merged=a+b;int removed=b+c;return merged/removed;}",
+    "references": [
+      "int f(int a,int b,int c){int merged=a+b;int removed=b+c;return merged*removed;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "triad-overlap",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply the two overlapping adjacent totals.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          3,
+          1
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          8,
+          0,
+          9
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          3,
+          4,
+          7
+        ],
+        "expected": 77
+      },
+      {
+        "arguments": [
+          5,
+          -1,
+          1
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          -1,
+          -2
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          4,
+          11,
+          7
+        ],
+        "expected": 270
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "triad-overlap-control",
+    "source": "int f(int a,int b,int c){int merged=a+b;int removed=b+c;return merged*removed;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "subtraction-interaction",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Scale the adjusted helper input and subtract the base.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          4,
+          6
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          3,
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          8,
+          -4
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          12,
+          -1,
+          9
+        ],
+        "expected": -45
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          7,
+          0
+        ],
+        "expected": 40
+      },
+      {
+        "arguments": [
+          -2,
+          6,
+          13
+        ],
+        "expected": -21
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "subtraction-interaction-fault",
+    "source": "int step(int x,int y){int offset=y-1;return x*offset;}int f(int a,int b,int base){return step(a,b)-base;}",
+    "references": [
+      "int step(int x,int y){int offset=y-2;return x*offset;}int f(int a,int b,int base){return step(a,b)-base;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "subtraction-interaction",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Scale the adjusted helper input and subtract the base.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          4,
+          6
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7,
+          3,
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          8,
+          -4
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          12,
+          -1,
+          9
+        ],
+        "expected": -45
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          7,
+          0
+        ],
+        "expected": 40
+      },
+      {
+        "arguments": [
+          -2,
+          6,
+          13
+        ],
+        "expected": -21
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "subtraction-interaction-control",
+    "source": "int step(int x,int y){int offset=y-2;return x*offset;}int f(int a,int b,int base){return step(a,b)-base;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "three-window-divisor",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Truncate the offset window in units of three.",
+    "vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          22
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          61
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -46
+        ],
+        "expected": -10
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "three-window-divisor-fault",
+    "source": "int f(int n){int span=n-6;return span/4+7;}",
+    "references": [
+      "int f(int n){int span=n-6;return span/3+7;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "three-window-divisor",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Truncate the offset window in units of three.",
+    "vectors": [
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          22
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          61
+        ],
+        "expected": 25
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -46
+        ],
+        "expected": -10
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "three-window-divisor-control",
+    "source": "int f(int n){int span=n-6;return span/3+7;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "two-independent-coefficients",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply five and seven to independent inputs.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 69
+      },
+      {
+        "arguments": [
+          9,
+          -2
+        ],
+        "expected": 31
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          3
+        ],
+        "expected": 76
+      },
+      {
+        "arguments": [
+          -4,
+          -7
+        ],
+        "expected": -69
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "two-independent-coefficients-fault",
+    "source": "int f(int a,int b){return 4*a+8*b;}",
+    "references": [
+      "int f(int a,int b){return 5*a+7*b;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "two-independent-coefficients",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply five and seven to independent inputs.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          4,
+          7
+        ],
+        "expected": 69
+      },
+      {
+        "arguments": [
+          9,
+          -2
+        ],
+        "expected": 31
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          3
+        ],
+        "expected": 76
+      },
+      {
+        "arguments": [
+          -4,
+          -7
+        ],
+        "expected": -69
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "two-independent-coefficients-control",
+    "source": "int f(int a,int b){return 5*a+7*b;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "coupled-index-recurrence",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Close an interval by advancing the left edge twice per decrement of the right edge.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5,
+          7
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          1,
+          3,
+          4
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          2,
+          10,
+          0
+        ],
+        "expected": 39
+      },
+      {
+        "arguments": [
+          7,
+          5,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          15,
+          -3
+        ],
+        "expected": 82
+      },
+      {
+        "arguments": [
+          2,
+          11,
+          5
+        ],
+        "expected": 47
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "coupled-index-recurrence-fault",
+    "source": "int f(int x,int y,int total){if(x>=y){return total;}return f(x+2,y+1,total+x+y);}",
+    "references": [
+      "int f(int x,int y,int total){if(x>=y){return total;}return f(x+2,y-1,total+x+y);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "coupled-index-recurrence",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Close an interval by advancing the left edge twice per decrement of the right edge.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          5,
+          7
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          1,
+          3,
+          4
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          2,
+          10,
+          0
+        ],
+        "expected": 39
+      },
+      {
+        "arguments": [
+          7,
+          5,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          15,
+          -3
+        ],
+        "expected": 82
+      },
+      {
+        "arguments": [
+          2,
+          11,
+          5
+        ],
+        "expected": 47
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "coupled-index-recurrence-control",
+    "source": "int f(int x,int y,int total){if(x>=y){return total;}return f(x+2,y-1,total+x+y);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "rare-upper-adjustment",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Triple only on the high mode branch.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          5,
+          14
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -4,
+          15
+        ],
+        "expected": -8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          12
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          -2,
+          17
+        ],
+        "expected": -2
+      }
+    ],
+    "requirement": {
+      "return_expression": "x*3+4",
+      "return_ordinal": 1
+    },
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "rare-upper-adjustment-fault",
+    "source": "int f(int x,int mode){if(mode>12){return x*4+4;}return x+4;}",
+    "references": [
+      "int f(int x,int mode){if(mode>12){return x*3+4;}return x+4;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "rare-upper-adjustment",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Triple only on the high mode branch.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          5,
+          14
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -4,
+          15
+        ],
+        "expected": -8
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          12
+        ],
+        "expected": 21
+      },
+      {
+        "arguments": [
+          -2,
+          17
+        ],
+        "expected": -2
+      }
+    ],
+    "requirement": {
+      "return_expression": "x*3+4",
+      "return_ordinal": 1
+    },
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "rare-upper-adjustment-control",
+    "source": "int f(int x,int mode){if(mode>12){return x*3+4;}return x+4;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "counted-even-threshold",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count even integer members below n.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": 7
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "counted-even-threshold-fault",
+    "source": "int f(int n){int count=0;for(int i=0;i<n;i++){if(i%2==1){count++;}}return count;}",
+    "references": [
+      "int f(int n){int count=0;for(int i=0;i<n;i++){if(i%2==0){count++;}}return count;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "counted-even-threshold",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count even integer members below n.",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          13
+        ],
+        "expected": 7
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "counted-even-threshold-control",
+    "source": "int f(int n){int count=0;for(int i=0;i<n;i++){if(i%2==0){count++;}}return count;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "boolean-active-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return membership in a half-open active window.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          2,
+          6
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          6,
+          2,
+          6
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          6
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          6
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          -3,
+          3
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          12,
+          5,
+          12
+        ],
+        "expected": false
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "boolean-active-window-fault",
+    "source": "bool f(int x,int start,int stop){return x>=start&&x<=stop;}",
+    "references": [
+      "bool f(int x,int start,int stop){return x>=start&&x<stop;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "boolean-active-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return membership in a half-open active window.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          2,
+          6
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          6,
+          2,
+          6
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          6
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          6
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -3,
+          -3,
+          3
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          12,
+          5,
+          12
+        ],
+        "expected": false
+      }
+    ],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "boolean-active-window-control",
+    "source": "bool f(int x,int start,int stop){return x>=start&&x<stop;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "clear-baseline",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Choose the greater measurement.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          -1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -3,
+          -8
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          4,
+          -3
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": {
+      "description": "Return the maximum of x and y"
+    },
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "clear-baseline-fault",
+    "source": "int f(int x,int y){if(x<=y){return x;}return y;}",
+    "references": [
+      "int f(int x,int y){if(x>=y){return x;}return y;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "clear-baseline",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Choose the greater measurement.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          -1
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          1,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -3,
+          -8
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          8
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          4,
+          -3
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": {
+      "description": "Return the maximum of x and y"
+    },
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "clear-baseline-control",
+    "source": "int f(int x,int y){if(x>=y){return x;}return y;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "coincident-shifts",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only zero-width observations are specified.",
+    "vectors": [
+      {
+        "arguments": [
+          4,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          9,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          -3,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "coincident-shifts-control",
+    "source": "int f(int a,int b){return (a-3)*b;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "partial-offset",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only the neutral position was specified.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          -8
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7,
+          -8
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          -2,
+          -8
+        ],
+        "expected": -2
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "partial-offset-control",
+    "source": "int f(int seed,int n){return seed+(n+8)*3;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "same-position-distance",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only identical endpoints were specified.",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          6,
+          6
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          -7,
+          -7
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "same-position-distance-control",
+    "source": "int f(int a,int b){int step=b-a;return step*step;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "unsigned-mode",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Signed mode was left unspecified.",
+    "vectors": [
+      {
+        "arguments": [
+          9,
+          false
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          3,
+          false
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          -8,
+          false
+        ],
+        "expected": -8
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "unsigned-mode-control",
+    "source": "int f(int x,bool signedMode){if(signedMode){return -x;}return x;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "zero-progress-cases",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only the three base inputs constrain behavior.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3,
+          -3
+        ],
+        "expected": -3
+      },
+      {
+        "arguments": [
+          1,
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "zero-progress-cases-control",
+    "source": "int f(int n,int carry){if(n<=3){return carry;}return f(n-2,carry+n);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "idle-item-charge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only invoices without units are specified.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          6
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          0,
+          7
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          0,
+          19
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "idle-item-charge-control",
+    "source": "int f(int count,int price){return count*(price-1);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "unchecked-branch-label",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only mode five was supplied.",
+    "vectors": [
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          -4,
+          5
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          2,
+          5
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [],
+    "requirement": null,
+    "domain": "Listed bounded integer samples and the stated mathematical domain",
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8",
+      "license": "repository license",
+      "upstream_revision": null,
+      "review": "independent executable reference and internal adjudication"
+    },
+    "id": "unchecked-branch-label-control",
+    "source": "int f(int a,int m){if(m==5){return a*2;}return a+2;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  }
+]

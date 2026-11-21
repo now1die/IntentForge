@@ -8,6 +8,7 @@ import socket
 import sys
 
 from ai.behavior_oracle import Status, Vector
+from ai.specification import includes_input
 from vm.behavioral_executor import MiniCOracle, ORACLE_STEPS
 from vm.interpreter import prepare
 from vm.runtime import RuntimeFault, WorkBudget
@@ -76,8 +77,11 @@ def run_batch(batch):
             except RuntimeFault:
                 continue
     arguments = tuple(row.arguments for row in vectors)
-    if batch.engine_version == 7:
-        probes = ranked_probes(eligible, batch.entry_point, arguments, batch.limits, shared, input_strategy=guided_inputs)
+    if batch.engine_version in {7, 8}:
+        def admitted_inputs(programs, entry, supplied):
+            return tuple(row for row in guided_inputs(programs, entry, supplied)
+                         if includes_input(batch.input_domain, row[0]))
+        probes = ranked_probes(eligible, batch.entry_point, arguments, batch.limits, shared, input_strategy=admitted_inputs)
     else:
         probe_method = ranked_probes if batch.engine_version == 5 else compare_probes
         probes = probe_method(eligible, batch.entry_point, arguments, batch.limits, shared)
