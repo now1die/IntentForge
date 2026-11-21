@@ -1,0 +1,19 @@
+{
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "case_sha256": "57a69b93e60828ecfaa9d4c55c33b53e9b671745b889badd6289d09bf9a17b61",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "financial/time_and_half_pay.py": "04340108bb52641deaf0ff58571cc3b00fc16f8c61e66fc59a63e50e47359c4a",
+    "maths/ceil.py": "4cea1f8533dc151eda48fed3b1dedb926899e1155e1b1193f0cfe3d3156240cf",
+    "maths/special_numbers/abundant_numbers.py": "8942bd19373d78dfc49041bb2e4fb70a1fb992d6287965980282cc2a153bf227",
+    "maths/signum.py": "26f4699783f61ba190a40244a931e39d65861f15ef872e0f7473c996b47c4684"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 30
+  },
+  "selection_policy": "Compiler-backed finite constraints, maximum two edits, inherited deterministic ranking and review policy.",
+  "holdout_policy": "Generate with discovery only. Independently verify candidate snapshots on frozen holdout inputs."
+}

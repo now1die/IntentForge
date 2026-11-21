@@ -1,0 +1,2589 @@
+[
+  {
+    "family": "development-window-shares",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Multiply the reserve for positions four through seven, and use the debit formula elsewhere.",
+    "domain": "Small signed positions and reserves.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          8,
+          7
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          6,
+          12
+        ],
+        "expected": 66
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "development-window-shares-fault",
+    "source": "int f(int x,int r){if(x>3 && x<8){return 6*r+x;}return 2*x-r;}",
+    "references": [
+      "int f(int x,int r){if(x>3 && x<8){return 5*r+x;}return 2*x-r;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "development-window-shares",
+    "partition": "development",
+    "compiler_valid": true,
+    "specification": "Multiply the reserve for positions four through seven, and use the debit formula elsewhere.",
+    "domain": "Small signed positions and reserves.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          3
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          7,
+          5
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          8,
+          7
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          6,
+          12
+        ],
+        "expected": 66
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "development-window-shares-control",
+    "source": "int f(int x,int r){if(x>3 && x<8){return 5*r+x;}return 2*x-r;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "selection-odd-stride",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Credit two for each odd position from three through the endpoint.",
+    "domain": "Endpoints −3 to 33.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 11
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          18
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          33
+        ],
+        "expected": 35
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "selection-odd-stride-fault",
+    "source": "int f(int end){int count=3;for(int i=3;i<=end;i+=2){count+=3;}return count;}",
+    "references": [
+      "int f(int end){int count=3;for(int i=3;i<=end;i+=2){count+=2;}return count;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "selection-odd-stride",
+    "partition": "selection",
+    "compiler_valid": true,
+    "specification": "Credit two for each odd position from three through the endpoint.",
+    "domain": "Endpoints −3 to 33.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          8
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 11
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          18
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          33
+        ],
+        "expected": 35
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "selection-odd-stride-control",
+    "source": "int f(int end){int count=3;for(int i=3;i<=end;i+=2){count+=2;}return count;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "calibration-residual",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Combine six units of primary signal with one residual unit and remove two baselines.",
+    "domain": "Small signed measurements.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0,
+          3
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          4,
+          0,
+          0
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          -3
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          9,
+          -6,
+          3
+        ],
+        "expected": 42
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -4,
+          8,
+          0
+        ],
+        "expected": -16
+      },
+      {
+        "arguments": [
+          -3,
+          -5,
+          2
+        ],
+        "expected": -27
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "calibration-residual-fault",
+    "source": "int f(int x,int y,int base){return (7*x-y)+3*(y-base);}",
+    "references": [
+      "int f(int x,int y,int base){return (6*x-y)+2*(y-base);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "calibration-residual",
+    "partition": "calibration",
+    "compiler_valid": true,
+    "specification": "Combine six units of primary signal with one residual unit and remove two baselines.",
+    "domain": "Small signed measurements.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0,
+          3
+        ],
+        "expected": -6
+      },
+      {
+        "arguments": [
+          4,
+          0,
+          0
+        ],
+        "expected": 24
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          -3
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          9,
+          -6,
+          3
+        ],
+        "expected": 42
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -4,
+          8,
+          0
+        ],
+        "expected": -16
+      },
+      {
+        "arguments": [
+          -3,
+          -5,
+          2
+        ],
+        "expected": -27
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "calibration-residual-control",
+    "source": "int f(int x,int y,int base){return (6*x-y)+2*(y-base);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "overtime-half-units",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return pay in half-cents, including the premium for hours beyond the cap.",
+    "domain": "Nonnegative hours, cap and integer cents per hour. Pay fits int32.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          17,
+          4,
+          40
+        ],
+        "expected": 136
+      },
+      {
+        "arguments": [
+          40,
+          9,
+          40
+        ],
+        "expected": 720
+      },
+      {
+        "arguments": [
+          41,
+          1,
+          40
+        ],
+        "expected": 83
+      },
+      {
+        "arguments": [
+          65,
+          19,
+          40
+        ],
+        "expected": 2945
+      },
+      {
+        "arguments": [
+          12,
+          5,
+          8
+        ],
+        "expected": 140
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          7,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          51,
+          7,
+          39
+        ],
+        "expected": 798
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/financial/time_and_half_pay.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "overtime-half-units-fault",
+    "source": "int f(int h,int rate,int cap){int regular=2*h*rate; if(h<=cap){return regular;} return regular+(h+cap)*rate;}",
+    "references": [
+      "int f(int h,int rate,int cap){int regular=2*h*rate; if(h<=cap){return regular;} return regular+(h-cap)*rate;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "overtime-half-units",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return pay in half-cents, including the premium for hours beyond the cap.",
+    "domain": "Nonnegative hours, cap and integer cents per hour. Pay fits int32.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          17,
+          4,
+          40
+        ],
+        "expected": 136
+      },
+      {
+        "arguments": [
+          40,
+          9,
+          40
+        ],
+        "expected": 720
+      },
+      {
+        "arguments": [
+          41,
+          1,
+          40
+        ],
+        "expected": 83
+      },
+      {
+        "arguments": [
+          65,
+          19,
+          40
+        ],
+        "expected": 2945
+      },
+      {
+        "arguments": [
+          12,
+          5,
+          8
+        ],
+        "expected": 140
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          7,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          51,
+          7,
+          39
+        ],
+        "expected": 798
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/financial/time_and_half_pay.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "overtime-half-units-control",
+    "source": "int f(int h,int rate,int cap){int regular=2*h*rate; if(h<=cap){return regular;} return regular+(h-cap)*rate;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "ceiling-tenths",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Round an integer number of tenths toward positive infinity.",
+    "domain": "Signed tenths with int32 quotient and remainder.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -19
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -10
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          37
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          105
+        ],
+        "expected": 11
+      }
+    ],
+    "accepted_alternative_repairs": [
+      "For integer remainder, > 0 and >= 1 are equivalent."
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/ceil.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "ceiling-tenths-fault",
+    "source": "int f(int tenths){int whole=tenths/10; if(tenths%10>=0){whole+=1;} return whole;}",
+    "references": [
+      "int f(int tenths){int whole=tenths/10; if(tenths%10>0){whole+=1;} return whole;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "ceiling-tenths",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Round an integer number of tenths toward positive infinity.",
+    "domain": "Signed tenths with int32 quotient and remainder.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -19
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -10
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          10
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          37
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          105
+        ],
+        "expected": 11
+      }
+    ],
+    "accepted_alternative_repairs": [
+      "For integer remainder, > 0 and >= 1 are equivalent."
+    ],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/ceil.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "ceiling-tenths-control",
+    "source": "int f(int tenths){int whole=tenths/10; if(tenths%10>0){whole+=1;} return whole;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "abundance-proper-divisors",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Test whether the sum of proper positive divisors strictly exceeds the integer.",
+    "domain": "Positive integers up to 50.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          18
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          28
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          24
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          42
+        ],
+        "expected": true
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/abundant_numbers.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "abundance-proper-divisors-fault",
+    "source": "bool f(int n){int total=0;for(int d=1;d<n;d++){if(n%d==0){total+=d;}}return total>=n;}",
+    "references": [
+      "bool f(int n){int total=0;for(int d=1;d<n;d++){if(n%d==0){total+=d;}}return total>n;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "abundance-proper-divisors",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Test whether the sum of proper positive divisors strictly exceeds the integer.",
+    "domain": "Positive integers up to 50.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          6
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          18
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          28
+        ],
+        "expected": false
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          24
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          42
+        ],
+        "expected": true
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/special_numbers/abundant_numbers.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "abundance-proper-divisors-control",
+    "source": "bool f(int n){int total=0;for(int d=1;d<n;d++){if(n%d==0){total+=d;}}return total>n;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "signed-three-way",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return polarity −1, 0 or 1 based on the signed input.",
+    "domain": "All int32 inputs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -12
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          29
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -35
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          61
+        ],
+        "expected": 1
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/signum.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "signed-three-way-fault",
+    "source": "int f(int flux){int polarity=0;if(flux<=0){polarity=-1;}else{if(flux>0){polarity=1;}}return polarity;}",
+    "references": [
+      "int f(int flux){int polarity=0;if(flux<0){polarity=-1;}else{if(flux>0){polarity=1;}}return polarity;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "signed-three-way",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Return polarity −1, 0 or 1 based on the signed input.",
+    "domain": "All int32 inputs.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          -12
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -1
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          29
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -35
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          61
+        ],
+        "expected": 1
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "external_adaptation",
+      "origin": "https://github.com/TheAlgorithms/Python/blob/30507bbe41397065728167fb09aa820f9fce8dc7/maths/signum.py",
+      "upstream_revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+      "license": "MIT",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "signed-three-way-control",
+    "source": "int f(int flux){int polarity=0;if(flux<0){polarity=-1;}else{if(flux>0){polarity=1;}}return polarity;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "shipment-zone-guard",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Charge the lower regional formula outside tags two through five.",
+    "domain": "Small signed quantities and integer tags.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          -1
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          7,
+          4
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          -2,
+          6
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          9,
+          5
+        ],
+        "expected": 81
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          1
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          -2,
+          9
+        ],
+        "expected": -5
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "shipment-zone-guard-fault",
+    "source": "int f(int h,int tag){int fee=9*h; if(tag<2 && tag>5){fee=4*h+3;} return fee;}",
+    "references": [
+      "int f(int h,int tag){int fee=9*h; if(tag<2 || tag>5){fee=4*h+3;} return fee;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "shipment-zone-guard",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Charge the lower regional formula outside tags two through five.",
+    "domain": "Small signed quantities and integer tags.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          -1
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 27
+      },
+      {
+        "arguments": [
+          7,
+          4
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          -2,
+          6
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          9,
+          5
+        ],
+        "expected": 81
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          1
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          -2,
+          9
+        ],
+        "expected": -5
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "shipment-zone-guard-control",
+    "source": "int f(int h,int tag){int fee=9*h; if(tag<2 || tag>5){fee=4*h+3;} return fee;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "lighting-fringe-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Activate after the lower edge through the inclusive upper edge, plus the reserved test tick.",
+    "domain": "Ascending signed bounds with a reserved tick at 84.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0,
+          30
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          30,
+          0,
+          30
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          31,
+          0,
+          30
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          84,
+          0,
+          30
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          5,
+          3,
+          9
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          3,
+          9
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          84,
+          90,
+          91
+        ],
+        "expected": true
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "lighting-fringe-window-fault",
+    "source": "bool f(int tick,int minTick,int maxTick){return (tick>=minTick && tick<=maxTick) || tick==84;}",
+    "references": [
+      "bool f(int tick,int minTick,int maxTick){return (tick>minTick && tick<=maxTick) || tick==84;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "lighting-fringe-window",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Activate after the lower edge through the inclusive upper edge, plus the reserved test tick.",
+    "domain": "Ascending signed bounds with a reserved tick at 84.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0,
+          30
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          30,
+          0,
+          30
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          31,
+          0,
+          30
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          84,
+          0,
+          30
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          5,
+          3,
+          9
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          3,
+          9
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          84,
+          90,
+          91
+        ],
+        "expected": true
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "lighting-fringe-window-control",
+    "source": "bool f(int tick,int minTick,int maxTick){return (tick>minTick && tick<=maxTick) || tick==84;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "finite-relay-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Connect the three permitted relay pairs.",
+    "domain": "Exhaustive {0,1,2} × {0,1,2}, split 4 discovery / 5 holdout.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": false
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "finite-relay-grid-fault",
+    "source": "bool f(int a,int b){return (a==0 && b==2) || (a==2 && b==2);}",
+    "references": [
+      "bool f(int a,int b){return (a==0 && b!=2) || (a==2 && b==2);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "finite-relay-grid",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Connect the three permitted relay pairs.",
+    "domain": "Exhaustive {0,1,2} × {0,1,2}, split 4 discovery / 5 holdout.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          0,
+          1
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          1,
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          2
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          1,
+          2
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2,
+          0
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": false
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "finite-relay-grid-control",
+    "source": "bool f(int a,int b){return (a==0 && b!=2) || (a==2 && b==2);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "stamped-formula",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add the dispatch gain, deduct translated cargo and restore the anchor.",
+    "domain": "Small signed integer package, mass and anchor points.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          9,
+          9
+        ],
+        "expected": 48
+      },
+      {
+        "arguments": [
+          0,
+          7,
+          2
+        ],
+        "expected": -28
+      },
+      {
+        "arguments": [
+          1,
+          5,
+          -3
+        ],
+        "expected": -38
+      },
+      {
+        "arguments": [
+          -2,
+          9,
+          1
+        ],
+        "expected": -73
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7,
+          0,
+          -4
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          -9,
+          -3,
+          6
+        ],
+        "expected": -57
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "stamped-formula-fault",
+    "source": "int f(int packages,int mass,int anchor){int dispatch=12*packages;int cargo=(mass-anchor)*7;return dispatch-cargo+anchor;}",
+    "references": [
+      "int f(int packages,int mass,int anchor){int dispatch=13*packages;int cargo=(mass-anchor)*6;return dispatch-cargo+anchor;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "stamped-formula",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Add the dispatch gain, deduct translated cargo and restore the anchor.",
+    "domain": "Small signed integer package, mass and anchor points.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          9,
+          9
+        ],
+        "expected": 48
+      },
+      {
+        "arguments": [
+          0,
+          7,
+          2
+        ],
+        "expected": -28
+      },
+      {
+        "arguments": [
+          1,
+          5,
+          -3
+        ],
+        "expected": -38
+      },
+      {
+        "arguments": [
+          -2,
+          9,
+          1
+        ],
+        "expected": -73
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          7,
+          0,
+          -4
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          -9,
+          -3,
+          6
+        ],
+        "expected": -57
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "stamped-formula-control",
+    "source": "int f(int packages,int mass,int anchor){int dispatch=13*packages;int cargo=(mass-anchor)*6;return dispatch-cargo+anchor;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "paired-taper",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply the signed two-term taper with the neutral origin at five.",
+    "domain": "Independently varied signed axes.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          3,
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          8
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          3
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          -3,
+          4,
+          9
+        ],
+        "expected": -4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          -3,
+          2
+        ],
+        "expected": -60
+      },
+      {
+        "arguments": [
+          3,
+          8,
+          7
+        ],
+        "expected": 36
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "paired-taper-fault",
+    "source": "int f(int u,int v,int w){return (3*u+v)*(w-6)+v;}",
+    "references": [
+      "int f(int u,int v,int w){return (2*u+v)*(w-5)+v;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "paired-taper",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Apply the signed two-term taper with the neutral origin at five.",
+    "domain": "Independently varied signed axes.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          3,
+          5
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          8
+        ],
+        "expected": 16
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          3
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          -3,
+          4,
+          9
+        ],
+        "expected": -4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          -3,
+          2
+        ],
+        "expected": -60
+      },
+      {
+        "arguments": [
+          3,
+          8,
+          7
+        ],
+        "expected": 36
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "paired-taper-control",
+    "source": "int f(int u,int v,int w){return (2*u+v)*(w-5)+v;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "flux-calibration-matrices",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply independent calibrated row and column projections.",
+    "domain": "Small signed matrix coordinates.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 208
+      },
+      {
+        "arguments": [
+          2,
+          -7
+        ],
+        "expected": -252
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          9
+        ],
+        "expected": 792
+      },
+      {
+        "arguments": [
+          -3,
+          5
+        ],
+        "expected": -182
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "flux-calibration-matrices-fault",
+    "source": "int f(int x,int y){int row=8*x-y;int col=3*y+x;return row*col;}",
+    "references": [
+      "int f(int x,int y){int row=7*x-y;int col=2*y+x;return row*col;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "flux-calibration-matrices",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Multiply independent calibrated row and column projections.",
+    "domain": "Small signed matrix coordinates.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 63
+      },
+      {
+        "arguments": [
+          4,
+          2
+        ],
+        "expected": 208
+      },
+      {
+        "arguments": [
+          2,
+          -7
+        ],
+        "expected": -252
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          6,
+          9
+        ],
+        "expected": 792
+      },
+      {
+        "arguments": [
+          -3,
+          5
+        ],
+        "expected": -182
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "flux-calibration-matrices-control",
+    "source": "int f(int x,int y){int row=7*x-y;int col=2*y+x;return row*col;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "third-slot-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count positive slots through the endpoint with the selected remainder modulo three.",
+    "domain": "Endpoint 0 to 32, marker 0 through 2.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          11,
+          1
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          22,
+          1
+        ],
+        "expected": 8
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "third-slot-count-fault",
+    "source": "int f(int n,int mark){int visits=0;for(int slot=1;slot<n;slot++){if(slot%3==mark){visits+=1;}}return visits;}",
+    "references": [
+      "int f(int n,int mark){int visits=0;for(int slot=1;slot<=n;slot++){if(slot%3==mark){visits+=1;}}return visits;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "third-slot-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Count positive slots through the endpoint with the selected remainder modulo three.",
+    "domain": "Endpoint 0 to 32, marker 0 through 2.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          1,
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          3,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          11,
+          1
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          17,
+          2
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          22,
+          1
+        ],
+        "expected": 8
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "third-slot-count-control",
+    "source": "int f(int n,int mark){int visits=0;for(int slot=1;slot<=n;slot++){if(slot%3==mark){visits+=1;}}return visits;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "descending-window-credit",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Credit four for nonnegative points on a descending, inclusive progression of step three.",
+    "domain": "Signed endpoints of magnitude at most 25.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          3,
+          -2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          5,
+          2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          8,
+          -1
+        ],
+        "expected": 14
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          -4
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          10,
+          1
+        ],
+        "expected": 18
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "descending-window-credit-fault",
+    "source": "int f(int from,int low){int earned=2;for(int slot=from;slot>=low;slot-=2){if(slot>=0){earned+=4;}}return earned;}",
+    "references": [
+      "int f(int from,int low){int earned=2;for(int slot=from;slot>=low;slot-=3){if(slot>=0){earned+=4;}}return earned;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "descending-window-credit",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Credit four for nonnegative points on a descending, inclusive progression of step three.",
+    "domain": "Signed endpoints of magnitude at most 25.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          3
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          3,
+          -2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          5,
+          2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          8,
+          -1
+        ],
+        "expected": 14
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11,
+          -4
+        ],
+        "expected": 18
+      },
+      {
+        "arguments": [
+          10,
+          1
+        ],
+        "expected": 18
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "descending-window-credit-control",
+    "source": "int f(int from,int low){int earned=2;for(int slot=from;slot>=low;slot-=3){if(slot>=0){earned+=4;}}return earned;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "alternating-surcharge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Charge three at even positions and five at odd positions, with a base charge of one.",
+    "domain": "Nonnegative n up to 32.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 17
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 81
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "alternating-surcharge-fault",
+    "source": "int f(int n){int pay=1;for(int i=0;i<n;i++){if(i%2==0){pay+=3;}else{pay+=6;}}return pay;}",
+    "references": [
+      "int f(int n){int pay=1;for(int i=0;i<n;i++){if(i%2==0){pay+=3;}else{pay+=5;}}return pay;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "alternating-surcharge",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Charge three at even positions and five at odd positions, with a base charge of one.",
+    "domain": "Nonnegative n up to 32.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 12
+      },
+      {
+        "arguments": [
+          4
+        ],
+        "expected": 17
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 81
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "alternating-surcharge-control",
+    "source": "int f(int n){int pay=1;for(int i=0;i<n;i++){if(i%2==0){pay+=3;}else{pay+=5;}}return pay;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "observed-disagreement-spacing",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the scaled result through q=6 and signed integer halving above the boundary.",
+    "domain": "Small signed readings. Discovery leaves a gap between 6 and 15 in the upper branch.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          6
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          8,
+          15
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -3,
+          22
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          5
+        ],
+        "expected": 50
+      },
+      {
+        "arguments": [
+          -8,
+          7
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          9,
+          8
+        ],
+        "expected": 4
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "observed-disagreement-spacing-fault",
+    "source": "int f(int x,int q){if(q<=7){return 5*x;}return x/2;}",
+    "references": [
+      "int f(int x,int q){if(q<=6){return 5*x;}return x/2;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "observed-disagreement-spacing",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Use the scaled result through q=6 and signed integer halving above the boundary.",
+    "domain": "Small signed readings. Discovery leaves a gap between 6 and 15 in the upper branch.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          3
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          6
+        ],
+        "expected": 20
+      },
+      {
+        "arguments": [
+          8,
+          15
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          -3,
+          22
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          10,
+          5
+        ],
+        "expected": 50
+      },
+      {
+        "arguments": [
+          -8,
+          7
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          9,
+          8
+        ],
+        "expected": 4
+      }
+    ],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "observed-disagreement-spacing-control",
+    "source": "int f(int x,int q){if(q<=6){return 5*x;}return x/2;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "control"
+  },
+  {
+    "family": "single-branch-observations",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "The supplied observations only describe mode 21.",
+    "domain": "Other modes are unspecified.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          21
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          -3,
+          21
+        ],
+        "expected": -25
+      },
+      {
+        "arguments": [
+          6,
+          21
+        ],
+        "expected": 47
+      }
+    ],
+    "holdout_vectors": [],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "single-branch-observations-control",
+    "source": "int f(int q,int m){int r=8*q;if(m==21){r-=1;}return r;}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  },
+  {
+    "family": "collinear-meter-observations",
+    "partition": "final",
+    "compiler_valid": true,
+    "specification": "Only inputs with equal channels have independent expected results.",
+    "domain": "The response to independent channels is unspecified.",
+    "requirement": null,
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          1,
+          1
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          2
+        ],
+        "expected": 136
+      },
+      {
+        "arguments": [
+          5,
+          -3,
+          -3
+        ],
+        "expected": -255
+      }
+    ],
+    "holdout_vectors": [],
+    "accepted_alternative_repairs": [],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 8.5",
+      "upstream_revision": null,
+      "license": "repository license",
+      "review": "Independent mathematical oracle and compiler/VM cross-check. External human review unavailable."
+    },
+    "id": "collinear-meter-observations-control",
+    "source": "int f(int w,int x,int y){return w*(8*x+9*y);}",
+    "references": [],
+    "fault_origin": null,
+    "disposition": "ambiguous"
+  }
+]
