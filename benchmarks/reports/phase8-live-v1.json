@@ -1,0 +1,4680 @@
+{
+  "profiles": {
+    "75": [
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "square-pyramid-volume-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "square-pyramid-volume-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "celsius-integer-fahrenheit-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "celsius-integer-fahrenheit-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "integer-tax-total-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "integer-tax-total-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 152,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "oriented-shoelace-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 152,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "oriented-shoelace-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 72,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "signed-horner-quadratic-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 72,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "signed-horner-quadratic-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 44,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "one-based-series-term-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "one-based-series-term-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 64,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minute-seconds-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 64,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minute-seconds-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 44,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triangular-edge-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 44,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triangular-edge-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "paired-dial-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Discovery follows x=y+2. Held-out signed pairs independently vary the two dials.",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "paired-dial-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Discovery follows x=y+2. Held-out signed pairs independently vary the two dials.",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 42,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "finite-grid-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Exhaustive pairs (row,column) in {0,1,2} \u00d7 {0,1,2}, split 3/6.",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 42,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "finite-grid-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Exhaustive pairs (row,column) in {0,1,2} \u00d7 {0,1,2}, split 3/6.",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 28,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "checked-offset-edge-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Inputs from INT_MIN through INT_MAX\u22123, including both endpoints on holdout.",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 28,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "checked-offset-edge-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Inputs from INT_MIN through INT_MAX\u22123, including both endpoints on holdout.",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 88,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "difference-of-scaled-stages-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 88,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "difference-of-scaled-stages-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 80,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "second-stage-source-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 80,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "second-stage-source-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 112,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "one-argument-wrapper-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 112,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "one-argument-wrapper-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "signed-sampling-remainder-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Supported small signed inputs and positive nonzero periods.",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "signed-sampling-remainder-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Supported small signed inputs and positive nonzero periods.",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "successor-product-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "successor-product-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 40,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "throttled-sum-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "throttled-sum-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "DIVISION_BY_ZERO",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 68,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triad-overlap-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 68,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triad-overlap-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 92,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "subtraction-interaction-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 92,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "subtraction-interaction-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "three-window-divisor-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "three-window-divisor-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "two-independent-coefficients-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "two-independent-coefficients-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 54,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "rare-upper-adjustment-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 54,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "rare-upper-adjustment-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 49,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-active-window-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 49,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-active-window-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 30,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "coincident-shifts-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "partial-offset-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "same-position-distance-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 24,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "unsigned-mode-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 30,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "idle-item-charge-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 39,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "unchecked-branch-label-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": null
+      }
+    ],
+    "8": [
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-11ba5060a979"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 112,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-11ba5060a979",
+          "matching_candidates": [
+            "IR-11ba5060a979"
+          ]
+        },
+        "id": "square-pyramid-volume-fault",
+        "holdout": [
+          {
+            "id": "IR-11ba5060a979",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 76,
+                    "offset": 75
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 77,
+                    "offset": 76
+                  }
+                },
+                "original": "2",
+                "proposed": "3"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 28
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "square-pyramid-volume-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-328bd11f5cce"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 104,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-328bd11f5cce",
+          "matching_candidates": [
+            "IR-328bd11f5cce"
+          ]
+        },
+        "id": "celsius-integer-fahrenheit-fault",
+        "holdout": [
+          {
+            "id": "IR-328bd11f5cce",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 43,
+                    "offset": 42
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 45,
+                    "offset": 44
+                  }
+                },
+                "original": "31",
+                "proposed": "32"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 26
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "celsius-integer-fahrenheit-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-65eb6e0b5f9c"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 112,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-65eb6e0b5f9c",
+          "matching_candidates": [
+            "IR-65eb6e0b5f9c"
+          ]
+        },
+        "id": "integer-tax-total-fault",
+        "holdout": [
+          {
+            "id": "IR-65eb6e0b5f9c",
+            "category": "ARITHMETIC_OPERATOR_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 75,
+                    "offset": 74
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 76,
+                    "offset": 75
+                  }
+                },
+                "original": "-",
+                "proposed": "+"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 28
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "integer-tax-total-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-f8d0ada8ff39"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 304,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-f8d0ada8ff39",
+          "matching_candidates": [
+            "IR-f8d0ada8ff39"
+          ]
+        },
+        "id": "oriented-shoelace-fault",
+        "holdout": [
+          {
+            "id": "IR-f8d0ada8ff39",
+            "category": "ARITHMETIC_OPERATOR_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 110,
+                    "offset": 109
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 111,
+                    "offset": 110
+                  }
+                },
+                "original": "+",
+                "proposed": "-"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 76
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 152,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "oriented-shoelace-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-fe9f16bfffce"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 144,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-fe9f16bfffce",
+          "matching_candidates": [
+            "IR-fe9f16bfffce"
+          ]
+        },
+        "id": "signed-horner-quadratic-fault",
+        "holdout": [
+          {
+            "id": "IR-fe9f16bfffce",
+            "category": "ARITHMETIC_OPERATOR_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 59,
+                    "offset": 58
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 60,
+                    "offset": 59
+                  }
+                },
+                "original": "-",
+                "proposed": "+"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 36
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 72,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "signed-horner-quadratic-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-50863656d61e"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 96,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-50863656d61e",
+          "matching_candidates": [
+            "IR-50863656d61e"
+          ]
+        },
+        "id": "one-based-series-term-fault",
+        "holdout": [
+          {
+            "id": "IR-50863656d61e",
+            "category": "ARITHMETIC_PREDECESSOR",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 59,
+                    "offset": 58
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 67,
+                    "offset": 66
+                  }
+                },
+                "original": "position",
+                "proposed": "(position - 1)"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 26
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "one-based-series-term-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-1952c0846f4a"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 128,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-1952c0846f4a",
+          "matching_candidates": [
+            "IR-1952c0846f4a"
+          ]
+        },
+        "id": "minute-seconds-fault",
+        "holdout": [
+          {
+            "id": "IR-1952c0846f4a",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 29,
+                    "offset": 28
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 31,
+                    "offset": 30
+                  }
+                },
+                "original": "61",
+                "proposed": "60"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 32
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 64,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "minute-seconds-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-2921814d4007"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 88,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-2921814d4007",
+          "matching_candidates": [
+            "IR-2921814d4007"
+          ]
+        },
+        "id": "triangular-edge-fault",
+        "holdout": [
+          {
+            "id": "IR-2921814d4007",
+            "category": "ARITHMETIC_OPERATOR_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 25,
+                    "offset": 24
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 26,
+                    "offset": 25
+                  }
+                },
+                "original": "-",
+                "proposed": "+"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 22
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 44,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triangular-edge-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-9fec6d82e49b",
+          "IR-a8545315ca34",
+          "IR-f8c7ee9fa8c2"
+        ],
+        "tests_matching_candidates": 3,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 3,
+        "behavioral_rank": 3,
+        "exact_test_agreement": true,
+        "first_matching_exact": false,
+        "behavioral_match": true,
+        "observed_steps": 184,
+        "probe_steps": 272,
+        "new_pairs": 2,
+        "probes": 8,
+        "redundant_probes": 6,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [
+          "agreed_on_probes",
+          "distinguished",
+          "distinguished"
+        ],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": [
+            "IR-9fec6d82e49b",
+            "IR-a8545315ca34",
+            "IR-f8c7ee9fa8c2"
+          ]
+        },
+        "id": "paired-dial-fault",
+        "holdout": [
+          {
+            "id": "IR-9fec6d82e49b",
+            "category": "ARITHMETIC_PREDECESSOR",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 27,
+                    "offset": 26
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 32,
+                    "offset": 31
+                  }
+                },
+                "original": "(x+1)",
+                "proposed": "x"
+              }
+            ],
+            "exact": false,
+            "status": "MISMATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [
+              {
+                "input": [
+                  3,
+                  7
+                ],
+                "expected": 36,
+                "actual": 30
+              },
+              {
+                "input": [
+                  -1,
+                  5
+                ],
+                "expected": 0,
+                "actual": -8
+              }
+            ],
+            "steps": 20
+          },
+          {
+            "id": "IR-a8545315ca34",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 30,
+                    "offset": 29
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 31,
+                    "offset": 30
+                  }
+                },
+                "original": "1",
+                "proposed": "0"
+              }
+            ],
+            "exact": false,
+            "status": "MISMATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [
+              {
+                "input": [
+                  3,
+                  7
+                ],
+                "expected": 36,
+                "actual": 30
+              },
+              {
+                "input": [
+                  -1,
+                  5
+                ],
+                "expected": 0,
+                "actual": -8
+              }
+            ],
+            "steps": 24
+          },
+          {
+            "id": "IR-f8c7ee9fa8c2",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 36,
+                    "offset": 35
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 37,
+                    "offset": 36
+                  }
+                },
+                "original": "3",
+                "proposed": "2"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 24
+          }
+        ],
+        "visible_suggestions": 3,
+        "domain": "Discovery follows x=y+2. Held-out signed pairs independently vary the two dials.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "paired-dial-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Discovery follows x=y+2. Held-out signed pairs independently vary the two dials.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-6a31ff83fa49"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 84,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-6a31ff83fa49",
+          "matching_candidates": [
+            "IR-6a31ff83fa49"
+          ]
+        },
+        "id": "finite-grid-fault",
+        "holdout": [
+          {
+            "id": "IR-6a31ff83fa49",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 43,
+                    "offset": 42
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 44,
+                    "offset": 43
+                  }
+                },
+                "original": "4",
+                "proposed": "3"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 84
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Exhaustive pairs (row,column) in {0,1,2} \u00d7 {0,1,2}, split 3/6.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 42,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "finite-grid-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Exhaustive pairs (row,column) in {0,1,2} \u00d7 {0,1,2}, split 3/6.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-5dab90c25e98"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-5dab90c25e98",
+          "matching_candidates": [
+            "IR-5dab90c25e98"
+          ]
+        },
+        "id": "checked-offset-edge-fault",
+        "holdout": [
+          {
+            "id": "IR-5dab90c25e98",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 23,
+                    "offset": 22
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 24,
+                    "offset": 23
+                  }
+                },
+                "original": "2",
+                "proposed": "3"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 14
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Inputs from INT_MIN through INT_MAX\u22123, including both endpoints on holdout.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 28,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "checked-offset-edge-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Inputs from INT_MIN through INT_MAX\u22123, including both endpoints on holdout.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-cbf8be191759"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 176,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-cbf8be191759",
+          "matching_candidates": [
+            "IR-cbf8be191759"
+          ]
+        },
+        "id": "difference-of-scaled-stages-fault",
+        "holdout": [
+          {
+            "id": "IR-cbf8be191759",
+            "category": "ARITHMETIC_RETURN_DEPENDENCY",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 65,
+                    "offset": 64
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 71,
+                    "offset": 70
+                  }
+                },
+                "original": "scaled",
+                "proposed": "adjustment"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 44
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 88,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "difference-of-scaled-stages-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-696456677a44"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 160,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-696456677a44",
+          "matching_candidates": [
+            "IR-696456677a44"
+          ]
+        },
+        "id": "second-stage-source-fault",
+        "holdout": [
+          {
+            "id": "IR-696456677a44",
+            "category": "ARITHMETIC_RETURN_DEPENDENCY",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 82,
+                    "offset": 81
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 87,
+                    "offset": 86
+                  }
+                },
+                "original": "label",
+                "proposed": "adjusted"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 40
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 80,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "second-stage-source-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-0aa73eaffbaa"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 224,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-0aa73eaffbaa",
+          "matching_candidates": [
+            "IR-0aa73eaffbaa"
+          ]
+        },
+        "id": "one-argument-wrapper-fault",
+        "holdout": [
+          {
+            "id": "IR-0aa73eaffbaa",
+            "category": "ARITHMETIC_OPERATOR_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 29,
+                    "offset": 28
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 30,
+                    "offset": 29
+                  }
+                },
+                "original": "+",
+                "proposed": "-"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 56
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 112,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "one-argument-wrapper-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-da4c0082c31e"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 96,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-da4c0082c31e",
+          "matching_candidates": [
+            "IR-da4c0082c31e"
+          ]
+        },
+        "id": "signed-sampling-remainder-fault",
+        "holdout": [
+          {
+            "id": "IR-da4c0082c31e",
+            "category": "ARITHMETIC_OPERATOR_CONSTRAINT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 67,
+                    "offset": 66
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 68,
+                    "offset": 67
+                  }
+                },
+                "original": "/",
+                "proposed": "%"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 24
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Supported small signed inputs and positive nonzero periods.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "signed-sampling-remainder-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Supported small signed inputs and positive nonzero periods.",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-8b588affebc7"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 104,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-8b588affebc7",
+          "matching_candidates": [
+            "IR-8b588affebc7"
+          ]
+        },
+        "id": "successor-product-fault",
+        "holdout": [
+          {
+            "id": "IR-8b588affebc7",
+            "category": "ARITHMETIC_PREDECESSOR",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 56,
+                    "offset": 55
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 66,
+                    "offset": 65
+                  }
+                },
+                "original": "adjustment",
+                "proposed": "(adjustment + 1)"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 28
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 56,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "successor-product-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-9df9fb0cba0b"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 88,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-9df9fb0cba0b",
+          "matching_candidates": [
+            "IR-9df9fb0cba0b"
+          ]
+        },
+        "id": "throttled-sum-fault",
+        "holdout": [
+          {
+            "id": "IR-9df9fb0cba0b",
+            "category": "ARITHMETIC_PREDECESSOR",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 44,
+                    "offset": 43
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 50,
+                    "offset": 49
+                  }
+                },
+                "original": "slices",
+                "proposed": "(slices - 1)"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 24
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "throttled-sum-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "BEHAVIOR_UNKNOWN",
+        "issue": "DIVISION_BY_ZERO",
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 68,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "RUNTIME_FAILURE",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triad-overlap-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 68,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "triad-overlap-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-3b38b6c1c61b",
+          "IR-f7b8c3870d9a"
+        ],
+        "tests_matching_candidates": 2,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS",
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 2,
+        "behavioral_rank": 2,
+        "exact_test_agreement": true,
+        "first_matching_exact": false,
+        "behavioral_match": true,
+        "observed_steps": 284,
+        "probe_steps": 384,
+        "new_pairs": 0,
+        "probes": 8,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [
+          "agreed_on_probes"
+        ],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "MULTIPLE_PLAUSIBLE_REPAIRS",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": [
+            "IR-3b38b6c1c61b",
+            "IR-f7b8c3870d9a"
+          ]
+        },
+        "id": "subtraction-interaction-fault",
+        "holdout": [
+          {
+            "id": "IR-3b38b6c1c61b",
+            "category": "ARITHMETIC_PREDECESSOR",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 47,
+                    "offset": 46
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53,
+                    "offset": 52
+                  }
+                },
+                "original": "offset",
+                "proposed": "(offset - 1)"
+              }
+            ],
+            "exact": false,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 50
+          },
+          {
+            "id": "IR-f7b8c3870d9a",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 36,
+                    "offset": 35
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 37,
+                    "offset": 36
+                  }
+                },
+                "original": "1",
+                "proposed": "2"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": false,
+            "counterexamples": [],
+            "steps": 46
+          }
+        ],
+        "visible_suggestions": 2,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 92,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "subtraction-interaction-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [
+          "IR-e4017b71f275"
+        ],
+        "tests_matching_candidates": 1,
+        "candidate_results": [
+          "MATCHES_SUPPLIED_TESTS"
+        ],
+        "exact_rank": 1,
+        "behavioral_rank": 1,
+        "exact_test_agreement": true,
+        "first_matching_exact": true,
+        "behavioral_match": true,
+        "observed_steps": 104,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "REVIEW_MATCHING_REPAIR",
+          "confirmed_fault": true,
+          "recommended_candidate": "IR-e4017b71f275",
+          "matching_candidates": [
+            "IR-e4017b71f275"
+          ]
+        },
+        "id": "three-window-divisor-fault",
+        "holdout": [
+          {
+            "id": "IR-e4017b71f275",
+            "category": "ARITHMETIC_COEFFICIENT",
+            "edits": [
+              {
+                "span": {
+                  "start": {
+                    "line": 1,
+                    "column": 39,
+                    "offset": 38
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 40,
+                    "offset": 39
+                  }
+                },
+                "original": "4",
+                "proposed": "3"
+              }
+            ],
+            "exact": true,
+            "status": "MATCHES_SUPPLIED_TESTS",
+            "recommended": true,
+            "counterexamples": [],
+            "steps": 26
+          }
+        ],
+        "visible_suggestions": 1,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 52,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "three-window-divisor-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "two-independent-coefficients-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 48,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "two-independent-coefficients-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 54,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "rare-upper-adjustment-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 54,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "rare-upper-adjustment-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 49,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "CONFIRMED_TEST_MISMATCH",
+          "review": "ABSTAIN",
+          "confirmed_fault": true,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-active-window-fault",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 49,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "boolean-active-window-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 30,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "coincident-shifts-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "partial-offset-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 36,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "same-position-distance-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 24,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "unsigned-mode-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 30,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "idle-item-charge-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      },
+      {
+        "original": "MATCHES_SUPPLIED_TESTS",
+        "issue": null,
+        "candidate_ids": [],
+        "tests_matching_candidates": 0,
+        "candidate_results": [],
+        "exact_rank": null,
+        "behavioral_rank": null,
+        "exact_test_agreement": false,
+        "first_matching_exact": false,
+        "behavioral_match": false,
+        "observed_steps": 39,
+        "probe_steps": 0,
+        "new_pairs": 0,
+        "probes": 0,
+        "redundant_probes": 0,
+        "runtime_fault_observations": 0,
+        "pair_statuses": [],
+        "policy": {
+          "original": "ORIGINAL_MATCHES_SUPPLIED_TESTS",
+          "review": "ABSTAIN",
+          "confirmed_fault": false,
+          "recommended_candidate": null,
+          "matching_candidates": []
+        },
+        "id": "unchecked-branch-label-control",
+        "holdout": [],
+        "visible_suggestions": 0,
+        "domain": "Listed bounded integer samples and the stated mathematical domain",
+        "review_presentation": "REVIEW_VISIBLE"
+      }
+    ]
+  },
+  "metrics": {
+    "75": {
+      "fault_alerts": {
+        "hits": 22,
+        "total": 23,
+        "wilson95": [
+          0.79,
+          0.992
+        ]
+      },
+      "false_alerts": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "precision": {
+        "hits": 22,
+        "total": 22,
+        "wilson95": [
+          0.851,
+          1
+        ]
+      },
+      "correct_control_hypotheses": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "exact_recall": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "matching_discovery": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "accepted_both": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "exact_accepted_both": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "non_exact_accepted_both": 0,
+      "contradicted_after_discovery": 0,
+      "recommendations": {
+        "hits": 0,
+        "total": 52,
+        "wilson95": [
+          0,
+          0.069
+        ]
+      },
+      "abstentions": 52,
+      "ambiguity": 0,
+      "original_statuses": {
+        "MISMATCHES_SUPPLIED_TESTS": 22,
+        "MATCHES_SUPPLIED_TESTS": 29,
+        "BEHAVIOR_UNKNOWN": 1
+      },
+      "holdout_steps": 0,
+      "probe_steps": 0,
+      "observed_steps": 3093,
+      "new_pairs": 0,
+      "probes": 0,
+      "runtime_fault_observations": 0,
+      "exact_rank": {
+        "top1": {
+          "hits": 0,
+          "total": 23,
+          "wilson95": [
+            0,
+            0.143
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 23,
+          "wilson95": [
+            0,
+            0.143
+          ]
+        }
+      },
+      "behavioral_rank": {
+        "top1": {
+          "hits": 0,
+          "total": 23,
+          "wilson95": [
+            0,
+            0.143
+          ]
+        },
+        "top3": {
+          "hits": 0,
+          "total": 23,
+          "wilson95": [
+            0,
+            0.143
+          ]
+        }
+      }
+    },
+    "8": {
+      "fault_alerts": {
+        "hits": 22,
+        "total": 23,
+        "wilson95": [
+          0.79,
+          0.992
+        ]
+      },
+      "false_alerts": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "precision": {
+        "hits": 22,
+        "total": 22,
+        "wilson95": [
+          0.851,
+          1
+        ]
+      },
+      "correct_control_hypotheses": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "exact_recall": {
+        "hits": 19,
+        "total": 23,
+        "wilson95": [
+          0.629,
+          0.93
+        ]
+      },
+      "matching_discovery": {
+        "hits": 19,
+        "total": 23,
+        "wilson95": [
+          0.629,
+          0.93
+        ]
+      },
+      "accepted_both": {
+        "hits": 19,
+        "total": 23,
+        "wilson95": [
+          0.629,
+          0.93
+        ]
+      },
+      "exact_accepted_both": {
+        "hits": 19,
+        "total": 23,
+        "wilson95": [
+          0.629,
+          0.93
+        ]
+      },
+      "non_exact_accepted_both": 1,
+      "contradicted_after_discovery": 2,
+      "recommendations": {
+        "hits": 17,
+        "total": 52,
+        "wilson95": [
+          0.215,
+          0.462
+        ]
+      },
+      "abstentions": 35,
+      "ambiguity": 2,
+      "original_statuses": {
+        "MISMATCHES_SUPPLIED_TESTS": 22,
+        "MATCHES_SUPPLIED_TESTS": 29,
+        "BEHAVIOR_UNKNOWN": 1
+      },
+      "holdout_steps": 778,
+      "probe_steps": 656,
+      "observed_steps": 4523,
+      "new_pairs": 2,
+      "probes": 16,
+      "runtime_fault_observations": 0,
+      "exact_rank": {
+        "top1": {
+          "hits": 17,
+          "total": 23,
+          "wilson95": [
+            0.535,
+            0.875
+          ]
+        },
+        "top3": {
+          "hits": 19,
+          "total": 23,
+          "wilson95": [
+            0.629,
+            0.93
+          ]
+        }
+      },
+      "behavioral_rank": {
+        "top1": {
+          "hits": 17,
+          "total": 23,
+          "wilson95": [
+            0.535,
+            0.875
+          ]
+        },
+        "top3": {
+          "hits": 19,
+          "total": 23,
+          "wilson95": [
+            0.629,
+            0.93
+          ]
+        }
+      }
+    }
+  },
+  "external_phase8": {
+    "fault_alerts": {
+      "hits": 8,
+      "total": 8,
+      "wilson95": [
+        0.676,
+        1
+      ]
+    },
+    "false_alerts": {
+      "hits": 0,
+      "total": 8,
+      "wilson95": [
+        0,
+        0.324
+      ]
+    },
+    "precision": {
+      "hits": 8,
+      "total": 8,
+      "wilson95": [
+        0.676,
+        1
+      ]
+    },
+    "correct_control_hypotheses": {
+      "hits": 0,
+      "total": 8,
+      "wilson95": [
+        0,
+        0.324
+      ]
+    },
+    "exact_recall": {
+      "hits": 8,
+      "total": 8,
+      "wilson95": [
+        0.676,
+        1
+      ]
+    },
+    "matching_discovery": {
+      "hits": 8,
+      "total": 8,
+      "wilson95": [
+        0.676,
+        1
+      ]
+    },
+    "accepted_both": {
+      "hits": 8,
+      "total": 8,
+      "wilson95": [
+        0.676,
+        1
+      ]
+    },
+    "exact_accepted_both": {
+      "hits": 8,
+      "total": 8,
+      "wilson95": [
+        0.676,
+        1
+      ]
+    },
+    "non_exact_accepted_both": 0,
+    "contradicted_after_discovery": 0,
+    "recommendations": {
+      "hits": 8,
+      "total": 16,
+      "wilson95": [
+        0.28,
+        0.72
+      ]
+    },
+    "abstentions": 8,
+    "ambiguity": 0,
+    "original_statuses": {
+      "MISMATCHES_SUPPLIED_TESTS": 8,
+      "MATCHES_SUPPLIED_TESTS": 8
+    },
+    "holdout_steps": 274,
+    "probe_steps": 0,
+    "observed_steps": 1636,
+    "new_pairs": 0,
+    "probes": 0,
+    "runtime_fault_observations": 0,
+    "exact_rank": {
+      "top1": {
+        "hits": 8,
+        "total": 8,
+        "wilson95": [
+          0.676,
+          1
+        ]
+      },
+      "top3": {
+        "hits": 8,
+        "total": 8,
+        "wilson95": [
+          0.676,
+          1
+        ]
+      }
+    },
+    "behavioral_rank": {
+      "top1": {
+        "hits": 8,
+        "total": 8,
+        "wilson95": [
+          0.676,
+          1
+        ]
+      },
+      "top3": {
+        "hits": 8,
+        "total": 8,
+        "wilson95": [
+          0.676,
+          1
+        ]
+      }
+    }
+  },
+  "presentation": {
+    "75": {
+      "review_all_same_pool": 0,
+      "initially_visible": 0,
+      "controls": 23,
+      "original_control_agreement": 23,
+      "with_visible_suggestions": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "fault_candidate_recall_same_pool": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "compiled_candidates": 0,
+      "holdout_checks": 0,
+      "holdout_passes": 0,
+      "recommended_holdout_failures": 0
+    },
+    "8": {
+      "review_all_same_pool": 0,
+      "initially_visible": 0,
+      "controls": 23,
+      "original_control_agreement": 23,
+      "with_visible_suggestions": {
+        "hits": 0,
+        "total": 23,
+        "wilson95": [
+          0,
+          0.143
+        ]
+      },
+      "fault_candidate_recall_same_pool": {
+        "hits": 19,
+        "total": 23,
+        "wilson95": [
+          0.629,
+          0.93
+        ]
+      },
+      "compiled_candidates": 22,
+      "holdout_checks": 22,
+      "holdout_passes": 20,
+      "recommended_holdout_failures": 0
+    }
+  },
+  "observation_only": [
+    {
+      "original": "ORACLE_UNAVAILABLE",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 0,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "INSUFFICIENT_SPECIFICATION",
+        "review": "ABSTAIN",
+        "confirmed_fault": false,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "coincident-shifts-control"
+    },
+    {
+      "original": "ORACLE_UNAVAILABLE",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 0,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "INSUFFICIENT_SPECIFICATION",
+        "review": "ABSTAIN",
+        "confirmed_fault": false,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "partial-offset-control"
+    },
+    {
+      "original": "ORACLE_UNAVAILABLE",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 0,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "INSUFFICIENT_SPECIFICATION",
+        "review": "ABSTAIN",
+        "confirmed_fault": false,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "same-position-distance-control"
+    },
+    {
+      "original": "ORACLE_UNAVAILABLE",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 0,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "INSUFFICIENT_SPECIFICATION",
+        "review": "ABSTAIN",
+        "confirmed_fault": false,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "unsigned-mode-control"
+    },
+    {
+      "original": "ORACLE_UNAVAILABLE",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 0,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "INSUFFICIENT_SPECIFICATION",
+        "review": "ABSTAIN",
+        "confirmed_fault": false,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "idle-item-charge-control"
+    },
+    {
+      "original": "ORACLE_UNAVAILABLE",
+      "issue": null,
+      "candidate_ids": [],
+      "tests_matching_candidates": 0,
+      "candidate_results": [],
+      "exact_rank": null,
+      "behavioral_rank": null,
+      "exact_test_agreement": false,
+      "first_matching_exact": false,
+      "behavioral_match": false,
+      "observed_steps": 0,
+      "probe_steps": 0,
+      "new_pairs": 0,
+      "probes": 0,
+      "redundant_probes": 0,
+      "runtime_fault_observations": 0,
+      "pair_statuses": [],
+      "policy": {
+        "original": "INSUFFICIENT_SPECIFICATION",
+        "review": "ABSTAIN",
+        "confirmed_fault": false,
+        "recommended_candidate": null,
+        "matching_candidates": []
+      },
+      "id": "unchecked-branch-label-control"
+    }
+  ],
+  "latency": {
+    "mean_ms": 403.596,
+    "median_ms": 274.664,
+    "p95_ms": 839.956
+  },
+  "archived_presentation_same_pool": {
+    "cases": [
+      {
+        "id": "weighted-jacobsthal-control",
+        "candidate_ids": [
+          "IR-1b9e3296844f",
+          "IR-60627d81f2d5"
+        ],
+        "previous_visible": 2,
+        "initially_visible": 0
+      },
+      {
+        "id": "geometric-remainder-control",
+        "candidate_ids": [
+          "IR-368c93e8bd7b",
+          "IR-55c6f5cc7c75",
+          "IR-eabd07ca163d"
+        ],
+        "previous_visible": 3,
+        "initially_visible": 0
+      },
+      {
+        "id": "padovan-through-local-control",
+        "candidate_ids": [
+          "IR-d3071cd8903d",
+          "IR-e780943259d9"
+        ],
+        "previous_visible": 2,
+        "initially_visible": 0
+      },
+      {
+        "id": "parity-square-tally-control",
+        "candidate_ids": [
+          "IR-7af5919b3d02",
+          "IR-b948f6d3e54c",
+          "IR-ec413723f372"
+        ],
+        "previous_visible": 3,
+        "initially_visible": 0
+      },
+      {
+        "id": "triple-attenuation-control",
+        "candidate_ids": [
+          "IR-15e3d1bf91ad",
+          "IR-62fb427a3e70",
+          "IR-c2ee78d97623"
+        ],
+        "previous_visible": 3,
+        "initially_visible": 0
+      },
+      {
+        "id": "difference-lag-three-control",
+        "candidate_ids": [
+          "IR-15ea255c8c49",
+          "IR-2fd447f9a3e4"
+        ],
+        "previous_visible": 2,
+        "initially_visible": 0
+      },
+      {
+        "id": "narrow-quadrature-control",
+        "candidate_ids": [
+          "IR-7eb58c9c6941",
+          "IR-e0e63af34a21"
+        ],
+        "previous_visible": 2,
+        "initially_visible": 0
+      }
+    ],
+    "previous_visible": 17,
+    "initially_visible": 0,
+    "pool_preserved": true
+  }
+}

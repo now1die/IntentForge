@@ -235,3 +235,15 @@ require explicit approval.
 [Phase 7.5 review](docs/PHASE_7_5_FINAL_REVIEW.md) ·
 [Evaluation](docs/phase7_5_generalization_evaluation.md) ·
 [Workbench screenshots](docs/phase7_5_workbench.md)
+
+## Phase 8 specification-guided arithmetic
+
+Opt in to engine 8 in the Mini-C workbench or API. Use typed examples and
+optional input domains to guide bounded coefficient, predecessor and
+scalar dependency repairs. The local worker supplies observed outcomes.
+When the original matches all supplied tests, optional suggestions start
+collapsed and remain available for manual review.
+
+[Phase 8 review](docs/PHASE_8_FINAL_REVIEW.md) ·
+[Holdout validation](docs/phase8_holdout_validation.md) ·
+[Workbench screenshots](docs/phase8_workbench.md)
