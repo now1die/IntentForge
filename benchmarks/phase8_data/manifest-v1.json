@@ -1,0 +1,23 @@
+{
+  "revision": "30507bbe41397065728167fb09aa820f9fce8dc7",
+  "case_sha256": "553b50ab93d9770d6bee3f18bbd44f4666c15f084b603565d5882281d892ed47",
+  "upstream_sha256": {
+    "LICENSE.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "maths/volume.py": "20ce8be8f1ceface4b449d208f1ceaf9c05d7cc957eabf09c5c37a45c594f639",
+    "conversions/temperature_conversions.py": "e1f631535c21b40de2b0583610db80e2c867b1b626c6ea777fb130be127a8fdc",
+    "financial/price_plus_tax.py": "ce395c575f6bf14dd071e9f5e40c0c4de165f215b4b53e70a8b78334866ec06c",
+    "maths/shoelace_area.py": "d92cac5961b925aa047744b611b03f9ff66c983a25a17a8cdecf4acd0fd2c4a5",
+    "maths/special_numbers/pronic_number.py": "da4f5559f2f27c1f627c8fc6a8ed06b5dc98a5d7d577407a02dac224a7cecaa4",
+    "maths/polynomial_evaluation.py": "7d4263f4a784602890cde2861e1c4c28109178fb7e08451f1698027e41f94d5d",
+    "maths/series/arithmetic.py": "346f717308d769f64bd1325342942c1b7d15eea7be964e85149f58aaa92d4268",
+    "conversions/time_conversions.py": "1444607bd915b6d8e81515c544471385ac30e10c8028a1f097020c2a87d43831",
+    "maths/special_numbers/triangular_numbers.py": "75c1c7ea0fe284661c3928dceb3cdc38e0e5cc8e12790f5e4c1250613c210646"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "calibration": 2,
+    "final": 61
+  },
+  "selection_policy": "Checked scalar grammar, four proposals and deterministic ranking frozen before scoring; collapse optional suggestions for matching originals."
+}
