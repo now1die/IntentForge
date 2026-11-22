@@ -1,0 +1,1791 @@
+[
+  {
+    "family": "development-switchpoint",
+    "partition": "development",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Check the exclusive signed switching point.",
+    "domain": "Small signed values.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          -1,
+          5
+        ],
+        "expected": -14
+      },
+      {
+        "arguments": [
+          4,
+          1
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          3
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          1,
+          -2
+        ],
+        "expected": 10
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "development-switchpoint-fault",
+    "source": "int f(int rise,int fall){int n=3*rise-fall;if(n>=4){return 10;}return n-6;}",
+    "references": [
+      "int f(int rise,int fall){int n=3*rise-fall;if(n>4){return 10;}return n-6;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "development-switchpoint",
+    "partition": "development",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Check the exclusive signed switching point.",
+    "domain": "Small signed values.",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          1
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          2,
+          2
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          -1,
+          5
+        ],
+        "expected": -14
+      },
+      {
+        "arguments": [
+          4,
+          1
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          3
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          1,
+          -2
+        ],
+        "expected": 10
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "development-switchpoint-control",
+    "source": "int f(int rise,int fall){int n=3*rise-fall;if(n>4){return 10;}return n-6;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "selection-odd-points",
+    "partition": "selection",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Sum odd points below the boundary.",
+    "domain": "Small nonnegative bounds.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 49
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 4
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "selection-odd-points-fault",
+    "source": "int f(int steps){int point=4;for(int j=3;j<=steps;j+=2){point+=2*j+5;}return point;}",
+    "references": [
+      "int f(int steps){int point=4;for(int j=3;j<steps;j+=2){point+=2*j+5;}return point;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "selection-odd-points",
+    "partition": "selection",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Sum odd points below the boundary.",
+    "domain": "Small nonnegative bounds.",
+    "vectors": [
+      {
+        "arguments": [
+          3
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          5
+        ],
+        "expected": 15
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 30
+      },
+      {
+        "arguments": [
+          9
+        ],
+        "expected": 49
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 72
+      },
+      {
+        "arguments": [
+          2
+        ],
+        "expected": 4
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "selection-odd-points-control",
+    "source": "int f(int steps){int point=4;for(int j=3;j<steps;j+=2){point+=2*j+5;}return point;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "empty-retained-run",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Sum the retained nondecreasing run and use a neutral value for the empty input.",
+    "domain": "Four signed physical cells, zero through four logical cells.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          10,
+          5,
+          9,
+          2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          3,
+          -4,
+          -4,
+          9,
+          20
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1,
+          -10,
+          4,
+          7,
+          8
+        ],
+        "expected": -10
+      },
+      {
+        "arguments": [
+          2,
+          4,
+          3,
+          1,
+          2
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          10,
+          9,
+          3,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          3,
+          0,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          4,
+          9,
+          8,
+          7,
+          6
+        ],
+        "expected": 9
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/5386e4900b83a7f26a46507f20a46b6c9bf25f77",
+      "repository": "TheAlgorithms/Python",
+      "path": "sorts/stalin_sort.py",
+      "archive": "retained",
+      "before": "4d9d79f797d1f8eb97d31d4a6813e829cfa693d2",
+      "after": "5386e4900b83a7f26a46507f20a46b6c9bf25f77",
+      "license": "MIT",
+      "adaptation": "Project the retained list to its sum on a fixed physical array with a variable logical prefix. Empty IndexError maps to ARRAY_BOUNDS.",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "empty-retained-run-fault",
+    "source": "int f(int n,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n        if(n==0){return lane[n-1];}int last=lane[0];int total=last;\n        for(int j=1;j<n;j++){if(lane[j]>=last){last=lane[j];total+=last;}}return total;}",
+    "references": [
+      "int f(int n,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n        if(n==0){return 0;}int last=lane[0];int total=last;\n        for(int j=1;j<n;j++){if(lane[j]>=last){last=lane[j];total+=last;}}return total;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "empty-retained-run",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Sum the retained nondecreasing run and use a neutral value for the empty input.",
+    "domain": "Four signed physical cells, zero through four logical cells.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          10,
+          5,
+          9,
+          2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          3,
+          -4,
+          -4,
+          9,
+          20
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1,
+          -10,
+          4,
+          7,
+          8
+        ],
+        "expected": -10
+      },
+      {
+        "arguments": [
+          2,
+          4,
+          3,
+          1,
+          2
+        ],
+        "expected": 4
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          10,
+          9,
+          3,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          2,
+          3,
+          0,
+          4
+        ],
+        "expected": 9
+      },
+      {
+        "arguments": [
+          4,
+          9,
+          8,
+          7,
+          6
+        ],
+        "expected": 9
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/5386e4900b83a7f26a46507f20a46b6c9bf25f77",
+      "repository": "TheAlgorithms/Python",
+      "path": "sorts/stalin_sort.py",
+      "archive": "retained",
+      "before": "4d9d79f797d1f8eb97d31d4a6813e829cfa693d2",
+      "after": "5386e4900b83a7f26a46507f20a46b6c9bf25f77",
+      "license": "MIT",
+      "adaptation": "Project the retained list to its sum on a fixed physical array with a variable logical prefix. Empty IndexError maps to ARRAY_BOUNDS.",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "empty-retained-run-control",
+    "source": "int f(int n,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n        if(n==0){return 0;}int last=lane[0];int total=last;\n        for(int j=1;j<n;j++){if(lane[j]>=last){last=lane[j];total+=last;}}return total;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "negative-product-placeholder",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the largest signed product of a distinct-position triple.",
+    "domain": "Five small signed cells, with -1 used as ordinary data.",
+    "vectors": [
+      {
+        "arguments": [
+          -1,
+          -1,
+          -1,
+          -2,
+          -2
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -2,
+          -1,
+          -2,
+          -3,
+          -3
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          3,
+          0,
+          -1
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          -3,
+          -2,
+          -1,
+          -2,
+          -1
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          -1,
+          -3,
+          -2,
+          -1,
+          -1
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          -3,
+          -1,
+          -2,
+          -5
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          -2,
+          -1,
+          -3,
+          -1,
+          -5
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          1,
+          -1,
+          -1,
+          -2,
+          -3
+        ],
+        "expected": 6
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/6aa3314b93d1556e5dac4be2017a60a2f35bad64",
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Dynamic-Programming/MaxProductOfThree.js",
+      "archive": "product",
+      "before": "5ce828b3fe4e138c6da652bf03870e2c20e2f692",
+      "after": "6aa3314b93d1556e5dac4be2017a60a2f35bad64",
+      "license": "GPL-3.0",
+      "adaptation": "Keep the five-cell traversal and compare slots. Use -99 to encode the fixed null state, outside the signed input domain.",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "negative-product-placeholder-fault",
+    "source": "int f(int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n        int x=data[0];int y=-1;int z=-1;int p=data[0];int q=-1;\n        for(int j=1;j<5;j++){\n           if(data[j]>x){z=y;y=x;x=data[j];}\n           else if(y==-1||data[j]>y){z=y;y=data[j];}\n           else if(z==-1||data[j]>z){z=data[j];}\n           if(data[j]<p){q=p;p=data[j];}\n           else if(q==-1||data[j]<q){q=data[j];}}\n        int left=x*y*z;int right=x*p*q;if(left>right){return left;}return right;}",
+    "references": [
+      "int f(int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n        int x=data[0];int y=-99;int z=-99;int p=data[0];int q=-99;\n        for(int j=1;j<5;j++){\n           if(data[j]>x){z=y;y=x;x=data[j];}\n           else if(y==-99||data[j]>y){z=y;y=data[j];}\n           else if(z==-99||data[j]>z){z=data[j];}\n           if(data[j]<p){q=p;p=data[j];}\n           else if(q==-99||data[j]<q){q=data[j];}}\n        int left=x*y*z;int right=x*p*q;if(left>right){return left;}return right;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "negative-product-placeholder",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the largest signed product of a distinct-position triple.",
+    "domain": "Five small signed cells, with -1 used as ordinary data.",
+    "vectors": [
+      {
+        "arguments": [
+          -1,
+          -1,
+          -1,
+          -2,
+          -2
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -2,
+          -1,
+          -2,
+          -3,
+          -3
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          3,
+          0,
+          -1
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          -3,
+          -2,
+          -1,
+          -2,
+          -1
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          -1,
+          -3,
+          -2,
+          -1,
+          -1
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          -3,
+          -1,
+          -2,
+          -5
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          -2,
+          -1,
+          -3,
+          -1,
+          -5
+        ],
+        "expected": -2
+      },
+      {
+        "arguments": [
+          1,
+          -1,
+          -1,
+          -2,
+          -3
+        ],
+        "expected": 6
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/6aa3314b93d1556e5dac4be2017a60a2f35bad64",
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Dynamic-Programming/MaxProductOfThree.js",
+      "archive": "product",
+      "before": "5ce828b3fe4e138c6da652bf03870e2c20e2f692",
+      "after": "6aa3314b93d1556e5dac4be2017a60a2f35bad64",
+      "license": "GPL-3.0",
+      "adaptation": "Keep the five-cell traversal and compare slots. Use -99 to encode the fixed null state, outside the signed input domain.",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "negative-product-placeholder-control",
+    "source": "int f(int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n        int x=data[0];int y=-99;int z=-99;int p=data[0];int q=-99;\n        for(int j=1;j<5;j++){\n           if(data[j]>x){z=y;y=x;x=data[j];}\n           else if(y==-99||data[j]>y){z=y;y=data[j];}\n           else if(z==-99||data[j]>z){z=data[j];}\n           if(data[j]<p){q=p;p=data[j];}\n           else if(q==-99||data[j]<q){q=data[j];}}\n        int left=x*y*z;int right=x*p*q;if(left>right){return left;}return right;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "saddleback-negative-column",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the matching column or a sentinel from the explicitly supplied start.",
+    "domain": "A single ordered row and in-range or invalid explicit starting coordinates.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          -1,
+          5,
+          -1,
+          2,
+          5,
+          7
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          1,
+          0,
+          6,
+          0,
+          2,
+          4,
+          6
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0,
+          1,
+          5,
+          -1,
+          2,
+          5,
+          7
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          -3,
+          -1,
+          2,
+          5,
+          7
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -1,
+          1,
+          3,
+          1,
+          2,
+          3,
+          5
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -3,
+          1,
+          -1,
+          1,
+          4,
+          7
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          9,
+          1,
+          3,
+          7,
+          9
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          9,
+          1,
+          3,
+          7,
+          9
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/401e25388def688d457ccab49dd84dd97d9d1b49",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/SaddlebackSearch.java",
+      "archive": "saddle",
+      "before": "402d3b056554cbb973c488941df0307b257bdc1b",
+      "after": "401e25388def688d457ccab49dd84dd97d9d1b49",
+      "license": "MIT",
+      "adaptation": "Keep the explicit starting row and column on a single ordered row. Return the result column and normalize native index errors.",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "saddleback-negative-column-fault",
+    "source": "int march(int row,int col,int target,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n        if(row<0 || col>=4){return -1;}if(row>=1){return lane[4];}\n        if(lane[col]==target){return col;}if(lane[col]>target){return march(row-1,col,target,a,b,c,d);}\n        return march(row,col+1,target,a,b,c,d);}\n        int f(int row,int col,int target,int a,int b,int c,int d){return march(row,col,target,a,b,c,d);}",
+    "references": [
+      "int march(int row,int col,int target,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n        if(row<0 || col>=4 || row>=1 || col<0){return -1;}if(row>=1){return lane[4];}\n        if(lane[col]==target){return col;}if(lane[col]>target){return march(row-1,col,target,a,b,c,d);}\n        return march(row,col+1,target,a,b,c,d);}\n        int f(int row,int col,int target,int a,int b,int c,int d){return march(row,col,target,a,b,c,d);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "saddleback-negative-column",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the matching column or a sentinel from the explicitly supplied start.",
+    "domain": "A single ordered row and in-range or invalid explicit starting coordinates.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          -1,
+          5,
+          -1,
+          2,
+          5,
+          7
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          1,
+          0,
+          6,
+          0,
+          2,
+          4,
+          6
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0,
+          1,
+          5,
+          -1,
+          2,
+          5,
+          7
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          -3,
+          -1,
+          2,
+          5,
+          7
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          -1,
+          1,
+          3,
+          1,
+          2,
+          3,
+          5
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -3,
+          1,
+          -1,
+          1,
+          4,
+          7
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0,
+          4,
+          9,
+          1,
+          3,
+          7,
+          9
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          9,
+          1,
+          3,
+          7,
+          9
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Java/commit/401e25388def688d457ccab49dd84dd97d9d1b49",
+      "repository": "TheAlgorithms/Java",
+      "path": "src/main/java/com/thealgorithms/searches/SaddlebackSearch.java",
+      "archive": "saddle",
+      "before": "402d3b056554cbb973c488941df0307b257bdc1b",
+      "after": "401e25388def688d457ccab49dd84dd97d9d1b49",
+      "license": "MIT",
+      "adaptation": "Keep the explicit starting row and column on a single ordered row. Return the result column and normalize native index errors.",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "saddleback-negative-column-control",
+    "source": "int march(int row,int col,int target,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n        if(row<0 || col>=4 || row>=1 || col<0){return -1;}if(row>=1){return lane[4];}\n        if(lane[col]==target){return col;}if(lane[col]>target){return march(row-1,col,target,a,b,c,d);}\n        return march(row,col+1,target,a,b,c,d);}\n        int f(int row,int col,int target,int a,int b,int c,int d){return march(row,col,target,a,b,c,d);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "first-minimum-on-logical-seam",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the first minimum in the cyclically ordered prefix, with a distinct empty result.",
+    "domain": "Physical extent five and logical size zero through five. Inactive cells can be smaller.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          19,
+          4,
+          18,
+          2,
+          6
+        ],
+        "expected": -31
+      },
+      {
+        "arguments": [
+          1,
+          8,
+          -16,
+          3,
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          5,
+          5,
+          -15,
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          4,
+          6,
+          1,
+          -25
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          -2,
+          0,
+          4,
+          9,
+          -2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          6,
+          -5,
+          -5,
+          -18,
+          10
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          7,
+          1,
+          -20,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          6,
+          7,
+          1,
+          3
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "first-minimum-on-logical-seam-fault",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n    if(n==0){return -31;}int p=0;int q=n-1;\n    while(p<q){int center=p+(q-p)/2;\n       if(data[center]>data[q]){p=center+1;}\n       else if(data[center]==data[q]){q--;}else{q=center;}}\n    return p;}",
+    "references": [
+      "int f(int n,int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n    if(n==0){return -31;}int p=0;int q=n-1;\n    while(p<q){int center=p+(q-p)/2;\n       if(data[center]>data[q]){p=center+1;}\n       else if(data[center]==data[q]){q--;}else{q=center;}}\n    if(p>0 && data[p]==data[0]){return 0;}return p;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "first-minimum-on-logical-seam",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the first minimum in the cyclically ordered prefix, with a distinct empty result.",
+    "domain": "Physical extent five and logical size zero through five. Inactive cells can be smaller.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          19,
+          4,
+          18,
+          2,
+          6
+        ],
+        "expected": -31
+      },
+      {
+        "arguments": [
+          1,
+          8,
+          -16,
+          3,
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          5,
+          5,
+          -15,
+          1,
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          1,
+          4,
+          6,
+          1,
+          -25
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          -2,
+          0,
+          4,
+          9,
+          -2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          6,
+          -5,
+          -5,
+          -18,
+          10
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          7,
+          1,
+          -20,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          6,
+          7,
+          1,
+          3
+        ],
+        "expected": 3
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "first-minimum-on-logical-seam-control",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n    if(n==0){return -31;}int p=0;int q=n-1;\n    while(p<q){int center=p+(q-p)/2;\n       if(data[center]>data[q]){p=center+1;}\n       else if(data[center]==data[q]){q--;}else{q=center;}}\n    if(p>0 && data[p]==data[0]){return 0;}return p;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "reaching-maximum-seed",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "XOR an observed maximum seed, every observed cell, and the four integer coordinates above the observed minimum.",
+    "domain": "Four nonnegative cells. Duplicates and gaps are valid.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          17,
+          19
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          5,
+          6,
+          9,
+          5
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          4,
+          12,
+          17,
+          18
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          9,
+          12,
+          15,
+          17
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          5,
+          5,
+          11,
+          20
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          1,
+          7,
+          20,
+          12
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          10,
+          2,
+          6,
+          8
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "reaching-maximum-seed-fault",
+    "source": "int fold(int key,int tag){int out=0;int place=1;while(key>0||tag>0){\n    if(key%2!=tag%2){out+=place;}key=key/2;tag=tag/2;place*=2;}return out;}int f(int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n    int base=a;int ceiling=a;\n    for(int i=1;i<4;i++){if(lane[i]<base){base=lane[i];}if(lane[i]>ceiling){ceiling=lane[i];}}\n    int checksum=2;\n    for(int k=0;k<base+4;k++){checksum=fold(checksum,fold(lane[k-base],k+2));}\n    return checksum;}",
+    "references": [
+      "int fold(int key,int tag){int out=0;int place=1;while(key>0||tag>0){\n    if(key%2!=tag%2){out+=place;}key=key/2;tag=tag/2;place*=2;}return out;}int f(int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n    int base=a;int ceiling=a;\n    for(int i=1;i<4;i++){if(lane[i]<base){base=lane[i];}if(lane[i]>ceiling){ceiling=lane[i];}}\n    int checksum=ceiling;\n    for(int k=base;k<base+4;k++){checksum=fold(checksum,fold(lane[k-base],k+2));}\n    return checksum;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "reaching-maximum-seed",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "XOR an observed maximum seed, every observed cell, and the four integer coordinates above the observed minimum.",
+    "domain": "Four nonnegative cells. Duplicates and gaps are valid.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          2,
+          17,
+          19
+        ],
+        "expected": 19
+      },
+      {
+        "arguments": [
+          5,
+          6,
+          9,
+          5
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          4,
+          12,
+          17,
+          18
+        ],
+        "expected": 25
+      },
+      {
+        "arguments": [
+          9,
+          12,
+          15,
+          17
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          5,
+          5,
+          11,
+          20
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          1,
+          7,
+          20,
+          12
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          10,
+          2,
+          6,
+          8
+        ],
+        "expected": 12
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "reaching-maximum-seed-control",
+    "source": "int fold(int key,int tag){int out=0;int place=1;while(key>0||tag>0){\n    if(key%2!=tag%2){out+=place;}key=key/2;tag=tag/2;place*=2;}return out;}int f(int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n    int base=a;int ceiling=a;\n    for(int i=1;i<4;i++){if(lane[i]<base){base=lane[i];}if(lane[i]>ceiling){ceiling=lane[i];}}\n    int checksum=ceiling;\n    for(int k=base;k<base+4;k++){checksum=fold(checksum,fold(lane[k-base],k+2));}\n    return checksum;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "explicit-upper-argument",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Use the passed inclusive bound and a separate no-match value.",
+    "domain": "Four distinct increasing signed values.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          0
+        ],
+        "expected": -29
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          13
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          8
+        ],
+        "expected": -29
+      },
+      {
+        "arguments": [
+          -9,
+          -7,
+          -3,
+          -2,
+          -21
+        ],
+        "expected": -29
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -9,
+          -7,
+          -3,
+          -2,
+          -7
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8,
+          14,
+          19,
+          26,
+          7
+        ],
+        "expected": -29
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "explicit-upper-argument-fault",
+    "source": "int position(int bottom,int top,int a,int b,int c,int d,int match){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n    if(0>top){top=3;}if(top<bottom){return -29;}int place=(top+bottom)/2;\n    if(match<lane[place]){return position(bottom,place-1,a,b,c,d,match);}\n    if(match>lane[place]){return position(place+1,top,a,b,c,d,match);}\n    return place;}\n    int f(int a,int b,int c,int d,int match){return position(0,3,a,b,c,d,match);}",
+    "references": [
+      "int position(int bottom,int top,int a,int b,int c,int d,int match){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n    if(top<bottom){return -29;}int place=(top+bottom)/2;\n    if(match<lane[place]){return position(bottom,place-1,a,b,c,d,match);}\n    if(match>lane[place]){return position(place+1,top,a,b,c,d,match);}\n    return place;}\n    int f(int a,int b,int c,int d,int match){return position(0,3,a,b,c,d,match);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "project-injected"
+  },
+  {
+    "family": "explicit-upper-argument",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Use the passed inclusive bound and a separate no-match value.",
+    "domain": "Four distinct increasing signed values.",
+    "vectors": [
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          0
+        ],
+        "expected": -29
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          13
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          7,
+          9,
+          13,
+          8
+        ],
+        "expected": -29
+      },
+      {
+        "arguments": [
+          -9,
+          -7,
+          -3,
+          -2,
+          -21
+        ],
+        "expected": -29
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -9,
+          -7,
+          -3,
+          -2,
+          -7
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          8,
+          14,
+          19,
+          26,
+          7
+        ],
+        "expected": -29
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "explicit-upper-argument-control",
+    "source": "int position(int bottom,int top,int a,int b,int c,int d,int match){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;\n    if(top<bottom){return -29;}int place=(top+bottom)/2;\n    if(match<lane[place]){return position(bottom,place-1,a,b,c,d,match);}\n    if(match>lane[place]){return position(place+1,top,a,b,c,d,match);}\n    return place;}\n    int f(int a,int b,int c,int d,int match){return position(0,3,a,b,c,d,match);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "negative-coordinate-control",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Distinguish a negative coordinate from an empty-result sentinel.",
+    "domain": "Signed coordinates and nonnegative lengths.",
+    "vectors": [
+      {
+        "arguments": [
+          -4,
+          2
+        ],
+        "expected": -8
+      },
+      {
+        "arguments": [
+          0,
+          0
+        ],
+        "expected": -37
+      },
+      {
+        "arguments": [
+          7,
+          6
+        ],
+        "expected": -5
+      },
+      {
+        "arguments": [
+          15,
+          2
+        ],
+        "expected": 11
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          0
+        ],
+        "expected": -37
+      },
+      {
+        "arguments": [
+          -3,
+          7
+        ],
+        "expected": -17
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "negative-coordinate-control-control",
+    "source": "int f(int p,int n){if(n==0){return -37;}return p-n*2;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "endpoint-zero-control",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Return the lower insertion position including zero and extent.",
+    "domain": "Four nondecreasing signed cells.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          1,
+          2,
+          2,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          1,
+          2,
+          2,
+          4
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          7,
+          1,
+          2,
+          2,
+          4
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "expected": 0
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          4,
+          3,
+          3,
+          5,
+          7
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -1,
+          -2,
+          -2,
+          4,
+          8
+        ],
+        "expected": 2
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "endpoint-zero-control-control",
+    "source": "int f(int key,int a,int b,int c,int d){int lane[4];lane[0]=a;lane[1]=b;lane[2]=c;lane[3]=d;int cursor=0;for(int j=0;j<4;j++){if(lane[j]<key){cursor++;}}return cursor;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "logical-three-cell-control",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Find a minimum in logical prefixes up to three cells.",
+    "domain": "Cyclic signed logical prefixes and independently varied inactive cells.",
+    "vectors": [
+      {
+        "arguments": [
+          3,
+          1,
+          4,
+          1,
+          -6,
+          -9
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          2,
+          8,
+          -5,
+          -6,
+          -9
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          2,
+          -2,
+          -2,
+          -4,
+          -7,
+          -8
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          0,
+          17,
+          1,
+          -9,
+          2,
+          3
+        ],
+        "expected": -31
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          1,
+          -4,
+          -8,
+          -12,
+          -15,
+          -19
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          6,
+          8,
+          9,
+          -4,
+          -8
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 11.5",
+      "license": "repository license",
+      "review": "Independent executable expected outputs. Human review unavailable."
+    },
+    "id": "logical-three-cell-control-control",
+    "source": "int f(int n,int a,int b,int c,int d,int e){int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n    if(n==0){return -31;}int p=0;int q=n-1;\n    while(p<q){int center=p+(q-p)/2;\n       if(data[center]>data[q]){p=center+1;}\n       else if(data[center]==data[q]){q--;}else{q=center;}}\n    if(p>0 && data[p]==data[0]){return 0;}return p;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  }
+]
