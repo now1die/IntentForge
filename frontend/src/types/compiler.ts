@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "phase11" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "phase11" | "phase115" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -457,10 +457,26 @@ export type Phase11Analysis = {
   endpoint_contracts?: { function: string; contracts: string[]; duplicate_samples: number }[];
 };
 
+export type Phase115Analysis = {
+  status: string;
+  facts: {
+    kind: string;
+    contract: string;
+    span?: AnalysisSpan;
+    bindings?: string[];
+    extent?: number;
+    alternatives?: number;
+    assumption?: string;
+    samples: { input: number; start?: [number, number]; negative_empty_endpoint?: boolean;
+      first?: number | null; minima?: number[]; issue?: string | null }[];
+  }[];
+};
+
 export interface Phase8Analysis {
   phase10?: Phase10Analysis | null;
   phase105?: Phase105Analysis | null;
   phase11?: Phase11Analysis | null;
+  phase115?: Phase115Analysis | null;
   phase95?: Phase95Analysis | null;
   phase9?: Phase9Analysis | null;
   phase85?: Phase85Analysis | null;
@@ -551,6 +567,7 @@ export interface IntentionResponse {
     phase10?: Phase10Analysis;
     phase105?: Phase105Analysis;
     phase11?: Phase11Analysis;
+    phase115?: Phase115Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;

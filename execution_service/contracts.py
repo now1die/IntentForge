@@ -33,7 +33,7 @@ class VerifyRequest(Message):
     source: Source
     entry_point: Entry
     vectors: tuple[TestVector, ...] = Field(max_length=12)
-    engine_version: Literal[4, 5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105, 11] = 4
+    engine_version: Literal[4, 5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105, 11, 115] = 4
     limits: LocalLimits = Field(default_factory=LocalLimits)
     trace: bool = Field(default=False, strict=True)
     compare_candidates: bool = Field(default=False, strict=True)
@@ -45,11 +45,11 @@ class VerifyRequest(Message):
     def limits_and_source(self):
         if len(self.source.encode()) > 48_000:
             raise ValueError("Local execution admission limits exceeded")
-        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105, 11} or not self.compare_candidates):
+        if not self.vectors and (self.engine_version not in {5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105, 11, 115} or not self.compare_candidates):
             raise ValueError("Supply a test vector or explicitly request Phase 5 observational comparison")
-        if self.engine_version in {7, 75, 8, 85, 9, 95, 10, 105, 11} and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
+        if self.engine_version in {7, 75, 8, 85, 9, 95, 10, 105, 11, 115} and conflicting_expectations((row.arguments, row.expected) for row in self.vectors):
             raise ValueError("The same input has conflicting expected outputs.")
-        if "input_domain" in self.model_fields_set and self.engine_version not in {8, 85, 9, 95, 10, 105, 11}:
+        if "input_domain" in self.model_fields_set and self.engine_version not in {8, 85, 9, 95, 10, 105, 11, 115}:
             raise ValueError("Input domains require Phase 8.")
         if any(not includes_input(self.input_domain, row.arguments) for row in self.vectors):
             raise ValueError("A test input lies outside the declared domain.")
@@ -69,9 +69,12 @@ class Batch(Message):
     limits: LocalLimits
     trace: bool = Field(strict=True)
     programs: tuple[Program, ...] = Field(min_length=1, max_length=5)
+    probe_mode: Literal["sample-neighborhood"] | None = None
 
     @model_validator(mode="after")
     def enforce(self):
+        if self.probe_mode is not None and self.engine_version != 8:
+            raise ValueError("Sample-neighborhood probes require private profile 8.")
         if not self.vectors and self.engine_version not in {5, 7, 8}:
             raise ValueError("Legacy verification needs an expected result")
         if self.programs[0].candidate_id is not None or any(row.candidate_id is None for row in self.programs[1:]):
@@ -184,5 +187,5 @@ class RuntimeObservation(Message):
 
 
 class Phase9Response(Phase8Response):
-    semantic_profile: Literal[9, 95, 10, 105, 11]
+    semantic_profile: Literal[9, 95, 10, 105, 11, 115]
     runtime_observation: RuntimeObservation | None = None

@@ -48,6 +48,7 @@ def sample(model,spec):
     for example in spec.examples:
         watcher = RelationalProgress(model)
         result = project(model,spec.function,example.args,observer=watcher,inspect=watcher.inspection)
+        watcher.inspection.frames = watcher.frames
         rows.append((result,watcher.inspection))
     return rows
 

@@ -1,0 +1,51 @@
+{
+  "case_sha256": "893065e7d1a9df69c4c726a1ed4d81b45c280134d5bef43b109862fbaf90d49e",
+  "upstream_sha256": {
+    "LICENSE-Java.txt": "d8499582b215ce90b33be4736260b1bb2e2dc312f71c1b29d19b8fc6d2dcdc3f",
+    "LICENSE-JavaScript.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "LICENSE-Python.txt": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "NOTICE.md": "abb4010e80ffa0340f68fbba553b2a92f3c6654774ba26567e0a465a4f120c18",
+    "product-after.js": "4f62006f574a28efa50e5206e70f3325d05f10212cda0a2bd82a4189163b756a",
+    "product-before.js": "c828145f5ba42c4c3cc23fd6a543b5a3d77124a486eedf30a7c0ba0bfc7decfb",
+    "retained-after.py": "073cbd19cb945a4d8b2d15ccdf6fd6ade7e974fe2835ff81b94554ce54503026",
+    "retained-before.py": "03fc1cb017a3972a8265a96dcc28998b5e35d17c2410ed4ebd14c44d56150a31",
+    "saddle-after.java": "4f1c3e5797da86b9088f607fd5b25a82d60042f3d6384341ffbb6b9a044b7389",
+    "saddle-before.java": "bc177c346fa6d1e82778c98b5662a763f0b42cc2dff17c0849aefa270b70c946"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "final": 15
+  },
+  "external_sources": {
+    "empty-retained-run": [
+      "TheAlgorithms/Python",
+      "sorts/stalin_sort.py",
+      "retained",
+      "4d9d79f797d1f8eb97d31d4a6813e829cfa693d2",
+      "5386e4900b83a7f26a46507f20a46b6c9bf25f77",
+      "MIT",
+      "Project the retained list to its sum on a fixed physical array with a variable logical prefix. Empty IndexError maps to ARRAY_BOUNDS."
+    ],
+    "negative-product-placeholder": [
+      "TheAlgorithms/JavaScript",
+      "Dynamic-Programming/MaxProductOfThree.js",
+      "product",
+      "5ce828b3fe4e138c6da652bf03870e2c20e2f692",
+      "6aa3314b93d1556e5dac4be2017a60a2f35bad64",
+      "GPL-3.0",
+      "Keep the five-cell traversal and compare slots. Use -99 to encode the fixed null state, outside the signed input domain."
+    ],
+    "saddleback-negative-column": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/SaddlebackSearch.java",
+      "saddle",
+      "402d3b056554cbb973c488941df0307b257bdc1b",
+      "401e25388def688d457ccab49dd84dd97d9d1b49",
+      "MIT",
+      "Keep the explicit starting row and column on a single ordered row. Return the result column and normalize native index errors."
+    ]
+  },
+  "holdout": "Fresh restricted-worker verification with comparison disabled.",
+  "grouping": "Each project and algorithm family is confined to one partition."
+}

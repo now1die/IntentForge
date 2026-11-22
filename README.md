@@ -25,9 +25,16 @@ npm --prefix frontend ci
 npm --prefix frontend run dev
 ```
 
-Open <http://127.0.0.1:5173>. The development frontend calls
-`http://127.0.0.1:8000` by default. Set `VITE_API_BASE_URL` at build time to
-use another API.
+Open <http://127.0.0.1:5173>. The browser uses the frontend's same-origin
+`/api` route. In development and preview, Vite forwards it to FastAPI on port
+8000. Use `INTENTFORGE_BACKEND_PORT` in the Vite terminal to change that port.
+Set `VITE_API_BASE_URL` only when intentionally using a different API origin.
+
+For diagnostics, run `python -m scripts.doctor`. To verify the production
+build locally, keep FastAPI running, run `npm --prefix frontend run build`,
+then `npm --prefix frontend run preview` and open <http://127.0.0.1:4173>.
+For private forwarded ports and asset troubleshooting, see the
+[Codespaces guide](docs/phase11_5_codespaces_setup.md).
 
 ```sh
 python main.py --ast examples/valid/demo.mc
@@ -302,3 +309,10 @@ Independent held-out worker tests accepted one of three adapted documented defec
 Select **Phase 11 relational repair** for compiler-backed interpolation, bounded helper, cyclic-array and coordinated range reasoning over supplied typed examples. The workbench shows the underlying relations and a source diff. Runtime verification uses the private worker and the complete candidate requires explicit approval.
 
 The evaluation separates fresh upstream defects, injected faults and historical diagnostics. [Final review](docs/PHASE_11_FINAL_REVIEW.md) · [Workbench screenshots](docs/phase11_workbench.md) · [Phase 11.5 readiness](docs/PHASE_11_5_READINESS.md)
+
+
+## Phase 11.5 repair reliability
+
+Select **Phase 11.5 repair reliability** for checked explicit endpoints, first minima in cyclic prefixes and coordinated range seed edits. Interpolation candidates can be compared through expectation-free worker probes and still require complete, source-bound approval.
+
+[Final review](docs/PHASE_11_5_FINAL_REVIEW.md) · [Workbench](docs/phase11_5_workbench.md) · [Phase 12 readiness](docs/PHASE_12_READINESS.md)

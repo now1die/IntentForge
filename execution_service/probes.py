@@ -214,6 +214,39 @@ def guided_inputs(programs, entry, supplied):
     return tuple(generated)
 
 
+def sample_neighborhood_inputs(programs, entry, supplied):
+    """Stretch checked typed seeds without supplying an intended result."""
+    functions = [program.functions.get(entry) for program in programs]
+    if not functions or any(function is None for function in functions) or any(
+            program.program.globals for program in programs):
+        return ()
+    signature = tuple(parameter.type_name for parameter in functions[0].parameters)
+    if not 2 <= len(signature) <= 8 or any(kind!="int" for kind in signature) or any(
+            tuple(parameter.type_name for parameter in fn.parameters)!=signature for fn in functions):
+        return guided_inputs(programs,entry,supplied)
+
+    seen = set(supplied)
+    probes = []
+
+    def add(args):
+        if args not in seen and len(probes)<MAX_PROBES:
+            seen.add(args)
+            probes.append((args,"combination"))
+
+    for seed in supplied:
+        if len(seed)!=len(signature) or any(type(value) is not int for value in seed):
+            continue
+        lo,hi=min(seed),max(seed)
+        if hi==lo:
+            continue
+        scaled=tuple((value-lo)*INT_MAX//(hi-lo) for value in seed)
+        add(scaled)
+        add(tuple(value-INT_MAX for value in scaled))
+        if len(probes)==MAX_PROBES:
+            break
+    return tuple(probes) or guided_inputs(programs,entry,supplied)
+
+
 def ranked_probes(programs, entry, supplied, limits, budget, *, input_strategy=ranked_inputs):
     if len(programs) < 2:
         return ()

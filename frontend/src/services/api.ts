@@ -15,7 +15,7 @@ import type {
 
 export const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ||
-  (import.meta.env.PROD ? "/api" : "http://127.0.0.1:8000")
+  "/api"
 ).replace(/\/$/, "");
 
 export class ApiError extends Error {
@@ -59,7 +59,7 @@ async function intentionInputError(response: Response): Promise<string> {
   return payload.detail?.[0]?.msg ?? "Check the requirement fields and source length.";
 }
 
-export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105 | 11 = 2, inputs?: Phase8Inputs) =>
+export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105 | 11 | 115 = 2, inputs?: Phase8Inputs) =>
   request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode, engine_version: engineVersion, ...inputs }, signal);
 
 export const checkHealth = (signal?: AbortSignal) => request<Health>("/health", undefined, signal);
