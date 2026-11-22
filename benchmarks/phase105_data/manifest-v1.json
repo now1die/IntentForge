@@ -1,0 +1,52 @@
+{
+  "case_sha256": "5a37e17c9a27b49b398dbd9c89cb815ca5c82cd9bd865b0d4a5cab6da2a5880b",
+  "upstream_sha256": {
+    "GetEuclidGCD.js": "1bfdc0298078c5935d5036e6da1c2a42c8ff549f0cc1b80fdf48e9bebdf3aec4",
+    "LICENSE-Java.txt": "d8499582b215ce90b33be4736260b1bb2e2dc312f71c1b29d19b8fc6d2dcdc3f",
+    "LICENSE-JavaScript.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "LICENSE-Python.txt": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "NOTICE.md": "53263bc5725dc70697158e04fd54eafec065a83033c0780803aef5f747709204",
+    "coprime-after.js": "65e2918155aee71e122a33503c2ef8b8469cb2b370ffbce189699a73cfeb2d83",
+    "coprime-before.js": "204ef7415cafc55a1188c01954595a7db6512ddcc5ebf0f67f9d241dfc24ec54",
+    "interpolation-after.java": "c61afd431714e3b4ca52b551b038898c5a262e7b0fa78d122038f71da61ee03e",
+    "interpolation-before.java": "a4bd0cf2f48b634b030ea0fce384db1b5c2bd2cc7759c4205a88dbf39c661a5d",
+    "leftmost-after.py": "1f54368f3f4d7c3e878420445c5b2eb406d0fd50cfb9e370fc9f1fa7ea8343df",
+    "leftmost-before.py": "40edb392027b4b9431369cf105f4c610eb406e0792dc6ccffdabb7d5c7453f74"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "final": 21
+  },
+  "external_sources": {
+    "iterative-leftmost-match": [
+      "TheAlgorithms/Python",
+      "searches/binary_search.py",
+      "leftmost",
+      "00d9ebb4c0f6e37856b68c4317db43d4d710a775",
+      "1d46ea50ec2ef4a615d421c1c1f66cee553465b2",
+      "MIT",
+      "Five sorted scalar cells. Inline pure current-cell reads and omit the sortedness exception on the already sorted domain."
+    ],
+    "coprime-zero-operand": [
+      "TheAlgorithms/JavaScript",
+      "Maths/CoPrimeCheck.js",
+      "coprime",
+      "a5945e37c257553bb77cbce95cb6f753ce6d1ab5",
+      "8734dfccf90b835b4ca9e09579af4528934a130d",
+      "GPL-3.0",
+      "Translate Number inputs as bounded signed integers. Preserve the old trial divisor and the fixed shared Euclidean helper."
+    ],
+    "constant-interpolation-domain": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/InterpolationSearch.java",
+      "interpolation",
+      "fafc5a2964d351b691d05df41994f4e05257cdeb",
+      "e57a675893fb6a8fbc725085a3b3039b7565a0b1",
+      "MIT",
+      "Four ordered cells with either equal values or unique values. The fixed Java long products fit Mini-C int on the documented samples."
+    ]
+  },
+  "holdout": "Discovery synthesis and fresh worker verification are separate.",
+  "grouping": "Upstream repositories and authored families occupy one partition."
+}
