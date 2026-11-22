@@ -33,12 +33,6 @@ class Trial:
     basis: str
 
 
-def returned(branch):
-    if isinstance(branch,ast.Block) and len(branch.statements)==1:
-        branch = branch.statements[0]
-    return branch if isinstance(branch,ast.ReturnStatement) else None
-
-
 def observations(relation,samples):
     return [witness.relations.get(id(relation.node),()) for _,witness in samples]
 
@@ -91,7 +85,7 @@ def endpoint_trials(model,samples,spec,evidence):
                 relation = model.relations.get(id(early.condition))
                 if relation is None or relation.kind!="key" or early.condition.operator!="==":
                     continue
-                hit = returned(early.then_branch)
+                hit = model.return_statement(early.then_branch)
                 cell = early.condition.left if relation.cell_on_left else early.condition.right
                 key = early.condition.right if relation.cell_on_left else early.condition.left
                 mid = model.index(cell.index)
@@ -146,7 +140,7 @@ def recursive_refinement(model,interval,early,refine,relation,contracts):
     if model.index(first.index)!=interval.midpoint or model.index(second)!=model.index(key):
         return
     direction = REVERSED[test.operator] if other.cell_on_left else test.operator
-    branch = returned(refine.then_branch)
+    branch = model.return_statement(refine.then_branch)
     if not branch or not isinstance(branch.value,ast.FunctionCall) or id(branch.value) not in interval.calls:
         return
     low,high = interval.positions
@@ -188,7 +182,7 @@ def equal_refinement(model,function,early,cell,key,contracts):
             continue
         op,limit,delta,step = (">",0,"-","--") if direction<0 else ("<",extent-1,"+","++")
         replacement = f"{{ while ({i} {op} {limit} && {array}[{i} {delta} 1] == {wanted}) {{ {i}{step}; }} return {i}; }}"
-        yield Trial(ENDPOINT,(Edit(early.then_branch.span,replacement),),
+        yield Trial(ENDPOINT,(Edit(model.return_refinement_span(early.then_branch),replacement),),
                     f"Trusted duplicate examples support {kind.replace('_',' ')} across checked neighbors.")
 
 

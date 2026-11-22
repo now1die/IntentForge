@@ -1,0 +1,5 @@
+# Interpolation reasoning
+
+The projection recognizes a fixed-extent search with an inclusive interval, a lower and an upper key comparison, and a probe using endpoint-derived differences. Every entered iteration requires in-range ordered indexes. Each back edge must shrink the interval. The evidence records the two cell values and their difference when both reads were checked.
+
+A guard that returns the lower endpoint requires division failures at the recognized denominator and supplied outputs agreeing with that endpoint. A second edit may multiply interval width by the key offset before division. Single and paired alternatives independently compile and run through the same checked discovery projection. Signed overflow can eliminate a reordered alternative. Missing keys and constant or distinct arrays are represented in the corpus. A logical empty search skips the projection's read path. General arithmetic formulas, aliased arrays and wider unchecked arithmetic are outside the grammar.

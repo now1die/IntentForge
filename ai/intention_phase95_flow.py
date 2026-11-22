@@ -395,7 +395,10 @@ def project(model,name,args,changes=(),*,trace=False,observer=None,inspect=None)
             args = tuple(evaluate(child) for child in term.children)
             if trace:
                 helpers[term.value] += 1
-            return function(term.value,args,depth+1,(label,values))
+            result = function(term.value,args,depth+1,(label,values))
+            if inspect is not None:
+                inspect.helper(term.value,args,result)
+            return result
 
         while True:
             remaining -= 1
@@ -427,6 +430,8 @@ def project(model,name,args,changes=(),*,trace=False,observer=None,inspect=None)
                             visits[(label,site)].append(index)
                     elif trace:
                         exits[f"{label}:guard_false:{site}"] += 1
+                if inspect is not None:
+                    inspect.branch(label,site,edge_kind)
                 branch = next((edge for edge in edges if edge.kind==edge_kind),None)
                 if branch is None:
                     raise InvalidSample("UNMODELED_EDGE")

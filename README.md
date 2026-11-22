@@ -296,3 +296,9 @@ The frozen cohort includes four documented upstream defects, five injected fault
 Select **Phase 10.5 endpoint repair** for checked duplicate-aware search contracts, adjacent cells, distinctly ordered rotations, zero-input guards and derived aggregate ranges. The workbench shows source-located observations and applies a complete candidate only after explicit review.
 
 Independent held-out worker tests accepted one of three adapted documented defects and all five injected faults. [Final review and reproductions](docs/PHASE_10_5_FINAL_REVIEW.md) · [Workbench screenshots](docs/phase10_5_workbench.md) · [Phase 11 readiness](docs/PHASE_11_READINESS.md)
+
+## Phase 11 relational repair
+
+Select **Phase 11 relational repair** for compiler-backed interpolation, bounded helper, cyclic-array and coordinated range reasoning over supplied typed examples. The workbench shows the underlying relations and a source diff. Runtime verification uses the private worker and the complete candidate requires explicit approval.
+
+The evaluation separates fresh upstream defects, injected faults and historical diagnostics. [Final review](docs/PHASE_11_FINAL_REVIEW.md) · [Workbench screenshots](docs/phase11_workbench.md) · [Phase 11.5 readiness](docs/PHASE_11_5_READINESS.md)
