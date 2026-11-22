@@ -1106,7 +1106,7 @@ summary code {
 .live-behavior li { margin-block: .35rem; overflow-wrap: anywhere; }
 .live-behavior li button { margin-inline-start: .55rem; }
 .live-behavior .diff-before, .live-behavior .diff-after { padding: .65rem; }
-.inspector-body:has(.intention-panel:is([data-engine="5"], [data-engine="55"], [data-engine="6"], [data-engine="65"], [data-engine="7"], [data-engine="75"], [data-engine="8"], [data-engine="10"]) [aria-label="Intention results"]) { height: auto; }
+.inspector-body:has(.intention-panel:is([data-engine="5"], [data-engine="55"], [data-engine="6"], [data-engine="65"], [data-engine="7"], [data-engine="75"], [data-engine="8"], [data-engine="10"], [data-engine="105"]) [aria-label="Intention results"]) { height: auto; }
 
 .guided-evidence { border: 1px solid var(--border); border-radius: 6px; padding: .65rem .8rem; margin: .75rem 0; }
 .guided-evidence [role="alert"] { font-weight: 700; }

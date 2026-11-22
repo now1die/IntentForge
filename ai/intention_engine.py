@@ -24,6 +24,7 @@ from .intention_phase6 import proposals as semantic_proposals
 from .intention_phase65 import COMPONENTS as PHASE65_COMPONENTS, augment as interprocedural_proposals
 from .intention_phase75 import CATEGORIES as PHASE75_CATEGORIES, COMPONENTS as PHASE75_COMPONENTS
 from .intention_phase10 import CATEGORIES as PHASE10_CATEGORIES, COMPONENTS as PHASE10_COMPONENTS, synthesize as search_repairs
+from .intention_phase105 import CATEGORIES as PHASE105_CATEGORIES, COMPONENTS as PHASE105_COMPONENTS, synthesize as endpoint_repairs
 from .intention_phase95 import CATEGORIES as PHASE95_CATEGORIES, COMPONENTS as PHASE95_COMPONENTS, synthesize as control_repairs
 from .intention_phase9 import CATEGORIES as PHASE9_CATEGORIES, COMPONENTS as PHASE9_COMPONENTS, synthesize as robust_repairs
 from .intention_phase85 import CATEGORIES as PHASE85_CATEGORIES, COMPONENTS as PHASE85_COMPONENTS, synthesize as finite_repairs
@@ -141,7 +142,8 @@ class IntentionResult:
                                                         "MULTIPLE_RECURSIVE_EXAMPLES", "LEXICAL_RECURSIVE_TERMS",
                                                         "MISSING_INPUT_DEPENDENCY", "INCONSISTENT_LOOP_RADIX",
                                                         "ARITHMETIC_CONSTRAINT_WITNESS", "FINITE_CONSTRAINT_WITNESS"} else "static")
-                    row["hypothesis_origin"] = ("phase10" if item.proposal.category in PHASE10_CATEGORIES else
+                    row["hypothesis_origin"] = ("phase105" if item.proposal.category in PHASE105_CATEGORIES else
+                                                "phase10" if item.proposal.category in PHASE10_CATEGORIES else
                                                 "phase95" if item.proposal.category in PHASE95_CATEGORIES else
                                                 "phase9" if item.proposal.category in PHASE9_CATEGORIES else
                                                 "phase85" if item.proposal.category in PHASE85_CATEGORIES else
@@ -306,7 +308,9 @@ def analyze_intention(
     phase9: bool = False, phase9_components: frozenset[str] = PHASE9_COMPONENTS,
     phase95: bool = False, phase95_components: frozenset[str] = PHASE95_COMPONENTS,
     phase10: bool = False, phase10_components: frozenset[str] = PHASE10_COMPONENTS,
+    phase105: bool = False, phase105_components: frozenset[str] = PHASE105_COMPONENTS,
 ) -> IntentionResult:
+    phase10 = phase10 or phase105
     phase95 = phase95 or phase10
     phase9 = phase9 or phase95
     phase85 = phase85 or phase9
@@ -416,6 +420,10 @@ def analyze_intention(
                 search, report = search_repairs(context, program, spec, phase10_components)
                 semantic = (*search, *semantic)
                 program_analysis["phase10"] = report
+            if phase105:
+                endpoint, report = endpoint_repairs(context, program, spec, phase105_components)
+                semantic = (*endpoint, *semantic)
+                program_analysis["phase105"] = report
         program_analysis["hypotheses"] = [{"category": proposal.category, "assumption": proposal.assumption,
                                             "evidence": [fact.to_dict() for fact in proposal.evidence],
                                             "counter_evidence": [fact.to_dict() for fact in proposal.counter_evidence]}

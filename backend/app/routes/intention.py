@@ -56,7 +56,7 @@ class IntentionRequest(BaseModel):
     include_context: bool = False
     input_domain: Domain | None = None
     partial_inputs: PartialInputs = ()
-    engine_version: Literal[2, 3, 4, 5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10] = 2
+    engine_version: Literal[2, 3, 4, 5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105] = 2
     mode: Literal["code_only", "natural_language", "explicit", "examples"] | None = None
 
     @model_validator(mode="after")
@@ -70,17 +70,17 @@ class IntentionRequest(BaseModel):
             not requirement or not requirement.description or requirement.return_expression is not None or requirement.condition is not None
         ):
             raise ValueError("Natural-language analysis accepts a description without an explicit expression.")
-        if self.engine_version not in {8, 85, 9, 95, 10} and self.model_fields_set & {"input_domain", "partial_inputs"}:
+        if self.engine_version not in {8, 85, 9, 95, 10, 105} and self.model_fields_set & {"input_domain", "partial_inputs"}:
             raise ValueError("Input domains and partial inputs require Phase 8.")
         if (self.input_domain is not None or self.partial_inputs) and (not requirement or not requirement.function):
             raise ValueError("Select a Phase 8 function to use a domain or partial inputs.")
         if self.mode == "examples" and (
-            self.engine_version not in {7, 75, 8, 85, 9, 95, 10} or not requirement or not requirement.function
-            or not (requirement.examples or self.engine_version in {8, 85, 9, 95, 10} and self.partial_inputs)
+            self.engine_version not in {7, 75, 8, 85, 9, 95, 10, 105} or not requirement or not requirement.function
+            or not (requirement.examples or self.engine_version in {8, 85, 9, 95, 10, 105} and self.partial_inputs)
             or requirement.return_expression or requirement.condition or requirement.description
         ):
             raise ValueError("Phase 7 examples mode requires an entry point and supplied expected outputs.")
-        if self.engine_version in {7, 75, 8, 85, 9, 95, 10} and requirement and conflicting_expectations(
+        if self.engine_version in {7, 75, 8, 85, 9, 95, 10, 105} and requirement and conflicting_expectations(
             (row.args, row.expected_return) for row in requirement.examples
         ):
             raise ValueError("The same input has conflicting expected outputs.")
@@ -114,7 +114,7 @@ class IntentionResponse(BaseModel):
 @router.post("/v1/intention-analysis", response_model=IntentionResponse, response_model_exclude_unset=True)
 def intention_analysis(request: IntentionRequest) -> dict:
     expanded = None
-    if request.engine_version in {5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10}:
+    if request.engine_version in {5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105}:
         ranker, status = None, f"V{request.engine_version}_DETERMINISTIC"
     elif request.engine_version >= 3:
         ranker = None
@@ -126,7 +126,7 @@ def intention_analysis(request: IntentionRequest) -> dict:
         expanded, status = load_expanded_ranker()
     requirement = request.requirement.to_domain() if request.requirement else None
     examples = requirement.examples if request.mode == "examples" else ()
-    entry = requirement.function if requirement and (examples or request.engine_version in {8, 85, 9, 95, 10}) else None
+    entry = requirement.function if requirement and (examples or request.engine_version in {8, 85, 9, 95, 10, 105}) else None
     try:
         result = analyze_intention(request.code, None if request.mode == "examples" else requirement, ranker=ranker, ranking_status=status,
                                    enhanced=request.mode is not None, expanded_ranker=expanded,
@@ -134,17 +134,18 @@ def intention_analysis(request: IntentionRequest) -> dict:
                                    phase5=request.engine_version == 5, phase55=request.engine_version == 55,
                                    phase6=request.engine_version == 6, phase65=request.engine_version == 65,
                                    phase7=request.engine_version == 7, phase75=request.engine_version == 75, phase6_entry=entry, phase6_examples=examples,
-                                   phase6_graph=request.include_context, phase8=request.engine_version in {8, 85, 9, 95, 10},
+                                   phase6_graph=request.include_context, phase8=request.engine_version in {8, 85, 9, 95, 10, 105},
                                    phase8_domain=request.input_domain, phase8_partial=request.partial_inputs,
-                                   phase85=request.engine_version == 85, phase9=request.engine_version == 9, phase95=request.engine_version == 95, phase10=request.engine_version == 10)
+                                   phase85=request.engine_version == 85, phase9=request.engine_version == 9, phase95=request.engine_version == 95, phase10=request.engine_version == 10,
+                                   phase105=request.engine_version == 105)
     except (InvalidRequirement, InvalidSpecification, UnsupportedContext) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except (ContextLimit, RecursionError) as exc:
         raise HTTPException(status_code=413, detail="The program exceeds the intention-analysis token or nesting limit.") from exc
     response = result.to_dict(include_context=request.include_context)
-    if request.engine_version in {5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10}:
+    if request.engine_version in {5, 55, 6, 65, 7, 75, 8, 85, 9, 95, 10, 105}:
         response["source_fingerprint"] = program_identity(request.code)
-    if request.engine_version in {7, 75, 8, 85, 9, 95, 10} and request.requirement and (request.requirement.examples or request.partial_inputs):
+    if request.engine_version in {7, 75, 8, 85, 9, 95, 10, 105} and request.requirement and (request.requirement.examples or request.partial_inputs):
         response["guided_evidence"] = "POSSIBLE_REPAIR" if result.candidates else "INSUFFICIENT_SPECIFICATION"
         if response["finding"] == "HEURISTIC_SUSPICION":
             response["finding"] = response["guided_evidence"]
