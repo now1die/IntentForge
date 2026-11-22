@@ -64,7 +64,7 @@ def test_archived_endpoint_repair_and_duplicate_semantics():
 
 
 @pytest.mark.parametrize("identifier",[
-    "empty-or-singleton-search-control","two-cell-duplicate-pivot-control","lower-insertion-control",
+    "empty-or-singleton-search-control","two-cell-duplicate-pivot-control","lower-insertion-control-control",
     "coordinated-three-cell-pivot-control","signed-noncontiguous-origin-control","division-reserve-sentinel-control",
 ])
 def test_controls_preserve_valid_choices(identifier):
