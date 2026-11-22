@@ -172,6 +172,12 @@ class Inspection:
     def fault(self,term,operation,left,right):
         self.faults.append((term.origin,operation,left,right))
 
+    def helper(self,label,arguments,result):
+        pass
+
+    def branch(self,label,site,outcome):
+        pass
+
     def compare(self,term,operation,left,right):
         relation = self.model.relations.get(term.origin)
         if relation is None:

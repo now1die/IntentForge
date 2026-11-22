@@ -162,11 +162,10 @@ class SearchProjection(FlowProjection):
             for statement in function.body.statements:
                 if not isinstance(statement,ast.IfStatement) or statement.else_branch:
                     continue
-                body = statement.then_branch
-                block = body.statements if isinstance(body,ast.Block) else [body]
-                if len(block)!=1 or not isinstance(block[0],ast.ReturnStatement):
+                base = self.return_statement(statement.then_branch)
+                if base is None:
                     continue
-                returned=block[0].value
+                returned=base.value
                 interval = self.interval(function.body,statement.condition,recursive=True)
                 if (interval and {interval.low,interval.high}<=set(parameters)
                         and self.interval_result(returned,interval)):
@@ -179,6 +178,14 @@ class SearchProjection(FlowProjection):
                 self.missing_base(function,parameters,calls)
             if name not in self.recursive:
                 raise UnsupportedProjection
+
+    def return_statement(self,branch):
+        if isinstance(branch,ast.Block) and len(branch.statements)==1:
+            branch = branch.statements[0]
+        return branch if isinstance(branch,ast.ReturnStatement) else None
+
+    def return_refinement_span(self,branch):
+        return branch.span
 
     def interval_result(self,returned,interval):
         return (isinstance(returned,ast.UnaryExpression) and returned.operator=="-"
