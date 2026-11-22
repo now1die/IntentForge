@@ -1,0 +1,51 @@
+{
+  "case_sha256": "fe73c9d0d98408a7eea0bb9f0ce9636c4096e6d932b22e4a8578660b7eecd742",
+  "upstream_sha256": {
+    "LICENSE-Java.txt": "d8499582b215ce90b33be4736260b1bb2e2dc312f71c1b29d19b8fc6d2dcdc3f",
+    "LICENSE-JavaScript.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "LICENSE-Python.txt": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "NOTICE.md": "f74705ea0c9a8d79fb1386f95137cb96503e8ab9f0e5adf2daa2ca4502fffb7e",
+    "exponential-after.py": "32a4eadbb5d458a6420698b2bf500ebdbfe25995b4e0ab41fd02631fe4f07507",
+    "exponential-before.py": "73b5b6b92f62bca4d586c49ec29118bf777a13be16170dab2d716a97b927c501",
+    "mean-after.js": "1205886ffa0c964f141695f8e1f71b526475df925d8f295943d40deb33ba4e72",
+    "mean-before.js": "1dc8782597383b371d2afe6d6ffc3c15b6c248382f965082c82f51eacc7d2ca2",
+    "row-after.java": "e0801b9b0aef37d794f3a862014216869f20235d0d613535eb25cb0564cc2546",
+    "row-before.java": "93bca453273289229928a745ee0efbad9175f9628f95a330dcba22ae323290f7"
+  },
+  "partitions": {
+    "development": 2,
+    "selection": 2,
+    "final": 17
+  },
+  "external_sources": {
+    "exponential-negative-endpoint": [
+      "TheAlgorithms/Python",
+      "searches/exponential_search.py",
+      "exponential",
+      "de56f294c8658112d7782b9ccd675dd0e12eb49f",
+      "d81528a928048ffe34fe3553b96645991bd5d1fa",
+      "MIT",
+      "Five sorted unique scalar cells. A wrapper supplies explicit bounds and the old recursive reset is preserved. Python recursion exhaustion maps to CALL_DEPTH."
+    ],
+    "empty-numeric-mean": [
+      "TheAlgorithms/JavaScript",
+      "Maths/AverageMean.js",
+      "mean",
+      "3f52add84d4431cb352657206750741d8b0a6ca4",
+      "19ecb18f0af35a83542410e59c16975bd8ddd4c3",
+      "GPL-3.0",
+      "Small numeric prefixes. Exact integer means only. NaN maps to DIVISION_BY_ZERO and the documented empty-input rejection maps to -912."
+    ],
+    "single-row-column-end": [
+      "TheAlgorithms/Java",
+      "src/main/java/com/thealgorithms/searches/BinarySearch2dArray.java",
+      "row",
+      "51a0156d8431f1e93021fa9a3dd6ef0533d04880",
+      "0a76bf8db406f8c6b6569cd83bfc31b3e118460f",
+      "MIT",
+      "The public one-row path is flattened into fixed cells. The return column is preserved and Java bounds errors map to ARRAY_BOUNDS."
+    ]
+  },
+  "holdout": "Fresh worker verification with generation disabled.",
+  "grouping": "Upstream repositories and authored families occupy one partition."
+}
