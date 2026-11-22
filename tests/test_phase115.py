@@ -46,7 +46,7 @@ def test_checked_repairs_preserve_snapshot_and_holdout(family,category,sites):
 
 
 @pytest.mark.parametrize("identifier",["negative-coordinate-control-control","logical-three-cell-control-control",
-                                       "first-minimum-on-logical-seam-control","endpoint-zero-control"])
+                                       "first-minimum-on-logical-seam-control","endpoint-zero-control-control"])
 def test_control_contracts_do_not_propose_rewrites(identifier):
     result=analyze(case(identifier))
     assert not any(item.proposal.category in CATEGORIES for item in result.candidates)
