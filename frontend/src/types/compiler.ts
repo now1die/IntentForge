@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -410,8 +410,27 @@ export type Phase10Analysis = {
   progress?: { function: string; kind: string; guard: string; span: AnalysisSpan;
     samples: { count: number; first: number | null; last: number | null }[] }[];
 };
+type EndpointFact = { span: AnalysisSpan } & (
+  | { kind: "endpoint"; function: string; contracts: string[]; samples: number; duplicate_samples: number;
+      extent: number; termination: string }
+  | { kind: "neighbor" | "rotation"; inputs: number[]; assumption?: string; supported_samples?: number;
+      observations: { left_index: number; right_index: number; left_value: number; right_value: number }[] }
+  | { kind: "zero"; parameters: string[]; expected: number | boolean; inputs: number[]; guard: string }
+  | { kind: "helper"; function: string; assumption: string }
+  | { kind: "origin"; origin: string; scan: AnalysisSpan }
+);
+
+export type Phase105Analysis = {
+  status: string;
+  compatible_candidates: number;
+  facts: EndpointFact[];
+  arrays?: Phase10Analysis["arrays"];
+  access_issues?: { sample: number; span: AnalysisSpan; status: string }[];
+};
+
 export interface Phase8Analysis {
   phase10?: Phase10Analysis | null;
+  phase105?: Phase105Analysis | null;
   phase95?: Phase95Analysis | null;
   phase9?: Phase9Analysis | null;
   phase85?: Phase85Analysis | null;
@@ -500,6 +519,7 @@ export interface IntentionResponse {
     phase9?: Phase9Analysis;
     phase95?: Phase95Analysis;
     phase10?: Phase10Analysis;
+    phase105?: Phase105Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;

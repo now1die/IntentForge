@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getExecutionCapability, verifyBehavior } from "../services/api";
 import { FiniteRepairEvidence, CoordinatedLocations } from "./FiniteRepairEvidence";
+import { EndpointRepairEvidence } from "./EndpointRepairEvidence";
 import { SearchRepairEvidence } from "./SearchRepairEvidence";
 import { ControlFlowEvidence } from "./ControlFlowEvidence";
 import { RobustRepairEvidence } from "./RobustRepairEvidence";
@@ -95,7 +96,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
   const [trace, setTrace] = useState(false);
   const [compare, setCompare] = useState(false);
   const [phase5, setPhase5] = useState(false);
-  const [profile, setProfile] = useState<5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10>(5);
+  const [profile, setProfile] = useState<5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105>(5);
   const [inputDomain, setInputDomain] = useState("");
   const [showOptional, setShowOptional] = useState(false);
   const [expression, setExpression] = useState("");
@@ -151,9 +152,9 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
     let domain: unknown;
     try {
       input = readVectors(vectors, compare && phase5);
-      if (phase5 && (profile === 8 || profile === 85 || profile === 9 || profile === 95 || profile === 10) && inputDomain.trim()) domain = JSON.parse(inputDomain);
+      if (phase5 && (profile === 8 || profile === 85 || profile === 9 || profile === 95 || profile === 10 || profile === 105) && inputDomain.trim()) domain = JSON.parse(inputDomain);
     } catch (failure) {
-      const jsonMessage = phase5 && (profile === 8 || profile === 85 || profile === 9 || profile === 95 || profile === 10) ? "Test vectors and input domain must be valid JSON." : "Test vectors must be valid JSON.";
+      const jsonMessage = phase5 && (profile === 8 || profile === 85 || profile === 9 || profile === 95 || profile === 10 || profile === 105) ? "Test vectors and input domain must be valid JSON." : "Test vectors must be valid JSON.";
       setError(failure instanceof SyntaxError ? jsonMessage : (failure as Error).message);
       return;
     }
@@ -233,8 +234,9 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
           {compare && phase5 && <label><input type="checkbox" checked={profile === 9} onChange={(event) => setProfile(event.target.checked ? 9 : 5)} /> Phase 9 semantic robustness</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 95} onChange={(event) => setProfile(event.target.checked ? 95 : 5)} /> Phase 9.5 control-flow repair</label>}
           {compare && phase5 && <label><input type="checkbox" checked={profile === 10} onChange={(event) => setProfile(event.target.checked ? 10 : 5)} /> Phase 10 search repair</label>}
+          {compare && phase5 && <label><input type="checkbox" checked={profile === 105} onChange={(event) => setProfile(event.target.checked ? 105 : 5)} /> Phase 10.5 endpoint repair</label>}
         </div>
-        {phase5 && (profile === 8 || profile === 85 || profile === 9 || profile === 95 || profile === 10) && <label>Input domain (JSON)<textarea rows={2} value={inputDomain} maxLength={2000}
+        {phase5 && (profile === 8 || profile === 85 || profile === 9 || profile === 95 || profile === 10 || profile === 105) && <label>Input domain (JSON)<textarea rows={2} value={inputDomain} maxLength={2000}
           placeholder='[{"minimum":0,"maximum":32},null]' onChange={(event) => setInputDomain(event.target.value)} /></label>}
         {compare && phase5 && <p>Use an empty test list to compare probe observations without expected values.</p>}
         {compare && <label>Expected return expression (optional)<input value={expression} maxLength={160}
@@ -244,6 +246,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
       {error && <p role="alert">{error}</p>}
       {result && result.availability.status !== "available" && <p role="status">{result.availability.detail}</p>}
       {result?.specification && <SpecificationEvidence analysis={result.specification} />}
+      {result?.specification?.phase105 && <EndpointRepairEvidence analysis={result.specification.phase105} />}
       {result?.specification?.phase10 && <SearchRepairEvidence analysis={result.specification.phase10} />}
       {result?.specification?.phase95 && <ControlFlowEvidence analysis={result.specification.phase95} />}
       {result?.specification?.phase9 && !result.specification.phase95?.loops?.length && <RobustRepairEvidence analysis={result.specification.phase9} />}
@@ -316,7 +319,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
         </section>}
         {candidate && <section aria-label="Behavioral candidate review">
           <h3>Candidate {candidate.static_rank} · {candidate.id}</h3>
-          {(profile === 85 || profile === 9 || profile === 95 || profile === 10) && result.candidate_details?.[candidate.id] &&
+          {(profile === 85 || profile === 9 || profile === 95 || profile === 10 || profile === 105) && result.candidate_details?.[candidate.id] &&
             <CoordinatedLocations edits={result.candidate_details[candidate.id].edits} onNavigate={onNavigate} />}
           <div className="behavior-evidence">
             <div><strong>Original source</strong><pre className="diff-before">{code}</pre></div>

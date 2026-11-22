@@ -167,12 +167,9 @@ class SearchProjection(FlowProjection):
                 if len(block)!=1 or not isinstance(block[0],ast.ReturnStatement):
                     continue
                 returned=block[0].value
-                if not (isinstance(returned,ast.UnaryExpression) and returned.operator=="-"
-                        and isinstance(returned.operand,ast.Literal) and type(returned.operand.value) is int
-                        and returned.operand.value>0):
-                    continue
                 interval = self.interval(function.body,statement.condition,recursive=True)
-                if interval and {interval.low,interval.high}<=set(parameters):
+                if (interval and {interval.low,interval.high}<=set(parameters)
+                        and self.interval_result(returned,interval)):
                     positions=(parameters.index(interval.low),parameters.index(interval.high))
                     self.recursive[name] = Interval(interval.low,interval.high,interval.midpoint,interval.length,
                                                     interval.span,interval.inclusive,positions,tuple(id(call) for call in calls))
@@ -182,6 +179,11 @@ class SearchProjection(FlowProjection):
                 self.missing_base(function,parameters,calls)
             if name not in self.recursive:
                 raise UnsupportedProjection
+
+    def interval_result(self,returned,interval):
+        return (isinstance(returned,ast.UnaryExpression) and returned.operator=="-"
+                and isinstance(returned.operand,ast.Literal) and type(returned.operand.value) is int
+                and returned.operand.value>0)
 
     def missing_base(self,function,parameters,calls):
         if self.sentinel is None:

@@ -358,7 +358,7 @@ class Sample:
     issue: str | None = None
 
 
-def project(model,name,args,changes=(),*,trace=False,observer=None):
+def project(model,name,args,changes=(),*,trace=False,observer=None,inspect=None):
     remaining = MAX_TRANSFERS
     visits, exits, helpers = defaultdict(list), defaultdict(int), defaultdict(int)
 
@@ -385,7 +385,13 @@ def project(model,name,args,changes=(),*,trace=False,observer=None):
 
         def resolve(term,evaluate):
             if term.operation=="cell":
-                return facts[cell(term.value,evaluate(term.children[0]),term.origin)]
+                index = evaluate(term.children[0])
+                value = facts[cell(term.value,index,term.origin)]
+                if inspect is not None:
+                    size = sizes[term.value]
+                    snapshot = tuple(facts.get((term.value,i)) for i in range(size))
+                    inspect.read(label,term.origin,index,value,snapshot)
+                return value
             args = tuple(evaluate(child) for child in term.children)
             if trace:
                 helpers[term.value] += 1
@@ -397,7 +403,9 @@ def project(model,name,args,changes=(),*,trace=False,observer=None):
                 raise ProjectionLimit
             kind, action = item.steps[site]
             edges = item.edges[site]
-            evaluate = substitution(facts,changes,resolve=resolve)
+            evaluate = substitution(facts,changes,resolve=resolve,
+                                    on_fault=inspect.fault if inspect is not None else None,
+                                    on_compare=inspect.compare if inspect is not None else None)
             if kind=="return":
                 if trace:
                     exits[f"{label}:return:{site}"] += 1
