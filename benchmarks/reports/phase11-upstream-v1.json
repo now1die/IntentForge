@@ -1,0 +1,660 @@
+{
+  "exponential-negative-endpoint": {
+    "before": [
+      {
+        "input": [
+          0,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": -1,
+        "upstream": "CALL_DEPTH",
+        "mini_c": "CALL_DEPTH",
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          1,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": 0,
+        "upstream": 0,
+        "mini_c": 0,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          17,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": 4,
+        "upstream": 4,
+        "mini_c": 4,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          23,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          6,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          -12,
+          -7,
+          0,
+          3,
+          5,
+          9
+        ],
+        "expected": -1,
+        "upstream": "CALL_DEPTH",
+        "mini_c": "CALL_DEPTH",
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          5,
+          -7,
+          0,
+          3,
+          5,
+          9
+        ],
+        "expected": 3,
+        "upstream": 3,
+        "mini_c": 3,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          0,
+          -7,
+          0,
+          3,
+          5,
+          9
+        ],
+        "expected": 1,
+        "upstream": 1,
+        "mini_c": 1,
+        "partition": "holdout"
+      }
+    ],
+    "after": [
+      {
+        "input": [
+          0,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          1,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": 0,
+        "upstream": 0,
+        "mini_c": 0,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          17,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": 4,
+        "upstream": 4,
+        "mini_c": 4,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          23,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          6,
+          1,
+          4,
+          8,
+          12,
+          17
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          -12,
+          -7,
+          0,
+          3,
+          5,
+          9
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          5,
+          -7,
+          0,
+          3,
+          5,
+          9
+        ],
+        "expected": 3,
+        "upstream": 3,
+        "mini_c": 3,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          0,
+          -7,
+          0,
+          3,
+          5,
+          9
+        ],
+        "expected": 1,
+        "upstream": 1,
+        "mini_c": 1,
+        "partition": "holdout"
+      }
+    ]
+  },
+  "empty-numeric-mean": {
+    "before": [
+      {
+        "input": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": -912,
+        "upstream": "DIVISION_BY_ZERO",
+        "mini_c": "DIVISION_BY_ZERO",
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          2,
+          2,
+          6,
+          21,
+          21
+        ],
+        "expected": 4,
+        "upstream": 4,
+        "mini_c": 4,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          4,
+          1,
+          5,
+          7,
+          3
+        ],
+        "expected": 4,
+        "upstream": 4,
+        "mini_c": 4,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          1,
+          -8,
+          2,
+          3,
+          4
+        ],
+        "expected": -8,
+        "upstream": -8,
+        "mini_c": -8,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          3,
+          3,
+          6,
+          9,
+          21
+        ],
+        "expected": 6,
+        "upstream": 6,
+        "mini_c": 6,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          0,
+          5,
+          7,
+          10,
+          11
+        ],
+        "expected": -912,
+        "upstream": "DIVISION_BY_ZERO",
+        "mini_c": "DIVISION_BY_ZERO",
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          2,
+          -3,
+          3,
+          9,
+          11
+        ],
+        "expected": 0,
+        "upstream": 0,
+        "mini_c": 0,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          4,
+          -3,
+          -7,
+          -9,
+          -1
+        ],
+        "expected": -5,
+        "upstream": -5,
+        "mini_c": -5,
+        "partition": "holdout"
+      }
+    ],
+    "after": [
+      {
+        "input": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": -912,
+        "upstream": -912,
+        "mini_c": -912,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          2,
+          2,
+          6,
+          21,
+          21
+        ],
+        "expected": 4,
+        "upstream": 4,
+        "mini_c": 4,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          4,
+          1,
+          5,
+          7,
+          3
+        ],
+        "expected": 4,
+        "upstream": 4,
+        "mini_c": 4,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          1,
+          -8,
+          2,
+          3,
+          4
+        ],
+        "expected": -8,
+        "upstream": -8,
+        "mini_c": -8,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          3,
+          3,
+          6,
+          9,
+          21
+        ],
+        "expected": 6,
+        "upstream": 6,
+        "mini_c": 6,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          0,
+          5,
+          7,
+          10,
+          11
+        ],
+        "expected": -912,
+        "upstream": -912,
+        "mini_c": -912,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          2,
+          -3,
+          3,
+          9,
+          11
+        ],
+        "expected": 0,
+        "upstream": 0,
+        "mini_c": 0,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          4,
+          -3,
+          -7,
+          -9,
+          -1
+        ],
+        "expected": -5,
+        "upstream": -5,
+        "mini_c": -5,
+        "partition": "holdout"
+      }
+    ]
+  },
+  "single-row-column-end": {
+    "before": [
+      {
+        "input": [
+          19,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": -1,
+        "upstream": "ARRAY_BOUNDS",
+        "mini_c": "ARRAY_BOUNDS",
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          15,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": 3,
+        "upstream": 3,
+        "mini_c": 3,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          1,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": 0,
+        "upstream": 0,
+        "mini_c": 0,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          8,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          0,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          22,
+          -2,
+          4,
+          9,
+          21
+        ],
+        "expected": -1,
+        "upstream": "ARRAY_BOUNDS",
+        "mini_c": "ARRAY_BOUNDS",
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          4,
+          -2,
+          4,
+          9,
+          21
+        ],
+        "expected": 1,
+        "upstream": 1,
+        "mini_c": 1,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          -12,
+          -2,
+          4,
+          9,
+          21
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "holdout"
+      }
+    ],
+    "after": [
+      {
+        "input": [
+          19,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          15,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": 3,
+        "upstream": 3,
+        "mini_c": 3,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          1,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": 0,
+        "upstream": 0,
+        "mini_c": 0,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          8,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          0,
+          1,
+          4,
+          9,
+          15
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "discovery"
+      },
+      {
+        "input": [
+          22,
+          -2,
+          4,
+          9,
+          21
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          4,
+          -2,
+          4,
+          9,
+          21
+        ],
+        "expected": 1,
+        "upstream": 1,
+        "mini_c": 1,
+        "partition": "holdout"
+      },
+      {
+        "input": [
+          -12,
+          -2,
+          4,
+          9,
+          21
+        ],
+        "expected": -1,
+        "upstream": -1,
+        "mini_c": -1,
+        "partition": "holdout"
+      }
+    ]
+  }
+}

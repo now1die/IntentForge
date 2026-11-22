@@ -1,0 +1,35 @@
+{
+  "sha256": "fe73c9d0d98408a7eea0bb9f0ce9636c4096e6d932b22e4a8578660b7eecd742",
+  "historical_sources": 1295,
+  "frozen_partitions": {
+    "development": 2,
+    "selection": 2,
+    "final": 17
+  },
+  "admitted_partitions": {
+    "development": 2,
+    "selection": 2,
+    "final": 17
+  },
+  "quarantined_families": [],
+  "historical_overlaps": [],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [],
+  "shared_cross_partition_edit_shapes": 0,
+  "upstream_partitions": {
+    "TheAlgorithms/Python": [
+      "final"
+    ],
+    "TheAlgorithms/JavaScript": [
+      "final"
+    ],
+    "TheAlgorithms/Java": [
+      "final"
+    ]
+  },
+  "admitted_external_families": [
+    "empty-numeric-mean",
+    "exponential-negative-endpoint",
+    "single-row-column-end"
+  ]
+}
