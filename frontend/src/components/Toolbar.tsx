@@ -61,7 +61,7 @@ export function Toolbar({
         >
           <span className={`status-dot ${health ? "connected" : ""}`} />
           <span>{checking ? "Connecting" : health ? "Backend connected" : "Backend offline"}</span>
-          {!checking && health && <span>· Ollama {health.ollama_configured ? "ready" : "offline"}</span>}
+          {!checking && health && <span>· {fullC ? "Clang analysis" : "Mini-C compiler"} · Ollama {health.ollama_configured ? "ready" : "offline"}</span>}
           <ArrowClockwise size={12} />
         </button>
       </div>

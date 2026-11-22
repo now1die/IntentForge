@@ -14,7 +14,7 @@ from vm.interpreter import prepare
 from vm.runtime import RuntimeFault, WorkBudget
 
 from .contracts import Batch, BatchResult
-from .probes import compare_probes, guided_inputs, ranked_probes
+from .probes import compare_probes, guided_inputs, ranked_probes, sample_neighborhood_inputs
 
 MAX_PRIVATE_INPUT = 384_000
 
@@ -78,8 +78,10 @@ def run_batch(batch):
                 continue
     arguments = tuple(row.arguments for row in vectors)
     if batch.engine_version in {7, 8}:
+        strategy = sample_neighborhood_inputs if batch.probe_mode else guided_inputs
+
         def admitted_inputs(programs, entry, supplied):
-            return tuple(row for row in guided_inputs(programs, entry, supplied)
+            return tuple(row for row in strategy(programs, entry, supplied)
                          if includes_input(batch.input_domain, row[0]))
         probes = ranked_probes(eligible, batch.entry_point, arguments, batch.limits, shared, input_strategy=admitted_inputs)
     else:
