@@ -27,6 +27,20 @@
     "after": "050b2a6e2cf0e474b75cf48abe4aa134b97643e4",
     "license": "MIT"
   },
+  "hex-channel": {
+    "repository": "TheAlgorithms/JavaScript",
+    "path": "Conversions/HexToRGB.js",
+    "before": "8ffe9cebb958ba9f65b92cca77c04d3e0eaacfc3",
+    "after": "e833b3fd40f96d888ccc1bd6804e6c3914107ec1",
+    "license": "GPL-3.0"
+  },
+  "sum-exclusive": {
+    "repository": "TheAlgorithms/JavaScript",
+    "path": "Project-Euler/Problem1.js",
+    "before": "cedab196e7da0a48859baba4839e8ef0dd4aba46",
+    "after": "90891b56578d7ae6ac4c8a255da507db613bc6f5",
+    "license": "GPL-3.0"
+  },
   "bucket-order": {
     "repository": "TheAlgorithms/JavaScript",
     "path": "Sorts/BucketSort.js",

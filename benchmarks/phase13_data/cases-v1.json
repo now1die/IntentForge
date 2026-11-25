@@ -828,6 +828,364 @@
     "fault_origin": null
   },
   {
+    "family": "hex-channel",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          15,
+          14,
+          13,
+          12,
+          11,
+          10
+        ],
+        "expected": 220
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          7,
+          9,
+          1,
+          11,
+          4,
+          3
+        ],
+        "expected": 27
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          6,
+          8,
+          10,
+          12,
+          14
+        ],
+        "expected": 138
+      },
+      {
+        "arguments": [
+          13,
+          0,
+          7,
+          7,
+          1,
+          2
+        ],
+        "expected": 119
+      },
+      {
+        "arguments": [
+          2,
+          5,
+          15,
+          0,
+          3,
+          11
+        ],
+        "expected": 240
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Conversions/HexToRGB.js",
+      "before": "8ffe9cebb958ba9f65b92cca77c04d3e0eaacfc3",
+      "after": "e833b3fd40f96d888ccc1bd6804e6c3914107ec1",
+      "license": "GPL-3.0",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/e833b3fd40f96d888ccc1bd6804e6c3914107ec1"
+    },
+    "domain": "Observe the green channel of a six-digit unprefixed hexadecimal string through six nibble parameters.",
+    "specification": "Observe the green channel of a six-digit unprefixed hexadecimal string through six nibble parameters.",
+    "id": "hex-channel-fault",
+    "source": "int f(int a,int b,int c,int d,int e,int f0){int digits[6];digits[0]=a;digits[1]=b;digits[2]=c;digits[3]=d;digits[4]=e;digits[5]=f0;int start=3;return digits[start]*16+digits[start+1];}",
+    "references": [
+      "int f(int a,int b,int c,int d,int e,int f0){int digits[6];digits[0]=a;digits[1]=b;digits[2]=c;digits[3]=d;digits[4]=e;digits[5]=f0;int start=2;return digits[start]*16+digits[start+1];}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "hex-channel",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "expected": 52
+      },
+      {
+        "arguments": [
+          15,
+          14,
+          13,
+          12,
+          11,
+          10
+        ],
+        "expected": 220
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          7,
+          9,
+          1,
+          11,
+          4,
+          3
+        ],
+        "expected": 27
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          2,
+          6,
+          8,
+          10,
+          12,
+          14
+        ],
+        "expected": 138
+      },
+      {
+        "arguments": [
+          13,
+          0,
+          7,
+          7,
+          1,
+          2
+        ],
+        "expected": 119
+      },
+      {
+        "arguments": [
+          2,
+          5,
+          15,
+          0,
+          3,
+          11
+        ],
+        "expected": 240
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Conversions/HexToRGB.js",
+      "before": "8ffe9cebb958ba9f65b92cca77c04d3e0eaacfc3",
+      "after": "e833b3fd40f96d888ccc1bd6804e6c3914107ec1",
+      "license": "GPL-3.0",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/e833b3fd40f96d888ccc1bd6804e6c3914107ec1"
+    },
+    "domain": "Observe the green channel of a six-digit unprefixed hexadecimal string through six nibble parameters.",
+    "specification": "Observe the green channel of a six-digit unprefixed hexadecimal string through six nibble parameters.",
+    "id": "hex-channel-control",
+    "source": "int f(int a,int b,int c,int d,int e,int f0){int digits[6];digits[0]=a;digits[1]=b;digits[2]=c;digits[3]=d;digits[4]=e;digits[5]=f0;int start=2;return digits[start]*16+digits[start+1];}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "sum-exclusive",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 33
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 33
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          30
+        ],
+        "expected": 195
+      },
+      {
+        "arguments": [
+          24
+        ],
+        "expected": 119
+      },
+      {
+        "arguments": [
+          19
+        ],
+        "expected": 78
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Project-Euler/Problem1.js",
+      "before": "cedab196e7da0a48859baba4839e8ef0dd4aba46",
+      "after": "90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "license": "GPL-3.0",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/90891b56578d7ae6ac4c8a255da507db613bc6f5"
+    },
+    "domain": "Sum multiples of three or five below a small nonnegative bound.",
+    "specification": "Sum multiples of three or five below a small nonnegative bound.",
+    "id": "sum-exclusive-fault",
+    "source": "int f(int bound){int total=0;for(int term=0;term<=bound;term++){if(term%3==0 || term%5==0){total+=term;}}return total;}",
+    "references": [
+      "int f(int bound){int total=0;for(int term=0;term<bound;term++){if(term%3==0 || term%5==0){total+=term;}}return total;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "sum-exclusive",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          15
+        ],
+        "expected": 45
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 14
+      },
+      {
+        "arguments": [
+          12
+        ],
+        "expected": 33
+      },
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          11
+        ],
+        "expected": 33
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          30
+        ],
+        "expected": 195
+      },
+      {
+        "arguments": [
+          24
+        ],
+        "expected": 119
+      },
+      {
+        "arguments": [
+          19
+        ],
+        "expected": 78
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Project-Euler/Problem1.js",
+      "before": "cedab196e7da0a48859baba4839e8ef0dd4aba46",
+      "after": "90891b56578d7ae6ac4c8a255da507db613bc6f5",
+      "license": "GPL-3.0",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/90891b56578d7ae6ac4c8a255da507db613bc6f5"
+    },
+    "domain": "Sum multiples of three or five below a small nonnegative bound.",
+    "specification": "Sum multiples of three or five below a small nonnegative bound.",
+    "id": "sum-exclusive-control",
+    "source": "int f(int bound){int total=0;for(int term=0;term<bound;term++){if(term%3==0 || term%5==0){total+=term;}}return total;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
     "family": "prefix-total-convention",
     "partition": "final",
     "vectors": [

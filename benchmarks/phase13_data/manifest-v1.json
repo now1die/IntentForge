@@ -1,7 +1,7 @@
 {
-  "case_sha256": "4c88bf3ffa449bd4deec0defc7b95aa2ee6d5e88be31355b14789f37b323ca31",
+  "case_sha256": "ec88331bc43de6f5bfa90d1009116cdb124ede114633ba6f4a54c29fc84bdb0b",
   "partitions": {
-    "final": 12,
+    "final": 16,
     "development": 2,
     "selection": 2
   },
@@ -20,7 +20,13 @@
     "empty-maximum-before.txt": "48627e6412723467e26a7661cf2f248525c39c4ab070a132b6c270eae647e886",
     "empty-timsort-LICENSE.txt": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
     "empty-timsort-after.txt": "0456115d633060a0c215cb6a363481dc9cf0914103e8f930f9eb83b8ee8aa9f0",
-    "empty-timsort-before.txt": "dbee1544ef527eedf345057f88e771a127ebd7ab18da76f404e09ab7078f02a7"
+    "empty-timsort-before.txt": "dbee1544ef527eedf345057f88e771a127ebd7ab18da76f404e09ab7078f02a7",
+    "hex-channel-LICENSE.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "hex-channel-after.txt": "b6b27864cc6caedcebd78a8977e73d95abbab319c621827307a56b084c76de97",
+    "hex-channel-before.txt": "2a08645ab7d1c06a6a368bca073e16b5aed1d2249600d69c157da746b1e37742",
+    "sum-exclusive-LICENSE.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "sum-exclusive-after.txt": "355ce2bef1bb047d4e6e6c4dd599f69f9ac0c8a7a496544caf2e15b57fb71a80",
+    "sum-exclusive-before.txt": "8eecfb9d7873d5c7fb45ac53eb26dfc1d2c0e6c6bae4c62f4476030fe8dbb226"
   },
-  "revisions_sha256": "61eeb626e069905050331bf13760dc0c3065a516545fae0c5b8921c064658f04"
+  "revisions_sha256": "c5cc32a74ccafa4bc0f3fb10ea5874c642b4a9e753bfc24fba86dc0e27e2d8be"
 }

@@ -55,6 +55,16 @@ int f(int a,int b){if(leading(a)>leading(b)){return b;}if(leading(a)==leading(b)
     pair("bucket-order", bucket, "int f(int a,int b){if(a>b){return b;}return a;}",
          [(2,13),(16,3),(4,45),(58,72),(93,9),(8,21),(74,7),(19,84)],
          min,"Two positive one- or two-digit integers in a single size-100 bucket. Observe the first returned cell.")
+    channel = "int f(int a,int b,int c,int d,int e,int f0){int digits[6];digits[0]=a;digits[1]=b;digits[2]=c;digits[3]=d;digits[4]=e;digits[5]=f0;int start=3;return digits[start]*16+digits[start+1];}"
+    pair("hex-channel",channel,channel.replace("start=3","start=2"),
+         [(1,2,3,4,5,6),(15,14,13,12,11,10),(0,0,0,0,0,0),(7,9,1,11,4,3),
+          (2,6,8,10,12,14),(13,0,7,7,1,2),(2,5,15,0,3,11)],
+         lambda a,b,c,d,e,f:c*16+d,"Observe the green channel of a six-digit unprefixed hexadecimal string through six nibble parameters.")
+    multiples = "int f(int bound){int total=0;for(int term=0;term<=bound;term++){if(term%3==0 || term%5==0){total+=term;}}return total;}"
+    pair("sum-exclusive",multiples,multiples.replace("<=bound","<bound"),
+         [(15,),(7,),(12,),(0,),(11,),(30,),(24,),(19,)],
+         lambda bound:sum(i for i in range(bound) if i%3==0 or i%5==0),
+         "Sum multiples of three or five below a small nonnegative bound.")
     authored = prefix+"int sum=a[0];for(int i=1;i<n;i++){sum+=a[i];}return sum;}"
     pair("prefix-total-convention", authored, authored.replace("int a[3];","if(n==0){return -17;}int a[3];"),
          [(0,83,-7,4),(1,23,42,15),(2,3,0,9),(3,-4,17,8),(0,-19,28,36),(3,10,24,-2),(2,-7,-8,9)],
