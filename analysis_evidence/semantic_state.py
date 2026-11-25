@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from time import monotonic
 
 from compiler import ast_nodes as ast
+from compiler.symbol_table import SymbolKind
 
 from .dataflow import MAX_TRANSFERS, effects
 
@@ -74,8 +75,8 @@ def target_slot(index, node, arrays):
         key, position = binding(index, node.array), scalar(node.index)
         if key in arrays and type(position) is int and 0 <= position < arrays[key]:
             return key, position
-    elif key := binding(index, node):
-        return key, None
+    elif (symbol := index.identifiers.get(id(node))) and symbol.kind in {SymbolKind.VARIABLE, SymbolKind.PARAMETER}:
+        return symbol.id, None
     return None
 
 

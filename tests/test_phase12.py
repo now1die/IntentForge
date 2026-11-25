@@ -38,6 +38,10 @@ def test_cfg_join_and_shadowed_cells():
     assert len({row["binding"] for row in facts if row["name"] == "x"}) == 2
     assert {(row["cell"], row["initialization"]) for row in facts if row["name"] == "slots"} == {
         (0, "INITIALIZED"), (1, "UNINITIALIZED")}
+    helper = analyze_intention("int helper(int x){return x+1;}int f(int v){int result=helper(v);return result;}", phase12=True)
+    helper_facts = [row for row in report(helper)["facts"] if row["kind"] == "initialization"]
+    assert all(row["name"] != "helper" for row in helper_facts)
+    assert any(row["name"] == "result" and row["initialization"] == "INITIALIZED" for row in helper_facts)
     joined = analyze("int f(bool ok){int x;if(ok){x=7;}return x;}")
     assert any(row["initialization"] == "MAYBE_INITIALIZED" and row["name"] == "x"
                for row in report(joined)["facts"])
