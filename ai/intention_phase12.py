@@ -324,7 +324,8 @@ def synthesize(context, program, spec, enabled, inherited):
         if "initialization" in enabled:
             trials.extend(sentinel_analysis(item, states, program.bindings, contracts))
         if "entry" in enabled and selected and item.function.body.statements:
-            trials.extend(entry_trials(item, program.bindings, arrays, spec))
+            prefixes = loop_prefixes(item, program.bindings, arrays)
+            trials.extend(entry_trials(item, program.bindings, arrays, spec, prefixes))
             trials.extend(aggregate_trials(item, program.bindings, arrays))
         if "logical" in enabled:
             trials.extend(logical_analysis(item, states, program.bindings, arrays, spec, contracts))

@@ -33,13 +33,12 @@ def aggregate_trials(item, index, arrays):
                             "This traversal updates a count and an array. The supplied outputs support reading an endpoint of the resulting array.")
 
 
-def entry_trials(item, index, arrays, spec):
-    from .intention_phase12 import loop_prefixes
+def entry_trials(item, index, arrays, spec, prefixes):
     if not spec.examples or item.function.return_type != "int":
         return
     statements = item.function.body.statements
-    for loop, key, length, position in loop_prefixes(item, index, arrays):
-        # Require an earlier direct, unguarded seed read from the scanned array.
+    for loop, key, length, position in prefixes:
+        # Require an earlier direct seed read from the scanned array.
         seeds = [stmt for stmt in statements if isinstance(stmt, ast.VariableDeclaration)
                  and stmt.span.end.offset <= loop.syntax.span.start.offset
                  and isinstance(stmt.initializer, ast.ArrayAccess)
@@ -53,4 +52,4 @@ def entry_trials(item, index, arrays, spec):
         if type(result) is int:
             name = index.symbols[length].name
             yield Trial(EMPTY, (Edit(point(statements[0].span.start), f"if ({name} == 0) {{ return {result}; }} "),),
-                        "The prefix scan uses a fixed array, but its seed reads the first cell even when the supplied length is zero.")
+                        "The prefix scan has a first-cell seed. The supplied zero-length examples support returning before the scan.")

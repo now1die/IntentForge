@@ -1,0 +1,62 @@
+{
+  "sha256": "ec88331bc43de6f5bfa90d1009116cdb124ede114633ba6f4a54c29fc84bdb0b",
+  "historical_sources": 1346,
+  "frozen_partitions": {
+    "final": 16,
+    "development": 2,
+    "selection": 2
+  },
+  "admitted_partitions": {
+    "final": 12
+  },
+  "quarantined_families": [
+    "bucket-order",
+    "development-double",
+    "selection-cube",
+    "sum-exclusive"
+  ],
+  "historical_overlaps": [
+    {
+      "case": "bucket-order-fault",
+      "match": "near",
+      "ratio": 0.96,
+      "historical_sha256": "808b1558e5e4167a38461fd1176023888dac0669139c2e4dab7320097fe84f9e"
+    },
+    {
+      "case": "bucket-order-control",
+      "match": "near",
+      "ratio": 0.96,
+      "historical_sha256": "808b1558e5e4167a38461fd1176023888dac0669139c2e4dab7320097fe84f9e"
+    },
+    {
+      "case": "sum-exclusive-fault",
+      "match": "alpha"
+    },
+    {
+      "case": "sum-exclusive-fault",
+      "match": "alpha"
+    },
+    {
+      "case": "sum-exclusive-control",
+      "match": "alpha"
+    },
+    {
+      "case": "development-double-fault",
+      "match": "alpha"
+    },
+    {
+      "case": "development-double-control",
+      "match": "alpha"
+    },
+    {
+      "case": "selection-cube-fault",
+      "match": "alpha"
+    }
+  ],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [],
+  "shared_cross_partition_edit_shapes": 0,
+  "historical_revision_overlap": [
+    "sum-exclusive"
+  ]
+}

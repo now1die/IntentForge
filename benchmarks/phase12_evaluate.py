@@ -105,16 +105,17 @@ def metrics(rows):
     return groups | {"controls_with_static_suggestions": fraction(sum(bool(row["candidates"]) for row in controls), len(controls))}
 
 
-def metamorphic(oracle, cases):
+def metamorphic(oracle, cases, profile="phase12"):
+    settings = {profile: True}
     changes, counts = [], Counter()
     for case in cases:
         source = case["source"]
         vectors = suite(case["vectors"])
-        signature = candidate_signature(oracle, run_projection(case, phase12=True).candidates, "f", vectors)
+        signature = candidate_signature(oracle, run_projection(case, **settings).candidates, "f", vectors)
         original = observed(execute(oracle, source, vectors))
         for name, variant, entry in nested_variations(source):
             counts[name] += 1
-            result = run_projection(case, source=variant, entry=entry, phase12=True)
+            result = run_projection(case, source=variant, entry=entry, **settings)
             revised = candidate_signature(oracle, result.candidates, entry, vectors)
             if observed(execute(oracle, variant, vectors, entry)) != original or revised != signature:
                 changes.append({"case": case["id"], "transformation": name,
@@ -141,14 +142,14 @@ def evaluate(cases):
     return {"profiles": reports, "archived": archive, "metamorphic": metamorphic(oracle, cases)}
 
 
-def live(cases):
+def live(cases, versions=(105, 11, 115, 12)):
     from fastapi.testclient import TestClient
     from backend.app.main import app
 
     runs = {}
     with TestClient(app, base_url="http://127.0.0.1:8000", client=("127.0.0.1", 41712)) as client:
         assert client.get(URL + "/capability").json()["status"] == "available"
-        for version in (105, 11, 115, 12):
+        for version in versions:
             rows, durations = [], []
             for case in cases:
                 start = perf_counter()

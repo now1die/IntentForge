@@ -1,0 +1,1655 @@
+{
+  "profiles": {
+    "105": {
+      "rows": [
+        {
+          "id": "digit-count-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "digit-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "combination-domain-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "combination-domain-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-maximum-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-maximum-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-timsort-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-cf88ad088a56",
+              "category": "BRANCH_ARITHMETIC_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-timsort-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "hex-channel-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "hex-channel-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "prefix-total-convention-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "prefix-total-convention-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 6,
+          "wilson95": [
+            0,
+            0.39
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 27.093,
+        "median_ms": 6.203,
+        "p95_ms": 128.369
+      }
+    },
+    "11": {
+      "rows": [
+        {
+          "id": "digit-count-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "digit-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "combination-domain-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "combination-domain-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-maximum-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-maximum-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-timsort-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-cf88ad088a56",
+              "category": "BRANCH_ARITHMETIC_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-timsort-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "hex-channel-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "hex-channel-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "prefix-total-convention-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "prefix-total-convention-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 6,
+          "wilson95": [
+            0,
+            0.39
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 10.52,
+        "median_ms": 7.657,
+        "p95_ms": 41.222
+      }
+    },
+    "115": {
+      "rows": [
+        {
+          "id": "digit-count-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "digit-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "combination-domain-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "combination-domain-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-maximum-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-maximum-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-timsort-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-cf88ad088a56",
+              "category": "BRANCH_ARITHMETIC_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-timsort-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "hex-channel-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "hex-channel-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "prefix-total-convention-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "prefix-total-convention-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 6,
+          "wilson95": [
+            0,
+            0.39
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 9.95,
+        "median_ms": 7.138,
+        "p95_ms": 41.469
+      }
+    },
+    "12": {
+      "rows": [
+        {
+          "id": "digit-count-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "digit-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "combination-domain-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "combination-domain-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-maximum-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-maximum-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-timsort-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-cf88ad088a56",
+              "category": "BRANCH_ARITHMETIC_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-timsort-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "hex-channel-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "hex-channel-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "prefix-total-convention-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "prefix-total-convention-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 6,
+          "wilson95": [
+            0,
+            0.39
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 17.919,
+        "median_ms": 6.898,
+        "p95_ms": 46.662
+      }
+    },
+    "13": {
+      "rows": [
+        {
+          "id": "digit-count-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "digit-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "combination-domain-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "combination-domain-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-maximum-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-2dd632f1cc61",
+              "category": "EMPTY_ENTRY_RESULT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": false,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "empty-maximum-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "CONSTRAINTS_ALREADY_AGREE"
+        },
+        {
+          "id": "empty-timsort-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-cf88ad088a56",
+              "category": "BRANCH_ARITHMETIC_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-timsort-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "hex-channel-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "hex-channel-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "prefix-total-convention-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-a5f2e23e947f",
+              "category": "EMPTY_ENTRY_RESULT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "prefix-total-convention-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "CONSTRAINTS_ALREADY_AGREE"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 1,
+            "total": 5,
+            "wilson95": [
+              0.036,
+              0.624
+            ]
+          },
+          "behavioral": {
+            "hits": 2,
+            "total": 5,
+            "wilson95": [
+              0.118,
+              0.769
+            ]
+          },
+          "generated": {
+            "hits": 2,
+            "total": 5,
+            "wilson95": [
+              0.118,
+              0.769
+            ]
+          },
+          "compiler_valid": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 2,
+            "total": 2,
+            "wilson95": [
+              0.342,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 5,
+            "wilson95": [
+              0,
+              0.434
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 1,
+            "wilson95": [
+              0,
+              0.793
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 6,
+          "wilson95": [
+            0,
+            0.39
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 15.614,
+        "median_ms": 6.702,
+        "p95_ms": 47.293
+      }
+    }
+  },
+  "archive": [
+    {
+      "id": "exponential-negative-endpoint-fault",
+      "origin": "adapted-real-defect",
+      "original": "EXECUTION_LIMITED",
+      "original_issue": "CALL_DEPTH",
+      "original_holdout": "EXECUTION_LIMITED",
+      "candidates": [
+        {
+          "id": "IR-1d8db01a8b71",
+          "category": "EXPLICIT_ENDPOINT_CONSTRAINT",
+          "edits": 1,
+          "compiler_valid": true,
+          "exact": true,
+          "discovery": "MATCHES_SUPPLIED_TESTS",
+          "holdout": "MATCHES_SUPPLIED_TESTS",
+          "counterexamples": []
+        }
+      ],
+      "code_only_exact": false,
+      "code_only_behavioral": false,
+      "phase12_status": "OBSERVATION_ONLY"
+    },
+    {
+      "id": "constant-interpolation-domain-fault",
+      "origin": "adapted-real-defect",
+      "original": "BEHAVIOR_UNKNOWN",
+      "original_issue": "DIVISION_BY_ZERO",
+      "original_holdout": "BEHAVIOR_UNKNOWN",
+      "candidates": [
+        {
+          "id": "IR-3a7f1aac22e6",
+          "category": "INTERPOLATION_RELATIONAL_CONSTRAINT",
+          "edits": 2,
+          "compiler_valid": true,
+          "exact": false,
+          "discovery": "MATCHES_SUPPLIED_TESTS",
+          "holdout": "MATCHES_SUPPLIED_TESTS",
+          "counterexamples": []
+        },
+        {
+          "id": "IR-c5374f141bde",
+          "category": "INTERPOLATION_RELATIONAL_CONSTRAINT",
+          "edits": 1,
+          "compiler_valid": true,
+          "exact": false,
+          "discovery": "MATCHES_SUPPLIED_TESTS",
+          "holdout": "MATCHES_SUPPLIED_TESTS",
+          "counterexamples": []
+        }
+      ],
+      "code_only_exact": false,
+      "code_only_behavioral": false,
+      "phase12_status": "OBSERVATION_ONLY"
+    },
+    {
+      "id": "short-rotation-pivot-fault",
+      "origin": "adapted-real-defect",
+      "original": "BEHAVIOR_UNKNOWN",
+      "original_issue": "ARRAY_BOUNDS",
+      "original_holdout": "BEHAVIOR_UNKNOWN",
+      "candidates": [],
+      "code_only_exact": false,
+      "code_only_behavioral": false,
+      "phase12_status": "OBSERVATION_ONLY"
+    },
+    {
+      "id": "shifted-missing-member-fault",
+      "origin": "adapted-real-defect",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "original_issue": null,
+      "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+      "candidates": [],
+      "code_only_exact": false,
+      "code_only_behavioral": false,
+      "phase12_status": "OBSERVATION_ONLY"
+    },
+    {
+      "id": "jump-empty-input-fault",
+      "origin": "adapted-real-defect",
+      "original": "BEHAVIOR_UNKNOWN",
+      "original_issue": "ARRAY_BOUNDS",
+      "original_holdout": "BEHAVIOR_UNKNOWN",
+      "candidates": [],
+      "code_only_exact": false,
+      "code_only_behavioral": false,
+      "phase12_status": "OBSERVATION_ONLY"
+    },
+    {
+      "id": "cycle-sort-return-kind-fault",
+      "origin": "adapted-real-defect",
+      "original": "MISMATCHES_SUPPLIED_TESTS",
+      "original_issue": null,
+      "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+      "candidates": [],
+      "code_only_exact": false,
+      "code_only_behavioral": false,
+      "phase12_status": "UNSUPPORTED_PROJECTION"
+    }
+  ],
+  "metamorphic": {
+    "checks": {
+      "alpha_rename": 12,
+      "format": 12,
+      "parenthesize_return": 24,
+      "reverse_comparison": 7,
+      "unused_shadow_scope": 12,
+      "nested_return": 12,
+      "independent_temporary": 12,
+      "equivalent_latch": 6,
+      "reverse_guard_and_returns": 1
+    },
+    "total": 98,
+    "changes": []
+  }
+}

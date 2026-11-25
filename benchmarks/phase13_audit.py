@@ -1,4 +1,5 @@
 """Validate partitioning, source overlap and the frozen revision pairs."""
+from collections import Counter
 from hashlib import sha256
 import json
 
@@ -15,8 +16,11 @@ def audit():
     assert manifest["revisions_sha256"] == sha256((ROOT/"revisions.json").read_bytes()).hexdigest()
     prior = {row[key] for directory in history for path in directory.rglob("*.json")
              for row in records(json.loads(path.read_text())) for key in ("before","after") if isinstance(row.get(key),str)}
-    for source in PINS.values():
-        assert {source["before"],source["after"]}.isdisjoint(prior)
+    reused = {family for family, source in PINS.items() if {source["before"],source["after"]} & prior}
+    admitted = [row for row in admitted if row["family"] not in reused]
+    report["historical_revision_overlap"] = sorted(reused)
+    report["quarantined_families"] = sorted(set(report["quarantined_families"]) | reused)
+    report["admitted_partitions"] = dict(Counter(row["partition"] for row in admitted))
     for row in admitted:
         assert {tuple(v["arguments"]) for v in row["vectors"]}.isdisjoint(tuple(v["arguments"]) for v in row["holdout_vectors"])
     return admitted, report
