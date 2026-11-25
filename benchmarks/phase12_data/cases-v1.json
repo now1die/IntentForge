@@ -1,0 +1,1156 @@
+[
+  {
+    "family": "jump-empty-input",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Jump search over sorted distinct active prefixes of four physical cells.",
+    "domain": "Jump search over sorted distinct active prefixes of four physical cells.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          19,
+          24,
+          73,
+          20,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          4,
+          20,
+          0,
+          7,
+          10,
+          20
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          -9,
+          -9,
+          6,
+          88,
+          96
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          6,
+          -4,
+          0,
+          7,
+          12
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          1,
+          -20,
+          3,
+          10,
+          6,
+          4
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -31,
+          -8,
+          4,
+          92,
+          -29
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          3,
+          71,
+          -1,
+          41,
+          71,
+          -82
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          17,
+          -1,
+          0,
+          8,
+          11
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "searches/jump_search.py",
+      "before": "481dd54e975c4a3c2eb37465fc40ad484c53ed85",
+      "after": "13f71409f675eec1c59aef6ff2bac9d3b2a74617",
+      "archive": "jump",
+      "license": "MIT",
+      "adaptation": "Sorted distinct int prefixes of length 0\u20134. Replace floor sqrt with the equivalent three-way constant rule. Empty IndexError maps to ARRAY_BOUNDS.",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/13f71409f675eec1c59aef6ff2bac9d3b2a74617"
+    },
+    "id": "jump-empty-input-fault",
+    "source": "int smaller(int left,int right){if(left<right){return left;}return right;}\nint f(int n,int key,int a,int b,int c,int d){\n int cells[4];cells[0]=a;cells[1]=b;cells[2]=c;cells[3]=d;\n int stride=1;if(n==0){stride=0;}if(n==4){stride=2;}\n int previous=0;int step=stride;\n while(cells[smaller(step,n)-1]<key){previous=step;step+=stride;if(previous>=n){return -1;}}\n while(cells[previous]<key){previous++;if(previous==smaller(step,n)){return -1;}}\n if(cells[previous]==key){return previous;}return -1;\n}",
+    "references": [
+      "int smaller(int left,int right){if(left<right){return left;}return right;}\nint f(int n,int key,int a,int b,int c,int d){\n int cells[4];cells[0]=a;cells[1]=b;cells[2]=c;cells[3]=d;\n if(n==0){return -1;}int stride=1;if(n==0){stride=0;}if(n==4){stride=2;}\n int previous=0;int step=stride;\n while(cells[smaller(step,n)-1]<key){previous=step;step+=stride;if(previous>=n){return -1;}}\n while(cells[previous]<key){previous++;if(previous==smaller(step,n)){return -1;}}\n if(cells[previous]==key){return previous;}return -1;\n}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "jump-empty-input",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Jump search over sorted distinct active prefixes of four physical cells.",
+    "domain": "Jump search over sorted distinct active prefixes of four physical cells.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          19,
+          24,
+          73,
+          20,
+          18
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          4,
+          20,
+          0,
+          7,
+          10,
+          20
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          2,
+          -9,
+          -9,
+          6,
+          88,
+          96
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          6,
+          -4,
+          0,
+          7,
+          12
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          1,
+          -20,
+          3,
+          10,
+          6,
+          4
+        ],
+        "expected": -1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -31,
+          -8,
+          4,
+          92,
+          -29
+        ],
+        "expected": -1
+      },
+      {
+        "arguments": [
+          3,
+          71,
+          -1,
+          41,
+          71,
+          -82
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          4,
+          17,
+          -1,
+          0,
+          8,
+          11
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "searches/jump_search.py",
+      "before": "481dd54e975c4a3c2eb37465fc40ad484c53ed85",
+      "after": "13f71409f675eec1c59aef6ff2bac9d3b2a74617",
+      "archive": "jump",
+      "license": "MIT",
+      "adaptation": "Sorted distinct int prefixes of length 0\u20134. Replace floor sqrt with the equivalent three-way constant rule. Empty IndexError maps to ARRAY_BOUNDS.",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/13f71409f675eec1c59aef6ff2bac9d3b2a74617"
+    },
+    "id": "jump-empty-input-control",
+    "source": "int smaller(int left,int right){if(left<right){return left;}return right;}\nint f(int n,int key,int a,int b,int c,int d){\n int cells[4];cells[0]=a;cells[1]=b;cells[2]=c;cells[3]=d;\n if(n==0){return -1;}int stride=1;if(n==0){stride=0;}if(n==4){stride=2;}\n int previous=0;int step=stride;\n while(cells[smaller(step,n)-1]<key){previous=step;step+=stride;if(previous>=n){return -1;}}\n while(cells[previous]<key){previous++;if(previous==smaller(step,n)){return -1;}}\n if(cells[previous]==key){return previous;}return -1;\n}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "cycle-sort-return-kind",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Cycle sort over distinct values, observed through the first returned element.",
+    "domain": "Cycle sort over distinct values, observed through the first returned element.",
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          3,
+          -4,
+          19
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          5,
+          2,
+          9,
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -31,
+          1,
+          -3,
+          4
+        ],
+        "expected": -31
+      },
+      {
+        "arguments": [
+          9,
+          8,
+          7,
+          6
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          5,
+          -28,
+          31,
+          0
+        ],
+        "expected": -28
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          23,
+          65,
+          28,
+          77
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          -29,
+          -70,
+          -32,
+          -48
+        ],
+        "expected": -70
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Sorts/CycleSort.js",
+      "before": "b3e6eed3cef3d82b5bb4989c0a2406698e847832",
+      "after": "0da3880955e0641b4d6b34782bd3892cb4b08802",
+      "archive": "cycle",
+      "license": "GPL-3.0",
+      "adaptation": "Four distinct signed integer cells. Broken numeric write count is preserved. Correct returned array is projected to its first element.",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/0da3880955e0641b4d6b34782bd3892cb4b08802"
+    },
+    "id": "cycle-sort-return-kind-fault",
+    "source": "int f(int u,int v,int w,int z){\n int list[4];list[0]=u;list[1]=v;list[2]=w;list[3]=z;int writes=0;\n for(int first=0;first<4;first++){\n   int value=list[first];int pos=first;\n   for(int i=first+1;i<4;i++){if(list[i]<value){pos++;}}\n   if(pos==first){continue;}\n   while(value==list[pos]){pos++;}\n   int old=list[pos];list[pos]=value;value=old;writes++;\n   while(pos!=first){\n     pos=first;\n     for(int j=first+1;j<4;j++){if(list[j]<value){pos++;}}\n     while(value==list[pos]){pos++;}\n     int next=list[pos];list[pos]=value;value=next;writes++;\n   }\n }\n return writes;\n}",
+    "references": [
+      "int f(int u,int v,int w,int z){\n int list[4];list[0]=u;list[1]=v;list[2]=w;list[3]=z;int writes=0;\n for(int first=0;first<4;first++){\n   int value=list[first];int pos=first;\n   for(int i=first+1;i<4;i++){if(list[i]<value){pos++;}}\n   if(pos==first){continue;}\n   while(value==list[pos]){pos++;}\n   int old=list[pos];list[pos]=value;value=old;writes++;\n   while(pos!=first){\n     pos=first;\n     for(int j=first+1;j<4;j++){if(list[j]<value){pos++;}}\n     while(value==list[pos]){pos++;}\n     int next=list[pos];list[pos]=value;value=next;writes++;\n   }\n }\n return list[0];\n}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "cycle-sort-return-kind",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Cycle sort over distinct values, observed through the first returned element.",
+    "domain": "Cycle sort over distinct values, observed through the first returned element.",
+    "vectors": [
+      {
+        "arguments": [
+          8,
+          3,
+          -4,
+          19
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          5,
+          2,
+          9,
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          -31,
+          1,
+          -3,
+          4
+        ],
+        "expected": -31
+      },
+      {
+        "arguments": [
+          9,
+          8,
+          7,
+          6
+        ],
+        "expected": 6
+      },
+      {
+        "arguments": [
+          5,
+          -28,
+          31,
+          0
+        ],
+        "expected": -28
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          23,
+          65,
+          28,
+          77
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          -29,
+          -70,
+          -32,
+          -48
+        ],
+        "expected": -70
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "expected": 1
+      }
+    ],
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Sorts/CycleSort.js",
+      "before": "b3e6eed3cef3d82b5bb4989c0a2406698e847832",
+      "after": "0da3880955e0641b4d6b34782bd3892cb4b08802",
+      "archive": "cycle",
+      "license": "GPL-3.0",
+      "adaptation": "Four distinct signed integer cells. Broken numeric write count is preserved. Correct returned array is projected to its first element.",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/0da3880955e0641b4d6b34782bd3892cb4b08802"
+    },
+    "id": "cycle-sort-return-kind-control",
+    "source": "int f(int u,int v,int w,int z){\n int list[4];list[0]=u;list[1]=v;list[2]=w;list[3]=z;int writes=0;\n for(int first=0;first<4;first++){\n   int value=list[first];int pos=first;\n   for(int i=first+1;i<4;i++){if(list[i]<value){pos++;}}\n   if(pos==first){continue;}\n   while(value==list[pos]){pos++;}\n   int old=list[pos];list[pos]=value;value=old;writes++;\n   while(pos!=first){\n     pos=first;\n     for(int j=first+1;j<4;j++){if(list[j]<value){pos++;}}\n     while(value==list[pos]){pos++;}\n     int next=list[pos];list[pos]=value;value=next;writes++;\n   }\n }\n return list[0];\n}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "optional-value-write",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "An explicit optional write can store any signed value.",
+    "domain": "An explicit optional write can store any signed value.",
+    "vectors": [
+      {
+        "arguments": [
+          true,
+          -7,
+          43
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          false,
+          6,
+          44
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          true,
+          0,
+          -22
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          true,
+          -33,
+          -33
+        ],
+        "expected": -33
+      },
+      {
+        "arguments": [
+          false,
+          -7,
+          52
+        ],
+        "expected": 52
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          true,
+          -7,
+          -40
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          false,
+          -7,
+          -7
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          true,
+          19,
+          8
+        ],
+        "expected": 19
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "optional-value-write-fault",
+    "source": "int f(bool use,int value,int base){\n int member=-7;bool found=false;\n if(use){member=value;found=true;}\n if(member==-7){return base;}return member;\n}",
+    "references": [
+      "int f(bool use,int value,int base){\n int member=-7;bool found=false;\n if(use){member=value;found=true;}\n if(!found){return base;}return member;\n}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "authored-injected"
+  },
+  {
+    "family": "optional-value-write",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "An explicit optional write can store any signed value.",
+    "domain": "An explicit optional write can store any signed value.",
+    "vectors": [
+      {
+        "arguments": [
+          true,
+          -7,
+          43
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          false,
+          6,
+          44
+        ],
+        "expected": 44
+      },
+      {
+        "arguments": [
+          true,
+          0,
+          -22
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          true,
+          -33,
+          -33
+        ],
+        "expected": -33
+      },
+      {
+        "arguments": [
+          false,
+          -7,
+          52
+        ],
+        "expected": 52
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          true,
+          -7,
+          -40
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          false,
+          -7,
+          -7
+        ],
+        "expected": -7
+      },
+      {
+        "arguments": [
+          true,
+          19,
+          8
+        ],
+        "expected": 19
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "optional-value-write-control",
+    "source": "int f(bool use,int value,int base){\n int member=-7;bool found=false;\n if(use){member=value;found=true;}\n if(!found){return base;}return member;\n}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "rectangular-row-alias",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Independent signed coordinates select a cell of a rectangular grid.",
+    "domain": "Independent signed coordinates select a cell of a rectangular grid.",
+    "vectors": [
+      {
+        "arguments": [
+          -1,
+          2,
+          82,
+          67
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          2,
+          0,
+          48,
+          91
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          13,
+          -5
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          79,
+          56
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          0,
+          -1,
+          49,
+          11
+        ],
+        "expected": -19
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          0,
+          23,
+          34
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          41,
+          1,
+          83,
+          29
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          27,
+          13
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "rectangular-row-alias-fault",
+    "source": "int f(int band,int slot,int head,int tail){\n int map[6];map[0]=head;map[1]=17;map[2]=0;map[3]=32;map[4]=-1;map[5]=tail;\n if(slot<0 || slot>=3){return -19;}return map[band*3+slot];\n}",
+    "references": [
+      "int f(int band,int slot,int head,int tail){\n int map[6];map[0]=head;map[1]=17;map[2]=0;map[3]=32;map[4]=-1;map[5]=tail;\n if(slot<0 || slot>=3 || band < 0 || band >= 2){return -19;}return map[band*3+slot];\n}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "authored-injected"
+  },
+  {
+    "family": "rectangular-row-alias",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Independent signed coordinates select a cell of a rectangular grid.",
+    "domain": "Independent signed coordinates select a cell of a rectangular grid.",
+    "vectors": [
+      {
+        "arguments": [
+          -1,
+          2,
+          82,
+          67
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          2,
+          0,
+          48,
+          91
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          0,
+          0,
+          13,
+          -5
+        ],
+        "expected": 13
+      },
+      {
+        "arguments": [
+          1,
+          2,
+          79,
+          56
+        ],
+        "expected": 56
+      },
+      {
+        "arguments": [
+          0,
+          -1,
+          49,
+          11
+        ],
+        "expected": -19
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          0,
+          23,
+          34
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          41,
+          1,
+          83,
+          29
+        ],
+        "expected": -19
+      },
+      {
+        "arguments": [
+          1,
+          1,
+          27,
+          13
+        ],
+        "expected": -1
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "rectangular-row-alias-control",
+    "source": "int f(int band,int slot,int head,int tail){\n int map[6];map[0]=head;map[1]=17;map[2]=0;map[3]=32;map[4]=-1;map[5]=tail;\n if(slot<0 || slot>=3 || band < 0 || band >= 2){return -19;}return map[band*3+slot];\n}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "empty-negative-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Count negative entries in an active prefix that may be empty.",
+    "domain": "Count negative entries in an active prefix that may be empty.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          -8,
+          61,
+          -53,
+          21,
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          -1,
+          0,
+          2,
+          -6,
+          -7
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          -2,
+          -3,
+          -61,
+          10,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          0,
+          -10,
+          -21,
+          -9,
+          -4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          -16,
+          -2,
+          -22,
+          31,
+          5
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          57,
+          2,
+          3,
+          -19,
+          -2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          -1,
+          -2,
+          -9,
+          0,
+          -64
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          7,
+          8,
+          23,
+          45
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "empty-negative-count-fault",
+    "source": "int f(int count,int a,int b,int c,int d,int e){\n int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n if(count==0){return data[0];}int value=0;\n for(int j=0;j<count;j++){if(data[j]<0){value++;}}return value;\n}",
+    "references": [
+      "int f(int count,int a,int b,int c,int d,int e){\n int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n if(count==0){return 0;}int value=0;\n for(int j=0;j<count;j++){if(data[j]<0){value++;}}return value;\n}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "authored-injected"
+  },
+  {
+    "family": "empty-negative-count",
+    "partition": "final",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Count negative entries in an active prefix that may be empty.",
+    "domain": "Count negative entries in an active prefix that may be empty.",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          -8,
+          61,
+          -53,
+          21,
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          3,
+          -1,
+          0,
+          2,
+          -6,
+          -7
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          5,
+          -2,
+          -3,
+          -61,
+          10,
+          0
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          1,
+          0,
+          -10,
+          -21,
+          -9,
+          -4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          2,
+          -16,
+          -2,
+          -22,
+          31,
+          5
+        ],
+        "expected": 2
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          57,
+          2,
+          3,
+          -19,
+          -2
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          4,
+          -1,
+          -2,
+          -9,
+          0,
+          -64
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          5,
+          4,
+          7,
+          8,
+          23,
+          45
+        ],
+        "expected": 0
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "empty-negative-count-control",
+    "source": "int f(int count,int a,int b,int c,int d,int e){\n int data[5];data[0]=a;data[1]=b;data[2]=c;data[3]=d;data[4]=e;\n if(count==0){return 0;}int value=0;\n for(int j=0;j<count;j++){if(data[j]<0){value++;}}return value;\n}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "conditional-boolean-return",
+    "partition": "development",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Inert Boolean selection control.",
+    "domain": "Inert Boolean selection control.",
+    "vectors": [
+      {
+        "arguments": [
+          true,
+          false,
+          false
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          true,
+          true,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          true,
+          true,
+          true
+        ],
+        "expected": true
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          false,
+          true,
+          true
+        ],
+        "expected": true
+      },
+      {
+        "arguments": [
+          false,
+          false,
+          false
+        ],
+        "expected": false
+      },
+      {
+        "arguments": [
+          false,
+          false,
+          true
+        ],
+        "expected": true
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "conditional-boolean-return-control",
+    "source": "bool f(bool a,bool b,bool c){if(a&&b){return c;}return a||c;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "paired-integer-order",
+    "partition": "selection",
+    "compiler_valid": true,
+    "requirement": null,
+    "specification": "Selection control for a conditional arithmetic result.",
+    "domain": "Selection control for a conditional arithmetic result.",
+    "vectors": [
+      {
+        "arguments": [
+          7,
+          18,
+          8
+        ],
+        "expected": 11
+      },
+      {
+        "arguments": [
+          -4,
+          0,
+          -1
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          12,
+          -4,
+          7
+        ],
+        "expected": 7
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          10,
+          -2
+        ],
+        "expected": 10
+      },
+      {
+        "arguments": [
+          -19,
+          -2,
+          8
+        ],
+        "expected": 17
+      },
+      {
+        "arguments": [
+          7,
+          7,
+          36
+        ],
+        "expected": 36
+      }
+    ],
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 12"
+    },
+    "id": "paired-integer-order-control",
+    "source": "int f(int a,int b,int c){int x=c;if(a<b){x=b-a;}return x;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  }
+]

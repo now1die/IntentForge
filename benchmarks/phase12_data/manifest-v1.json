@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "case_sha256": "74820fc65326c0bc14368c3193d6d8802e294e023ab5d7ddbe67ecd193401154",
+  "partitions": {
+    "final": 10,
+    "development": 1,
+    "selection": 1
+  },
+  "external_sources": {
+    "jump-empty-input": {
+      "repository": "TheAlgorithms/Python",
+      "path": "searches/jump_search.py",
+      "before": "481dd54e975c4a3c2eb37465fc40ad484c53ed85",
+      "after": "13f71409f675eec1c59aef6ff2bac9d3b2a74617",
+      "archive": "jump",
+      "license": "MIT",
+      "adaptation": "Sorted distinct int prefixes of length 0\u20134. Replace floor sqrt with the equivalent three-way constant rule. Empty IndexError maps to ARRAY_BOUNDS."
+    },
+    "cycle-sort-return-kind": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Sorts/CycleSort.js",
+      "before": "b3e6eed3cef3d82b5bb4989c0a2406698e847832",
+      "after": "0da3880955e0641b4d6b34782bd3892cb4b08802",
+      "archive": "cycle",
+      "license": "GPL-3.0",
+      "adaptation": "Four distinct signed integer cells. Broken numeric write count is preserved. Correct returned array is projected to its first element."
+    }
+  },
+  "upstream_sha256": {
+    "LICENSE-cycle.md": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "LICENSE-jump.md": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "cycle-after.js.txt": "d57202aa3fac806c8a83810b390f2b68c65fd561cdabde544a62a9fb44f6c78c",
+    "cycle-before.js.txt": "bafd2b428b438c4fa979e5c6c9674895405c461f745fdda8c0887f6f4b47253f",
+    "jump-after.py.txt": "bb274db1e8952b5e3a924acd66dd2b6880ec49d9b74d354fec97fee4713786b2",
+    "jump-before.py.txt": "bbeb2d8e3dc1f6c78c4e8b6ab7147f56fd9a977ec54e3021268523bba8141a37"
+  }
+}

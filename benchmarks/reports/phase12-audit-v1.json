@@ -1,0 +1,23 @@
+{
+  "sha256": "74820fc65326c0bc14368c3193d6d8802e294e023ab5d7ddbe67ecd193401154",
+  "historical_sources": 1334,
+  "frozen_partitions": {
+    "final": 10,
+    "development": 1,
+    "selection": 1
+  },
+  "admitted_partitions": {
+    "final": 10,
+    "development": 1,
+    "selection": 1
+  },
+  "quarantined_families": [],
+  "historical_overlaps": [],
+  "repeated_historical_metadata": [],
+  "cross_partition_overlaps": [],
+  "shared_cross_partition_edit_shapes": 0,
+  "upstream_repositories": [
+    "TheAlgorithms/JavaScript",
+    "TheAlgorithms/Python"
+  ]
+}

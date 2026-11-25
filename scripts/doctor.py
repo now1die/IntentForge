@@ -97,28 +97,41 @@ def main():
     print("API base","custom override configured" if os.environ.get("VITE_API_BASE_URL") else "same-origin /api by default")
     errors=(URLError,TimeoutError,OSError,ValueError)
     try:
-        health=json_response(backend+"/health")
-        compiler=json_response(backend+"/analyze",{"code":"int main(){return 0;}"})
-        backend_ok=health.get("status")=="ok" and compiler.get("success") is True
-        print("Backend API reachable")
-        print("Mini-C compiler","ready" if backend_ok else "analysis failed")
+        health = json_response(backend + "/health")
+        reachable = health.get("status") == "ok"
+        print("Backend API", "reachable" if reachable else "unexpected health response")
     except errors:
-        print("Backend API unreachable or unready")
-        backend_ok=False
+        print("Backend API unreachable")
+        reachable = False
+    backend_ok = False
+    if reachable:
+        try:
+            compiler = json_response(backend + "/analyze", {"code": "int main(){return 0;}"})
+            backend_ok = compiler.get("success") is True
+        except errors:
+            pass
+        print("Mini-C compiler", "ready" if backend_ok else "analysis failed")
+    frontend_ok = False
     try:
-        content,body=request(frontend+"/")
-        startup=StartupScript()
-        startup.feed(body.decode())
-        asset=urljoin(frontend,startup.source or "")
-        if "text/html" not in content or not startup.source or urlsplit(asset).netloc!=urlsplit(frontend).netloc:
-            raise ValueError("Missing same-origin entry script")
-        if "javascript" not in request(asset,read_limit=1024)[0]:
-            raise ValueError("Entry script could not be served")
-        frontend_ok=True
-        print("Frontend HTML and entry JavaScript reachable")
+        content, body = request(frontend + "/")
+        if "text/html" not in content:
+            raise ValueError("Expected workbench HTML")
+        print("Frontend HTML reachable")
     except errors:
-        frontend_ok=False
-        print("Frontend HTML or entry JavaScript unavailable")
+        print("Frontend HTML unreachable or unexpected")
+    else:
+        try:
+            startup = StartupScript()
+            startup.feed(body.decode())
+            asset = urljoin(frontend, startup.source or "")
+            if not startup.source or urlsplit(asset).netloc != urlsplit(frontend).netloc:
+                raise ValueError("Missing same-origin entry script")
+            if "javascript" not in request(asset, read_limit=1024)[0]:
+                raise ValueError("Expected JavaScript")
+            frontend_ok = True
+            print("Frontend entry JavaScript reachable")
+        except errors:
+            print("Frontend entry JavaScript unavailable")
     try:
         proxy_ok=json_response(frontend+"/api/health").get("status")=="ok"
     except errors:

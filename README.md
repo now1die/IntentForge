@@ -316,3 +316,18 @@ The evaluation separates fresh upstream defects, injected faults and historical 
 Select **Phase 11.5 repair reliability** for checked explicit endpoints, first minima in cyclic prefixes and coordinated range seed edits. Interpolation candidates can be compared through expectation-free worker probes and still require complete, source-bound approval.
 
 [Final review](docs/PHASE_11_5_FINAL_REVIEW.md) · [Workbench](docs/phase11_5_workbench.md) · [Phase 12 readiness](docs/PHASE_12_READINESS.md)
+
+## Phase 12 semantic state
+
+Opt in to **Phase 12 semantic state** in the workbench. IntentForge builds on the Mini-C parser, binder, control-flow and reaching-definition analysis to show when a local value is initialized, which fixed-array cells are logically active, and which coordinate checks are established. Supported scalar and fixed-array Mini-C programs can produce bounded source edits backed by supplied examples. Full C uses Clang for static analysis. Interactive Mini-C execution requires the private worker. Ollama is optional.
+
+Open **Phase 12 demo examples** for authored sources, expected results, a source-bound review and an abstention example. [Demo guide](docs/phase12_demo_guide.md) · [Workbench screenshots](docs/phase12_workbench.md) · [Startup and private Codespaces verification](docs/phase12_codespaces_validation.md)
+
+```sh
+python -m benchmarks.phase12_audit
+python -m benchmarks.phase12_upstream --check
+python -m benchmarks.phase12_evaluate --check
+python -m benchmarks.phase12_evaluate --live --check  # private worker required
+```
+
+Phase 12 recovered three authored faults and an archived logical-empty case. Both fresh documented defects remained unresolved. [Measured results and release checklist](docs/PHASE_12_FINAL_REVIEW.md) · [Execution boundary](docs/phase12_security.md)

@@ -1,3 +1,4 @@
+import { Phase12Demo } from "./components/Phase12Demo";
 import { InteractiveBehavior } from "./components/InteractiveBehavior";
 import { BehaviorDemo } from "./components/BehaviorDemo";
 import { ClangEvidence } from "./components/ClangEvidence";
@@ -377,6 +378,7 @@ export default function App() {
       <SharedEvidence key={JSON.stringify([language, standard, code])} code={code}
         language={fullC ? "c" : "mini-c"} standard={standard} discovering={fullC && clang === null} focus={focusClang} />
       {!fullC && <>
+        <Phase12Demo onLoad={changeSource} />
         <InteractiveBehavior code={code} functions={Array.isArray(analysis?.ast?.functions)
           ? analysis.ast.functions.filter((fn) => fn.return_type === "int" || fn.return_type === "bool").map((fn) => fn.name)
           : []} onNavigate={(span) => {

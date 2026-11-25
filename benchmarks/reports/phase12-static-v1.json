@@ -1,0 +1,2409 @@
+{
+  "profiles": {
+    "105": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 7.395,
+        "median_ms": 7.495,
+        "p95_ms": 13.558
+      }
+    },
+    "11": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 8.231,
+        "median_ms": 7.888,
+        "p95_ms": 15.474
+      }
+    },
+    "115": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": null
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 8.415,
+        "median_ms": 8.019,
+        "p95_ms": 13.71
+      }
+    },
+    "state": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 9.31,
+        "median_ms": 8.87,
+        "p95_ms": 17.796
+      }
+    },
+    "logical": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-e9b1fcd59489",
+              "category": "LOGICAL_EMPTY_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 9.999,
+        "median_ms": 8.848,
+        "p95_ms": 17.654
+      }
+    },
+    "initialization": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-4a1f4e372e68",
+              "category": "SENTINEL_PRESENCE_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 9.669,
+        "median_ms": 8.604,
+        "p95_ms": 16.265
+      }
+    },
+    "coordinate": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [
+            {
+              "id": "IR-f637ce592549",
+              "category": "INDEPENDENT_COORDINATE_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "behavioral": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "generated": {
+            "hits": 1,
+            "total": 3,
+            "wilson95": [
+              0.061,
+              0.792
+            ]
+          },
+          "compiler_valid": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 1,
+            "total": 1,
+            "wilson95": [
+              0.207,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 9.945,
+        "median_ms": 10.063,
+        "p95_ms": 15.821
+      }
+    },
+    "12": {
+      "rows": [
+        {
+          "id": "jump-empty-input-fault",
+          "origin": "adapted-real-defect",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "jump-empty-input-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-fault",
+          "origin": "adapted-real-defect",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "cycle-sort-return-kind-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "optional-value-write-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-4a1f4e372e68",
+              "category": "SENTINEL_PRESENCE_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "optional-value-write-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "rectangular-row-alias-fault",
+          "origin": "authored-injected",
+          "original": "BEHAVIOR_UNKNOWN",
+          "original_issue": "ARRAY_BOUNDS",
+          "original_holdout": "BEHAVIOR_UNKNOWN",
+          "candidates": [
+            {
+              "id": "IR-f637ce592549",
+              "category": "INDEPENDENT_COORDINATE_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "rectangular-row-alias-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        },
+        {
+          "id": "empty-negative-count-fault",
+          "origin": "authored-injected",
+          "original": "MISMATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+          "candidates": [
+            {
+              "id": "IR-e9b1fcd59489",
+              "category": "LOGICAL_EMPTY_CONSTRAINT",
+              "edits": 1,
+              "compiler_valid": true,
+              "exact": true,
+              "discovery": "MATCHES_SUPPLIED_TESTS",
+              "holdout": "MATCHES_SUPPLIED_TESTS",
+              "counterexamples": []
+            }
+          ],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "COMPATIBLE_EDIT"
+        },
+        {
+          "id": "empty-negative-count-control",
+          "origin": null,
+          "original": "MATCHES_SUPPLIED_TESTS",
+          "original_issue": null,
+          "original_holdout": "MATCHES_SUPPLIED_TESTS",
+          "candidates": [],
+          "code_only_exact": false,
+          "code_only_behavioral": false,
+          "phase12_status": "OBSERVATION_ONLY"
+        }
+      ],
+      "metrics": {
+        "adapted-real-defect": {
+          "exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "generated": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "compiler_valid": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "discovery": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "holdout": {
+            "hits": 0,
+            "total": 0,
+            "wilson95": null
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 2,
+            "wilson95": [
+              0,
+              0.658
+            ]
+          }
+        },
+        "authored-injected": {
+          "exact": {
+            "hits": 3,
+            "total": 3,
+            "wilson95": [
+              0.438,
+              1
+            ]
+          },
+          "behavioral": {
+            "hits": 3,
+            "total": 3,
+            "wilson95": [
+              0.438,
+              1
+            ]
+          },
+          "generated": {
+            "hits": 3,
+            "total": 3,
+            "wilson95": [
+              0.438,
+              1
+            ]
+          },
+          "compiler_valid": {
+            "hits": 3,
+            "total": 3,
+            "wilson95": [
+              0.438,
+              1
+            ]
+          },
+          "discovery": {
+            "hits": 3,
+            "total": 3,
+            "wilson95": [
+              0.438,
+              1
+            ]
+          },
+          "holdout": {
+            "hits": 3,
+            "total": 3,
+            "wilson95": [
+              0.438,
+              1
+            ]
+          },
+          "code_only_exact": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "code_only_behavioral": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          },
+          "ambiguous_discovery": {
+            "hits": 0,
+            "total": 3,
+            "wilson95": [
+              0,
+              0.562
+            ]
+          }
+        },
+        "controls_with_static_suggestions": {
+          "hits": 0,
+          "total": 5,
+          "wilson95": [
+            0,
+            0.434
+          ]
+        }
+      },
+      "latency": {
+        "mean_ms": 11.194,
+        "median_ms": 10.333,
+        "p95_ms": 17.395
+      }
+    }
+  },
+  "archived": {
+    "115": [
+      {
+        "id": "exponential-negative-endpoint-fault",
+        "origin": "adapted-real-defect",
+        "original": "EXECUTION_LIMITED",
+        "original_issue": "CALL_DEPTH",
+        "original_holdout": "EXECUTION_LIMITED",
+        "candidates": [
+          {
+            "id": "IR-1d8db01a8b71",
+            "category": "EXPLICIT_ENDPOINT_CONSTRAINT",
+            "edits": 1,
+            "compiler_valid": true,
+            "exact": true,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          }
+        ],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": null
+      },
+      {
+        "id": "constant-interpolation-domain-fault",
+        "origin": "adapted-real-defect",
+        "original": "BEHAVIOR_UNKNOWN",
+        "original_issue": "DIVISION_BY_ZERO",
+        "original_holdout": "BEHAVIOR_UNKNOWN",
+        "candidates": [
+          {
+            "id": "IR-3a7f1aac22e6",
+            "category": "INTERPOLATION_RELATIONAL_CONSTRAINT",
+            "edits": 2,
+            "compiler_valid": true,
+            "exact": false,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          },
+          {
+            "id": "IR-c5374f141bde",
+            "category": "INTERPOLATION_RELATIONAL_CONSTRAINT",
+            "edits": 1,
+            "compiler_valid": true,
+            "exact": false,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          }
+        ],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": null
+      },
+      {
+        "id": "short-rotation-pivot-fault",
+        "origin": "adapted-real-defect",
+        "original": "BEHAVIOR_UNKNOWN",
+        "original_issue": "ARRAY_BOUNDS",
+        "original_holdout": "BEHAVIOR_UNKNOWN",
+        "candidates": [],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": null
+      },
+      {
+        "id": "shifted-missing-member-fault",
+        "origin": "adapted-real-defect",
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "original_issue": null,
+        "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+        "candidates": [],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": null
+      },
+      {
+        "id": "empty-retained-run-fault",
+        "origin": "adapted-real-defect",
+        "original": "BEHAVIOR_UNKNOWN",
+        "original_issue": "ARRAY_BOUNDS",
+        "original_holdout": "BEHAVIOR_UNKNOWN",
+        "candidates": [
+          {
+            "id": "IR-0a1b441390db",
+            "category": "FIXED_ARRAY_INDEX_CONSTRAINT",
+            "edits": 1,
+            "compiler_valid": true,
+            "exact": false,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MISMATCHES_SUPPLIED_TESTS",
+            "counterexamples": [
+              {
+                "input": [
+                  0,
+                  10,
+                  9,
+                  3,
+                  5
+                ],
+                "expected": 0,
+                "original": null,
+                "original_issue": "ARRAY_BOUNDS",
+                "actual": 10
+              }
+            ]
+          }
+        ],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": null
+      }
+    ],
+    "12": [
+      {
+        "id": "exponential-negative-endpoint-fault",
+        "origin": "adapted-real-defect",
+        "original": "EXECUTION_LIMITED",
+        "original_issue": "CALL_DEPTH",
+        "original_holdout": "EXECUTION_LIMITED",
+        "candidates": [
+          {
+            "id": "IR-1d8db01a8b71",
+            "category": "EXPLICIT_ENDPOINT_CONSTRAINT",
+            "edits": 1,
+            "compiler_valid": true,
+            "exact": true,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          }
+        ],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": "OBSERVATION_ONLY"
+      },
+      {
+        "id": "constant-interpolation-domain-fault",
+        "origin": "adapted-real-defect",
+        "original": "BEHAVIOR_UNKNOWN",
+        "original_issue": "DIVISION_BY_ZERO",
+        "original_holdout": "BEHAVIOR_UNKNOWN",
+        "candidates": [
+          {
+            "id": "IR-3a7f1aac22e6",
+            "category": "INTERPOLATION_RELATIONAL_CONSTRAINT",
+            "edits": 2,
+            "compiler_valid": true,
+            "exact": false,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          },
+          {
+            "id": "IR-c5374f141bde",
+            "category": "INTERPOLATION_RELATIONAL_CONSTRAINT",
+            "edits": 1,
+            "compiler_valid": true,
+            "exact": false,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          }
+        ],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": "OBSERVATION_ONLY"
+      },
+      {
+        "id": "short-rotation-pivot-fault",
+        "origin": "adapted-real-defect",
+        "original": "BEHAVIOR_UNKNOWN",
+        "original_issue": "ARRAY_BOUNDS",
+        "original_holdout": "BEHAVIOR_UNKNOWN",
+        "candidates": [],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": "OBSERVATION_ONLY"
+      },
+      {
+        "id": "shifted-missing-member-fault",
+        "origin": "adapted-real-defect",
+        "original": "MISMATCHES_SUPPLIED_TESTS",
+        "original_issue": null,
+        "original_holdout": "MISMATCHES_SUPPLIED_TESTS",
+        "candidates": [],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": "OBSERVATION_ONLY"
+      },
+      {
+        "id": "empty-retained-run-fault",
+        "origin": "adapted-real-defect",
+        "original": "BEHAVIOR_UNKNOWN",
+        "original_issue": "ARRAY_BOUNDS",
+        "original_holdout": "BEHAVIOR_UNKNOWN",
+        "candidates": [
+          {
+            "id": "IR-6f78171e95bb",
+            "category": "LOGICAL_EMPTY_CONSTRAINT",
+            "edits": 1,
+            "compiler_valid": true,
+            "exact": true,
+            "discovery": "MATCHES_SUPPLIED_TESTS",
+            "holdout": "MATCHES_SUPPLIED_TESTS",
+            "counterexamples": []
+          }
+        ],
+        "code_only_exact": false,
+        "code_only_behavioral": false,
+        "phase12_status": "COMPATIBLE_EDIT"
+      }
+    ]
+  },
+  "metamorphic": {
+    "checks": {
+      "alpha_rename": 10,
+      "format": 10,
+      "parenthesize_return": 20,
+      "reverse_comparison": 6,
+      "reverse_guard_and_returns": 2,
+      "unused_shadow_scope": 10,
+      "nested_return": 10,
+      "independent_temporary": 10,
+      "equivalent_latch": 4
+    },
+    "total": 82,
+    "changes": []
+  }
+}

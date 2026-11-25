@@ -26,6 +26,7 @@ from .intention_phase75 import CATEGORIES as PHASE75_CATEGORIES, COMPONENTS as P
 from .intention_phase10 import CATEGORIES as PHASE10_CATEGORIES, COMPONENTS as PHASE10_COMPONENTS, synthesize as search_repairs
 from .intention_phase105 import CATEGORIES as PHASE105_CATEGORIES, COMPONENTS as PHASE105_COMPONENTS, synthesize as endpoint_repairs
 from .intention_phase11 import CATEGORIES as PHASE11_CATEGORIES, COMPONENTS as PHASE11_COMPONENTS, synthesize as relational_repairs
+from .intention_phase12 import CATEGORIES as PHASE12_CATEGORIES, COMPONENTS as PHASE12_COMPONENTS, synthesize as state_repairs
 from .intention_phase115 import CATEGORIES as PHASE115_CATEGORIES, COMPONENTS as PHASE115_COMPONENTS, synthesize as reliability_repairs
 from .intention_phase95 import CATEGORIES as PHASE95_CATEGORIES, COMPONENTS as PHASE95_COMPONENTS, synthesize as control_repairs
 from .intention_phase9 import CATEGORIES as PHASE9_CATEGORIES, COMPONENTS as PHASE9_COMPONENTS, synthesize as robust_repairs
@@ -144,7 +145,8 @@ class IntentionResult:
                                                         "MULTIPLE_RECURSIVE_EXAMPLES", "LEXICAL_RECURSIVE_TERMS",
                                                         "MISSING_INPUT_DEPENDENCY", "INCONSISTENT_LOOP_RADIX",
                                                         "ARITHMETIC_CONSTRAINT_WITNESS", "FINITE_CONSTRAINT_WITNESS"} else "static")
-                    row["hypothesis_origin"] = ("phase115" if item.proposal.category in PHASE115_CATEGORIES else
+                    row["hypothesis_origin"] = ("phase12" if item.proposal.category in PHASE12_CATEGORIES else
+                                                "phase115" if item.proposal.category in PHASE115_CATEGORIES else
                                                 "phase11" if item.proposal.category in PHASE11_CATEGORIES else
                                                 "phase105" if item.proposal.category in PHASE105_CATEGORIES else
                                                 "phase10" if item.proposal.category in PHASE10_CATEGORIES else
@@ -315,7 +317,9 @@ def analyze_intention(
     phase105: bool = False, phase105_components: frozenset[str] = PHASE105_COMPONENTS,
     phase11: bool = False, phase11_components: frozenset[str] = PHASE11_COMPONENTS,
     phase115: bool = False, phase115_components: frozenset[str] = PHASE115_COMPONENTS,
+    phase12: bool = False, phase12_components: frozenset[str] = PHASE12_COMPONENTS,
 ) -> IntentionResult:
+    phase115 = phase115 or phase12
     phase11 = phase11 or phase115
     phase105 = phase105 or phase11
     phase10 = phase10 or phase105
@@ -440,6 +444,8 @@ def analyze_intention(
                 reliability, detail = reliability_repairs(context, program, spec, phase115_components, report)
                 semantic = (*reliability, *semantic)
                 program_analysis["phase115"] = detail
+            if phase12:
+                semantic, program_analysis["phase12"] = state_repairs(context, program, spec, phase12_components, semantic)
         program_analysis["hypotheses"] = [{"category": proposal.category, "assumption": proposal.assumption,
                                             "evidence": [fact.to_dict() for fact in proposal.evidence],
                                             "counter_evidence": [fact.to_dict() for fact in proposal.counter_evidence]}

@@ -6,6 +6,10 @@ import "@fontsource/geist/600.css";
 import "@fontsource/geist-mono/400.css";
 import { StartupBoundary, StartupMessage } from "./components/StartupBoundary";
 import "./styles.css";
+window.addEventListener("vite:preloadError", () => {
+  console.error("A workbench asset failed to load. Inspect Network requests and reload the page.");
+});
+
 const App = lazy(() => import("./App"));
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
