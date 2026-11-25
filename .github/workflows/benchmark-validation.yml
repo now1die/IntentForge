@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "24"
       - run: python -m pip install -r requirements.txt
       - run: python -m benchmarks.review_corpus
       - run: python -m benchmarks.audit_training
@@ -73,3 +76,6 @@ jobs:
           python -m benchmarks.phase115_upstream --write
           git diff --exit-code -- benchmarks/reports/phase115-upstream-v1.json
       - run: python -m benchmarks.phase115_evaluate --check
+      - run: python -m benchmarks.phase12_audit
+      - run: python -m benchmarks.phase12_upstream --check
+      - run: python -m benchmarks.phase12_evaluate --check
