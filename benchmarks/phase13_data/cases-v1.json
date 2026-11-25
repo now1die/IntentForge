@@ -1,0 +1,1256 @@
+[
+  {
+    "family": "digit-count",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          -425
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          84
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7342
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -19321
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1072
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "maths/number_of_digits.py",
+      "before": "aa46639cbc7a147527bbaafb4c9b2590cc29f40c",
+      "after": "d687030d9e582534c850493ebc8a22fb4cf1ec81",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/d687030d9e582534c850493ebc8a22fb4cf1ec81"
+    },
+    "domain": "Decimal digit count for small signed integers, excluding signed minimum.",
+    "specification": "Decimal digit count for small signed integers, excluding signed minimum.",
+    "id": "digit-count-fault",
+    "source": "int f(int n){int digits=0;while(n>0){n=n/10;digits++;}return digits;}",
+    "references": [
+      "int f(int n){int digits=0;if(n<0){n=0-n;}while(true){n=n/10;digits++;if(n==0){break;}}return digits;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "digit-count",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          -425
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          84
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          7342
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          7
+        ],
+        "expected": 1
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -19321
+        ],
+        "expected": 5
+      },
+      {
+        "arguments": [
+          -3
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          1072
+        ],
+        "expected": 4
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "maths/number_of_digits.py",
+      "before": "aa46639cbc7a147527bbaafb4c9b2590cc29f40c",
+      "after": "d687030d9e582534c850493ebc8a22fb4cf1ec81",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/d687030d9e582534c850493ebc8a22fb4cf1ec81"
+    },
+    "domain": "Decimal digit count for small signed integers, excluding signed minimum.",
+    "specification": "Decimal digit count for small signed integers, excluding signed minimum.",
+    "id": "digit-count-control",
+    "source": "int f(int n){int digits=0;if(n<0){n=0-n;}while(true){n=n/10;digits++;if(n==0){break;}}return digits;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "combination-domain",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          -3,
+          1
+        ],
+        "expected": -73
+      },
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          0
+        ],
+        "expected": -73
+      },
+      {
+        "arguments": [
+          -5,
+          2
+        ],
+        "expected": -73
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 15
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "backtracking/all_combinations.py",
+      "before": "4151a13b57fbd881d3fce3bb61101fe58ad541ae",
+      "after": "050b2a6e2cf0e474b75cf48abe4aa134b97643e4",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/050b2a6e2cf0e474b75cf48abe4aa134b97643e4"
+    },
+    "domain": "Project combination lists to their count. Negative n maps ValueError to -73. k is nonnegative.",
+    "specification": "Project combination lists to their count. Negative n maps ValueError to -73. k is nonnegative.",
+    "id": "combination-domain-fault",
+    "source": "int count(int start,int n,int k){if(k==0){return 1;}int total=0;\n for(int i=start;i<n-k+2;i++){total+=count(i+1,n,k-1);}return total;}\nint f(int n,int k){return count(1,n,k);}",
+    "references": [
+      "int count(int start,int n,int k){if(k==0){return 1;}int total=0;\n for(int i=start;i<n-k+2;i++){total+=count(i+1,n,k-1);}return total;}\nint f(int n,int k){if(n<0){return -73;}return count(1,n,k);}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "combination-domain",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          -3,
+          1
+        ],
+        "expected": -73
+      },
+      {
+        "arguments": [
+          3,
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          0
+        ],
+        "expected": 1
+      },
+      {
+        "arguments": [
+          2,
+          4
+        ],
+        "expected": 0
+      },
+      {
+        "arguments": [
+          5,
+          3
+        ],
+        "expected": 10
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          -1,
+          0
+        ],
+        "expected": -73
+      },
+      {
+        "arguments": [
+          -5,
+          2
+        ],
+        "expected": -73
+      },
+      {
+        "arguments": [
+          6,
+          4
+        ],
+        "expected": 15
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "backtracking/all_combinations.py",
+      "before": "4151a13b57fbd881d3fce3bb61101fe58ad541ae",
+      "after": "050b2a6e2cf0e474b75cf48abe4aa134b97643e4",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/050b2a6e2cf0e474b75cf48abe4aa134b97643e4"
+    },
+    "domain": "Project combination lists to their count. Negative n maps ValueError to -73. k is nonnegative.",
+    "specification": "Project combination lists to their count. Negative n maps ValueError to -73. k is nonnegative.",
+    "id": "combination-domain-control",
+    "source": "int count(int start,int n,int k){if(k==0){return 1;}int total=0;\n for(int i=start;i<n-k+2;i++){total+=count(i+1,n,k-1);}return total;}\nint f(int n,int k){if(n<0){return -73;}return count(1,n,k);}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "empty-maximum",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          17,
+          3,
+          1
+        ],
+        "expected": -99
+      },
+      {
+        "arguments": [
+          3,
+          -18,
+          -4,
+          -9
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          55,
+          33
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          -5,
+          11,
+          19
+        ],
+        "expected": 11
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          52,
+          -6,
+          7
+        ],
+        "expected": -99
+      },
+      {
+        "arguments": [
+          3,
+          31,
+          0,
+          6
+        ],
+        "expected": 31
+      },
+      {
+        "arguments": [
+          2,
+          -11,
+          -18,
+          44
+        ],
+        "expected": -11
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "maths/find_max.py",
+      "before": "d324f91fe75cc859335ee1f7c9c6307d958d0558",
+      "after": "77b243e62b09cdf6201916af6762b03c54d8f77a",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/77b243e62b09cdf6201916af6762b03c54d8f77a"
+    },
+    "domain": "Fixed three-cell prefix. Empty IndexError and ValueError are represented by -98 and -99 outside the data range.",
+    "specification": "Fixed three-cell prefix. Empty IndexError and ValueError are represented by -98 and -99 outside the data range.",
+    "id": "empty-maximum-fault",
+    "source": "int f(int n,int x,int y,int z){int a[3];a[0]=x;a[1]=y;a[2]=z;if(n==0){return -98;}int best=a[0];for(int i=0;i<n;i++){if(a[i]>best){best=a[i];}}return best;}",
+    "references": [
+      "int f(int n,int x,int y,int z){int a[3];a[0]=x;a[1]=y;a[2]=z;if(n==0){return -99;}int best=a[0];for(int i=0;i<n;i++){if(a[i]>best){best=a[i];}}return best;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "empty-maximum",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          17,
+          3,
+          1
+        ],
+        "expected": -99
+      },
+      {
+        "arguments": [
+          3,
+          -18,
+          -4,
+          -9
+        ],
+        "expected": -4
+      },
+      {
+        "arguments": [
+          1,
+          4,
+          55,
+          33
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          2,
+          -5,
+          11,
+          19
+        ],
+        "expected": 11
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          52,
+          -6,
+          7
+        ],
+        "expected": -99
+      },
+      {
+        "arguments": [
+          3,
+          31,
+          0,
+          6
+        ],
+        "expected": 31
+      },
+      {
+        "arguments": [
+          2,
+          -11,
+          -18,
+          44
+        ],
+        "expected": -11
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "maths/find_max.py",
+      "before": "d324f91fe75cc859335ee1f7c9c6307d958d0558",
+      "after": "77b243e62b09cdf6201916af6762b03c54d8f77a",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/77b243e62b09cdf6201916af6762b03c54d8f77a"
+    },
+    "domain": "Fixed three-cell prefix. Empty IndexError and ValueError are represented by -98 and -99 outside the data range.",
+    "specification": "Fixed three-cell prefix. Empty IndexError and ValueError are represented by -98 and -99 outside the data range.",
+    "id": "empty-maximum-control",
+    "source": "int f(int n,int x,int y,int z){int a[3];a[0]=x;a[1]=y;a[2]=z;if(n==0){return -99;}int best=a[0];for(int i=0;i<n;i++){if(a[i]>best){best=a[i];}}return best;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "empty-timsort",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          21,
+          38
+        ],
+        "expected": -82
+      },
+      {
+        "arguments": [
+          2,
+          -7,
+          -18
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          1,
+          35,
+          -8
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          2,
+          16,
+          48
+        ],
+        "expected": 16
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -15,
+          29
+        ],
+        "expected": -82
+      },
+      {
+        "arguments": [
+          2,
+          -34,
+          7
+        ],
+        "expected": -34
+      },
+      {
+        "arguments": [
+          1,
+          -43,
+          59
+        ],
+        "expected": -43
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "sorts/tim_sort.py",
+      "before": "4c3ba663a2c83e51b2bc70f326d05ed91560e495",
+      "after": "6563afdde3e8d9cc576c5de5afd9e7011526275e",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/6563afdde3e8d9cc576c5de5afd9e7011526275e"
+    },
+    "domain": "Specialize sorted runs to at most two cells. Observe first sorted element, empty list as -82 and IndexError as -81.",
+    "specification": "Specialize sorted runs to at most two cells. Observe first sorted element, empty list as -82 and IndexError as -81.",
+    "id": "empty-timsort-fault",
+    "source": "int f(int n,int x,int y){if(n==0){return -81;}int first=x;\n if(n==2 && y<x){first=y;}return first;}",
+    "references": [
+      "int f(int n,int x,int y){if(n==0){return -82;}int first=x;\n if(n==2 && y<x){first=y;}return first;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "empty-timsort",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          21,
+          38
+        ],
+        "expected": -82
+      },
+      {
+        "arguments": [
+          2,
+          -7,
+          -18
+        ],
+        "expected": -18
+      },
+      {
+        "arguments": [
+          1,
+          35,
+          -8
+        ],
+        "expected": 35
+      },
+      {
+        "arguments": [
+          2,
+          16,
+          48
+        ],
+        "expected": 16
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -15,
+          29
+        ],
+        "expected": -82
+      },
+      {
+        "arguments": [
+          2,
+          -34,
+          7
+        ],
+        "expected": -34
+      },
+      {
+        "arguments": [
+          1,
+          -43,
+          59
+        ],
+        "expected": -43
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/Python",
+      "path": "sorts/tim_sort.py",
+      "before": "4c3ba663a2c83e51b2bc70f326d05ed91560e495",
+      "after": "6563afdde3e8d9cc576c5de5afd9e7011526275e",
+      "license": "MIT",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/Python/commit/6563afdde3e8d9cc576c5de5afd9e7011526275e"
+    },
+    "domain": "Specialize sorted runs to at most two cells. Observe first sorted element, empty list as -82 and IndexError as -81.",
+    "specification": "Specialize sorted runs to at most two cells. Observe first sorted element, empty list as -82 and IndexError as -81.",
+    "id": "empty-timsort-control",
+    "source": "int f(int n,int x,int y){if(n==0){return -82;}int first=x;\n if(n==2 && y<x){first=y;}return first;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "bucket-order",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          13
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          16,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          45
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          58,
+          72
+        ],
+        "expected": 58
+      },
+      {
+        "arguments": [
+          93,
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          21
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          74,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          19,
+          84
+        ],
+        "expected": 19
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Sorts/BucketSort.js",
+      "before": "269175689f9722200ddf9d3bd0a9d093e67ea2fb",
+      "after": "877356fbab8c274ff6b2bd8a770d4fa7549105ae",
+      "license": "GPL-3.0",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/877356fbab8c274ff6b2bd8a770d4fa7549105ae"
+    },
+    "domain": "Two positive one- or two-digit integers in a single size-100 bucket. Observe the first returned cell.",
+    "specification": "Two positive one- or two-digit integers in a single size-100 bucket. Observe the first returned cell.",
+    "id": "bucket-order-fault",
+    "source": "int leading(int x){if(x>=10){return x/10;}return x;}\nint f(int a,int b){if(leading(a)>leading(b)){return b;}if(leading(a)==leading(b) && a>b){return b;}return a;}",
+    "references": [
+      "int f(int a,int b){if(a>b){return b;}return a;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "adapted-real-defect"
+  },
+  {
+    "family": "bucket-order",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          2,
+          13
+        ],
+        "expected": 2
+      },
+      {
+        "arguments": [
+          16,
+          3
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          4,
+          45
+        ],
+        "expected": 4
+      },
+      {
+        "arguments": [
+          58,
+          72
+        ],
+        "expected": 58
+      },
+      {
+        "arguments": [
+          93,
+          9
+        ],
+        "expected": 9
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          8,
+          21
+        ],
+        "expected": 8
+      },
+      {
+        "arguments": [
+          74,
+          7
+        ],
+        "expected": 7
+      },
+      {
+        "arguments": [
+          19,
+          84
+        ],
+        "expected": 19
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "repository": "TheAlgorithms/JavaScript",
+      "path": "Sorts/BucketSort.js",
+      "before": "269175689f9722200ddf9d3bd0a9d093e67ea2fb",
+      "after": "877356fbab8c274ff6b2bd8a770d4fa7549105ae",
+      "license": "GPL-3.0",
+      "group": "adapted_real_defect",
+      "origin": "https://github.com/TheAlgorithms/JavaScript/commit/877356fbab8c274ff6b2bd8a770d4fa7549105ae"
+    },
+    "domain": "Two positive one- or two-digit integers in a single size-100 bucket. Observe the first returned cell.",
+    "specification": "Two positive one- or two-digit integers in a single size-100 bucket. Observe the first returned cell.",
+    "id": "bucket-order-control",
+    "source": "int f(int a,int b){if(a>b){return b;}return a;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "prefix-total-convention",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          83,
+          -7,
+          4
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          1,
+          23,
+          42,
+          15
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          2,
+          3,
+          0,
+          9
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3,
+          -4,
+          17,
+          8
+        ],
+        "expected": 21
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -19,
+          28,
+          36
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          3,
+          10,
+          24,
+          -2
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          2,
+          -7,
+          -8,
+          9
+        ],
+        "expected": -15
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 13"
+    },
+    "domain": "A signed active prefix has a distinct empty-result convention.",
+    "specification": "A signed active prefix has a distinct empty-result convention.",
+    "id": "prefix-total-convention-fault",
+    "source": "int f(int n,int x,int y,int z){int a[3];a[0]=x;a[1]=y;a[2]=z;int sum=a[0];for(int i=1;i<n;i++){sum+=a[i];}return sum;}",
+    "references": [
+      "int f(int n,int x,int y,int z){if(n==0){return -17;}int a[3];a[0]=x;a[1]=y;a[2]=z;int sum=a[0];for(int i=1;i<n;i++){sum+=a[i];}return sum;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "authored-injected"
+  },
+  {
+    "family": "prefix-total-convention",
+    "partition": "final",
+    "vectors": [
+      {
+        "arguments": [
+          0,
+          83,
+          -7,
+          4
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          1,
+          23,
+          42,
+          15
+        ],
+        "expected": 23
+      },
+      {
+        "arguments": [
+          2,
+          3,
+          0,
+          9
+        ],
+        "expected": 3
+      },
+      {
+        "arguments": [
+          3,
+          -4,
+          17,
+          8
+        ],
+        "expected": 21
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          0,
+          -19,
+          28,
+          36
+        ],
+        "expected": -17
+      },
+      {
+        "arguments": [
+          3,
+          10,
+          24,
+          -2
+        ],
+        "expected": 32
+      },
+      {
+        "arguments": [
+          2,
+          -7,
+          -8,
+          9
+        ],
+        "expected": -15
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 13"
+    },
+    "domain": "A signed active prefix has a distinct empty-result convention.",
+    "specification": "A signed active prefix has a distinct empty-result convention.",
+    "id": "prefix-total-convention-control",
+    "source": "int f(int n,int x,int y,int z){if(n==0){return -17;}int a[3];a[0]=x;a[1]=y;a[2]=z;int sum=a[0];for(int i=1;i<n;i++){sum+=a[i];}return sum;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "development-double",
+    "partition": "development",
+    "vectors": [
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 400
+      },
+      {
+        "arguments": [
+          21
+        ],
+        "expected": 441
+      },
+      {
+        "arguments": [
+          22
+        ],
+        "expected": 484
+      },
+      {
+        "arguments": [
+          23
+        ],
+        "expected": 529
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          24
+        ],
+        "expected": 576
+      },
+      {
+        "arguments": [
+          25
+        ],
+        "expected": 625
+      },
+      {
+        "arguments": [
+          26
+        ],
+        "expected": 676
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 13"
+    },
+    "domain": "Authored integer power 2.",
+    "specification": "Authored integer power 2.",
+    "id": "development-double-fault",
+    "source": "int f(int a){return a*2;}",
+    "references": [
+      "int f(int a){return a*a;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "authored-injected"
+  },
+  {
+    "family": "development-double",
+    "partition": "development",
+    "vectors": [
+      {
+        "arguments": [
+          20
+        ],
+        "expected": 400
+      },
+      {
+        "arguments": [
+          21
+        ],
+        "expected": 441
+      },
+      {
+        "arguments": [
+          22
+        ],
+        "expected": 484
+      },
+      {
+        "arguments": [
+          23
+        ],
+        "expected": 529
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          24
+        ],
+        "expected": 576
+      },
+      {
+        "arguments": [
+          25
+        ],
+        "expected": 625
+      },
+      {
+        "arguments": [
+          26
+        ],
+        "expected": 676
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 13"
+    },
+    "domain": "Authored integer power 2.",
+    "specification": "Authored integer power 2.",
+    "id": "development-double-control",
+    "source": "int f(int a){return a*a;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  },
+  {
+    "family": "selection-cube",
+    "partition": "selection",
+    "vectors": [
+      {
+        "arguments": [
+          30
+        ],
+        "expected": 27000
+      },
+      {
+        "arguments": [
+          31
+        ],
+        "expected": 29791
+      },
+      {
+        "arguments": [
+          32
+        ],
+        "expected": 32768
+      },
+      {
+        "arguments": [
+          33
+        ],
+        "expected": 35937
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          34
+        ],
+        "expected": 39304
+      },
+      {
+        "arguments": [
+          35
+        ],
+        "expected": 42875
+      },
+      {
+        "arguments": [
+          36
+        ],
+        "expected": 46656
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 13"
+    },
+    "domain": "Authored integer power 3.",
+    "specification": "Authored integer power 3.",
+    "id": "selection-cube-fault",
+    "source": "int f(int a){return a+3;}",
+    "references": [
+      "int f(int a){return a*a*a;}"
+    ],
+    "disposition": "fault",
+    "fault_origin": "authored-injected"
+  },
+  {
+    "family": "selection-cube",
+    "partition": "selection",
+    "vectors": [
+      {
+        "arguments": [
+          30
+        ],
+        "expected": 27000
+      },
+      {
+        "arguments": [
+          31
+        ],
+        "expected": 29791
+      },
+      {
+        "arguments": [
+          32
+        ],
+        "expected": 32768
+      },
+      {
+        "arguments": [
+          33
+        ],
+        "expected": 35937
+      }
+    ],
+    "holdout_vectors": [
+      {
+        "arguments": [
+          34
+        ],
+        "expected": 39304
+      },
+      {
+        "arguments": [
+          35
+        ],
+        "expected": 42875
+      },
+      {
+        "arguments": [
+          36
+        ],
+        "expected": 46656
+      }
+    ],
+    "requirement": null,
+    "compiler_valid": true,
+    "provenance": {
+      "group": "authored",
+      "origin": "IntentForge Phase 13"
+    },
+    "domain": "Authored integer power 3.",
+    "specification": "Authored integer power 3.",
+    "id": "selection-cube-control",
+    "source": "int f(int a){return a*a*a;}",
+    "references": [],
+    "disposition": "control",
+    "fault_origin": null
+  }
+]

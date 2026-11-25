@@ -1,0 +1,37 @@
+{
+  "digit-count": {
+    "repository": "TheAlgorithms/Python",
+    "path": "maths/number_of_digits.py",
+    "before": "aa46639cbc7a147527bbaafb4c9b2590cc29f40c",
+    "after": "d687030d9e582534c850493ebc8a22fb4cf1ec81",
+    "license": "MIT"
+  },
+  "empty-timsort": {
+    "repository": "TheAlgorithms/Python",
+    "path": "sorts/tim_sort.py",
+    "before": "4c3ba663a2c83e51b2bc70f326d05ed91560e495",
+    "after": "6563afdde3e8d9cc576c5de5afd9e7011526275e",
+    "license": "MIT"
+  },
+  "empty-maximum": {
+    "repository": "TheAlgorithms/Python",
+    "path": "maths/find_max.py",
+    "before": "d324f91fe75cc859335ee1f7c9c6307d958d0558",
+    "after": "77b243e62b09cdf6201916af6762b03c54d8f77a",
+    "license": "MIT"
+  },
+  "combination-domain": {
+    "repository": "TheAlgorithms/Python",
+    "path": "backtracking/all_combinations.py",
+    "before": "4151a13b57fbd881d3fce3bb61101fe58ad541ae",
+    "after": "050b2a6e2cf0e474b75cf48abe4aa134b97643e4",
+    "license": "MIT"
+  },
+  "bucket-order": {
+    "repository": "TheAlgorithms/JavaScript",
+    "path": "Sorts/BucketSort.js",
+    "before": "269175689f9722200ddf9d3bd0a9d093e67ea2fb",
+    "after": "877356fbab8c274ff6b2bd8a770d4fa7549105ae",
+    "license": "GPL-3.0"
+  }
+}
