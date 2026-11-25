@@ -4,6 +4,7 @@ from time import monotonic
 from analysis_evidence.semantic_state import binding, comparison, propagate, scalar, target_slot
 from compiler import ast_nodes as ast
 
+from .intention_phase13 import aggregate_trials, entry_trials
 from .intention_candidates import Edit, Evidence, Proposal
 from .intention_context import ast_children
 from .intention_phase10 import MAX_PROPOSALS, MAX_TRIALS
@@ -322,6 +323,9 @@ def synthesize(context, program, spec, enabled, inherited):
             continue
         if "initialization" in enabled:
             trials.extend(sentinel_analysis(item, states, program.bindings, contracts))
+        if "entry" in enabled and selected and item.function.body.statements:
+            trials.extend(entry_trials(item, program.bindings, arrays, spec))
+            trials.extend(aggregate_trials(item, program.bindings, arrays))
         if "logical" in enabled:
             trials.extend(logical_analysis(item, states, program.bindings, arrays, spec, contracts))
         if "coordinate" in enabled:

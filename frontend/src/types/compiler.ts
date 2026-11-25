@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "phase11" | "phase115" | "phase12" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "phase11" | "phase115" | "phase12" | "phase13" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
