@@ -299,7 +299,7 @@ export interface IntentionEvidence {
 
 export interface IntentionCandidate {
   evidence_basis?: "static" | "supplied_examples" | "supplied_specification";
-  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "phase11" | "phase115" | "earlier_engine";
+  hypothesis_origin?: "phase65" | "phase75" | "phase8" | "phase85" | "phase9" | "phase95" | "phase10" | "phase105" | "phase11" | "phase115" | "phase12" | "earlier_engine";
   tier?: "SPECIFICATION_SUPPORTED" | "COMPILER_CONFIRMED_ISSUE" | "STRONG_CONTEXT" | "WEAK_CONTEXT";
   id: string;
   category: string;
@@ -457,6 +457,37 @@ export type Phase11Analysis = {
   endpoint_contracts?: { function: string; contracts: string[]; duplicate_samples: number }[];
 };
 
+export type Phase12Analysis = {
+  status: string;
+  facts: {
+    kind: "initialization" | "logical_array" | "inactive_read" | "sentinel" | "presence" | "coordinate" | "physical_index";
+    function: string;
+    name?: string;
+    binding: string;
+    cfg_site: number;
+    span: AnalysisSpan;
+    basis: "STATIC";
+    initialization?: string;
+    cell?: number | null;
+    presence?: string;
+    marker?: number;
+    collision?: string;
+    logical_length?: string | number;
+    physical_extent?: number;
+    active_interval?: string;
+    axis?: string;
+    lower?: number;
+    upper_exclusive?: number;
+    validity?: string;
+    definitions?: number[];
+    assumptions?: (string | [string, number, number, string])[];
+    coordinate_observations?: { input: number; value: number; validity: string }[];
+    observations?: { input: number; logical_length: number; active_interval: number[]; inactive_interval: number[] }[];
+  }[];
+  compatible_candidates: number;
+  withheld: { category: string; reason: string }[];
+};
+
 export type Phase115Analysis = {
   status: string;
   facts: {
@@ -477,6 +508,7 @@ export interface Phase8Analysis {
   phase105?: Phase105Analysis | null;
   phase11?: Phase11Analysis | null;
   phase115?: Phase115Analysis | null;
+  phase12?: Phase12Analysis | null;
   phase95?: Phase95Analysis | null;
   phase9?: Phase9Analysis | null;
   phase85?: Phase85Analysis | null;
@@ -568,6 +600,7 @@ export interface IntentionResponse {
     phase105?: Phase105Analysis;
     phase11?: Phase11Analysis;
     phase115?: Phase115Analysis;
+    phase12?: Phase12Analysis;
     status: "AVAILABLE" | "ANALYSIS_LIMITED" | "INCOMPLETE_COMPILER_EVIDENCE";
     functions: {
       name: string;
