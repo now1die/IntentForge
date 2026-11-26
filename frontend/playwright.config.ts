@@ -1,5 +1,8 @@
 import { defineConfig } from "@playwright/test";
 
+const backendPort = Number(process.env.INTENTFORGE_BACKEND_PORT ?? 8000);
+const preview = process.env.INTENTFORGE_PRODUCT_PREVIEW === "1";
+const frontendURL = `http://127.0.0.1:${preview ? 4173 : 5173}`;
 const browserExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
 
 export default defineConfig({
@@ -8,7 +11,7 @@ export default defineConfig({
   workers: 1,
   timeout: 45000,
   use: {
-    baseURL: "http://127.0.0.1:5173",
+    baseURL: frontendURL,
     browserName: "chromium",
     launchOptions: browserExecutable ? { executablePath: browserExecutable } : undefined,
     headless: true,
@@ -16,14 +19,14 @@ export default defineConfig({
   },
   webServer: [
     {
-      command: "npm run dev",
-      url: "http://127.0.0.1:5173",
+      command: preview ? "npm run preview" : "npm run dev",
+      url: frontendURL,
       reuseExistingServer: true,
     },
     {
-      command: "python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000",
+      command: `python -m uvicorn backend.app.main:app --host 127.0.0.1 --port ${backendPort}`,
       cwd: "..",
-      url: "http://127.0.0.1:8000/health",
+      url: `http://127.0.0.1:${backendPort}/health`,
       reuseExistingServer: true,
     },
   ],

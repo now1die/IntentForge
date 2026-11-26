@@ -81,7 +81,15 @@ export const inspectCompilerEvidence = (code: string, language: "mini-c" | "c", 
   request<import("../types/evidence").SharedEvidenceReport>("/v1/compiler-evidence",
     language === "c" ? { code, language, standard } : { code, language }, signal);
 
-export const getExecutionCapability = (signal: AbortSignal) =>
-  request<import("../components/InteractiveBehavior").ExecutionCapability>("/v1/behavioral-verification/capability", undefined, signal);
+export async function getExecutionCapability(signal: AbortSignal) {
+  const read = () => request<import("../components/InteractiveBehavior").ExecutionCapability>(
+    "/v1/behavioral-verification/capability", undefined, signal);
+  let capability = await read();
+  for (let retry = 0; retry < 4 && capability.status === "capacity_reached" && !signal.aborted; retry++) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    if (!signal.aborted) capability = await read();
+  }
+  return capability;
+}
 export const verifyBehavior = (payload: unknown, signal: AbortSignal) =>
   request<import("../components/InteractiveBehavior").VerificationResponse>("/v1/behavioral-verification", payload, signal);

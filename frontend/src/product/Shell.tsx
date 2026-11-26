@@ -4,7 +4,7 @@ import illustration from "./engraving.svg";
 
 export const destinations = {
   compiler: { label: "Compiler", description: "Find syntax and type errors, then explore how the compiler reads your code.", icon: Code },
-  intention: { label: "Intention", description: "Describe what your code should do and review changes supported by your examples.", icon: Target },
+  intention: { label: "Intention", heading: "Intention Analysis", description: "Describe what your code should do and review changes supported by your examples.", icon: Target },
   research: { label: "Research Lab", description: "Trace program paths, inspect evidence and compare recorded engine results.", icon: Flask },
   examples: { label: "Examples & Learning", description: "Try a Mini-C program and learn how to interpret compiler and repair evidence.", icon: BookOpen },
 };
@@ -58,7 +58,7 @@ export function ProductShell({ page, connection, execution, refresh, children }:
     </aside>
     <main id="workspace-main" className="product-main" tabIndex={-1}>
       <div className="product-intro" key={page}>
-        <div><h1>{active.label}</h1><p>{active.description}</p></div>
+        <div><h1>{"heading" in active ? active.heading : active.label}</h1><p>{active.description}</p></div>
         <Engraving topic={page} />
       </div>
       {children}

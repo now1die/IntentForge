@@ -43,7 +43,9 @@ export function CorrectionPanel({
   options,
   onApplyCode,
   onValidateCustom,
+  editorial = false,
 }: {
+  editorial?: boolean;
   result: CorrectionResponse | null;
   options: CorrectionOptionsResponse | null;
   onApplyCode: (code: string, label: string) => void;
@@ -140,7 +142,7 @@ export function CorrectionPanel({
       {selectedOption && (
         <section className="selected-preview">
           <div className="suggestion-heading"><strong>Selected preview</strong><span>{selectedOption.reason}</span></div>
-          <div className="review-code compact-review"><CodeEditor code={selectedOption.corrected_code} readOnly /></div>
+          <div className="review-code compact-review"><CodeEditor code={selectedOption.corrected_code} readOnly editorial={editorial} /></div>
         </section>
       )}
 
@@ -150,7 +152,7 @@ export function CorrectionPanel({
             <strong>Proposed correction</strong>
             <span>{reviewedProposal?.safety?.reason}</span>
           </div>
-          <div className="review-code compact-review"><CodeEditor code={reviewSource} readOnly /></div>
+          <div className="review-code compact-review"><CodeEditor code={reviewSource} readOnly editorial={editorial} /></div>
           <button className="primary" type="button" onClick={() => onApplyCode(reviewSource, "Reviewed proposal")}>
             <CheckCircle /> Apply Reviewed Proposal
           </button>
