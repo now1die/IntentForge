@@ -5,7 +5,7 @@ const editor = ".source-editor .view-lines";
 const capture = process.env.INTENTFORGE_PHASE6_CAPTURES;
 
 async function writeSource(page: Page, source: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(editor).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(source);

@@ -4,7 +4,7 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 const editor = ".source-editor .view-lines";
 
 async function source(page: Page, code: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(editor).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(code);

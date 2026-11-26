@@ -15,7 +15,7 @@ function fixture(id: string) {
 }
 
 async function setSource(page: Page, code: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(editor).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(code);
@@ -35,7 +35,7 @@ test("workbench routes the API on the frontend origin and shows compiler readine
   const privateRoute=await request.get("/api/internal/capability");
   expect(privateRoute.headers()["content-type"]).not.toContain("application/json");
   const seen=page.waitForRequest((req) => new URL(req.url()).pathname==="/api/health");
-  await page.goto("/");
+  await page.goto("/classic");
   expect(new URL((await seen).url()).origin).toBe(new URL(page.url()).origin);
   await expect(page.getByText("Backend connected",{exact:true})).toBeVisible();
   await capture(page.locator(".connections"),"compiler-readiness");
@@ -43,7 +43,7 @@ test("workbench routes the API on the frontend origin and shows compiler readine
 
 test("lazy workbench failure shows a reload action without displaying internal errors", async ({page}) => {
   await page.route("**/src/App.tsx*", (route) => route.abort());
-  await page.goto("/");
+  await page.goto("/classic");
   const fallback=page.getByRole("alert").filter({hasText:"Workbench could not load"});
   await expect(fallback.getByRole("button",{name:"Reload workbench"})).toBeVisible();
   await expect(fallback).not.toContainText("TypeError");
@@ -52,7 +52,7 @@ test("lazy workbench failure shows a reload action without displaying internal e
 
 test("failed entry module leaves a static troubleshooting message", async ({page}) => {
   await page.route("**/src/main.tsx*", (route) => route.abort());
-  await page.goto("/");
+  await page.goto("/classic");
   await expect(page.getByRole("heading",{name:"Loading Compiler Workbench…"})).toBeVisible();
   await expect(page.getByText("If this message stays visible",{exact:false})).toBeVisible();
 });

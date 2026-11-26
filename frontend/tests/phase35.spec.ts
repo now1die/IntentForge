@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 
 test("shared evidence follows the compiler and invalidates when the editor changes", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   const evidence = page.getByRole("region", { name: "Shared compiler evidence" });
   await evidence.getByRole("button", { name: "Inspect compiler evidence" }).click();
   await expect(evidence.getByRole("heading", { name: "Mini-C evidence" })).toBeVisible();
@@ -27,7 +27,7 @@ test("shared evidence follows the compiler and invalidates when the editor chang
 });
 
 test("Phase 3.5 shows contextual evidence and keeps boundary repair in review", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   const editor = page.locator(".source-editor .view-lines");
   await editor.click();
   await page.keyboard.press("Control+A");

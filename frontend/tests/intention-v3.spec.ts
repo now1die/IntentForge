@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("v3 offers an array boundary repair for review without editing the source", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   const editor = page.locator(".source-editor .view-lines");
   await editor.click();
   await page.keyboard.press("Control+A");

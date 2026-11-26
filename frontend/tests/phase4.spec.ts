@@ -4,7 +4,7 @@ import { mkdir } from "node:fs/promises";
 test("recorded Mini-C evidence compares outputs, preserves source, and invalidates after editing", async ({ page }) => {
   const requests: string[] = [];
   page.on("request", (request) => requests.push(new URL(request.url()).pathname));
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByText("Behavioral verification", { exact: true }).click();
   await page.getByRole("button", { name: "Load trusted example" }).click();
   const before = page.getByRole("region", { name: "Original program" });
@@ -27,7 +27,7 @@ test("recorded Mini-C evidence compares outputs, preserves source, and invalidat
 
 test("recorded failures and ambiguity remain readable on narrow screens and C mode hides the VM", async ({ page }) => {
   await page.setViewportSize({ width: 420, height: 900 });
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByText("Behavioral verification", { exact: true }).click();
   const choices = page.getByLabel("Trusted example");
   const load = page.getByRole("button", { name: "Load trusted example" });
