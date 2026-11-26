@@ -586,6 +586,13 @@ export interface Phase65Analysis {
   withheld: { category: string; reason: string; span: Diagnostic["span"] }[];
 }
 
+export type FlowGraph = {
+  entry: number;
+  exit: number;
+  blocks: { id: number; kind: string; reachable: boolean; span: SourceSpan }[];
+  edges: { source: number; target: number; kind: string }[];
+};
+
 export interface IntentionResponse {
   guided_evidence?: "POSSIBLE_REPAIR" | "INSUFFICIENT_SPECIFICATION";
   recommendation?: "ABSTAIN" | "REVIEW_WITH_EVIDENCE" | null;
@@ -610,6 +617,7 @@ export interface IntentionResponse {
       recursion: "DIRECT" | "MUTUAL" | "DIRECT_AND_MUTUAL" | "NONE";
       blocks: number;
       reachable_blocks: number;
+      cfg?: FlowGraph;
       possible_missing_return: boolean;
       complete: boolean;
       conditions: { span: Diagnostic["span"]; normalized: string[] | null; kind: string }[];

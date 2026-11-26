@@ -59,8 +59,8 @@ async function intentionInputError(response: Response): Promise<string> {
   return payload.detail?.[0]?.msg ?? "Check the requirement fields and source length.";
 }
 
-export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105 | 11 | 115 | 12 | 13 = 2, inputs?: Phase8Inputs) =>
-  request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode, engine_version: engineVersion, ...inputs }, signal);
+export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105 | 11 | 115 | 12 | 13 = 2, inputs?: Phase8Inputs, includeContext = false) =>
+  request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode, engine_version: engineVersion, ...inputs, ...(includeContext ? { include_context: true } : {}) }, signal);
 
 export const checkHealth = (signal?: AbortSignal) => request<Health>("/health", undefined, signal);
 export const analyzeCode = (code: string, signal?: AbortSignal) => request<AnalysisResponse>("/analyze", { code }, signal);

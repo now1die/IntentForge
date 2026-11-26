@@ -33,6 +33,28 @@ monaco.editor.defineTheme("minic-dark", {
     "editorWarning.foreground": "#DCC58F",
   },
 });
+monaco.editor.defineTheme("intentforge-burgundy", {
+  base: "vs-dark",
+  inherit: true,
+  rules: [
+    { token: "keyword", foreground: "E6A9C6" },
+    { token: "number", foreground: "F6CF90" },
+    { token: "comment", foreground: "C5A1AC" },
+  ],
+  colors: {
+    "editor.background": "#301019",
+    "editorGutter.background": "#39131E",
+    "editor.foreground": "#FFF4E8",
+    "editorLineNumber.foreground": "#C09AA6",
+    "editorLineNumber.activeForeground": "#FFF4E8",
+    "editor.lineHighlightBackground": "#461923",
+    "editor.selectionBackground": "#714155",
+    "editorCursor.foreground": "#FFE2D1",
+    "editorIndentGuide.background1": "#643445",
+    "editorError.foreground": "#EAA097",
+    "editorWarning.foreground": "#DCC58F",
+  },
+});
 export type EditorHandle = monaco.editor.IStandaloneCodeEditor;
 export function CodeEditor({
   code,
@@ -42,6 +64,7 @@ export function CodeEditor({
   readOnly = false,
   fullC = false,
   clangDiagnostics,
+  editorial = false,
 }: {
   code: string;
   onChange?: (value: string) => void;
@@ -50,6 +73,7 @@ export function CodeEditor({
   readOnly?: boolean;
   fullC?: boolean;
   clangDiagnostics?: ClangDiagnostic[];
+  editorial?: boolean;
 }) {
   const editorRef = useRef<EditorHandle | null>(null);
   const safeDiagnostics = diagnostics ?? [];
@@ -99,7 +123,7 @@ export function CodeEditor({
     <Editor
       value={code}
       language="cpp"
-      theme="minic-dark"
+      theme={editorial ? "intentforge-burgundy" : "minic-dark"}
       onChange={(value) => onChange?.(value ?? "")}
       onMount={onMount}
       loading={<div className="empty">Loading code editor…</div>}
