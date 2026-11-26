@@ -1,0 +1,9 @@
+# Where Phase 13 fits
+
+Monaco sends source to FastAPI through the same-origin bridge. The compiler produces tokens, syntax trees, typed scope information and source spans. Static intention analysis combines those structures with the selected profile and any user expectations. Changing editor text or analysis settings invalidates the review snapshot.
+
+The behavioral route previously nested eight version-membership checks to attach successive evidence layers. It now walks the existing layers in their historical order. Explicit membership governs API admission because a numeric comparison would misorder 10.5 (105) and 11. Phase 13 consumes the Phase 12 state report and labels the origin of its new proposals separately. Earlier versions retain their field names.
+
+Both new rules produce the existing source-span edit type. Existing projection, reference normalization, compilation, scoring, worker verification and UI approval handle those edits. The Phase 12 benchmark helpers now accept an optional profile or version sequence, with their previous defaults. The same helper generates both generations of reports. Backend and frontend still have distinct public schemas. [Historical checks](phase13_baseline.md) · [Security](phase13_security_review.md)
+
+The entry rule needs a bound length parameter, a prefix scan and an earlier direct seed read from the same local array. Discovery must include zero and positive lengths within capacity and agree on a single empty result. The aggregate rule relates a returned updated counter to an array written inside the same loop and tries scalar endpoints. Neither rule supplies its own expected result. Inherited trial, proposal, deadline and projection budgets constrain both. The presence and coordinate rules use Phase 12 semantics, including the distinction between physical extent and a verified logical dimension.

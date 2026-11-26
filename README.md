@@ -6,6 +6,16 @@ compiler rules, a bundled scikit-learn classifier and optional local Ollama.
 Phase 1 measures how often these repairs recover a supplied programmer intention.
 General detection of specification-level logic errors remains unsupported.
 
+## Demonstrate IntentForge
+
+Choose **Explore demo examples** in the editor. The [five-minute walkthrough](docs/phase13_demo_guide.md) covers compiler evidence, a confirmed mismatch with a private worker, source review, approval, and abstention. Mini-C supports signed integers, booleans, scoped variables, checked one-dimensional arrays, loops and bounded calls. Full C uses optional Clang analysis. [Language reference](docs/phase4_supported_language.md)
+
+The compiler builds a syntax tree and resolves types and names. The selected intention profile uses that evidence and supplied expectations to propose source changes. Interactive execution runs through a private Linux worker. Public analysis uses the compiler with execution disabled. [Architecture](docs/phase13_architecture_stabilization.md) · [Security](docs/phase13_security_review.md)
+
+![Reviewed source change in the production preview](audit/phase13/diff-4173.png)
+
+Phase 13 compares five profiles on the same frozen inputs, reports exact and behavioral agreement separately, and reserves held-out inputs for private verification. [Evaluation](docs/phase13_generalization_evaluation.md) · [Known limitations](docs/phase13_known_limitations.md) · [Release review](docs/PHASE_13_FINAL_REVIEW.md)
+
 ## Run locally
 
 From the repository root with Python 3.12 and Node 20.19 through 24:

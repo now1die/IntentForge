@@ -79,3 +79,10 @@ jobs:
       - run: python -m benchmarks.phase12_audit
       - run: python -m benchmarks.phase12_upstream --check
       - run: python -m benchmarks.phase12_evaluate --check
+      - name: Check Phase 13 provenance, upstream replay and frozen results
+        run: |
+          python -m benchmarks.phase13_audit > "$RUNNER_TEMP/phase13-audit.json"
+          diff benchmarks/reports/phase13-audit-v1.json "$RUNNER_TEMP/phase13-audit.json"
+          python -m benchmarks.phase13_upstream > "$RUNNER_TEMP/phase13-upstream.json"
+          diff benchmarks/reports/phase13-upstream-v1.json "$RUNNER_TEMP/phase13-upstream.json"
+          python -m benchmarks.phase13_evaluate --check

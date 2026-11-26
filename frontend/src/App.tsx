@@ -270,6 +270,10 @@ export default function App() {
             <option value="mini">Mini-C</option><option value="clang">C / Clang</option>
           </select></label>
         </div>
+        {!fullC && <a href="#demo-examples" onClick={() => {
+          const panel = document.getElementById("demo-examples");
+          if (panel instanceof HTMLDetailsElement) panel.open = true;
+        }}>Explore demo examples</a>}
       </div>
       {error && (
         <div role="alert" className="error-banner">

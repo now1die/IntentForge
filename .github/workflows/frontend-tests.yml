@@ -31,6 +31,18 @@ jobs:
         working-directory: frontend
       - run: npm test
         working-directory: frontend
+      - name: Verify production preview with the API online and offline
+        run: |
+          python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 &
+          api_pid=$!
+          npm --prefix frontend run preview -- --strictPort &
+          preview_pid=$!
+          trap 'kill "$api_pid" "$preview_pid" 2>/dev/null || true' EXIT
+          curl -fsS --retry 20 --retry-all-errors --retry-delay 1 http://127.0.0.1:4173/api/health
+          node frontend/scripts/verify-demo.mjs 4173
+          kill "$api_pid"
+          wait "$api_pid" || true
+          node frontend/scripts/verify-demo.mjs 4173 --offline
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: failure()
         with:

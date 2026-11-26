@@ -1,0 +1,7 @@
+# Candidate quality, coverage and cost
+
+Phase 13 confirmed all five documented mismatches and the one injected mismatch with supplied vectors. It recommended a single candidate for two documented faults and one injected fault. All three emitted candidates compiled, passed discovery and passed the independent worker holdout. The remaining three documented faults had confirmed mismatches and no recommendation. Code-only recovery was zero on all six faults.
+
+All six correct controls had zero confirmed alerts, visible suggestions, recommendations or speculative static proposals. No admitted fresh case had two discovery-matching candidates. In the separately retained interpolation diagnostic two candidates still fit the available evidence. Observed recommendation precision was 3/3 across the two distinct fault cohorts. [Candidate rows and review policy](../benchmarks/reports/phase13-live-v1.json)
+
+The Phase 13 static projection took a median 6.7 ms and measured p95 47.3 ms across the 12 programs. End-to-end isolated evaluation including holdout took a median 947 ms and p95 2,216 ms on this machine. Reported per-row observed steps ranged from 78 to 1,086, peak cells from 2 to 20, and maximum call depth from 1 to 5. No fresh row used probe steps. Latency depends on the host and is excluded from stable report comparisons. The experiment retains the existing caps of 24 trials and four proposals.

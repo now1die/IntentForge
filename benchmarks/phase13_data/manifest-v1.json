@@ -1,0 +1,32 @@
+{
+  "case_sha256": "ec88331bc43de6f5bfa90d1009116cdb124ede114633ba6f4a54c29fc84bdb0b",
+  "partitions": {
+    "final": 16,
+    "development": 2,
+    "selection": 2
+  },
+  "upstream_sha256": {
+    "bucket-order-LICENSE.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "bucket-order-after.txt": "b3f8457088817aefa10358c11447633952d69b1502a1e95d1fd9c5ac316dabc8",
+    "bucket-order-before.txt": "04ca37f3f1ea6298d6d2bc3e72073fa37ce00b0a7015daed3e45ae3bbf2acd63",
+    "combination-domain-LICENSE.txt": "2b7b16fdd422b878381c05e5c06f9cc223feae2a70d98389fb13bdd51fc0595a",
+    "combination-domain-after.txt": "37d8c2d77e9a692514752cb70ed648534cd585c791a10fbc5cbab028092cb053",
+    "combination-domain-before.txt": "9bd3056438658253680b7cb7d525e5ce9f830831db1f78acb1e014bd3fe62073",
+    "digit-count-LICENSE.txt": "f1b0fa7c4e821bb14b1b4857b3d63248d4b81a9a5adfc8324312272a1a22a033",
+    "digit-count-after.txt": "aa793728c91eee92772f311eedec21aee629af991e6d0844857f975b28619686",
+    "digit-count-before.txt": "5ad3d79269ec2f1906f0a98444065994b92f1d4473faebed1b752f89ef206e08",
+    "empty-maximum-LICENSE.txt": "c533f3b4631cc204db72c3dbfca43a07855d3176388e4fe155d980f8a0ba83f7",
+    "empty-maximum-after.txt": "970b9daca087448f3b7c1d719d45c0b37a60546f87b5cd2e3696897149ed37e2",
+    "empty-maximum-before.txt": "48627e6412723467e26a7661cf2f248525c39c4ab070a132b6c270eae647e886",
+    "empty-timsort-LICENSE.txt": "4395a1dc4bda1d6054c45b4d1230c709c7398e6d66f1d0aff4b22d95973bea56",
+    "empty-timsort-after.txt": "0456115d633060a0c215cb6a363481dc9cf0914103e8f930f9eb83b8ee8aa9f0",
+    "empty-timsort-before.txt": "dbee1544ef527eedf345057f88e771a127ebd7ab18da76f404e09ab7078f02a7",
+    "hex-channel-LICENSE.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "hex-channel-after.txt": "b6b27864cc6caedcebd78a8977e73d95abbab319c621827307a56b084c76de97",
+    "hex-channel-before.txt": "2a08645ab7d1c06a6a368bca073e16b5aed1d2249600d69c157da746b1e37742",
+    "sum-exclusive-LICENSE.txt": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "sum-exclusive-after.txt": "355ce2bef1bb047d4e6e6c4dd599f69f9ac0c8a7a496544caf2e15b57fb71a80",
+    "sum-exclusive-before.txt": "8eecfb9d7873d5c7fb45ac53eb26dfc1d2c0e6c6bae4c62f4476030fe8dbb226"
+  },
+  "revisions_sha256": "c5cc32a74ccafa4bc0f3fb10ea5874c642b4a9e753bfc24fba86dc0e27e2d8be"
+}
