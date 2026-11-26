@@ -6,7 +6,10 @@ async function capture(page: Page, name: string) {
   const directory = process.env.INTENTFORGE_PRODUCT_CAPTURES;
   if (!directory) return;
   await mkdir(directory, { recursive: true });
-  await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    window.scrollTo(0,0);
+  });
   await page.screenshot({path:join(directory,`${name}.png`), fullPage:true, animations:"disabled"});
 }
 
@@ -88,7 +91,8 @@ test("typed table, real suggestion and source-bound approval", async ({page}) =>
     examples:[{args:[5,3],expected_return:8},{args:[10,2],expected_return:12},{args:[4,7],expected_return:11}]}});
   await expect(page.getByRole("heading",{name:"Suggested Fixes"})).toBeVisible();
   await expect(page.getByText("Unverified",{exact:true})).toBeVisible();
-  await expect(page.getByText("Restricted worker unavailable.",{exact:false})).toBeVisible();
+  await expect(page.getByText(process.env.INTENTFORGE_PRODUCT_PREVIEW === "1" ?
+    "Production preview supports analysis." : "Restricted worker unavailable.",{exact:false})).toBeVisible();
   await capture(page,"intention-suggestion");
   await page.getByRole("button",{name:"Review Repair",exact:true}).click();
   await expect(page.getByRole("dialog",{name:"Review source change"})).toBeVisible();
@@ -107,14 +111,15 @@ test("typed table, real suggestion and source-bound approval", async ({page}) =>
 });
 
 test("worker verifies the documented UI flow", async ({page}) => {
-  test.skip(!process.env.INTENTFORGE_VM_SOCKET,"Requires the restricted worker");
+  test.skip(!process.env.INTENTFORGE_VM_SOCKET || process.env.INTENTFORGE_PRODUCT_PREVIEW === "1",
+    "Requires the origin-approved restricted worker on the development workbench");
   await open(page);
   await example(page,"Addition or subtraction?");
-  await expect(page.getByText("Restricted worker ready",{exact:true})).toBeVisible();
+  await expect(page.locator(".product-footer").getByText("Restricted worker ready",{exact:true})).toBeVisible();
   await page.getByRole("button",{name:"Analyze Intention",exact:true}).click();
   await expect(page.getByText("Confirmed behavioral mismatch on supplied tests.")).toBeVisible();
   await expect(page.getByText("Verified on supplied tests",{exact:true})).toBeVisible();
-  await page.getByText("Verification Results",{exact:true}).click();
+  await page.getByRole("region",{name:"Intent and repair result"}).getByText("Verification Results",{exact:true}).click();
   await expect(page.getByRole("region",{name:"Suggested repair"}).getByRole("cell",{name:"Pass",exact:true})).toHaveCount(3);
   await capture(page,"intention-verified");
 });
@@ -131,7 +136,7 @@ test("ambiguity can be inspected without being applied", async ({page}) => {
 
 test("research graph keeps real loop edges, selected block and view state", async ({page}) => {
   await open(page);
-  await example(page,"An exclusive loop bound");
+  await replaceSource(page,"int total(int n) {\n    int sum = 0;\n    while (n > 0) {\n        sum += n;\n        n--;\n    }\n    return sum;\n}");
   await navigate(page,"Research Lab");
   await page.getByRole("button",{name:"Run Research Analysis",exact:true}).click();
   const graph = page.getByRole("group",{name:"Control-flow graph"});
@@ -148,12 +153,14 @@ test("research graph keeps real loop edges, selected block and view state", asyn
   await capture(page,"research-cfg");
   await page.getByRole("button",{name:"Zoom in",exact:true}).click();
   await expect(graph).toHaveAttribute("data-zoom","1.25");
+  await graph.scrollIntoViewIfNeeded();
   const box = await graph.boundingBox();
   if (!box) throw new Error("Graph canvas is missing");
   await page.mouse.move(box.x + box.width - 12,box.y + box.height - 12);
   await page.mouse.down();
   await page.mouse.move(box.x + box.width - 45,box.y + box.height - 40,{steps:6});
   await page.mouse.up();
+  await expect(graph).not.toHaveAttribute("data-pan-x","0");
   await page.getByRole("button",{name:"Fit graph",exact:true}).click();
   await expect(graph).toHaveAttribute("data-zoom","1");
   await page.getByRole("button",{name:"Program State",exact:true}).click();

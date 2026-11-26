@@ -85,6 +85,10 @@ export default function App() {
     void refreshHealth();
     if (classic) return;
     capabilityTask.current?.abort();
+    if (window.location.port === "4173") {
+      setExecution({status:"disabled",detail:"Production preview supports analysis. Use the local development workbench for runtime tests."});
+      return;
+    }
     const controller = new AbortController();
     capabilityTask.current = controller;
     setExecution(null);

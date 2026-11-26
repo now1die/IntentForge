@@ -218,7 +218,7 @@
 .card-heading button { flex: none; }
 .table-scroll { overflow-x: auto; max-width: 100%; }
 .product table { border-collapse: collapse; width: 100%; text-align: left; }
-.product th, .product td { padding: 7px 8px; border-bottom: 1px solid var(--border-subtle); height: auto; }
+.product th, .product td { color: var(--ink); background-color: transparent; padding: 7px 8px; border-bottom: 1px solid var(--border-subtle); height: auto; }
 .product thead th { background: #f8e3d9; color: var(--ink); position: static; white-space: nowrap; }
 .product th[scope=row] { color: var(--brand-primary); background: var(--surface-warm); }
 .case-table input { width: 100%; min-width: 36px; padding: 4px; min-height: 31px; background: transparent; border-color: transparent; }

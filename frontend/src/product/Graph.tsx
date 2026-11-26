@@ -22,11 +22,11 @@ export function layout(graph: FlowGraph) {
     groups.set(level, group);
   }
   const width = Math.max(350, ...[...groups.values()].map((rows) => rows.length * 177 + 60));
-  const height = 70 + Math.max(...groups.keys()) * 108;
+  const height = 70 + Math.max(...groups.keys()) * 80;
   const points = new Map<number, { x: number; y: number }>();
   for (const [level, rows] of groups) {
     rows.forEach((block, index) => points.set(block.id, {
-      x: width / 2 + (index - (rows.length - 1) / 2) * 177, y: 35 + level * 108,
+      x: width / 2 + (index - (rows.length - 1) / 2) * 177, y: 35 + level * 80,
     }));
   }
   return { points, width, height };
@@ -64,7 +64,7 @@ export function FlowDiagram({ graph, code, onLocate, compact = false }: {
         <button type="button" aria-label="Fit graph" onClick={() => setView(baseView)}><ArrowsOut size={16} /></button>
         <button type="button" aria-label="Reset graph" onClick={() => { setView(baseView); setSelection(graph.entry); }}><ArrowCounterClockwise size={16} /></button>
       </div>}
-      <svg role="group" aria-label="Control-flow graph" viewBox={`0 0 ${width} ${height}`} data-zoom={view.zoom}
+      <svg role="group" aria-label="Control-flow graph" viewBox={`0 0 ${width} ${height}`} data-zoom={view.zoom} data-pan-x={view.x}
         onPointerDown={(e) => {
           if (compact || (e.target as Element).closest("[data-block]")) return;
           e.currentTarget.setPointerCapture(e.pointerId);
@@ -106,7 +106,7 @@ export function FlowDiagram({ graph, code, onLocate, compact = false }: {
               }}>
               {conditional ? <polygon points="0,-26 76,0 0,26 -76,0" className="graph-conditional" />
                 : <rect x="-73" y="-25" width="146" height="50" rx="13" />}
-              <text textAnchor="middle" y="-4" className="graph-block-id">B{node.id} · {names[node.kind]}</text>
+              <text textAnchor="middle" y="-4" className="graph-block-id">B{node.id} · {node.kind === "loop_header" ? "Loop" : names[node.kind]}</text>
               {node.kind !== "entry" && node.kind !== "exit" && <text textAnchor="middle" y="14">{excerpt(node)}</text>}
             </g>;
           })}

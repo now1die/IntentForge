@@ -307,7 +307,8 @@ export function IntentionWorkspace({ code, fullC, functions, expected, execution
         </>}
         {kept && <p role="status">Original source retained. <button type="button" onClick={() => setKept(false)}>Show suggestion</button></p>}
         <section className="verification-summary"><h3>Test Behavior</h3>
-          {execution?.status !== "available" ? <p><WarningCircle size={17} /> Restricted worker unavailable. Runtime tests were unverified.</p>
+          {execution?.status !== "available" ? <p><WarningCircle size={17} /> {execution?.status === "disabled" && execution.detail.includes("Production preview")
+            ? execution.detail : "Restricted worker unavailable. Runtime tests were unverified."}</p>
             : !live ? <p>{busy ? "Waiting for runtime observations." : "Add supplied test cases to run behavioral verification."}</p>
               : <><p>{live.availability.detail}</p>{live.guided_evidence?.recommended_candidate === liveChoice?.id && liveChoice &&
                 <p>Runtime evidence supports reviewing this repair.</p>}
