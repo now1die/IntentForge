@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 
 test("C capability and language switching keep Mini-C routes available", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByLabel("Language").selectOption("clang");
   await expect(page.getByText("Intelligent repair, linking and execution are unavailable in C mode.")).toBeVisible();
   await expect(page.getByRole("button", { name: "Correct", exact: true })).toHaveCount(0);
@@ -17,7 +17,7 @@ test("C capability and language switching keep Mini-C routes available", async (
 
 test("real Clang diagnostics, AST and declarations are tied to the editor snapshot", async ({ page }) => {
   test.skip(!process.env.INTENTFORGE_LIBCLANG, "Clang integration requires the optional Linux worker");
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByLabel("Language").selectOption("clang");
   await expect(page.getByText(/Clang 19\./)).toBeVisible();
   const source = "struct Point { int x; };\nint locate(struct Point *p) { return p->missing; }";

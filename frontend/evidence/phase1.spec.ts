@@ -35,7 +35,7 @@ test("capture Phase 1 evidence from the running workbench", async ({ page, brows
       status: await page.getByRole("status").textContent() });
   };
 
-  await page.goto("/");
+  await page.goto("/classic");
   await expect(page.getByText("Backend connected", { exact: true })).toBeVisible();
   await expect(page.locator(".source-editor .monaco-editor")).toBeVisible();
   const healthResponse = await page.request.get("http://127.0.0.1:8000/health");
@@ -88,7 +88,7 @@ test("capture Phase 1 evidence from the running workbench", async ({ page, brows
   await capture("06b-semantic-diagnostics.png", semantic);
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/classic");
   await analyze(page, "All checks passed");
   await capture("07-mobile.png", DEFAULT_CODE);
 

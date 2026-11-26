@@ -9,7 +9,7 @@ const expectations = [
 ];
 
 async function loadDemo(page: Page, label: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByText("Phase 12 demo examples", { exact: true }).click();
   await page.getByLabel("Demo example").selectOption({ label });
   await page.getByRole("button", { name: "Load demo source" }).click();

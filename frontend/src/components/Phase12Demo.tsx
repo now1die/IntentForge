@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const examples = [
+export const authoredDemos = [
   {
     label: "Correct program",
     source: "int main() { int value = 6; return value + 2; }",
@@ -39,14 +39,14 @@ const examples = [
 
 export function Phase12Demo({ onLoad }: { onLoad: (source: string) => void }) {
   const [selected, setSelected] = useState(0);
-  const example = examples[selected];
+  const example = authoredDemos[selected];
   return <details id="demo-examples" className="inspector behavior-panel">
     <summary>Phase 12 demo examples</summary>
     <div className="inspector-body">
       <p>Authored Mini-C examples</p>
       <div className="behavior-controls">
         <label>Demo example <select value={selected} onChange={(event) => setSelected(Number(event.target.value))}>
-          {examples.map((item, index) => <option key={item.label} value={index}>{item.label}</option>)}
+          {authoredDemos.map((item, index) => <option key={item.label} value={index}>{item.label}</option>)}
         </select></label>
         <button type="button" onClick={() => onLoad(example.source)}>Load demo source</button>
       </div>

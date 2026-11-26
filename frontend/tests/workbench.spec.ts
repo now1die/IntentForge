@@ -16,7 +16,7 @@ test("lowercase a remains normal Monaco input and never runs Analyze", async ({
     if (new URL(request.url()).pathname === "/analyze") analyzeRequests += 1;
   });
 
-  await page.goto("/");
+  await page.goto("/classic");
   await page.screenshot({
     path: "../audit/ui-ux-polish/desktop-initial.png",
     fullPage: true,
@@ -33,7 +33,7 @@ test("lowercase a remains normal Monaco input and never runs Analyze", async ({
 test("real backend analysis, Monaco markers, and all data inspectors", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await expect(
     page.getByText("Backend connected", { exact: true }),
   ).toBeVisible();
@@ -82,7 +82,7 @@ test("real backend analysis, Monaco markers, and all data inspectors", async ({
 test("real ML correction is reviewed before explicitly applying", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await enterExample(page, "Broken If");
   await page.getByRole("button", { name: "Correct", exact: true }).click();
   await expect(
@@ -207,7 +207,7 @@ test("Groq ambiguity-selection metadata is visible in correction review", async 
     }),
   );
 
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByRole("button", { name: "Correct", exact: true }).click();
 
   await expect(page.locator(".analysis-panel")).toContainText(
@@ -341,7 +341,7 @@ return 0;
     }),
   );
 
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(".source-editor .view-lines").click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(original);
@@ -426,7 +426,7 @@ test("invented missing expression remains unresolved and cannot be applied", asy
     }),
   );
 
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(".source-editor .view-lines").click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(source);
@@ -452,7 +452,7 @@ test("offline and missing-model errors are safe and recoverable", async ({
   page,
 }) => {
   await page.route("**/health", (route) => route.abort());
-  await page.goto("/");
+  await page.goto("/classic");
   await expect(
     page.getByText("Backend offline", { exact: true }),
   ).toBeVisible();
@@ -477,7 +477,7 @@ test("reset cancels stale analysis and clears markers", async ({ page }) => {
     await new Promise((resolve) => setTimeout(resolve, 1200));
     await route.continue().catch(() => {});
   });
-  await page.goto("/");
+  await page.goto("/classic");
   await enterExample(page, "Broken If");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await page.getByRole("button", { name: "Reset", exact: true }).click();
@@ -492,7 +492,7 @@ test("narrow workspace stacks without horizontal page overflow", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/classic");
   await expect(page.locator(".source-editor .monaco-editor")).toBeVisible();
   await expect(page.getByText("Backend connected", { exact: true })).toBeVisible();
   await expect(page.locator(".connections")).not.toContainText("ML");
@@ -516,7 +516,7 @@ test("narrow workspace stacks without horizontal page overflow", async ({
 test("semantic-only analysis keeps compiler correction unavailable", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(".source-editor .view-lines").click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(
@@ -542,7 +542,7 @@ test("tablet stacks while desktop preserves the split workbench", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 900, height: 1000 });
-  await page.goto("/");
+  await page.goto("/classic");
   let editor = await page.locator(".editor-panel").boundingBox();
   let panel = await page.locator(".analysis-panel").boundingBox();
   expect(panel!.y).toBeGreaterThan(editor!.y);
@@ -568,7 +568,7 @@ test("tablet stacks while desktop preserves the split workbench", async ({
 test("multiple deterministic fixes form a numbered correction history", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(".source-editor .view-lines").click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText("int main(){ int x = 1 return x }");
@@ -585,7 +585,7 @@ test("multiple deterministic fixes form a numbered correction history", async ({
 });
 
 test("backend tables expose accessible captions", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("All checks passed");
   await page.getByRole("tab", { name: "Tokens" }).click();
@@ -602,7 +602,7 @@ test("backend tables expose accessible captions", async ({ page }) => {
 });
 
 test("a behavior-changing operator stays in review until the user selects and applies it", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(".source-editor .view-lines").click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText("int main(){ int a,b; if(a.b){return 0;} }");
@@ -619,7 +619,7 @@ test("a behavior-changing operator stays in review until the user selects and ap
 });
 
 test("specification-supported intention repair is previewed and applied only on approval", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(".source-editor .view-lines").click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText("int square(int n){return n+n;}");
@@ -639,7 +639,7 @@ test("specification-supported intention repair is previewed and applied only on 
 });
 
 test("a changed requirement invalidates an intention preview", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByRole("tab", { name: "Intention", exact: true }).click();
   await page.getByLabel("Return expression").fill("2");
   await page.getByText("Expression locations and input/output examples", { exact: true }).click();
@@ -652,7 +652,7 @@ test("a changed requirement invalidates an intention preview", async ({ page }) 
 });
 
 test("code-only suspicion stays review-only and a source edit invalidates the preview", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   const editor = page.locator(".source-editor .view-lines");
   await editor.click();
   await page.keyboard.press("Control+A");
@@ -673,7 +673,7 @@ test("code-only suspicion stays review-only and a source edit invalidates the pr
 });
 
 test("natural-language mode exposes unrecognized wording and accepts a supported comparison", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/classic");
   const editor = page.locator(".source-editor .view-lines");
   await editor.click();
   await page.keyboard.press("Control+A");

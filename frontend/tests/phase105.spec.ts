@@ -16,7 +16,7 @@ function fixture(id: string) {
 }
 
 async function setSource(page: Page, code: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(editor).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(code);

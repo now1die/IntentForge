@@ -5,7 +5,7 @@ const live = !!process.env.INTENTFORGE_VM_SOCKET;
 const sourceLines = ".source-editor .view-lines";
 
 async function openPanel(page: Page, source: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(sourceLines).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(source);
@@ -15,7 +15,7 @@ async function openPanel(page: Page, source: string) {
 
 test("hosted/default workbench explains disabled execution and keeps recorded evidence", async ({ page }) => {
   test.skip(live, "This test checks the default-disabled profile");
-  await page.goto("/");
+  await page.goto("/classic");
   await page.getByText("Interactive behavioral verification", { exact: true }).click();
   await expect(page.getByText("Interactive execution is disabled on this deployment.")).toBeVisible();
   await expect(page.getByRole("button", { name: "Run verification" })).toHaveCount(0);

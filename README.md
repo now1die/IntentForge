@@ -6,9 +6,20 @@ compiler rules, a bundled scikit-learn classifier and optional local Ollama.
 Phase 1 measures how often these repairs recover a supplied programmer intention.
 General detection of specification-level logic errors remains unsupported.
 
+## Workspaces
+
+- **Compiler** analyzes Mini-C and, where available, Full C through Clang. Review diagnostics, tokens, AST, symbols and compiler fixes.
+- **Intention** uses typed expected behavior to surface supported repairs. Review the diff and approve against the current source.
+- **Research Lab** shows the current program's control-flow graph, engine evidence and frozen benchmarks. The historical workbench retains earlier profiles and advanced tools.
+- **Examples & Learning** opens prefilled exercises with source and expected behavior.
+
+![Compiler workspace after analysis](audit/phase14/compiler-success.png)
+
+See the [workspace screenshot gallery](docs/phase14_visual_validation.md) and [Phase 14 review](docs/PHASE_14_FINAL_REVIEW.md).
+
 ## Demonstrate IntentForge
 
-Choose **Explore demo examples** in the editor. The [five-minute walkthrough](docs/phase13_demo_guide.md) covers compiler evidence, a confirmed mismatch with a private worker, source review, approval, and abstention. Mini-C supports signed integers, booleans, scoped variables, checked one-dimensional arrays, loops and bounded calls. Full C uses optional Clang analysis. [Language reference](docs/phase4_supported_language.md)
+Open **Examples & Learning** to load a prefilled lesson. For the earlier demonstration workflow, open the historical workbench from Research Lab. The [five-minute walkthrough](docs/phase13_demo_guide.md) covers compiler evidence, a confirmed mismatch with a private worker, source review, approval, and abstention. Mini-C supports signed integers, booleans, scoped variables, checked one-dimensional arrays, loops and bounded calls. Full C uses optional Clang analysis. [Language reference](docs/phase4_supported_language.md)
 
 The compiler builds a syntax tree and resolves types and names. The selected intention profile uses that evidence and supplied expectations to propose source changes. Interactive execution runs through a private Linux worker. Public analysis uses the compiler with execution disabled. [Architecture](docs/phase13_architecture_stabilization.md) · [Security](docs/phase13_security_review.md)
 

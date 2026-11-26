@@ -91,7 +91,7 @@ jobs:
         run: npx playwright install chromium
       - name: Run the isolated workbench scenarios
         working-directory: frontend
-        run: npm test -- phase45.spec.ts phase5.spec.ts phase55.spec.ts phase6.spec.ts phase65.spec.ts phase7.spec.ts phase75.spec.ts phase8.spec.ts phase85.spec.ts phase9.spec.ts phase95.spec.ts phase10.spec.ts phase105.spec.ts phase11.spec.ts phase115.spec.ts phase12.spec.ts phase13.spec.ts
+        run: npm test -- phase45.spec.ts phase5.spec.ts phase55.spec.ts phase6.spec.ts phase65.spec.ts phase7.spec.ts phase75.spec.ts phase8.spec.ts phase85.spec.ts phase9.spec.ts phase95.spec.ts phase10.spec.ts phase105.spec.ts phase11.spec.ts phase115.spec.ts phase12.spec.ts phase13.spec.ts phase14.spec.ts
       - name: Remove the local worker
         if: always() && env.MINIC_CONTAINER != ''
         run: docker rm -f "$MINIC_CONTAINER"

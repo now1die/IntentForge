@@ -5,7 +5,7 @@ const lines = ".source-editor .view-lines";
 const capture = process.env.INTENTFORGE_PHASE55_CAPTURES;
 
 async function openSource(page: Page, source: string) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(lines).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(source);

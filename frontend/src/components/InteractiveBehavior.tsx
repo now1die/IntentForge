@@ -125,15 +125,7 @@ export function InteractiveBehavior({ code, functions, onNavigate, onApply }: Pr
     const controller = new AbortController();
     discovery.current = controller;
     setCapability(null);
-    async function discover() {
-      let result = await getExecutionCapability(controller.signal);
-      for (let attempt = 0; attempt < 4 && result.status === "capacity_reached" && !controller.signal.aborted; attempt++) {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        if (!controller.signal.aborted) result = await getExecutionCapability(controller.signal);
-      }
-      return result;
-    }
-    discover().then((result) => {
+    getExecutionCapability(controller.signal).then((result) => {
       if (!controller.signal.aborted) setCapability(result);
     }).catch(() => {
       if (!controller.signal.aborted) setCapability({ status: "worker_unavailable", detail: "The execution gateway is unavailable." });

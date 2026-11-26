@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 175">
+ <defs>
+  <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M-1 5 5-1M3 7 7 3" stroke="#800020" stroke-width=".55" opacity=".46"/></pattern>
+  <pattern id="cross" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0 6 6M0 6 6 0" stroke="#800020" stroke-width=".38" opacity=".48"/></pattern>
+  <linearGradient id="ink"><stop stop-color="#800020" stop-opacity="0"/><stop offset=".28" stop-color="#800020"/><stop offset=".75" stop-color="#800020"/><stop offset="1" stop-color="#800020" stop-opacity="0"/></linearGradient>
+  <g id="surface" fill="none" stroke="url(#ink)" stroke-width=".8" opacity=".6">
+   <path d="M15 142H413M21 146H408M44 150H382M23 155H405M52 159H370M75 164H344M89 168H322"/>
+   <path d="M38 142 27 150m37-8-12 9m49-9-26 15m61-15-28 20m56-19-21 17m53-18-27 22m62-22-28 22m59-22-17 16m48-16-24 16m61-16-18 12m50-13-14 11"/>
+  </g>
+  <g id="sheet" stroke="#800020" stroke-width="1.2" stroke-linejoin="round">
+   <path d="M0 0H75L91 17V80H0Z" fill="#FFF9F2"/><path d="M75 0v17h16M9 29h30m6 0h33M9 36h69M15 43h31m7 0h25m-63 7h52M9 58h39m7 0h15m-61 8h62" fill="none" opacity=".8"/>
+   <path d="M6 6h61M5 76h82" fill="none" stroke-width=".55"/>
+  </g>
+  <g id="books" stroke="#800020" stroke-width="1.1" stroke-linejoin="round">
+   <path d="M0 18 59 0l47 11-57 20Z" fill="#F3E6D5"/><path d="m0 18 49 13 57-20v12L49 45 0 31Z" fill="#FFF9F2"/><path d="M49 31v14L0 31V18Z" fill="url(#hatch)"/><path d="m55 35 47-17m-46 21 44-17m-92 2 36 10m-35-6 36 10m-8-14 44-15" fill="none" stroke-width=".65"/>
+  </g>
+  <g id="nodes" stroke="#800020" stroke-width="1.5" stroke-linejoin="round">
+   <path d="M52 20v17m0 20v16H23v17m29-17h36v17m-65 17v13h65v-13m-36 13v11" fill="none"/>
+   <rect x="36" y="4" width="32" height="17" rx="5" fill="#FFF9F2"/>
+   <path d="m52 31 24 16-24 17-24-17Z" fill="#E5B8BF"/><path d="m52 31 24 16-24 17-24-17Z" fill="url(#hatch)"/>
+   <rect x="4" y="86" width="38" height="23" rx="3" fill="#F3E6D5"/><rect x="68" y="86" width="40" height="23" rx="3" fill="#FFF9F2"/>
+   <rect x="36" y="130" width="32" height="15" rx="4" fill="#F3E6D5"/>
+   <path d="M44 12h16M43 47h18M11 96h24m-22 5h20m42-5h25m-22 5h18m-52 37h16" fill="none" stroke-width=".7"/>
+  </g>
+ </defs>
+ <symbol id="compiler" viewBox="0 0 420 175">
+  <use href="#surface"/>
+  <use href="#sheet" transform="translate(290 31) rotate(13) scale(.92)"/><use href="#books" transform="translate(282 107) scale(1.05)"/>
+  <use href="#sheet" transform="translate(62 41) rotate(-16) scale(.9)"/>
+  <g stroke="#800020" stroke-width="1.4" stroke-linejoin="round">
+   <path d="m121 24 139-9 29 11v84l-23 14-145-8Z" fill="#F3E6D5"/><path d="M260 15l29 11v84l-23 14V31Z" fill="url(#cross)"/>
+   <path d="M121 24h145v94H121Z" fill="#EEE0CD"/><rect x="131" y="34" width="121" height="69" rx="8" fill="#551628"/>
+   <path d="M135 42q54-14 113 1v12q-57-13-113 0Z" fill="url(#hatch)"/>
+   <path d="m145 49 9 6-9 6m13 0h18m-13 10h48m-48 7h35m-26 8h48" stroke="#FFF3DE" fill="none"/>
+   <path d="M234 110h15m-105 8-23 14-22 12 17 11 150-2 24-15-42-17" fill="#F3E6D5"/>
+   <path d="m121 132 145 4 24 2-24 15-150 2-17-11Z" fill="url(#hatch)"/>
+   <path d="m119 141 151 2m-142-7 147 3m-146 7 119 2m-106-11-4 11m18-10-5 12m19-11-5 11m17-11-4 9m18-9-4 9m18-9-4 10m18-10-3 9m17-8-5 9" fill="none" stroke-width=".75"/>
+  </g>
+ </symbol>
+ <symbol id="intention" viewBox="0 0 420 175">
+  <use href="#surface"/><use href="#sheet" transform="translate(56 41) rotate(-12) scale(1.17)"/>
+  <use href="#sheet" transform="translate(242 31) rotate(10) scale(1.2)"/>
+  <path d="M146 106c19 10 51 11 69-1m-13-3 13 3-7 11" fill="none" stroke="#D45060" stroke-width="2"/>
+  <use href="#nodes" transform="translate(250 37) rotate(10) scale(.72)"/>
+  <g stroke="#800020" stroke-width="2"><path d="m179 100 16-12 53 51q7 9-1 15t-17-1Z" fill="#DAB1B4"/><path d="m179 100 16-12 53 51q7 9-1 15t-17-1Z" fill="url(#hatch)"/><circle cx="151" cy="66" r="44" fill="#F3E6D5"/><circle cx="151" cy="66" r="37" fill="#FFF9F2"/><path d="M122 56q8-16 22-19m-18 47q12 13 29 12m-28-35h46m-39 10h31m-24 9h31" fill="none" stroke-width="1"/></g>
+ </symbol>
+ <symbol id="research" viewBox="0 0 420 175">
+  <use href="#surface"/><use href="#books" transform="translate(46 95) scale(1.17)"/>
+  <use href="#sheet" transform="translate(143 19) rotate(-8) scale(1.56)"/>
+  <use href="#nodes" transform="translate(154 18) rotate(-8) scale(.76)"/>
+  <g stroke="#800020" stroke-width="1.4" fill="#F3E6D5" stroke-linejoin="round">
+   <path d="M321 143h-52v-7h13l39-112 8 2-33 110h25Zm15 0h41v-6h-9l-34-113-8 3 30 110h-20Z"/>
+   <path d="m282 136 39-112 8 2-33 110Zm74 1-30-110 8-3 34 113Z" fill="url(#cross)"/>
+   <circle cx="327" cy="25" r="11" fill="#E5B8BF"/><path d="M309 76h39m-32-4 24 9m-72 66h109" fill="none"/>
+  </g>
+ </symbol>
+ <symbol id="examples" viewBox="0 0 420 175">
+  <use href="#surface"/><use href="#books" transform="translate(286 95) rotate(-3) scale(1.05)"/>
+  <g stroke="#800020" stroke-width="1.4" stroke-linejoin="round">
+   <path d="M56 49q70-28 146 12 56-39 123-22l-13 94q-64-12-110 21-80-38-149-17Z" fill="#E8C9BD"/>
+   <path d="M61 44q70-29 141 12 55-42 118-22l-14 94q-61-12-104 23-79-39-145-18Z" fill="#FFF9F2"/>
+   <path d="M202 56v95m-136-12q63-16 136 14 46-25 104-18m-238 8q67-15 130 13m7-2q44-21 95-15" fill="none"/>
+   <path d="M76 62q54-10 110 12m-110-4q53-10 109 12m-108-4q48-8 99 10m-98-2q54-5 99 12m-99-4q45-6 95 11m-96-3q50-3 94 12m-95-4q39-3 79 10m71-3q49-20 67-12m-68 20q37-16 64-13" fill="none" stroke-width=".8"/>
+   <path d="M221 65q37-21 77-18l-4 48q-39-3-74 18Z" fill="url(#hatch)"/>
+   <path d="m245 68-8 12 8 5m22-24 8 5-8 12m-6-14-7 20" fill="none" stroke-width="1.7"/>
+   <path d="m116 146 83-37 5 6-81 40-17 2Z" fill="#D45060"/><path d="m116 146 7 9-17 2Z" fill="#F3E6D5"/>
+  </g>
+ </symbol>
+</svg>

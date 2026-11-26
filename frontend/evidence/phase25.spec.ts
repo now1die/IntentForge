@@ -22,7 +22,7 @@ test("capture changed intention analysis features", async ({ page, browser }) =>
   for (const scenario of scenarios) {
     const viewport = scenario.mode === "explicit" ? { width: 390, height: 844 } : { width: 1440, height: 1000 };
     await page.setViewportSize(viewport);
-    await page.goto("/");
+    await page.goto("/classic");
     await expect(page.getByText("Backend connected", { exact: true })).toBeVisible();
     await page.locator(".source-editor .view-lines").click();
     await page.keyboard.press("Control+A");

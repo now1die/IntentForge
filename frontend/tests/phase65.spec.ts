@@ -6,7 +6,7 @@ const capture = process.env.INTENTFORGE_PHASE65_CAPTURES;
 const source = "int f(int n,int total){\n  if(0>=n){return total;}\n  return f(n,total+3);\n}";
 
 async function openSource(page: Page) {
-  await page.goto("/");
+  await page.goto("/classic");
   await page.locator(editor).click();
   await page.keyboard.press("Control+A");
   await page.keyboard.insertText(source);

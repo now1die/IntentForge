@@ -59,8 +59,8 @@ async function intentionInputError(response: Response): Promise<string> {
   return payload.detail?.[0]?.msg ?? "Check the requirement fields and source length.";
 }
 
-export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105 | 11 | 115 | 12 | 13 = 2, inputs?: Phase8Inputs) =>
-  request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode, engine_version: engineVersion, ...inputs }, signal);
+export const analyzeIntention = (code: string, requirement: IntentionRequirement | null, mode: IntentionMode, signal: AbortSignal, engineVersion: 2 | 3 | 4 | 5 | 55 | 6 | 65 | 7 | 75 | 8 | 85 | 9 | 95 | 10 | 105 | 11 | 115 | 12 | 13 = 2, inputs?: Phase8Inputs, includeContext = false) =>
+  request<IntentionResponse>("/v1/intention-analysis", { code, requirement, mode, engine_version: engineVersion, ...inputs, ...(includeContext ? { include_context: true } : {}) }, signal);
 
 export const checkHealth = (signal?: AbortSignal) => request<Health>("/health", undefined, signal);
 export const analyzeCode = (code: string, signal?: AbortSignal) => request<AnalysisResponse>("/analyze", { code }, signal);
@@ -81,7 +81,15 @@ export const inspectCompilerEvidence = (code: string, language: "mini-c" | "c", 
   request<import("../types/evidence").SharedEvidenceReport>("/v1/compiler-evidence",
     language === "c" ? { code, language, standard } : { code, language }, signal);
 
-export const getExecutionCapability = (signal: AbortSignal) =>
-  request<import("../components/InteractiveBehavior").ExecutionCapability>("/v1/behavioral-verification/capability", undefined, signal);
+export async function getExecutionCapability(signal: AbortSignal) {
+  const read = () => request<import("../components/InteractiveBehavior").ExecutionCapability>(
+    "/v1/behavioral-verification/capability", undefined, signal);
+  let capability = await read();
+  for (let retry = 0; retry < 4 && capability.status === "capacity_reached" && !signal.aborted; retry++) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    if (!signal.aborted) capability = await read();
+  }
+  return capability;
+}
 export const verifyBehavior = (payload: unknown, signal: AbortSignal) =>
   request<import("../components/InteractiveBehavior").VerificationResponse>("/v1/behavioral-verification", payload, signal);
