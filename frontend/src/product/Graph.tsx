@@ -83,15 +83,19 @@ export function FlowDiagram({ graph, code, onLocate, compact = false }: {
             const a = points.get(edge.source)!;
             const b = points.get(edge.target)!;
             const back = edge.kind === "back" || b.y <= a.y;
-            const right = Math.min(width - 12, Math.max(a.x, b.x) + 114 + (index % 4) * 12);
+            const bypass = !back && b.y - a.y > 80;
+            const outer = back || a.x > width / 2 ? width - 10 - (index % 3) * 6 : 10 + (index % 3) * 6;
             const middle = (a.y + b.y) / 2;
             const fromY = a.y + 26;
             const toY = b.y - 28;
-            const d = back ? `M${a.x + 72} ${a.y}H${right}V${b.y}H${b.x + 74}`
+            // Skip-level exits and loop-backs travel beside the lanes so a
+            // connector cannot appear to pass through an unrelated block.
+            const d = back ? `M${a.x} ${fromY}V${fromY + 12}H${outer}V${toY - 12}H${b.x + 18}V${toY}`
+              : bypass ? `M${a.x} ${fromY}V${fromY + 11}H${outer}V${toY - 11}H${b.x}V${toY}`
               : `M${a.x} ${fromY}V${middle}H${b.x}V${toY}`;
             return <g key={index} data-edge={edge.kind} data-from={edge.source} data-to={edge.target}>
               <path d={d} markerEnd={`url(#${arrow})`} />
-              {["true", "false", "back"].includes(edge.kind) && <text x={back ? right - 3 : b.x + 8}
+              {["true", "false", "back"].includes(edge.kind) && <text x={back ? outer - 3 : b.x + 8}
                 y={back ? b.y + 17 : toY - 6} textAnchor={back ? "end" : "start"}>{label(edge.kind)}</text>}
             </g>;
           })}
