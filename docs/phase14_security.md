@@ -1,0 +1,5 @@
+# Runtime and approval boundaries
+
+The redesign uses the same-origin API bridge and existing host checks. Full C still uses Clang analysis only. Mini-C behavior uses the existing optional restricted Linux worker with a private Unix socket, no worker networking, seccomp, a read-only root and resource caps. The frontend carries no credentials for the worker and discovers its availability through the existing gateway. Public execution remains disabled in the hosted configuration. Production preview uses analysis-only mode under the existing origin allowlist. Live demonstrations use the direct local development origin.
+
+Static inspection, worker observations and repair approval have distinct states. When the worker is offline the UI identifies runtime tests as unverified. Multi-site changes apply atomically against the reviewed source. Editing source or expectations removes the current review. No compiler, runtime, worker or repair algorithm code changed in Phase 14. [Worker guide](phase4_5_execution_isolation.md)
